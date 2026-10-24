@@ -274,6 +274,20 @@ function computeRaw(utcMs: number, observer: Observer, ayanamsaType: Ayanamsa, n
   return { ayanamsa, lagna, planets };
 }
 
+export type NaturalRelation = 'self' | 'friend' | 'neutral' | 'enemy';
+
+/**
+ * Parashara's natural relationship of `planet` towards `other` (A03 daily rules: dasha lords' day-strength).
+ * The nodes have no row in the table; Rahu is read as Saturn and Ketu as Mars (the usual co-lordship).
+ */
+export function naturalRelation(planet: PlanetId, other: PlanetId): NaturalRelation {
+  const asTable = (id: PlanetId): Exclude<PlanetId, 'Ra' | 'Ke'> => (id === 'Ra' ? 'Sa' : id === 'Ke' ? 'Ma' : id);
+  const a = asTable(planet);
+  const b = asTable(other);
+  if (a === b) return 'self';
+  return FRIENDSHIP[a][b] ?? 'neutral';
+}
+
 /** Sign-based dignity (design 4 table; moolatrikona folded into own; nodes carry no relationship tag). */
 export function signDignity(id: PlanetId, sign: number): DignityTag | undefined {
   const s = sign - 1;

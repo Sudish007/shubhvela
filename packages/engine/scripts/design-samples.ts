@@ -3,14 +3,16 @@
 // .agents/tasks/v1-build/verification-a02.md and supersedes the mocks' SAMPLE placeholders (mocks are not edited).
 // Run with: npx tsx packages/engine/scripts/design-samples.ts
 //
-// goodHours() arrives in A03, so the day sections print the raw fork values (sunrise/sunset/moonrise, Rahu Kaal,
-// Yamaganda, Gulika, Abhijit, Brahma muhurta, choghadiya, tithi/nakshatra/yoga/karana end times, samvat).
+// Section (a) prints the raw fork values per day (A02) and, since A03, the merged goodHours() model (band spans,
+// segment rows with their single verdict chip, flags, legend, hora grid) and the panchang() F8 fields.
 import { Observer } from 'astronomy-engine';
 import { getPanchangam } from '../vendor/jyotish/src/core/panchangam';
 import { getVimshottariDasha } from '../vendor/jyotish/src/core/dashas';
 import { computeChart, chalit, varga, type ChartData } from '../src/kundli/index';
 import { formatInZone, localToUtc, offsetAt, TZDB_VERSION } from '../src/tz/index';
-import { nakshatraNames, planetNames, signNames, tithiNames, pakshaNames, weekdayShort } from '../src/locale/index';
+import { nakshatraNames, planetNames, signNames, tithiNames, pakshaNames, weekdayShort, lunarMonthNames, karanaNames, yogaNames } from '../src/locale/index';
+import { goodHours, labelFor, at as bandAt } from '../src/panchang/goodHours';
+import { panchang } from '../src/panchang/panchang';
 
 const DOT = ' \u00b7 ';
 const ZONE = 'Asia/Kolkata';
@@ -22,10 +24,12 @@ const DAYS: [number, number, number][] = [
 ];
 
 const hm = (d: Date | null | undefined): string => (d ? formatInZone(d.getTime(), ZONE, 'HH:mm') : '--:--');
+const hm2 = (ms: number | null | undefined): string => (ms === null || ms === undefined ? '--:--' : formatInZone(ms, ZONE, 'HH:mm'));
+const RITU = ['Vasanta', 'Grishma', 'Varsha', 'Sharad', 'Hemanta', 'Shishira'];
 const dayLabel = (ms: number): string => formatInZone(ms, ZONE, 'EEE d MMM yyyy');
 const dms = (deg: number, min: number): string => `${deg}\u00b0${String(min).padStart(2, '0')}\u2032`;
 
-console.log(`design-samples ${new Date().toISOString()} | tzdb ${TZDB_VERSION} | ephemeris astronomy-engine 2.1.19 | ayanamsa Lahiri | node mean`);
+console.log(`design-samples ${new Date().toISOString()} | tzdb ${TZDB_VERSION} | ephemeris astronomy-engine 2.1.19 | ayanamsa Lahiri | node mean | goodHours precedence design 10.2 | Brahma muhurta = 96-48 min before next sunrise`);
 console.log('');
 console.log(`=== (a) Mock days at New Delhi ${DELHI.lat}/${DELHI.lon} ${ZONE} ===`);
 for (const [y, m, d] of DAYS) {
@@ -46,6 +50,52 @@ for (const [y, m, d] of DAYS) {
   console.log(`Choghadiya night: ${p.choghadiya.night.map((c) => `${c.name} ${hm(c.startTime)}-${hm(c.endTime)} (${c.rating})`).join(', ')}`);
   console.log(`Hora at noon: ${p.currentHora}${DOT}Vara ${weekdayShort.en[p.vara - 1]}${DOT}Moon nakshatra pada ${p.nakshatraPada}`);
   if (p.varjyam.length) console.log(`Varjyam: ${p.varjyam.map((v) => `${hm(v.start)}-${hm(v.end)}`).join(', ')}${DOT}Amrit kalam: ${p.amritKalam.map((v) => `${hm(v.start)}-${hm(v.end)}`).join(', ')}`);
+
+  // A03: the merged model behind the Today band (goodHours = the only producer of verdicts) and the F8 sheet.
+  const dayLocal = `${y}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+  const gh = goodHours(dayLocal, DELHI, ZONE);
+  const t = gh.ticks!;
+  const name = (id: string): string => {
+    const s = gh.segments.find((x) => x.id === id);
+    return s ? (s.choghadiya ? `${s.choghadiya} choghadiya` : s.name) : id;
+  };
+  console.log(`goodHours ticks: sunrise ${hm2(t.sunrise)}${DOT}noon ${hm2(t.noon)}${DOT}sunset ${hm2(t.sunset)}${DOT}next sunrise ${hm2(t.nextSunrise)}${DOT}moonrise ${t.moonrise ? hm2(t.moonrise) : 'none'}${DOT}legend ${gh.legend.join(' · ')}`);
+  console.log(
+    `goodHours band (${gh.spans.length} spans, labels at 358 dp): ` +
+      gh.spans
+        .map((s) => {
+          const label = labelFor(s, gh, 358);
+          const lbl = label ? (label.kind === 'verdict' ? label.verdict : label.segments.map(name).join('+')) : 'no label';
+          return `${hm2(s.start)}-${hm2(s.end)} ${s.verdict}${s.night ? ' (night)' : ''} [${s.reasons.map(name).join(', ')}] <${lbl}>`;
+        })
+        .join('; '),
+  );
+  console.log(`goodHours rows (${gh.segments.filter((s) => !s.night).length} day + ${gh.segments.filter((s) => s.night).length} night):`);
+  for (const s of gh.segments) {
+    const notes: string[] = [];
+    if (s.overriddenBy) notes.push(`overridden by ${s.overriddenBy.map(name).join(', ')}`);
+    if (s.liftedBy) notes.push(`lifted by ${s.liftedBy.map(name).join(', ')}`);
+    for (const part of s.parts ?? []) notes.push(part.kind === 'own' ? `${hm2(part.start)}-${hm2(part.end)} keeps its own nature (${part.verdict})` : `${hm2(part.start)}-${hm2(part.end)} ${part.kind} by ${part.by.map(name).join(', ')}`);
+    if (s.includes) notes.push(`includes ${s.includes.map(name).join(', ')}`);
+    for (const f of s.flags) notes.push(`flag: ${f}`);
+    console.log(`  ${s.night ? 'night ' : 'day   '}${name(s.id).padEnd(18)} ${hm2(s.start)}-${hm2(s.end)}  ${s.verdict.padEnd(7)} ${notes.join(' · ')}`);
+  }
+  const flagText: string[] = [];
+  if (gh.flags.panchak) flagText.push(`Panchak ${formatInZone(gh.flags.panchak.start, ZONE, 'EEE d MMM HH:mm')} -> ${formatInZone(gh.flags.panchak.end, ZONE, 'EEE d MMM HH:mm')}`);
+  if (gh.flags.bhadra) flagText.push(`Bhadra (${gh.flags.bhadra.location}) ${formatInZone(gh.flags.bhadra.start, ZONE, 'EEE d MMM HH:mm')} -> ${formatInZone(gh.flags.bhadra.end, ZONE, 'EEE d MMM HH:mm')}`);
+  console.log(`goodHours flags: ${flagText.length ? flagText.join(DOT) : 'none'}`);
+  const nowProbe = localToUtc(ZONE, { y, m, d, hh: 10, mm: 58 }).utcMs;
+  const now = bandAt(gh, nowProbe);
+  if (now) console.log(`goodHours at 10:58: ${now.span.verdict}${DOT}${now.choghadiya ? `${now.choghadiya.choghadiya} choghadiya` : '-'}${DOT}${now.hora ? planetNames.en[now.hora.lord] + ' hora' : '-'}${DOT}next: ${now.next ? `${now.next.starting.map(name).join('/')} ${hm2(now.next.at)} (${now.next.verdict})` : '-'}`);
+  console.log(`goodHours hora: ${gh.hora.map((h) => `${hm2(h.start)} ${planetNames.en[h.lord]}`).join(', ')}`);
+  const pd = panchang(dayLocal, DELHI, ZONE);
+  const tithiTxt = (tt: { n: number; paksha: string; end: number }) => `${tt.paksha === 'shukla' ? 'Shukla' : 'Krishna'} ${tithiNames.en[tt.n - 1]} till ${hm2(tt.end)}`;
+  console.log(
+    `panchang F8: ${pd.tithis.map(tithiTxt).join(', then ')}${DOT}Nakshatra ${pd.nakshatras.map((n) => `${nakshatraNames.en[n.index]} (pada ${n.pada}) till ${hm2(n.end)}`).join(', then ')}${DOT}Yoga ${pd.yogas.map((v) => `${yogaNames.en[v.index]} till ${hm2(v.end)}`).join(', then ')}${DOT}Karana ${pd.karanas.map((k) => `${karanaNames.en[k.index]}${k.bhadra ? ' (Bhadra)' : ''} till ${hm2(k.end)}`).join(', then ')}`,
+  );
+  console.log(
+    `panchang F8: Vikram ${pd.vikramSamvat}${DOT}Shaka ${pd.shakaSamvat}${DOT}Month Purnimanta ${pd.monthPurnimanta.adhik ? 'Adhik ' : ''}${lunarMonthNames.en[pd.monthPurnimanta.index]}${DOT}Amanta ${pd.monthAmanta.adhik ? 'Adhik ' : ''}${lunarMonthNames.en[pd.monthAmanta.index]}${DOT}Ritu vedic ${RITU[pd.ritu.vedic]} / drik ${RITU[pd.ritu.drik]}${DOT}Ayana vedic ${pd.ayana.vedic} / drik ${pd.ayana.drik}${DOT}Sun ${signNames.en[pd.sunSign]}${DOT}Moon ${signNames.en[pd.moonSign]}${DOT}Moonrise ${hm2(pd.moonrise)}${DOT}Moonset ${hm2(pd.moonset)}${DOT}Disha Shool ${pd.dishaShool.avoid}${DOT}Brahma (before this sunrise) ${hm2(pd.brahmaMorning!.start)}-${hm2(pd.brahmaMorning!.end)}`,
+  );
 }
 
 console.log('');
