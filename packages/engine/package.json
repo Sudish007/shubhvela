@@ -11,7 +11,8 @@
   "scripts": {
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "build:data": "node -e \"console.log('build:data: no generators yet (tz table and gazetteer arrive in A02)')\""
+    "build:data": "tsx scripts/build-tz-table.ts && tsx scripts/build-gazetteer.ts",
+    "design-samples": "tsx scripts/design-samples.ts"
   },
   "dependencies": {
     "astronomy-engine": "^2.1.19"
