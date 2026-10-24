@@ -1,0 +1,92 @@
+{
+  "expo": {
+    "name": "Shubhvela",
+    "slug": "shubhvela",
+    "scheme": "shubhvela",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "platforms": ["android"],
+    "android": {
+      "package": "com.shubhvela.app",
+      "versionCode": 1,
+      "predictiveBackGestureEnabled": false,
+      "adaptiveIcon": {
+        "backgroundColor": "#FAF7F2",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "permissions": [
+        "android.permission.POST_NOTIFICATIONS",
+        "android.permission.CAMERA",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "com.android.vending.BILLING"
+      ]
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "compileSdkVersion": 36,
+            "targetSdkVersion": 36,
+            "minSdkVersion": 24,
+            "ndkVersion": "27.1.12297006"
+          }
+        }
+      ],
+      [
+        "react-native-google-mobile-ads",
+        {
+          "androidAppId": "ca-app-pub-3940256099942544~3347511713"
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/android-icon-monochrome.png",
+          "color": "#B83E18"
+        }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Shubhvela uses the camera only to scan a matching QR code shown on another phone.",
+          "recordAudioAndroid": false
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Shubhvela uses your approximate location only to compute today's sunrise, sunset and good hours where you are. You can choose a city instead.",
+          "isAndroidBackgroundLocationEnabled": false
+        }
+      ],
+      "expo-background-task",
+      "expo-iap",
+      "expo-sqlite",
+      "expo-font",
+      "expo-sharing",
+      "expo-status-bar",
+      "expo-asset",
+      "react-native-quick-crypto"
+    ],
+    "extra": {
+      "admob": {
+        "appId": "ca-app-pub-3940256099942544~3347511713",
+        "units": {
+          "banner": "ca-app-pub-3940256099942544/6300978111",
+          "native": "ca-app-pub-3940256099942544/2247696110",
+          "interstitial": "ca-app-pub-3940256099942544/1033173712",
+          "rewarded": "ca-app-pub-3940256099942544/5224354917"
+        },
+        "live": false
+      },
+      "applovinSdkKey": "",
+      "webBase": "https://sudish007.github.io/shubhvela/"
+    }
+  }
+}

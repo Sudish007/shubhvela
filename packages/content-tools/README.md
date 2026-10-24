@@ -1,0 +1,1 @@
+Build-time content tools for Shubhvela (Gemini Flash-Lite translation of the English master corpus into Hindi and Bhojpuri via a GitHub Action, forbidden-word checks, review queues); never shipped in the app.

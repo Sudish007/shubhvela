@@ -1,0 +1,29 @@
+# dependencies
+node_modules/
+
+# android build output (app/android/ itself is committed; generated ONCE by expo prebuild)
+**/android/app/build/
+**/android/build/
+**/android/.gradle/
+**/android/.kotlin/
+**/android/local.properties
+**/.cxx/
+build-run.log
+
+# release artefacts and secrets (release/README.md is committed)
+release/*.keystore
+release/KEYSTORE-INFO.txt
+release/*.apk
+release/*.aab
+
+# run artefacts of the build workflow
+.agents/
+
+# logs, caches, generated
+*.log
+dist/
+.expo/
+*.tsbuildinfo
+expo-env.d.ts
+web/.cache/
+packages/content-tools/diagnostic.json

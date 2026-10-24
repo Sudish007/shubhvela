@@ -1,0 +1,19 @@
+{
+  "name": "@shubhvela/web",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Shubhvela web companion: static site generator (Node) -> dist/, published on GitHub Pages.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run --passWithNoTests",
+    "typecheck": "tsc --noEmit",
+    "build": "node -e \"console.error('web build: the static generator arrives in D01'); process.exit(1)\"",
+    "audit": "node -e \"console.error('web audit: the Playwright audit arrives in D03'); process.exit(1)\""
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "~6.0.3",
+    "vitest": "^5.0.0"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "@shubhvela/content-tools",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Build-time content generators for Shubhvela (Gemini translation via GitHub Action, review flags, diff reports). Never shipped in the app.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run --passWithNoTests",
+    "typecheck": "tsc --noEmit",
+    "translate": "node -e \"console.error('translate: the Gemini translation tool arrives in A05'); process.exit(1)\""
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "tsx": "^4.23.0",
+    "typescript": "~6.0.3",
+    "vitest": "^5.0.0"
+  }
+}

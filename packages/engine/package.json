@@ -1,0 +1,27 @@
+{
+  "name": "@shubhvela/engine",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Shubhvela Jyotish engine: vendored @prisri/jyotish fork + astronomy-engine, plus Shubhvela rules (pure TypeScript, no React).",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "build:data": "node -e \"console.log('build:data: no generators yet (tz table and gazetteer arrive in A02)')\""
+  },
+  "dependencies": {
+    "astronomy-engine": "^2.1.19"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "moment-timezone": "^0.6.5",
+    "tsx": "^4.23.0",
+    "typescript": "~6.0.3",
+    "tz-lookup": "^6.1.25",
+    "vitest": "^5.0.0"
+  }
+}

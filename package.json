@@ -1,0 +1,27 @@
+{
+  "name": "shubhvela",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Shubhvela - your family's Vedic almanac. Monorepo: engine, content, app, web.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=24"
+  },
+  "workspaces": [
+    "packages/*",
+    "app",
+    "web"
+  ],
+  "scripts": {
+    "test": "npm run test --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "build:data": "npm run build:data -w packages/engine",
+    "translate": "npm run translate -w packages/content-tools --",
+    "web:build": "npm run build -w web",
+    "web:audit": "npm run audit -w web"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.5"
+  }
+}
