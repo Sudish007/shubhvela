@@ -1,5 +1,6 @@
 // Static registry of every bundled JSON file. Add a line here when a corpus file lands (English masters in
-// A06-A08 / B02 / C02; hi/bho drafts after each corpus-translate Action run). Nothing else in the package knows paths.
+// A06-A08 / B02 / C02; hi drafts after the owner dispatches the corpus-translate Action — no bho corpus files ever,
+// owner decision 2026-10-25; load.ts resolves bho -> hi -> en). Nothing else in the package knows paths.
 import type { ContentLanguage, FestivalText, GlossaryEntry, Snippet, UiStrings } from './types';
 import en from '../ui/en.json';
 import hi from '../ui/hi.json';

@@ -1,16 +1,19 @@
 name: corpus-translate
-# Translates the English master corpus (packages/content/corpus/<domain>/en.json) into Hindi and Bhojpuri drafts with
-# Gemini (gemini-3.5-flash-lite, OpenAI-compatible endpoint, <= 450 requests per run) and commits the <lang>.json
-# files to main. Dispatched by hand or by the A08 / B02 / C02 build steps: the API key is the repository secret
-# GEMINI_API_KEY and is only ever referenced by name here. UI strings are never translated by this workflow.
+# Translates the English master corpus (packages/content/corpus/<domain>/en.json) into Hindi drafts with Gemini
+# (gemini-3.5-flash-lite, OpenAI-compatible endpoint, <= 450 requests per run) and commits the <lang>.json files to
+# main. Dispatched by the owner once the repository secret GEMINI_API_KEY exists (referenced by name only):
+#   gh workflow run corpus-translate.yml --repo Sudish007/shubhvela -f lang=hi
+# Bhojpuri is intentionally excluded (owner decision 2026-10-25: the corpus is not machine-translated into Bhojpuri;
+# the app resolves bho -> hi -> en). Until the owner dispatches it the Hindi corpus falls back to English.
+# UI strings are never translated by this workflow.
 on:
   workflow_dispatch:
     inputs:
       lang:
-        description: Target language(s)
+        description: Target language (hi; Bhojpuri is intentionally excluded in v1)
         type: choice
         options: [hi, bho, both]
-        default: both
+        default: hi
       domains:
         description: Comma-separated corpus domains, or "all"
         type: string

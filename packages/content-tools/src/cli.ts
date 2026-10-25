@@ -15,7 +15,8 @@ async function main(): Promise<number> {
   const HERE = dirname(fileURLToPath(import.meta.url));
   const toolsRoot = resolve(HERE, '..');
   const contentRoot = resolve(HERE, '../../content');
-  const langArg = arg('lang', 'both');
+  // Default hi: the owner decided (2026-10-25) that the corpus is not machine-translated into Bhojpuri in v1.
+  const langArg = arg('lang', 'hi');
   const langs: TargetLang[] = langArg === 'both' ? ['hi', 'bho'] : langArg === 'hi' || langArg === 'bho' ? [langArg] : [];
   if (!langs.length) {
     console.error(`translate: --lang must be hi, bho or both (got "${langArg}")`);

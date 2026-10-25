@@ -55,9 +55,9 @@ export type TranslationParams = Record<string, string | number | boolean | null 
 
 export interface CorpusLookup {
   text: string;
-  /** Language the text is actually in (English when falling back). */
+  /** Language the text is actually in (first of the fallback chain that had it). */
   lang: ContentLanguage;
-  /** True when the requested language had no entry and English was used. */
+  /** True when the requested language had no entry and a fallback language (bho -> hi -> en) was used. */
   fallback: boolean;
   snippet: Snippet;
 }
