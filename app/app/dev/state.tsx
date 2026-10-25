@@ -6,8 +6,11 @@
 import { Redirect, useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect } from 'react';
 import { View } from 'react-native';
+import { getSelfProfile } from '../../src/db/profiles';
+import { setSetting } from '../../src/db/settings';
 import { parseDevParams } from '../../src/dev/params';
 import { seedSampleState } from '../../src/dev/seed';
+import { scheduleTestReminder } from '../../src/dev/testReminder';
 import { useLang } from '../../src/i18n';
 import { isScreenshotBuild } from '../../src/legal';
 import { useTokens } from '../../src/theme/ThemeProvider';
@@ -24,10 +27,14 @@ export default function DevState() {
     if (!enabled) return;
     const p = parseDevParams(params);
     if (p.sample) seedSampleState({ lang: p.lang, theme: p.theme });
+    if (p.style) setSetting('chartStyle', p.style);
+    // After the launch re-plan (app/_layout.tsx, 1.5 s after mount), which cancels every scheduled notification first.
+    if (p.testReminder) setTimeout(() => void scheduleTestReminder(p.lang), 6000);
     setLang(p.lang);
     setThemeSetting(p.theme);
     if (__DEV__) console.log('dev/state', p);
-    router.replace(p.screen);
+    const selfId = getSelfProfile()?.id;
+    router.replace(selfId !== undefined ? p.screen.replace('{self}', String(selfId)) : p.screen);
     // One run per deep link (the params object changes identity on every link; `key` captures its content).
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [enabled, key]);

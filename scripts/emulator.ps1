@@ -68,8 +68,14 @@ if ($Boot) {
   if (-not $booted) { Write-Error "Emulator did not finish booting within 240 s"; exit 1 }
   Start-Sleep -Seconds 5
   # Dismiss a possible "System UI isn't responding" dialog by tapping its Wait button.
-  & $Adb shell uiautomator dump /sdcard/ui.xml 2>$null | Out-Null
-  $dump = (& $Adb shell cat /sdcard/ui.xml 2>$null | Out-String)
+  # adb writes "ERROR: null root node returned by UiTestAutomationBridge" to stderr while the shell is still settling;
+  # under ErrorActionPreference=Stop that would abort the script, so run it through cmd and retry a few times.
+  $dump = ''
+  for ($i = 0; $i -lt 5 -and -not $dump; $i++) {
+    cmd /c """$Adb"" shell uiautomator dump /sdcard/ui.xml > nul 2>&1"
+    $dump = (cmd /c """$Adb"" shell cat /sdcard/ui.xml 2> nul" | Out-String)
+    if (-not $dump) { Start-Sleep -Seconds 3 }
+  }
   if ($dump -match 'text="Wait"[^>]*bounds="\[(\d+),(\d+)\]\[(\d+),(\d+)\]"') {
     $x = [int](([int]$Matches[1] + [int]$Matches[3]) / 2); $y = [int](([int]$Matches[2] + [int]$Matches[4]) / 2)
     & $Adb shell input tap $x $y | Out-Null

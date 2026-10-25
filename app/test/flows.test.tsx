@@ -73,7 +73,7 @@ describe('flows', () => {
     insertProfile(SAMPLE_PRIYA);
     insertProfile(SAMPLE_AMMA);
     await renderWithProviders(<FamilyScreen />);
-    // A12: the quota line reads "2 of 2 profiles · N of 5 reminders (free)"; the "Add" avatar is the always-present entry.
+    // A12: the quota line reads "2 of 2 profiles Ã‚Â· N of 5 reminders (free)"; the "Add" avatar is the always-present entry.
     expect(screen.getByText(/^2 of 2 profiles/)).toBeTruthy();
     await fireEvent.press(screen.getByTestId('avatar-add'));
     expect(useRouter().push).not.toHaveBeenCalled();
@@ -83,7 +83,10 @@ describe('flows', () => {
   });
 
   it('dev route parameters fall back to en / light / Today', () => {
-    expect(parseDevParams({ lang: 'hi', theme: 'dark', screen: 'settings', sample: '1', font: '1.3' })).toEqual({ lang: 'hi', theme: 'dark', screen: '/settings', sample: true, font: '1.3' });
-    expect(parseDevParams({ lang: 'xx', theme: 'neon' })).toEqual({ lang: 'en', theme: 'light', screen: '/(tabs)/today', sample: false, font: '1.0' });
+    expect(parseDevParams({ lang: 'hi', theme: 'dark', screen: 'settings', sample: '1', font: '1.3' })).toEqual({ lang: 'hi', theme: 'dark', screen: '/settings', sample: true, font: '1.3', testReminder: false });
+    expect(parseDevParams({ lang: 'xx', theme: 'neon' })).toEqual({ lang: 'en', theme: 'light', screen: '/(tabs)/today', sample: false, font: '1.0', testReminder: false });
+    expect(parseDevParams({ test_reminder: '1' }).testReminder).toBe(true);
+    expect(parseDevParams({ screen: '/(tabs)/charts', style: 'south' }).style).toBe('south');
+    expect(parseDevParams({ style: 'round' }).style).toBeUndefined();
   });
 });
