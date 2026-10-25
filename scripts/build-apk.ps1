@@ -45,6 +45,15 @@ if ($freeGB -lt $MinFreeGB) {
   Write-Host "  $env:LOCALAPPDATA\ms-playwright    (~1.4 GB, needed again in Phase D)"
   exit 2
 }
+# A13 finding: the system-managed pagefile grew to 26 GB during the first build and consumed the disk.
+# Log its allocation before and after so growth is visible in the verification file.
+function Show-PageFile([string]$when) {
+  try {
+    $pf = Get-CimInstance Win32_PageFileUsage -ErrorAction Stop
+    foreach ($p in $pf) { Write-Host ("Pagefile {0}: {1} allocated {2} MB, in use {3} MB, peak {4} MB" -f $when, $p.Name, $p.AllocatedBaseSize, $p.CurrentUsage, $p.PeakUsage) }
+  } catch { Write-Host "Pagefile ${when}: (Win32_PageFileUsage unavailable)" }
+}
+Show-PageFile 'before'
 
 # ---- 2. version check ----------------------------------------------------------
 $appJson = Get-Content (Join-Path $Root 'app/app.json') -Raw | ConvertFrom-Json
@@ -80,14 +89,22 @@ if ($ScreenshotMode) { $env:EXPO_PUBLIC_SCREENSHOT_MODE = '1'; Write-Host "Scree
 else { Remove-Item Env:EXPO_PUBLIC_SCREENSHOT_MODE -ErrorAction SilentlyContinue }
 
 # ---- 4. gradle (foreground) ----------------------------------------------------
+# AGP needs the SDK location: ANDROID_HOME is not set on this PC and android/local.properties is gitignored,
+# so export it for the child process (A13 finding: "SDK location not found" after a 10-minute configuration).
+if (-not $env:ANDROID_HOME) { $env:ANDROID_HOME = Join-Path $env:LOCALAPPDATA 'Android\Sdk' }
 $log = Join-Path $AndroidDir 'build-run.log'
 Push-Location $AndroidDir
 try {
   Write-Host "Running gradlew.bat assembleRelease -PreactNativeArchitectures=$Abi (log: $log)"
   $t0 = Get-Date
-  & .\gradlew.bat assembleRelease "-PreactNativeArchitectures=$Abi" --max-workers=2 --console=plain *> $log
+  # cmd redirect instead of PowerShell `*>`: under ErrorActionPreference=Stop PowerShell 5.1 turns the first
+  # stderr line of a native command (e.g. "Picked up JAVA_TOOL_OPTIONS") into a terminating error and the log stays empty.
+  cmd /c "gradlew.bat assembleRelease -PreactNativeArchitectures=$Abi --max-workers=2 --console=plain > ""$log"" 2>&1"
   $gradleExit = $LASTEXITCODE
   Write-Host ("Gradle finished in {0:N0} s with exit code {1}" -f ((Get-Date) - $t0).TotalSeconds, $gradleExit)
+  Show-PageFile 'after'
+  # Stop the Gradle (and Kotlin) daemons: they hold ~5 GB of commit charge and must not overlap the emulator.
+  cmd /c "gradlew.bat --stop > nul 2>&1"
 }
 finally {
   Pop-Location
