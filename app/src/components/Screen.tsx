@@ -31,6 +31,8 @@ export interface ScreenProps {
   stickyCta?: ReactNode;
   /** Replaces the gear on tab screens (A11's profile picker lives in the body, not here). */
   headerRight?: ReactNode;
+  /** Pinned strip between the status inset and the scrolling content (the dasha tree's "you are here" header). */
+  pinned?: ReactNode;
   children: ReactNode;
   contentStyle?: StyleProp<ViewStyle>;
   testID?: string;
@@ -43,7 +45,7 @@ export function screenBottomPadding(args: { chrome: ScreenChrome; bannerHeight: 
   return 16 + args.insetBottom;
 }
 
-export function Screen({ title, chrome = 'tabs', route = '', hideControl, subtitle, stickyCta, headerRight, children, contentStyle, testID, onBack }: ScreenProps) {
+export function Screen({ title, chrome = 'tabs', route = '', hideControl, subtitle, stickyCta, headerRight, pinned, children, contentStyle, testID, onBack }: ScreenProps) {
   const { colors } = useTokens();
   const { t } = useLang();
   const insets = useSafeAreaInsets();
@@ -66,6 +68,11 @@ export function Screen({ title, chrome = 'tabs', route = '', hideControl, subtit
 
   return (
     <View testID={testID} style={[styles.root, { backgroundColor: colors.paper, paddingTop: insets.top }]}>
+      {pinned ? (
+        <View testID="screen-pinned" style={[styles.pinned, { backgroundColor: colors.surface, borderBottomColor: colors.hair }]}>
+          {pinned}
+        </View>
+      ) : null}
       <ScrollView testID="screen-scroll" style={styles.scroll} contentContainerStyle={[styles.content, { paddingBottom }, contentStyle]} keyboardShouldPersistTaps="handled">
         <View style={[styles.header, chrome === 'stack' && styles.headerStack]}>
           {chrome === 'stack' ? control : null}
@@ -93,6 +100,7 @@ export function Screen({ title, chrome = 'tabs', route = '', hideControl, subtit
 
 const styles = StyleSheet.create({
   root: { flex: 1 },
+  pinned: { paddingHorizontal: 16, paddingVertical: 8, borderBottomWidth: StyleSheet.hairlineWidth },
   scroll: { flex: 1 },
   content: { paddingHorizontal: 16, paddingTop: 8, gap: 12 },
   header: { flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', gap: 8, minHeight: 44 },

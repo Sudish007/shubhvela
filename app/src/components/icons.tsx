@@ -69,6 +69,17 @@ export function GearIcon({ color, size = 24 }: IconProps) {
   );
 }
 
+/** Overflow menu (three vertical dots): the chart card's style/legend menu (design.md 4, M2). */
+export function MoreIcon({ color, size = 24 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24" accessible={false}>
+      <Circle cx="12" cy="5.5" r="1.6" fill={color} />
+      <Circle cx="12" cy="12" r="1.6" fill={color} />
+      <Circle cx="12" cy="18.5" r="1.6" fill={color} />
+    </Svg>
+  );
+}
+
 export function ChevronIcon({ color, size = 24 }: IconProps) {
   return (
     <Svg width={size} height={size} viewBox="0 0 24 24" accessible={false}>

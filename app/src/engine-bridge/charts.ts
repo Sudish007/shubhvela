@@ -1,11 +1,13 @@
 // Chart computation for the app: engine.computeChart with the F19 settings, memoised per profile + settings.
 // Everything shown about a chart comes from here (D8: every number computed).
-import { computeChart, locale, type ChartData, type ChartOptions } from '@shubhvela/engine';
-import type { Profile } from '../db/profiles';
+import { computeChart, dasha, locale, sadeSati, type ChartData, type ChartOptions, type DashaTree, type SadeSatiReport } from '@shubhvela/engine';
+import { listProfiles, type Profile } from '../db/profiles';
 import { getSetting, type Lang } from '../db/settings';
 import { toBirthInput } from './profiles';
 
 const cache = new Map<string, ChartData>();
+// Dasha trees are keyed by the chart object, so a recomputed chart (new settings) gets a new tree automatically.
+const dashaCache = new WeakMap<ChartData, DashaTree>();
 
 export function chartOptions(): Required<Pick<ChartOptions, 'ayanamsa' | 'node'>> {
   return { ayanamsa: getSetting('ayanamsa'), node: getSetting('node') };
@@ -28,6 +30,45 @@ export function chartFor(p: Profile, opts: ChartOptions = chartOptions()): Chart
 /** Called when F19 settings change or data is deleted: every chart is recomputed on next use. */
 export function clearChartCache(): void {
   cache.clear();
+}
+
+/**
+ * F19: after an ayanamsa/node change every profile's chart is recomputed NOW with the new settings (the toast that
+ * follows reports a recomputation that has actually happened). Returns the number of charts recomputed.
+ */
+export function recomputeAllCharts(): number {
+  clearChartCache();
+  const opts = chartOptions();
+  let n = 0;
+  for (const p of listProfiles()) {
+    try {
+      chartFor(p, opts);
+      n++;
+    } catch (e) {
+      if (__DEV__) console.warn('chart failed', p.id, e);
+    }
+  }
+  return n;
+}
+
+/** Vimshottari tree for a chart, memoised per chart object (engine.dasha spans >= 120 years and is not free). */
+export function dashaFor(chart: ChartData): DashaTree {
+  const hit = dashaCache.get(chart);
+  if (hit) return hit;
+  const tree = dasha(chart);
+  dashaCache.set(chart, tree);
+  return tree;
+}
+
+const sadeSatiCache = new WeakMap<ChartData, { nowMs: number; report: SadeSatiReport }>();
+
+/** Sade Sati report for a chart at an instant, memoised per chart object and instant (~160 ms of ingress search). */
+export function sadeSatiFor(chart: ChartData, nowMs: number): SadeSatiReport {
+  const hit = sadeSatiCache.get(chart);
+  if (hit && hit.nowMs === nowMs) return hit.report;
+  const report = sadeSati(chart, nowMs);
+  sadeSatiCache.set(chart, { nowMs, report });
+  return report;
 }
 
 export interface MoonLine {

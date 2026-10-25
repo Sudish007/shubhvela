@@ -38,6 +38,7 @@ function Navigator({ fontsReady }: { fontsReady: boolean }) {
         <Stack.Screen name="onboarding/intent" />
         <Stack.Screen name="settings/index" />
         <Stack.Screen name="profile/[id]" />
+        <Stack.Screen name="charts/dasha-tree" />
         <Stack.Screen name="dev/state" />
       </Stack>
     </>
