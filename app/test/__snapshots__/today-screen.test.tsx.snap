@@ -1,0 +1,4881 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`<TodayScreen> pseudo-locale +30 % (en): nothing truncates and no time range splits 1`] = `
+<RNCSafeAreaProvider
+  onInsetsChange={[Function]}
+  style={
+    [
+      {
+        "flex": 1,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      [
+        {
+          "flex": 1,
+        },
+        {
+          "backgroundColor": "#FAF7F2",
+          "paddingTop": 24,
+        },
+      ]
+    }
+    testID="today-screen"
+  >
+    <RCTScrollView
+      contentContainerStyle={
+        [
+          {
+            "gap": 12,
+            "paddingHorizontal": 16,
+            "paddingTop": 8,
+          },
+          {
+            "paddingBottom": 122,
+          },
+          undefined,
+        ]
+      }
+      keyboardShouldPersistTaps="handled"
+      style={
+        {
+          "flex": 1,
+        }
+      }
+      testID="screen-scroll"
+    >
+      <View>
+        <View
+          style={
+            [
+              {
+                "alignItems": "flex-start",
+                "flexDirection": "row",
+                "gap": 8,
+                "justifyContent": "space-between",
+                "minHeight": 44,
+              },
+              false,
+            ]
+          }
+        >
+          <View
+            style={
+              {
+                "flex": 1,
+                "minWidth": 0,
+                "paddingTop": 6,
+              }
+            }
+          >
+            <Text
+              accessibilityRole="header"
+              style={
+                [
+                  {
+                    "fontFamily": "TiroDevanagariHindi",
+                    "fontSize": 26,
+                    "fontWeight": "normal",
+                    "lineHeight": 32,
+                  },
+                  {
+                    "color": "#1C1A17",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              Today x
+            </Text>
+            <View
+              style={
+                {
+                  "marginTop": 4,
+                }
+              }
+            >
+              <View
+                style={
+                  {
+                    "gap": 2,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 15,
+                        "fontWeight": "normal",
+                        "lineHeight": 20,
+                      },
+                      {
+                        "color": "#5B554C",
+                      },
+                      undefined,
+                    ]
+                  }
+                  testID="today-date-line"
+                >
+                  Thu 
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    22
+                  </Text>
+                   Oct 
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    2026
+                  </Text>
+                   · Ashwin Shukla x Ekadashi xxxxxxxxxx
+                </Text>
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "flexWrap": "wrap",
+                      "gap": 6,
+                    }
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                    testID="today-moon-line"
+                  >
+                    Your Moon: Kanya · 
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans",
+                            "fontSize": 15,
+                            "fontWeight": "normal",
+                            "lineHeight": 20,
+                          },
+                          {
+                            "color": "#5B554C",
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      Uttara Phalguni 4
+                    </Text>
+                     xxxxxxx
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            accessibilityLabel="Settings xx"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                  "minHeight": 44,
+                  "minWidth": 44,
+                },
+                undefined,
+                false,
+              ]
+            }
+            testID="screen-gear"
+          >
+            <RNSVGSvgView
+              accessible={false}
+              align="xMidYMid"
+              bbHeight={24}
+              bbWidth={24}
+              focusable={false}
+              height={24}
+              meetOrSlice={0}
+              minX={0}
+              minY={0}
+              style={
+                [
+                  {
+                    "backgroundColor": "transparent",
+                    "borderWidth": 0,
+                  },
+                  {
+                    "flex": 0,
+                    "height": 24,
+                    "width": 24,
+                  },
+                ]
+              }
+              vbHeight={24}
+              vbWidth={24}
+              width={24}
+            >
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGCircle
+                  cx="12"
+                  cy="12"
+                  fill={null}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                      "strokeLinecap",
+                      "strokeLinejoin",
+                    ]
+                  }
+                  r="3"
+                  stroke={
+                    {
+                      "payload": 4280031767,
+                      "type": 0,
+                    }
+                  }
+                  strokeLinecap={1}
+                  strokeLinejoin={1}
+                  strokeWidth={1.75}
+                />
+                <RNSVGPath
+                  d="M12 2.5l1.6 2.3 2.7-.8.7 2.7 2.7.7-.8 2.7 2.3 1.6-2.3 1.6.8 2.7-2.7.7-.7 2.7-2.7-.8L12 21.5l-1.6-2.3-2.7.8-.7-2.7-2.7-.7.8-2.7L2.5 12l2.3-1.6-.8-2.7 2.7-.7.7-2.7 2.7.8Z"
+                  fill={null}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                      "strokeLinecap",
+                      "strokeLinejoin",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4280031767,
+                      "type": 0,
+                    }
+                  }
+                  strokeLinecap={1}
+                  strokeLinejoin={1}
+                  strokeWidth={1.75}
+                />
+              </RNSVGGroup>
+            </RNSVGSvgView>
+          </View>
+        </View>
+        <View
+          style={
+            {
+              "flexDirection": "row",
+              "flexWrap": "wrap",
+              "gap": 8,
+            }
+          }
+        >
+          <View
+            accessibilityLabel="Change location xxxx: Lucknow, Uttar Pradesh, India"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                  "minHeight": 44,
+                  "minWidth": 44,
+                },
+                [
+                  {
+                    "alignItems": "center",
+                    "borderRadius": 22,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "gap": 6,
+                    "paddingHorizontal": 14,
+                  },
+                  {
+                    "backgroundColor": "#FFFFFF",
+                    "borderColor": "#CFC7BA",
+                  },
+                ],
+                false,
+              ]
+            }
+            testID="place-pill"
+          >
+            <Text
+              style={
+                [
+                  {
+                    "fontFamily": "NotoSans-SemiBold",
+                    "fontSize": 15,
+                    "fontWeight": "normal",
+                    "lineHeight": 20,
+                  },
+                  {
+                    "color": "#1C1A17",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              Lucknow, Uttar Pradesh, India
+            </Text>
+          </View>
+          <View
+            accessibilityLabel="Open panchang detail xxxxx"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                  "minHeight": 44,
+                  "minWidth": 44,
+                },
+                [
+                  {
+                    "alignItems": "center",
+                    "borderRadius": 22,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "gap": 6,
+                    "paddingHorizontal": 14,
+                  },
+                  {
+                    "backgroundColor": "#FFFFFF",
+                    "borderColor": "#CFC7BA",
+                  },
+                ],
+                false,
+              ]
+            }
+            testID="panchang-pill"
+          >
+            <Text
+              style={
+                [
+                  {
+                    "fontFamily": "NotoSans-SemiBold",
+                    "fontSize": 15,
+                    "fontWeight": "normal",
+                    "lineHeight": 20,
+                  },
+                  {
+                    "color": "#1C1A17",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              Panchang xx
+            </Text>
+            <RNSVGSvgView
+              accessible={false}
+              align="xMidYMid"
+              bbHeight={18}
+              bbWidth={18}
+              focusable={false}
+              height={18}
+              meetOrSlice={0}
+              minX={0}
+              minY={0}
+              style={
+                [
+                  {
+                    "backgroundColor": "transparent",
+                    "borderWidth": 0,
+                  },
+                  {
+                    "flex": 0,
+                    "height": 18,
+                    "width": 18,
+                  },
+                ]
+              }
+              vbHeight={24}
+              vbWidth={24}
+              width={18}
+            >
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGPath
+                  d="M9 6 15 12 9 18"
+                  fill={null}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                      "strokeLinecap",
+                      "strokeLinejoin",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4280031767,
+                      "type": 0,
+                    }
+                  }
+                  strokeLinecap={1}
+                  strokeLinejoin={1}
+                  strokeWidth={1.75}
+                />
+              </RNSVGGroup>
+            </RNSVGSvgView>
+          </View>
+        </View>
+        <View
+          style={
+            [
+              {
+                "borderRadius": 12,
+                "borderWidth": 0.5,
+                "padding": 16,
+              },
+              {
+                "backgroundColor": "#FFFFFF",
+                "borderColor": "#E4DDD2",
+              },
+              undefined,
+              undefined,
+            ]
+          }
+          testID="good-hours-card"
+        >
+          <Text
+            accessibilityRole="header"
+            style={
+              [
+                {
+                  "fontFamily": "NotoSans-SemiBold",
+                  "fontSize": 18,
+                  "fontWeight": "normal",
+                  "lineHeight": 24,
+                },
+                {
+                  "color": "#1C1A17",
+                },
+                undefined,
+              ]
+            }
+          >
+            Good hours today xxxx
+          </Text>
+          <Text
+            style={
+              [
+                {
+                  "fontFamily": "NotoSans",
+                  "fontSize": 13,
+                  "fontWeight": "normal",
+                  "lineHeight": 18,
+                },
+                {
+                  "color": "#5B554C",
+                },
+                {
+                  "marginBottom": 6,
+                  "marginTop": 2,
+                },
+              ]
+            }
+            testID="sun-line"
+          >
+            Sunrise 
+            <Text
+              style={
+                [
+                  {
+                    "fontFamily": "NotoSans",
+                    "fontSize": 13,
+                    "fontVariant": [
+                      "tabular-nums",
+                    ],
+                    "fontWeight": "normal",
+                    "lineHeight": 18,
+                  },
+                  {
+                    "color": "#5B554C",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              06:09
+            </Text>
+             · Sunset 
+            <Text
+              style={
+                [
+                  {
+                    "fontFamily": "NotoSans",
+                    "fontSize": 13,
+                    "fontVariant": [
+                      "tabular-nums",
+                    ],
+                    "fontWeight": "normal",
+                    "lineHeight": 18,
+                  },
+                  {
+                    "color": "#5B554C",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              17:31
+            </Text>
+             · Moonrise 
+            <Text
+              style={
+                [
+                  {
+                    "fontFamily": "NotoSans",
+                    "fontSize": 13,
+                    "fontVariant": [
+                      "tabular-nums",
+                    ],
+                    "fontWeight": "normal",
+                    "lineHeight": 18,
+                  },
+                  {
+                    "color": "#5B554C",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              15:08
+            </Text>
+             xxxxxxxxxxxxxx
+          </Text>
+          <View
+            onLayout={[Function]}
+            style={
+              {
+                "alignSelf": "stretch",
+              }
+            }
+          >
+            <View
+              accessibilityElementsHidden={true}
+              importantForAccessibility="no-hide-descendants"
+              style={
+                {
+                  "height": 18,
+                  "position": "relative",
+                }
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "marginLeft": -24,
+                      "position": "absolute",
+                      "top": 0,
+                      "width": 48,
+                    },
+                    {
+                      "left": 103.41790631495824,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 13,
+                        "fontVariant": [
+                          "tabular-nums",
+                        ],
+                        "fontWeight": "normal",
+                        "lineHeight": 18,
+                      },
+                      {
+                        "color": "#B83E18",
+                      },
+                      undefined,
+                    ]
+                  }
+                  testID="band-now-time"
+                >
+                  10:58
+                </Text>
+              </View>
+            </View>
+            <View
+              accessibilityLabel="Good hours band. Avoid x 06:09 to 10:25 (Yamaganda xx, Rog choghadiya xxxx, Gulika x, Udveg choghadiya xxxx). xxxxxxxxx Neutral xx 10:25 to 11:27 (Chal choghadiya xxxx). xxxxxxxxx Good x 11:27 to 13:15 (Abhijit xx, Labh choghadiya xxxx). xxxxxxxxx Avoid x 13:15 to 16:06 (Rahu Kaal xx, Kaal choghadiya xxxx). xxxxxxxxx Good x 16:06 to 17:31 (Shubh choghadiya xxxx). xxxxxxxxx Night: x Good x 17:31 to 19:06 (Amrit x). xxxxxxxxx Neutral xx 19:06 to 20:41 (Chal x). xxxxxxxxx Avoid x 20:41 to 23:50 (Rog , Kaal x). xxxxxxxxx Good x 23:50 to 01:25 (Labh x). xxxxxxxxx Avoid x 01:25 to 03:00 (Udveg x). xxxxxxxxx Good x 03:00 to 06:10 (Shubh x, Brahma muhurat xxxx, Amrit x). xxxxxxxxx Now 10:58. Flags: Panchak till Sun 25 Oct 19:22 xxxxx · Bhadra on earth 02:36⁠–⁠14:48: no new beginnings xxxxxxxxxxxxxx. xxxxxxxxxxxxxx"
+              accessibilityRole="image"
+              accessible={true}
+              style={
+                [
+                  {
+                    "borderRadius": 4,
+                    "borderWidth": 1,
+                    "overflow": "hidden",
+                    "position": "relative",
+                  },
+                  {
+                    "backgroundColor": "#F1ECE3",
+                    "borderColor": "#CFC7BA",
+                    "height": 32,
+                  },
+                ]
+              }
+              testID="good-hours-band"
+            >
+              <RNSVGSvgView
+                bbHeight={32}
+                bbWidth={326}
+                focusable={false}
+                height={32}
+                style={
+                  [
+                    {
+                      "backgroundColor": "transparent",
+                      "borderWidth": 0,
+                    },
+                    {
+                      "flex": 0,
+                      "height": 32,
+                      "width": 326,
+                    },
+                  ]
+                }
+                width={326}
+              >
+                <RNSVGGroup
+                  fill={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                >
+                  <RNSVGDefs>
+                    <RNSVGPattern
+                      height={6}
+                      matrix={
+                        [
+                          1,
+                          0,
+                          0,
+                          1,
+                          0,
+                          0,
+                        ]
+                      }
+                      name="dots-light"
+                      patternContentUnits={1}
+                      patternTransform={
+                        [
+                          1,
+                          0,
+                          0,
+                          1,
+                          0,
+                          0,
+                        ]
+                      }
+                      patternUnits={1}
+                      width={6}
+                      x="0%"
+                      y="0%"
+                    >
+                      <RNSVGCircle
+                        cx={3}
+                        cy={3}
+                        fill={
+                          {
+                            "payload": 4280031767,
+                            "type": 0,
+                          }
+                        }
+                        propList={
+                          [
+                            "fill",
+                          ]
+                        }
+                        r={1.1}
+                      />
+                    </RNSVGPattern>
+                    <RNSVGPattern
+                      height={6}
+                      matrix={
+                        [
+                          1,
+                          0,
+                          0,
+                          1,
+                          0,
+                          0,
+                        ]
+                      }
+                      name="dotsN-light"
+                      patternContentUnits={1}
+                      patternTransform={
+                        [
+                          1,
+                          0,
+                          0,
+                          1,
+                          0,
+                          0,
+                        ]
+                      }
+                      patternUnits={1}
+                      width={6}
+                      x="0%"
+                      y="0%"
+                    >
+                      <RNSVGCircle
+                        cx={3}
+                        cy={3}
+                        fill={
+                          {
+                            "payload": 4294967295,
+                            "type": 0,
+                          }
+                        }
+                        fillOpacity={0.85}
+                        propList={
+                          [
+                            "fill",
+                            "fillOpacity",
+                          ]
+                        }
+                        r={1.1}
+                      />
+                    </RNSVGPattern>
+                    <RNSVGPattern
+                      height={8}
+                      matrix={
+                        [
+                          1,
+                          0,
+                          0,
+                          1,
+                          0,
+                          0,
+                        ]
+                      }
+                      name="hatch-light"
+                      patternContentUnits={1}
+                      patternTransform={
+                        [
+                          1,
+                          0,
+                          0,
+                          1,
+                          0,
+                          0,
+                        ]
+                      }
+                      patternUnits={1}
+                      width={8}
+                      x="0%"
+                      y="0%"
+                    >
+                      <RNSVGPath
+                        d="M-2 2L2 -2M0 8L8 0M6 10L10 6"
+                        fill={
+                          {
+                            "payload": 4278190080,
+                            "type": 0,
+                          }
+                        }
+                        propList={
+                          [
+                            "stroke",
+                            "strokeWidth",
+                          ]
+                        }
+                        stroke={
+                          {
+                            "payload": 4285491552,
+                            "type": 0,
+                          }
+                        }
+                        strokeWidth={1.4}
+                      />
+                    </RNSVGPattern>
+                    <RNSVGPattern
+                      height={8}
+                      matrix={
+                        [
+                          1,
+                          0,
+                          0,
+                          1,
+                          0,
+                          0,
+                        ]
+                      }
+                      name="hatchN-light"
+                      patternContentUnits={1}
+                      patternTransform={
+                        [
+                          1,
+                          0,
+                          0,
+                          1,
+                          0,
+                          0,
+                        ]
+                      }
+                      patternUnits={1}
+                      width={8}
+                      x="0%"
+                      y="0%"
+                    >
+                      <RNSVGPath
+                        d="M-2 2L2 -2M0 8L8 0M6 10L10 6"
+                        fill={
+                          {
+                            "payload": 4278190080,
+                            "type": 0,
+                          }
+                        }
+                        propList={
+                          [
+                            "stroke",
+                            "strokeWidth",
+                            "strokeOpacity",
+                          ]
+                        }
+                        stroke={
+                          {
+                            "payload": 4294967295,
+                            "type": 0,
+                          }
+                        }
+                        strokeOpacity={0.85}
+                        strokeWidth={1.4}
+                      />
+                    </RNSVGPattern>
+                  </RNSVGDefs>
+                  <RNSVGRect
+                    fill={
+                      {
+                        "payload": 4293123280,
+                        "type": 0,
+                      }
+                    }
+                    height={32}
+                    propList={
+                      [
+                        "fill",
+                      ]
+                    }
+                    testID="band-span-0"
+                    width={91.68750224038712}
+                    x={0}
+                    y={0}
+                  />
+                  <RNSVGRect
+                    fill={
+                      {
+                        "payload": 4294044899,
+                        "type": 0,
+                      }
+                    }
+                    height={32}
+                    propList={
+                      [
+                        "fill",
+                      ]
+                    }
+                    testID="band-span-1"
+                    width={22.412498157903926}
+                    x={91.68750224038712}
+                    y={0}
+                  />
+                  <RNSVGRect
+                    fill={
+                      {
+                        "payload": 4291129392,
+                        "type": 0,
+                      }
+                    }
+                    height={32}
+                    propList={
+                      [
+                        "fill",
+                      ]
+                    }
+                    testID="band-span-2"
+                    width={38.71249736132184}
+                    x={114.10000039829104}
+                    y={0}
+                  />
+                  <RNSVGRect
+                    fill={
+                      {
+                        "payload": 4293123280,
+                        "type": 0,
+                      }
+                    }
+                    height={32}
+                    propList={
+                      [
+                        "fill",
+                      ]
+                    }
+                    testID="band-span-3"
+                    width={61.12500149359141}
+                    x={152.81249775961288}
+                    y={0}
+                  />
+                  <RNSVGRect
+                    fill={
+                      {
+                        "payload": 4291129392,
+                        "type": 0,
+                      }
+                    }
+                    height={32}
+                    propList={
+                      [
+                        "fill",
+                      ]
+                    }
+                    testID="band-span-4"
+                    width={30.562500746795706}
+                    x={213.9374992532043}
+                    y={0}
+                  />
+                  <RNSVGRect
+                    fill={
+                      {
+                        "payload": 4281215598,
+                        "type": 0,
+                      }
+                    }
+                    height={32}
+                    propList={
+                      [
+                        "fill",
+                      ]
+                    }
+                    testID="band-span-5"
+                    width={10.187500447698966}
+                    x={244.5}
+                    y={0}
+                  />
+                  <RNSVGRect
+                    fill={
+                      {
+                        "payload": 4281215598,
+                        "type": 0,
+                      }
+                    }
+                    height={32}
+                    propList={
+                      [
+                        "fill",
+                      ]
+                    }
+                    testID="band-span-6"
+                    width={10.187500447698909}
+                    x={254.68750044769897}
+                    y={0}
+                  />
+                  <RNSVGRect
+                    fill={
+                      {
+                        "payload": 4281215598,
+                        "type": 0,
+                      }
+                    }
+                    height={32}
+                    propList={
+                      [
+                        "fill",
+                      ]
+                    }
+                    testID="band-span-7"
+                    width={20.374999104602125}
+                    x={264.8750008953979}
+                    y={0}
+                  />
+                  <RNSVGRect
+                    fill={
+                      {
+                        "payload": 4281215598,
+                        "type": 0,
+                      }
+                    }
+                    height={32}
+                    propList={
+                      [
+                        "fill",
+                      ]
+                    }
+                    testID="band-span-8"
+                    width={10.187500447698937}
+                    x={285.25}
+                    y={0}
+                  />
+                  <RNSVGRect
+                    fill={
+                      {
+                        "payload": 4281215598,
+                        "type": 0,
+                      }
+                    }
+                    height={32}
+                    propList={
+                      [
+                        "fill",
+                      ]
+                    }
+                    testID="band-span-9"
+                    width={10.187500447698937}
+                    x={295.43750044769894}
+                    y={0}
+                  />
+                  <RNSVGRect
+                    fill={
+                      {
+                        "payload": 4281215598,
+                        "type": 0,
+                      }
+                    }
+                    height={32}
+                    propList={
+                      [
+                        "fill",
+                      ]
+                    }
+                    testID="band-span-10"
+                    width={20.374999104602125}
+                    x={305.6250008953979}
+                    y={0}
+                  />
+                  <RNSVGRect
+                    fill={
+                      {
+                        "brushRef": "hatch-light",
+                        "type": 1,
+                      }
+                    }
+                    height={32}
+                    propList={
+                      [
+                        "fill",
+                      ]
+                    }
+                    width={91.68750224038712}
+                    x={0}
+                    y={0}
+                  />
+                  <RNSVGRect
+                    fill={
+                      {
+                        "brushRef": "dots-light",
+                        "type": 1,
+                      }
+                    }
+                    height={32}
+                    propList={
+                      [
+                        "fill",
+                      ]
+                    }
+                    width={38.71249736132184}
+                    x={114.10000039829104}
+                    y={0}
+                  />
+                  <RNSVGRect
+                    fill={
+                      {
+                        "brushRef": "hatch-light",
+                        "type": 1,
+                      }
+                    }
+                    height={32}
+                    propList={
+                      [
+                        "fill",
+                      ]
+                    }
+                    width={61.12500149359141}
+                    x={152.81249775961288}
+                    y={0}
+                  />
+                  <RNSVGRect
+                    fill={
+                      {
+                        "brushRef": "dots-light",
+                        "type": 1,
+                      }
+                    }
+                    height={32}
+                    propList={
+                      [
+                        "fill",
+                      ]
+                    }
+                    width={30.562500746795706}
+                    x={213.9374992532043}
+                    y={0}
+                  />
+                  <RNSVGRect
+                    fill={
+                      {
+                        "brushRef": "dotsN-light",
+                        "type": 1,
+                      }
+                    }
+                    height={32}
+                    propList={
+                      [
+                        "fill",
+                      ]
+                    }
+                    width={10.187500447698966}
+                    x={244.5}
+                    y={0}
+                  />
+                  <RNSVGRect
+                    fill={
+                      {
+                        "brushRef": "hatchN-light",
+                        "type": 1,
+                      }
+                    }
+                    height={32}
+                    propList={
+                      [
+                        "fill",
+                      ]
+                    }
+                    width={20.374999104602125}
+                    x={264.8750008953979}
+                    y={0}
+                  />
+                  <RNSVGRect
+                    fill={
+                      {
+                        "brushRef": "dotsN-light",
+                        "type": 1,
+                      }
+                    }
+                    height={32}
+                    propList={
+                      [
+                        "fill",
+                      ]
+                    }
+                    width={10.187500447698937}
+                    x={285.25}
+                    y={0}
+                  />
+                  <RNSVGRect
+                    fill={
+                      {
+                        "brushRef": "hatchN-light",
+                        "type": 1,
+                      }
+                    }
+                    height={32}
+                    propList={
+                      [
+                        "fill",
+                      ]
+                    }
+                    width={10.187500447698937}
+                    x={295.43750044769894}
+                    y={0}
+                  />
+                  <RNSVGRect
+                    fill={
+                      {
+                        "brushRef": "dotsN-light",
+                        "type": 1,
+                      }
+                    }
+                    height={32}
+                    propList={
+                      [
+                        "fill",
+                      ]
+                    }
+                    width={20.374999104602125}
+                    x={305.6250008953979}
+                    y={0}
+                  />
+                  <RNSVGLine
+                    fill={
+                      {
+                        "payload": 4278190080,
+                        "type": 0,
+                      }
+                    }
+                    propList={
+                      [
+                        "stroke",
+                        "strokeWidth",
+                        "strokeOpacity",
+                      ]
+                    }
+                    stroke={
+                      {
+                        "payload": 4291807162,
+                        "type": 0,
+                      }
+                    }
+                    strokeOpacity={1}
+                    strokeWidth={1}
+                    x1={91.68750224038712}
+                    x2={91.68750224038712}
+                    y1={0}
+                    y2={32}
+                  />
+                  <RNSVGLine
+                    fill={
+                      {
+                        "payload": 4278190080,
+                        "type": 0,
+                      }
+                    }
+                    propList={
+                      [
+                        "stroke",
+                        "strokeWidth",
+                        "strokeOpacity",
+                      ]
+                    }
+                    stroke={
+                      {
+                        "payload": 4291807162,
+                        "type": 0,
+                      }
+                    }
+                    strokeOpacity={1}
+                    strokeWidth={1}
+                    x1={114.10000039829104}
+                    x2={114.10000039829104}
+                    y1={0}
+                    y2={32}
+                  />
+                  <RNSVGLine
+                    fill={
+                      {
+                        "payload": 4278190080,
+                        "type": 0,
+                      }
+                    }
+                    propList={
+                      [
+                        "stroke",
+                        "strokeWidth",
+                        "strokeOpacity",
+                      ]
+                    }
+                    stroke={
+                      {
+                        "payload": 4291807162,
+                        "type": 0,
+                      }
+                    }
+                    strokeOpacity={1}
+                    strokeWidth={1}
+                    x1={152.81249775961288}
+                    x2={152.81249775961288}
+                    y1={0}
+                    y2={32}
+                  />
+                  <RNSVGLine
+                    fill={
+                      {
+                        "payload": 4278190080,
+                        "type": 0,
+                      }
+                    }
+                    propList={
+                      [
+                        "stroke",
+                        "strokeWidth",
+                        "strokeOpacity",
+                      ]
+                    }
+                    stroke={
+                      {
+                        "payload": 4291807162,
+                        "type": 0,
+                      }
+                    }
+                    strokeOpacity={1}
+                    strokeWidth={1}
+                    x1={213.9374992532043}
+                    x2={213.9374992532043}
+                    y1={0}
+                    y2={32}
+                  />
+                  <RNSVGLine
+                    fill={
+                      {
+                        "payload": 4278190080,
+                        "type": 0,
+                      }
+                    }
+                    propList={
+                      [
+                        "stroke",
+                        "strokeWidth",
+                        "strokeOpacity",
+                      ]
+                    }
+                    stroke={
+                      {
+                        "payload": 4294967295,
+                        "type": 0,
+                      }
+                    }
+                    strokeOpacity={0.35}
+                    strokeWidth={1}
+                    x1={244.5}
+                    x2={244.5}
+                    y1={0}
+                    y2={32}
+                  />
+                  <RNSVGLine
+                    fill={
+                      {
+                        "payload": 4278190080,
+                        "type": 0,
+                      }
+                    }
+                    propList={
+                      [
+                        "stroke",
+                        "strokeWidth",
+                        "strokeOpacity",
+                      ]
+                    }
+                    stroke={
+                      {
+                        "payload": 4294967295,
+                        "type": 0,
+                      }
+                    }
+                    strokeOpacity={0.35}
+                    strokeWidth={1}
+                    x1={254.68750044769897}
+                    x2={254.68750044769897}
+                    y1={0}
+                    y2={32}
+                  />
+                  <RNSVGLine
+                    fill={
+                      {
+                        "payload": 4278190080,
+                        "type": 0,
+                      }
+                    }
+                    propList={
+                      [
+                        "stroke",
+                        "strokeWidth",
+                        "strokeOpacity",
+                      ]
+                    }
+                    stroke={
+                      {
+                        "payload": 4294967295,
+                        "type": 0,
+                      }
+                    }
+                    strokeOpacity={0.35}
+                    strokeWidth={1}
+                    x1={264.8750008953979}
+                    x2={264.8750008953979}
+                    y1={0}
+                    y2={32}
+                  />
+                  <RNSVGLine
+                    fill={
+                      {
+                        "payload": 4278190080,
+                        "type": 0,
+                      }
+                    }
+                    propList={
+                      [
+                        "stroke",
+                        "strokeWidth",
+                        "strokeOpacity",
+                      ]
+                    }
+                    stroke={
+                      {
+                        "payload": 4294967295,
+                        "type": 0,
+                      }
+                    }
+                    strokeOpacity={0.35}
+                    strokeWidth={1}
+                    x1={285.25}
+                    x2={285.25}
+                    y1={0}
+                    y2={32}
+                  />
+                  <RNSVGLine
+                    fill={
+                      {
+                        "payload": 4278190080,
+                        "type": 0,
+                      }
+                    }
+                    propList={
+                      [
+                        "stroke",
+                        "strokeWidth",
+                        "strokeOpacity",
+                      ]
+                    }
+                    stroke={
+                      {
+                        "payload": 4294967295,
+                        "type": 0,
+                      }
+                    }
+                    strokeOpacity={0.35}
+                    strokeWidth={1}
+                    x1={295.43750044769894}
+                    x2={295.43750044769894}
+                    y1={0}
+                    y2={32}
+                  />
+                  <RNSVGLine
+                    fill={
+                      {
+                        "payload": 4278190080,
+                        "type": 0,
+                      }
+                    }
+                    propList={
+                      [
+                        "stroke",
+                        "strokeWidth",
+                        "strokeOpacity",
+                      ]
+                    }
+                    stroke={
+                      {
+                        "payload": 4294967295,
+                        "type": 0,
+                      }
+                    }
+                    strokeOpacity={0.35}
+                    strokeWidth={1}
+                    x1={305.6250008953979}
+                    x2={305.6250008953979}
+                    y1={0}
+                    y2={32}
+                  />
+                  <RNSVGRect
+                    fill={
+                      {
+                        "payload": 4281215598,
+                        "type": 0,
+                      }
+                    }
+                    height={7}
+                    propList={
+                      [
+                        "fill",
+                      ]
+                    }
+                    testID="band-moonrise"
+                    width={2}
+                    x={192.27479720327358}
+                    y={0}
+                  />
+                  <RNSVGRect
+                    fill={
+                      {
+                        "payload": 4280031767,
+                        "type": 0,
+                      }
+                    }
+                    height={32}
+                    propList={
+                      [
+                        "fill",
+                      ]
+                    }
+                    testID="band-now-marker"
+                    width={2}
+                    x={102.41790631495824}
+                    y={0}
+                  />
+                </RNSVGGroup>
+              </RNSVGSvgView>
+            </View>
+            <View
+              accessibilityElementsHidden={true}
+              importantForAccessibility="no-hide-descendants"
+              style={
+                {
+                  "height": 20,
+                  "marginTop": 4,
+                  "position": "relative",
+                }
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "flex-start",
+                      "position": "absolute",
+                      "top": 0,
+                    },
+                    {
+                      "left": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "height": 4,
+                        "marginBottom": 0,
+                        "width": 1,
+                      },
+                      {
+                        "backgroundColor": "#CFC7BA",
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 12,
+                        "fontVariant": [
+                          "tabular-nums",
+                        ],
+                        "fontWeight": "normal",
+                        "lineHeight": 16,
+                      },
+                      {
+                        "color": "#6F6960",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  06:09
+                </Text>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "flex-start",
+                      "position": "absolute",
+                      "top": 0,
+                    },
+                    {
+                      "alignItems": "center",
+                      "left": 82.25000298718281,
+                      "width": 80,
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "height": 4,
+                        "marginBottom": 0,
+                        "width": 1,
+                      },
+                      {
+                        "backgroundColor": "#CFC7BA",
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 12,
+                        "fontVariant": [
+                          "tabular-nums",
+                        ],
+                        "fontWeight": "normal",
+                        "lineHeight": 16,
+                      },
+                      {
+                        "color": "#6F6960",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  11:50
+                </Text>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "flex-start",
+                      "position": "absolute",
+                      "top": 0,
+                    },
+                    {
+                      "alignItems": "center",
+                      "left": 204.5,
+                      "width": 80,
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "height": 4,
+                        "marginBottom": 0,
+                        "width": 1,
+                      },
+                      {
+                        "backgroundColor": "#CFC7BA",
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 12,
+                        "fontVariant": [
+                          "tabular-nums",
+                        ],
+                        "fontWeight": "normal",
+                        "lineHeight": 16,
+                      },
+                      {
+                        "color": "#6F6960",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  17:31
+                </Text>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "flex-start",
+                      "position": "absolute",
+                      "top": 0,
+                    },
+                    {
+                      "right": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "height": 4,
+                        "marginBottom": 0,
+                        "width": 1,
+                      },
+                      {
+                        "backgroundColor": "#CFC7BA",
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 12,
+                        "fontVariant": [
+                          "tabular-nums",
+                        ],
+                        "fontWeight": "normal",
+                        "lineHeight": 16,
+                      },
+                      {
+                        "color": "#6F6960",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  06:10
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              [
+                {
+                  "borderTopWidth": 0.5,
+                  "marginTop": 10,
+                  "paddingTop": 4,
+                },
+                {
+                  "borderTopColor": "#E4DDD2",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "flex-start",
+                    "flexDirection": "row",
+                    "gap": 8,
+                    "paddingVertical": 8,
+                  },
+                  false,
+                ]
+              }
+              testID="now-line"
+            >
+              <View
+                style={
+                  {
+                    "flex": 1,
+                    "minWidth": 0,
+                    "paddingTop": 2,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 15,
+                        "fontWeight": "normal",
+                        "lineHeight": 20,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      undefined,
+                    ]
+                  }
+                  testID="now-line-text"
+                >
+                  Now 
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    10:58
+                  </Text>
+                   · Neutral xx · Chal x choghadiya · Moon hora · next: Abhijit xx 
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    11:27
+                  </Text>
+                   (good x) xxxxxxxxxxxxxxxxxxxxxxxxx
+                </Text>
+              </View>
+              <View
+                style={
+                  {
+                    "alignItems": "flex-end",
+                    "justifyContent": "center",
+                    "minHeight": 44,
+                    "minWidth": 44,
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Why? x Now 10:58 · Neutral xx · Chal x choghadiya · Moon hora · next: Abhijit xx 11:27 (good x) xxxxxxxxxxxxxxxxxxxxxxxxx"
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "justifyContent": "center",
+                        "minHeight": 44,
+                        "minWidth": 44,
+                      },
+                      {
+                        "paddingHorizontal": 8,
+                      },
+                      false,
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans-SemiBold",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#B83E18",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Why? x
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+          <Text
+            style={
+              [
+                {
+                  "fontFamily": "NotoSans",
+                  "fontSize": 15,
+                  "fontWeight": "normal",
+                  "lineHeight": 20,
+                },
+                {
+                  "color": "#5B554C",
+                },
+                undefined,
+              ]
+            }
+            testID="flags-line"
+          >
+            Flags x · Panchak till Sun 
+            <Text
+              style={
+                [
+                  {
+                    "fontFamily": "NotoSans",
+                    "fontSize": 15,
+                    "fontVariant": [
+                      "tabular-nums",
+                    ],
+                    "fontWeight": "normal",
+                    "lineHeight": 20,
+                  },
+                  {
+                    "color": "#5B554C",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              25
+            </Text>
+             Oct 
+            <Text
+              style={
+                [
+                  {
+                    "fontFamily": "NotoSans",
+                    "fontSize": 15,
+                    "fontVariant": [
+                      "tabular-nums",
+                    ],
+                    "fontWeight": "normal",
+                    "lineHeight": 20,
+                  },
+                  {
+                    "color": "#5B554C",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              19:22
+            </Text>
+             xxxxx · Bhadra on earth 
+            <Text
+              style={
+                [
+                  {
+                    "fontFamily": "NotoSans",
+                    "fontSize": 15,
+                    "fontVariant": [
+                      "tabular-nums",
+                    ],
+                    "fontWeight": "normal",
+                    "lineHeight": 20,
+                  },
+                  {
+                    "color": "#5B554C",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              02:36⁠–⁠14:48
+            </Text>
+            : no new beginnings xxxxxxxxxxxxxx
+          </Text>
+          <View
+            accessibilityLabel="Legend x"
+            style={
+              {
+                "columnGap": 14,
+                "flexDirection": "row",
+                "flexWrap": "wrap",
+                "marginTop": 10,
+                "rowGap": 6,
+              }
+            }
+            testID="legend"
+          >
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 6,
+                }
+              }
+              testID="legend-good"
+            >
+              <RNSVGSvgView
+                accessible={false}
+                bbHeight={16}
+                bbWidth={16}
+                focusable={false}
+                height={16}
+                style={
+                  [
+                    {
+                      "backgroundColor": "transparent",
+                      "borderWidth": 0,
+                    },
+                    {
+                      "flex": 0,
+                      "height": 16,
+                      "width": 16,
+                    },
+                  ]
+                }
+                width={16}
+              >
+                <RNSVGGroup
+                  fill={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                >
+                  <RNSVGDefs>
+                    <RNSVGPattern
+                      height={6}
+                      matrix={
+                        [
+                          1,
+                          0,
+                          0,
+                          1,
+                          0,
+                          0,
+                        ]
+                      }
+                      name="legend-good-light-dots"
+                      patternContentUnits={1}
+                      patternTransform={
+                        [
+                          1,
+                          0,
+                          0,
+                          1,
+                          0,
+                          0,
+                        ]
+                      }
+                      patternUnits={1}
+                      width={6}
+                      x="0%"
+                      y="0%"
+                    >
+                      <RNSVGCircle
+                        cx={3}
+                        cy={3}
+                        fill={
+                          {
+                            "payload": 4280031767,
+                            "type": 0,
+                          }
+                        }
+                        propList={
+                          [
+                            "fill",
+                          ]
+                        }
+                        r={1.1}
+                      />
+                    </RNSVGPattern>
+                    <RNSVGPattern
+                      height={8}
+                      matrix={
+                        [
+                          1,
+                          0,
+                          0,
+                          1,
+                          0,
+                          0,
+                        ]
+                      }
+                      name="legend-good-light-hatch"
+                      patternContentUnits={1}
+                      patternTransform={
+                        [
+                          1,
+                          0,
+                          0,
+                          1,
+                          0,
+                          0,
+                        ]
+                      }
+                      patternUnits={1}
+                      width={8}
+                      x="0%"
+                      y="0%"
+                    >
+                      <RNSVGPath
+                        d="M-2 2L2 -2M0 8L8 0M6 10L10 6"
+                        fill={
+                          {
+                            "payload": 4278190080,
+                            "type": 0,
+                          }
+                        }
+                        propList={
+                          [
+                            "stroke",
+                            "strokeWidth",
+                          ]
+                        }
+                        stroke={
+                          {
+                            "payload": 4285491552,
+                            "type": 0,
+                          }
+                        }
+                        strokeWidth={1.4}
+                      />
+                    </RNSVGPattern>
+                  </RNSVGDefs>
+                  <RNSVGRect
+                    fill={
+                      {
+                        "payload": 4291129392,
+                        "type": 0,
+                      }
+                    }
+                    height={15}
+                    propList={
+                      [
+                        "fill",
+                        "stroke",
+                        "strokeWidth",
+                      ]
+                    }
+                    rx={3}
+                    stroke={
+                      {
+                        "payload": 4291807162,
+                        "type": 0,
+                      }
+                    }
+                    strokeWidth={1}
+                    width={15}
+                    x={0.5}
+                    y={0.5}
+                  />
+                  <RNSVGRect
+                    fill={
+                      {
+                        "brushRef": "legend-good-light-dots",
+                        "type": 1,
+                      }
+                    }
+                    height={14}
+                    propList={
+                      [
+                        "fill",
+                      ]
+                    }
+                    rx={3}
+                    width={14}
+                    x={1}
+                    y={1}
+                  />
+                </RNSVGGroup>
+              </RNSVGSvgView>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Good x
+              </Text>
+            </View>
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 6,
+                }
+              }
+              testID="legend-neutral"
+            >
+              <RNSVGSvgView
+                accessible={false}
+                bbHeight={16}
+                bbWidth={16}
+                focusable={false}
+                height={16}
+                style={
+                  [
+                    {
+                      "backgroundColor": "transparent",
+                      "borderWidth": 0,
+                    },
+                    {
+                      "flex": 0,
+                      "height": 16,
+                      "width": 16,
+                    },
+                  ]
+                }
+                width={16}
+              >
+                <RNSVGGroup
+                  fill={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                >
+                  <RNSVGDefs>
+                    <RNSVGPattern
+                      height={6}
+                      matrix={
+                        [
+                          1,
+                          0,
+                          0,
+                          1,
+                          0,
+                          0,
+                        ]
+                      }
+                      name="legend-neutral-light-dots"
+                      patternContentUnits={1}
+                      patternTransform={
+                        [
+                          1,
+                          0,
+                          0,
+                          1,
+                          0,
+                          0,
+                        ]
+                      }
+                      patternUnits={1}
+                      width={6}
+                      x="0%"
+                      y="0%"
+                    >
+                      <RNSVGCircle
+                        cx={3}
+                        cy={3}
+                        fill={
+                          {
+                            "payload": 4280031767,
+                            "type": 0,
+                          }
+                        }
+                        propList={
+                          [
+                            "fill",
+                          ]
+                        }
+                        r={1.1}
+                      />
+                    </RNSVGPattern>
+                    <RNSVGPattern
+                      height={8}
+                      matrix={
+                        [
+                          1,
+                          0,
+                          0,
+                          1,
+                          0,
+                          0,
+                        ]
+                      }
+                      name="legend-neutral-light-hatch"
+                      patternContentUnits={1}
+                      patternTransform={
+                        [
+                          1,
+                          0,
+                          0,
+                          1,
+                          0,
+                          0,
+                        ]
+                      }
+                      patternUnits={1}
+                      width={8}
+                      x="0%"
+                      y="0%"
+                    >
+                      <RNSVGPath
+                        d="M-2 2L2 -2M0 8L8 0M6 10L10 6"
+                        fill={
+                          {
+                            "payload": 4278190080,
+                            "type": 0,
+                          }
+                        }
+                        propList={
+                          [
+                            "stroke",
+                            "strokeWidth",
+                          ]
+                        }
+                        stroke={
+                          {
+                            "payload": 4285491552,
+                            "type": 0,
+                          }
+                        }
+                        strokeWidth={1.4}
+                      />
+                    </RNSVGPattern>
+                  </RNSVGDefs>
+                  <RNSVGRect
+                    fill={
+                      {
+                        "payload": 4294044899,
+                        "type": 0,
+                      }
+                    }
+                    height={15}
+                    propList={
+                      [
+                        "fill",
+                        "stroke",
+                        "strokeWidth",
+                      ]
+                    }
+                    rx={3}
+                    stroke={
+                      {
+                        "payload": 4291807162,
+                        "type": 0,
+                      }
+                    }
+                    strokeWidth={1}
+                    width={15}
+                    x={0.5}
+                    y={0.5}
+                  />
+                </RNSVGGroup>
+              </RNSVGSvgView>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Neutral xx
+              </Text>
+            </View>
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 6,
+                }
+              }
+              testID="legend-avoid"
+            >
+              <RNSVGSvgView
+                accessible={false}
+                bbHeight={16}
+                bbWidth={16}
+                focusable={false}
+                height={16}
+                style={
+                  [
+                    {
+                      "backgroundColor": "transparent",
+                      "borderWidth": 0,
+                    },
+                    {
+                      "flex": 0,
+                      "height": 16,
+                      "width": 16,
+                    },
+                  ]
+                }
+                width={16}
+              >
+                <RNSVGGroup
+                  fill={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                >
+                  <RNSVGDefs>
+                    <RNSVGPattern
+                      height={6}
+                      matrix={
+                        [
+                          1,
+                          0,
+                          0,
+                          1,
+                          0,
+                          0,
+                        ]
+                      }
+                      name="legend-avoid-light-dots"
+                      patternContentUnits={1}
+                      patternTransform={
+                        [
+                          1,
+                          0,
+                          0,
+                          1,
+                          0,
+                          0,
+                        ]
+                      }
+                      patternUnits={1}
+                      width={6}
+                      x="0%"
+                      y="0%"
+                    >
+                      <RNSVGCircle
+                        cx={3}
+                        cy={3}
+                        fill={
+                          {
+                            "payload": 4280031767,
+                            "type": 0,
+                          }
+                        }
+                        propList={
+                          [
+                            "fill",
+                          ]
+                        }
+                        r={1.1}
+                      />
+                    </RNSVGPattern>
+                    <RNSVGPattern
+                      height={8}
+                      matrix={
+                        [
+                          1,
+                          0,
+                          0,
+                          1,
+                          0,
+                          0,
+                        ]
+                      }
+                      name="legend-avoid-light-hatch"
+                      patternContentUnits={1}
+                      patternTransform={
+                        [
+                          1,
+                          0,
+                          0,
+                          1,
+                          0,
+                          0,
+                        ]
+                      }
+                      patternUnits={1}
+                      width={8}
+                      x="0%"
+                      y="0%"
+                    >
+                      <RNSVGPath
+                        d="M-2 2L2 -2M0 8L8 0M6 10L10 6"
+                        fill={
+                          {
+                            "payload": 4278190080,
+                            "type": 0,
+                          }
+                        }
+                        propList={
+                          [
+                            "stroke",
+                            "strokeWidth",
+                          ]
+                        }
+                        stroke={
+                          {
+                            "payload": 4285491552,
+                            "type": 0,
+                          }
+                        }
+                        strokeWidth={1.4}
+                      />
+                    </RNSVGPattern>
+                  </RNSVGDefs>
+                  <RNSVGRect
+                    fill={
+                      {
+                        "payload": 4293123280,
+                        "type": 0,
+                      }
+                    }
+                    height={15}
+                    propList={
+                      [
+                        "fill",
+                        "stroke",
+                        "strokeWidth",
+                      ]
+                    }
+                    rx={3}
+                    stroke={
+                      {
+                        "payload": 4291807162,
+                        "type": 0,
+                      }
+                    }
+                    strokeWidth={1}
+                    width={15}
+                    x={0.5}
+                    y={0.5}
+                  />
+                  <RNSVGRect
+                    fill={
+                      {
+                        "brushRef": "legend-avoid-light-hatch",
+                        "type": 1,
+                      }
+                    }
+                    height={14}
+                    propList={
+                      [
+                        "fill",
+                      ]
+                    }
+                    rx={3}
+                    width={14}
+                    x={1}
+                    y={1}
+                  />
+                </RNSVGGroup>
+              </RNSVGSvgView>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Avoid x
+              </Text>
+            </View>
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 6,
+                }
+              }
+              testID="legend-night"
+            >
+              <RNSVGSvgView
+                accessible={false}
+                bbHeight={16}
+                bbWidth={16}
+                focusable={false}
+                height={16}
+                style={
+                  [
+                    {
+                      "backgroundColor": "transparent",
+                      "borderWidth": 0,
+                    },
+                    {
+                      "flex": 0,
+                      "height": 16,
+                      "width": 16,
+                    },
+                  ]
+                }
+                width={16}
+              >
+                <RNSVGGroup
+                  fill={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                >
+                  <RNSVGDefs>
+                    <RNSVGPattern
+                      height={6}
+                      matrix={
+                        [
+                          1,
+                          0,
+                          0,
+                          1,
+                          0,
+                          0,
+                        ]
+                      }
+                      name="legend-night-light-dots"
+                      patternContentUnits={1}
+                      patternTransform={
+                        [
+                          1,
+                          0,
+                          0,
+                          1,
+                          0,
+                          0,
+                        ]
+                      }
+                      patternUnits={1}
+                      width={6}
+                      x="0%"
+                      y="0%"
+                    >
+                      <RNSVGCircle
+                        cx={3}
+                        cy={3}
+                        fill={
+                          {
+                            "payload": 4280031767,
+                            "type": 0,
+                          }
+                        }
+                        propList={
+                          [
+                            "fill",
+                          ]
+                        }
+                        r={1.1}
+                      />
+                    </RNSVGPattern>
+                    <RNSVGPattern
+                      height={8}
+                      matrix={
+                        [
+                          1,
+                          0,
+                          0,
+                          1,
+                          0,
+                          0,
+                        ]
+                      }
+                      name="legend-night-light-hatch"
+                      patternContentUnits={1}
+                      patternTransform={
+                        [
+                          1,
+                          0,
+                          0,
+                          1,
+                          0,
+                          0,
+                        ]
+                      }
+                      patternUnits={1}
+                      width={8}
+                      x="0%"
+                      y="0%"
+                    >
+                      <RNSVGPath
+                        d="M-2 2L2 -2M0 8L8 0M6 10L10 6"
+                        fill={
+                          {
+                            "payload": 4278190080,
+                            "type": 0,
+                          }
+                        }
+                        propList={
+                          [
+                            "stroke",
+                            "strokeWidth",
+                          ]
+                        }
+                        stroke={
+                          {
+                            "payload": 4285491552,
+                            "type": 0,
+                          }
+                        }
+                        strokeWidth={1.4}
+                      />
+                    </RNSVGPattern>
+                  </RNSVGDefs>
+                  <RNSVGRect
+                    fill={
+                      {
+                        "payload": 4281215598,
+                        "type": 0,
+                      }
+                    }
+                    height={15}
+                    propList={
+                      [
+                        "fill",
+                        "stroke",
+                        "strokeWidth",
+                      ]
+                    }
+                    rx={3}
+                    stroke={
+                      {
+                        "payload": 4291807162,
+                        "type": 0,
+                      }
+                    }
+                    strokeWidth={1}
+                    width={15}
+                    x={0.5}
+                    y={0.5}
+                  />
+                </RNSVGGroup>
+              </RNSVGSvgView>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Night (pattern = verdict) xxxxxxx
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityLabel="All 13 segments xxxxx"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": false,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                  "minHeight": 44,
+                  "minWidth": 44,
+                },
+                {
+                  "alignItems": "flex-start",
+                  "alignSelf": "flex-start",
+                  "marginTop": 4,
+                  "paddingHorizontal": 0,
+                },
+                false,
+              ]
+            }
+            testID="segments-toggle"
+          >
+            <Text
+              style={
+                [
+                  {
+                    "fontFamily": "NotoSans-SemiBold",
+                    "fontSize": 15,
+                    "fontWeight": "normal",
+                    "lineHeight": 20,
+                  },
+                  {
+                    "color": "#B83E18",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              All 13 segments xxxxx
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            [
+              {
+                "borderRadius": 12,
+                "borderWidth": 0.5,
+                "padding": 16,
+              },
+              {
+                "backgroundColor": "#FFFFFF",
+                "borderColor": "#E4DDD2",
+              },
+              undefined,
+              undefined,
+            ]
+          }
+          testID="daily-note"
+        >
+          <Text
+            accessibilityRole="header"
+            style={
+              [
+                {
+                  "fontFamily": "NotoSans-SemiBold",
+                  "fontSize": 18,
+                  "fontWeight": "normal",
+                  "lineHeight": 24,
+                },
+                {
+                  "color": "#1C1A17",
+                },
+                undefined,
+              ]
+            }
+            testID="note-title"
+          >
+            Your day, 
+            <Text
+              style={
+                [
+                  {
+                    "fontFamily": "NotoSans-SemiBold",
+                    "fontSize": 18,
+                    "fontWeight": "normal",
+                    "lineHeight": 24,
+                  },
+                  {
+                    "color": "#1C1A17",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              Priya
+            </Text>
+             xxxx
+          </Text>
+          <View
+            style={
+              {
+                "marginTop": 8,
+              }
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "flex-start",
+                    "flexDirection": "row",
+                    "gap": 8,
+                    "paddingVertical": 8,
+                  },
+                  {
+                    "borderBottomColor": "#E4DDD2",
+                    "borderBottomWidth": 0.5,
+                  },
+                ]
+              }
+              testID="note-row-chandra-bala"
+            >
+              <View
+                style={
+                  {
+                    "flex": 1,
+                    "minWidth": 0,
+                    "paddingTop": 2,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 17,
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      undefined,
+                    ]
+                  }
+                  testID="note-text-chandra-bala"
+                >
+                  Today's Moon is in the 
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 17,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 26,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    6
+                  </Text>
+                  th sign from your birth Moon, a favourable Chandra bala house: a good day for clearing routines, settling obstacles and holding your own in competition.
+                </Text>
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "flexWrap": "wrap",
+                      "gap": 6,
+                      "marginTop": 4,
+                    }
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 13,
+                          "fontWeight": "normal",
+                          "lineHeight": 18,
+                        },
+                        {
+                          "color": "#6F6960",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Moon in the 
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans",
+                            "fontSize": 13,
+                            "fontVariant": [
+                              "tabular-nums",
+                            ],
+                            "fontWeight": "normal",
+                            "lineHeight": 18,
+                          },
+                          {
+                            "color": "#6F6960",
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      6
+                    </Text>
+                    th house from your birth Moon xxxxxxxxxxxxx
+                  </Text>
+                </View>
+              </View>
+              <View
+                style={
+                  {
+                    "alignItems": "flex-end",
+                    "justifyContent": "center",
+                    "minHeight": 44,
+                    "minWidth": 44,
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Why? x Today's Moon is in the 6th sign from your birth Moon, a favourable Chandra bala house: a good day for clearing routines, settling obstacles and holding your own in competition."
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "justifyContent": "center",
+                        "minHeight": 44,
+                        "minWidth": 44,
+                      },
+                      {
+                        "paddingHorizontal": 8,
+                      },
+                      false,
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans-SemiBold",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#B83E18",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Why? x
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "flex-start",
+                    "flexDirection": "row",
+                    "gap": 8,
+                    "paddingVertical": 8,
+                  },
+                  {
+                    "borderBottomColor": "#E4DDD2",
+                    "borderBottomWidth": 0.5,
+                  },
+                ]
+              }
+              testID="note-row-tara-bala"
+            >
+              <View
+                style={
+                  {
+                    "flex": 1,
+                    "minWidth": 0,
+                    "paddingTop": 2,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 17,
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      undefined,
+                    ]
+                  }
+                  testID="note-text-tara-bala"
+                >
+                  Today's nakshatra is your Kshema tara, the 
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 17,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 26,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    4
+                  </Text>
+                  th of nine counted from your birth nakshatra: a favourable tara read for well-being and settled matters, a good day to tend what you already have.
+                </Text>
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "flexWrap": "wrap",
+                      "gap": 6,
+                      "marginTop": 4,
+                    }
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 13,
+                          "fontWeight": "normal",
+                          "lineHeight": 18,
+                        },
+                        {
+                          "color": "#6F6960",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Kshema x tara xxx · till 
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans",
+                            "fontSize": 13,
+                            "fontVariant": [
+                              "tabular-nums",
+                            ],
+                            "fontWeight": "normal",
+                            "lineHeight": 18,
+                          },
+                          {
+                            "color": "#6F6960",
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      20:49
+                    </Text>
+                     xxx
+                  </Text>
+                </View>
+              </View>
+              <View
+                style={
+                  {
+                    "alignItems": "flex-end",
+                    "justifyContent": "center",
+                    "minHeight": 44,
+                    "minWidth": 44,
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Why? x Today's nakshatra is your Kshema tara, the 4th of nine counted from your birth nakshatra: a favourable tara read for well-being and settled matters, a good day to tend what you already have."
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "justifyContent": "center",
+                        "minHeight": 44,
+                        "minWidth": 44,
+                      },
+                      {
+                        "paddingHorizontal": 8,
+                      },
+                      false,
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans-SemiBold",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#B83E18",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Why? x
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "flex-start",
+                    "flexDirection": "row",
+                    "gap": 8,
+                    "paddingVertical": 8,
+                  },
+                  {
+                    "borderBottomColor": "#E4DDD2",
+                    "borderBottomWidth": 0.5,
+                  },
+                ]
+              }
+              testID="note-row-day-tithi-nakshatra"
+            >
+              <View
+                style={
+                  {
+                    "flex": 1,
+                    "minWidth": 0,
+                    "paddingTop": 2,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 17,
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      undefined,
+                    ]
+                  }
+                  testID="note-text-day-tithi-nakshatra"
+                >
+                  Shukla Ekadashi is a Nanda-class tithi and the fasting day of the bright fortnight; the tradition reads it for restraint, devotion and work that asks for a clear mind.
+                   
+                  The Moon is in Shatabhisha today, a movable (Chara) nakshatra ruled by Rahu and inside Panchak: read as good for study, the care of others and solitary work, with the Panchak customs observed.
+                   
+                  Thursday is Jupiter's day, read as favourable for learning, teachers, ceremonies, children and matters of faith and finance.
+                   
+                  Bhadra is on earth today from 
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 17,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 26,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    02:36
+                  </Text>
+                   to 
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 17,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 26,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    14:48
+                  </Text>
+                  : the Vishti karana with the Moon in a sign that places it among us, so new beginnings are deferred until it ends.
+                   
+                  Panchak is running from 
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 17,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 26,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Wed 21 Oct 07:00
+                  </Text>
+                   to 
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 17,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 26,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Sun 25 Oct 19:22
+                  </Text>
+                  : the Moon is in the last five nakshatras, when the tradition does not begin roofing, bedding, travel to the south or storing fuel.
+                </Text>
+              </View>
+              <View
+                style={
+                  {
+                    "alignItems": "flex-end",
+                    "justifyContent": "center",
+                    "minHeight": 44,
+                    "minWidth": 44,
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Why? x Shukla Ekadashi is a Nanda-class tithi and the fasting day of the bright fortnight; the tradition reads it for restraint, devotion and work that asks for a clear mind. The Moon is in Shatabhisha today, a movable (Chara) nakshatra ruled by Rahu and inside Panchak: read as good for study, the care of others and solitary work, with the Panchak customs observed. Thursday is Jupiter's day, read as favourable for learning, teachers, ceremonies, children and matters of faith and finance. Bhadra is on earth today from 02:36 to 14:48: the Vishti karana with the Moon in a sign that places it among us, so new beginnings are deferred until it ends. Panchak is running from Wed 21 Oct 07:00 to Sun 25 Oct 19:22: the Moon is in the last five nakshatras, when the tradition does not begin roofing, bedding, travel to the south or storing fuel."
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "justifyContent": "center",
+                        "minHeight": 44,
+                        "minWidth": 44,
+                      },
+                      {
+                        "paddingHorizontal": 8,
+                      },
+                      false,
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans-SemiBold",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#B83E18",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Why? x
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "flex-start",
+                    "flexDirection": "row",
+                    "gap": 8,
+                    "paddingVertical": 8,
+                  },
+                  {
+                    "borderBottomColor": "#E4DDD2",
+                    "borderBottomWidth": 0.5,
+                  },
+                ]
+              }
+              testID="note-row-sade-sati"
+            >
+              <View
+                style={
+                  {
+                    "flex": 1,
+                    "minWidth": 0,
+                    "paddingTop": 2,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 17,
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      undefined,
+                    ]
+                  }
+                  testID="note-text-sade-sati"
+                >
+                  Saturn is in sign 
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 17,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 26,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    7th
+                  </Text>
+                   counted from your birth Moon today, outside Sade Sati and both Dhaiyas; the next change in this state is Dhaiya begins xxx on 
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 17,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 26,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    3 Jun 2027
+                  </Text>
+                  .
+                </Text>
+              </View>
+              <View
+                style={
+                  {
+                    "alignItems": "flex-end",
+                    "justifyContent": "center",
+                    "minHeight": 44,
+                    "minWidth": 44,
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Why? x Saturn is in sign 7th counted from your birth Moon today, outside Sade Sati and both Dhaiyas; the next change in this state is Dhaiya begins xxx on 3 Jun 2027."
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "justifyContent": "center",
+                        "minHeight": 44,
+                        "minWidth": 44,
+                      },
+                      {
+                        "paddingHorizontal": 8,
+                      },
+                      false,
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans-SemiBold",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#B83E18",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Why? x
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "flex-start",
+                    "flexDirection": "row",
+                    "gap": 8,
+                    "paddingVertical": 8,
+                  },
+                  false,
+                ]
+              }
+              testID="note-row-dasha-lords"
+            >
+              <View
+                style={
+                  {
+                    "flex": 1,
+                    "minWidth": 0,
+                    "paddingTop": 2,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 17,
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      undefined,
+                    ]
+                  }
+                  testID="note-text-dasha-lords"
+                >
+                  The Ketu antardasha inside the Rahu mahadasha runs about 
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 17,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 26,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    13
+                  </Text>
+                   months; Ketu is neutral to Rahu by Parashara's natural friendships. The two nodes face each other; it is read for the tension between wanting more and needing less, and for sudden reversals of direction.
+                   
+                  Your mahadasha lord is neutral to today's weekday lord by Parashara's table, so the day is read as mixed for the matters of the running period; choose its own horas for what matters most.
+                </Text>
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "flexWrap": "wrap",
+                      "gap": 6,
+                      "marginTop": 4,
+                    }
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 13,
+                          "fontWeight": "normal",
+                          "lineHeight": 18,
+                        },
+                        {
+                          "color": "#6F6960",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Rahu – Ketu xxxx · changes on 
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans",
+                            "fontSize": 13,
+                            "fontVariant": [
+                              "tabular-nums",
+                            ],
+                            "fontWeight": "normal",
+                            "lineHeight": 18,
+                          },
+                          {
+                            "color": "#6F6960",
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      25
+                    </Text>
+                     Apr 
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans",
+                            "fontSize": 13,
+                            "fontVariant": [
+                              "tabular-nums",
+                            ],
+                            "fontWeight": "normal",
+                            "lineHeight": 18,
+                          },
+                          {
+                            "color": "#6F6960",
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      2027
+                    </Text>
+                     xxxxx
+                  </Text>
+                </View>
+              </View>
+              <View
+                style={
+                  {
+                    "alignItems": "flex-end",
+                    "justifyContent": "center",
+                    "minHeight": 44,
+                    "minWidth": 44,
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Why? x The Ketu antardasha inside the Rahu mahadasha runs about 13 months; Ketu is neutral to Rahu by Parashara's natural friendships. The two nodes face each other; it is read for the tension between wanting more and needing less, and for sudden reversals of direction. Your mahadasha lord is neutral to today's weekday lord by Parashara's table, so the day is read as mixed for the matters of the running period; choose its own horas for what matters most."
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "justifyContent": "center",
+                        "minHeight": 44,
+                        "minWidth": 44,
+                      },
+                      {
+                        "paddingHorizontal": 8,
+                      },
+                      false,
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans-SemiBold",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#B83E18",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Why? x
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+          <Text
+            style={
+              [
+                {
+                  "fontFamily": "NotoSans",
+                  "fontSize": 13,
+                  "fontWeight": "normal",
+                  "lineHeight": 18,
+                },
+                {
+                  "color": "#6F6960",
+                },
+                {
+                  "marginTop": 12,
+                },
+              ]
+            }
+            testID="note-footer"
+          >
+            Guidance for reflection, computed from your chart and today's sky. Not a prediction. xxxxxxxxxxxxxxxxxxxxxxxxx
+          </Text>
+        </View>
+        <View
+          style={
+            {
+              "alignSelf": "stretch",
+            }
+          }
+          testID="upcoming"
+        >
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "minHeight": 44,
+                "paddingVertical": 4,
+              }
+            }
+          >
+            <Text
+              accessibilityRole="header"
+              style={
+                [
+                  {
+                    "fontFamily": "NotoSans-SemiBold",
+                    "fontSize": 18,
+                    "fontWeight": "normal",
+                    "lineHeight": 24,
+                  },
+                  {
+                    "color": "#1C1A17",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              Upcoming xx
+            </Text>
+            <View
+              accessibilityLabel="All dates xx"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "justifyContent": "center",
+                    "minHeight": 44,
+                    "minWidth": 44,
+                  },
+                  {
+                    "paddingHorizontal": 8,
+                  },
+                  false,
+                ]
+              }
+              testID="upcoming-all-dates"
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans-SemiBold",
+                      "fontSize": 15,
+                      "fontWeight": "normal",
+                      "lineHeight": 20,
+                    },
+                    {
+                      "color": "#B83E18",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                All dates xx
+              </Text>
+            </View>
+          </View>
+          <RCTScrollView
+            contentContainerStyle={
+              {
+                "gap": 10,
+                "paddingRight": 16,
+              }
+            }
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+            testID="upcoming-strip"
+          >
+            <View>
+              <View
+                accessibilityLabel="Family tithi xxx: Priya's janma tithi xxxxx, Chaitra Krishna xx Pratipada xxxxx · Tue 23 Mar"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "justifyContent": "center",
+                      "minHeight": 44,
+                      "minWidth": 44,
+                    },
+                    [
+                      {
+                        "alignItems": "flex-start",
+                        "borderRadius": 12,
+                        "borderWidth": 0.5,
+                        "justifyContent": "flex-start",
+                        "minHeight": 88,
+                        "paddingHorizontal": 14,
+                        "paddingVertical": 12,
+                        "width": 196,
+                      },
+                      {
+                        "backgroundColor": "#FFFFFF",
+                        "borderColor": "#E4DDD2",
+                      },
+                    ],
+                    false,
+                  ]
+                }
+                testID="upcoming-familyTithi"
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 12,
+                        "fontWeight": "normal",
+                        "lineHeight": 16,
+                      },
+                      {
+                        "color": "#6F6960",
+                      },
+                      {
+                        "letterSpacing": 0.5,
+                        "textTransform": "uppercase",
+                      },
+                    ]
+                  }
+                >
+                  Family tithi xxx
+                </Text>
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 15,
+                        "fontWeight": "normal",
+                        "lineHeight": 20,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      {
+                        "marginTop": 4,
+                      },
+                    ]
+                  }
+                >
+                  Priya's janma tithi xxxxx
+                </Text>
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 15,
+                        "fontWeight": "normal",
+                        "lineHeight": 20,
+                      },
+                      {
+                        "color": "#5B554C",
+                      },
+                      {
+                        "marginTop": 2,
+                      },
+                    ]
+                  }
+                >
+                  Chaitra Krishna xx Pratipada xxxxx · Tue 
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    23
+                  </Text>
+                   Mar
+                </Text>
+              </View>
+              <View
+                accessibilityLabel="Vrat x: Papankusha Ekadashi xxxxx, Thu 22 Oct · parana 06:10⁠–⁠08:26 xxxxx"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "justifyContent": "center",
+                      "minHeight": 44,
+                      "minWidth": 44,
+                    },
+                    [
+                      {
+                        "alignItems": "flex-start",
+                        "borderRadius": 12,
+                        "borderWidth": 0.5,
+                        "justifyContent": "flex-start",
+                        "minHeight": 88,
+                        "paddingHorizontal": 14,
+                        "paddingVertical": 12,
+                        "width": 196,
+                      },
+                      {
+                        "backgroundColor": "#FFFFFF",
+                        "borderColor": "#E4DDD2",
+                      },
+                    ],
+                    false,
+                  ]
+                }
+                testID="upcoming-vrat"
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 12,
+                        "fontWeight": "normal",
+                        "lineHeight": 16,
+                      },
+                      {
+                        "color": "#6F6960",
+                      },
+                      {
+                        "letterSpacing": 0.5,
+                        "textTransform": "uppercase",
+                      },
+                    ]
+                  }
+                >
+                  Vrat x
+                </Text>
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 15,
+                        "fontWeight": "normal",
+                        "lineHeight": 20,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      {
+                        "marginTop": 4,
+                      },
+                    ]
+                  }
+                >
+                  Papankusha Ekadashi xxxxx
+                </Text>
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 15,
+                        "fontWeight": "normal",
+                        "lineHeight": 20,
+                      },
+                      {
+                        "color": "#5B554C",
+                      },
+                      {
+                        "marginTop": 2,
+                      },
+                    ]
+                  }
+                >
+                  Thu 
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    22
+                  </Text>
+                   Oct · parana 
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    06:10⁠–⁠08:26
+                  </Text>
+                   xxxxx
+                </Text>
+              </View>
+              <View
+                accessibilityLabel="Dasha x: Ketu → Venus antar xxxxxx, 25 Apr 2027"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "justifyContent": "center",
+                      "minHeight": 44,
+                      "minWidth": 44,
+                    },
+                    [
+                      {
+                        "alignItems": "flex-start",
+                        "borderRadius": 12,
+                        "borderWidth": 0.5,
+                        "justifyContent": "flex-start",
+                        "minHeight": 88,
+                        "paddingHorizontal": 14,
+                        "paddingVertical": 12,
+                        "width": 196,
+                      },
+                      {
+                        "backgroundColor": "#FFFFFF",
+                        "borderColor": "#E4DDD2",
+                      },
+                    ],
+                    false,
+                  ]
+                }
+                testID="upcoming-dashaChange"
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 12,
+                        "fontWeight": "normal",
+                        "lineHeight": 16,
+                      },
+                      {
+                        "color": "#6F6960",
+                      },
+                      {
+                        "letterSpacing": 0.5,
+                        "textTransform": "uppercase",
+                      },
+                    ]
+                  }
+                >
+                  Dasha x
+                </Text>
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 15,
+                        "fontWeight": "normal",
+                        "lineHeight": 20,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      {
+                        "marginTop": 4,
+                      },
+                    ]
+                  }
+                >
+                  Ketu → Venus antar xxxxxx
+                </Text>
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 15,
+                        "fontWeight": "normal",
+                        "lineHeight": 20,
+                      },
+                      {
+                        "color": "#5B554C",
+                      },
+                      {
+                        "marginTop": 2,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    25
+                  </Text>
+                   Apr 
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    2027
+                  </Text>
+                </Text>
+              </View>
+              <View
+                accessibilityLabel="Transit xx: Jupiter enters Simha xxxxx, 31 Oct 2026"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "justifyContent": "center",
+                      "minHeight": 44,
+                      "minWidth": 44,
+                    },
+                    [
+                      {
+                        "alignItems": "flex-start",
+                        "borderRadius": 12,
+                        "borderWidth": 0.5,
+                        "justifyContent": "flex-start",
+                        "minHeight": 88,
+                        "paddingHorizontal": 14,
+                        "paddingVertical": 12,
+                        "width": 196,
+                      },
+                      {
+                        "backgroundColor": "#FFFFFF",
+                        "borderColor": "#E4DDD2",
+                      },
+                    ],
+                    false,
+                  ]
+                }
+                testID="upcoming-majorTransit"
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 12,
+                        "fontWeight": "normal",
+                        "lineHeight": 16,
+                      },
+                      {
+                        "color": "#6F6960",
+                      },
+                      {
+                        "letterSpacing": 0.5,
+                        "textTransform": "uppercase",
+                      },
+                    ]
+                  }
+                >
+                  Transit xx
+                </Text>
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 15,
+                        "fontWeight": "normal",
+                        "lineHeight": 20,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      {
+                        "marginTop": 4,
+                      },
+                    ]
+                  }
+                >
+                  Jupiter enters Simha xxxxx
+                </Text>
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 15,
+                        "fontWeight": "normal",
+                        "lineHeight": 20,
+                      },
+                      {
+                        "color": "#5B554C",
+                      },
+                      {
+                        "marginTop": 2,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    31
+                  </Text>
+                   Oct 
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    2026
+                  </Text>
+                </Text>
+              </View>
+            </View>
+          </RCTScrollView>
+        </View>
+      </View>
+    </RCTScrollView>
+  </View>
+</RNCSafeAreaProvider>
+`;

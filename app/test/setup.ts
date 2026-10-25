@@ -30,6 +30,15 @@ jest.mock('expo-network', () => ({
 const mockDatePicker = { open: jest.fn(), dismiss: jest.fn() };
 jest.mock('@react-native-community/datetimepicker', () => ({ DateTimePickerAndroid: mockDatePicker }));
 
+// expo-location is only called when Settings -> Location is 'gps'; the default mock denies so tests use the profile place.
+jest.mock('expo-location', () => ({
+  Accuracy: { Low: 2 },
+  requestForegroundPermissionsAsync: jest.fn(async () => ({ granted: false, status: 'denied' })),
+  getLastKnownPositionAsync: jest.fn(async () => null),
+  getCurrentPositionAsync: jest.fn(async () => {
+    throw new Error('no location under Jest');
+  }),
+}));
 jest.mock('expo-notifications', () => ({
   getPermissionsAsync: jest.fn(async () => ({ granted: false, canAskAgain: true })),
   requestPermissionsAsync: jest.fn(async () => ({ granted: true, canAskAgain: true })),

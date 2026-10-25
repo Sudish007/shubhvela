@@ -1,8 +1,9 @@
 // UI string keys for setting values (shared by Settings index and the detail screens).
 import type { Ayanamsa, NodeMode } from '@shubhvela/engine';
-import type { ChartStyle, Lang, ThemeSetting, Tradition } from './db/settings';
+import type { ChartStyle, Lang, LocationMode, ThemeSetting, Tradition } from './db/settings';
 
 export const CHART_STYLE_KEY: Record<ChartStyle, string> = { north: 'charts.styleNorth', south: 'charts.styleSouth', east: 'charts.styleEast' };
+export const LOCATION_KEY: Record<LocationMode, string> = { city: 'settings.location.city', gps: 'settings.location.gps' };
 export const TRADITION_KEY: Record<Tradition, string> = { purnimanta: 'family.traditionPurnimanta', amanta: 'family.traditionAmanta' };
 export const THEME_KEY: Record<ThemeSetting, string> = { system: 'settings.theme.system', light: 'settings.theme.light', dark: 'settings.theme.dark' };
 export const LANG_KEY: Record<Lang, string> = { en: 'settings.lang.en', hi: 'settings.lang.hi', bho: 'settings.lang.bho' };

@@ -1215,6 +1215,175 @@ exports[`pseudo-locale +30 % Settings (en) shows every padded row title whole 1`
             </RNSVGSvgView>
           </View>
           <View
+            accessibilityLabel="Location for Today xxxxx, My profile's place xxxxx"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                  "minHeight": 44,
+                  "minWidth": 44,
+                },
+                [
+                  {
+                    "alignItems": "center",
+                    "alignSelf": "stretch",
+                    "flexDirection": "row",
+                    "gap": 12,
+                    "justifyContent": "flex-start",
+                    "paddingHorizontal": 16,
+                    "paddingVertical": 10,
+                  },
+                  {
+                    "borderBottomColor": "#E4DDD2",
+                    "borderBottomWidth": 0.5,
+                  },
+                ],
+                false,
+              ]
+            }
+            testID="settings-location"
+          >
+            <View
+              style={
+                {
+                  "flex": 1,
+                  "gap": 2,
+                  "minWidth": 0,
+                }
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 15,
+                      "fontWeight": "normal",
+                      "lineHeight": 20,
+                    },
+                    {
+                      "color": "#1C1A17",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Location for Today xxxxx
+              </Text>
+            </View>
+            <Text
+              style={
+                [
+                  {
+                    "fontFamily": "NotoSans",
+                    "fontSize": 15,
+                    "fontWeight": "normal",
+                    "lineHeight": 20,
+                  },
+                  {
+                    "color": "#5B554C",
+                  },
+                  {
+                    "flexShrink": 1,
+                    "textAlign": "right",
+                  },
+                ]
+              }
+            >
+              My profile's place xxxxx
+            </Text>
+            <RNSVGSvgView
+              accessible={false}
+              align="xMidYMid"
+              bbHeight={24}
+              bbWidth={24}
+              focusable={false}
+              height={24}
+              meetOrSlice={0}
+              minX={0}
+              minY={0}
+              style={
+                [
+                  {
+                    "backgroundColor": "transparent",
+                    "borderWidth": 0,
+                  },
+                  {
+                    "flex": 0,
+                    "height": 24,
+                    "width": 24,
+                  },
+                ]
+              }
+              vbHeight={24}
+              vbWidth={24}
+              width={24}
+            >
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGPath
+                  d="M9 6 15 12 9 18"
+                  fill={null}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                      "strokeLinecap",
+                      "strokeLinejoin",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4285491552,
+                      "type": 0,
+                    }
+                  }
+                  strokeLinecap={1}
+                  strokeLinejoin={1}
+                  strokeWidth={1.75}
+                />
+              </RNSVGGroup>
+            </RNSVGSvgView>
+          </View>
+          <View
             accessibilityLabel="Notifications xxx"
             accessibilityRole="button"
             accessibilityState={

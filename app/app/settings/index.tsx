@@ -5,7 +5,7 @@ import { useCallback, useState } from 'react';
 import { Card, NavRow, Screen } from '../../src/components';
 import { getAllSettings, type Settings } from '../../src/db/settings';
 import { useLang } from '../../src/i18n';
-import { AYANAMSA_KEY, CHART_STYLE_KEY, LANG_KEY, NODE_KEY, THEME_KEY, TRADITION_KEY, shortValue } from '../../src/settingsLabels';
+import { AYANAMSA_KEY, CHART_STYLE_KEY, LANG_KEY, LOCATION_KEY, NODE_KEY, THEME_KEY, TRADITION_KEY, shortValue } from '../../src/settingsLabels';
 import { useTokens } from '../../src/theme/ThemeProvider';
 
 export default function SettingsScreen() {
@@ -33,6 +33,7 @@ export default function SettingsScreen() {
           testID="settings-calculation"
         />
         <NavRow title={t('settings.traditionDefault')} value={t(TRADITION_KEY[s.traditionDefault])} onPress={go('/settings/tradition')} testID="settings-tradition" />
+        <NavRow title={t('settings.location')} value={shortValue(t(LOCATION_KEY[s.locationMode]))} onPress={go('/settings/location')} testID="settings-location" />
         <NavRow title={t('settings.notifications')} onPress={go('/settings/notifications')} divider={false} testID="settings-notifications" />
       </Card>
       <Card flush>

@@ -46,9 +46,12 @@ describe('flows', () => {
     expect(moon.nakshatra).toBe('Uttara Phalguni');
     expect(moon.pada).toBe(4);
     await renderWithProviders(<TodayScreen />);
+    // The first value is synchronous (before the A10 model finishes computing) ...
     const line = textOf(screen.getByTestId('today-moon-line'));
     expect(line).toContain('Your Moon: Kanya');
     expect(line).toContain('Uttara\u00A0Phalguni\u00A04');
+    // ... and the rest of Today (band, note) follows from the same engine without the database being closed under it.
+    await screen.findByTestId('good-hours-card', {}, { timeout: 20000 });
   });
 
   it('F2: unknown time -> Moon chart; approximate -> time_approx_minutes and approx flags', () => {

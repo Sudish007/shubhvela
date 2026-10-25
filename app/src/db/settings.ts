@@ -6,6 +6,8 @@ export type Lang = 'en' | 'hi' | 'bho';
 export type ThemeSetting = 'system' | 'light' | 'dark';
 export type ChartStyle = 'north' | 'south' | 'east';
 export type Tradition = 'purnimanta' | 'amanta';
+/** Where Today computes sunrise and the band (spec F5: GPS or the chosen city). 'city' = the self profile's place. */
+export type LocationMode = 'city' | 'gps';
 
 export interface Settings {
   language: Lang;
@@ -14,6 +16,7 @@ export interface Settings {
   ayanamsa: Ayanamsa;
   node: NodeMode;
   traditionDefault: Tradition;
+  locationMode: LocationMode;
 }
 
 export const SETTING_DEFAULTS: Settings = {
@@ -23,6 +26,7 @@ export const SETTING_DEFAULTS: Settings = {
   ayanamsa: 'lahiri',
   node: 'mean',
   traditionDefault: 'purnimanta',
+  locationMode: 'city',
 };
 
 const ALLOWED: { [K in keyof Settings]: readonly Settings[K][] } = {
@@ -32,6 +36,7 @@ const ALLOWED: { [K in keyof Settings]: readonly Settings[K][] } = {
   ayanamsa: ['lahiri', 'kp', 'raman'],
   node: ['mean', 'true'],
   traditionDefault: ['purnimanta', 'amanta'],
+  locationMode: ['city', 'gps'],
 };
 
 /** Reads one setting; unknown or corrupt values fall back to the default (never throws for a missing row). */
@@ -54,5 +59,6 @@ export function getAllSettings(): Settings {
     ayanamsa: getSetting('ayanamsa'),
     node: getSetting('node'),
     traditionDefault: getSetting('traditionDefault'),
+    locationMode: getSetting('locationMode'),
   };
 }
