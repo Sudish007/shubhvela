@@ -19,6 +19,8 @@ const WORD_BOUNDS: Record<string, [number, number]> = {
   'nakshatra-pada': [40, 70],
   transit: [30, 90],
   daily: [8, 60],
+  // A08: vrat what-to-do paragraphs 80-150 words (festivals and glossary have their own shapes: corpus-ritual.test.ts).
+  vrats: [80, 150],
 };
 
 /** Minimum snippet counts per domain (spec section 7 volumes; FEAT-A06 / FEAT-A07 acceptance). */
@@ -31,6 +33,7 @@ const MIN_COUNTS: Record<string, number> = {
   'dasha-pairs': 90,
   transit: 39,
   daily: 95,
+  vrats: 12,
 };
 
 const words = (s: string): number => s.trim().split(/\s+/).filter(Boolean).length;

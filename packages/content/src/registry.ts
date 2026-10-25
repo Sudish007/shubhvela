@@ -1,6 +1,6 @@
 // Static registry of every bundled JSON file. Add a line here when a corpus file lands (English masters in
 // A06-A08 / B02 / C02; hi/bho drafts after each corpus-translate Action run). Nothing else in the package knows paths.
-import type { ContentLanguage, Snippet, UiStrings } from './types';
+import type { ContentLanguage, FestivalText, GlossaryEntry, Snippet, UiStrings } from './types';
 import en from '../ui/en.json';
 import hi from '../ui/hi.json';
 import bho from '../ui/bho.json';
@@ -13,6 +13,9 @@ import nakshatraPadaEn from '../corpus/nakshatra-pada/en.json';
 import dashaPairsEn from '../corpus/dasha-pairs/en.json';
 import transitEn from '../corpus/transit/en.json';
 import dailyEn from '../corpus/daily/en.json';
+import vratsEn from '../corpus/vrats/en.json';
+import festivalsEn from '../corpus/festivals/en.json';
+import glossaryEn from '../corpus/glossary/en.json';
 
 export const UI: Record<ContentLanguage, UiStrings> = {
   en: en as UiStrings,
@@ -36,4 +39,17 @@ export const CORPUS: Record<string, Partial<Record<ContentLanguage, Snippet[]>>>
   'dasha-pairs': { en: dashaPairsEn as Snippet[] },
   transit: { en: transitEn as Snippet[] },
   daily: { en: dailyEn as Snippet[] },
+  // A08: vrats = one snippet per engine VratFamily with the engine ruleId as id (vrat-ekadashi ... vrat-satyanarayan);
+  // `rule` is the timing sentence (same as corpus/rules), `text` the what-to-do paragraph.
+  vrats: { en: vratsEn as Snippet[] },
+};
+
+/** Festival texts (schema/festival-text.schema.json): one per slug of packages/engine/data/festival-rules.json, id festival-<slug>. */
+export const FESTIVALS: Partial<Record<ContentLanguage, FestivalText[]>> = {
+  en: festivalsEn as FestivalText[],
+};
+
+/** Glossary (schema/glossary.schema.json): ids are plain slugs (tithi, rahu-kaal, sade-sati ...); `related` lists other glossary ids. */
+export const GLOSSARY: Partial<Record<ContentLanguage, GlossaryEntry[]>> = {
+  en: glossaryEn as GlossaryEntry[],
 };

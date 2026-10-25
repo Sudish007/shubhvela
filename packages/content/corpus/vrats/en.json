@@ -1,0 +1,98 @@
+[
+  {
+    "id": "vrat-ekadashi",
+    "rule": "Ekadashi is kept on the day whose sunrise has the eleventh tithi (Smarta), or on the next day for Vaishnavas when Dashami still runs at dawn; parana follows the end of Hari Vasara within the Dwadashi, before a fifth of the day has passed.",
+    "source": "Dharmasindhu",
+    "level": 1,
+    "review": "draft",
+    "text": "Ekadashi comes twice a lunar month, on the eleventh tithi of each paksha, and each one carries its own name. The day is kept as a fast from grains and pulses; many people take fruit, milk or water, and some keep Nirjala Ekadashi in Jyeshtha without water. The hours are spent in reading, quiet or a visit to a Vishnu temple. The fast is not broken at sunset: parana happens the next morning inside the Dwadashi tithi, after Hari Vasara (the first quarter of Dwadashi) has ended and before a fifth of the day has passed. The app shows the Smarta date, the Vaishnava date when it differs, the end of Hari Vasara and the parana window."
+  },
+  {
+    "id": "vrat-pradosh",
+    "rule": "Pradosh is the day the thirteenth tithi prevails at pradosh kala, the first tenth of the night after sunset, and is named by its weekday (Soma, Bhauma, Shani Pradosh).",
+    "source": "Dharmasindhu",
+    "level": 1,
+    "review": "draft",
+    "text": "Pradosh is kept twice a month on the Trayodashi of each paksha, devoted to Shiva. What matters is the evening: the thirteenth tithi must be running during pradosh kala, roughly the first tenth of the night after sunset, so the date can differ from the day whose sunrise holds Trayodashi. People fast through the day, lightly or fully, and gather for the evening worship, abhishek and lamps at a Shiva temple or at home. The weekday names the vrat: Soma Pradosh on a Monday, Bhauma on a Tuesday, Shani on a Saturday, and so on. The app lists the pradosh window from sunset to the end of that first tenth of the night."
+  },
+  {
+    "id": "vrat-sankashti",
+    "rule": "Sankashti Chaturthi is the Krishna fourth tithi on the day it covers moonrise; on a Tuesday it is Angaraki.",
+    "source": "Dharmasindhu",
+    "level": 1,
+    "review": "draft",
+    "text": "Sankashti Chaturthi is the monthly fast to Ganesha on the fourth tithi of the dark fortnight. The fast runs through the day and is broken only after seeing or offering to the Moon, so the day is chosen by moonrise: the Chaturthi tithi must be running when the Moon rises that evening, which may be the day after the sunrise Chaturthi. The evening worship, a sweet offering and the moon sighting close the day. When the Chaturthi falls on a Tuesday it is called Angaraki Sankashti and is given extra weight. The app shows the moonrise time for your place, since it shifts by many minutes between cities."
+  },
+  {
+    "id": "vrat-vinayakaChaturthi",
+    "rule": "Vinayaka Chaturthi is the Shukla fourth tithi on the day it covers midday (madhyahna).",
+    "source": "Dharmasindhu",
+    "level": 1,
+    "review": "draft",
+    "text": "Vinayaka Chaturthi is the bright-fortnight counterpart of Sankashti, kept once a lunar month on Shukla Chaturthi. The worship of Ganesha is done at midday, so the date is the day on which the Chaturthi tithi covers madhyahna, taken here as sunrise plus half the daylight. A simple puja at home with durva grass, flowers and modak or another sweet, a reading of the Ganesha story and a day of light fasting are the usual practice. Many families avoid looking at the Moon on this night by tradition. The Bhadrapada Shukla Chaturthi is the yearly Ganesh Chaturthi. The app shows the madhyahna window for the day."
+  },
+  {
+    "id": "vrat-masikShivaratri",
+    "rule": "Masik Shivaratri is the Krishna fourteenth tithi on the night it covers midnight (nishita).",
+    "source": "Dharmasindhu",
+    "level": 1,
+    "review": "draft",
+    "text": "Masik Shivaratri is the monthly night of Shiva on Krishna Chaturdashi, the night before Amavasya. Because the worship is done at nishita, the middle of the night, the date is the civil day whose following midnight falls inside the Chaturdashi tithi, not necessarily the day whose sunrise holds it. The day is kept with a light fast; the evening and night are given to abhishek with water, milk and bilva leaves, lamps and the repetition of the Shiva mantra, often in four watches of the night. The Phalguna Krishna Chaturdashi is the yearly Maha Shivaratri. The app shows the nishita window, about 24 minutes either side of midnight."
+  },
+  {
+    "id": "vrat-purnima",
+    "rule": "The Purnima vrat is kept on the day the full-moon tithi prevails at moonrise, when the fast is broken.",
+    "source": "Dharmasindhu",
+    "level": 1,
+    "review": "draft",
+    "text": "The Purnima vrat is a monthly fast on the full-moon day, kept by many families for Vishnu or for the family deity. The fast begins in the morning and ends after moonrise, when the full Moon is seen and offered water, so the vrat date is the day on which the Purnima tithi is still running at moonrise. The day also carries bathing, charity and often the Satyanarayan story in the evening. Several named festivals sit on Purnima: Guru Purnima, Sharad Purnima, Kartik Purnima and Buddha Purnima among them. The app shows the moonrise time and the end of the Purnima tithi so the two can be compared."
+  },
+  {
+    "id": "vrat-amavasya",
+    "rule": "Amavasya observances are kept on the day the new-moon tithi prevails at sunrise.",
+    "source": "Dharmasindhu",
+    "level": 1,
+    "review": "draft",
+    "text": "Amavasya, the new-moon day, is a day for ancestors. The observance is kept on the day whose sunrise holds the Amavasya tithi; the afternoon is the time for tarpan and shraddha, the simple offering of water and food to those who have gone before. Many people fast or eat once, visit a river or a temple, and light a lamp under a peepal tree in the evening. Some Amavasyas carry their own names and customs: Mauni Amavasya in Magha with its silence, Shani Jayanti in Jyeshtha, Sarva Pitru Amavasya at the end of Pitru Paksha, and Diwali itself. The app lists each month's date and the aparahna window."
+  },
+  {
+    "id": "vrat-karwaChauth",
+    "rule": "Karwa Chauth is Kartik Krishna Chaturthi on the day it covers moonrise; the fast runs from sunrise to that moonrise.",
+    "source": "Dharmasindhu",
+    "level": 1,
+    "review": "draft",
+    "text": "Karwa Chauth is kept on Kartik Krishna Chaturthi in the Purnimanta reckoning, about nine days before Diwali. Those who keep it fast from sunrise to moonrise without food or water, traditionally for the long life of their spouse. The day begins with sargi before dawn, and the evening brings the group worship, the story of Karwa Chauth and the exchange of karwas. The fast ends after the Moon rises and is viewed through a sieve, with the first water and food offered by the spouse, so the exact local moonrise is the time everyone waits for. The app shows the moonrise for your place, which can differ by many minutes from the television time."
+  },
+  {
+    "id": "vrat-chhath",
+    "rule": "Chhath is Kartik Shukla Shashthi at sunrise, with Nahay Khay on Chaturthi, Kharna on Panchami, the evening arghya at sunset on Shashthi and the morning arghya at the next sunrise.",
+    "source": "convention",
+    "level": 1,
+    "review": "draft",
+    "text": "Chhath is the four-day worship of the Sun and Chhathi Maiya kept in Bihar, eastern Uttar Pradesh and wherever Bhojpuri families live. Day one, Nahay Khay on Chaturthi, is a bath and a single plain meal. Day two, Kharna on Panchami, is a day-long fast closed with kheer and roti at dusk, after which the main fast begins. Day three, Shashthi, is the sandhya arghya: standing in a river or pond at sunset with a bamboo basket of fruit, thekua and sugarcane. Day four closes with the usha arghya to the rising Sun on Saptami morning, after which the fast is broken. The app shows the sunset and sunrise times for each arghya at your place."
+  },
+  {
+    "id": "vrat-teej",
+    "rule": "Hariyali Teej is Shravana Shukla Tritiya, Kajari Teej Bhadrapada Krishna Tritiya and Hartalika Teej Bhadrapada Shukla Tritiya (Purnimanta names), each on the day whose sunrise has the tithi.",
+    "source": "Dharmasindhu",
+    "level": 1,
+    "review": "draft",
+    "text": "Teej is the name of three Tritiya festivals of the monsoon, each kept on the day whose sunrise holds the third tithi. Hariyali Teej in Shravana Shukla paksha is the green festival of swings, songs and mehndi. Kajari Teej in Bhadrapada Krishna paksha brings folk songs and the worship of the neem tree. Hartalika Teej in Bhadrapada Shukla paksha, the day before Ganesh Chaturthi, is the strictest: a fast without water from the morning to the next morning, with the evening worship of Shiva and Parvati made from sand or clay and a night of stories. Those who keep it do so for the well-being of their marriage or household. The app lists all three dates."
+  },
+  {
+    "id": "vrat-navratri",
+    "rule": "Navratri runs the nine days from Pratipada in Chaitra or Ashwin Shukla paksha; Ghatasthapana is done in the Pratipada while it runs after sunrise, or in Abhijit when it ends early.",
+    "source": "Dharmasindhu",
+    "level": 1,
+    "review": "draft",
+    "text": "Navratri is the nine-night worship of the goddess, kept twice a year in the bright fortnights of Chaitra and Ashwin from Pratipada to Navami. It opens with Ghatasthapana, setting the kalash and sowing barley, done while the Pratipada tithi is still running after sunrise or, when it ends early, in the Abhijit muhurta around noon. Each day honours one form of Durga; many people fast on fruit, milk and non-grain food, read the Durga Saptashati and light an unbroken lamp. Ashtami and Navami bring kanya puja and havan, and Sharad Navratri ends with Dussehra on Dashami. The app shows the Ghatasthapana window and the day count for each Navratri."
+  },
+  {
+    "id": "vrat-satyanarayan",
+    "rule": "The Satyanarayan vrat is kept on the Purnima day whose evening (sunset) still has the full-moon tithi, otherwise on the day it is at sunrise.",
+    "source": "convention",
+    "level": 1,
+    "review": "draft",
+    "text": "The Satyanarayan vrat is an evening worship of Vishnu as Satyanarayan, most often kept on Purnima and also on a date chosen to mark a new home, a wedding or any good news. The katha, the five-chapter story read aloud to family and neighbours, is its heart, followed by the offering of panchamrit and the wheat-flour prasad and a shared meal. Because the puja is done in the evening, the date is the Purnima day on which the full-moon tithi still runs at sunset; when it ends before sunset, the day whose sunrise holds Purnima is used instead. Those who keep it usually fast until the katha is complete. The app shows the Purnima end time beside the sunset."
+  }
+]

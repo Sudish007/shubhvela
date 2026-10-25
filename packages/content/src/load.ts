@@ -1,8 +1,8 @@
 // Loaders: static JSON imports (Metro and vitest both bundle them; no fs, no runtime schema validation).
 // New corpus domains register themselves in ./registry.ts when their English master lands (A06-A08, B02, C02);
 // Hindi/Bhojpuri files written by the corpus-translate Action are added there too once they exist.
-import type { ContentLanguage, CorpusLookup, Snippet, UiStrings } from './types';
-import { CORPUS, UI } from './registry';
+import type { ContentLanguage, CorpusLookup, FestivalText, GlossaryEntry, Snippet, UiStrings } from './types';
+import { CORPUS, FESTIVALS, GLOSSARY, UI } from './registry';
 
 export function loadUi(lang: ContentLanguage): UiStrings {
   return UI[lang];
@@ -47,4 +47,34 @@ export function lookup(domain: string, id: string, lang: ContentLanguage): Corpu
 /** The one-sentence rule behind a `ruleId` for the "Why?" sheet (domain `rules`). */
 export function ruleText(ruleId: string, lang: ContentLanguage): CorpusLookup | null {
   return lookup('rules', ruleId, lang);
+}
+
+/** All festival texts in one language, falling back to English (flagged) when the language file is missing. */
+export function loadFestivals(lang: ContentLanguage): { items: FestivalText[]; lang: ContentLanguage; fallback: boolean } {
+  const own = FESTIVALS[lang];
+  if (own) return { items: own, lang, fallback: false };
+  return { items: FESTIVALS.en ?? [], lang: 'en', fallback: lang !== 'en' };
+}
+
+/** One festival text by engine slug (`festival-<slug>` id), preferring `lang` and falling back to English per entry. */
+export function festivalText(slug: string, lang: ContentLanguage): { item: FestivalText; lang: ContentLanguage; fallback: boolean } | null {
+  const own = FESTIVALS[lang]?.find((f) => f.slug === slug);
+  if (own) return { item: own, lang, fallback: false };
+  const en = FESTIVALS.en?.find((f) => f.slug === slug);
+  return en ? { item: en, lang: 'en', fallback: lang !== 'en' } : null;
+}
+
+/** The whole glossary in one language, falling back to English (flagged). */
+export function loadGlossary(lang: ContentLanguage): { items: GlossaryEntry[]; lang: ContentLanguage; fallback: boolean } {
+  const own = GLOSSARY[lang];
+  if (own) return { items: own, lang, fallback: false };
+  return { items: GLOSSARY.en ?? [], lang: 'en', fallback: lang !== 'en' };
+}
+
+/** One glossary entry by id, preferring `lang` and falling back to English per entry. */
+export function glossaryTerm(id: string, lang: ContentLanguage): { item: GlossaryEntry; lang: ContentLanguage; fallback: boolean } | null {
+  const own = GLOSSARY[lang]?.find((g) => g.id === id);
+  if (own) return { item: own, lang, fallback: false };
+  const en = GLOSSARY.en?.find((g) => g.id === id);
+  return en ? { item: en, lang: 'en', fallback: lang !== 'en' } : null;
 }
