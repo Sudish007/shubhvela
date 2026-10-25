@@ -1,0 +1,18 @@
+{
+  "suite": "tz",
+  "required": 12,
+  "compared": 12,
+  "passed": 12,
+  "failed": 0,
+  "skipped": 0,
+  "maxDeviation": {
+    "offsetMinutes": 0
+  },
+  "sources": {
+    "iana-tzdb": 12,
+    "reference-site-offsets": 77
+  },
+  "failures": [],
+  "generatedAt": "2026-10-25T02:09:21.853Z",
+  "tzdb": "2026e"
+}

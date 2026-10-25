@@ -6,6 +6,11 @@
 // - aparahna   : the tithi must prevail at the aparahna reference instant = sunrise + 0.7 x daylight (middle of
 //                the 4th fifth of the day). Used for shraddha/barsi, Raksha Bandhan, Vijaya Dashami.
 // - madhyahna  : reference instant = sunrise + 0.5 x daylight (Ganesh Chaturthi, Rama Navami).
+// - purvahna   : reference instant = sunrise + 0.25 x daylight (middle of the forenoon; Vasant Panchami), window
+//                sunrise -> sunrise + 0.5 x daylight.
+// - minMuhurtas: (udaya only, A04) when the tithi touches exactly one sunrise but runs fewer than N muhurtas
+//                (48 min) after it, the observance moves back to the day the tithi began (Ekadashi fasts, N = 3:
+//                validated against Drik Panchang 2026-2028, see reference/CONVENTIONS.md).
 // - pradosh    : reference instant = sunset + night/10 (the first 3 of 15 night muhurtas = the Pradosha kala,
 //                window sunset -> sunset + night/5). Diwali/Dhanteras/Holika Dahan prefer the LATER day
 //                (Dharmasindhu: "dinadvaye para").
@@ -35,7 +40,9 @@ import {
   tithiIndexAt,
 } from '../panchang/astro';
 
-export type Timing = 'udaya' | 'aparahna' | 'madhyahna' | 'pradosh' | 'nishita' | 'moonrise' | 'begin';
+export type Timing = 'udaya' | 'purvahna' | 'aparahna' | 'madhyahna' | 'pradosh' | 'nishita' | 'moonrise' | 'begin';
+/** 1 muhurta = 48 minutes; the Nirnaya Sindhu "tri-muhurta" rule needs a tithi to run >= 3 of them after sunrise. */
+export const MUHURTA_MS = 48 * MIN_MS;
 export type Prefer = 'first' | 'last';
 
 export interface TithiSpan {
@@ -78,6 +85,8 @@ export function timingPoint(d: DayRef, timing: Timing, geo: GeoPoint): { at: num
   switch (timing) {
     case 'udaya':
       return { at: d.sunrise };
+    case 'purvahna':
+      return { at: Math.round(d.sunrise + 0.25 * daylight), window: { start: d.sunrise, end: Math.round(d.sunrise + 0.5 * daylight) } };
     case 'aparahna':
       return { at: Math.round(d.sunrise + 0.7 * daylight), window: { start: Math.round(d.sunrise + 0.6 * daylight), end: Math.round(d.sunrise + 0.8 * daylight) } };
     case 'madhyahna':
@@ -113,7 +122,12 @@ export interface Observance {
  * Civil day that observes a span under a timing rule. Candidates are the day the span begins and the next two;
  * fallback is the begin day with a `-begin-day` convention suffix.
  */
-export function observanceDay(span: { start: number; end: number }, timing: Timing, zone: string, geo: GeoPoint, prefer: Prefer = 'first'): Observance {
+export interface ObservanceOptions {
+  /** udaya only: minimum muhurtas the tithi must run after its only sunrise, else the begin day is taken. */
+  minMuhurtas?: number;
+}
+
+export function observanceDay(span: { start: number; end: number }, timing: Timing, zone: string, geo: GeoPoint, prefer: Prefer = 'first', opts: ObservanceOptions = {}): Observance {
   const d0 = localDateOf(span.start, zone);
   if (timing === 'begin') return { date: d0, convention: 'begin-day', span };
   const hits: Observance[] = [];
@@ -127,7 +141,13 @@ export function observanceDay(span: { start: number; end: number }, timing: Timi
     if (p.at >= span.start && p.at < span.end) hits.push({ date, convention: timing, window: p.window, at: p.at, span });
   }
   if (hits.length === 0) return { date: d0, convention: `${timing}-begin-day`, span };
-  if (hits.length === 1) return hits[0];
+  if (hits.length === 1) {
+    const only = hits[0];
+    if (timing === 'udaya' && opts.minMuhurtas && only.at !== undefined && only.date !== d0 && span.end - only.at < opts.minMuhurtas * MUHURTA_MS) {
+      return { date: d0, convention: `udaya-under-${opts.minMuhurtas}-muhurtas-begin-day`, span };
+    }
+    return only;
+  }
   const pick = prefer === 'last' ? hits[hits.length - 1] : hits[0];
   return { ...pick, convention: `${timing}-${prefer}-of-two` };
 }

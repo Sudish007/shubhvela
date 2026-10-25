@@ -35,7 +35,7 @@ describe('dailyNote (F6): 3-5 {ruleId, keys, params} rows in the fixed order', (
     const r = rows[1];
     expect(r.keys).toEqual(['tara-bala-4']);
     expect(r.params).toMatchObject({ tara: 4, taraKey: 'kshema', natalNakshatra: 12, dayNakshatra: 24, auspicious: true });
-    expect(hm(r.params.nakshatraEndsAt)).toBe('20:48');
+    expect(hm(r.params.nakshatraEndsAt)).toBe('20:49'); // Drik Panchang: Shatabhisha upto 08:49 PM
     expect(taraNumber(12, 12)).toBe(1); // janma
     expect(taraNumber(12, 20)).toBe(9); // parama mitra
     expect(TARA_KEYS[7]).toBe('naidhana');

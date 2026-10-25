@@ -1,7 +1,7 @@
 // Shared astronomy helpers for the panchang, calendar, rules and dasha modules (plan.md A03).
 // Everything here works in UTC milliseconds; civil dates are resolved through the bundled tz table
 // (never Intl, never the device offset). Longitudes are degrees; sidereal values use the fork's ayanamsa.
-import { Body, Ecliptic, GeoVector, Observer, SearchMoonPhase, SearchRiseSet } from 'astronomy-engine';
+import { Body, Ecliptic, GeoVector, Observer, SearchAltitude, SearchMoonPhase, SearchRiseSet } from 'astronomy-engine';
 import { getAyanamsa, type AyanamsaType } from '../../vendor/jyotish/src/core/ayanamsa';
 import { getUdayaLagna } from '../../vendor/jyotish/src/core/calculations';
 import { canonicalZone, localToUtc, utcToWall } from '../tz/index';
@@ -293,14 +293,25 @@ export function sunsetOn(date: string, zone: string, geo: GeoPoint): number | nu
   return t !== null && localDateOf(t, zone) === date ? t : null;
 }
 
+/**
+ * Moonrise/moonset convention (A04, validated against Drik Panchang, see reference/CONVENTIONS.md): the instant
+ * the CENTRE of the Moon's disc crosses the true (unrefracted) horizon as seen by the observer (topocentric,
+ * so the Moon's parallax is included). Drik's moonrise is ~4 min later than the upper-limb + refraction event
+ * that astronomy-engine's SearchRiseSet returns; the Sun keeps the upper-limb + 34' refraction rule.
+ */
+function moonCentreCrossing(observer: Observer, direction: 1 | -1, fromMs: number, limitDays: number): number | null {
+  const t = SearchAltitude(Body.Moon, observer, direction, new Date(fromMs), limitDays, 0);
+  return t ? t.date.getTime() : null;
+}
+
 /** First moonrise at or after `fromMs` that is before `toMs`, else null. */
 export function moonriseBetween(fromMs: number, toMs: number, geo: GeoPoint): number | null {
-  const t = riseSet(Body.Moon, toObserver(geo), 1, fromMs, (toMs - fromMs) / DAY_MS + 0.1);
+  const t = moonCentreCrossing(toObserver(geo), 1, fromMs, (toMs - fromMs) / DAY_MS + 0.1);
   return t !== null && t < toMs ? t : null;
 }
 
 export function moonsetBetween(fromMs: number, toMs: number, geo: GeoPoint): number | null {
-  const t = riseSet(Body.Moon, toObserver(geo), -1, fromMs, (toMs - fromMs) / DAY_MS + 0.1);
+  const t = moonCentreCrossing(toObserver(geo), -1, fromMs, (toMs - fromMs) / DAY_MS + 0.1);
   return t !== null && t < toMs ? t : null;
 }
 

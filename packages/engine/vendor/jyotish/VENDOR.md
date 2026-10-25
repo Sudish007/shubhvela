@@ -38,5 +38,13 @@ Wealth / Marriage / Health / Progeny / Education.
 - `src/index.ts` rewritten to export only the kept modules (plus `kundli/yogas`).
 - `i18n/index.ts`: the `dictionaries/predictions` re-export line removed.
 
+## Modified (A04 validation suites, 2026-10-25)
+
+- `core/ayanamsa.ts` rewritten: Lahiri = 23°15'00.658" at 1956-03-21 0h ET (Lahiri's definition,
+  Swiss Ephemeris `SE_SIDM_LAHIRI`), KP = 22.363889° at J1900, Raman = 21.013889° at J1900, each
+  carried with the IAU 2006 accumulated general precession in longitude (no nutation). Upstream
+  used a J1900-anchored Lahiri (23°51'25.5" at J2000) that sits ~24" below Drik Panchang's printed
+  ayanamsa; the new definition is within 8" (see `packages/engine/reference/CONVENTIONS.md`).
+
 Everything else is byte-identical to upstream. Update this file whenever the fork
 diverges further.

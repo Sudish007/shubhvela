@@ -1,0 +1,829 @@
+{
+  "case": "delhi-2026-10-25",
+  "source": "drikpanchang",
+  "source_url": "https://www.drikpanchang.com/panchang/day-panchang.html?geoname-id=1273294&date=25/10/2026",
+  "fetched_at": "2026-10-24T21:18:19.883Z",
+  "fetcher_version": "a04-1",
+  "values": {
+    "city": "delhi",
+    "geonameId": 1273294,
+    "tz": "Asia/Kolkata",
+    "date": "2026-10-25",
+    "pageTitle": "October 25, 2026 Panchang, Panchanga, Panchangam for Delhi, NCT, India",
+    "sunrise": "2026-10-25T06:28",
+    "sunset": "2026-10-25T17:42",
+    "moonrise": "2026-10-25T17:00",
+    "moonset": "2026-10-26T06:23",
+    "tithi": [
+      {
+        "name": "Chaturdashi",
+        "end": "2026-10-25T11:55",
+        "raw": "Chaturdashi upto 11:55 AM"
+      },
+      {
+        "name": "Purnima",
+        "end": null,
+        "raw": "Purnima"
+      }
+    ],
+    "nakshatra": [
+      {
+        "name": "Revati",
+        "end": "2026-10-25T19:22",
+        "raw": "Revati upto 07:22 PM"
+      },
+      {
+        "name": "Ashwini",
+        "end": null,
+        "raw": "Ashwini"
+      }
+    ],
+    "yoga": [
+      {
+        "name": "Harshana",
+        "end": "2026-10-25T17:22",
+        "raw": "Harshana upto 05:22 PM"
+      },
+      {
+        "name": "Vajra",
+        "end": null,
+        "raw": "Vajra"
+      }
+    ],
+    "karana": [
+      {
+        "name": "Vanija",
+        "end": "2026-10-25T11:55",
+        "raw": "Vanija upto 11:55 AM"
+      },
+      {
+        "name": "Vishti",
+        "end": "2026-10-25T22:52",
+        "raw": "Vishti upto 10:52 PM"
+      },
+      {
+        "name": "Bava",
+        "end": null,
+        "raw": "Bava"
+      }
+    ],
+    "weekday": "Raviwara",
+    "paksha": "Shukla Paksha",
+    "vikramSamvat": "2083 Siddharthi",
+    "shakaSamvat": "1948 Parabhava",
+    "chandramasa": [
+      "Ashwina - Purnimanta",
+      "Ashwina - Amanta"
+    ],
+    "moonsign": "Meena upto 07:22 PM",
+    "sunsign": "Tula",
+    "nakshatraPada": [
+      {
+        "name": "Revati",
+        "end": "2026-10-25T08:01",
+        "raw": "Revati upto 08:01 AM"
+      },
+      {
+        "name": "Revati",
+        "end": "2026-10-25T13:42",
+        "raw": "Revati upto 01:42 PM"
+      },
+      {
+        "name": "Revati",
+        "end": "2026-10-25T19:22",
+        "raw": "Revati upto 07:22 PM"
+      },
+      {
+        "name": "Ashwini",
+        "end": "2026-10-26T00:59",
+        "raw": "Ashwini upto 12:59 AM, Oct 26"
+      },
+      {
+        "name": "Ashwini",
+        "end": null,
+        "raw": "Ashwini"
+      }
+    ],
+    "drikRitu": "Hemant (Prewinter)",
+    "vedicRitu": "Sharad (Autumn)",
+    "drikAyana": "Dakshinayana",
+    "vedicAyana": "Dakshinayana",
+    "dinamana": "11 Hours 13 Mins 51 Secs",
+    "ratrimana": "12 Hours 46 Mins 49 Secs",
+    "madhyahna": "2026-10-25T12:05",
+    "brahmaMuhurta": {
+      "start": "2026-10-25T04:46",
+      "end": "2026-10-25T05:37",
+      "text": "04:46 AM to 05:37 AM"
+    },
+    "pratahSandhya": {
+      "start": "2026-10-25T05:11",
+      "end": "2026-10-25T06:28",
+      "text": "05:11 AM to 06:28 AM"
+    },
+    "abhijit": {
+      "start": "2026-10-25T11:42",
+      "end": "2026-10-25T12:27",
+      "text": "11:42 AM to 12:27 PM"
+    },
+    "vijayaMuhurta": {
+      "start": "2026-10-25T13:57",
+      "end": "2026-10-25T14:42",
+      "text": "01:57 PM to 02:42 PM"
+    },
+    "godhuliMuhurta": {
+      "start": "2026-10-25T17:42",
+      "end": "2026-10-25T18:07",
+      "text": "05:42 PM to 06:07 PM"
+    },
+    "sayahnaSandhya": {
+      "start": "2026-10-25T17:42",
+      "end": "2026-10-25T18:59",
+      "text": "05:42 PM to 06:59 PM"
+    },
+    "amritKalam": [
+      {
+        "start": "2026-10-25T17:05",
+        "end": "2026-10-25T18:36",
+        "text": "05:05 PM to 06:36 PM"
+      }
+    ],
+    "nishitaMuhurta": {
+      "start": "2026-10-25T23:40",
+      "end": "2026-10-26T00:31",
+      "text": "11:40 PM to 12:31 AM, Oct 26"
+    },
+    "rahuKalam": {
+      "start": "2026-10-25T16:18",
+      "end": "2026-10-25T17:42",
+      "text": "04:18 PM to 05:42 PM"
+    },
+    "yamaganda": {
+      "start": "2026-10-25T12:05",
+      "end": "2026-10-25T13:29",
+      "text": "12:05 PM to 01:29 PM"
+    },
+    "gulikaiKalam": {
+      "start": "2026-10-25T14:53",
+      "end": "2026-10-25T16:18",
+      "text": "02:53 PM to 04:18 PM"
+    },
+    "varjyam": [
+      {
+        "start": "2026-10-25T07:57",
+        "end": "2026-10-25T09:28",
+        "text": "07:57 AM to 09:28 AM"
+      }
+    ],
+    "durMuhurtam": [
+      {
+        "start": "2026-10-25T16:12",
+        "end": "2026-10-25T16:57",
+        "text": "04:12 PM to 04:57 PM"
+      }
+    ],
+    "bhadra": [
+      {
+        "start": "2026-10-25T11:55",
+        "end": "2026-10-25T22:52",
+        "text": "11:55 AM to 10:52 PM"
+      }
+    ],
+    "panchaka": [
+      {
+        "start": "2026-10-25T06:28",
+        "end": "2026-10-25T19:22",
+        "text": "06:28 AM to 07:22 PM"
+      }
+    ],
+    "dishaShool": "West",
+    "lahiriAyanamsha": 24.238394,
+    "julianDay": "2461338.5 Days",
+    "table": [
+      {
+        "title": "Sunrise and Moonrise",
+        "rows": [
+          {
+            "key": "Sunrise",
+            "lines": [
+              "06:28 AM"
+            ]
+          },
+          {
+            "key": "Sunset",
+            "lines": [
+              "05:42 PM"
+            ]
+          },
+          {
+            "key": "Moonrise",
+            "lines": [
+              "05:00 PM"
+            ]
+          },
+          {
+            "key": "Moonset",
+            "lines": [
+              "06:23 AM, Oct 26"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Panchang",
+        "rows": [
+          {
+            "key": "Tithi",
+            "lines": [
+              "Chaturdashi upto 11:55 AM",
+              "Purnima"
+            ]
+          },
+          {
+            "key": "Nakshatra",
+            "lines": [
+              "Revati upto 07:22 PM",
+              "Ashwini"
+            ]
+          },
+          {
+            "key": "Yoga",
+            "lines": [
+              "Harshana upto 05:22 PM",
+              "Vajra"
+            ]
+          },
+          {
+            "key": "Karana",
+            "lines": [
+              "Vanija upto 11:55 AM",
+              "Vishti upto 10:52 PM",
+              "Bava"
+            ]
+          },
+          {
+            "key": "Weekday",
+            "lines": [
+              "Raviwara"
+            ]
+          },
+          {
+            "key": "Paksha",
+            "lines": [
+              "Shukla Paksha"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Lunar Month, Samvat and Brihaspati Samvatsara",
+        "rows": [
+          {
+            "key": "Vikram Samvat",
+            "lines": [
+              "2083 Siddharthi"
+            ]
+          },
+          {
+            "key": "Samvatsara",
+            "lines": [
+              "Siddharthi upto 03:53 PM, Apr 21, 2026",
+              "Raudra"
+            ]
+          },
+          {
+            "key": "Shaka Samvat",
+            "lines": [
+              "1948 Parabhava"
+            ]
+          },
+          {
+            "key": "Gujarati Samvat",
+            "lines": [
+              "2082 Pingala"
+            ]
+          },
+          {
+            "key": "Chandramasa",
+            "lines": [
+              "Ashwina - Purnimanta",
+              "Ashwina - Amanta"
+            ]
+          },
+          {
+            "key": "Pravishte/Gate",
+            "lines": [
+              "9"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Mantri Mandala of Vikram Samvat 2083",
+        "rows": [
+          {
+            "key": "Raja",
+            "lines": [
+              "Guru",
+              "👑",
+              "- King"
+            ]
+          },
+          {
+            "key": "Senadhipati",
+            "lines": [
+              "Chandra",
+              "⚔️",
+              "- Commander-in-Chief"
+            ]
+          },
+          {
+            "key": "Mantri",
+            "lines": [
+              "Mangal",
+              "⚜️",
+              "- Minister of Cabinet"
+            ]
+          },
+          {
+            "key": "Dhanyadhipati",
+            "lines": [
+              "Budha",
+              "🌻",
+              "- Rabi Crops"
+            ]
+          },
+          {
+            "key": "Sasyadhipati",
+            "lines": [
+              "Guru",
+              "🌾",
+              "- Kharif Crops"
+            ]
+          },
+          {
+            "key": "Meghadhipati",
+            "lines": [
+              "Chandra",
+              "🌧",
+              "- Clouds and Rain"
+            ]
+          },
+          {
+            "key": "Dhanadhipati",
+            "lines": [
+              "Guru",
+              "💰",
+              "- Wealth and Economy"
+            ]
+          },
+          {
+            "key": "Nirasadhipati",
+            "lines": [
+              "Guru",
+              "🪙",
+              "- Metals and Minerals"
+            ]
+          },
+          {
+            "key": "Rasadhipati",
+            "lines": [
+              "Shani",
+              "🍯",
+              "- Sap and Liquids"
+            ]
+          },
+          {
+            "key": "Phaladhipati",
+            "lines": [
+              "Chandra",
+              "🍎",
+              "- Fruits and Flowers"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Rashi and Nakshatra",
+        "rows": [
+          {
+            "key": "Moonsign",
+            "lines": [
+              "Meena upto 07:22 PM",
+              "Mesha"
+            ]
+          },
+          {
+            "key": "Nakshatra Pada",
+            "lines": [
+              "Revati upto 08:01 AM",
+              "Revati upto 01:42 PM",
+              "Revati upto 07:22 PM",
+              "Ashwini upto 12:59 AM, Oct 26",
+              "Ashwini"
+            ]
+          },
+          {
+            "key": "Sunsign",
+            "lines": [
+              "Tula"
+            ]
+          },
+          {
+            "key": "Surya Nakshatra",
+            "lines": [
+              "Swati"
+            ]
+          },
+          {
+            "key": "Surya Pada",
+            "lines": [
+              "Swati"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Ritu and Ayana",
+        "rows": [
+          {
+            "key": "Drik Ritu",
+            "lines": [
+              "Hemant (Prewinter)"
+            ]
+          },
+          {
+            "key": "Dinamana",
+            "lines": [
+              "11 Hours 13 Mins 51 Secs"
+            ]
+          },
+          {
+            "key": "Vedic Ritu",
+            "lines": [
+              "Sharad (Autumn)"
+            ]
+          },
+          {
+            "key": "Ratrimana",
+            "lines": [
+              "12 Hours 46 Mins 49 Secs"
+            ]
+          },
+          {
+            "key": "Drik Ayana",
+            "lines": [
+              "Dakshinayana"
+            ]
+          },
+          {
+            "key": "Madhyahna",
+            "lines": [
+              "12:05 PM"
+            ]
+          },
+          {
+            "key": "Vedic Ayana",
+            "lines": [
+              "Dakshinayana"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Auspicious Timings",
+        "rows": [
+          {
+            "key": "Brahma Muhurta",
+            "lines": [
+              "04:46 AM to 05:37 AM"
+            ]
+          },
+          {
+            "key": "Pratah Sandhya",
+            "lines": [
+              "05:11 AM to 06:28 AM"
+            ]
+          },
+          {
+            "key": "Abhijit",
+            "lines": [
+              "11:42 AM to 12:27 PM"
+            ]
+          },
+          {
+            "key": "Vijaya Muhurta",
+            "lines": [
+              "01:57 PM to 02:42 PM"
+            ]
+          },
+          {
+            "key": "Godhuli Muhurta",
+            "lines": [
+              "05:42 PM to 06:07 PM"
+            ]
+          },
+          {
+            "key": "Sayahna Sandhya",
+            "lines": [
+              "05:42 PM to 06:59 PM"
+            ]
+          },
+          {
+            "key": "Amrit Kalam",
+            "lines": [
+              "05:05 PM to 06:36 PM"
+            ]
+          },
+          {
+            "key": "Nishita Muhurta",
+            "lines": [
+              "11:40 PM to 12:31 AM, Oct 26"
+            ]
+          },
+          {
+            "key": "Sarvartha Siddhi Yoga",
+            "lines": [
+              "07:22 PM to 06:29 AM, Oct 26"
+            ]
+          },
+          {
+            "key": "Ravi Yoga",
+            "lines": [
+              "06:28 AM to 07:22 PM"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Inauspicious Timings",
+        "rows": [
+          {
+            "key": "Rahu Kalam",
+            "lines": [
+              "04:18 PM to 05:42 PM"
+            ]
+          },
+          {
+            "key": "Yamaganda",
+            "lines": [
+              "12:05 PM to 01:29 PM"
+            ]
+          },
+          {
+            "key": "Aadal Yoga",
+            "lines": [
+              "06:28 AM to 07:22 PM"
+            ]
+          },
+          {
+            "key": "Dur Muhurtam",
+            "lines": [
+              "04:12 PM to 04:57 PM"
+            ]
+          },
+          {
+            "key": "Gulikai Kalam",
+            "lines": [
+              "02:53 PM to 04:18 PM"
+            ]
+          },
+          {
+            "key": "Bhadra",
+            "lines": [
+              "11:55 AM to 10:52 PM"
+            ]
+          },
+          {
+            "key": "Varjyam",
+            "lines": [
+              "07:57 AM to 09:28 AM"
+            ]
+          },
+          {
+            "key": "Panchaka",
+            "lines": [
+              "06:28 AM to 07:22 PM"
+            ]
+          },
+          {
+            "key": "Ganda Moola",
+            "lines": [
+              "Whole Day"
+            ]
+          },
+          {
+            "key": "Baana",
+            "lines": [
+              "Roga from 09:04 PM to Full Night"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Anandadi and Tamil Yoga",
+        "rows": [
+          {
+            "key": "Anandadi Yoga",
+            "lines": [
+              "Vardhamana upto 07:22 PM",
+              "Ananda"
+            ]
+          },
+          {
+            "key": "Tamil Yoga",
+            "lines": [
+              "Siddha upto 07:22 PM",
+              "Siddha"
+            ]
+          },
+          {
+            "key": "Jeevanama",
+            "lines": [
+              "Full Life",
+              "𝟣"
+            ]
+          },
+          {
+            "key": "Netrama",
+            "lines": [
+              "Two Eyes",
+              "𝟤"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Nivas and Shool",
+        "rows": [
+          {
+            "key": "Homahuti",
+            "lines": [
+              "Chandra",
+              "☾"
+            ]
+          },
+          {
+            "key": "Disha Shool",
+            "lines": [
+              "West"
+            ]
+          },
+          {
+            "key": "Agnivasa",
+            "lines": [
+              "Prithvi (Earth) upto 11:55 AM",
+              "Akasha (Heaven)"
+            ]
+          },
+          {
+            "key": "Chandra Vasa",
+            "lines": [
+              "North upto 07:22 PM",
+              "East from 07:22 PM to Full Night"
+            ]
+          },
+          {
+            "key": "Bhadravasa",
+            "lines": [
+              "Mrityu (Earth) from 11:55 AM to 07:22 PM",
+              "Swarga (Heaven) from 07:22 PM to 10:52 PM"
+            ]
+          },
+          {
+            "key": "Rahu Vasa",
+            "lines": [
+              "North"
+            ]
+          },
+          {
+            "key": "Kumbha Chakra",
+            "lines": [
+              "West upto 07:22 PM",
+              "North"
+            ]
+          },
+          {
+            "key": "Shivavasa",
+            "lines": [
+              "in Bhojana upto 11:55 AM",
+              "in Shmashana"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Other Calendars and Epoch",
+        "rows": [
+          {
+            "key": "Kaliyuga",
+            "lines": [
+              "5127 Years"
+            ]
+          },
+          {
+            "key": "Lahiri Ayanamsha",
+            "lines": [
+              "24.238394"
+            ]
+          },
+          {
+            "key": "Kali Ahargana",
+            "lines": [
+              "1872873 Days"
+            ]
+          },
+          {
+            "key": "Rata Die",
+            "lines": [
+              "739914"
+            ]
+          },
+          {
+            "key": "Julian Date",
+            "lines": [
+              "October 12, 2026 CE"
+            ]
+          },
+          {
+            "key": "Julian Day",
+            "lines": [
+              "2461338.5 Days"
+            ]
+          },
+          {
+            "key": "National Civil Date",
+            "lines": [
+              "Kartika 03, 1948 Shaka"
+            ]
+          },
+          {
+            "key": "Modified Julian Day",
+            "lines": [
+              "61338 Days"
+            ]
+          },
+          {
+            "key": "National Nirayana Date",
+            "lines": [
+              "Kartika 10, 1948 Shaka"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Chandrabalam & Tarabalam",
+        "rows": [
+          {
+            "key": "Good Chandrabalam till 07:22 PM for Vrishabha Mithuna Kanya Tula Makara Meena *Ashtama Chandra for Simha Rashi borns *Ashtama Chandra for Magha, Purva Phalguni and Uttara Phalguni first Pada borns Good Chandrabalam till next day sunrise for Mesha Mithuna Karka Tula Vrishchika Kumbha *Ashtama Chandra for Kanya Rashi borns *Ashtama Chandra for Uttara Phalguni last 3 Pada, Hasta and first 2 Pada of Chitra borns",
+            "lines": [
+              "Good Tarabalam till 07:22 PM for",
+              "Ashwini",
+              "Bharani",
+              "Rohini",
+              "Ardra",
+              "Pushya",
+              "Magha",
+              "Purva Phalguni",
+              "Hasta",
+              "Swati",
+              "Anuradha",
+              "Mula",
+              "Purva Ashadha",
+              "Shravana",
+              "Shatabhisha",
+              "Uttara Bhadrapada",
+              "Good Tarabalam till next day sunrise for",
+              "Bharani",
+              "Krittika",
+              "Mrigashira",
+              "Punarvasu",
+              "Ashlesha",
+              "Purva Phalguni",
+              "Uttara Phalguni",
+              "Chitra",
+              "Vishakha",
+              "Jyeshtha",
+              "Purva Ashadha",
+              "Uttara Ashadha",
+              "Dhanishtha",
+              "Purva Bhadrapada",
+              "Revati"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Panchaka Rahita Muhurta and Udaya Lagna",
+        "rows": []
+      },
+      {
+        "title": "Day Festivals and Events",
+        "rows": []
+      }
+    ]
+  },
+  "notes": [
+    "Times are the city local wall-clock times shown by the page (HH:MM, no seconds); a date suffix marks the next civil day."
+  ]
+}

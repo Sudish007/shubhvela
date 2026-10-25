@@ -1,0 +1,359 @@
+{
+  "case": "c28",
+  "source": "drikpanchang",
+  "source_url": "https://www.drikpanchang.com/jyotisha/kundali/kundali.html (POST dp_payload from https://www.drikpanchang.com/jyotisha/kundali/janma-kundali.html)",
+  "fetched_at": "2026-10-24T22:56:09.369Z",
+  "fetcher_version": "a04-1",
+  "values": {
+    "input": {
+      "date": "1988-07-16",
+      "time": "14:20",
+      "noonForUnknownTime": false,
+      "city": "City of London",
+      "state": "England",
+      "country": "United Kingdom",
+      "latitude": 51.51277777777778,
+      "longitude": -0.09194444444444444,
+      "elevation": 27,
+      "olsonTimezone": "Europe/London",
+      "offsetHours": 0,
+      "offsetMinutes": 0,
+      "ayanamsha": "chitra-paksha",
+      "node": "mean (site default; \"Set True Rahu/Ketu\" not toggled)",
+      "suggestions": [
+        "New London Connecticut, United States",
+        "East London Eastern Cape, South Africa",
+        "City of London England, United Kingdom",
+        "New London New Hampshire, United States",
+        "London England, United Kingdom",
+        "New London Iowa, United States",
+        "New London Minnesota, United States",
+        "London Ohio, United States",
+        "New London Ohio, United States",
+        "New London Wisconsin, United States",
+        "London California, United States",
+        "London Village Line Islands, Kiribati",
+        "London Arkansas, United States",
+        "London Kentucky, United States",
+        "Londontowne Maryland, United States",
+        "New London Missouri, United States",
+        "Londonderry Vermont, United States",
+        "London Ontario, Canada",
+        "Wandsworth England, United Kingdom",
+        "Sutton England, United Kingdom",
+        "Londonderry County Borough Northern Ireland, United Kingdom",
+        "Derry Northern Ireland, United Kingdom",
+        "Islington England, United Kingdom",
+        "Hounslow England, United Kingdom",
+        "Harrow England, United Kingdom",
+        "Ealing England, United Kingdom",
+        "Croydon England, United Kingdom",
+        "Bexley England, United Kingdom",
+        "Barnet England, United Kingdom",
+        "Acton England, United Kingdom",
+        "Westminster Maryland, United States",
+        "New Haven West Virginia, United States",
+        "Londonderry New Hampshire, United States",
+        "Loudonville Ohio, United States",
+        "West End of London England, United Kingdom"
+      ],
+      "picked": "City of London England, United Kingdom"
+    },
+    "planets": {
+      "Su": {
+        "sign": 4,
+        "lon": 90.50889,
+        "text": "00° Kark 30′ 32″",
+        "nakshatra": 7,
+        "pada": 4,
+        "isIn": "10 Bhava",
+        "dignities": "-"
+      },
+      "Mo": {
+        "sign": 4,
+        "lon": 119.89944,
+        "text": "29° Kark 53′ 58″",
+        "nakshatra": 9,
+        "pada": 4,
+        "isIn": "10 Bhava",
+        "dignities": "-"
+      },
+      "Ma": {
+        "sign": 12,
+        "lon": 337.52806,
+        "text": "07° Meen 31′ 41″",
+        "nakshatra": 26,
+        "pada": 2,
+        "isIn": "6 Bhava",
+        "dignities": "-"
+      },
+      "Me": {
+        "sign": 3,
+        "lon": 72.635,
+        "text": "12° Mitu 38′ 06″",
+        "nakshatra": 6,
+        "pada": 2,
+        "isIn": "9 Bhava",
+        "dignities": "-"
+      },
+      "Ju": {
+        "sign": 2,
+        "lon": 35.33806,
+        "text": "05° Vibh 20′ 17″",
+        "nakshatra": 3,
+        "pada": 3,
+        "isIn": "8 Bhava",
+        "dignities": "-"
+      },
+      "Ve": {
+        "sign": 2,
+        "lon": 52.76083,
+        "text": "22° Vibh 45′ 39″",
+        "nakshatra": 4,
+        "pada": 4,
+        "isIn": "8 Bhava",
+        "dignities": "-"
+      },
+      "Sa": {
+        "sign": 9,
+        "lon": 243.72639,
+        "text": "03° Dhan 43′ 35″",
+        "nakshatra": 19,
+        "pada": 2,
+        "isIn": "3 Bhava",
+        "dignities": "-"
+      },
+      "Ra": {
+        "sign": 11,
+        "lon": 323.00222,
+        "text": "23° Kumb 00′ 08″",
+        "nakshatra": 25,
+        "pada": 1,
+        "isIn": "5 Bhava",
+        "dignities": "-",
+        "retro": true
+      },
+      "Ke": {
+        "sign": 5,
+        "lon": 143.00222,
+        "text": "23° Simh 00′ 08″",
+        "nakshatra": 11,
+        "pada": 3,
+        "isIn": "11 Bhava",
+        "dignities": "-",
+        "retro": true
+      }
+    },
+    "lagna": {
+      "sign": 7,
+      "lon": 187.55611,
+      "text": "07° Tula 33′ 22″",
+      "nakshatra": 15,
+      "pada": 1,
+      "isIn": "1 Bhava",
+      "dignities": "-"
+    },
+    "moon": {
+      "nakshatra": 9,
+      "pada": 4,
+      "text": "Ashlesha 4"
+    },
+    "dasha": {
+      "mahaLord": "budha",
+      "mahaLordId": "Me",
+      "mahaStart": "1971-09-02T00:07",
+      "mahaEnd": "1988-09-01T08:43",
+      "mahas": [
+        {
+          "lord": "Me",
+          "start": "1971-09-02T00:07",
+          "end": "1988-09-01T08:43",
+          "raw": "Budha - Maha Dasha - 16y 11m | September 2, 1971, Thursday at 00:07 September 1, 1988, Thursday at 08:43 ❯"
+        },
+        {
+          "lord": "Ke",
+          "start": "1988-09-01T08:43",
+          "end": "1995-09-02T03:47",
+          "raw": "Ketu - Maha Dasha - 7y | September 1, 1988, Thursday at 08:43 September 2, 1995, Saturday at 03:47 ❯"
+        },
+        {
+          "lord": "Ve",
+          "start": "1995-09-02T03:47",
+          "end": "2015-09-02T06:50",
+          "raw": "Shukra - Maha Dasha - 20y | September 2, 1995, Saturday at 03:47 September 2, 2015, Wednesday at 06:50 ❯"
+        },
+        {
+          "lord": "Su",
+          "start": "2015-09-02T06:50",
+          "end": "2021-09-01T19:45",
+          "raw": "Surya - Maha Dasha - 5y 11m | September 2, 2015, Wednesday at 06:50 September 1, 2021, Wednesday at 19:45 ❯"
+        },
+        {
+          "lord": "Mo",
+          "start": "2021-09-01T19:45",
+          "end": "2031-09-02T09:17",
+          "raw": "Chandra - Maha Dasha - 10y | September 1, 2021, Wednesday at 19:45 September 2, 2031, Tuesday at 09:17 ❯"
+        },
+        {
+          "lord": "Ma",
+          "start": "2031-09-02T09:17",
+          "end": "2038-09-02T04:21",
+          "raw": "Mangal - Maha Dasha - 6y 11m | September 2, 2031, Tuesday at 09:17 September 2, 2038, Thursday at 04:21 ❯"
+        },
+        {
+          "lord": "Ra",
+          "start": "2038-09-02T04:21",
+          "end": "2056-09-01T19:06",
+          "raw": "Rahu - Maha Dasha - 17y 11m | September 2, 2038, Thursday at 04:21 September 1, 2056, Friday at 19:06 ❯"
+        },
+        {
+          "lord": "Ju",
+          "start": "2056-09-01T19:06",
+          "end": "2072-09-01T21:32",
+          "raw": "Guru - Maha Dasha - 16y | September 1, 2056, Friday at 19:06 September 1, 2072, Thursday at 21:32 ❯"
+        },
+        {
+          "lord": "Sa",
+          "start": "2072-09-01T21:32",
+          "end": "2091-09-02T18:26",
+          "raw": "Shani - Maha Dasha - 19y | September 1, 2072, Thursday at 21:32 September 2, 2091, Sunday at 18:26 ❯"
+        }
+      ]
+    },
+    "raw": {
+      "planets": [
+        {
+          "name": "Lagna",
+          "rawName": "Lagna (Q)",
+          "longitude": "07° Tula 33′ 22″",
+          "nakshatra": "Swati 1",
+          "isIn": "1 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Surya",
+          "rawName": "☉Surya (Q) 🌸",
+          "longitude": "00° Kark 30′ 32″",
+          "nakshatra": "Punarvasu 4🔥",
+          "isIn": "10 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Chandra",
+          "rawName": "☾Chandra (Q) 🔥",
+          "longitude": "29° Kark 53′ 58″",
+          "nakshatra": "Ashlesha 4🔥",
+          "isIn": "10 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Mangal",
+          "rawName": "♂Mangal 🌸",
+          "longitude": "07° Meen 31′ 41″",
+          "nakshatra": "U Bhadrapada 2",
+          "isIn": "6 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Budha",
+          "rawName": "☿Budha (T) ⚠",
+          "longitude": "12° Mitu 38′ 06″",
+          "nakshatra": "Ardra 2🔥",
+          "isIn": "9 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Guru",
+          "rawName": "♃Guru",
+          "longitude": "05° Vibh 20′ 17″",
+          "nakshatra": "Krittika 3",
+          "isIn": "8 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Shukra",
+          "rawName": "♀Shukra",
+          "longitude": "22° Vibh 45′ 39″",
+          "nakshatra": "Rohini 4",
+          "isIn": "8 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Shani",
+          "rawName": "♄Shani ↺",
+          "longitude": "03° Dhan 43′ 35″",
+          "nakshatra": "Mula 2",
+          "isIn": "3 Bhava",
+          "dignities": "-",
+          "retro": true
+        },
+        {
+          "name": "Rahu",
+          "rawName": "☊Rahu (T) ↺",
+          "longitude": "23° Kumb 00′ 08″",
+          "nakshatra": "P Bhadrapada 1",
+          "isIn": "5 Bhava",
+          "dignities": "-",
+          "retro": true
+        },
+        {
+          "name": "Ketu",
+          "rawName": "☋Ketu ↺ 🌸",
+          "longitude": "23° Simh 00′ 08″",
+          "nakshatra": "P Phalguni 3",
+          "isIn": "11 Bhava",
+          "dignities": "-",
+          "retro": true
+        }
+      ],
+      "dasha": [
+        [
+          "Budha - Maha Dasha - 16y 11m",
+          "September 2, 1971, Thursday at 00:07 September 1, 1988, Thursday at 08:43 ❯"
+        ],
+        [
+          "Ketu - Maha Dasha - 7y",
+          "September 1, 1988, Thursday at 08:43 September 2, 1995, Saturday at 03:47 ❯"
+        ],
+        [
+          "Shukra - Maha Dasha - 20y",
+          "September 2, 1995, Saturday at 03:47 September 2, 2015, Wednesday at 06:50 ❯"
+        ],
+        [
+          "Surya - Maha Dasha - 5y 11m",
+          "September 2, 2015, Wednesday at 06:50 September 1, 2021, Wednesday at 19:45 ❯"
+        ],
+        [
+          "Chandra - Maha Dasha - 10y",
+          "September 1, 2021, Wednesday at 19:45 September 2, 2031, Tuesday at 09:17 ❯"
+        ],
+        [
+          "Mangal - Maha Dasha - 6y 11m",
+          "September 2, 2031, Tuesday at 09:17 September 2, 2038, Thursday at 04:21 ❯"
+        ],
+        [
+          "Rahu - Maha Dasha - 17y 11m",
+          "September 2, 2038, Thursday at 04:21 September 1, 2056, Friday at 19:06 ❯"
+        ],
+        [
+          "Guru - Maha Dasha - 16y",
+          "September 1, 2056, Friday at 19:06 September 1, 2072, Thursday at 21:32 ❯"
+        ],
+        [
+          "Shani - Maha Dasha - 19y",
+          "September 1, 2072, Thursday at 21:32 September 2, 2091, Sunday at 18:26 ❯"
+        ]
+      ]
+    }
+  },
+  "notes": [
+    "Longitudes are sidereal (Lahiri/Chitrapaksha, site default), DD° Sign MM′ SS″ as printed under \"Rashi Chart Details > Graha Details\"; mean node."
+  ]
+}

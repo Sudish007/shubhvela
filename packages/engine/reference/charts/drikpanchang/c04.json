@@ -1,0 +1,327 @@
+{
+  "case": "c04",
+  "source": "drikpanchang",
+  "source_url": "https://www.drikpanchang.com/jyotisha/kundali/kundali.html (POST dp_payload from https://www.drikpanchang.com/jyotisha/kundali/janma-kundali.html)",
+  "fetched_at": "2026-10-24T22:53:25.495Z",
+  "fetcher_version": "a04-1",
+  "values": {
+    "input": {
+      "date": "1985-11-23",
+      "time": "21:15",
+      "noonForUnknownTime": false,
+      "city": "Siwan",
+      "state": "Bihar",
+      "country": "India",
+      "latitude": 26.22083333333333,
+      "longitude": 84.3561111111111,
+      "elevation": 71,
+      "olsonTimezone": "Asia/Kolkata",
+      "offsetMinutes": null,
+      "ayanamsha": "chitra-paksha",
+      "node": "mean (site default; \"Set True Rahu/Ketu\" not toggled)",
+      "suggestions": [
+        "Siwana Rajasthan, India",
+        "Siwan Bihar, India",
+        "Xiwanzi Hebei, China"
+      ],
+      "picked": "Siwan Bihar, India",
+      "formOffsetHours": 5.5
+    },
+    "planets": {
+      "Su": {
+        "sign": 8,
+        "lon": 217.63417,
+        "text": "07° Vish 38′ 03″",
+        "nakshatra": 17,
+        "pada": 2,
+        "isIn": "5 Bhava",
+        "dignities": "-"
+      },
+      "Mo": {
+        "sign": 12,
+        "lon": 355.80222,
+        "text": "25° Meen 48′ 08″",
+        "nakshatra": 27,
+        "pada": 3,
+        "isIn": "9 Bhava",
+        "dignities": "-"
+      },
+      "Ma": {
+        "sign": 6,
+        "lon": 173.22389,
+        "text": "23° Kany 13′ 26″",
+        "nakshatra": 13,
+        "pada": 4,
+        "isIn": "3 Bhava",
+        "dignities": "-"
+      },
+      "Me": {
+        "sign": 8,
+        "lon": 229.23583,
+        "text": "19° Vish 14′ 09″",
+        "nakshatra": 18,
+        "pada": 1,
+        "isIn": "5 Bhava",
+        "dignities": "-"
+      },
+      "Ju": {
+        "sign": 10,
+        "lon": 287.51583,
+        "text": "17° Maka 30′ 57″",
+        "nakshatra": 22,
+        "pada": 3,
+        "isIn": "7 Bhava",
+        "dignities": "Debilitated"
+      },
+      "Ve": {
+        "sign": 7,
+        "lon": 203.91583,
+        "text": "23° Tula 54′ 57″",
+        "nakshatra": 16,
+        "pada": 2,
+        "isIn": "4 Bhava",
+        "dignities": "-"
+      },
+      "Sa": {
+        "sign": 8,
+        "lon": 217.11444,
+        "text": "07° Vish 06′ 52″",
+        "nakshatra": 17,
+        "pada": 2,
+        "isIn": "5 Bhava",
+        "dignities": "-"
+      },
+      "Ra": {
+        "sign": 1,
+        "lon": 14.18722,
+        "text": "14° Mesh 11′ 14″",
+        "nakshatra": 2,
+        "pada": 1,
+        "isIn": "10 Bhava",
+        "dignities": "-",
+        "retro": true
+      },
+      "Ke": {
+        "sign": 7,
+        "lon": 194.18722,
+        "text": "14° Tula 11′ 14″",
+        "nakshatra": 15,
+        "pada": 3,
+        "isIn": "4 Bhava",
+        "dignities": "-",
+        "retro": true
+      }
+    },
+    "lagna": {
+      "sign": 4,
+      "lon": 97.73083,
+      "text": "07° Kark 43′ 51″",
+      "nakshatra": 8,
+      "pada": 2,
+      "isIn": "1 Bhava",
+      "dignities": "-"
+    },
+    "moon": {
+      "nakshatra": 27,
+      "pada": 3,
+      "text": "Revati 3"
+    },
+    "dasha": {
+      "mahaLord": "budha",
+      "mahaLordId": "Me",
+      "mahaStart": "1974-04-01T10:09",
+      "mahaEnd": "1991-04-01T18:44",
+      "mahas": [
+        {
+          "lord": "Me",
+          "start": "1974-04-01T10:09",
+          "end": "1991-04-01T18:44",
+          "raw": "Budha - Maha Dasha - 17y | April 1, 1974, Monday at 10:09 April 1, 1991, Monday at 18:44 ❯"
+        },
+        {
+          "lord": "Ke",
+          "start": "1991-04-01T18:44",
+          "end": "1998-04-01T13:49",
+          "raw": "Ketu - Maha Dasha - 6y 11m | April 1, 1991, Monday at 18:44 April 1, 1998, Wednesday at 13:49 ❯"
+        },
+        {
+          "lord": "Ve",
+          "start": "1998-04-01T13:49",
+          "end": "2018-04-01T16:52",
+          "raw": "Shukra - Maha Dasha - 20y | April 1, 1998, Wednesday at 13:49 April 1, 2018, Sunday at 16:52 ❯"
+        },
+        {
+          "lord": "Su",
+          "start": "2018-04-01T16:52",
+          "end": "2024-04-01T05:47",
+          "raw": "Surya - Maha Dasha - 5y 11m | April 1, 2018, Sunday at 16:52 April 1, 2024, Monday at 05:47 ❯"
+        },
+        {
+          "lord": "Mo",
+          "start": "2024-04-01T05:47",
+          "end": "2034-04-01T19:18",
+          "raw": "Chandra - Maha Dasha - 10y | April 1, 2024, Monday at 05:47 April 1, 2034, Saturday at 19:18 ❯"
+        },
+        {
+          "lord": "Ma",
+          "start": "2034-04-01T19:18",
+          "end": "2041-04-01T14:22",
+          "raw": "Mangal - Maha Dasha - 6y 11m | April 1, 2034, Saturday at 19:18 April 1, 2041, Monday at 14:22 ❯"
+        },
+        {
+          "lord": "Ra",
+          "start": "2041-04-01T14:22",
+          "end": "2059-04-02T05:07",
+          "raw": "Rahu - Maha Dasha - 18y | April 1, 2041, Monday at 14:22 April 2, 2059, Wednesday at 05:07 ❯"
+        },
+        {
+          "lord": "Ju",
+          "start": "2059-04-02T05:07",
+          "end": "2075-04-02T07:34",
+          "raw": "Guru - Maha Dasha - 16y | April 2, 2059, Wednesday at 05:07 April 2, 2075, Tuesday at 07:34 ❯"
+        },
+        {
+          "lord": "Sa",
+          "start": "2075-04-02T07:34",
+          "end": "2094-04-02T04:28",
+          "raw": "Shani - Maha Dasha - 18y 11m | April 2, 2075, Tuesday at 07:34 April 2, 2094, Friday at 04:28 ❯"
+        }
+      ]
+    },
+    "raw": {
+      "planets": [
+        {
+          "name": "Lagna",
+          "rawName": "Lagna (Q) 🌸",
+          "longitude": "07° Kark 43′ 51″",
+          "nakshatra": "Pushya 2",
+          "isIn": "1 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Surya",
+          "rawName": "☉Surya (T) 🌸",
+          "longitude": "07° Vish 38′ 03″",
+          "nakshatra": "Anuradha 2🔥",
+          "isIn": "5 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Chandra",
+          "rawName": "☾Chandra (T)",
+          "longitude": "25° Meen 48′ 08″",
+          "nakshatra": "Revati 3",
+          "isIn": "9 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Mangal",
+          "rawName": "♂Mangal 💱",
+          "longitude": "23° Kany 13′ 26″",
+          "nakshatra": "Hasta 4",
+          "isIn": "3 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Budha",
+          "rawName": "☿Budha (T) ↺ 🔥 💱",
+          "longitude": "19° Vish 14′ 09″",
+          "nakshatra": "Jyeshtha 1🔥",
+          "isIn": "5 Bhava",
+          "dignities": "-",
+          "retro": true
+        },
+        {
+          "name": "Guru",
+          "rawName": "♃Guru (Q)",
+          "longitude": "17° Maka 30′ 57″",
+          "nakshatra": "Shravana 3",
+          "isIn": "7 Bhava",
+          "dignities": "Debilitated",
+          "retro": false
+        },
+        {
+          "name": "Shukra",
+          "rawName": "♀Shukra (Q) 🌸",
+          "longitude": "23° Tula 54′ 57″",
+          "nakshatra": "Vishakha 2🔥",
+          "isIn": "4 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Shani",
+          "rawName": "♄Shani (T) 🔥 🌸",
+          "longitude": "07° Vish 06′ 52″",
+          "nakshatra": "Anuradha 2🔥",
+          "isIn": "5 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Rahu",
+          "rawName": "☊Rahu (Q) ↺",
+          "longitude": "14° Mesh 11′ 14″",
+          "nakshatra": "Bharani 1",
+          "isIn": "10 Bhava",
+          "dignities": "-",
+          "retro": true
+        },
+        {
+          "name": "Ketu",
+          "rawName": "☋Ketu (Q) ↺",
+          "longitude": "14° Tula 11′ 14″",
+          "nakshatra": "Swati 3",
+          "isIn": "4 Bhava",
+          "dignities": "-",
+          "retro": true
+        }
+      ],
+      "dasha": [
+        [
+          "Budha - Maha Dasha - 17y",
+          "April 1, 1974, Monday at 10:09 April 1, 1991, Monday at 18:44 ❯"
+        ],
+        [
+          "Ketu - Maha Dasha - 6y 11m",
+          "April 1, 1991, Monday at 18:44 April 1, 1998, Wednesday at 13:49 ❯"
+        ],
+        [
+          "Shukra - Maha Dasha - 20y",
+          "April 1, 1998, Wednesday at 13:49 April 1, 2018, Sunday at 16:52 ❯"
+        ],
+        [
+          "Surya - Maha Dasha - 5y 11m",
+          "April 1, 2018, Sunday at 16:52 April 1, 2024, Monday at 05:47 ❯"
+        ],
+        [
+          "Chandra - Maha Dasha - 10y",
+          "April 1, 2024, Monday at 05:47 April 1, 2034, Saturday at 19:18 ❯"
+        ],
+        [
+          "Mangal - Maha Dasha - 6y 11m",
+          "April 1, 2034, Saturday at 19:18 April 1, 2041, Monday at 14:22 ❯"
+        ],
+        [
+          "Rahu - Maha Dasha - 18y",
+          "April 1, 2041, Monday at 14:22 April 2, 2059, Wednesday at 05:07 ❯"
+        ],
+        [
+          "Guru - Maha Dasha - 16y",
+          "April 2, 2059, Wednesday at 05:07 April 2, 2075, Tuesday at 07:34 ❯"
+        ],
+        [
+          "Shani - Maha Dasha - 18y 11m",
+          "April 2, 2075, Tuesday at 07:34 April 2, 2094, Friday at 04:28 ❯"
+        ]
+      ]
+    }
+  },
+  "notes": [
+    "Longitudes are sidereal (Lahiri/Chitrapaksha, site default), DD° Sign MM′ SS″ as printed under \"Rashi Chart Details > Graha Details\"; mean node."
+  ]
+}

@@ -1,0 +1,337 @@
+{
+  "case": "c33",
+  "source": "drikpanchang",
+  "source_url": "https://www.drikpanchang.com/jyotisha/kundali/kundali.html (POST dp_payload from https://www.drikpanchang.com/jyotisha/kundali/janma-kundali.html)",
+  "fetched_at": "2026-10-24T22:57:38.127Z",
+  "fetcher_version": "a04-1",
+  "values": {
+    "input": {
+      "date": "2019-05-05",
+      "time": "03:33",
+      "noonForUnknownTime": false,
+      "city": "Houston",
+      "state": "Texas",
+      "country": "United States",
+      "latitude": 29.763333333333332,
+      "longitude": -95.36333333333333,
+      "elevation": 30,
+      "olsonTimezone": "America/Chicago",
+      "offsetHours": -6,
+      "offsetMinutes": -360,
+      "ayanamsha": "chitra-paksha",
+      "node": "mean (site default; \"Set True Rahu/Ketu\" not toggled)",
+      "suggestions": [
+        "Houston Texas, United States",
+        "Houston Alaska, United States",
+        "Houston Missouri, United States",
+        "Belfield North Dakota, United States",
+        "Houston British Columbia, Canada",
+        "Houston Scotland, United Kingdom",
+        "Danville Alabama, United States",
+        "Houston Mississippi, United States",
+        "Italy Texas, United States",
+        "South Houston Texas, United States",
+        "Halifax Virginia, United States",
+        "Alexandria Alabama, United States",
+        "Houston Pennsylvania, United States"
+      ],
+      "picked": "Houston Texas, United States"
+    },
+    "planets": {
+      "Su": {
+        "sign": 1,
+        "lon": 20.44222,
+        "text": "20° Mesh 26′ 32″",
+        "nakshatra": 2,
+        "pada": 3,
+        "isIn": "3 Bhava",
+        "dignities": "Exalted"
+      },
+      "Mo": {
+        "sign": 1,
+        "lon": 25.37139,
+        "text": "25° Mesh 22′ 17″",
+        "nakshatra": 2,
+        "pada": 4,
+        "isIn": "3 Bhava",
+        "dignities": "-"
+      },
+      "Ma": {
+        "sign": 2,
+        "lon": 58.88306,
+        "text": "28° Vibh 52′ 59″",
+        "nakshatra": 5,
+        "pada": 2,
+        "isIn": "4 Bhava",
+        "dignities": "-"
+      },
+      "Me": {
+        "sign": 1,
+        "lon": 3.30194,
+        "text": "03° Mesh 18′ 07″",
+        "nakshatra": 1,
+        "pada": 1,
+        "isIn": "3 Bhava",
+        "dignities": "-"
+      },
+      "Ju": {
+        "sign": 8,
+        "lon": 239.2875,
+        "text": "29° Vish 17′ 15″",
+        "nakshatra": 18,
+        "pada": 4,
+        "isIn": "10 Bhava",
+        "dignities": "-"
+      },
+      "Ve": {
+        "sign": 12,
+        "lon": 353.66417,
+        "text": "23° Meen 39′ 51″",
+        "nakshatra": 27,
+        "pada": 3,
+        "isIn": "2 Bhava",
+        "dignities": "Exalted"
+      },
+      "Sa": {
+        "sign": 9,
+        "lon": 266.36167,
+        "text": "26° Dhan 21′ 42″",
+        "nakshatra": 20,
+        "pada": 4,
+        "isIn": "11 Bhava",
+        "dignities": "-"
+      },
+      "Ra": {
+        "sign": 3,
+        "lon": 86.85278,
+        "text": "26° Mitu 51′ 10″",
+        "nakshatra": 7,
+        "pada": 3,
+        "isIn": "5 Bhava",
+        "dignities": "Exalted",
+        "retro": true
+      },
+      "Ke": {
+        "sign": 9,
+        "lon": 266.85278,
+        "text": "26° Dhan 51′ 10″",
+        "nakshatra": 21,
+        "pada": 1,
+        "isIn": "11 Bhava",
+        "dignities": "Exalted",
+        "retro": true
+      }
+    },
+    "lagna": {
+      "sign": 11,
+      "lon": 315.195,
+      "text": "15° Kumb 11′ 42″",
+      "nakshatra": 24,
+      "pada": 3,
+      "isIn": "1 Bhava",
+      "dignities": "-"
+    },
+    "moon": {
+      "nakshatra": 2,
+      "pada": 4,
+      "text": "Bharani 4"
+    },
+    "dasha": {
+      "mahaLord": "shukra",
+      "mahaLordId": "Ve",
+      "mahaStart": "2001-04-13T15:47",
+      "mahaEnd": "2021-04-13T18:50",
+      "mahas": [
+        {
+          "lord": "Ve",
+          "start": "2001-04-13T15:47",
+          "end": "2021-04-13T18:50",
+          "raw": "Shukra - Maha Dasha - 20y | April 13, 2001, Friday at 15:47 April 13, 2021, Tuesday at 18:50 ❯"
+        },
+        {
+          "lord": "Su",
+          "start": "2021-04-13T18:50",
+          "end": "2027-04-14T07:45",
+          "raw": "Surya - Maha Dasha - 6y | April 13, 2021, Tuesday at 18:50 April 14, 2027, Wednesday at 07:45 ❯"
+        },
+        {
+          "lord": "Mo",
+          "start": "2027-04-14T07:45",
+          "end": "2037-04-13T21:16",
+          "raw": "Chandra - Maha Dasha - 9y 11m | April 14, 2027, Wednesday at 07:45 April 13, 2037, Monday at 21:16 ❯"
+        },
+        {
+          "lord": "Ma",
+          "start": "2037-04-13T21:16",
+          "end": "2044-04-13T16:21",
+          "raw": "Mangal - Maha Dasha - 6y 11m | April 13, 2037, Monday at 21:16 April 13, 2044, Wednesday at 16:21 ❯"
+        },
+        {
+          "lord": "Ra",
+          "start": "2044-04-13T16:21",
+          "end": "2062-04-14T07:05",
+          "raw": "Rahu - Maha Dasha - 18y | April 13, 2044, Wednesday at 16:21 April 14, 2062, Friday at 07:05 ❯"
+        },
+        {
+          "lord": "Ju",
+          "start": "2062-04-14T07:05",
+          "end": "2078-04-14T09:32",
+          "raw": "Guru - Maha Dasha - 16y | April 14, 2062, Friday at 07:05 April 14, 2078, Thursday at 09:32 ❯"
+        },
+        {
+          "lord": "Sa",
+          "start": "2078-04-14T09:32",
+          "end": "2097-04-14T06:26",
+          "raw": "Shani - Maha Dasha - 18y 11m | April 14, 2078, Thursday at 09:32 April 14, 2097, Sunday at 06:26 ❯"
+        },
+        {
+          "lord": "Me",
+          "start": "2097-04-14T06:26",
+          "end": "2114-04-15T15:02",
+          "raw": "Budha - Maha Dasha - 17y | April 14, 2097, Sunday at 06:26 April 15, 2114, Sunday at 15:02 ❯"
+        },
+        {
+          "lord": "Ke",
+          "start": "2114-04-15T15:02",
+          "end": "2121-04-15T10:06",
+          "raw": "Ketu - Maha Dasha - 6y 11m | April 15, 2114, Sunday at 15:02 April 15, 2121, Tuesday at 10:06 ❯"
+        }
+      ]
+    },
+    "raw": {
+      "planets": [
+        {
+          "name": "Lagna",
+          "rawName": "Lagna (Q)",
+          "longitude": "15° Kumb 11′ 42″",
+          "nakshatra": "Shatabhisha 3",
+          "isIn": "1 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Surya",
+          "rawName": "☉Surya 🌸",
+          "longitude": "20° Mesh 26′ 32″",
+          "nakshatra": "Bharani 3🔥",
+          "isIn": "3 Bhava",
+          "dignities": "Exalted",
+          "retro": false
+        },
+        {
+          "name": "Chandra",
+          "rawName": "☾Chandra 🔥 ⚠",
+          "longitude": "25° Mesh 22′ 17″",
+          "nakshatra": "Bharani 4🔥",
+          "isIn": "3 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Mangal",
+          "rawName": "♂Mangal (Q)",
+          "longitude": "28° Vibh 52′ 59″",
+          "nakshatra": "Mrigashira 2",
+          "isIn": "4 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Budha",
+          "rawName": "☿Budha 🔥",
+          "longitude": "03° Mesh 18′ 07″",
+          "nakshatra": "Ashwini 1🔥",
+          "isIn": "3 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Guru",
+          "rawName": "♃Guru (Q) ↺",
+          "longitude": "29° Vish 17′ 15″",
+          "nakshatra": "Jyeshtha 4",
+          "isIn": "10 Bhava",
+          "dignities": "-",
+          "retro": true
+        },
+        {
+          "name": "Shukra",
+          "rawName": "♀Shukra",
+          "longitude": "23° Meen 39′ 51″",
+          "nakshatra": "Revati 3🔥",
+          "isIn": "2 Bhava",
+          "dignities": "Exalted",
+          "retro": false
+        },
+        {
+          "name": "Shani",
+          "rawName": "♄Shani ↺",
+          "longitude": "26° Dhan 21′ 42″",
+          "nakshatra": "P Ashadha 4",
+          "isIn": "11 Bhava",
+          "dignities": "-",
+          "retro": true
+        },
+        {
+          "name": "Rahu",
+          "rawName": "☊Rahu (T) ↺",
+          "longitude": "26° Mitu 51′ 10″",
+          "nakshatra": "Punarvasu 3",
+          "isIn": "5 Bhava",
+          "dignities": "Exalted",
+          "retro": true
+        },
+        {
+          "name": "Ketu",
+          "rawName": "☋Ketu ↺ 🌸",
+          "longitude": "26° Dhan 51′ 10″",
+          "nakshatra": "U Ashadha 1",
+          "isIn": "11 Bhava",
+          "dignities": "Exalted",
+          "retro": true
+        }
+      ],
+      "dasha": [
+        [
+          "Shukra - Maha Dasha - 20y",
+          "April 13, 2001, Friday at 15:47 April 13, 2021, Tuesday at 18:50 ❯"
+        ],
+        [
+          "Surya - Maha Dasha - 6y",
+          "April 13, 2021, Tuesday at 18:50 April 14, 2027, Wednesday at 07:45 ❯"
+        ],
+        [
+          "Chandra - Maha Dasha - 9y 11m",
+          "April 14, 2027, Wednesday at 07:45 April 13, 2037, Monday at 21:16 ❯"
+        ],
+        [
+          "Mangal - Maha Dasha - 6y 11m",
+          "April 13, 2037, Monday at 21:16 April 13, 2044, Wednesday at 16:21 ❯"
+        ],
+        [
+          "Rahu - Maha Dasha - 18y",
+          "April 13, 2044, Wednesday at 16:21 April 14, 2062, Friday at 07:05 ❯"
+        ],
+        [
+          "Guru - Maha Dasha - 16y",
+          "April 14, 2062, Friday at 07:05 April 14, 2078, Thursday at 09:32 ❯"
+        ],
+        [
+          "Shani - Maha Dasha - 18y 11m",
+          "April 14, 2078, Thursday at 09:32 April 14, 2097, Sunday at 06:26 ❯"
+        ],
+        [
+          "Budha - Maha Dasha - 17y",
+          "April 14, 2097, Sunday at 06:26 April 15, 2114, Sunday at 15:02 ❯"
+        ],
+        [
+          "Ketu - Maha Dasha - 6y 11m",
+          "April 15, 2114, Sunday at 15:02 April 15, 2121, Tuesday at 10:06 ❯"
+        ]
+      ]
+    }
+  },
+  "notes": [
+    "Longitudes are sidereal (Lahiri/Chitrapaksha, site default), DD° Sign MM′ SS″ as printed under \"Rashi Chart Details > Graha Details\"; mean node."
+  ]
+}

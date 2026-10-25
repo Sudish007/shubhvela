@@ -170,7 +170,7 @@ export function segmentInputs(frame: DayFrame): SegmentInput[] {
     w('yamaganda', 'yamaganda', 'yamaganda', eighth(frame, YAMAGANDA_PART[frame.vara]), 'avoid', false),
     w('gulika', 'gulika', 'gulika', eighth(frame, GULIKA_PART[frame.vara]), 'avoid', false),
     w('abhijit', 'abhijit', 'abhijit', abhijitWindow(frame), 'good', false),
-    w('brahma', 'brahma', 'brahma-muhurat', brahmaWindow(frame.nextSunrise), 'good', true),
+    w('brahma', 'brahma', 'brahma-muhurat', brahmaWindow(frame.nextSunrise, frame.sunset), 'good', true),
     ...chog.day.map(choghadiyaInput),
     ...chog.night.map(choghadiyaInput),
   ];

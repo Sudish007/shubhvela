@@ -1,0 +1,488 @@
+{
+  "case": "c34",
+  "source": "astrosage",
+  "source_url": "https://ascloud.astrosage.com/cloud/planetposition.asp + https://ascloud.astrosage.com/cloud/VMMD&AD.asp (session created by POST https://ascloud.astrosage.com/cloud/createsession.asp from https://www.astrosage.com/kundli/; home https://ascloud.astrosage.com/cloud/home.asp)",
+  "fetched_at": "2026-10-25T01:38:40.103Z",
+  "fetcher_version": "a04-1",
+  "values": {
+    "input": {
+      "date": "1987-10-24",
+      "time": "20:05",
+      "noonForUnknownTime": false,
+      "place": "San Jose",
+      "latitude": 17.883333333333333,
+      "longitude": 121.86666666666666,
+      "latText": "17:53 N",
+      "lonText": "121:52 E",
+      "timezoneHours": 8,
+      "offsetMinutes": 480,
+      "timezoneid": "Asia/Manila",
+      "ayanamsa": "N.C.Lahiri (site default)",
+      "suggestions": [
+        "San Jose, Cagayan Valley (Philippines)",
+        "San Jose, Cagayan Valley (Philippines)",
+        "San Jose, Central Luzon (Philippines)",
+        "San Jose, Calabarzon (Philippines)",
+        "San Jose, Calabarzon (Philippines)",
+        "San Jose, Bicol (Philippines)",
+        "San Jose, Bicol (Philippines)",
+        "San Jose, Bicol (Philippines)",
+        "San Jose, Eastern Visayas (Philippines)",
+        "San Jose, Mimaropa (Philippines)",
+        "San Jose, Eastern Visayas (Philippines)",
+        "San Jose, Western Visayas (Philippines)",
+        "San Jose, Mimaropa (Philippines)",
+        "San Jose, Central Visayas (Philippines)",
+        "San Jose, Northern Mindanao (Philippines)",
+        "San Jose, Misiones (Argentina)",
+        "San Jose, Caaguazu (Paraguay)",
+        "San Jose, Peten (Guatemala)",
+        "San Jose, Yoro (Honduras)",
+        "San Jose, La Paz (Honduras)",
+        "San Jose, Alajuela (Costa Rica)",
+        "San Jose, San Jose (Costa Rica)",
+        "San Jose, Caldas (Colombia)",
+        "San Jose, Narino (Colombia)",
+        "San Jose, Lambayeque (Peru)",
+        "San Jose, Toa Baja (Puerto Rico)",
+        "San Jose, California (United States)",
+        "San Jose Acatempa, Jutiapa (Guatemala)",
+        "San Jose Acateno, Puebla (Mexico)",
+        "San Jose Chiapa, Puebla (Mexico)",
+        "San Jose Chiltepec, Oaxaca (Mexico)",
+        "San Jose de Aerocuar, Sucre (Venezuela)",
+        "San Jose de Barlovento, Miranda (Venezuela)",
+        "San Jose de Bocay, Jinotega (Nicaragua)",
+        "San Jose de Bolivar, Tachira (Venezuela)",
+        "San Jose de Buan, Eastern Visayas (Philippines)",
+        "San Jose de Colinas, Santa Barbara (Honduras)",
+        "San Jose de Comayagua, Comayagua (Honduras)",
+        "San Jose de Copan, Copan (Honduras)",
+        "San Jose de Cusmapa, Madriz (Nicaragua)",
+        "San Jose de Feliciano, Entre Rios (Argentina)",
+        "San Jose de Gracia, Jalisco (Mexico)",
+        "San Jose de Gracia, Aguascalientes (Mexico)",
+        "San Jose de Guanipa, Anzoategui (Venezuela)",
+        "San Jose de Guaribe, Guarico (Venezuela)",
+        "San Jose de Jachal, San Juan (Argentina)",
+        "San Jose de la Dormida, Cordoba (Argentina)",
+        "San Jose de La Montana, Antioquia (Colombia)",
+        "San Jose de Las Conchas, Choluteca (Honduras)",
+        "San Jose de las Lajas, Provincia Mayabeque (Cuba)",
+        "San Jose de Las Matas, Santiago (Dominican Republic)",
+        "San Jose de los Remates, Boaco (Nicaragua)",
+        "San Jose de Mayo, San Jose (Uruguay)",
+        "San Jose de Miranda, Santander (Colombia)",
+        "San Jose de Ocoa, San Jose de Ocoa (Dominican Republic)",
+        "San Jose de Rio Tinto, Olancho (Honduras)",
+        "San Jose de Sisa, San Martin (Peru)",
+        "San Jose de Tarros, Santa Barbara (Honduras)",
+        "San Jose del Boqueron, Cortes (Honduras)",
+        "San Jose del Cabo, Baja California Sur (Mexico)",
+        "San Jose del Castillo, Jalisco (Mexico)",
+        "San Jose del Golfo, Guatemala (Guatemala)",
+        "San Jose del Guaviare, Guaviare (Colombia)",
+        "San Jose del Monte, Central Luzon (Philippines)",
+        "San Jose del Palmar, Choco (Colombia)",
+        "San Jose del Potrero, Comayagua (Honduras)",
+        "San Jose del Valle, Andalusia (Spain)",
+        "San Jose el Alto, Queretaro (Mexico)",
+        "San Jose El Idolo, Suchitepequez (Guatemala)",
+        "San Jose el Vidrio, Mexico (Mexico)",
+        "San Jose Iturbide, Guanajuato (Mexico)",
+        "San Jose La Arada, Chiquimula (Guatemala)",
+        "San Jose Miahuatlan, Puebla (Mexico)",
+        "San Jose Ojetenan, San Marcos (Guatemala)",
+        "San Jose Pinula, Guatemala (Guatemala)",
+        "San Jose Poaquil, Chimaltenango (Guatemala)",
+        "San Jose Temascatio, Guanajuato (Mexico)",
+        "San Josecito, Heredia (Costa Rica)",
+        "San Josecito, Tachira (Venezuela)"
+      ],
+      "picked": "San Jose, Cagayan Valley (Philippines)"
+    },
+    "planets": {
+      "Su": {
+        "sign": 7,
+        "lon": 186.86694,
+        "text": "Libra 06-52-01",
+        "nakshatra": 15,
+        "pada": 1,
+        "retro": false,
+        "combust": false,
+        "relation": "Debilitated"
+      },
+      "Mo": {
+        "sign": 7,
+        "lon": 208.95111,
+        "text": "Libra 28-57-04",
+        "nakshatra": 16,
+        "pada": 3,
+        "retro": false,
+        "combust": false,
+        "relation": "Neutral"
+      },
+      "Ma": {
+        "sign": 6,
+        "lon": 166.43722,
+        "text": "Virgo 16-26-14",
+        "nakshatra": 13,
+        "pada": 2,
+        "retro": false,
+        "combust": false,
+        "relation": "Enemy"
+      },
+      "Me": {
+        "sign": 7,
+        "lon": 195.31194,
+        "text": "Libra 15-18-43",
+        "nakshatra": 15,
+        "pada": 3,
+        "retro": true,
+        "combust": true,
+        "relation": "Friendly"
+      },
+      "Ju": {
+        "sign": 1,
+        "lon": 0.20028,
+        "text": "Aries 00-12-01",
+        "nakshatra": null,
+        "pada": 1,
+        "retro": true,
+        "combust": false,
+        "relation": "Friendly"
+      },
+      "Ve": {
+        "sign": 7,
+        "lon": 203.30972,
+        "text": "Libra 23-18-35",
+        "nakshatra": 16,
+        "pada": 1,
+        "retro": false,
+        "combust": false,
+        "relation": "Own"
+      },
+      "Sa": {
+        "sign": 8,
+        "lon": 234.15694,
+        "text": "Scorpion 24-09-25",
+        "nakshatra": 18,
+        "pada": 3,
+        "retro": false,
+        "combust": false,
+        "relation": "Enemy"
+      },
+      "Ra": {
+        "sign": 12,
+        "lon": 337.10417,
+        "text": "Pisces 07-06-15",
+        "nakshatra": 26,
+        "pada": 2,
+        "retro": false,
+        "combust": false,
+        "relation": ""
+      },
+      "Ke": {
+        "sign": 6,
+        "lon": 157.10417,
+        "text": "Virgo 07-06-15",
+        "nakshatra": 12,
+        "pada": 4,
+        "retro": false,
+        "combust": false,
+        "relation": ""
+      }
+    },
+    "lagna": {
+      "sign": 2,
+      "lon": 50.80111,
+      "text": "Taurus 20-48-04",
+      "nakshatra": 4,
+      "pada": 4,
+      "retro": false,
+      "combust": false,
+      "relation": ""
+    },
+    "moon": {
+      "nakshatra": 16,
+      "pada": 3,
+      "text": "Vishakha 3"
+    },
+    "dasha": {
+      "mahaLord": "Ju",
+      "mahaLordId": "Ju",
+      "mahaStart": "1987-10-24",
+      "mahaEnd": "1993-01-28",
+      "balanceText": "Balance Of Dasha : JUPITER 5 Y 3 M 3 D",
+      "mahas": [
+        {
+          "lord": "Ju",
+          "years": 16,
+          "start": "1987-10-24",
+          "end": "1993-01-28",
+          "raw": "JUP -16 Years 24/10/87 28/ 1/93"
+        },
+        {
+          "lord": "Sa",
+          "years": 19,
+          "start": "1993-01-28",
+          "end": "2012-01-28",
+          "raw": "SAT -19 Years 28/ 1/93 28/ 1/12"
+        },
+        {
+          "lord": "Me",
+          "years": 17,
+          "start": "2012-01-28",
+          "end": "2029-01-28",
+          "raw": "MER -17 Years 28/ 1/12 28/ 1/29"
+        },
+        {
+          "lord": "Ke",
+          "years": 7,
+          "start": "2029-01-28",
+          "end": "2036-01-28",
+          "raw": "KET -7 Years 28/ 1/29 28/ 1/36"
+        },
+        {
+          "lord": "Ve",
+          "years": 20,
+          "start": "2036-01-28",
+          "end": "2056-01-28",
+          "raw": "VEN -20 Years 28/ 1/36 28/ 1/56"
+        },
+        {
+          "lord": "Su",
+          "years": 6,
+          "start": "2056-01-28",
+          "end": "2062-01-28",
+          "raw": "SUN -6 Years 28/ 1/56 28/ 1/62"
+        },
+        {
+          "lord": "Mo",
+          "years": 10,
+          "start": "2062-01-28",
+          "end": "2072-01-28",
+          "raw": "MON -10 Years 28/ 1/62 28/ 1/72"
+        },
+        {
+          "lord": "Ma",
+          "years": 7,
+          "start": "2072-01-28",
+          "end": "2079-01-28",
+          "raw": "MAR -7 Years 28/ 1/72 28/ 1/79"
+        },
+        {
+          "lord": "Ra",
+          "years": 18,
+          "start": "2079-01-28",
+          "end": "2097-01-28",
+          "raw": "RAH -18 Years 28/ 1/79 28/ 1/97"
+        }
+      ],
+      "resolution": "day (d/m/yy as printed)"
+    },
+    "raw": {
+      "planets": [
+        {
+          "name": "Asc",
+          "combust": "",
+          "motion": "",
+          "rashi": "Taurus",
+          "dms": "20-48-04",
+          "nakshatra": "Rohini",
+          "pada": "4",
+          "relation": ""
+        },
+        {
+          "name": "Sun",
+          "combust": "",
+          "motion": "D",
+          "rashi": "Libra",
+          "dms": "06-52-01",
+          "nakshatra": "Swati",
+          "pada": "1",
+          "relation": "Debilitated"
+        },
+        {
+          "name": "Moon",
+          "combust": "",
+          "motion": "D",
+          "rashi": "Libra",
+          "dms": "28-57-04",
+          "nakshatra": "Vishakha",
+          "pada": "3",
+          "relation": "Neutral"
+        },
+        {
+          "name": "Mars",
+          "combust": "",
+          "motion": "D",
+          "rashi": "Virgo",
+          "dms": "16-26-14",
+          "nakshatra": "Hasta",
+          "pada": "2",
+          "relation": "Enemy"
+        },
+        {
+          "name": "Merc",
+          "combust": "C",
+          "motion": "R",
+          "rashi": "Libra",
+          "dms": "15-18-43",
+          "nakshatra": "Swati",
+          "pada": "3",
+          "relation": "Friendly"
+        },
+        {
+          "name": "Jupt",
+          "combust": "",
+          "motion": "R",
+          "rashi": "Aries",
+          "dms": "00-12-01",
+          "nakshatra": "Ashvini",
+          "pada": "1",
+          "relation": "Friendly"
+        },
+        {
+          "name": "Venu",
+          "combust": "",
+          "motion": "D",
+          "rashi": "Libra",
+          "dms": "23-18-35",
+          "nakshatra": "Vishakha",
+          "pada": "1",
+          "relation": "Own"
+        },
+        {
+          "name": "Satn",
+          "combust": "",
+          "motion": "D",
+          "rashi": "Scorpion",
+          "dms": "24-09-25",
+          "nakshatra": "Jyeshtha",
+          "pada": "3",
+          "relation": "Enemy"
+        },
+        {
+          "name": "Rahu",
+          "combust": "",
+          "motion": "-",
+          "rashi": "Pisces",
+          "dms": "07-06-15",
+          "nakshatra": "Uttarabhadra",
+          "pada": "2",
+          "relation": ""
+        },
+        {
+          "name": "Ketu",
+          "combust": "",
+          "motion": "-",
+          "rashi": "Virgo",
+          "dms": "07-06-15",
+          "nakshatra": "Uttaraphal",
+          "pada": "4",
+          "relation": ""
+        },
+        {
+          "name": "Uran",
+          "combust": "",
+          "motion": "D",
+          "rashi": "Sagittarius",
+          "dms": "00-14-08",
+          "nakshatra": "Mula",
+          "pada": "1",
+          "relation": ""
+        },
+        {
+          "name": "Nept",
+          "combust": "",
+          "motion": "D",
+          "rashi": "Sagittarius",
+          "dms": "11-52-26",
+          "nakshatra": "Mula",
+          "pada": "4",
+          "relation": ""
+        },
+        {
+          "name": "Plut",
+          "combust": "",
+          "motion": "D",
+          "rashi": "Libra",
+          "dms": "15-49-04",
+          "nakshatra": "Swati",
+          "pada": "3",
+          "relation": ""
+        }
+      ],
+      "dasha": [
+        {
+          "lord": "Ju",
+          "years": 16,
+          "start": "1987-10-24",
+          "end": "1993-01-28",
+          "raw": "JUP -16 Years 24/10/87 28/ 1/93"
+        },
+        {
+          "lord": "Sa",
+          "years": 19,
+          "start": "1993-01-28",
+          "end": "2012-01-28",
+          "raw": "SAT -19 Years 28/ 1/93 28/ 1/12"
+        },
+        {
+          "lord": "Me",
+          "years": 17,
+          "start": "2012-01-28",
+          "end": "2029-01-28",
+          "raw": "MER -17 Years 28/ 1/12 28/ 1/29"
+        },
+        {
+          "lord": "Ke",
+          "years": 7,
+          "start": "2029-01-28",
+          "end": "2036-01-28",
+          "raw": "KET -7 Years 28/ 1/29 28/ 1/36"
+        },
+        {
+          "lord": "Ve",
+          "years": 20,
+          "start": "2036-01-28",
+          "end": "2056-01-28",
+          "raw": "VEN -20 Years 28/ 1/36 28/ 1/56"
+        },
+        {
+          "lord": "Su",
+          "years": 6,
+          "start": "2056-01-28",
+          "end": "2062-01-28",
+          "raw": "SUN -6 Years 28/ 1/56 28/ 1/62"
+        },
+        {
+          "lord": "Mo",
+          "years": 10,
+          "start": "2062-01-28",
+          "end": "2072-01-28",
+          "raw": "MON -10 Years 28/ 1/62 28/ 1/72"
+        },
+        {
+          "lord": "Ma",
+          "years": 7,
+          "start": "2072-01-28",
+          "end": "2079-01-28",
+          "raw": "MAR -7 Years 28/ 1/72 28/ 1/79"
+        },
+        {
+          "lord": "Ra",
+          "years": 18,
+          "start": "2079-01-28",
+          "end": "2097-01-28",
+          "raw": "RAH -18 Years 28/ 1/79 28/ 1/97"
+        }
+      ]
+    }
+  },
+  "notes": [
+    "site geo 17.8833,121.8667 (minute precision) differs from the case coordinates 37.33939,-121.89496 by 19.456/243.762 deg (suggestion \"San Jose, Cagayan Valley (Philippines)\")",
+    "Longitudes are sidereal (N.C. Lahiri, site default) as printed DD-MM-SS within the sign; R = retrograde, C = combust per the site; coordinates at minute precision from the site autocomplete; the timezone is the hours value the site filled for the place."
+  ]
+}

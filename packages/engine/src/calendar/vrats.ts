@@ -163,7 +163,15 @@ function ekadashi(l: Lunation, ctx: Ctx): VratOccurrence[] {
   const out: VratOccurrence[] = [];
   for (const paksha of ['shukla', 'krishna'] as const) {
     const index = tithiIndexOf(paksha, 11);
-    const obs = tithiDay(l, index, 'udaya', ctx);
+    // Smarta day (A04, same rules as the festival table's `ekadashiVrata`, validated against Drik 2026-2028):
+    // two Ekadashi sunrises -> the later day; a kshaya Dwadashi (no sunrise) after a single-sunrise Ekadashi ->
+    // the day the Ekadashi began, so the parana stays inside the Dwadashi.
+    let obs = tithiDay(l, index, 'udaya', ctx, 'last');
+    if (obs.convention === 'udaya') {
+      const dw = tithiSpanIn(l, index + 1);
+      const nextSr = sunriseOn(addDays(obs.date, 1), ctx.zone, ctx.geo);
+      if (nextSr !== null && dw.end <= nextSr) obs = { date: localDateOf(obs.span.start, ctx.zone), convention: 'udaya-dwadashi-kshaya-previous-day', span: obs.span };
+    }
     const sunrise = sunriseOn(obs.date, ctx.zone, ctx.geo);
     // Vaishnava rule: Dashami at arunodaya (sunrise - 96 min) or Ekadashi at two sunrises -> next day.
     let vaishnavaDate = obs.date;

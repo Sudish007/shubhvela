@@ -1,0 +1,331 @@
+{
+  "case": "c36",
+  "source": "drikpanchang",
+  "source_url": "https://www.drikpanchang.com/jyotisha/kundali/kundali.html (POST dp_payload from https://www.drikpanchang.com/jyotisha/kundali/janma-kundali.html)",
+  "fetched_at": "2026-10-24T22:58:41.357Z",
+  "fetcher_version": "a04-1",
+  "values": {
+    "input": {
+      "date": "2022-02-22",
+      "time": "22:22",
+      "noonForUnknownTime": false,
+      "city": "West Vancouver",
+      "state": "British Columbia",
+      "country": "Canada",
+      "latitude": 49.36666666666667,
+      "longitude": -123.16638888888889,
+      "elevation": 750,
+      "olsonTimezone": "America/Vancouver",
+      "offsetHours": -8,
+      "offsetMinutes": -480,
+      "ayanamsha": "chitra-paksha",
+      "node": "mean (site default; \"Set True Rahu/Ketu\" not toggled)",
+      "suggestions": [
+        "Vancouver Washington, United States",
+        "West Vancouver British Columbia, Canada",
+        "North Vancouver British Columbia, Canada",
+        "Vancouver British Columbia, Canada",
+        "Washougal Washington, United States",
+        "Parksville British Columbia, Canada"
+      ],
+      "picked": "West Vancouver British Columbia, Canada"
+    },
+    "planets": {
+      "Su": {
+        "sign": 11,
+        "lon": 310.43083,
+        "text": "10° Kumb 25′ 51″",
+        "nakshatra": 24,
+        "pada": 2,
+        "isIn": "5 Bhava",
+        "dignities": "-"
+      },
+      "Mo": {
+        "sign": 8,
+        "lon": 211.70167,
+        "text": "01° Vish 42′ 06″",
+        "nakshatra": 16,
+        "pada": 4,
+        "isIn": "2 Bhava",
+        "dignities": "Debilitated"
+      },
+      "Ma": {
+        "sign": 9,
+        "lon": 267.64,
+        "text": "27° Dhan 38′ 24″",
+        "nakshatra": 21,
+        "pada": 1,
+        "isIn": "3 Bhava",
+        "dignities": "-"
+      },
+      "Me": {
+        "sign": 10,
+        "lon": 284.93417,
+        "text": "14° Maka 56′ 03″",
+        "nakshatra": 22,
+        "pada": 2,
+        "isIn": "4 Bhava",
+        "dignities": "-"
+      },
+      "Ju": {
+        "sign": 11,
+        "lon": 318.30611,
+        "text": "18° Kumb 18′ 22″",
+        "nakshatra": 24,
+        "pada": 4,
+        "isIn": "5 Bhava",
+        "dignities": "-"
+      },
+      "Ve": {
+        "sign": 9,
+        "lon": 267.04778,
+        "text": "27° Dhan 02′ 52″",
+        "nakshatra": 21,
+        "pada": 1,
+        "isIn": "3 Bhava",
+        "dignities": "-"
+      },
+      "Sa": {
+        "sign": 10,
+        "lon": 293.9625,
+        "text": "23° Maka 57′ 45″",
+        "nakshatra": null,
+        "pada": null,
+        "isIn": "4 Bhava",
+        "dignities": "-"
+      },
+      "Ra": {
+        "sign": 2,
+        "lon": 32.54056,
+        "text": "02° Vibh 32′ 26″",
+        "nakshatra": 3,
+        "pada": 2,
+        "isIn": "8 Bhava",
+        "dignities": "-",
+        "retro": true
+      },
+      "Ke": {
+        "sign": 8,
+        "lon": 212.54056,
+        "text": "02° Vish 32′ 26″",
+        "nakshatra": 16,
+        "pada": 4,
+        "isIn": "2 Bhava",
+        "dignities": "-",
+        "retro": true
+      }
+    },
+    "lagna": {
+      "sign": 7,
+      "lon": 181.18472,
+      "text": "01° Tula 11′ 05″",
+      "nakshatra": 14,
+      "pada": 3,
+      "isIn": "1 Bhava",
+      "dignities": "-"
+    },
+    "moon": {
+      "nakshatra": 16,
+      "pada": 4,
+      "text": "Vishakha 4"
+    },
+    "dasha": {
+      "mahaLord": "guru",
+      "mahaLordId": "Ju",
+      "mahaStart": "2008-02-07T23:08",
+      "mahaEnd": "2024-02-08T01:34",
+      "mahas": [
+        {
+          "lord": "Ju",
+          "start": "2008-02-07T23:08",
+          "end": "2024-02-08T01:34",
+          "raw": "Guru - Maha Dasha - 16y | February 7, 2008, Thursday at 23:08 February 8, 2024, Thursday at 01:34 ❯"
+        },
+        {
+          "lord": "Sa",
+          "start": "2024-02-08T01:34",
+          "end": "2043-02-07T23:28",
+          "raw": "Shani - Maha Dasha - 18y 11m | February 8, 2024, Thursday at 01:34 February 7, 2043, Saturday at 23:28 ❯"
+        },
+        {
+          "lord": "Me",
+          "start": "2043-02-07T23:28",
+          "end": "2060-02-08T08:04",
+          "raw": "Budha - Maha Dasha - 17y | February 7, 2043, Saturday at 23:28 February 8, 2060, Sunday at 08:04 ❯"
+        },
+        {
+          "lord": "Ke",
+          "start": "2060-02-08T08:04",
+          "end": "2067-02-08T03:08",
+          "raw": "Ketu - Maha Dasha - 6y 11m | February 8, 2060, Sunday at 08:04 February 8, 2067, Tuesday at 03:08 ❯"
+        },
+        {
+          "lord": "Ve",
+          "start": "2067-02-08T03:08",
+          "end": "2087-02-08T06:11",
+          "raw": "Shukra - Maha Dasha - 20y | February 8, 2067, Tuesday at 03:08 February 8, 2087, Saturday at 06:11 ❯"
+        },
+        {
+          "lord": "Su",
+          "start": "2087-02-08T06:11",
+          "end": "2093-02-07T19:06",
+          "raw": "Surya - Maha Dasha - 5y 11m | February 8, 2087, Saturday at 06:11 February 7, 2093, Saturday at 19:06 ❯"
+        },
+        {
+          "lord": "Mo",
+          "start": "2093-02-07T19:06",
+          "end": "2103-02-09T08:38",
+          "raw": "Chandra - Maha Dasha - 10y | February 7, 2093, Saturday at 19:06 February 9, 2103, Friday at 08:38 ❯"
+        },
+        {
+          "lord": "Ma",
+          "start": "2103-02-09T08:38",
+          "end": "2110-02-09T03:42",
+          "raw": "Mangal - Maha Dasha - 6y 11m | February 9, 2103, Friday at 08:38 February 9, 2110, Sunday at 03:42 ❯"
+        },
+        {
+          "lord": "Ra",
+          "start": "2110-02-09T03:42",
+          "end": "2128-02-09T18:27",
+          "raw": "Rahu - Maha Dasha - 18y | February 9, 2110, Sunday at 03:42 February 9, 2128, Monday at 18:27 ❯"
+        }
+      ]
+    },
+    "raw": {
+      "planets": [
+        {
+          "name": "Lagna",
+          "rawName": "Lagna (Q)",
+          "longitude": "01° Tula 11′ 05″",
+          "nakshatra": "Chitra 3",
+          "isIn": "1 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Surya",
+          "rawName": "☉Surya (T)",
+          "longitude": "10° Kumb 25′ 51″",
+          "nakshatra": "Shatabhisha 2🔥",
+          "isIn": "5 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Chandra",
+          "rawName": "☾Chandra 🌸",
+          "longitude": "01° Vish 42′ 06″",
+          "nakshatra": "Vishakha 4",
+          "isIn": "2 Bhava",
+          "dignities": "Debilitated",
+          "retro": false
+        },
+        {
+          "name": "Mangal",
+          "rawName": "♂Mangal 🌸",
+          "longitude": "27° Dhan 38′ 24″",
+          "nakshatra": "U Ashadha 1",
+          "isIn": "3 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Budha",
+          "rawName": "☿Budha (Q) 🔥 🌸",
+          "longitude": "14° Maka 56′ 03″",
+          "nakshatra": "Shravana 2",
+          "isIn": "4 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Guru",
+          "rawName": "♃Guru (T) 🔥 🌸",
+          "longitude": "18° Kumb 18′ 22″",
+          "nakshatra": "Shatabhisha 4🔥",
+          "isIn": "5 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Shukra",
+          "rawName": "♀Shukra 🌸",
+          "longitude": "27° Dhan 02′ 52″",
+          "nakshatra": "U Ashadha 1",
+          "isIn": "3 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Shani",
+          "rawName": "♄Shani (Q) 🔥",
+          "longitude": "23° Maka 57′ 45″",
+          "nakshatra": "Dhanishtha 1",
+          "isIn": "4 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Rahu",
+          "rawName": "☊Rahu ↺",
+          "longitude": "02° Vibh 32′ 26″",
+          "nakshatra": "Krittika 2",
+          "isIn": "8 Bhava",
+          "dignities": "-",
+          "retro": true
+        },
+        {
+          "name": "Ketu",
+          "rawName": "☋Ketu ↺ 🌸",
+          "longitude": "02° Vish 32′ 26″",
+          "nakshatra": "Vishakha 4",
+          "isIn": "2 Bhava",
+          "dignities": "-",
+          "retro": true
+        }
+      ],
+      "dasha": [
+        [
+          "Guru - Maha Dasha - 16y",
+          "February 7, 2008, Thursday at 23:08 February 8, 2024, Thursday at 01:34 ❯"
+        ],
+        [
+          "Shani - Maha Dasha - 18y 11m",
+          "February 8, 2024, Thursday at 01:34 February 7, 2043, Saturday at 23:28 ❯"
+        ],
+        [
+          "Budha - Maha Dasha - 17y",
+          "February 7, 2043, Saturday at 23:28 February 8, 2060, Sunday at 08:04 ❯"
+        ],
+        [
+          "Ketu - Maha Dasha - 6y 11m",
+          "February 8, 2060, Sunday at 08:04 February 8, 2067, Tuesday at 03:08 ❯"
+        ],
+        [
+          "Shukra - Maha Dasha - 20y",
+          "February 8, 2067, Tuesday at 03:08 February 8, 2087, Saturday at 06:11 ❯"
+        ],
+        [
+          "Surya - Maha Dasha - 5y 11m",
+          "February 8, 2087, Saturday at 06:11 February 7, 2093, Saturday at 19:06 ❯"
+        ],
+        [
+          "Chandra - Maha Dasha - 10y",
+          "February 7, 2093, Saturday at 19:06 February 9, 2103, Friday at 08:38 ❯"
+        ],
+        [
+          "Mangal - Maha Dasha - 6y 11m",
+          "February 9, 2103, Friday at 08:38 February 9, 2110, Sunday at 03:42 ❯"
+        ],
+        [
+          "Rahu - Maha Dasha - 18y",
+          "February 9, 2110, Sunday at 03:42 February 9, 2128, Monday at 18:27 ❯"
+        ]
+      ]
+    }
+  },
+  "notes": [
+    "site geo 49.3667,-123.1664 differs from the case coordinates 49.24966,-123.11934 by 0.117/0.047 deg (suggestion \"West Vancouver British Columbia, Canada\")",
+    "Longitudes are sidereal (Lahiri/Chitrapaksha, site default), DD° Sign MM′ SS″ as printed under \"Rashi Chart Details > Graha Details\"; mean node."
+  ]
+}

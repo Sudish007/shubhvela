@@ -1,0 +1,60 @@
+{
+  "case": "c22",
+  "source": "jpl-horizons",
+  "source_url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=text&COMMAND='<body>'&OBJ_DATA='NO'&MAKE_EPHEM='YES'&EPHEM_TYPE='OBSERVER'&CENTER='500@399'&TLIST_TYPE='JD'&TLIST='2447996.611111'&QUANTITIES='31'&ANG_FORMAT='DEG'&CSV_FORMAT='YES'",
+  "fetched_at": "2026-10-24T21:20:21.183Z",
+  "fetcher_version": "a04-1",
+  "values": {
+    "input": {
+      "date": "1990-04-15",
+      "time": "08:25",
+      "noonForUnknownTime": false,
+      "tz": "Asia/Kathmandu",
+      "offsetMinutes": 345,
+      "utc": "1990-04-15 02:40:00",
+      "jd": 2447996.611111111
+    },
+    "bodies": {
+      "Su": {
+        "tropicalLon": 24.8759034,
+        "lat": -0.0001229,
+        "horizonsTime": "1990-Apr-15 02:39:59.990"
+      },
+      "Mo": {
+        "tropicalLon": 259.2401217,
+        "lat": -4.0854316,
+        "horizonsTime": "1990-Apr-15 02:39:59.990"
+      },
+      "Me": {
+        "tropicalLon": 44.1825928,
+        "lat": 2.8527843,
+        "horizonsTime": "1990-Apr-15 02:39:59.990"
+      },
+      "Ve": {
+        "tropicalLon": 339.134287,
+        "lat": -0.0475242,
+        "horizonsTime": "1990-Apr-15 02:39:59.990"
+      },
+      "Ma": {
+        "tropicalLon": 325.6528318,
+        "lat": -1.3685802,
+        "horizonsTime": "1990-Apr-15 02:39:59.990"
+      },
+      "Ju": {
+        "tropicalLon": 94.4923867,
+        "lat": 0.0984345,
+        "horizonsTime": "1990-Apr-15 02:39:59.990"
+      },
+      "Sa": {
+        "tropicalLon": 295.0168029,
+        "lat": 0.1875871,
+        "horizonsTime": "1990-Apr-15 02:39:59.990"
+      }
+    }
+  },
+  "notes": [
+    "QUANTITIES=31 ObsEcLon/ObsEcLat: observer-centred (geocentric, CENTER=500@399) apparent ecliptic-of-date longitude and latitude with light-time, gravitational deflection and stellar aberration (Horizons API 1.2, DE441).",
+    "Tropical longitudes; sidereal = tropical - ayanamsa. The suite compares the engine tropical longitude (sidereal + meta.ayanamsaDegrees) to these within the planet tolerance.",
+    "UTC instant from moment-timezone (tzdb) for the case wall time; unknown time = local noon."
+  ]
+}

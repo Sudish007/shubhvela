@@ -1,0 +1,46 @@
+{
+  "suite": "panchang",
+  "required": 150,
+  "compared": 150,
+  "passed": 150,
+  "failed": 0,
+  "skipped": 0,
+  "maxDeviation": {
+    "sunriseMin": 1,
+    "sunsetMin": 1,
+    "moonriseMin": 1,
+    "moonsetMin": 1,
+    "tithiMin": 2,
+    "nakshatraMin": 2,
+    "yogaMin": 2,
+    "karanaMin": 2,
+    "rahuKaalMin": 1,
+    "yamagandaMin": 1,
+    "gulikaMin": 1,
+    "brahmaMorningMin": 1,
+    "sunsignMin": 2,
+    "ayanamsaDeg": 0,
+    "abhijitMin": 1,
+    "bhadraMin": 1,
+    "moonsignMin": 1,
+    "panchakMin": 1
+  },
+  "sources": {
+    "drikpanchang": 150
+  },
+  "failures": [],
+  "generatedAt": "2026-10-25T02:09:26.554Z",
+  "tolerances": {
+    "sunriseMin": 1,
+    "sunsetMin": 1,
+    "tithiEndMin": 2,
+    "nakshatraEndMin": 2,
+    "yogaEndMin": 2,
+    "rahuKaalMin": 1,
+    "moonriseMin": 2,
+    "yamagandaGulikaMin": 1,
+    "extraSegmentsMin": 2,
+    "ayanamsaDeg": 0.01
+  },
+  "missing": []
+}

@@ -1,0 +1,22 @@
+{
+  "description": "Festival suite inputs (spec section 6, F23): every slug of data/festival-rules.json for 2026, 2027 and 2028 compared with Drik Panchang's monthly festival pages (/festivals/month/festivals-<month>.html?year=<y>&geoname-id=<id>) for Delhi with the Purnimanta school and Chennai with the Amanta school (the school is Drik's `drik-school-name` cookie). 12 page loads per city-year; the fetcher stores every event the page lists (name, Gregorian date, tithi text). reference/festivals/name-map.json maps slugs to Drik event names; CONVENTIONS.md section 3 documents every accepted date difference.",
+  "source_url_pattern": "https://www.drikpanchang.com/festivals/month/festivals-<month>.html?year=<yyyy>&geoname-id=<geonameId>",
+  "years": [2026, 2027, 2028],
+  "cities": {
+    "delhi": { "geonameId": 1273294, "name": "New Delhi", "lat": 28.61394, "lon": 77.20902, "tz": "Asia/Kolkata", "tradition": "purnimanta", "region": "north", "school": "purnimanta" },
+    "chennai": { "geonameId": 1264527, "name": "Chennai", "lat": 13.08784, "lon": 80.27847, "tz": "Asia/Kolkata", "tradition": "amanta", "region": "south", "school": "amanta" }
+  },
+  "slugs": [
+    "makar-sankranti", "pongal", "lohri", "thaipusam", "vasant-panchami", "ratha-saptami", "bhishma-ashtami", "jaya-ekadashi", "magha-purnima", "mauni-amavasya",
+    "shattila-ekadashi", "vijaya-ekadashi", "maha-shivaratri", "amalaki-ekadashi", "holika-dahan", "holi", "rang-panchami", "sheetala-ashtami", "papmochani-ekadashi", "ugadi",
+    "gudi-padwa", "chaitra-navratri", "gangaur", "ram-navami", "kamada-ekadashi", "mahavir-jayanti", "hanuman-jayanti", "hanuman-jayanti-south", "chaitra-purnima", "baisakhi",
+    "vishu", "puthandu", "akshaya-tritiya", "parashurama-jayanti", "ganga-saptami", "mohini-ekadashi", "narasimha-jayanti", "buddha-purnima", "apara-ekadashi", "shani-jayanti",
+    "vat-savitri", "vat-purnima", "ganga-dussehra", "nirjala-ekadashi", "jagannath-snana-purnima", "yogini-ekadashi", "jagannath-rath-yatra", "devshayani-ekadashi", "guru-purnima", "shravan-somvar",
+    "kamika-ekadashi", "hariyali-teej", "nag-panchami", "shravana-putrada-ekadashi", "varalakshmi-vratam", "raksha-bandhan", "kajari-teej", "hal-shashthi", "krishna-janmashtami", "aja-ekadashi",
+    "hartalika-teej", "ganesh-chaturthi", "rishi-panchami", "radha-ashtami", "parivartini-ekadashi", "anant-chaturdashi", "onam", "pitru-paksha", "jivitputrika", "indira-ekadashi",
+    "sarva-pitru-amavasya", "sharad-navratri", "durga-ashtami", "maha-navami", "dussehra", "papankusha-ekadashi", "sharad-purnima", "karwa-chauth", "ahoi-ashtami", "rama-ekadashi",
+    "dhanteras", "naraka-chaturdashi", "diwali", "govardhan-puja", "bhai-dooj", "labh-panchami", "chhath-puja", "skanda-shashthi", "gopashtami", "akshaya-navami",
+    "dev-uthani-ekadashi", "tulsi-vivah", "kartik-purnima", "karthigai-deepam", "kalabhairav-jayanti", "utpanna-ekadashi", "vivah-panchami", "gita-jayanti", "dattatreya-jayanti", "saphala-ekadashi",
+    "pausha-putrada-ekadashi", "pausha-purnima"
+  ]
+}

@@ -1,0 +1,359 @@
+{
+  "case": "u08",
+  "source": "drikpanchang",
+  "source_url": "https://www.drikpanchang.com/jyotisha/kundali/kundali.html (POST dp_payload from https://www.drikpanchang.com/jyotisha/kundali/janma-kundali.html)",
+  "fetched_at": "2026-10-24T23:15:26.709Z",
+  "fetcher_version": "a04-1",
+  "values": {
+    "input": {
+      "date": "1972-10-29",
+      "time": "12:00",
+      "noonForUnknownTime": true,
+      "city": "City of London",
+      "state": "England",
+      "country": "United Kingdom",
+      "latitude": 51.51277777777778,
+      "longitude": -0.09194444444444444,
+      "elevation": 27,
+      "olsonTimezone": "Europe/London",
+      "formOffsetHours": 0,
+      "offsetMinutes": null,
+      "ayanamsha": "chitra-paksha",
+      "node": "mean (site default; \"Set True Rahu/Ketu\" not toggled)",
+      "suggestions": [
+        "New London Connecticut, United States",
+        "East London Eastern Cape, South Africa",
+        "City of London England, United Kingdom",
+        "New London New Hampshire, United States",
+        "London England, United Kingdom",
+        "New London Iowa, United States",
+        "New London Minnesota, United States",
+        "London Ohio, United States",
+        "New London Ohio, United States",
+        "New London Wisconsin, United States",
+        "London California, United States",
+        "London Village Line Islands, Kiribati",
+        "London Arkansas, United States",
+        "London Kentucky, United States",
+        "Londontowne Maryland, United States",
+        "New London Missouri, United States",
+        "Londonderry Vermont, United States",
+        "London Ontario, Canada",
+        "Wandsworth England, United Kingdom",
+        "Sutton England, United Kingdom",
+        "Londonderry County Borough Northern Ireland, United Kingdom",
+        "Derry Northern Ireland, United Kingdom",
+        "Islington England, United Kingdom",
+        "Hounslow England, United Kingdom",
+        "Harrow England, United Kingdom",
+        "Ealing England, United Kingdom",
+        "Croydon England, United Kingdom",
+        "Bexley England, United Kingdom",
+        "Barnet England, United Kingdom",
+        "Acton England, United Kingdom",
+        "Westminster Maryland, United States",
+        "New Haven West Virginia, United States",
+        "Londonderry New Hampshire, United States",
+        "Loudonville Ohio, United States",
+        "West End of London England, United Kingdom"
+      ],
+      "picked": "City of London England, United Kingdom"
+    },
+    "planets": {
+      "Su": {
+        "sign": 7,
+        "lon": 192.67972,
+        "text": "12° Tula 40′ 47″",
+        "nakshatra": 15,
+        "pada": 2,
+        "isIn": "11 Bhava",
+        "dignities": "Debilitated"
+      },
+      "Mo": {
+        "sign": 4,
+        "lon": 106.44,
+        "text": "16° Kark 26′ 24″",
+        "nakshatra": 8,
+        "pada": 4,
+        "isIn": "8 Bhava",
+        "dignities": "-"
+      },
+      "Ma": {
+        "sign": 6,
+        "lon": 175.04778,
+        "text": "25° Kany 02′ 52″",
+        "nakshatra": 14,
+        "pada": 1,
+        "isIn": "10 Bhava",
+        "dignities": "-"
+      },
+      "Me": {
+        "sign": 8,
+        "lon": 214.89917,
+        "text": "04° Vish 53′ 57″",
+        "nakshatra": 17,
+        "pada": 1,
+        "isIn": "12 Bhava",
+        "dignities": "-"
+      },
+      "Ju": {
+        "sign": 9,
+        "lon": 251.04222,
+        "text": "11° Dhan 02′ 32″",
+        "nakshatra": 19,
+        "pada": 4,
+        "isIn": "1 Bhava",
+        "dignities": "-"
+      },
+      "Ve": {
+        "sign": 6,
+        "lon": 154.83389,
+        "text": "04° Kany 50′ 02″",
+        "nakshatra": 12,
+        "pada": 3,
+        "isIn": "10 Bhava",
+        "dignities": "Debilitated"
+      },
+      "Sa": {
+        "sign": 2,
+        "lon": 56.465,
+        "text": "26° Vibh 27′ 54″",
+        "nakshatra": 5,
+        "pada": 1,
+        "isIn": "6 Bhava",
+        "dignities": "-"
+      },
+      "Ra": {
+        "sign": 9,
+        "lon": 267.12639,
+        "text": "27° Dhan 07′ 35″",
+        "nakshatra": 21,
+        "pada": 1,
+        "isIn": "1 Bhava",
+        "dignities": "Debilitated",
+        "retro": true
+      },
+      "Ke": {
+        "sign": 3,
+        "lon": 87.12639,
+        "text": "27° Mitu 07′ 35″",
+        "nakshatra": 7,
+        "pada": 3,
+        "isIn": "7 Bhava",
+        "dignities": "Debilitated",
+        "retro": true
+      }
+    },
+    "lagna": {
+      "sign": 9,
+      "lon": 251.01583,
+      "text": "11° Dhan 00′ 57″",
+      "nakshatra": 19,
+      "pada": 4,
+      "isIn": "1 Bhava",
+      "dignities": "-"
+    },
+    "moon": {
+      "nakshatra": 8,
+      "pada": 4,
+      "text": "Pushya 4"
+    },
+    "dasha": {
+      "mahaLord": "shani",
+      "mahaLordId": "Sa",
+      "mahaStart": "1954-02-24T13:07",
+      "mahaEnd": "1973-02-24T10:01",
+      "mahas": [
+        {
+          "lord": "Sa",
+          "start": "1954-02-24T13:07",
+          "end": "1973-02-24T10:01",
+          "raw": "Shani - Maha Dasha - 18y 11m | February 24, 1954, Wednesday at 13:07 February 24, 1973, Saturday at 10:01 ❯"
+        },
+        {
+          "lord": "Me",
+          "start": "1973-02-24T10:01",
+          "end": "1990-02-24T18:37",
+          "raw": "Budha - Maha Dasha - 17y | February 24, 1973, Saturday at 10:01 February 24, 1990, Saturday at 18:37 ❯"
+        },
+        {
+          "lord": "Ke",
+          "start": "1990-02-24T18:37",
+          "end": "1997-02-24T13:41",
+          "raw": "Ketu - Maha Dasha - 6y 11m | February 24, 1990, Saturday at 18:37 February 24, 1997, Monday at 13:41 ❯"
+        },
+        {
+          "lord": "Ve",
+          "start": "1997-02-24T13:41",
+          "end": "2017-02-24T16:44",
+          "raw": "Shukra - Maha Dasha - 20y | February 24, 1997, Monday at 13:41 February 24, 2017, Friday at 16:44 ❯"
+        },
+        {
+          "lord": "Su",
+          "start": "2017-02-24T16:44",
+          "end": "2023-02-25T05:39",
+          "raw": "Surya - Maha Dasha - 6y | February 24, 2017, Friday at 16:44 February 25, 2023, Saturday at 05:39 ❯"
+        },
+        {
+          "lord": "Mo",
+          "start": "2023-02-25T05:39",
+          "end": "2033-02-24T19:11",
+          "raw": "Chandra - Maha Dasha - 9y 11m | February 25, 2023, Saturday at 05:39 February 24, 2033, Thursday at 19:11 ❯"
+        },
+        {
+          "lord": "Ma",
+          "start": "2033-02-24T19:11",
+          "end": "2040-02-25T14:15",
+          "raw": "Mangal - Maha Dasha - 7y | February 24, 2033, Thursday at 19:11 February 25, 2040, Saturday at 14:15 ❯"
+        },
+        {
+          "lord": "Ra",
+          "start": "2040-02-25T14:15",
+          "end": "2058-02-25T05:00",
+          "raw": "Rahu - Maha Dasha - 17y 11m | February 25, 2040, Saturday at 14:15 February 25, 2058, Monday at 05:00 ❯"
+        },
+        {
+          "lord": "Ju",
+          "start": "2058-02-25T05:00",
+          "end": "2074-02-25T07:26",
+          "raw": "Guru - Maha Dasha - 16y | February 25, 2058, Monday at 05:00 February 25, 2074, Sunday at 07:26 ❯"
+        }
+      ]
+    },
+    "raw": {
+      "planets": [
+        {
+          "name": "Lagna",
+          "rawName": "Lagna (Q)",
+          "longitude": "11° Dhan 00′ 57″",
+          "nakshatra": "Mula 4🔥",
+          "isIn": "1 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Surya",
+          "rawName": "☉Surya",
+          "longitude": "12° Tula 40′ 47″",
+          "nakshatra": "Swati 2",
+          "isIn": "11 Bhava",
+          "dignities": "Debilitated",
+          "retro": false
+        },
+        {
+          "name": "Chandra",
+          "rawName": "☾Chandra",
+          "longitude": "16° Kark 26′ 24″",
+          "nakshatra": "Pushya 4",
+          "isIn": "8 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Mangal",
+          "rawName": "♂Mangal (Q) 💱",
+          "longitude": "25° Kany 02′ 52″",
+          "nakshatra": "Chitra 1🔥",
+          "isIn": "10 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Budha",
+          "rawName": "☿Budha 🔥 💱",
+          "longitude": "04° Vish 53′ 57″",
+          "nakshatra": "Anuradha 1🔥",
+          "isIn": "12 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Guru",
+          "rawName": "♃Guru (Q)",
+          "longitude": "11° Dhan 02′ 32″",
+          "nakshatra": "Mula 4🔥",
+          "isIn": "1 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Shukra",
+          "rawName": "♀Shukra (Q)",
+          "longitude": "04° Kany 50′ 02″",
+          "nakshatra": "U Phalguni 3",
+          "isIn": "10 Bhava",
+          "dignities": "Debilitated",
+          "retro": false
+        },
+        {
+          "name": "Shani",
+          "rawName": "♄Shani ↺",
+          "longitude": "26° Vibh 27′ 54″",
+          "nakshatra": "Mrigashira 1",
+          "isIn": "6 Bhava",
+          "dignities": "-",
+          "retro": true
+        },
+        {
+          "name": "Rahu",
+          "rawName": "☊Rahu (Q) ↺ 🌸",
+          "longitude": "27° Dhan 07′ 35″",
+          "nakshatra": "U Ashadha 1",
+          "isIn": "1 Bhava",
+          "dignities": "Debilitated",
+          "retro": true
+        },
+        {
+          "name": "Ketu",
+          "rawName": "☋Ketu (Q) ↺",
+          "longitude": "27° Mitu 07′ 35″",
+          "nakshatra": "Punarvasu 3",
+          "isIn": "7 Bhava",
+          "dignities": "Debilitated",
+          "retro": true
+        }
+      ],
+      "dasha": [
+        [
+          "Shani - Maha Dasha - 18y 11m",
+          "February 24, 1954, Wednesday at 13:07 February 24, 1973, Saturday at 10:01 ❯"
+        ],
+        [
+          "Budha - Maha Dasha - 17y",
+          "February 24, 1973, Saturday at 10:01 February 24, 1990, Saturday at 18:37 ❯"
+        ],
+        [
+          "Ketu - Maha Dasha - 6y 11m",
+          "February 24, 1990, Saturday at 18:37 February 24, 1997, Monday at 13:41 ❯"
+        ],
+        [
+          "Shukra - Maha Dasha - 20y",
+          "February 24, 1997, Monday at 13:41 February 24, 2017, Friday at 16:44 ❯"
+        ],
+        [
+          "Surya - Maha Dasha - 6y",
+          "February 24, 2017, Friday at 16:44 February 25, 2023, Saturday at 05:39 ❯"
+        ],
+        [
+          "Chandra - Maha Dasha - 9y 11m",
+          "February 25, 2023, Saturday at 05:39 February 24, 2033, Thursday at 19:11 ❯"
+        ],
+        [
+          "Mangal - Maha Dasha - 7y",
+          "February 24, 2033, Thursday at 19:11 February 25, 2040, Saturday at 14:15 ❯"
+        ],
+        [
+          "Rahu - Maha Dasha - 17y 11m",
+          "February 25, 2040, Saturday at 14:15 February 25, 2058, Monday at 05:00 ❯"
+        ],
+        [
+          "Guru - Maha Dasha - 16y",
+          "February 25, 2058, Monday at 05:00 February 25, 2074, Sunday at 07:26 ❯"
+        ]
+      ]
+    }
+  },
+  "notes": [
+    "Longitudes are sidereal (Lahiri/Chitrapaksha, site default), DD° Sign MM′ SS″ as printed under \"Rashi Chart Details > Graha Details\"; mean node."
+  ]
+}

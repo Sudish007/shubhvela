@@ -1,0 +1,134 @@
+{
+  "description": "Time-zone suite (spec F4, section 6): wall-clock births resolved through the engine's bundled IANA table must give the tzdb offsets quoted here, with gaps shifted forward (clock_gap) and overlaps resolved to the earlier instant (design 10.1 F4). Reference = the IANA tz database zone lines quoted per case (tzdb 2026e, https://www.iana.org/time-zones; the `asia`, `europe`, `northamerica`, `australasia` source files). UNTIL fields in tzdb are local wall-clock times under the offset of the line they end.",
+  "source": "iana-tzdb",
+  "source_url": "https://data.iana.org/time-zones/tzdb-2026e/",
+  "fetched_at": "2026-10-24",
+  "births": [
+    {
+      "id": "delhi-1944",
+      "zone": "Asia/Kolkata",
+      "wall": "1944-06-15T04:30",
+      "expectedOffsetMinutes": 390,
+      "expectedUtc": "1944-06-14T22:00:00Z",
+      "tzdb": "Zone Asia/Kolkata ... 5:30 1:00 +0630 1945 Oct 15 (war time, second period from 1942 Sep)",
+      "notes": "spec F4: Delhi 1944 = IST war time +06:30"
+    },
+    {
+      "id": "kathmandu-1990",
+      "zone": "Asia/Kathmandu",
+      "wall": "1990-04-15T08:25",
+      "expectedOffsetMinutes": 345,
+      "expectedUtc": "1990-04-15T02:40:00Z",
+      "tzdb": "Zone Asia/Kathmandu 5:41:16 - LMT 1920 | 5:30 - +0530 1986 | 5:45 - +0545",
+      "notes": "spec F4: Kathmandu 1990 = +05:45"
+    },
+    {
+      "id": "kathmandu-1985",
+      "zone": "Asia/Kathmandu",
+      "wall": "1985-12-31T23:30",
+      "expectedOffsetMinutes": 330,
+      "expectedUtc": "1985-12-31T18:00:00Z",
+      "tzdb": "Zone Asia/Kathmandu ... 5:30 - +0530 1986",
+      "notes": "last evening of +05:30; chart case c21"
+    },
+    {
+      "id": "dubai-2005",
+      "zone": "Asia/Dubai",
+      "wall": "2005-03-10T07:30",
+      "expectedOffsetMinutes": 240,
+      "expectedUtc": "2005-03-10T03:30:00Z",
+      "tzdb": "Zone Asia/Dubai 3:41:12 - LMT 1920 | 4:00 - +04",
+      "notes": "spec F4: Dubai 2005 = +04:00"
+    },
+    {
+      "id": "london-1988-bst",
+      "zone": "Europe/London",
+      "wall": "1988-07-16T14:20",
+      "expectedOffsetMinutes": 60,
+      "expectedUtc": "1988-07-16T13:20:00Z",
+      "tzdb": "Rule GB-Eire 1981 1995 - Mar lastSun 1:00u 1:00 BST ... Rule GB-Eire 1981 1989 - Oct Sun>=23 1:00u 0 GMT",
+      "notes": "spec F4: London July 1988 = BST +01:00"
+    },
+    {
+      "id": "leicester-1970-bst-winter",
+      "zone": "Europe/London",
+      "wall": "1970-02-02T09:30",
+      "expectedOffsetMinutes": 60,
+      "expectedUtc": "1970-02-02T08:30:00Z",
+      "tzdb": "Zone Europe/London ... 1:00 - BST 1971 Oct 31 2:00u (British Standard Time, all year 1968-10-27 .. 1971-10-31)",
+      "notes": "winter +01:00; chart case c29"
+    },
+    {
+      "id": "delhi-1942-09-01-gap",
+      "zone": "Asia/Kolkata",
+      "wall": "1942-09-01T00:30",
+      "expectedOffsetMinutes": 390,
+      "expectedUtc": "1942-08-31T19:00:00Z",
+      "clockGap": true,
+      "tzdb": "5:30 - IST 1942 Sep | 5:30 1:00 +0630 1945 Oct 15: at 1942-09-01 00:00 IST (= 1942-08-31 18:30Z) the clock moved to 01:00; 00:00-01:00 did not exist",
+      "notes": "gap: the wall time is shifted forward by the hour (00:30 IST -> 01:30 +0630 = 19:00Z) and clock_gap is set"
+    },
+    {
+      "id": "delhi-1945-10-14-overlap",
+      "zone": "Asia/Kolkata",
+      "wall": "1945-10-14T23:30",
+      "expectedOffsetMinutes": 390,
+      "expectedUtc": "1945-10-14T17:00:00Z",
+      "overlap": true,
+      "tzdb": "5:30 1:00 +0630 1945 Oct 15: at 1945-10-15 00:00 +0630 (= 1945-10-14 17:30Z) the clock moved back to 23:00 IST; 23:00-24:00 on 14 Oct occurred twice",
+      "notes": "overlap: the earlier instant (+06:30 reading) is used and overlap is set"
+    },
+    {
+      "id": "new-york-2024-dst-gap",
+      "zone": "America/New_York",
+      "wall": "2024-03-10T02:30",
+      "expectedOffsetMinutes": -240,
+      "expectedUtc": "2024-03-10T07:30:00Z",
+      "clockGap": true,
+      "tzdb": "Rule US 2007 max - Mar Sun>=8 2:00 1:00 D: 02:00 EST -> 03:00 EDT on 2024-03-10",
+      "notes": "US spring-forward gap: 02:30 does not exist; shifted to 03:30 EDT"
+    },
+    {
+      "id": "london-2024-dst-overlap",
+      "zone": "Europe/London",
+      "wall": "2024-10-27T01:30",
+      "expectedOffsetMinutes": 60,
+      "expectedUtc": "2024-10-27T00:30:00Z",
+      "overlap": true,
+      "tzdb": "Rule EU 1996 max - Oct lastSun 1:00u 0 -: 02:00 BST -> 01:00 GMT on 2024-10-27",
+      "notes": "UK fall-back overlap: 01:30 occurs as BST (00:30Z) and GMT (01:30Z); the earlier instant is used"
+    },
+    {
+      "id": "toronto-1993-dst-gap",
+      "zone": "America/Toronto",
+      "wall": "1993-04-04T02:30",
+      "expectedOffsetMinutes": -240,
+      "expectedUtc": "1993-04-04T07:30:00Z",
+      "clockGap": true,
+      "tzdb": "Rule Canada 1987 2006 - Apr Sun>=1 2:00 1:00 D: 02:00 EST -> 03:00 EDT on 1993-04-04",
+      "notes": "chart case c35"
+    }
+  ],
+  "offsetChecks": [
+    { "zone": "Asia/Kolkata", "utc": "1941-09-30T18:00:00Z", "expectedOffsetMinutes": 330, "tzdb": "5:30 - IST 1941 Oct" },
+    { "zone": "Asia/Kolkata", "utc": "1941-09-30T19:00:00Z", "expectedOffsetMinutes": 390, "tzdb": "5:30 1:00 +0630 1942 May 15 (first war-time period from 1941-10-01 00:00 IST = 1941-09-30 18:30Z)" },
+    { "zone": "Asia/Kolkata", "utc": "1942-05-14T17:29:59Z", "expectedOffsetMinutes": 390, "tzdb": "5:30 1:00 +0630 1942 May 15" },
+    { "zone": "Asia/Kolkata", "utc": "1942-05-14T17:30:00Z", "expectedOffsetMinutes": 330, "tzdb": "1942-05-15 00:00 +0630 = 1942-05-14 17:30Z: back to IST until 1942 Sep" },
+    { "zone": "Asia/Kolkata", "utc": "1942-08-31T18:00:00Z", "expectedOffsetMinutes": 330, "tzdb": "5:30 - IST 1942 Sep" },
+    { "zone": "Asia/Kolkata", "utc": "1942-08-31T18:30:00Z", "expectedOffsetMinutes": 390, "tzdb": "1942-09-01 00:00 IST = 1942-08-31 18:30Z -> +0630" },
+    { "zone": "Asia/Kolkata", "utc": "1945-10-14T17:29:59Z", "expectedOffsetMinutes": 390, "tzdb": "5:30 1:00 +0630 1945 Oct 15" },
+    { "zone": "Asia/Kolkata", "utc": "1945-10-14T17:30:00Z", "expectedOffsetMinutes": 330, "tzdb": "1945-10-15 00:00 +0630 = 1945-10-14 17:30Z -> IST" },
+    { "zone": "Asia/Kathmandu", "utc": "1985-12-31T18:29:59Z", "expectedOffsetMinutes": 330, "tzdb": "5:30 - +0530 1986" },
+    { "zone": "Asia/Kathmandu", "utc": "1985-12-31T18:30:00Z", "expectedOffsetMinutes": 345, "tzdb": "1986-01-01 00:00 +0530 = 1985-12-31 18:30Z -> +0545" },
+    { "zone": "Asia/Dubai", "utc": "2005-03-10T03:30:00Z", "expectedOffsetMinutes": 240, "tzdb": "4:00 - +04 (since 1920)" },
+    { "zone": "Europe/London", "utc": "1988-07-16T13:20:00Z", "expectedOffsetMinutes": 60, "tzdb": "BST" },
+    { "zone": "Europe/London", "utc": "1970-02-02T08:30:00Z", "expectedOffsetMinutes": 60, "tzdb": "British Standard Time 1968-10-27 .. 1971-10-31" },
+    { "zone": "Europe/London", "utc": "1971-10-31T01:59:59Z", "expectedOffsetMinutes": 60, "tzdb": "1:00 - BST 1971 Oct 31 2:00u" },
+    { "zone": "Europe/London", "utc": "1971-10-31T02:00:00Z", "expectedOffsetMinutes": 0, "tzdb": "GMT resumes 1971-10-31 02:00u" },
+    { "zone": "Asia/Karachi", "utc": "2008-07-04T17:00:00Z", "expectedOffsetMinutes": 360, "tzdb": "Rule Pakistan 2008 only - Jun 1 0:00 1:00 S: PKST +06:00 (chart case c25)" },
+    { "zone": "Pacific/Fiji", "utc": "2000-12-31T02:00:00Z", "expectedOffsetMinutes": 720, "tzdb": "Rule Fiji 1998 1999 - Nov Sun>=1 2:00 1:00 - / Rule Fiji 1999 2000 - Feb lastSun 3:00 0 -: DST ended 2000-02-27 and did not run in Nov 2000, so Dec 2000 is +12 (chart case c38)" },
+    { "zone": "Australia/Melbourne", "utc": "1946-02-27T22:00:00Z", "expectedOffsetMinutes": 600, "tzdb": "Rule Aus 1943 1944 - Mar lastSun 2:00s 0 S: Australian war-time DST ended 1944-03-26; Feb 1946 is AEST +10 (chart case c41)" },
+    { "zone": "Europe/Oslo", "utc": "1960-06-21T10:30:00Z", "expectedOffsetMinutes": 60, "tzdb": "Europe/Oslo is a Link to Europe/Berlin since tzdb 2022b (pre-1970 Norwegian DST lives only in backzone), so 1960 is CET +01:00 (chart case c44)" },
+    { "zone": "Europe/Moscow", "utc": "1980-07-19T14:00:00Z", "expectedOffsetMinutes": 180, "tzdb": "3:00 - MSK 1981 Apr 1 (no DST before 1981; chart case c45)" }
+  ]
+}

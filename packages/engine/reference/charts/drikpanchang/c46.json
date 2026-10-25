@@ -1,0 +1,422 @@
+{
+  "case": "c46",
+  "source": "drikpanchang",
+  "source_url": "https://www.drikpanchang.com/jyotisha/kundali/kundali.html (POST dp_payload from https://www.drikpanchang.com/jyotisha/kundali/janma-kundali.html)",
+  "fetched_at": "2026-10-24T23:11:50.861Z",
+  "fetcher_version": "a04-1",
+  "values": {
+    "input": {
+      "date": "2004-02-29",
+      "time": "10:30",
+      "noonForUnknownTime": false,
+      "city": "Frankfurt am Main",
+      "state": "Hesse",
+      "country": "Germany",
+      "latitude": 50.11555555555556,
+      "longitude": 8.684166666666666,
+      "elevation": 113,
+      "olsonTimezone": "Europe/Berlin",
+      "formOffsetHours": 1,
+      "offsetMinutes": null,
+      "ayanamsha": "chitra-paksha",
+      "node": "mean (site default; \"Set True Rahu/Ketu\" not toggled)",
+      "suggestions": [
+        "Frankfurt am Main Hesse, Germany",
+        "Frankfurt (Oder) Brandenburg, Germany",
+        "Maine Soroa Diffa, Niger",
+        "Niederrad Hesse, Germany",
+        "Mainaguri West Bengal, India",
+        "Worth am Main Bavaria, Germany",
+        "Neustadt am Main Bavaria, Germany",
+        "Lohr am Main Bavaria, Germany",
+        "Gemuenden am Main Bavaria, Germany",
+        "Floersheim Hesse, Germany",
+        "Menemeni Central Macedonia, Greece",
+        "Mainpuri Uttar Pradesh, India",
+        "Maindargi Maharashtra, India",
+        "Maindong Tibet, China",
+        "Mainit Norte Calabarzon, Philippines",
+        "Mainit Caraga, Philippines",
+        "Mainit Central Visayas, Philippines",
+        "Mainit Mimaropa, Philippines",
+        "Maindang Soccsksargen, Philippines",
+        "Zell am Main Bavaria, Germany",
+        "Sulzbach am Main Bavaria, Germany",
+        "Stockstadt am Main Bavaria, Germany",
+        "Ruesselsheim Hesse, Germany",
+        "Obernburg am Main Bavaria, Germany",
+        "Neunkirchen am Main Bavaria, Germany",
+        "Maintal Hesse, Germany",
+        "Mainleus Bavaria, Germany",
+        "Mainhardt Baden-Wuerttemberg, Germany",
+        "Mainburg Bavaria, Germany",
+        "Klingenberg am Main Bavaria, Germany",
+        "Karlstadt Bavaria, Germany",
+        "Hochheim am Main Hesse, Germany",
+        "Hanau am Main Hesse, Germany",
+        "Erlenbach am Main Bavaria, Germany",
+        "Monasterevin Leinster, Ireland",
+        "Fermoy Munster, Ireland",
+        "Boyle Connaught, Ireland",
+        "Abbeyfeale Munster, Ireland",
+        "Saint-Fiacre-sur-Maine Pays de la Loire, France",
+        "Meslay-du-Maine Pays de la Loire, France",
+        "Mainvilliers Centre, France",
+        "Maintenon Centre, France",
+        "Maing Hauts-de-France, France",
+        "Maincy Ile-de-France, France",
+        "Aigrefeuille-sur-Maine Pays de la Loire, France",
+        "Mainar Aragon, Spain",
+        "Vigarano Mainarda Emilia-Romagna, Italy",
+        "Villa Mainero Tamaulipas, Mexico",
+        "Maino Amazonas, Peru",
+        "Mainque Rio Negro, Argentina",
+        "Mainling Tibet, China",
+        "Mainang East Nusa Tenggara, Indonesia",
+        "Colle Mainello Latium, Italy",
+        "Frankfort Kentucky, United States",
+        "Frankfort Ohio, United States",
+        "Frankfort Illinois, United States",
+        "Frankfort Indiana, United States",
+        "Frankfort Maine, United States",
+        "Frankfort Michigan, United States",
+        "Frankfort New York, United States",
+        "Maintirano Melaky, Madagascar",
+        "Mangalore Karnataka, India",
+        "Mianay Western Visayas, Philippines",
+        "Manila Metro Manila, Philippines",
+        "Manat Davao, Philippines",
+        "Newtownabbey Northern Ireland, United Kingdom",
+        "Manchester England, United Kingdom",
+        "Mainstone England, United Kingdom",
+        "Zeil Bavaria, Germany",
+        "Wertheim Baden-Wuerttemberg, Germany",
+        "Sulzfeld am Main Bavaria, Germany",
+        "Offenbach Hesse, Germany",
+        "Muehlheim am Main Hesse, Germany",
+        "Meiningen Thuringia, Germany",
+        "Mainzweiler Saarland, Germany",
+        "Mainz Rheinland-Pfalz, Germany",
+        "Mainstockheim Bavaria, Germany",
+        "Mainbernheim Bavaria, Germany",
+        "Mainaschaff Bavaria, Germany",
+        "Kahl am Main Bavaria, Germany",
+        "Hofheim in Unterfranken Bavaria, Germany",
+        "Hochstadt am Main Bavaria, Germany",
+        "Freudenberg Baden-Wuerttemberg, Germany",
+        "Wicklow Leinster, Ireland",
+        "Midleton Munster, Ireland",
+        "Abbeyleix Leinster, Ireland",
+        "Sainte-Marie-aux-Mines Grand Est, France",
+        "Longecourt-en-Plaine Bourgogne-Franche-Comte, France",
+        "Asan-Maina Village Asan, Guam",
+        "Toms River New Jersey, United States",
+        "Des Plaines Illinois, United States",
+        "Bristol Maine, United States",
+        "Portland Maine, United States",
+        "Parks Arizona, United States",
+        "Minot North Dakota, United States",
+        "Main Beach Queensland, Australia",
+        "Maine Wisconsin, United States",
+        "Washington Street Courthouse Annex Alabama, United States"
+      ],
+      "picked": "Frankfurt am Main Hesse, Germany"
+    },
+    "planets": {
+      "Su": {
+        "sign": 11,
+        "lon": 316.21417,
+        "text": "16° Kumb 12′ 51″",
+        "nakshatra": 24,
+        "pada": 3,
+        "isIn": "10 Bhava",
+        "dignities": "-"
+      },
+      "Mo": {
+        "sign": 2,
+        "lon": 59.78417,
+        "text": "29° Vibh 47′ 03″",
+        "nakshatra": 5,
+        "pada": 2,
+        "isIn": "1 Bhava",
+        "dignities": "Mooltrikona"
+      },
+      "Ma": {
+        "sign": 1,
+        "lon": 22.66806,
+        "text": "22° Mesh 40′ 05″",
+        "nakshatra": 2,
+        "pada": 3,
+        "isIn": "12 Bhava",
+        "dignities": "-"
+      },
+      "Me": {
+        "sign": 11,
+        "lon": 313.03889,
+        "text": "13° Kumb 02′ 20″",
+        "nakshatra": 24,
+        "pada": 2,
+        "isIn": "10 Bhava",
+        "dignities": "-"
+      },
+      "Ju": {
+        "sign": 5,
+        "lon": 140.53972,
+        "text": "20° Simh 32′ 23″",
+        "nakshatra": 11,
+        "pada": 3,
+        "isIn": "4 Bhava",
+        "dignities": "-"
+      },
+      "Ve": {
+        "sign": 1,
+        "lon": 0.06917,
+        "text": "00° Mesh 04′ 09″",
+        "nakshatra": 1,
+        "pada": 1,
+        "isIn": "12 Bhava",
+        "dignities": "-"
+      },
+      "Sa": {
+        "sign": 3,
+        "lon": 72.41333,
+        "text": "12° Mitu 24′ 48″",
+        "nakshatra": 6,
+        "pada": 2,
+        "isIn": "2 Bhava",
+        "dignities": "-"
+      },
+      "Ra": {
+        "sign": 1,
+        "lon": 20.63833,
+        "text": "20° Mesh 38′ 18″",
+        "nakshatra": 2,
+        "pada": 3,
+        "isIn": "12 Bhava",
+        "dignities": "-",
+        "retro": true
+      },
+      "Ke": {
+        "sign": 7,
+        "lon": 200.63833,
+        "text": "20° Tula 38′ 18″",
+        "nakshatra": 16,
+        "pada": 1,
+        "isIn": "6 Bhava",
+        "dignities": "-",
+        "retro": true
+      }
+    },
+    "lagna": {
+      "sign": 2,
+      "lon": 46.34139,
+      "text": "16° Vibh 20′ 29″",
+      "nakshatra": 4,
+      "pada": 2,
+      "isIn": "1 Bhava",
+      "dignities": "-"
+    },
+    "moon": {
+      "nakshatra": 5,
+      "pada": 2,
+      "text": "Mrigashira 2"
+    },
+    "dasha": {
+      "mahaLord": "mangal",
+      "mahaLordId": "Ma",
+      "mahaStart": "2000-10-10T11:08",
+      "mahaEnd": "2007-10-11T06:12",
+      "mahas": [
+        {
+          "lord": "Ma",
+          "start": "2000-10-10T11:08",
+          "end": "2007-10-11T06:12",
+          "raw": "Mangal - Maha Dasha - 7y | October 10, 2000, Tuesday at 11:08 October 11, 2007, Thursday at 06:12 ❯"
+        },
+        {
+          "lord": "Ra",
+          "start": "2007-10-11T06:12",
+          "end": "2025-10-10T20:57",
+          "raw": "Rahu - Maha Dasha - 17y 11m | October 11, 2007, Thursday at 06:12 October 10, 2025, Friday at 20:57 ❯"
+        },
+        {
+          "lord": "Ju",
+          "start": "2025-10-10T20:57",
+          "end": "2041-10-10T23:23",
+          "raw": "Guru - Maha Dasha - 16y | October 10, 2025, Friday at 20:57 October 10, 2041, Thursday at 23:23 ❯"
+        },
+        {
+          "lord": "Sa",
+          "start": "2041-10-10T23:23",
+          "end": "2060-10-10T20:17",
+          "raw": "Shani - Maha Dasha - 18y 11m | October 10, 2041, Thursday at 23:23 October 10, 2060, Sunday at 20:17 ❯"
+        },
+        {
+          "lord": "Me",
+          "start": "2060-10-10T20:17",
+          "end": "2077-10-11T04:53",
+          "raw": "Budha - Maha Dasha - 17y | October 10, 2060, Sunday at 20:17 October 11, 2077, Monday at 04:53 ❯"
+        },
+        {
+          "lord": "Ke",
+          "start": "2077-10-11T04:53",
+          "end": "2084-10-10T23:57",
+          "raw": "Ketu - Maha Dasha - 6y 11m | October 11, 2077, Monday at 04:53 October 10, 2084, Tuesday at 23:57 ❯"
+        },
+        {
+          "lord": "Ve",
+          "start": "2084-10-10T23:57",
+          "end": "2104-10-12T03:00",
+          "raw": "Shukra - Maha Dasha - 20y | October 10, 2084, Tuesday at 23:57 October 12, 2104, Sunday at 03:00 ❯"
+        },
+        {
+          "lord": "Su",
+          "start": "2104-10-12T03:00",
+          "end": "2110-10-12T15:55",
+          "raw": "Surya - Maha Dasha - 6y | October 12, 2104, Sunday at 03:00 October 12, 2110, Sunday at 15:55 ❯"
+        },
+        {
+          "lord": "Mo",
+          "start": "2110-10-12T15:55",
+          "end": "2120-10-12T05:27",
+          "raw": "Chandra - Maha Dasha - 9y 11m | October 12, 2110, Sunday at 15:55 October 12, 2120, Saturday at 05:27 ❯"
+        }
+      ]
+    },
+    "raw": {
+      "planets": [
+        {
+          "name": "Lagna",
+          "rawName": "Lagna (Q) 🌸",
+          "longitude": "16° Vibh 20′ 29″",
+          "nakshatra": "Rohini 2",
+          "isIn": "1 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Surya",
+          "rawName": "☉Surya (Q)",
+          "longitude": "16° Kumb 12′ 51″",
+          "nakshatra": "Shatabhisha 3🔥",
+          "isIn": "10 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Chandra",
+          "rawName": "☾Chandra (Q)",
+          "longitude": "29° Vibh 47′ 03″",
+          "nakshatra": "Mrigashira 2",
+          "isIn": "1 Bhava",
+          "dignities": "Mooltrikona",
+          "retro": false
+        },
+        {
+          "name": "Mangal",
+          "rawName": "♂Mangal 🌸",
+          "longitude": "22° Mesh 40′ 05″",
+          "nakshatra": "Bharani 3",
+          "isIn": "12 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Budha",
+          "rawName": "☿Budha (Q) 🔥 💱",
+          "longitude": "13° Kumb 02′ 20″",
+          "nakshatra": "Shatabhisha 2🔥",
+          "isIn": "10 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Guru",
+          "rawName": "♃Guru (Q) ↺ 🌸",
+          "longitude": "20° Simh 32′ 23″",
+          "nakshatra": "P Phalguni 3",
+          "isIn": "4 Bhava",
+          "dignities": "-",
+          "retro": true
+        },
+        {
+          "name": "Shukra",
+          "rawName": "♀Shukra",
+          "longitude": "00° Mesh 04′ 09″",
+          "nakshatra": "Ashwini 1",
+          "isIn": "12 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Shani",
+          "rawName": "♄Shani ↺ 💱",
+          "longitude": "12° Mitu 24′ 48″",
+          "nakshatra": "Ardra 2",
+          "isIn": "2 Bhava",
+          "dignities": "-",
+          "retro": true
+        },
+        {
+          "name": "Rahu",
+          "rawName": "☊Rahu ↺ 🌸",
+          "longitude": "20° Mesh 38′ 18″",
+          "nakshatra": "Bharani 3",
+          "isIn": "12 Bhava",
+          "dignities": "-",
+          "retro": true
+        },
+        {
+          "name": "Ketu",
+          "rawName": "☋Ketu ↺",
+          "longitude": "20° Tula 38′ 18″",
+          "nakshatra": "Vishakha 1",
+          "isIn": "6 Bhava",
+          "dignities": "-",
+          "retro": true
+        }
+      ],
+      "dasha": [
+        [
+          "Mangal - Maha Dasha - 7y",
+          "October 10, 2000, Tuesday at 11:08 October 11, 2007, Thursday at 06:12 ❯"
+        ],
+        [
+          "Rahu - Maha Dasha - 17y 11m",
+          "October 11, 2007, Thursday at 06:12 October 10, 2025, Friday at 20:57 ❯"
+        ],
+        [
+          "Guru - Maha Dasha - 16y",
+          "October 10, 2025, Friday at 20:57 October 10, 2041, Thursday at 23:23 ❯"
+        ],
+        [
+          "Shani - Maha Dasha - 18y 11m",
+          "October 10, 2041, Thursday at 23:23 October 10, 2060, Sunday at 20:17 ❯"
+        ],
+        [
+          "Budha - Maha Dasha - 17y",
+          "October 10, 2060, Sunday at 20:17 October 11, 2077, Monday at 04:53 ❯"
+        ],
+        [
+          "Ketu - Maha Dasha - 6y 11m",
+          "October 11, 2077, Monday at 04:53 October 10, 2084, Tuesday at 23:57 ❯"
+        ],
+        [
+          "Shukra - Maha Dasha - 20y",
+          "October 10, 2084, Tuesday at 23:57 October 12, 2104, Sunday at 03:00 ❯"
+        ],
+        [
+          "Surya - Maha Dasha - 6y",
+          "October 12, 2104, Sunday at 03:00 October 12, 2110, Sunday at 15:55 ❯"
+        ],
+        [
+          "Chandra - Maha Dasha - 9y 11m",
+          "October 12, 2110, Sunday at 15:55 October 12, 2120, Saturday at 05:27 ❯"
+        ]
+      ]
+    }
+  },
+  "notes": [
+    "Longitudes are sidereal (Lahiri/Chitrapaksha, site default), DD° Sign MM′ SS″ as printed under \"Rashi Chart Details > Graha Details\"; mean node."
+  ]
+}

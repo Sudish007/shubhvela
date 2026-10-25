@@ -1,0 +1,424 @@
+{
+  "case": "c34",
+  "source": "drikpanchang",
+  "source_url": "https://www.drikpanchang.com/jyotisha/kundali/kundali.html (POST dp_payload from https://www.drikpanchang.com/jyotisha/kundali/janma-kundali.html)",
+  "fetched_at": "2026-10-24T22:57:59.611Z",
+  "fetcher_version": "a04-1",
+  "values": {
+    "input": {
+      "date": "1987-10-24",
+      "time": "20:05",
+      "noonForUnknownTime": false,
+      "city": "San Jose",
+      "state": "California",
+      "country": "United States",
+      "latitude": 37.339444444444446,
+      "longitude": -121.89500000000001,
+      "elevation": 23,
+      "olsonTimezone": "America/Los_Angeles",
+      "offsetHours": -8,
+      "offsetMinutes": -480,
+      "ayanamsha": "chitra-paksha",
+      "node": "mean (site default; \"Set True Rahu/Ketu\" not toggled)",
+      "suggestions": [
+        "San Marino San Marino",
+        "San Jose San Jose, Costa Rica",
+        "San Jose California, United States",
+        "Puerto San Jose Escuintla, Guatemala",
+        "San Jose del Monte Central Luzon, Philippines",
+        "San Jose Ojetenam San Marcos, Guatemala",
+        "San Jose de Mayo San Jose, Uruguay",
+        "San Jose de Rio Tinto Olancho, Honduras",
+        "San Jose Villa de Allende Mexico, Mexico",
+        "San Juan San Juan, Puerto Rico",
+        "San Francisco California, United States",
+        "San Jose Estancia Grande Oaxaca, Mexico",
+        "Sao Jose dos Campos Sao Paulo, Brazil",
+        "Jose Maria Morelos (San Jose) Hidalgo, Mexico",
+        "General Juan Jose Baz (San Jose del Corral) Veracruz, Mexico",
+        "Sao Jose do Egito Pernambuco, Brazil",
+        "Juan Jose Rios Sinaloa, Mexico",
+        "San Jose Caaguazu, Paraguay",
+        "San Jose de Las Matas Santiago, Dominican Republic",
+        "San Jose Tenango Oaxaca, Mexico",
+        "San Jose Chiapa Puebla, Mexico",
+        "San Jose La Arada Chiquimula, Guatemala",
+        "San Jose del Golfo Guatemala, Guatemala",
+        "San Jose Chacaya Solola, Guatemala",
+        "San Jose del Potrero Comayagua, Honduras",
+        "San Jose de Copan Copan, Honduras",
+        "San Jose de Comayagua Comayagua, Honduras",
+        "San Jose de Colinas Santa Barbara, Honduras",
+        "San Jose de los Remates Boaco, Nicaragua",
+        "San Jose de Aerocuar Sucre, Venezuela",
+        "San Jose de La Montana Antioquia, Colombia",
+        "Cucuta Norte de Santander, Colombia",
+        "San Jose Catamarca, Argentina",
+        "San Jose de Vinedo Durango, Mexico",
+        "San Jose de Gracia Aguascalientes, Mexico",
+        "Campora San Giovanni Calabria, Italy",
+        "San Diego California, United States",
+        "Sao Jose dos Pinhais Parana, Brazil",
+        "Jose de San Martin Chubut, Argentina",
+        "Sao Paulo Sao Paulo, Brazil",
+        "San Salvador San Salvador, El Salvador",
+        "General Jose de San Martin Chaco, Argentina",
+        "San Jose Lachiguiri Oaxaca, Mexico",
+        "San Jose Chiltepec Oaxaca, Mexico",
+        "San Jose Iturbide Guanajuato, Mexico",
+        "San Juan San Juan, Argentina",
+        "Josenii Bargaului Bistrita-Nasaud, Romania",
+        "Sao Jose da Laje Alagoas, Brazil",
+        "General Jose Eduvigis Diaz Neembucu, Paraguay",
+        "Colonia Mauricio Jose Troche Guaira, Paraguay",
+        "Jose Pedro Varela Lavalleja, Uruguay",
+        "Temascalcingo de Jose Maria Velazco Mexico, Mexico",
+        "San Jose de Jachal San Juan, Argentina",
+        "San Jose del Cabo Baja California Sur, Mexico",
+        "San Salvador de Jujuy Jujuy, Argentina",
+        "San Luis Potosi San Luis Potosi, Mexico",
+        "San Jose Andalusia, Spain",
+        "San Jose Village Tinian, Northern Mariana Islands",
+        "San Antonio Texas, United States",
+        "San Jose Western Visayas, Philippines",
+        "San Jose de Feliciano Entre Rios, Argentina",
+        "San Jose Misiones, Argentina",
+        "San Jose de Ocoa San Jose de Ocoa, Dominican Republic",
+        "San Jose Ayuquila Oaxaca, Mexico",
+        "San Jose Acateno Puebla, Mexico",
+        "San Jose Poaquil Chimaltenango, Guatemala",
+        "San Jose Pinula Guatemala, Guatemala",
+        "San Jose El Idolo Suchitepeque, Guatemala",
+        "San Jose Acatempa Jutiapa, Guatemala",
+        "San Jose Peten, Guatemala",
+        "San Jose del Boqueron Cortes, Honduras",
+        "San Jose La Paz, Honduras",
+        "San Jose de Las Conchas Choluteca, Honduras",
+        "San Jose de Cusmapa Madriz, Nicaragua",
+        "San Jose de Bocay Jinotega, Nicaragua",
+        "San Jose de Barlovento Miranda, Venezuela",
+        "San Jose de Guanipa Anzoategui, Venezuela",
+        "Valle de San Jose Santander, Colombia",
+        "San Jose de Miranda Santander, Colombia",
+        "San Jose del Palmar Choco, Colombia",
+        "San Jose Caldas, Colombia",
+        "San Jose Narino, Colombia",
+        "San Jose Lambayeque, Peru",
+        "San Jose Panama Oeste, Panama",
+        "San Jose Veraguas, Panama",
+        "San Jose Los Santos, Panama",
+        "San Jose Cuyachapa Puebla, Mexico",
+        "San Jose del Guaviare Guaviare, Colombia",
+        "San Jose Temascatio Guanajuato, Mexico",
+        "San Jose el Alto Queretaro, Mexico",
+        "San Jose del Castillo Jalisco, Mexico",
+        "San Jose de Gracia Jalisco, Mexico",
+        "San Jose de Aura Coahuila, Mexico",
+        "San Jose de Gracia Michoacan, Mexico",
+        "San Jose de la Montana Guanajuato, Mexico",
+        "San Jose del Rodeo Guanajuato, Mexico",
+        "Laguna New Mexico, United States",
+        "San Jose Hidalgo, Mexico",
+        "San Jose Guadalupe Otzacatipan Mexico, Mexico",
+        "San Jose el Cuartel Mexico, Mexico"
+      ],
+      "picked": "San Jose California, United States"
+    },
+    "planets": {
+      "Su": {
+        "sign": 7,
+        "lon": 187.47167,
+        "text": "07° Tula 28′ 18″",
+        "nakshatra": 15,
+        "pada": 1,
+        "isIn": "6 Bhava",
+        "dignities": "Debilitated"
+      },
+      "Mo": {
+        "sign": 8,
+        "lon": 217.53222,
+        "text": "07° Vish 31′ 56″",
+        "nakshatra": 17,
+        "pada": 2,
+        "isIn": "7 Bhava",
+        "dignities": "Debilitated"
+      },
+      "Ma": {
+        "sign": 6,
+        "lon": 166.815,
+        "text": "16° Kany 48′ 54″",
+        "nakshatra": 13,
+        "pada": 3,
+        "isIn": "5 Bhava",
+        "dignities": "-"
+      },
+      "Me": {
+        "sign": 7,
+        "lon": 194.60889,
+        "text": "14° Tula 36′ 32″",
+        "nakshatra": 15,
+        "pada": 3,
+        "isIn": "6 Bhava",
+        "dignities": "-"
+      },
+      "Ju": {
+        "sign": 1,
+        "lon": 0.10306,
+        "text": "00° Mesh 06′ 11″",
+        "nakshatra": 1,
+        "pada": 1,
+        "isIn": "12 Bhava",
+        "dignities": "-"
+      },
+      "Ve": {
+        "sign": 7,
+        "lon": 204.06444,
+        "text": "24° Tula 03′ 52″",
+        "nakshatra": 16,
+        "pada": 2,
+        "isIn": "6 Bhava",
+        "dignities": "-"
+      },
+      "Sa": {
+        "sign": 8,
+        "lon": 234.19806,
+        "text": "24° Vish 11′ 53″",
+        "nakshatra": 18,
+        "pada": 3,
+        "isIn": "7 Bhava",
+        "dignities": "-"
+      },
+      "Ra": {
+        "sign": 12,
+        "lon": 337.06778,
+        "text": "07° Meen 04′ 04″",
+        "nakshatra": 26,
+        "pada": 2,
+        "isIn": "11 Bhava",
+        "dignities": "-",
+        "retro": true
+      },
+      "Ke": {
+        "sign": 6,
+        "lon": 157.06778,
+        "text": "07° Kany 04′ 04″",
+        "nakshatra": 12,
+        "pada": 4,
+        "isIn": "5 Bhava",
+        "dignities": "-",
+        "retro": true
+      }
+    },
+    "lagna": {
+      "sign": 2,
+      "lon": 42.5225,
+      "text": "12° Vibh 31′ 21″",
+      "nakshatra": 4,
+      "pada": 1,
+      "isIn": "1 Bhava",
+      "dignities": "-"
+    },
+    "moon": {
+      "nakshatra": 17,
+      "pada": 2,
+      "text": "Anuradha 2"
+    },
+    "dasha": {
+      "mahaLord": "shani",
+      "mahaLordId": "Sa",
+      "mahaStart": "1981-10-30T06:22",
+      "mahaEnd": "2000-10-30T03:16",
+      "mahas": [
+        {
+          "lord": "Sa",
+          "start": "1981-10-30T06:22",
+          "end": "2000-10-30T03:16",
+          "raw": "Shani - Maha Dasha - 18y 11m | October 30, 1981, Friday at 06:22 October 30, 2000, Monday at 03:16 ❯"
+        },
+        {
+          "lord": "Me",
+          "start": "2000-10-30T03:16",
+          "end": "2017-10-30T12:52",
+          "raw": "Budha - Maha Dasha - 17y | October 30, 2000, Monday at 03:16 October 30, 2017, Monday at 12:52 ❯"
+        },
+        {
+          "lord": "Ke",
+          "start": "2017-10-30T12:52",
+          "end": "2024-10-30T07:56",
+          "raw": "Ketu - Maha Dasha - 6y 11m | October 30, 2017, Monday at 12:52 October 30, 2024, Wednesday at 07:56 ❯"
+        },
+        {
+          "lord": "Ve",
+          "start": "2024-10-30T07:56",
+          "end": "2044-10-30T10:59",
+          "raw": "Shukra - Maha Dasha - 20y | October 30, 2024, Wednesday at 07:56 October 30, 2044, Sunday at 10:59 ❯"
+        },
+        {
+          "lord": "Su",
+          "start": "2044-10-30T10:59",
+          "end": "2050-10-30T23:54",
+          "raw": "Surya - Maha Dasha - 6y | October 30, 2044, Sunday at 10:59 October 30, 2050, Sunday at 23:54 ❯"
+        },
+        {
+          "lord": "Mo",
+          "start": "2050-10-30T23:54",
+          "end": "2060-10-30T13:26",
+          "raw": "Chandra - Maha Dasha - 9y 11m | October 30, 2050, Sunday at 23:54 October 30, 2060, Saturday at 13:26 ❯"
+        },
+        {
+          "lord": "Ma",
+          "start": "2060-10-30T13:26",
+          "end": "2067-10-31T08:30",
+          "raw": "Mangal - Maha Dasha - 7y | October 30, 2060, Saturday at 13:26 October 31, 2067, Monday at 08:30 ❯"
+        },
+        {
+          "lord": "Ra",
+          "start": "2067-10-31T08:30",
+          "end": "2085-10-30T23:15",
+          "raw": "Rahu - Maha Dasha - 17y 11m | October 31, 2067, Monday at 08:30 October 30, 2085, Tuesday at 23:15 ❯"
+        },
+        {
+          "lord": "Ju",
+          "start": "2085-10-30T23:15",
+          "end": "2101-11-01T01:41",
+          "raw": "Guru - Maha Dasha - 16y | October 30, 2085, Tuesday at 23:15 November 1, 2101, Tuesday at 01:41 ❯"
+        }
+      ]
+    },
+    "raw": {
+      "planets": [
+        {
+          "name": "Lagna",
+          "rawName": "Lagna (Q)",
+          "longitude": "12° Vibh 31′ 21″",
+          "nakshatra": "Rohini 1",
+          "isIn": "1 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Surya",
+          "rawName": "☉Surya",
+          "longitude": "07° Tula 28′ 18″",
+          "nakshatra": "Swati 1",
+          "isIn": "6 Bhava",
+          "dignities": "Debilitated",
+          "retro": false
+        },
+        {
+          "name": "Chandra",
+          "rawName": "☾Chandra (Q) 🌸",
+          "longitude": "07° Vish 31′ 56″",
+          "nakshatra": "Anuradha 2",
+          "isIn": "7 Bhava",
+          "dignities": "Debilitated",
+          "retro": false
+        },
+        {
+          "name": "Mangal",
+          "rawName": "♂Mangal (T)",
+          "longitude": "16° Kany 48′ 54″",
+          "nakshatra": "Hasta 3🔥",
+          "isIn": "5 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Budha",
+          "rawName": "☿Budha ↺ 🔥",
+          "longitude": "14° Tula 36′ 32″",
+          "nakshatra": "Swati 3",
+          "isIn": "6 Bhava",
+          "dignities": "-",
+          "retro": true
+        },
+        {
+          "name": "Guru",
+          "rawName": "♃Guru ↺",
+          "longitude": "00° Mesh 06′ 11″",
+          "nakshatra": "Ashwini 1",
+          "isIn": "12 Bhava",
+          "dignities": "-",
+          "retro": true
+        },
+        {
+          "name": "Shukra",
+          "rawName": "♀Shukra 🌸",
+          "longitude": "24° Tula 03′ 52″",
+          "nakshatra": "Vishakha 2",
+          "isIn": "6 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Shani",
+          "rawName": "♄Shani (Q)",
+          "longitude": "24° Vish 11′ 53″",
+          "nakshatra": "Jyeshtha 3",
+          "isIn": "7 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Rahu",
+          "rawName": "☊Rahu ↺ 🌸 ⚠",
+          "longitude": "07° Meen 04′ 04″",
+          "nakshatra": "U Bhadrapada 2",
+          "isIn": "11 Bhava",
+          "dignities": "-",
+          "retro": true
+        },
+        {
+          "name": "Ketu",
+          "rawName": "☋Ketu (T) ↺ 🌸",
+          "longitude": "07° Kany 04′ 04″",
+          "nakshatra": "U Phalguni 4",
+          "isIn": "5 Bhava",
+          "dignities": "-",
+          "retro": true
+        }
+      ],
+      "dasha": [
+        [
+          "Shani - Maha Dasha - 18y 11m",
+          "October 30, 1981, Friday at 06:22 October 30, 2000, Monday at 03:16 ❯"
+        ],
+        [
+          "Budha - Maha Dasha - 17y",
+          "October 30, 2000, Monday at 03:16 October 30, 2017, Monday at 12:52 ❯"
+        ],
+        [
+          "Ketu - Maha Dasha - 6y 11m",
+          "October 30, 2017, Monday at 12:52 October 30, 2024, Wednesday at 07:56 ❯"
+        ],
+        [
+          "Shukra - Maha Dasha - 20y",
+          "October 30, 2024, Wednesday at 07:56 October 30, 2044, Sunday at 10:59 ❯"
+        ],
+        [
+          "Surya - Maha Dasha - 6y",
+          "October 30, 2044, Sunday at 10:59 October 30, 2050, Sunday at 23:54 ❯"
+        ],
+        [
+          "Chandra - Maha Dasha - 9y 11m",
+          "October 30, 2050, Sunday at 23:54 October 30, 2060, Saturday at 13:26 ❯"
+        ],
+        [
+          "Mangal - Maha Dasha - 7y",
+          "October 30, 2060, Saturday at 13:26 October 31, 2067, Monday at 08:30 ❯"
+        ],
+        [
+          "Rahu - Maha Dasha - 17y 11m",
+          "October 31, 2067, Monday at 08:30 October 30, 2085, Tuesday at 23:15 ❯"
+        ],
+        [
+          "Guru - Maha Dasha - 16y",
+          "October 30, 2085, Tuesday at 23:15 November 1, 2101, Tuesday at 01:41 ❯"
+        ]
+      ]
+    }
+  },
+  "notes": [
+    "Longitudes are sidereal (Lahiri/Chitrapaksha, site default), DD° Sign MM′ SS″ as printed under \"Rashi Chart Details > Graha Details\"; mean node."
+  ]
+}

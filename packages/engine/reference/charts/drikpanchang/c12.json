@@ -1,0 +1,326 @@
+{
+  "case": "c12",
+  "source": "drikpanchang",
+  "source_url": "https://www.drikpanchang.com/jyotisha/kundali/kundali.html (POST dp_payload from https://www.drikpanchang.com/jyotisha/kundali/janma-kundali.html)",
+  "fetched_at": "2026-10-24T22:43:58.318Z",
+  "fetcher_version": "a04-1",
+  "values": {
+    "input": {
+      "date": "1983-02-14",
+      "time": "15:30",
+      "noonForUnknownTime": false,
+      "city": "Guwahati",
+      "state": "Assam",
+      "country": "India",
+      "latitude": 26.184444444444445,
+      "longitude": 91.74583333333334,
+      "elevation": 59,
+      "olsonTimezone": "Asia/Kolkata",
+      "offsetMinutes": null,
+      "ayanamsha": "chitra-paksha",
+      "node": "mean (site default; \"Set True Rahu/Ketu\" not toggled)",
+      "suggestions": [
+        "North Guwahati Assam, India",
+        "Guwahati Assam, India"
+      ],
+      "picked": "Guwahati Assam, India",
+      "formOffsetHours": 5.5
+    },
+    "planets": {
+      "Su": {
+        "sign": 11,
+        "lon": 301.51222,
+        "text": "01° Kumb 30′ 44″",
+        "nakshatra": null,
+        "pada": null,
+        "isIn": "8 Bhava",
+        "dignities": "-"
+      },
+      "Mo": {
+        "sign": 11,
+        "lon": 316.97944,
+        "text": "16° Kumb 58′ 46″",
+        "nakshatra": 24,
+        "pada": 4,
+        "isIn": "8 Bhava",
+        "dignities": "-"
+      },
+      "Ma": {
+        "sign": 11,
+        "lon": 328.165,
+        "text": "28° Kumb 09′ 54″",
+        "nakshatra": 25,
+        "pada": 3,
+        "isIn": "8 Bhava",
+        "dignities": "-"
+      },
+      "Me": {
+        "sign": 10,
+        "lon": 276.39194,
+        "text": "06° Maka 23′ 31″",
+        "nakshatra": 21,
+        "pada": 3,
+        "isIn": "7 Bhava",
+        "dignities": "-"
+      },
+      "Ju": {
+        "sign": 8,
+        "lon": 224.72167,
+        "text": "14° Vish 43′ 18″",
+        "nakshatra": 17,
+        "pada": 4,
+        "isIn": "5 Bhava",
+        "dignities": "-"
+      },
+      "Ve": {
+        "sign": 11,
+        "lon": 325.87917,
+        "text": "25° Kumb 52′ 45″",
+        "nakshatra": 25,
+        "pada": 2,
+        "isIn": "8 Bhava",
+        "dignities": "-"
+      },
+      "Sa": {
+        "sign": 7,
+        "lon": 190.80583,
+        "text": "10° Tula 48′ 21″",
+        "nakshatra": 15,
+        "pada": 2,
+        "isIn": "4 Bhava",
+        "dignities": "Exalted"
+      },
+      "Ra": {
+        "sign": 3,
+        "lon": 67.88083,
+        "text": "07° Mitu 52′ 51″",
+        "nakshatra": 6,
+        "pada": 1,
+        "isIn": "12 Bhava",
+        "dignities": "Exalted",
+        "retro": true
+      },
+      "Ke": {
+        "sign": 9,
+        "lon": 247.88083,
+        "text": "07° Dhan 52′ 51″",
+        "nakshatra": 19,
+        "pada": 3,
+        "isIn": "6 Bhava",
+        "dignities": "Exalted",
+        "retro": true
+      }
+    },
+    "lagna": {
+      "sign": 4,
+      "lon": 99.87944,
+      "text": "09° Kark 52′ 46″",
+      "nakshatra": 8,
+      "pada": 2,
+      "isIn": "1 Bhava",
+      "dignities": "-"
+    },
+    "moon": {
+      "nakshatra": 24,
+      "pada": 4,
+      "text": "Shatabhisha 4"
+    },
+    "dasha": {
+      "mahaLord": "rahu",
+      "mahaLordId": "Ra",
+      "mahaStart": "1969-03-14T08:00",
+      "mahaEnd": "1987-03-14T22:45",
+      "mahas": [
+        {
+          "lord": "Ra",
+          "start": "1969-03-14T08:00",
+          "end": "1987-03-14T22:45",
+          "raw": "Rahu - Maha Dasha - 18y | March 14, 1969, Friday at 08:00 March 14, 1987, Saturday at 22:45 ❯"
+        },
+        {
+          "lord": "Ju",
+          "start": "1987-03-14T22:45",
+          "end": "2003-03-15T01:11",
+          "raw": "Guru - Maha Dasha - 16y | March 14, 1987, Saturday at 22:45 March 15, 2003, Saturday at 01:11 ❯"
+        },
+        {
+          "lord": "Sa",
+          "start": "2003-03-15T01:11",
+          "end": "2022-03-14T22:05",
+          "raw": "Shani - Maha Dasha - 18y 11m | March 15, 2003, Saturday at 01:11 March 14, 2022, Monday at 22:05 ❯"
+        },
+        {
+          "lord": "Me",
+          "start": "2022-03-14T22:05",
+          "end": "2039-03-15T06:41",
+          "raw": "Budha - Maha Dasha - 17y | March 14, 2022, Monday at 22:05 March 15, 2039, Tuesday at 06:41 ❯"
+        },
+        {
+          "lord": "Ke",
+          "start": "2039-03-15T06:41",
+          "end": "2046-03-15T01:45",
+          "raw": "Ketu - Maha Dasha - 6y 11m | March 15, 2039, Tuesday at 06:41 March 15, 2046, Thursday at 01:45 ❯"
+        },
+        {
+          "lord": "Ve",
+          "start": "2046-03-15T01:45",
+          "end": "2066-03-15T04:48",
+          "raw": "Shukra - Maha Dasha - 20y | March 15, 2046, Thursday at 01:45 March 15, 2066, Monday at 04:48 ❯"
+        },
+        {
+          "lord": "Su",
+          "start": "2066-03-15T04:48",
+          "end": "2072-03-14T17:43",
+          "raw": "Surya - Maha Dasha - 5y 11m | March 15, 2066, Monday at 04:48 March 14, 2072, Monday at 17:43 ❯"
+        },
+        {
+          "lord": "Mo",
+          "start": "2072-03-14T17:43",
+          "end": "2082-03-15T07:15",
+          "raw": "Chandra - Maha Dasha - 10y | March 14, 2072, Monday at 17:43 March 15, 2082, Sunday at 07:15 ❯"
+        },
+        {
+          "lord": "Ma",
+          "start": "2082-03-15T07:15",
+          "end": "2089-03-15T02:19",
+          "raw": "Mangal - Maha Dasha - 6y 11m | March 15, 2082, Sunday at 07:15 March 15, 2089, Tuesday at 02:19 ❯"
+        }
+      ]
+    },
+    "raw": {
+      "planets": [
+        {
+          "name": "Lagna",
+          "rawName": "Lagna (Q) 🌸",
+          "longitude": "09° Kark 52′ 46″",
+          "nakshatra": "Pushya 2",
+          "isIn": "1 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Surya",
+          "rawName": "☉Surya",
+          "longitude": "01° Kumb 30′ 44″",
+          "nakshatra": "Dhanishtha 3",
+          "isIn": "8 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Chandra",
+          "rawName": "☾Chandra 🔥 🌸",
+          "longitude": "16° Kumb 58′ 46″",
+          "nakshatra": "Shatabhisha 4🔥",
+          "isIn": "8 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Mangal",
+          "rawName": "♂Mangal",
+          "longitude": "28° Kumb 09′ 54″",
+          "nakshatra": "P Bhadrapada 3",
+          "isIn": "8 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Budha",
+          "rawName": "☿Budha (Q)",
+          "longitude": "06° Maka 23′ 31″",
+          "nakshatra": "U Ashadha 3",
+          "isIn": "7 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Guru",
+          "rawName": "♃Guru (T)",
+          "longitude": "14° Vish 43′ 18″",
+          "nakshatra": "Anuradha 4",
+          "isIn": "5 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Shukra",
+          "rawName": "♀Shukra 💱 🌸",
+          "longitude": "25° Kumb 52′ 45″",
+          "nakshatra": "P Bhadrapada 2",
+          "isIn": "8 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Shani",
+          "rawName": "♄Shani (Q) ↺ 💱",
+          "longitude": "10° Tula 48′ 21″",
+          "nakshatra": "Swati 2",
+          "isIn": "4 Bhava",
+          "dignities": "Exalted",
+          "retro": true
+        },
+        {
+          "name": "Rahu",
+          "rawName": "☊Rahu ↺",
+          "longitude": "07° Mitu 52′ 51″",
+          "nakshatra": "Ardra 1",
+          "isIn": "12 Bhava",
+          "dignities": "Exalted",
+          "retro": true
+        },
+        {
+          "name": "Ketu",
+          "rawName": "☋Ketu ↺",
+          "longitude": "07° Dhan 52′ 51″",
+          "nakshatra": "Mula 3",
+          "isIn": "6 Bhava",
+          "dignities": "Exalted",
+          "retro": true
+        }
+      ],
+      "dasha": [
+        [
+          "Rahu - Maha Dasha - 18y",
+          "March 14, 1969, Friday at 08:00 March 14, 1987, Saturday at 22:45 ❯"
+        ],
+        [
+          "Guru - Maha Dasha - 16y",
+          "March 14, 1987, Saturday at 22:45 March 15, 2003, Saturday at 01:11 ❯"
+        ],
+        [
+          "Shani - Maha Dasha - 18y 11m",
+          "March 15, 2003, Saturday at 01:11 March 14, 2022, Monday at 22:05 ❯"
+        ],
+        [
+          "Budha - Maha Dasha - 17y",
+          "March 14, 2022, Monday at 22:05 March 15, 2039, Tuesday at 06:41 ❯"
+        ],
+        [
+          "Ketu - Maha Dasha - 6y 11m",
+          "March 15, 2039, Tuesday at 06:41 March 15, 2046, Thursday at 01:45 ❯"
+        ],
+        [
+          "Shukra - Maha Dasha - 20y",
+          "March 15, 2046, Thursday at 01:45 March 15, 2066, Monday at 04:48 ❯"
+        ],
+        [
+          "Surya - Maha Dasha - 5y 11m",
+          "March 15, 2066, Monday at 04:48 March 14, 2072, Monday at 17:43 ❯"
+        ],
+        [
+          "Chandra - Maha Dasha - 10y",
+          "March 14, 2072, Monday at 17:43 March 15, 2082, Sunday at 07:15 ❯"
+        ],
+        [
+          "Mangal - Maha Dasha - 6y 11m",
+          "March 15, 2082, Sunday at 07:15 March 15, 2089, Tuesday at 02:19 ❯"
+        ]
+      ]
+    }
+  },
+  "notes": [
+    "Longitudes are sidereal (Lahiri/Chitrapaksha, site default), DD° Sign MM′ SS″ as printed under \"Rashi Chart Details > Graha Details\"; mean node."
+  ]
+}

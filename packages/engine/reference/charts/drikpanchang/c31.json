@@ -1,0 +1,424 @@
+{
+  "case": "c31",
+  "source": "drikpanchang",
+  "source_url": "https://www.drikpanchang.com/jyotisha/kundali/kundali.html (POST dp_payload from https://www.drikpanchang.com/jyotisha/kundali/janma-kundali.html)",
+  "fetched_at": "2026-10-24T22:57:04.891Z",
+  "fetcher_version": "a04-1",
+  "values": {
+    "input": {
+      "date": "1979-09-28",
+      "time": "06:10",
+      "noonForUnknownTime": false,
+      "city": "New York City",
+      "state": "New York",
+      "country": "United States",
+      "latitude": 40.71416666666667,
+      "longitude": -74.00583333333333,
+      "elevation": 57,
+      "olsonTimezone": "America/New_York",
+      "offsetHours": -5,
+      "offsetMinutes": -300,
+      "ayanamsha": "chitra-paksha",
+      "node": "mean (site default; \"Set True Rahu/Ketu\" not toggled)",
+      "suggestions": [
+        "New York City New York, United States",
+        "New York Mills Minnesota, United States",
+        "New York Mills New York, United States",
+        "New Castle Delaware, United States",
+        "York Nebraska, United States",
+        "New Plymouth Taranaki, New Zealand",
+        "East New York New York, United States",
+        "Pittsburg California, United States",
+        "Yorkeys Knob Queensland, Australia",
+        "York Alabama, United States",
+        "Yorkshire New York, United States",
+        "Jefferson Valley-Yorktown New York, United States",
+        "New Matamoras Ohio, United States",
+        "New Marlborough Massachusetts, United States",
+        "New Carlisle Ohio, United States",
+        "Albany New York, United States",
+        "Buffalo New York, United States",
+        "York Western Australia, Australia",
+        "York England, United Kingdom",
+        "Yorktown Virginia, United States",
+        "York South Carolina, United States",
+        "Yorktown Texas, United States",
+        "Yorkville Illinois, United States",
+        "Yorktown Heights New York, United States",
+        "Bellevue Ohio, United States",
+        "North York Ontario, Canada",
+        "Yorkton Saskatchewan, Canada",
+        "New Grove Grand Port, Mauritius",
+        "New Mirpur Azad Kashmir, Pakistan",
+        "New Delhi NCT, India",
+        "Aksu Xinjiang, China",
+        "New Washington Western Visayas, Philippines",
+        "New Brockton Alabama, United States",
+        "New Smyrna Beach Florida, United States",
+        "New Iberia Louisiana, United States",
+        "New Orleans Louisiana, United States",
+        "Wilmington North Carolina, United States",
+        "Mulberry Ohio, United States",
+        "New Miami Ohio, United States",
+        "New Vienna Ohio, United States",
+        "New Freedom Pennsylvania, United States",
+        "New Castle Virginia, United States",
+        "Newport News Virginia, United States",
+        "New Haven West Virginia, United States",
+        "New Kent Virginia, United States",
+        "New London Connecticut, United States",
+        "New Preston Connecticut, United States",
+        "Topsfield Massachusetts, United States",
+        "New Gloucester Maine, United States",
+        "New Brighton Minnesota, United States",
+        "New Hope Minnesota, United States",
+        "New London Minnesota, United States",
+        "New Prague Minnesota, United States",
+        "New Richland Minnesota, United States",
+        "New Ulm Minnesota, United States",
+        "New Boston New Hampshire, United States",
+        "New City New York, United States",
+        "New Windsor New York, United States",
+        "Newcomerstown Ohio, United States",
+        "New Hope Pennsylvania, United States",
+        "New Glarus Wisconsin, United States",
+        "New Westminster British Columbia, Canada",
+        "Elko New Market Minnesota, United States",
+        "New Hartford Center Connecticut, United States",
+        "New Castle Northwest Pennsylvania, United States",
+        "New Port Richey East Florida, United States",
+        "New Kingman-Butler Arizona, United States",
+        "Clarksdale Mississippi, United States",
+        "Dwight Illinois, United States",
+        "West New York New Jersey, United States",
+        "Amsterdam New York, United States",
+        "Binghamton New York, United States",
+        "Potsdam New York, United States",
+        "Syracuse New York, United States",
+        "Clinton Wisconsin, United States",
+        "Port Sudan Red Sea, Sudan",
+        "Qila Saifullah Balochistan, Pakistan",
+        "Patna Bihar, India",
+        "New Pandanon Western Visayas, Philippines",
+        "New Visayas Davao, Philippines",
+        "New Sibonga Davao, Philippines",
+        "New Panay Soccsksargen, Philippines",
+        "New Panamao ARMM, Philippines",
+        "New Leyte Davao, Philippines",
+        "New Lagao Soccsksargen, Philippines",
+        "New Iloilo Soccsksargen, Philippines",
+        "New Corella Davao, Philippines",
+        "New Cebu Soccsksargen, Philippines",
+        "New Bohol Davao, Philippines",
+        "New Batu Batu ARMM, Philippines",
+        "New Agutaya Mimaropa, Philippines",
+        "New Baclayon Davao, Philippines",
+        "Jinjiang Hainan, China",
+        "Warkworth Auckland, New Zealand",
+        "Nelson Nelson, New Zealand",
+        "Napier Hawke's Bay, New Zealand",
+        "Hastings Hawke's Bay, New Zealand",
+        "Hamilton Waikato, New Zealand",
+        "New Lambton New South Wales, Australia",
+        "New Town Tasmania, Australia"
+      ],
+      "picked": "New York City New York, United States"
+    },
+    "planets": {
+      "Su": {
+        "sign": 6,
+        "lon": 161.1125,
+        "text": "11° Kany 06′ 45″",
+        "nakshatra": 13,
+        "pada": 1,
+        "isIn": "1 Bhava",
+        "dignities": "-"
+      },
+      "Mo": {
+        "sign": 9,
+        "lon": 241.68611,
+        "text": "01° Dhan 41′ 10″",
+        "nakshatra": 19,
+        "pada": 1,
+        "isIn": "4 Bhava",
+        "dignities": "-"
+      },
+      "Ma": {
+        "sign": 4,
+        "lon": 98.52333,
+        "text": "08° Kark 31′ 24″",
+        "nakshatra": 8,
+        "pada": 2,
+        "isIn": "11 Bhava",
+        "dignities": "Debilitated"
+      },
+      "Me": {
+        "sign": 6,
+        "lon": 172.78556,
+        "text": "22° Kany 47′ 08″",
+        "nakshatra": 13,
+        "pada": 4,
+        "isIn": "1 Bhava",
+        "dignities": "-"
+      },
+      "Ju": {
+        "sign": 5,
+        "lon": 126.22028,
+        "text": "06° Simh 13′ 13″",
+        "nakshatra": 10,
+        "pada": 2,
+        "isIn": "12 Bhava",
+        "dignities": "-"
+      },
+      "Ve": {
+        "sign": 6,
+        "lon": 170.25278,
+        "text": "20° Kany 15′ 10″",
+        "nakshatra": 13,
+        "pada": 4,
+        "isIn": "1 Bhava",
+        "dignities": "Debilitated"
+      },
+      "Sa": {
+        "sign": 5,
+        "lon": 145.89556,
+        "text": "25° Simh 53′ 44″",
+        "nakshatra": 11,
+        "pada": 4,
+        "isIn": "12 Bhava",
+        "dignities": "-"
+      },
+      "Ra": {
+        "sign": 5,
+        "lon": 133.32556,
+        "text": "13° Simh 19′ 32″",
+        "nakshatra": 10,
+        "pada": 4,
+        "isIn": "12 Bhava",
+        "dignities": "-",
+        "retro": true
+      },
+      "Ke": {
+        "sign": 11,
+        "lon": 313.32556,
+        "text": "13° Kumb 19′ 32″",
+        "nakshatra": 24,
+        "pada": 2,
+        "isIn": "6 Bhava",
+        "dignities": "-",
+        "retro": true
+      }
+    },
+    "lagna": {
+      "sign": 6,
+      "lon": 152.36056,
+      "text": "02° Kany 21′ 38″",
+      "nakshatra": 12,
+      "pada": 2,
+      "isIn": "1 Bhava",
+      "dignities": "-"
+    },
+    "moon": {
+      "nakshatra": 19,
+      "pada": 1,
+      "text": "Mula 1"
+    },
+    "dasha": {
+      "mahaLord": "ketu",
+      "mahaLordId": "Ke",
+      "mahaStart": "1978-11-08T20:21",
+      "mahaEnd": "1985-11-08T15:25",
+      "mahas": [
+        {
+          "lord": "Ke",
+          "start": "1978-11-08T20:21",
+          "end": "1985-11-08T15:25",
+          "raw": "Ketu - Maha Dasha - 6y 11m | November 8, 1978, Wednesday at 20:21 November 8, 1985, Friday at 15:25 ❯"
+        },
+        {
+          "lord": "Ve",
+          "start": "1985-11-08T15:25",
+          "end": "2005-11-08T18:28",
+          "raw": "Shukra - Maha Dasha - 20y | November 8, 1985, Friday at 15:25 November 8, 2005, Tuesday at 18:28 ❯"
+        },
+        {
+          "lord": "Su",
+          "start": "2005-11-08T18:28",
+          "end": "2011-11-09T07:23",
+          "raw": "Surya - Maha Dasha - 6y | November 8, 2005, Tuesday at 18:28 November 9, 2011, Wednesday at 07:23 ❯"
+        },
+        {
+          "lord": "Mo",
+          "start": "2011-11-09T07:23",
+          "end": "2021-11-08T20:54",
+          "raw": "Chandra - Maha Dasha - 9y 11m | November 9, 2011, Wednesday at 07:23 November 8, 2021, Monday at 20:54 ❯"
+        },
+        {
+          "lord": "Ma",
+          "start": "2021-11-08T20:54",
+          "end": "2028-11-08T15:58",
+          "raw": "Mangal - Maha Dasha - 6y 11m | November 8, 2021, Monday at 20:54 November 8, 2028, Wednesday at 15:58 ❯"
+        },
+        {
+          "lord": "Ra",
+          "start": "2028-11-08T15:58",
+          "end": "2046-11-09T06:43",
+          "raw": "Rahu - Maha Dasha - 18y | November 8, 2028, Wednesday at 15:58 November 9, 2046, Friday at 06:43 ❯"
+        },
+        {
+          "lord": "Ju",
+          "start": "2046-11-09T06:43",
+          "end": "2062-11-09T09:10",
+          "raw": "Guru - Maha Dasha - 16y | November 9, 2046, Friday at 06:43 November 9, 2062, Thursday at 09:10 ❯"
+        },
+        {
+          "lord": "Sa",
+          "start": "2062-11-09T09:10",
+          "end": "2081-11-09T06:04",
+          "raw": "Shani - Maha Dasha - 18y 11m | November 9, 2062, Thursday at 09:10 November 9, 2081, Sunday at 06:04 ❯"
+        },
+        {
+          "lord": "Me",
+          "start": "2081-11-09T06:04",
+          "end": "2098-11-09T14:40",
+          "raw": "Budha - Maha Dasha - 17y | November 9, 2081, Sunday at 06:04 November 9, 2098, Sunday at 14:40 ❯"
+        }
+      ]
+    },
+    "raw": {
+      "planets": [
+        {
+          "name": "Lagna",
+          "rawName": "Lagna (Q)",
+          "longitude": "02° Kany 21′ 38″",
+          "nakshatra": "U Phalguni 2",
+          "isIn": "1 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Surya",
+          "rawName": "☉Surya (Q)",
+          "longitude": "11° Kany 06′ 45″",
+          "nakshatra": "Hasta 1🔥",
+          "isIn": "1 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Chandra",
+          "rawName": "☾Chandra (Q)",
+          "longitude": "01° Dhan 41′ 10″",
+          "nakshatra": "Mula 1",
+          "isIn": "4 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Mangal",
+          "rawName": "♂Mangal 🌸",
+          "longitude": "08° Kark 31′ 24″",
+          "nakshatra": "Pushya 2",
+          "isIn": "11 Bhava",
+          "dignities": "Debilitated",
+          "retro": false
+        },
+        {
+          "name": "Budha",
+          "rawName": "☿Budha (Q) 🔥",
+          "longitude": "22° Kany 47′ 08″",
+          "nakshatra": "Hasta 4🔥",
+          "isIn": "1 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Guru",
+          "rawName": "♃Guru",
+          "longitude": "06° Simh 13′ 13″",
+          "nakshatra": "Magha 2",
+          "isIn": "12 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Shukra",
+          "rawName": "♀Shukra (Q) 🔥",
+          "longitude": "20° Kany 15′ 10″",
+          "nakshatra": "Hasta 4🔥",
+          "isIn": "1 Bhava",
+          "dignities": "Debilitated",
+          "retro": false
+        },
+        {
+          "name": "Shani",
+          "rawName": "♄Shani",
+          "longitude": "25° Simh 53′ 44″",
+          "nakshatra": "P Phalguni 4",
+          "isIn": "12 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Rahu",
+          "rawName": "☊Rahu ↺",
+          "longitude": "13° Simh 19′ 32″",
+          "nakshatra": "Magha 4",
+          "isIn": "12 Bhava",
+          "dignities": "-",
+          "retro": true
+        },
+        {
+          "name": "Ketu",
+          "rawName": "☋Ketu ↺",
+          "longitude": "13° Kumb 19′ 32″",
+          "nakshatra": "Shatabhisha 2",
+          "isIn": "6 Bhava",
+          "dignities": "-",
+          "retro": true
+        }
+      ],
+      "dasha": [
+        [
+          "Ketu - Maha Dasha - 6y 11m",
+          "November 8, 1978, Wednesday at 20:21 November 8, 1985, Friday at 15:25 ❯"
+        ],
+        [
+          "Shukra - Maha Dasha - 20y",
+          "November 8, 1985, Friday at 15:25 November 8, 2005, Tuesday at 18:28 ❯"
+        ],
+        [
+          "Surya - Maha Dasha - 6y",
+          "November 8, 2005, Tuesday at 18:28 November 9, 2011, Wednesday at 07:23 ❯"
+        ],
+        [
+          "Chandra - Maha Dasha - 9y 11m",
+          "November 9, 2011, Wednesday at 07:23 November 8, 2021, Monday at 20:54 ❯"
+        ],
+        [
+          "Mangal - Maha Dasha - 6y 11m",
+          "November 8, 2021, Monday at 20:54 November 8, 2028, Wednesday at 15:58 ❯"
+        ],
+        [
+          "Rahu - Maha Dasha - 18y",
+          "November 8, 2028, Wednesday at 15:58 November 9, 2046, Friday at 06:43 ❯"
+        ],
+        [
+          "Guru - Maha Dasha - 16y",
+          "November 9, 2046, Friday at 06:43 November 9, 2062, Thursday at 09:10 ❯"
+        ],
+        [
+          "Shani - Maha Dasha - 18y 11m",
+          "November 9, 2062, Thursday at 09:10 November 9, 2081, Sunday at 06:04 ❯"
+        ],
+        [
+          "Budha - Maha Dasha - 17y",
+          "November 9, 2081, Sunday at 06:04 November 9, 2098, Sunday at 14:40 ❯"
+        ]
+      ]
+    }
+  },
+  "notes": [
+    "Longitudes are sidereal (Lahiri/Chitrapaksha, site default), DD° Sign MM′ SS″ as printed under \"Rashi Chart Details > Graha Details\"; mean node."
+  ]
+}

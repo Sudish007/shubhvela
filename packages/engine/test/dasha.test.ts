@@ -19,10 +19,12 @@ describe('Vimshottari dasha tree (F14)', () => {
     expect(tree.balanceAtBirth.years).toBeLessThan(0.6);
     const last = tree.mahas[tree.mahas.length - 1];
     expect((last.end - tree.birthUtcMs) / (DASHA_YEAR_DAYS * DAY)).toBeGreaterThanOrEqual(120);
-    // A02 findings: Rahu maha 2015-10-05 .. 2033-10-05.
+    // A02 findings had Rahu maha 2015-10-05 .. 2033-10-05 with the fork's J1900 Lahiri; the A04 Lahiri anchor
+    // (~24" higher ayanamsa -> less Moon longitude -> ~1 day more balance) moves it to 2015-10-06 .. 2033-10-06
+    // (a mahadasha keeps its full 18 years). The external check is the A04 chart suite (balance within 1 day).
     const rahu = tree.mahas.find((m) => m.lord === 'Ra')!;
-    expect(d(rahu.start)).toBe('2015-10-05');
-    expect(d(rahu.end)).toBe('2033-10-05');
+    expect(d(rahu.start)).toBe('2015-10-06');
+    expect(d(rahu.end)).toBe('2033-10-06');
   });
 
   it('follows the Vimshottari order with full-length mahadashas after the balance', () => {
@@ -53,7 +55,7 @@ describe('Vimshottari dasha tree (F14)', () => {
     expect(tree.mahas[1].children).toHaveLength(9);
   });
 
-  it('current() and nextChange() agree with the A02 sample (Rahu/Ketu/Rahu on 2026-10-22; Rahu-Venus from 2027-04-24)', () => {
+  it('current() and nextChange() agree with the A02 sample (Rahu/Ketu/Rahu on 2026-10-22; Rahu-Venus from 2027-04-25)', () => {
     const now = localToUtc(ZONE, { y: 2026, m: 10, d: 22, hh: 10, mm: 58 }).utcMs;
     const cur = current(tree, now)!;
     expect(cur.maha.lord).toBe('Ra');
@@ -61,7 +63,7 @@ describe('Vimshottari dasha tree (F14)', () => {
     expect(cur.pratyantar.lord).toBe('Ra');
     const next = nextChange(tree, now, 'antar')!;
     expect(next).toMatchObject({ level: 'antar', from: 'Ke', to: 'Ve', within: ['Ra'] });
-    expect(d(next.at)).toBe('2027-04-24');
+    expect(d(next.at)).toBe('2027-04-25'); // 2027-04-24 with the fork's J1900 Lahiri (see the balance test above)
     expect(nextChange(tree, now, 'maha')).toMatchObject({ from: 'Ra', to: 'Ju' });
     expect(current(tree, tree.birthUtcMs - DAY)).toBeNull();
   });

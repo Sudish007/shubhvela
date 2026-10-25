@@ -1,0 +1,584 @@
+{
+  "description": "Slug (data/festival-rules.json) -> the event names Drik Panchang prints on its monthly festival pages. `names` are matched case-insensitively after stripping non-letters; an optional `textFilter` (regex on Drik's tithi/basis line) disambiguates names that recur (Bhai Dooj in Chaitra vs Kartika, monthly Skanda Sashti). When several events match in a year the earliest date is the festival date, except `pick: 'last'`. Multi-day festivals (Navratri, Pitru Paksha) are compared on their first day.",
+  "map": {
+    "makar-sankranti": {
+      "names": [
+        "Makara Sankranti",
+        "Makar Sankranti"
+      ]
+    },
+    "pongal": {
+      "names": [
+        "Pongal",
+        "Thai Pongal"
+      ]
+    },
+    "lohri": {
+      "names": [
+        "Lohri"
+      ]
+    },
+    "thaipusam": {
+      "names": [
+        "Thaipusam",
+        "Thai Pusam"
+      ]
+    },
+    "vasant-panchami": {
+      "names": [
+        "Vasant Panchami",
+        "Basant Panchami"
+      ]
+    },
+    "ratha-saptami": {
+      "names": [
+        "Ratha Saptami",
+        "Rath Saptami"
+      ]
+    },
+    "bhishma-ashtami": {
+      "names": [
+        "Bhishma Ashtami"
+      ]
+    },
+    "jaya-ekadashi": {
+      "names": [
+        "Jaya Ekadashi"
+      ]
+    },
+    "magha-purnima": {
+      "names": [
+        "Magha Purnima"
+      ]
+    },
+    "mauni-amavasya": {
+      "names": [
+        "Mauni Amavas",
+        "Mauni Amavasya"
+      ]
+    },
+    "shattila-ekadashi": {
+      "names": [
+        "Shattila Ekadashi"
+      ]
+    },
+    "vijaya-ekadashi": {
+      "names": [
+        "Vijaya Ekadashi"
+      ]
+    },
+    "maha-shivaratri": {
+      "names": [
+        "Maha Shivaratri"
+      ]
+    },
+    "amalaki-ekadashi": {
+      "names": [
+        "Amalaki Ekadashi"
+      ]
+    },
+    "holika-dahan": {
+      "names": [
+        "Holika Dahan"
+      ]
+    },
+    "holi": {
+      "names": [
+        "Holi"
+      ]
+    },
+    "rang-panchami": {
+      "names": [
+        "Ranga Panchami",
+        "Rang Panchami"
+      ]
+    },
+    "sheetala-ashtami": {
+      "names": [
+        "Sheetala Ashtami",
+        "Basoda"
+      ]
+    },
+    "papmochani-ekadashi": {
+      "names": [
+        "Papamochani Ekadashi",
+        "Papmochani Ekadashi"
+      ]
+    },
+    "ugadi": {
+      "names": [
+        "Ugadi"
+      ]
+    },
+    "gudi-padwa": {
+      "names": [
+        "Gudi Padwa"
+      ]
+    },
+    "chaitra-navratri": {
+      "names": [
+        "Chaitra Navratri"
+      ]
+    },
+    "gangaur": {
+      "names": [
+        "Gangaur"
+      ]
+    },
+    "ram-navami": {
+      "names": [
+        "Rama Navami *Smarta",
+        "Rama Navami",
+        "Ram Navami"
+      ]
+    },
+    "kamada-ekadashi": {
+      "names": [
+        "Kamada Ekadashi"
+      ]
+    },
+    "mahavir-jayanti": {
+      "names": [
+        "Mahavir Swami Jayanti",
+        "Mahavir Jayanti"
+      ]
+    },
+    "hanuman-jayanti": {
+      "names": [
+        "Hanuman Jayanti"
+      ],
+      "textFilter": "Chaitra"
+    },
+    "hanuman-jayanti-south": {
+      "names": [
+        "Hanuman Jayanti *Tamil"
+      ],
+      "textFilter": "Amavasya"
+    },
+    "chaitra-purnima": {
+      "names": [
+        "Chaitra Purnima"
+      ]
+    },
+    "baisakhi": {
+      "names": [
+        "Baisakhi",
+        "Vaisakhi"
+      ]
+    },
+    "vishu": {
+      "names": [
+        "Vishu",
+        "Vishu Kani"
+      ]
+    },
+    "puthandu": {
+      "names": [
+        "Puthandu",
+        "Tamil New Year"
+      ]
+    },
+    "akshaya-tritiya": {
+      "names": [
+        "Akshaya Tritiya"
+      ]
+    },
+    "parashurama-jayanti": {
+      "names": [
+        "Parashurama Jayanti",
+        "Parshurama Jayanti"
+      ]
+    },
+    "ganga-saptami": {
+      "names": [
+        "Ganga Saptami"
+      ]
+    },
+    "mohini-ekadashi": {
+      "names": [
+        "Mohini Ekadashi"
+      ]
+    },
+    "narasimha-jayanti": {
+      "names": [
+        "Narasimha Jayanti",
+        "Narsimha Jayanti"
+      ]
+    },
+    "buddha-purnima": {
+      "names": [
+        "Buddha Purnima"
+      ]
+    },
+    "apara-ekadashi": {
+      "names": [
+        "Apara Ekadashi"
+      ]
+    },
+    "shani-jayanti": {
+      "names": [
+        "Shani Jayanti"
+      ]
+    },
+    "vat-savitri": {
+      "names": [
+        "Vat Savitri Vrat"
+      ]
+    },
+    "vat-purnima": {
+      "names": [
+        "Vat Purnima Vrat"
+      ]
+    },
+    "ganga-dussehra": {
+      "names": [
+        "Ganga Dussehra"
+      ]
+    },
+    "nirjala-ekadashi": {
+      "names": [
+        "Nirjala Ekadashi"
+      ]
+    },
+    "jagannath-snana-purnima": {
+      "names": [
+        "Snana Yatra",
+        "Jagannath Snana Purnima",
+        "Deva Snana Purnima",
+        "Snana Purnima"
+      ]
+    },
+    "yogini-ekadashi": {
+      "names": [
+        "Yogini Ekadashi"
+      ]
+    },
+    "jagannath-rath-yatra": {
+      "names": [
+        "Jagannath Rathyatra",
+        "Jagannath Rath Yatra",
+        "Ratha Yatra"
+      ]
+    },
+    "devshayani-ekadashi": {
+      "names": [
+        "Devshayani Ekadashi",
+        "Devashayani Ekadashi"
+      ]
+    },
+    "guru-purnima": {
+      "names": [
+        "Guru Purnima"
+      ]
+    },
+    "shravan-somvar": {
+      "names": [
+        "Shravana Somwar Vrat",
+        "Shravana Somvar Vrat",
+        "Sawan Somwar Vrat"
+      ]
+    },
+    "kamika-ekadashi": {
+      "names": [
+        "Kamika Ekadashi"
+      ]
+    },
+    "hariyali-teej": {
+      "names": [
+        "Hariyali Teej"
+      ]
+    },
+    "nag-panchami": {
+      "names": [
+        "Nag Panchami",
+        "Naga Panchami"
+      ]
+    },
+    "shravana-putrada-ekadashi": {
+      "names": [
+        "Shravana Putrada Ekadashi"
+      ]
+    },
+    "varalakshmi-vratam": {
+      "names": [
+        "Varalakshmi Vrat",
+        "Varalakshmi Vratam"
+      ]
+    },
+    "raksha-bandhan": {
+      "names": [
+        "Raksha Bandhan"
+      ]
+    },
+    "kajari-teej": {
+      "names": [
+        "Kajari Teej"
+      ]
+    },
+    "hal-shashthi": {
+      "names": [
+        "Hal Shashthi",
+        "Lalahi Chhath",
+        "Harchhath",
+        "Lalahi Chhath Vrat"
+      ]
+    },
+    "krishna-janmashtami": {
+      "names": [
+        "Krishna Janmashtami *Smarta",
+        "Krishna Janmashtami"
+      ]
+    },
+    "aja-ekadashi": {
+      "names": [
+        "Aja Ekadashi"
+      ]
+    },
+    "hartalika-teej": {
+      "names": [
+        "Hartalika Teej"
+      ]
+    },
+    "ganesh-chaturthi": {
+      "names": [
+        "Ganesh Chaturthi",
+        "Ganesha Chaturthi"
+      ]
+    },
+    "rishi-panchami": {
+      "names": [
+        "Rishi Panchami"
+      ]
+    },
+    "radha-ashtami": {
+      "names": [
+        "Radha Ashtami"
+      ]
+    },
+    "parivartini-ekadashi": {
+      "names": [
+        "Parivartini Ekadashi",
+        "Parsva Ekadashi"
+      ]
+    },
+    "anant-chaturdashi": {
+      "names": [
+        "Anant Chaturdashi",
+        "Ganesh Visarjan"
+      ]
+    },
+    "onam": {
+      "names": [
+        "Onam",
+        "Thiruvonam"
+      ]
+    },
+    "pitru-paksha": {
+      "names": [
+        "Purnima Shraddha"
+      ]
+    },
+    "jivitputrika": {
+      "names": [
+        "Jivitputrika Vrat",
+        "Jitiya"
+      ]
+    },
+    "indira-ekadashi": {
+      "names": [
+        "Indira Ekadashi"
+      ]
+    },
+    "sarva-pitru-amavasya": {
+      "names": [
+        "Sarva Pitru Amavasya",
+        "Sarvapitri Amavasya",
+        "Mahalaya Amavasya"
+      ]
+    },
+    "sharad-navratri": {
+      "names": [
+        "Sharad Navratri",
+        "Navratri Begins"
+      ]
+    },
+    "durga-ashtami": {
+      "names": [
+        "Durga Ashtami",
+        "Durga Maha Ashtami Puja",
+        "Maha Ashtami"
+      ],
+      "textFilter": "Ashwina|Ashvina|Ashwin"
+    },
+    "maha-navami": {
+      "names": [
+        "Maha Navami",
+        "Durga Maha Navami Puja"
+      ]
+    },
+    "dussehra": {
+      "names": [
+        "Dussehra",
+        "Vijayadashami"
+      ]
+    },
+    "papankusha-ekadashi": {
+      "names": [
+        "Papankusha Ekadashi"
+      ]
+    },
+    "sharad-purnima": {
+      "names": [
+        "Sharad Purnima",
+        "Kojagara Puja"
+      ]
+    },
+    "karwa-chauth": {
+      "names": [
+        "Karwa Chauth",
+        "Karva Chauth"
+      ]
+    },
+    "ahoi-ashtami": {
+      "names": [
+        "Ahoi Ashtami"
+      ]
+    },
+    "rama-ekadashi": {
+      "names": [
+        "Rama Ekadashi"
+      ]
+    },
+    "dhanteras": {
+      "names": [
+        "Dhanteras",
+        "Dhantrayodashi"
+      ]
+    },
+    "naraka-chaturdashi": {
+      "names": [
+        "Naraka Chaturdashi",
+        "Narak Chaturdashi"
+      ]
+    },
+    "diwali": {
+      "names": [
+        "Diwali",
+        "Lakshmi Puja"
+      ]
+    },
+    "govardhan-puja": {
+      "names": [
+        "Govardhan Puja"
+      ]
+    },
+    "bhai-dooj": {
+      "names": [
+        "Bhaiya Dooj",
+        "Bhai Dooj"
+      ],
+      "textFilter": "Kartika|Kartik"
+    },
+    "labh-panchami": {
+      "names": [
+        "Labh Panchami",
+        "Labha Panchami"
+      ]
+    },
+    "chhath-puja": {
+      "names": [
+        "Chhath Puja"
+      ]
+    },
+    "skanda-shashthi": {
+      "names": [
+        "Skanda Sashti",
+        "Soorasamharam",
+        "Skanda Shashthi"
+      ],
+      "textFilter": "Kartika|Kartik"
+    },
+    "gopashtami": {
+      "names": [
+        "Gopashtami"
+      ]
+    },
+    "akshaya-navami": {
+      "names": [
+        "Akshaya Navami",
+        "Amla Navami"
+      ]
+    },
+    "dev-uthani-ekadashi": {
+      "names": [
+        "Devutthana Ekadashi",
+        "Dev Uthani Ekadashi",
+        "Prabodhini Ekadashi"
+      ]
+    },
+    "tulsi-vivah": {
+      "names": [
+        "Tulasi Vivah",
+        "Tulsi Vivah"
+      ]
+    },
+    "kartik-purnima": {
+      "names": [
+        "Kartika Purnima",
+        "Kartik Purnima",
+        "Dev Deepawali"
+      ]
+    },
+    "karthigai-deepam": {
+      "names": [
+        "Karthigai Deepam"
+      ]
+    },
+    "kalabhairav-jayanti": {
+      "names": [
+        "Kalabhairav Jayanti",
+        "Kala Bhairava Jayanti"
+      ]
+    },
+    "utpanna-ekadashi": {
+      "names": [
+        "Utpanna Ekadashi"
+      ]
+    },
+    "vivah-panchami": {
+      "names": [
+        "Vivah Panchami"
+      ]
+    },
+    "gita-jayanti": {
+      "names": [
+        "Gita Jayanti",
+        "Mokshada Ekadashi"
+      ]
+    },
+    "dattatreya-jayanti": {
+      "names": [
+        "Dattatreya Jayanti"
+      ]
+    },
+    "saphala-ekadashi": {
+      "names": [
+        "Saphala Ekadashi"
+      ]
+    },
+    "pausha-putrada-ekadashi": {
+      "names": [
+        "Pausha Putrada Ekadashi"
+      ]
+    },
+    "pausha-purnima": {
+      "names": [
+        "Pausha Purnima"
+      ]
+    }
+  },
+  "notes": [
+    "A05 recovery of A04: Balarama Jayanti (Bhadrapada Shukla Shashthi) is not Hal Shashthi (Krishna Shashthi); Kannada/Telugu Hanuman Jayanti follow other rules than the Tamil Margazhi Amavasya the engine encodes; Pitru Paksha compares its first day (Purnima Shraddha); Kali Chaudas is the nishita variant of Naraka Chaturdashi.",
+    "Magha Amavasya is a separate Drik entry (Amanta Magha) and is not Mauni Amavasya (Purnimanta Magha Krishna = Amanta Pausha Amavasya)."
+  ]
+}

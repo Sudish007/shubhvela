@@ -1,0 +1,331 @@
+{
+  "case": "c30",
+  "source": "drikpanchang",
+  "source_url": "https://www.drikpanchang.com/jyotisha/kundali/kundali.html (POST dp_payload from https://www.drikpanchang.com/jyotisha/kundali/janma-kundali.html)",
+  "fetched_at": "2026-10-24T22:56:49.055Z",
+  "fetcher_version": "a04-1",
+  "values": {
+    "input": {
+      "date": "2024-12-01",
+      "time": "23:59",
+      "noonForUnknownTime": false,
+      "city": "Birmingham",
+      "state": "England",
+      "country": "United Kingdom",
+      "latitude": 52.481388888888894,
+      "longitude": -1.899722222222222,
+      "elevation": 149,
+      "olsonTimezone": "Europe/London",
+      "offsetHours": 0,
+      "offsetMinutes": 0,
+      "ayanamsha": "chitra-paksha",
+      "node": "mean (site default; \"Set True Rahu/Ketu\" not toggled)",
+      "suggestions": [
+        "Birmingham Alabama, United States",
+        "Birmingham England, United Kingdom",
+        "Cartersville Georgia, United States",
+        "Derby Connecticut, United States",
+        "Birmingham Michigan, United States",
+        "Avalon Pennsylvania, United States",
+        "Warm Beach Washington, United States"
+      ],
+      "picked": "Birmingham England, United Kingdom"
+    },
+    "planets": {
+      "Su": {
+        "sign": 8,
+        "lon": 226.08194,
+        "text": "16° Vish 04′ 55″",
+        "nakshatra": 17,
+        "pada": 4,
+        "isIn": "4 Bhava",
+        "dignities": "-"
+      },
+      "Mo": {
+        "sign": 8,
+        "lon": 234.57083,
+        "text": "24° Vish 34′ 15″",
+        "nakshatra": 18,
+        "pada": 3,
+        "isIn": "4 Bhava",
+        "dignities": "Debilitated"
+      },
+      "Ma": {
+        "sign": 4,
+        "lon": 101.79528,
+        "text": "11° Kark 47′ 43″",
+        "nakshatra": 8,
+        "pada": 3,
+        "isIn": "12 Bhava",
+        "dignities": "Debilitated"
+      },
+      "Me": {
+        "sign": 8,
+        "lon": 235.41194,
+        "text": "25° Vish 24′ 43″",
+        "nakshatra": 18,
+        "pada": 3,
+        "isIn": "4 Bhava",
+        "dignities": "-"
+      },
+      "Ju": {
+        "sign": 2,
+        "lon": 52.84194,
+        "text": "22° Vibh 50′ 31″",
+        "nakshatra": 4,
+        "pada": 4,
+        "isIn": "10 Bhava",
+        "dignities": "-"
+      },
+      "Ve": {
+        "sign": 9,
+        "lon": 269.67917,
+        "text": "29° Dhan 40′ 45″",
+        "nakshatra": 21,
+        "pada": 1,
+        "isIn": "5 Bhava",
+        "dignities": "-"
+      },
+      "Sa": {
+        "sign": 11,
+        "lon": 318.71722,
+        "text": "18° Kumb 43′ 02″",
+        "nakshatra": 24,
+        "pada": 4,
+        "isIn": "7 Bhava",
+        "dignities": "Mooltrikona"
+      },
+      "Ra": {
+        "sign": 12,
+        "lon": 338.87389,
+        "text": "08° Meen 52′ 26″",
+        "nakshatra": 26,
+        "pada": 2,
+        "isIn": "8 Bhava",
+        "dignities": "-",
+        "retro": true
+      },
+      "Ke": {
+        "sign": 6,
+        "lon": 158.87389,
+        "text": "08° Kany 52′ 26″",
+        "nakshatra": 12,
+        "pada": 4,
+        "isIn": "2 Bhava",
+        "dignities": "-",
+        "retro": true
+      }
+    },
+    "lagna": {
+      "sign": 5,
+      "lon": 141.29639,
+      "text": "21° Simh 17′ 47″",
+      "nakshatra": 11,
+      "pada": 3,
+      "isIn": "1 Bhava",
+      "dignities": "-"
+    },
+    "moon": {
+      "nakshatra": 18,
+      "pada": 3,
+      "text": "Jyeshtha 3"
+    },
+    "dasha": {
+      "mahaLord": "budha",
+      "mahaLordId": "Me",
+      "mahaStart": "2014-11-03T21:52",
+      "mahaEnd": "2031-11-04T06:28",
+      "mahas": [
+        {
+          "lord": "Me",
+          "start": "2014-11-03T21:52",
+          "end": "2031-11-04T06:28",
+          "raw": "Budha - Maha Dasha - 17y | November 3, 2014, Monday at 21:52 November 4, 2031, Tuesday at 06:28 ❯"
+        },
+        {
+          "lord": "Ke",
+          "start": "2031-11-04T06:28",
+          "end": "2038-11-04T01:32",
+          "raw": "Ketu - Maha Dasha - 6y 11m | November 4, 2031, Tuesday at 06:28 November 4, 2038, Thursday at 01:32 ❯"
+        },
+        {
+          "lord": "Ve",
+          "start": "2038-11-04T01:32",
+          "end": "2058-11-04T04:35",
+          "raw": "Shukra - Maha Dasha - 20y | November 4, 2038, Thursday at 01:32 November 4, 2058, Monday at 04:35 ❯"
+        },
+        {
+          "lord": "Su",
+          "start": "2058-11-04T04:35",
+          "end": "2064-11-03T17:30",
+          "raw": "Surya - Maha Dasha - 5y 11m | November 4, 2058, Monday at 04:35 November 3, 2064, Monday at 17:30 ❯"
+        },
+        {
+          "lord": "Mo",
+          "start": "2064-11-03T17:30",
+          "end": "2074-11-04T07:02",
+          "raw": "Chandra - Maha Dasha - 10y | November 3, 2064, Monday at 17:30 November 4, 2074, Sunday at 07:02 ❯"
+        },
+        {
+          "lord": "Ma",
+          "start": "2074-11-04T07:02",
+          "end": "2081-11-04T02:06",
+          "raw": "Mangal - Maha Dasha - 6y 11m | November 4, 2074, Sunday at 07:02 November 4, 2081, Tuesday at 02:06 ❯"
+        },
+        {
+          "lord": "Ra",
+          "start": "2081-11-04T02:06",
+          "end": "2099-11-04T16:51",
+          "raw": "Rahu - Maha Dasha - 18y | November 4, 2081, Tuesday at 02:06 November 4, 2099, Wednesday at 16:51 ❯"
+        },
+        {
+          "lord": "Ju",
+          "start": "2099-11-04T16:51",
+          "end": "2115-11-05T19:17",
+          "raw": "Guru - Maha Dasha - 16y | November 4, 2099, Wednesday at 16:51 November 5, 2115, Tuesday at 19:17 ❯"
+        },
+        {
+          "lord": "Sa",
+          "start": "2115-11-05T19:17",
+          "end": "2134-11-05T16:11",
+          "raw": "Shani - Maha Dasha - 18y 11m | November 5, 2115, Tuesday at 19:17 November 5, 2134, Friday at 16:11 ❯"
+        }
+      ]
+    },
+    "raw": {
+      "planets": [
+        {
+          "name": "Lagna",
+          "rawName": "Lagna (Q) 🌸",
+          "longitude": "21° Simh 17′ 47″",
+          "nakshatra": "P Phalguni 3",
+          "isIn": "1 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Surya",
+          "rawName": "☉Surya (Q) ⚠",
+          "longitude": "16° Vish 04′ 55″",
+          "nakshatra": "Anuradha 4🔥",
+          "isIn": "4 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Chandra",
+          "rawName": "☾Chandra (Q) 🔥 💱",
+          "longitude": "24° Vish 34′ 15″",
+          "nakshatra": "Jyeshtha 3🔥",
+          "isIn": "4 Bhava",
+          "dignities": "Debilitated",
+          "retro": false
+        },
+        {
+          "name": "Mangal",
+          "rawName": "♂Mangal 💱",
+          "longitude": "11° Kark 47′ 43″",
+          "nakshatra": "Pushya 3",
+          "isIn": "12 Bhava",
+          "dignities": "Debilitated",
+          "retro": false
+        },
+        {
+          "name": "Budha",
+          "rawName": "☿Budha (Q) ↺ 🔥",
+          "longitude": "25° Vish 24′ 43″",
+          "nakshatra": "Jyeshtha 3🔥",
+          "isIn": "4 Bhava",
+          "dignities": "-",
+          "retro": true
+        },
+        {
+          "name": "Guru",
+          "rawName": "♃Guru (Q) ↺ 💱",
+          "longitude": "22° Vibh 50′ 31″",
+          "nakshatra": "Rohini 4",
+          "isIn": "10 Bhava",
+          "dignities": "-",
+          "retro": true
+        },
+        {
+          "name": "Shukra",
+          "rawName": "♀Shukra (T) 💱 🌸",
+          "longitude": "29° Dhan 40′ 45″",
+          "nakshatra": "U Ashadha 1",
+          "isIn": "5 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Shani",
+          "rawName": "♄Shani (Q) 🌸",
+          "longitude": "18° Kumb 43′ 02″",
+          "nakshatra": "Shatabhisha 4",
+          "isIn": "7 Bhava",
+          "dignities": "Mooltrikona",
+          "retro": false
+        },
+        {
+          "name": "Rahu",
+          "rawName": "☊Rahu ↺ 🌸",
+          "longitude": "08° Meen 52′ 26″",
+          "nakshatra": "U Bhadrapada 2",
+          "isIn": "8 Bhava",
+          "dignities": "-",
+          "retro": true
+        },
+        {
+          "name": "Ketu",
+          "rawName": "☋Ketu ↺ 🌸",
+          "longitude": "08° Kany 52′ 26″",
+          "nakshatra": "U Phalguni 4",
+          "isIn": "2 Bhava",
+          "dignities": "-",
+          "retro": true
+        }
+      ],
+      "dasha": [
+        [
+          "Budha - Maha Dasha - 17y",
+          "November 3, 2014, Monday at 21:52 November 4, 2031, Tuesday at 06:28 ❯"
+        ],
+        [
+          "Ketu - Maha Dasha - 6y 11m",
+          "November 4, 2031, Tuesday at 06:28 November 4, 2038, Thursday at 01:32 ❯"
+        ],
+        [
+          "Shukra - Maha Dasha - 20y",
+          "November 4, 2038, Thursday at 01:32 November 4, 2058, Monday at 04:35 ❯"
+        ],
+        [
+          "Surya - Maha Dasha - 5y 11m",
+          "November 4, 2058, Monday at 04:35 November 3, 2064, Monday at 17:30 ❯"
+        ],
+        [
+          "Chandra - Maha Dasha - 10y",
+          "November 3, 2064, Monday at 17:30 November 4, 2074, Sunday at 07:02 ❯"
+        ],
+        [
+          "Mangal - Maha Dasha - 6y 11m",
+          "November 4, 2074, Sunday at 07:02 November 4, 2081, Tuesday at 02:06 ❯"
+        ],
+        [
+          "Rahu - Maha Dasha - 18y",
+          "November 4, 2081, Tuesday at 02:06 November 4, 2099, Wednesday at 16:51 ❯"
+        ],
+        [
+          "Guru - Maha Dasha - 16y",
+          "November 4, 2099, Wednesday at 16:51 November 5, 2115, Tuesday at 19:17 ❯"
+        ],
+        [
+          "Shani - Maha Dasha - 18y 11m",
+          "November 5, 2115, Tuesday at 19:17 November 5, 2134, Friday at 16:11 ❯"
+        ]
+      ]
+    }
+  },
+  "notes": [
+    "Longitudes are sidereal (Lahiri/Chitrapaksha, site default), DD° Sign MM′ SS″ as printed under \"Rashi Chart Details > Graha Details\"; mean node."
+  ]
+}

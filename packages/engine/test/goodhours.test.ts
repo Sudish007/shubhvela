@@ -88,22 +88,27 @@ describe('goodHours merge (design 10.2 precedence table, constructed inputs)', (
     expect(gh.spans[0].reasons).toEqual(expect.arrayContaining(['yamaganda', 'chog-day-2', 'gulika', 'chog-day-3']));
   });
 
-  it('night spans are flagged night; the Brahma muhurat sits 96-48 min before the next sunrise and stays good inside good choghadiya', () => {
+  it('night spans are flagged night; the Brahma muhurat is the 14th night muhurta (2/15 -> 1/15 of the night before sunrise) and stays good inside good choghadiya', () => {
     const night = gh.spans.filter((s) => s.night);
     expect(night.length).toBeGreaterThan(0);
     expect(night[0].start).toBe(frame.sunset);
-    // With a 12 h night the Brahma muhurat (04:24-05:12) straddles the 7th (Shubh) and 8th (Amrit) night
-    // choghadiya; both are good, so nothing is overridden or lifted and no row gets `parts`.
+    // With a 12 h night a muhurta is 48 min, so the Brahma muhurat (04:24-05:12) straddles the 7th (Shubh) and
+    // 8th (Amrit) night choghadiya; both are good, so nothing is overridden or lifted and no row gets `parts`.
     expect(row('brahma')).toMatchObject({ start: frame.nextSunrise - 96 * M, end: frame.nextSunrise - 48 * M, verdict: 'good', night: true });
     expect(row('chog-night-7').parts).toBeUndefined();
     expect(row('chog-night-8').parts).toBeUndefined();
     expect(row('brahma').parts).toBeUndefined();
-    // With a 14 h night the last choghadiya is 105 min long and strictly contains the Brahma muhurat:
-    // the row reads "Amrit choghadiya · includes Brahma muhurat" (same verdict, informational).
+    // A04 (Drik Panchang convention): the window scales with the night. With a 14 h night a muhurta is 56 min,
+    // so Brahma runs 112 -> 56 min before sunrise and, since 2/15 > 1/8, always begins inside the 7th
+    // choghadiya and ends inside the 8th; no choghadiya can strictly contain it.
     const long: DayFrame = { ...frame, sunset: frame.sunrise + 10 * H, nextSunrise: frame.sunrise + 24 * H };
     const ghLong = goodHoursFromFrame(long);
-    expect(ghLong.segments.find((s) => s.id === 'chog-night-8')!.includes).toEqual(['brahma']);
-    expect(ghLong.segments.find((s) => s.id === 'brahma')!.includes).toBeUndefined();
+    const brahmaLong = ghLong.segments.find((s) => s.id === 'brahma')!;
+    expect(brahmaLong).toMatchObject({ start: long.nextSunrise - 112 * M, end: long.nextSunrise - 56 * M });
+    const chog8 = ghLong.segments.find((s) => s.id === 'chog-night-8')!;
+    expect(brahmaLong.start).toBeLessThan(chog8.start);
+    expect(brahmaLong.end).toBeGreaterThan(chog8.start);
+    expect(chog8.includes).toBeUndefined();
   });
 
   it('every row has exactly one verdict and agrees with the band at every minute', () => {
@@ -227,7 +232,7 @@ describe('band geometry and labels (design 10.2: 75 % day / 25 % night, N3 label
 });
 
 describe('goodHours(day, observer, tz) on real days', () => {
-  it('Delhi 2026-10-22 (Thursday) reproduces the fork segments: Rahu Kaal 13:30-14:55, Abhijit 11:42-12:28, Brahma 04:50-05:38', () => {
+  it('Delhi 2026-10-22 (Thursday) reproduces the Drik Panchang segments: Rahu Kaal 13:30-14:55, Abhijit 11:42-12:28, moonrise 15:25, Brahma 2/15 -> 1/15 of the night before the next sunrise', () => {
     const gh = goodHours('2026-10-22', { lat: 28.6139, lon: 77.209 }, ZONE);
     const hm = (ms: number) => new Date(ms + 330 * M).toISOString().slice(11, 16);
     const row = (id: string) => gh.segments.find((s) => s.id === id)!;
@@ -237,15 +242,19 @@ describe('goodHours(day, observer, tz) on real days', () => {
     expect(hm(row('rahu').end)).toBe('14:55');
     expect(hm(row('abhijit').start)).toBe('11:42');
     expect(hm(row('abhijit').end)).toBe('12:28');
-    expect(hm(row('brahma').start)).toBe('04:50');
-    expect(hm(row('brahma').end)).toBe('05:38');
-    expect(hm(gh.ticks!.moonrise!)).toBe('15:21');
+    // Drik Panchang (reference/panchang/drikpanchang/delhi-2026-10-22.json): Brahma Muhurta 04:45-05:35 before the
+    // 22 Oct sunrise; the Vedic day's own Brahma sits before the 23 Oct sunrise with the same night/15 rule.
+    const night = gh.ticks!.nextSunrise - gh.ticks!.sunset;
+    expect(row('brahma').start).toBe(Math.round(gh.ticks!.nextSunrise - (2 * night) / 15));
+    expect(row('brahma').end).toBe(Math.round(gh.ticks!.nextSunrise - night / 15));
+    expect(hm(row('brahma').start)).toBe('04:45');
+    expect(hm(gh.ticks!.moonrise!)).toBe('15:25'); // Drik: 03:25 PM (Moon's centre on the true horizon)
     expect(gh.flags.bhadra).toMatchObject({ location: 'earth' });
     expect(hm(gh.flags.bhadra!.end)).toBe('14:48');
     expect(gh.flags.panchak).toBeDefined();
     expect(gh.legend).toEqual(['good', 'neutral', 'avoid', 'night']);
     expect(gh.noSun).toBe(false);
-    // Brahma 04:50 starts one minute before the 8th night choghadiya (04:51), so it straddles 7 and 8 (both good):
+    // Brahma 04:45 starts inside the 7th night choghadiya and ends inside the 8th (04:51 ->), both good:
     // no `includes`, no `parts`; the merged span 03:16-06:26 is one good night span naming all three.
     expect(row('chog-night-8').includes).toBeUndefined();
     expect(row('brahma').parts).toBeUndefined();

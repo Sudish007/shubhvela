@@ -1,0 +1,38 @@
+{
+  "suite": "matching",
+  "required": 20,
+  "compared": 0,
+  "passed": 0,
+  "failed": 0,
+  "skipped": 20,
+  "maxDeviation": {
+    "gunaTotal": 0
+  },
+  "sources": {
+    "drikpanchang": 0
+  },
+  "failures": [],
+  "missing": [
+    "m01",
+    "m02",
+    "m03",
+    "m04",
+    "m05",
+    "m06",
+    "m07",
+    "m08",
+    "m09",
+    "m10",
+    "m11",
+    "m12",
+    "m13",
+    "m14",
+    "m15",
+    "m16",
+    "m17",
+    "m18",
+    "m19",
+    "m20"
+  ],
+  "generatedAt": "2026-10-25T02:05:52.611Z"
+}

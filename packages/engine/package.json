@@ -12,7 +12,14 @@
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "build:data": "tsx scripts/build-tz-table.ts && tsx scripts/build-gazetteer.ts",
-    "design-samples": "tsx scripts/design-samples.ts"
+    "design-samples": "tsx scripts/design-samples.ts",
+    "reference:check": "node reference/check.mjs",
+    "reference:fetch:panchang": "node reference/fetch/drik-panchang.mjs",
+    "reference:fetch:horizons": "node reference/fetch/jpl-horizons.mjs",
+    "reference:fetch:kundali": "node reference/fetch/drik-kundali.mjs",
+    "reference:fetch:astrosage": "node reference/fetch/astrosage-chart.mjs",
+    "reference:fetch:festivals": "node reference/fetch/drik-festivals.mjs",
+    "reference:fetch:matching": "node reference/fetch/drik-matching.mjs"
   },
   "dependencies": {
     "astronomy-engine": "^2.1.19"
@@ -20,6 +27,7 @@
   "devDependencies": {
     "@types/node": "^24.0.0",
     "moment-timezone": "^0.6.5",
+    "playwright-core": "^1.64.0",
     "tsx": "^4.23.0",
     "typescript": "~6.0.3",
     "tz-lookup": "^6.1.25",

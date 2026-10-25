@@ -1,0 +1,420 @@
+{
+  "case": "c49",
+  "source": "drikpanchang",
+  "source_url": "https://www.drikpanchang.com/jyotisha/kundali/kundali.html (POST dp_payload from https://www.drikpanchang.com/jyotisha/kundali/janma-kundali.html)",
+  "fetched_at": "2026-10-24T23:12:42.582Z",
+  "fetcher_version": "a04-1",
+  "values": {
+    "input": {
+      "date": "1986-05-01",
+      "time": "13:00",
+      "noonForUnknownTime": false,
+      "city": "Port of Spain",
+      "state": "City of Port of Spain",
+      "country": "Trinidad and Tobago",
+      "latitude": 10.666666666666666,
+      "longitude": -61.51888888888889,
+      "elevation": 21,
+      "olsonTimezone": "America/Port_of_Spain",
+      "formOffsetHours": -4,
+      "offsetMinutes": null,
+      "ayanamsha": "chitra-paksha",
+      "node": "mean (site default; \"Set True Rahu/Ketu\" not toggled)",
+      "suggestions": [
+        "Port of Spain City of Port of Spain, Trinidad and Tobago",
+        "Port Louis Port Louis, Mauritius",
+        "Port Sudan Red Sea, Sudan",
+        "Saint Peter Port St Peter Port, Guernsey",
+        "Port-au-Prince Ouest, Haiti",
+        "Port Elizabeth Eastern Cape, South Africa",
+        "Port Blair Andaman and Nicobar, India",
+        "Port Said Port Said, Egypt",
+        "Port Moresby National Capital, Papua New Guinea",
+        "Port-Gentil Ogooue-Maritime, Gabon",
+        "Port-Saint-Louis-du-Rhone Provence-Alpes-Cote d'Azur, France",
+        "Port-aux-Francais Kerguelen, French Southern Territories",
+        "Zheleznyy Port Kherson, Ukraine",
+        "Le Port Reunion, Reunion",
+        "Port Harcourt Rivers, Nigeria",
+        "Port Glasgow Scotland, United Kingdom",
+        "Saint-Jean-Pied-de-Port Nouvelle-Aquitaine, France",
+        "Port-Louis Brittany, France",
+        "Paldiski Harjumaa, Estonia",
+        "Pelabuhan Klang Selangor, Malaysia",
+        "Port Hedland Western Australia, Australia",
+        "Port Loko Northern Province, Sierra Leone",
+        "Port-Sainte-Foy-et-Ponchapt Nouvelle-Aquitaine, France",
+        "Stanley Falkland Islands",
+        "Port Arthur Texas, United States",
+        "Port Hueneme California, United States",
+        "Port Orford Oregon, United States",
+        "Port Townsend Washington, United States",
+        "Port Augusta South Australia, Australia",
+        "Port-Vila Shefa, Vanuatu",
+        "Port Macquarie New South Wales, Australia",
+        "Port Douglas Queensland, Australia",
+        "Nouadhibou Dakhlet Nouadhibou, Mauritania",
+        "Port Talbot Wales, United Kingdom",
+        "Saint-Nicolas-de-Port Grand Est, France",
+        "Port-Saint-Pere Pays de la Loire, France",
+        "Port-en-Bessin-Huppain Normandy, France",
+        "Port-de-Bouc Provence-Alpes-Cote d'Azur, France",
+        "Port-a-Piment Sud, Haiti",
+        "North Port Florida, United States",
+        "Port Gibson Mississippi, United States",
+        "Port Royal South Carolina, United States",
+        "Port Huron Michigan, United States",
+        "Port Angeles Washington, United States",
+        "Port Alberni British Columbia, Canada",
+        "Madrid Madrid, Spain",
+        "King North Carolina, United States",
+        "Spainkbos Gelderland, Netherlands",
+        "Port Bunyala Busia, Kenya",
+        "Kindu Maniema, Democratic Republic of the Congo",
+        "Port Shepstone KwaZulu-Natal, South Africa",
+        "Port Saint John's Eastern Cape, South Africa",
+        "Port Alfred Eastern Cape, South Africa",
+        "Port Area Metro Manila, Philippines",
+        "Lushun Liaoning, China",
+        "Port Victoria South Australia, Australia",
+        "Port Pirie South Australia, Australia",
+        "Port Lincoln South Australia, Australia",
+        "Port Fairy Victoria, Australia",
+        "Robertsport Grand Cape Mount, Liberia",
+        "Port de Soller Balearic Islands, Spain",
+        "Portree Scotland, United Kingdom",
+        "Port Erroll Scotland, United Kingdom",
+        "Ellesmere Port England, United Kingdom",
+        "Burry Port Wales, United Kingdom",
+        "Waterford Munster, Ireland",
+        "Portlaoise Leinster, Ireland",
+        "Port-sur-Saone Bourgogne-Franche-Comte, France",
+        "Port-Sainte-Marie Nouvelle-Aquitaine, France",
+        "Les Authieux-sur-le-Port-Saint-Ouen Normandy, France",
+        "Le Port-Marly Ile-de-France, France",
+        "Port Royal Kingston, Jamaica",
+        "Port Antonio Portland, Jamaica",
+        "Port Elizabeth Grenadines, Saint Vincent and the Grenadines",
+        "Port-Margot Nord, Haiti",
+        "Port-de-Paix Nord-Ouest, Haiti",
+        "Port Charlotte Florida, United States",
+        "Port Sulphur Louisiana, United States",
+        "Port Republic New Jersey, United States",
+        "Port O'Connor Texas, United States",
+        "Port Jefferson New York, United States",
+        "Port Jefferson Station New York, United States",
+        "Port Jervis New York, United States",
+        "Port Washington New York, United States",
+        "Port Clinton Ohio, United States",
+        "Port Allegany Pennsylvania, United States",
+        "Port Washington Wisconsin, United States",
+        "Channel-Port aux Basques Newfoundland and Labrador, Canada",
+        "Port Colborne Ontario, Canada",
+        "Port d'Alcudia Balearic Islands, Spain",
+        "New Port Richey East Florida, United States",
+        "Port Angeles East Washington, United States",
+        "Port Hadlock-Irondale Washington, United States",
+        "Buur Gaabo Lower Juba, Somalia",
+        "Bandar Abbas Hormozgan, Iran",
+        "Masindi Port Western Region, Uganda",
+        "Port-Katon Rostov, Russia",
+        "Okha Gujarat, India",
+        "Port Mathurin Rodrigues, Mauritius",
+        "Port Barton Mimaropa, Philippines"
+      ],
+      "picked": "Port of Spain City of Port of Spain, Trinidad and Tobago"
+    },
+    "planets": {
+      "Su": {
+        "sign": 1,
+        "lon": 17.34694,
+        "text": "17° Mesh 20′ 49″",
+        "nakshatra": 2,
+        "pada": 2,
+        "isIn": "10 Bhava",
+        "dignities": "Exalted"
+      },
+      "Mo": {
+        "sign": 10,
+        "lon": 294.46611,
+        "text": "24° Maka 27′ 58″",
+        "nakshatra": null,
+        "pada": null,
+        "isIn": "7 Bhava",
+        "dignities": "-"
+      },
+      "Ma": {
+        "sign": 9,
+        "lon": 261.67444,
+        "text": "21° Dhan 40′ 28″",
+        "nakshatra": 20,
+        "pada": 3,
+        "isIn": "6 Bhava",
+        "dignities": "-"
+      },
+      "Me": {
+        "sign": 12,
+        "lon": 356.28833,
+        "text": "26° Meen 17′ 18″",
+        "nakshatra": 27,
+        "pada": 3,
+        "isIn": "9 Bhava",
+        "dignities": "Debilitated"
+      },
+      "Ju": {
+        "sign": 11,
+        "lon": 321.81028,
+        "text": "21° Kumb 48′ 37″",
+        "nakshatra": 25,
+        "pada": 1,
+        "isIn": "8 Bhava",
+        "dignities": "-"
+      },
+      "Ve": {
+        "sign": 2,
+        "lon": 42.30556,
+        "text": "12° Vibh 18′ 20″",
+        "nakshatra": 4,
+        "pada": 1,
+        "isIn": "11 Bhava",
+        "dignities": "-"
+      },
+      "Sa": {
+        "sign": 8,
+        "lon": 224.58361,
+        "text": "14° Vish 35′ 01″",
+        "nakshatra": 17,
+        "pada": 4,
+        "isIn": "5 Bhava",
+        "dignities": "-"
+      },
+      "Ra": {
+        "sign": 1,
+        "lon": 5.75861,
+        "text": "05° Mesh 45′ 31″",
+        "nakshatra": 1,
+        "pada": 2,
+        "isIn": "10 Bhava",
+        "dignities": "-",
+        "retro": true
+      },
+      "Ke": {
+        "sign": 7,
+        "lon": 185.75861,
+        "text": "05° Tula 45′ 31″",
+        "nakshatra": 14,
+        "pada": 4,
+        "isIn": "4 Bhava",
+        "dignities": "-",
+        "retro": true
+      }
+    },
+    "lagna": {
+      "sign": 4,
+      "lon": 119.28611,
+      "text": "29° Kark 17′ 10″",
+      "nakshatra": 9,
+      "pada": 4,
+      "isIn": "1 Bhava",
+      "dignities": "-"
+    },
+    "moon": null,
+    "dasha": {
+      "mahaLord": "mangal",
+      "mahaLordId": "Ma",
+      "mahaStart": "1985-09-26T07:06",
+      "mahaEnd": "1992-09-26T02:10",
+      "mahas": [
+        {
+          "lord": "Ma",
+          "start": "1985-09-26T07:06",
+          "end": "1992-09-26T02:10",
+          "raw": "Mangal - Maha Dasha - 6y 11m | September 26, 1985, Thursday at 07:06 September 26, 1992, Saturday at 02:10 ❯"
+        },
+        {
+          "lord": "Ra",
+          "start": "1992-09-26T02:10",
+          "end": "2010-09-26T16:55",
+          "raw": "Rahu - Maha Dasha - 18y | September 26, 1992, Saturday at 02:10 September 26, 2010, Sunday at 16:55 ❯"
+        },
+        {
+          "lord": "Ju",
+          "start": "2010-09-26T16:55",
+          "end": "2026-09-26T19:21",
+          "raw": "Guru - Maha Dasha - 16y | September 26, 2010, Sunday at 16:55 September 26, 2026, Saturday at 19:21 ❯"
+        },
+        {
+          "lord": "Sa",
+          "start": "2026-09-26T19:21",
+          "end": "2045-09-26T16:15",
+          "raw": "Shani - Maha Dasha - 18y 11m | September 26, 2026, Saturday at 19:21 September 26, 2045, Tuesday at 16:15 ❯"
+        },
+        {
+          "lord": "Me",
+          "start": "2045-09-26T16:15",
+          "end": "2062-09-27T00:51",
+          "raw": "Budha - Maha Dasha - 17y | September 26, 2045, Tuesday at 16:15 September 27, 2062, Wednesday at 00:51 ❯"
+        },
+        {
+          "lord": "Ke",
+          "start": "2062-09-27T00:51",
+          "end": "2069-09-26T19:55",
+          "raw": "Ketu - Maha Dasha - 6y 11m | September 27, 2062, Wednesday at 00:51 September 26, 2069, Thursday at 19:55 ❯"
+        },
+        {
+          "lord": "Ve",
+          "start": "2069-09-26T19:55",
+          "end": "2089-09-26T22:58",
+          "raw": "Shukra - Maha Dasha - 20y | September 26, 2069, Thursday at 19:55 September 26, 2089, Monday at 22:58 ❯"
+        },
+        {
+          "lord": "Su",
+          "start": "2089-09-26T22:58",
+          "end": "2095-09-27T11:53",
+          "raw": "Surya - Maha Dasha - 6y | September 26, 2089, Monday at 22:58 September 27, 2095, Tuesday at 11:53 ❯"
+        },
+        {
+          "lord": "Mo",
+          "start": "2095-09-27T11:53",
+          "end": "2105-09-28T01:25",
+          "raw": "Chandra - Maha Dasha - 10y | September 27, 2095, Tuesday at 11:53 September 28, 2105, Monday at 01:25 ❯"
+        }
+      ]
+    },
+    "raw": {
+      "planets": [
+        {
+          "name": "Lagna",
+          "rawName": "Lagna (Q)",
+          "longitude": "29° Kark 17′ 10″",
+          "nakshatra": "Ashlesha 4",
+          "isIn": "1 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Surya",
+          "rawName": "☉Surya (Q)",
+          "longitude": "17° Mesh 20′ 49″",
+          "nakshatra": "Bharani 2🔥",
+          "isIn": "10 Bhava",
+          "dignities": "Exalted",
+          "retro": false
+        },
+        {
+          "name": "Chandra",
+          "rawName": "☾Chandra (Q) ⚠",
+          "longitude": "24° Maka 27′ 58″",
+          "nakshatra": "Dhanishtha 1",
+          "isIn": "7 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Mangal",
+          "rawName": "♂Mangal 🌸",
+          "longitude": "21° Dhan 40′ 28″",
+          "nakshatra": "P Ashadha 3",
+          "isIn": "6 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Budha",
+          "rawName": "☿Budha (T)",
+          "longitude": "26° Meen 17′ 18″",
+          "nakshatra": "Revati 3🔥",
+          "isIn": "9 Bhava",
+          "dignities": "Debilitated",
+          "retro": false
+        },
+        {
+          "name": "Guru",
+          "rawName": "♃Guru",
+          "longitude": "21° Kumb 48′ 37″",
+          "nakshatra": "P Bhadrapada 1",
+          "isIn": "8 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Shukra",
+          "rawName": "♀Shukra",
+          "longitude": "12° Vibh 18′ 20″",
+          "nakshatra": "Rohini 1",
+          "isIn": "11 Bhava",
+          "dignities": "-",
+          "retro": false
+        },
+        {
+          "name": "Shani",
+          "rawName": "♄Shani (T) ↺",
+          "longitude": "14° Vish 35′ 01″",
+          "nakshatra": "Anuradha 4",
+          "isIn": "5 Bhava",
+          "dignities": "-",
+          "retro": true
+        },
+        {
+          "name": "Rahu",
+          "rawName": "☊Rahu (Q) ↺",
+          "longitude": "05° Mesh 45′ 31″",
+          "nakshatra": "Ashwini 2🔥",
+          "isIn": "10 Bhava",
+          "dignities": "-",
+          "retro": true
+        },
+        {
+          "name": "Ketu",
+          "rawName": "☋Ketu (Q) ↺",
+          "longitude": "05° Tula 45′ 31″",
+          "nakshatra": "Chitra 4",
+          "isIn": "4 Bhava",
+          "dignities": "-",
+          "retro": true
+        }
+      ],
+      "dasha": [
+        [
+          "Mangal - Maha Dasha - 6y 11m",
+          "September 26, 1985, Thursday at 07:06 September 26, 1992, Saturday at 02:10 ❯"
+        ],
+        [
+          "Rahu - Maha Dasha - 18y",
+          "September 26, 1992, Saturday at 02:10 September 26, 2010, Sunday at 16:55 ❯"
+        ],
+        [
+          "Guru - Maha Dasha - 16y",
+          "September 26, 2010, Sunday at 16:55 September 26, 2026, Saturday at 19:21 ❯"
+        ],
+        [
+          "Shani - Maha Dasha - 18y 11m",
+          "September 26, 2026, Saturday at 19:21 September 26, 2045, Tuesday at 16:15 ❯"
+        ],
+        [
+          "Budha - Maha Dasha - 17y",
+          "September 26, 2045, Tuesday at 16:15 September 27, 2062, Wednesday at 00:51 ❯"
+        ],
+        [
+          "Ketu - Maha Dasha - 6y 11m",
+          "September 27, 2062, Wednesday at 00:51 September 26, 2069, Thursday at 19:55 ❯"
+        ],
+        [
+          "Shukra - Maha Dasha - 20y",
+          "September 26, 2069, Thursday at 19:55 September 26, 2089, Monday at 22:58 ❯"
+        ],
+        [
+          "Surya - Maha Dasha - 6y",
+          "September 26, 2089, Monday at 22:58 September 27, 2095, Tuesday at 11:53 ❯"
+        ],
+        [
+          "Chandra - Maha Dasha - 10y",
+          "September 27, 2095, Tuesday at 11:53 September 28, 2105, Monday at 01:25 ❯"
+        ]
+      ]
+    }
+  },
+  "notes": [
+    "Longitudes are sidereal (Lahiri/Chitrapaksha, site default), DD° Sign MM′ SS″ as printed under \"Rashi Chart Details > Graha Details\"; mean node."
+  ]
+}

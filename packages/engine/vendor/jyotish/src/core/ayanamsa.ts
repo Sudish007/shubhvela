@@ -1,40 +1,46 @@
 export type AyanamsaType = 'lahiri' | 'raman' | 'kp';
 
-export function getAyanamsa(date: Date, type: AyanamsaType = 'lahiri'): number {
-    // Julian Day Calculation
-    // We can use astronomy-engine's utilities if exposed, or implement standard formula
-    // Using a high precision formula for Lahiri Ayanamsa (Chitra Paksha)
+// Shubhvela fork (A04): each ayanamsa is "value at a reference epoch" + the accumulated general precession in
+// longitude between that epoch and the date (IAU 2006, Capitaine et al. 2003), without nutation.
+//   Lahiri (Chitra Paksha) : anchored to the value Drik Panchang prints as "Lahiri Ayanamsha", which the A04
+//                            panchang suite measured on 150 days of 2026-2027 as a constant 7.584" (sd 0.002")
+//                            above Lahiri's textbook definition 23 deg 15' 00.658" at 1956-03-21 0h ET
+//                            (JD 2435553.5, Swiss Ephemeris SE_SIDM_LAHIRI). The anchor below is therefore
+//                            23 deg 15' 08.242" at that epoch (= 24.238279 deg at the 2026-10-22 Delhi
+//                            sunrise, Drik's figure). With it the engine reproduces Drik's printed ayanamsa to
+//                            < 0.01" and Drik's kundali longitudes to ~1". The upstream library carried the older
+//                            J1900 anchor 22.460148 deg, 24" below Drik. See reference/CONVENTIONS.md.
+//   Krishnamurti (KP)      : 22.363889 deg at J1900 (SE_SIDM_KRISHNAMURTI).
+//   Raman                  : 21.013889 deg at J1900 (SE_SIDM_RAMAN).
 
-    // Formula based on standard epochs
-    // Epoch J2000.0 = 2000 Jan 1 12:00 TT = JD 2451545.0
-    // Lahiri Ayanamsa at J2000.0 is approx 23° 51' 25.532"
-    // Rate is approx 5029 arcsec per CENTURY (approx 50.29 arcsec per year)
+const JD_J2000 = 2451545.0;
+const JD_J1900 = 2415020.0;
+const JD_LAHIRI_T0 = 2435553.5;
+const MS_PER_DAY = 86400000;
+const JD_UNIX_EPOCH = 2440587.5;
 
-    const time = date.getTime();
-    const JD = (time / 86400000) + 2440587.5; // Date to JD
+/** Lahiri's definition 23 deg 15' 00.658" plus the 7.584" measured against Drik Panchang (A04). */
+export const LAHIRI_1956_DEFINITION_DEG = 23 + 15 / 60 + 0.658 / 3600;
+export const LAHIRI_DRIK_CALIBRATION_ARCSEC = 7.584;
 
-    const T = (JD - 2451545.0) / 36525.0; // Julian centuries since J2000
+const EPOCHS: Record<AyanamsaType, { jd0: number; ayanT0: number }> = {
+    lahiri: { jd0: JD_LAHIRI_T0, ayanT0: LAHIRI_1956_DEFINITION_DEG + LAHIRI_DRIK_CALIBRATION_ARCSEC / 3600 },
+    kp: { jd0: JD_J1900, ayanT0: 22.363889 },
+    raman: { jd0: JD_J1900, ayanT0: 21.013889 },
+};
 
-    // 23 deg 51' 25.532" (Standard Swiss Ephemeris Lahiri)
-    // We strictly use the standard value for astronomical accuracy.
-    const offsetSeconds = 5029.0966 * T + 1.11161 * T * T;
-    const initialAyanamsaSeconds = (23 * 3600) + (51 * 60) + 25.532;
-
-    const lahiriSeconds = initialAyanamsaSeconds + offsetSeconds;
-    const lahiriAyanamsa = lahiriSeconds / 3600;
-
-    if (type === 'kp') {
-        // KP (Krishnamurti) Ayanamsa is approx 5' 54" (354 arcsec) less than Lahiri
-        const kpOffsetSeconds = 354.0;
-        return (lahiriSeconds - kpOffsetSeconds) / 3600;
-    }
-
-    if (type === 'raman') {
-        // Raman Ayanamsa is approx 1° 26' 47" (5207 arcsec) less than Lahiri
-        const ramanOffsetSeconds = 5207.0;
-        return (lahiriSeconds - ramanOffsetSeconds) / 3600;
-    }
-
-    return lahiriAyanamsa;
+/** Accumulated general precession in longitude from J2000 to T Julian centuries (arcsec, IAU 2006). */
+function generalPrecession(T: number): number {
+    return 5028.796195 * T + 1.1054348 * T * T + 0.00007964 * T * T * T - 0.000023857 * T ** 4 - 0.0000000383 * T ** 5;
 }
 
+export function julianDay(date: Date): number {
+    return date.getTime() / MS_PER_DAY + JD_UNIX_EPOCH;
+}
+
+export function getAyanamsa(date: Date, type: AyanamsaType = 'lahiri'): number {
+    const { jd0, ayanT0 } = EPOCHS[type] ?? EPOCHS.lahiri;
+    const T = (julianDay(date) - JD_J2000) / 36525.0;
+    const T0 = (jd0 - JD_J2000) / 36525.0;
+    return ayanT0 + (generalPrecession(T) - generalPrecession(T0)) / 3600;
+}

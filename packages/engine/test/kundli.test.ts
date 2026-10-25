@@ -13,6 +13,7 @@ import {
   type BirthInput,
 } from '../src/kundli/index';
 import { SIGN_LORDS } from '../src/locale/index';
+import { getAyanamsa } from '../vendor/jyotish/src/core/ayanamsa';
 
 // Sample birth used by the design mocks (plan P12): 1998-03-14 06:42 IST, Lucknow 26.85 N / 80.95 E.
 const SAMPLE: BirthInput = { date: '1998-03-14', time: '06:42', approxMinutes: 30, tz: 'Asia/Kolkata', lat: 26.85, lon: 80.95 };
@@ -177,12 +178,24 @@ describe('computeChart (F11, F19)', () => {
   });
 
   it('ayanamsa options change the longitudes by the documented offsets', () => {
+    // A04: Lahiri = 23 deg 15' 00.658" at 1956-03-21 (Lahiri's definition) + the 7.584" Drik calibration, KP =
+    // 22.363889 deg and Raman = 21.013889 deg at J1900 (Swiss Ephemeris anchors), all moved with the IAU 2006
+    // precession. At J1900 the calibrated Lahiri value is 22.467239 deg, so KP = Lahiri - 372.1" and
+    // Raman = Lahiri - 5232.1" (constant offsets); the assertions derive them from getAyanamsa so a future
+    // re-calibration of the Lahiri anchor cannot silently break them.
     const kp = computeChart(SAMPLE, { ayanamsa: 'kp' });
     const raman = computeChart(SAMPLE, { ayanamsa: 'raman' });
     const d = (a: number, b: number): number => ((a - b + 540) % 360) - 180;
-    expect(d(kp.planets[0].longitude, chart.planets[0].longitude)).toBeCloseTo(354 / 3600, 3);
-    expect(d(raman.planets[0].longitude, chart.planets[0].longitude)).toBeCloseTo(5207 / 3600, 3);
+    const at = new Date(chart.meta.utcMs);
+    const kpOffset = getAyanamsa(at, 'lahiri') - getAyanamsa(at, 'kp');
+    const ramanOffset = getAyanamsa(at, 'lahiri') - getAyanamsa(at, 'raman');
+    expect(kpOffset).toBeCloseTo(372.1 / 3600, 3);
+    expect(ramanOffset).toBeCloseTo(5232.1 / 3600, 3);
+    expect(d(kp.planets[0].longitude, chart.planets[0].longitude)).toBeCloseTo(kpOffset, 4);
+    expect(d(raman.planets[0].longitude, chart.planets[0].longitude)).toBeCloseTo(ramanOffset, 4);
     expect(kp.meta.ayanamsa).toBe('kp');
+    // Drik Panchang prints 24.238279 for 2026-10-22 (reference/panchang/drikpanchang/delhi-2026-10-22.json).
+    expect(Math.abs(getAyanamsa(new Date(Date.UTC(2026, 9, 22, 0, 56)), 'lahiri') - 24.238279)).toBeLessThan(0.003);
   });
 });
 

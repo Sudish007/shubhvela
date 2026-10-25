@@ -214,9 +214,12 @@ describe('festivals (F23): >= 60 rules, both traditions and regions, 2026-2028',
     const by = (slug: string) => south.find((o) => o.slug === slug)!;
     expect(by('pongal').date).toBe('2026-01-14');
     expect(by('pongal').sankranti).toBeTypeOf('number');
-    expect(by('vishu').date).toBe('2026-04-14');
+    // Vishu follows the Malayalam month-start rule (A04 vs Drik 2026-2028): the Mesha sankranti of 2026-04-14 09:40
+    // IST is after sunrise, so Medam 1 / Vishu is the next day; Puthandu (Tamil, sunset rule) stays on the 14th.
+    expect(by('vishu')).toMatchObject({ date: '2026-04-15', convention: 'sankranti-after-sunrise-next-day' });
+    expect(by('puthandu').date).toBe('2026-04-14');
     expect(by('onam').date).toBe('2026-08-26');
-    expect(by('onam').convention).toMatch(/^nakshatra-udaya/);
+    expect(by('onam').convention).toMatch(/^nakshatra-(udaya|longer-daylight)/);
     expect(by('karthigai-deepam').date).toBe('2026-11-24');
     expect(south.some((o) => o.slug === 'chhath-puja')).toBe(false); // north-only rule
     expect(festivals(2027, 'purnimanta', 'north', DELHI, ZONE).find((o) => o.slug === 'makar-sankranti')).toMatchObject({ date: '2027-01-15', convention: 'sankranti-after-sunset-next-day' });
@@ -235,7 +238,7 @@ describe('upcoming (F7): five kinds in fixed order', () => {
     expect(items[1].ruleId).toMatch(/^vrat-/);
     expect(items[1].date >= '2026-10-22').toBe(true);
     expect(items[2]).toMatchObject({ ruleId: 'muhurat-griha-pravesh', date: '2026-10-27' });
-    expect(items[3]).toMatchObject({ date: '2027-04-24' });
+    expect(items[3]).toMatchObject({ date: '2027-04-25' }); // A04 Lahiri anchor; see dasha.test.ts
     expect(items[3].params).toMatchObject({ level: 'antar', from: 'Ke', to: 'Ve' });
     expect(items[4]).toMatchObject({ date: '2026-10-31', ruleId: 'transit-jupiter' });
     expect(items[4].params).toMatchObject({ planet: 'Jupiter', fromSign: 4, toSign: 5 });

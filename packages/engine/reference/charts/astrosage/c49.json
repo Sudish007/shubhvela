@@ -1,0 +1,409 @@
+{
+  "case": "c49",
+  "source": "astrosage",
+  "source_url": "https://ascloud.astrosage.com/cloud/planetposition.asp + https://ascloud.astrosage.com/cloud/VMMD&AD.asp (session created by POST https://ascloud.astrosage.com/cloud/createsession.asp from https://www.astrosage.com/kundli/; home https://ascloud.astrosage.com/cloud/home.asp)",
+  "fetched_at": "2026-10-25T01:49:37.172Z",
+  "fetcher_version": "a04-1",
+  "values": {
+    "input": {
+      "date": "1986-05-01",
+      "time": "13:00",
+      "noonForUnknownTime": false,
+      "place": "Port of Spain",
+      "latitude": 10.65,
+      "longitude": -61.5,
+      "latText": "10:39 N",
+      "lonText": "61:30 W",
+      "timezoneHours": -4,
+      "offsetMinutes": -240,
+      "timezoneid": "America/Port_of_Spain",
+      "ayanamsa": "N.C.Lahiri (site default)",
+      "suggestions": [
+        "Port of Spain, City of Port of Spain (Trinidad & Tobago)"
+      ],
+      "picked": "Port of Spain, City of Port of Spain (Trinidad & Tobago)"
+    },
+    "planets": {
+      "Su": {
+        "sign": 1,
+        "lon": 17.36667,
+        "text": "Aries 17-21-60",
+        "nakshatra": 2,
+        "pada": 2,
+        "retro": false,
+        "combust": false,
+        "relation": "Exalted"
+      },
+      "Mo": {
+        "sign": 10,
+        "lon": 294.46694,
+        "text": "Capricorn 24-28-01",
+        "nakshatra": 23,
+        "pada": 1,
+        "retro": false,
+        "combust": false,
+        "relation": "Neutral"
+      },
+      "Ma": {
+        "sign": 9,
+        "lon": 261.71139,
+        "text": "Sagittarius 21-42-41",
+        "nakshatra": 20,
+        "pada": 3,
+        "retro": false,
+        "combust": false,
+        "relation": "Friendly"
+      },
+      "Me": {
+        "sign": 12,
+        "lon": 356.31194,
+        "text": "Pisces 26-18-43",
+        "nakshatra": 27,
+        "pada": 3,
+        "retro": false,
+        "combust": false,
+        "relation": "Debilitated"
+      },
+      "Ju": {
+        "sign": 11,
+        "lon": 321.85028,
+        "text": "Aquarius 21-51-01",
+        "nakshatra": 25,
+        "pada": 1,
+        "retro": false,
+        "combust": false,
+        "relation": "Neutral"
+      },
+      "Ve": {
+        "sign": 2,
+        "lon": 42.32917,
+        "text": "Taurus 12-19-45",
+        "nakshatra": 4,
+        "pada": 1,
+        "retro": false,
+        "combust": false,
+        "relation": "Own"
+      },
+      "Sa": {
+        "sign": 8,
+        "lon": 224.59306,
+        "text": "Scorpion 14-35-35",
+        "nakshatra": 17,
+        "pada": 4,
+        "retro": true,
+        "combust": false,
+        "relation": "Enemy"
+      },
+      "Ra": {
+        "sign": 1,
+        "lon": 5.76222,
+        "text": "Aries 05-45-44",
+        "nakshatra": null,
+        "pada": 2,
+        "retro": false,
+        "combust": false,
+        "relation": ""
+      },
+      "Ke": {
+        "sign": 7,
+        "lon": 185.76222,
+        "text": "Libra 05-45-44",
+        "nakshatra": 14,
+        "pada": 4,
+        "retro": false,
+        "combust": false,
+        "relation": ""
+      }
+    },
+    "lagna": {
+      "sign": 4,
+      "lon": 119.46778,
+      "text": "Cancer 29-28-04",
+      "nakshatra": 9,
+      "pada": 4,
+      "retro": false,
+      "combust": false,
+      "relation": ""
+    },
+    "moon": {
+      "nakshatra": 23,
+      "pada": 1,
+      "text": "Dhanishta 1"
+    },
+    "dasha": {
+      "mahaLord": "Ma",
+      "mahaLordId": "Ma",
+      "mahaStart": "1986-05-01",
+      "mahaEnd": "1992-09-27",
+      "balanceText": "Balance Of Dasha : MARS 6 Y 4 M 26 D",
+      "mahas": [
+        {
+          "lord": "Ma",
+          "years": 7,
+          "start": "1986-05-01",
+          "end": "1992-09-27",
+          "raw": "MAR -7 Years 1/ 5/86 27/ 9/92"
+        },
+        {
+          "lord": "Ra",
+          "years": 18,
+          "start": "1992-09-27",
+          "end": "2010-09-27",
+          "raw": "RAH -18 Years 27/ 9/92 27/ 9/10"
+        },
+        {
+          "lord": "Ju",
+          "years": 16,
+          "start": "2010-09-27",
+          "end": "2026-09-27",
+          "raw": "JUP -16 Years 27/ 9/10 27/ 9/26"
+        },
+        {
+          "lord": "Sa",
+          "years": 19,
+          "start": "2026-09-27",
+          "end": "2045-09-27",
+          "raw": "SAT -19 Years 27/ 9/26 27/ 9/45"
+        },
+        {
+          "lord": "Me",
+          "years": 17,
+          "start": "2045-09-27",
+          "end": "2062-09-27",
+          "raw": "MER -17 Years 27/ 9/45 27/ 9/62"
+        },
+        {
+          "lord": "Ke",
+          "years": 7,
+          "start": "2062-09-27",
+          "end": "2069-09-27",
+          "raw": "KET -7 Years 27/ 9/62 27/ 9/69"
+        },
+        {
+          "lord": "Ve",
+          "years": 20,
+          "start": "2069-09-27",
+          "end": "2089-09-27",
+          "raw": "VEN -20 Years 27/ 9/69 27/ 9/89"
+        },
+        {
+          "lord": "Su",
+          "years": 6,
+          "start": "2089-09-27",
+          "end": "2095-09-27",
+          "raw": "SUN -6 Years 27/ 9/89 27/ 9/95"
+        },
+        {
+          "lord": "Mo",
+          "years": 10,
+          "start": "2095-09-27",
+          "end": "2105-09-27",
+          "raw": "MON -10 Years 27/ 9/95 27/ 9/05"
+        }
+      ],
+      "resolution": "day (d/m/yy as printed)"
+    },
+    "raw": {
+      "planets": [
+        {
+          "name": "Asc",
+          "combust": "",
+          "motion": "",
+          "rashi": "Cancer",
+          "dms": "29-28-04",
+          "nakshatra": "Ashlesha",
+          "pada": "4",
+          "relation": ""
+        },
+        {
+          "name": "Sun",
+          "combust": "",
+          "motion": "D",
+          "rashi": "Aries",
+          "dms": "17-21-60",
+          "nakshatra": "Bharani",
+          "pada": "2",
+          "relation": "Exalted"
+        },
+        {
+          "name": "Moon",
+          "combust": "",
+          "motion": "D",
+          "rashi": "Capricorn",
+          "dms": "24-28-01",
+          "nakshatra": "Dhanishta",
+          "pada": "1",
+          "relation": "Neutral"
+        },
+        {
+          "name": "Mars",
+          "combust": "",
+          "motion": "D",
+          "rashi": "Sagittarius",
+          "dms": "21-42-41",
+          "nakshatra": "Purvashadha",
+          "pada": "3",
+          "relation": "Friendly"
+        },
+        {
+          "name": "Merc",
+          "combust": "",
+          "motion": "D",
+          "rashi": "Pisces",
+          "dms": "26-18-43",
+          "nakshatra": "Revati",
+          "pada": "3",
+          "relation": "Debilitated"
+        },
+        {
+          "name": "Jupt",
+          "combust": "",
+          "motion": "D",
+          "rashi": "Aquarius",
+          "dms": "21-51-01",
+          "nakshatra": "Purvabhadra",
+          "pada": "1",
+          "relation": "Neutral"
+        },
+        {
+          "name": "Venu",
+          "combust": "",
+          "motion": "D",
+          "rashi": "Taurus",
+          "dms": "12-19-45",
+          "nakshatra": "Rohini",
+          "pada": "1",
+          "relation": "Own"
+        },
+        {
+          "name": "Satn",
+          "combust": "",
+          "motion": "R",
+          "rashi": "Scorpion",
+          "dms": "14-35-35",
+          "nakshatra": "Anuradha",
+          "pada": "4",
+          "relation": "Enemy"
+        },
+        {
+          "name": "Rahu",
+          "combust": "",
+          "motion": "-",
+          "rashi": "Aries",
+          "dms": "05-45-44",
+          "nakshatra": "Ashvini",
+          "pada": "2",
+          "relation": ""
+        },
+        {
+          "name": "Ketu",
+          "combust": "",
+          "motion": "-",
+          "rashi": "Libra",
+          "dms": "05-45-44",
+          "nakshatra": "Chitra",
+          "pada": "4",
+          "relation": ""
+        },
+        {
+          "name": "Uran",
+          "combust": "",
+          "motion": "R",
+          "rashi": "Scorpion",
+          "dms": "28-14-23",
+          "nakshatra": "Jyeshtha",
+          "pada": "4",
+          "relation": ""
+        },
+        {
+          "name": "Nept",
+          "combust": "",
+          "motion": "R",
+          "rashi": "Sagittarius",
+          "dms": "11-56-11",
+          "nakshatra": "Mula",
+          "pada": "4",
+          "relation": ""
+        },
+        {
+          "name": "Plut",
+          "combust": "",
+          "motion": "R",
+          "rashi": "Libra",
+          "dms": "12-07-39",
+          "nakshatra": "Swati",
+          "pada": "2",
+          "relation": ""
+        }
+      ],
+      "dasha": [
+        {
+          "lord": "Ma",
+          "years": 7,
+          "start": "1986-05-01",
+          "end": "1992-09-27",
+          "raw": "MAR -7 Years 1/ 5/86 27/ 9/92"
+        },
+        {
+          "lord": "Ra",
+          "years": 18,
+          "start": "1992-09-27",
+          "end": "2010-09-27",
+          "raw": "RAH -18 Years 27/ 9/92 27/ 9/10"
+        },
+        {
+          "lord": "Ju",
+          "years": 16,
+          "start": "2010-09-27",
+          "end": "2026-09-27",
+          "raw": "JUP -16 Years 27/ 9/10 27/ 9/26"
+        },
+        {
+          "lord": "Sa",
+          "years": 19,
+          "start": "2026-09-27",
+          "end": "2045-09-27",
+          "raw": "SAT -19 Years 27/ 9/26 27/ 9/45"
+        },
+        {
+          "lord": "Me",
+          "years": 17,
+          "start": "2045-09-27",
+          "end": "2062-09-27",
+          "raw": "MER -17 Years 27/ 9/45 27/ 9/62"
+        },
+        {
+          "lord": "Ke",
+          "years": 7,
+          "start": "2062-09-27",
+          "end": "2069-09-27",
+          "raw": "KET -7 Years 27/ 9/62 27/ 9/69"
+        },
+        {
+          "lord": "Ve",
+          "years": 20,
+          "start": "2069-09-27",
+          "end": "2089-09-27",
+          "raw": "VEN -20 Years 27/ 9/69 27/ 9/89"
+        },
+        {
+          "lord": "Su",
+          "years": 6,
+          "start": "2089-09-27",
+          "end": "2095-09-27",
+          "raw": "SUN -6 Years 27/ 9/89 27/ 9/95"
+        },
+        {
+          "lord": "Mo",
+          "years": 10,
+          "start": "2095-09-27",
+          "end": "2105-09-27",
+          "raw": "MON -10 Years 27/ 9/95 27/ 9/05"
+        }
+      ]
+    }
+  },
+  "notes": [
+    "Longitudes are sidereal (N.C. Lahiri, site default) as printed DD-MM-SS within the sign; R = retrograde, C = combust per the site; coordinates at minute precision from the site autocomplete; the timezone is the hours value the site filled for the place."
+  ]
+}

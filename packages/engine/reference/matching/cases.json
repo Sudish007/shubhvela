@@ -1,0 +1,26 @@
+{
+  "description": "Matching suite inputs (spec section 6, F29): 20 pairs built from the timed chart cases (reference/charts/cases.json ids), compared with Drik Panchang's Horoscope Matching (Ashta Kuta) page: guna total and the eight koota scores must match exactly; Mangal dosha per person is recorded as the site prints it and compared against the engine's stated rule set (reference/CONVENTIONS.md).",
+  "source_url_pattern": "https://www.drikpanchang.com/jyotisha/horoscope-match/horoscope-match.html",
+  "pairs": [
+    { "id": "m01", "boy": "c01", "girl": "c05" },
+    { "id": "m02", "boy": "c02", "girl": "c06" },
+    { "id": "m03", "boy": "c03", "girl": "c07" },
+    { "id": "m04", "boy": "c04", "girl": "c08" },
+    { "id": "m05", "boy": "c09", "girl": "c10" },
+    { "id": "m06", "boy": "c11", "girl": "c12" },
+    { "id": "m07", "boy": "c13", "girl": "c14" },
+    { "id": "m08", "boy": "c15", "girl": "c16" },
+    { "id": "m09", "boy": "c17", "girl": "c18" },
+    { "id": "m10", "boy": "c19", "girl": "c20" },
+    { "id": "m11", "boy": "c21", "girl": "c22" },
+    { "id": "m12", "boy": "c23", "girl": "c24" },
+    { "id": "m13", "boy": "c25", "girl": "c26" },
+    { "id": "m14", "boy": "c27", "girl": "c28" },
+    { "id": "m15", "boy": "c29", "girl": "c30" },
+    { "id": "m16", "boy": "c31", "girl": "c32" },
+    { "id": "m17", "boy": "c33", "girl": "c34" },
+    { "id": "m18", "boy": "c35", "girl": "c36" },
+    { "id": "m19", "boy": "c37", "girl": "c38" },
+    { "id": "m20", "boy": "c39", "girl": "c40" }
+  ]
+}

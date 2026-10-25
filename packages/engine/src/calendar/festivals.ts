@@ -39,8 +39,10 @@ import { spanTithiIndex } from './vrats';
 export type Region = 'north' | 'south';
 
 export type FestivalRuleSpec =
-  | { kind: 'lunar'; month: number; paksha: Paksha; tithi: number; timing: Timing; prefer?: Prefer; nakshatraPreference?: number; bhadraFree?: boolean }
-  | { kind: 'solar'; sign: number; dayRule: 'sunset' | 'same-day' }
+  /** minMuhurtas: udaya tithi must run >= N muhurtas after its only sunrise, else the previous day (Akshaya Tritiya). ekadashiVrata: kshaya-Dwadashi rule (see lunar()). */
+  | { kind: 'lunar'; month: number; paksha: Paksha; tithi: number; timing: Timing; prefer?: Prefer; nakshatraPreference?: number; bhadraFree?: boolean; minMuhurtas?: number; ekadashiVrata?: boolean }
+  /** dayRule: sunset = next day when the sankranti is after sunset; sunrise = next day when it is after sunrise (Malayalam Vishu); same-day = the civil date of the sankranti (Baisakhi). */
+  | { kind: 'solar'; sign: number; dayRule: 'sunset' | 'sunrise' | 'same-day' }
   | { kind: 'offset'; from: string; days: number }
   | { kind: 'nakshatra'; solarSign: number; nakshatra: number }
   | { kind: 'weekday-in-month'; month: number; weekday: number }
@@ -154,8 +156,41 @@ function lunar(rule: FestivalRule, spec: Extract<FestivalRuleSpec, { kind: 'luna
   const out: FestivalOccurrence[] = [];
   for (const l of lunationsOfMonth(ctx, amanta)) {
     const span = tithiSpanIn(l, index);
-    let obs: Observance = observanceDay(span, spec.timing, ctx.zone, ctx.geo, spec.prefer ?? 'first');
-    // Nakshatra preference (Janmashtami: Rohini): when two days qualify, take the one whose reference instant has it.
+    let obs: Observance = observanceDay(span, spec.timing, ctx.zone, ctx.geo, spec.prefer ?? 'first', { minMuhurtas: spec.minMuhurtas });
+    // Ekadashi fasts (A04 vs Drik Panchang 2026-2028): when the Ekadashi touches only one sunrise but the
+    // following Dwadashi touches none (kshaya Dwadashi), the fast moves back to the day the Ekadashi began so
+    // that the parana still falls inside the Dwadashi. Two Ekadashi sunrises (vriddhi) take the later day
+    // (`prefer: last` in the table).
+    if (spec.ekadashiVrata && obs.convention === 'udaya') {
+      const dwadashi = tithiSpanIn(l, index + 1);
+      const nextSunrise = sunriseOn(addDays(obs.date, 1), ctx.zone, ctx.geo);
+      if (nextSunrise !== null && dwadashi.end <= nextSunrise) {
+        obs = { date: localDateOf(span.start, ctx.zone), convention: 'udaya-dwadashi-kshaya-previous-day', span };
+      }
+    }
+    // Nakshatra preference (Janmashtami: Rohini). (1) Jayanti yoga: when Ashtami and Rohini coincide at some
+    // instant, the Vedic day holding that overlap is taken even if the tithi is at nishita on another day (Drik
+    // 2027-08-25; Dharmasindhu's "rohini-yukta ashtami"); (2) otherwise, when two days qualify by timing, the
+    // one whose reference instant has the nakshatra.
+    if (spec.nakshatraPreference !== undefined) {
+      const nakStart = nextCrossing(siderealMoon, spec.nakshatraPreference * NAKSHATRA_DEG, span.start - 2 * DAY_MS, STEP.moon);
+      const nakEnd = nextCrossing(siderealMoon, ((spec.nakshatraPreference + 1) * NAKSHATRA_DEG) % 360, nakStart, STEP.moon);
+      const oStart = Math.max(span.start, nakStart);
+      const oEnd = Math.min(span.end, nakEnd);
+      if (oEnd > oStart) {
+        const d0 = localDateOf(span.start, ctx.zone);
+        for (let i = 0; i < 3; i++) {
+          const date = addDays(d0, i);
+          const ref = dayRef(date, ctx.zone, ctx.geo);
+          if (!ref) continue;
+          if (oStart < ref.nextSunrise && oEnd > ref.sunrise && date !== obs.date) {
+            obs = { date, convention: `${spec.timing}-jayanti-yoga`, window: timingPoint(ref, spec.timing, ctx.geo)?.window, at: oStart, span };
+            break;
+          }
+          if (oStart < ref.nextSunrise && oEnd > ref.sunrise) break; // the overlap day is already the chosen day
+        }
+      }
+    }
     if (spec.nakshatraPreference !== undefined && obs.convention.endsWith('-of-two')) {
       const d0 = localDateOf(span.start, ctx.zone);
       for (let i = 0; i < 3; i++) {
@@ -221,7 +256,14 @@ function solar(rule: FestivalRule, spec: Extract<FestivalRuleSpec, { kind: 'sola
   for (let i = 0; i < 2; i++) {
     const at = nextCrossing((ms) => siderealSun(ms), target, from, STEP.sun, 120);
     if (at > ctx.yearEnd + 2 * DAY_MS) break;
-    const day = spec.dayRule === 'sunset' ? sunsetRuleDay(at, ctx.zone, ctx.geo) : { date: localDateOf(at, ctx.zone), convention: 'same-day' };
+    let day: { date: string; convention: string };
+    if (spec.dayRule === 'sunset') day = sunsetRuleDay(at, ctx.zone, ctx.geo);
+    else if (spec.dayRule === 'sunrise') {
+      // Malayalam month start (Vishu): the day of the sankranti only when it falls before that day's sunrise.
+      const d = localDateOf(at, ctx.zone);
+      const sr = sunriseOn(d, ctx.zone, ctx.geo);
+      day = sr !== null && at > sr ? { date: addDays(d, 1), convention: 'after-sunrise-next-day' } : { date: d, convention: 'before-sunrise-same-day' };
+    } else day = { date: localDateOf(at, ctx.zone), convention: 'same-day' };
     if (inYear(ctx, day.date)) {
       const occ = base(rule, day.date, `sankranti-${day.convention}`, ctx);
       occ.sankranti = at;
@@ -253,22 +295,38 @@ function nakshatraRule(rule: FestivalRule, spec: Extract<FestivalRuleSpec, { kin
       fullness: number;
       span: { start: number; end: number };
     }
+    // Every day whose DAYLIGHT overlaps the nakshatra is a candidate (not only days whose sunrise is inside it):
+    // Drik's Onam 2027 and Thaipusam 2027 fall on the day the nakshatra covers most of the daylight even though
+    // it still runs for a few minutes after the next sunrise (A04, reference/CONVENTIONS.md).
     const hits: Hit[] = [];
     for (let d = localDateOf(enter, ctx.zone); d <= localDateOf(leave, ctx.zone); d = addDays(d, 1)) {
       const f = dayFrame(d, ctx.zone, ctx.geo);
       if (!f) continue;
-      if (nakshatraIndexAt(f.sunrise) !== spec.nakshatra) continue;
-      const nakEnd = nextCrossing(moon, ((spec.nakshatra + 1) * NAKSHATRA_DEG) % 360, f.sunrise, STEP.moon);
-      const nakStart = prevCrossing(moon, spec.nakshatra * NAKSHATRA_DEG, f.sunrise, STEP.moon);
-      hits.push({ date: d, coverage: Math.min(nakEnd, f.sunset) - f.sunrise, fullness: Math.abs(elongation(f.sunrise) - 180), span: { start: nakStart, end: nakEnd } });
+      let nakStart: number;
+      let nakEnd: number;
+      if (nakshatraIndexAt(f.sunrise) === spec.nakshatra) {
+        nakEnd = nextCrossing(moon, ((spec.nakshatra + 1) * NAKSHATRA_DEG) % 360, f.sunrise, STEP.moon);
+        nakStart = prevCrossing(moon, spec.nakshatra * NAKSHATRA_DEG, f.sunrise, STEP.moon);
+      } else {
+        nakStart = nextCrossing(moon, spec.nakshatra * NAKSHATRA_DEG, f.sunrise, STEP.moon);
+        if (nakStart >= f.sunset) continue; // the nakshatra does not begin during this day's daylight
+        nakEnd = nextCrossing(moon, ((spec.nakshatra + 1) * NAKSHATRA_DEG) % 360, nakStart, STEP.moon);
+      }
+      const coverage = Math.min(nakEnd, f.sunset) - Math.max(nakStart, f.sunrise);
+      if (coverage <= 0) continue;
+      hits.push({ date: d, coverage, fullness: Math.abs(elongation(nakStart) - 180), span: { start: nakStart, end: nakEnd } });
     }
     let picked: { date: string; convention: string; span?: { start: number; end: number } } | null = null;
-    if (hits.length === 1) picked = { date: hits[0].date, convention: 'nakshatra-udaya', span: hits[0].span };
-    else if (hits.length > 1) {
+    if (hits.length) {
       const nearestFull = hits.reduce((a, b) => (b.fullness < a.fullness ? b : a));
-      const samePassage = hits.filter((h) => h.span.start === nearestFull.span.start);
+      // Same passage = same start instant (bisected from different brackets, so compare within an hour).
+      const samePassage = hits.filter((h) => Math.abs(h.span.start - nearestFull.span.start) < 3_600_000);
       const best = samePassage.reduce((a, b) => (b.coverage > a.coverage ? b : a));
-      picked = { date: best.date, convention: samePassage.length > 1 ? 'nakshatra-udaya-longer-daylight' : 'nakshatra-udaya', span: best.span };
+      const sunriseInside = (() => {
+        const f = dayFrame(best.date, ctx.zone, ctx.geo);
+        return !!f && f.sunrise >= best.span.start && f.sunrise < best.span.end;
+      })();
+      picked = { date: best.date, convention: samePassage.length > 1 ? 'nakshatra-longer-daylight' : sunriseInside ? 'nakshatra-udaya' : 'nakshatra-daylight', span: best.span };
     } else {
       const begin = nextCrossing(moon, spec.nakshatra * NAKSHATRA_DEG, enter, STEP.moon);
       if (begin < leave) picked = { date: localDateOf(begin, ctx.zone), convention: 'nakshatra-begin-day' };

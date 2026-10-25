@@ -1,0 +1,424 @@
+{
+  "case": "c03",
+  "source": "astrosage",
+  "source_url": "https://ascloud.astrosage.com/cloud/planetposition.asp + https://ascloud.astrosage.com/cloud/VMMD&AD.asp (session created by POST https://ascloud.astrosage.com/cloud/createsession.asp from https://www.astrosage.com/kundli/; home https://ascloud.astrosage.com/cloud/home.asp)",
+  "fetched_at": "2026-10-24T23:00:41.307Z",
+  "fetcher_version": "a04-1",
+  "values": {
+    "input": {
+      "date": "1970-07-05",
+      "time": "04:30",
+      "noonForUnknownTime": false,
+      "place": "Patna",
+      "latitude": 27.816666666666666,
+      "longitude": 81.76666666666667,
+      "latText": "27:49 N",
+      "lonText": "81:46 E",
+      "timezoneHours": 5.5,
+      "offsetMinutes": 330,
+      "timezoneid": "Asia/Kolkata",
+      "ayanamsa": "N.C.Lahiri (site default)",
+      "suggestions": [
+        "Patna, Uttar Pradesh (India)",
+        "Patna, Bihar (India)",
+        "Patna, Chhattisgarh (India)",
+        "Patna, Orissa (India)",
+        "Patna, Karnataka (India)",
+        "Patna, Karnataka (India)",
+        "Patna, Scotland (Britain (UK))",
+        "Patna Bela, Uttar Pradesh (India)",
+        "Patna City, Bihar (India)",
+        "Patna Deokali, Uttar Pradesh (India)",
+        "Patnagarh, Orissa (India)",
+        "Patnageri, Karnataka (India)",
+        "Patnam, Andhra Pradesh (India)",
+        "Patnanungan, Calabarzon (Philippines)",
+        "Patnar, Madhya Pradesh (India)"
+      ],
+      "picked": "Patna, Uttar Pradesh (India)"
+    },
+    "planets": {
+      "Su": {
+        "sign": 3,
+        "lon": 79.0925,
+        "text": "Gemini 19-05-33",
+        "nakshatra": 6,
+        "pada": 4,
+        "retro": false,
+        "combust": false,
+        "relation": "Neutral"
+      },
+      "Mo": {
+        "sign": 4,
+        "lon": 93.83361,
+        "text": "Cancer 03-50-01",
+        "nakshatra": null,
+        "pada": 1,
+        "retro": false,
+        "combust": false,
+        "relation": "Own"
+      },
+      "Ma": {
+        "sign": 3,
+        "lon": 87.94639,
+        "text": "Gemini 27-56-47",
+        "nakshatra": 7,
+        "pada": 3,
+        "retro": false,
+        "combust": true,
+        "relation": "Enemy"
+      },
+      "Me": {
+        "sign": 3,
+        "lon": 76.68083,
+        "text": "Gemini 16-40-51",
+        "nakshatra": 6,
+        "pada": 4,
+        "retro": false,
+        "combust": true,
+        "relation": "Own"
+      },
+      "Ju": {
+        "sign": 7,
+        "lon": 182.8475,
+        "text": "Libra 02-50-51",
+        "nakshatra": 14,
+        "pada": 3,
+        "retro": false,
+        "combust": false,
+        "relation": "Enemy"
+      },
+      "Ve": {
+        "sign": 4,
+        "lon": 117.86778,
+        "text": "Cancer 27-52-04",
+        "nakshatra": 9,
+        "pada": 4,
+        "retro": false,
+        "combust": false,
+        "relation": "Enemy"
+      },
+      "Sa": {
+        "sign": 1,
+        "lon": 26.09333,
+        "text": "Aries 26-05-36",
+        "nakshatra": 2,
+        "pada": 4,
+        "retro": false,
+        "combust": false,
+        "relation": "Debilitated"
+      },
+      "Ra": {
+        "sign": 11,
+        "lon": 312.04361,
+        "text": "Aquarius 12-02-37",
+        "nakshatra": 24,
+        "pada": 2,
+        "retro": false,
+        "combust": false,
+        "relation": ""
+      },
+      "Ke": {
+        "sign": 5,
+        "lon": 132.04361,
+        "text": "Leo 12-02-37",
+        "nakshatra": 10,
+        "pada": 4,
+        "retro": false,
+        "combust": false,
+        "relation": ""
+      }
+    },
+    "lagna": {
+      "sign": 3,
+      "lon": 68.85528,
+      "text": "Gemini 08-51-19",
+      "nakshatra": 6,
+      "pada": 1,
+      "retro": false,
+      "combust": false,
+      "relation": ""
+    },
+    "moon": {
+      "nakshatra": null,
+      "pada": 1,
+      "text": "Pashyami 1"
+    },
+    "dasha": {
+      "mahaLord": "Sa",
+      "mahaLordId": "Sa",
+      "mahaStart": "1970-07-05",
+      "mahaEnd": "1988-10-19",
+      "balanceText": "Balance Of Dasha : SATURN 18 Y 3 M 13 D",
+      "mahas": [
+        {
+          "lord": "Sa",
+          "years": 19,
+          "start": "1970-07-05",
+          "end": "1988-10-19",
+          "raw": "SAT -19 Years 5/ 7/70 19/10/88"
+        },
+        {
+          "lord": "Me",
+          "years": 17,
+          "start": "1988-10-19",
+          "end": "2005-10-19",
+          "raw": "MER -17 Years 19/10/88 19/10/05"
+        },
+        {
+          "lord": "Ke",
+          "years": 7,
+          "start": "2005-10-19",
+          "end": "2012-10-19",
+          "raw": "KET -7 Years 19/10/05 19/10/12"
+        },
+        {
+          "lord": "Ve",
+          "years": 20,
+          "start": "2012-10-19",
+          "end": "2032-10-19",
+          "raw": "VEN -20 Years 19/10/12 19/10/32"
+        },
+        {
+          "lord": "Su",
+          "years": 6,
+          "start": "2032-10-19",
+          "end": "2038-10-19",
+          "raw": "SUN -6 Years 19/10/32 19/10/38"
+        },
+        {
+          "lord": "Mo",
+          "years": 10,
+          "start": "2038-10-19",
+          "end": "2048-10-19",
+          "raw": "MON -10 Years 19/10/38 19/10/48"
+        },
+        {
+          "lord": "Ma",
+          "years": 7,
+          "start": "2048-10-19",
+          "end": "2055-10-19",
+          "raw": "MAR -7 Years 19/10/48 19/10/55"
+        },
+        {
+          "lord": "Ra",
+          "years": 18,
+          "start": "2055-10-19",
+          "end": "2073-10-19",
+          "raw": "RAH -18 Years 19/10/55 19/10/73"
+        },
+        {
+          "lord": "Ju",
+          "years": 16,
+          "start": "2073-10-19",
+          "end": "2089-10-19",
+          "raw": "JUP -16 Years 19/10/73 19/10/89"
+        }
+      ],
+      "resolution": "day (d/m/yy as printed)"
+    },
+    "raw": {
+      "planets": [
+        {
+          "name": "Asc",
+          "combust": "",
+          "motion": "",
+          "rashi": "Gemini",
+          "dms": "08-51-19",
+          "nakshatra": "Ardra",
+          "pada": "1",
+          "relation": ""
+        },
+        {
+          "name": "Sun",
+          "combust": "",
+          "motion": "D",
+          "rashi": "Gemini",
+          "dms": "19-05-33",
+          "nakshatra": "Ardra",
+          "pada": "4",
+          "relation": "Neutral"
+        },
+        {
+          "name": "Moon",
+          "combust": "",
+          "motion": "D",
+          "rashi": "Cancer",
+          "dms": "03-50-01",
+          "nakshatra": "Pashyami",
+          "pada": "1",
+          "relation": "Own"
+        },
+        {
+          "name": "Mars",
+          "combust": "C",
+          "motion": "D",
+          "rashi": "Gemini",
+          "dms": "27-56-47",
+          "nakshatra": "Punarvasu",
+          "pada": "3",
+          "relation": "Enemy"
+        },
+        {
+          "name": "Merc",
+          "combust": "C",
+          "motion": "D",
+          "rashi": "Gemini",
+          "dms": "16-40-51",
+          "nakshatra": "Ardra",
+          "pada": "4",
+          "relation": "Own"
+        },
+        {
+          "name": "Jupt",
+          "combust": "",
+          "motion": "D",
+          "rashi": "Libra",
+          "dms": "02-50-51",
+          "nakshatra": "Chitra",
+          "pada": "3",
+          "relation": "Enemy"
+        },
+        {
+          "name": "Venu",
+          "combust": "",
+          "motion": "D",
+          "rashi": "Cancer",
+          "dms": "27-52-04",
+          "nakshatra": "Ashlesha",
+          "pada": "4",
+          "relation": "Enemy"
+        },
+        {
+          "name": "Satn",
+          "combust": "",
+          "motion": "D",
+          "rashi": "Aries",
+          "dms": "26-05-36",
+          "nakshatra": "Bharani",
+          "pada": "4",
+          "relation": "Debilitated"
+        },
+        {
+          "name": "Rahu",
+          "combust": "",
+          "motion": "-",
+          "rashi": "Aquarius",
+          "dms": "12-02-37",
+          "nakshatra": "Satabhisa",
+          "pada": "2",
+          "relation": ""
+        },
+        {
+          "name": "Ketu",
+          "combust": "",
+          "motion": "-",
+          "rashi": "Leo",
+          "dms": "12-02-37",
+          "nakshatra": "Magha",
+          "pada": "4",
+          "relation": ""
+        },
+        {
+          "name": "Uran",
+          "combust": "",
+          "motion": "D",
+          "rashi": "Virgo",
+          "dms": "11-23-36",
+          "nakshatra": "Hasta",
+          "pada": "1",
+          "relation": ""
+        },
+        {
+          "name": "Nept",
+          "combust": "",
+          "motion": "R",
+          "rashi": "Scorpion",
+          "dms": "04-59-30",
+          "nakshatra": "Anuradha",
+          "pada": "1",
+          "relation": ""
+        },
+        {
+          "name": "Plut",
+          "combust": "",
+          "motion": "D",
+          "rashi": "Virgo",
+          "dms": "01-27-43",
+          "nakshatra": "Uttaraphal",
+          "pada": "2",
+          "relation": ""
+        }
+      ],
+      "dasha": [
+        {
+          "lord": "Sa",
+          "years": 19,
+          "start": "1970-07-05",
+          "end": "1988-10-19",
+          "raw": "SAT -19 Years 5/ 7/70 19/10/88"
+        },
+        {
+          "lord": "Me",
+          "years": 17,
+          "start": "1988-10-19",
+          "end": "2005-10-19",
+          "raw": "MER -17 Years 19/10/88 19/10/05"
+        },
+        {
+          "lord": "Ke",
+          "years": 7,
+          "start": "2005-10-19",
+          "end": "2012-10-19",
+          "raw": "KET -7 Years 19/10/05 19/10/12"
+        },
+        {
+          "lord": "Ve",
+          "years": 20,
+          "start": "2012-10-19",
+          "end": "2032-10-19",
+          "raw": "VEN -20 Years 19/10/12 19/10/32"
+        },
+        {
+          "lord": "Su",
+          "years": 6,
+          "start": "2032-10-19",
+          "end": "2038-10-19",
+          "raw": "SUN -6 Years 19/10/32 19/10/38"
+        },
+        {
+          "lord": "Mo",
+          "years": 10,
+          "start": "2038-10-19",
+          "end": "2048-10-19",
+          "raw": "MON -10 Years 19/10/38 19/10/48"
+        },
+        {
+          "lord": "Ma",
+          "years": 7,
+          "start": "2048-10-19",
+          "end": "2055-10-19",
+          "raw": "MAR -7 Years 19/10/48 19/10/55"
+        },
+        {
+          "lord": "Ra",
+          "years": 18,
+          "start": "2055-10-19",
+          "end": "2073-10-19",
+          "raw": "RAH -18 Years 19/10/55 19/10/73"
+        },
+        {
+          "lord": "Ju",
+          "years": 16,
+          "start": "2073-10-19",
+          "end": "2089-10-19",
+          "raw": "JUP -16 Years 19/10/73 19/10/89"
+        }
+      ]
+    }
+  },
+  "notes": [
+    "site geo 27.8167,81.7667 (minute precision) differs from the case coordinates 25.59408,85.13563 by 2.223/3.369 deg (suggestion \"Patna, Uttar Pradesh (India)\")",
+    "Longitudes are sidereal (N.C. Lahiri, site default) as printed DD-MM-SS within the sign; R = retrograde, C = combust per the site; coordinates at minute precision from the site autocomplete; the timezone is the hours value the site filled for the place."
+  ]
+}

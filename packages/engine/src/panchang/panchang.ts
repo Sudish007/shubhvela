@@ -8,15 +8,21 @@
 // - Amanta month = lunation named by the sankranti it contains; Adhik when it has none (astro.ts).
 // - Purnimanta month per purnimantaMonth() (Krishna paksha -> next name, except inside an Adhik lunation).
 // - Vikram/Shaka change at Chaitra Shukla Pratipada (samvatFor()).
-// - Ritu and ayana are given on two bases: `vedic` = sidereal Sun (Vasanta = Meena + Mesha, Uttarayana
-//   from Makara sankranti), `drik` = tropical Sun (same pairing; Uttarayana from the December solstice),
-//   because Drik Panchang prints both ("Drik Ritu" / "Vedic Ritu").
-// - Brahma muhurta = fixed 48-minute muhurtas: 96 -> 48 minutes before the next sunrise (Drik Panchang's
-//   convention; the fork's night/15 variant is not used). Abhijit = 8th of 15 equal daytime muhurtas.
+// - Ritu and ayana are given on two bases because Drik Panchang prints both ("Drik Ritu" / "Vedic Ritu"):
+//   `drik` = tropical Sun (Vasanta from tropical 330 deg, Uttarayana from the December solstice);
+//   `vedic` ritu = the Amanta lunar month pair (Chaitra-Vaishakha Vasanta ... Magha-Phalguna Shishira, an
+//   Adhik month counts with its name), `vedic` ayana = sidereal Sun (Uttarayana from Makara sankranti).
+//   (A04: the earlier sidereal-Sun ritu disagreed with Drik on 7 of 60 days; the lunar-month rule agrees.)
+// - Brahma muhurta = the 14th of the 15 equal muhurtas of the NIGHT (sunset -> sunrise), i.e. 2/15 -> 1/15 of
+//   the night before sunrise (Drik Panchang; validated in A04 — the fixed 96 -> 48 minute variant was up to
+//   16 min off in June). Abhijit = 8th of 15 equal daytime muhurtas.
 // - Hora = 12 equal daytime horas + 12 equal night horas starting with the vara lord (Chaldean order
 //   Sun, Venus, Mercury, Moon, Saturn, Jupiter, Mars).
-// - Moonrise/moonset are the civil-day events (as printed by almanacs); goodHours().ticks.moonrise is the
-//   Vedic-day moonrise used for the band tick.
+// - Moonrise/moonset are the events of the VEDIC day (sunrise -> next sunrise), as Drik Panchang prints them
+//   (a moonrise after midnight belongs to the previous civil date's panchang); null when the Moon does not
+//   rise/set in that span. The instant is the Moon's centre on the true horizon (astro.ts).
+// - Vikram/Shaka change on the Chaitra Shukla Pratipada day; when that Pratipada touches no sunrise (kshaya)
+//   the day it begins carries the new year while the month at sunrise stays the old one (Drik, 2026-03-19).
 import { type AyanamsaType } from '../../vendor/jyotish/src/core/ayanamsa';
 import { calculateChoghadiya } from '../../vendor/jyotish/src/core/muhurta/choghadiya';
 import { getSpecialYoga } from '../../vendor/jyotish/src/core/calculations';
@@ -42,6 +48,7 @@ import {
   moonsetBetween,
   nakshatraInterval,
   nextCrossing,
+  nextLunation,
   prevCrossing,
   parseLocalDate,
   pakshaOfTithi,
@@ -50,6 +57,7 @@ import {
   samvatFor,
   siderealMoon,
   siderealSun,
+  sunsetOn,
   sunTropical,
   STEP,
   sunSignIndexAt,
@@ -139,7 +147,7 @@ export interface PanchangDay {
   sunrise: number | null;
   sunset: number | null;
   nextSunrise: number | null;
-  /** Civil-day moonrise/moonset (null when the Moon does not rise/set on that date). */
+  /** Moonrise/moonset inside the Vedic day sunrise -> next sunrise (null when the Moon does not rise/set in it). */
   moonrise: number | null;
   moonset: number | null;
   /** 0 = Sunday. */
@@ -173,9 +181,9 @@ export interface PanchangDay {
   yamaganda: Window | null;
   gulika: Window | null;
   abhijit: Window | null;
-  /** 96 -> 48 minutes before the NEXT sunrise (the Brahma muhurta inside this Vedic day). */
+  /** 14th night muhurta (2/15 -> 1/15 of the night) before the NEXT sunrise: the Brahma muhurta inside this Vedic day. */
   brahma: Window | null;
-  /** 96 -> 48 minutes before THIS sunrise (the one printed for the civil morning). */
+  /** The same window before THIS sunrise (the one almanacs print for the civil morning). */
   brahmaMorning: Window | null;
   choghadiya: { day: ChoghadiyaSlot[]; night: ChoghadiyaSlot[] };
   hora: HoraSlot[];
@@ -228,11 +236,16 @@ export function abhijitWindow(frame: Pick<DayFrame, 'sunrise' | 'sunset'>): Wind
   return { start: Math.round(frame.sunrise + 7 * unit), end: Math.round(frame.sunrise + 8 * unit) };
 }
 
+/** Fallback muhurta length when the night length is unknown (polar guard). */
 export const BRAHMA_MUHURTA_MINUTES = 48;
 
-/** Brahma muhurta before a sunrise: 2 muhurtas (96 min) to 1 muhurta (48 min) before it. */
-export function brahmaWindow(sunrise: number): Window {
-  return { start: sunrise - 2 * BRAHMA_MUHURTA_MINUTES * MIN_MS, end: sunrise - BRAHMA_MUHURTA_MINUTES * MIN_MS };
+/**
+ * Brahma muhurta before a sunrise = the 14th of the night's 15 equal muhurtas: from 2/15 to 1/15 of the night
+ * (sunset -> that sunrise) before it. Without a night start the fixed 96 -> 48 minute window is used.
+ */
+export function brahmaWindow(sunrise: number, nightStart?: number): Window {
+  const unit = nightStart !== undefined && nightStart < sunrise ? (sunrise - nightStart) / 15 : BRAHMA_MUHURTA_MINUTES * MIN_MS;
+  return { start: Math.round(sunrise - 2 * unit), end: Math.round(sunrise - unit) };
 }
 
 /** k-th of 8 equal parts of [start, end], 1-based; integer ms so coincident boundaries compare equal. */
@@ -315,6 +328,8 @@ export function panchakWindow(fromMs: number, toMs: number, ay: AyanamsaType = '
 }
 
 const RITU_FROM_LON = (lon: number): RituIndex => (Math.floor((((lon - 330) % 360) + 360) % 360 / 60) % 6) as RituIndex;
+/** Vedic ritu from the Amanta month (0 = Chaitra): Chaitra-Vaishakha Vasanta ... Magha-Phalguna Shishira. */
+const RITU_FROM_MONTH = (monthIndex: number): RituIndex => Math.floor(monthIndex / 2) as RituIndex;
 const AYANA_FROM_LON = (lon: number): Ayana => (lon >= 270 || lon < 90 ? 'uttarayana' : 'dakshinayana');
 
 function tithiValue(t: { index: number; start: number; end: number }): TithiValue {
@@ -366,12 +381,14 @@ export function panchang(dayLocal: string, geo: GeoPoint, tz: string, opts: Panc
   parseLocalDate(dayLocal);
   const frame = dayFrame(dayLocal, zone, geo);
   const midnight = localMidnight(dayLocal, zone);
-  const nextMidnight = localMidnight(addDays(dayLocal, 1), zone);
-  const moonrise = moonriseBetween(midnight, nextMidnight, geo);
-  const moonset = moonsetBetween(midnight, nextMidnight, geo);
   const anchor = frame ? frame.sunrise : midnight + 6 * 3_600_000; // polar fallback keeps the lunar fields usable
   const vara = frame ? frame.vara : weekdayOf(dayLocal);
   const dayEnd = frame ? frame.nextSunrise : anchor + DAY_MS;
+  // Vedic-day moonrise/moonset (Drik Panchang convention); the polar fallback spans the civil day.
+  const moonSpan: [number, number] = frame ? [frame.sunrise, frame.nextSunrise] : [midnight, localMidnight(addDays(dayLocal, 1), zone)];
+  const moonrise = moonriseBetween(moonSpan[0], moonSpan[1], geo);
+  const moonset = moonsetBetween(moonSpan[0], moonSpan[1], geo);
+  const previousSunset = frame ? sunsetOn(addDays(dayLocal, -1), zone, geo) : null;
   const offsetMinutes = utcToWall(anchor, zone).offsetMinutes;
 
   const tithi0 = tithiInterval(anchor);
@@ -389,7 +406,15 @@ export function panchang(dayLocal: string, geo: GeoPoint, tz: string, opts: Panc
   const monthAmanta: LunarMonth = { index: lunation.monthIndex, adhik: lunation.adhik };
   const monthPurnimanta = purnimantaMonth(monthAmanta, tithis[0].paksha);
   const wall = utcToWall(anchor, zone);
-  const samvat = samvatFor(monthAmanta.index, wall.y, wall.m);
+  // New-year day: Chaitra Shukla Pratipada at sunrise, or — when that Pratipada touches no sunrise — the day
+  // it begins (the month at sunrise is still the old one; Drik Panchang 2026-03-19).
+  let samvatMonth = monthAmanta.index;
+  if (lunation.end < dayEnd) {
+    const next = nextLunation(lunation);
+    const pratipada = tithis.find((t) => t.index === 0 && t.start >= lunation.end - MIN_MS);
+    if (next.monthIndex === 0 && pratipada && pratipada.end < dayEnd) samvatMonth = 0;
+  }
+  const samvat = samvatFor(samvatMonth, wall.y, wall.m);
   const sunSid = siderealSun(anchor, ay);
   const sunTrop = sunTropical(anchor);
   const sunNakshatra = Math.min(26, Math.floor(sunSid / (360 / 27)));
@@ -430,14 +455,14 @@ export function panchang(dayLocal: string, geo: GeoPoint, tz: string, opts: Panc
     samvat,
     vikramSamvat: samvat.vikram,
     shakaSamvat: samvat.shaka,
-    ritu: { vedic: RITU_FROM_LON(sunSid), drik: RITU_FROM_LON(sunTrop) },
+    ritu: { vedic: RITU_FROM_MONTH(monthAmanta.index), drik: RITU_FROM_LON(sunTrop) },
     ayana: { vedic: AYANA_FROM_LON(sunSid), drik: AYANA_FROM_LON(sunTrop) },
     rahuKaal: frame ? eighth(frame, RAHU_PART[vara]) : null,
     yamaganda: frame ? eighth(frame, YAMAGANDA_PART[vara]) : null,
     gulika: frame ? eighth(frame, GULIKA_PART[vara]) : null,
     abhijit: frame ? abhijitWindow(frame) : null,
-    brahma: frame ? brahmaWindow(frame.nextSunrise) : null,
-    brahmaMorning: frame ? brahmaWindow(frame.sunrise) : null,
+    brahma: frame ? brahmaWindow(frame.nextSunrise, frame.sunset) : null,
+    brahmaMorning: frame ? brahmaWindow(frame.sunrise, previousSunset ?? undefined) : null,
     choghadiya,
     hora,
     bhadra,

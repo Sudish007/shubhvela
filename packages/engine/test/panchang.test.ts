@@ -36,7 +36,8 @@ describe('panchang(day, observer, tz) — F8 fields', () => {
     expect(p.vikramSamvat - p.shakaSamvat).toBe(135);
     expect(p.monthAmanta).toEqual({ index: 11, adhik: false }); // Phalguna (Amanta)
     expect(p.monthPurnimanta).toEqual({ index: 0, adhik: false }); // Chaitra Krishna paksha (Purnimanta)
-    expect(p.ritu.vedic).toBe(0); // Vasanta (sidereal Sun in Meena)
+    expect(p.ritu.vedic).toBe(5); // Shishira: Amanta month Phalguna (Drik "Vedic Ritu" follows the lunar month, A04)
+    expect(p.ritu.drik).toBe(0); // Vasanta: tropical Sun past 330 deg
     expect(p.ayana.drik).toBe('uttarayana');
     expect(p.ayana.vedic).toBe('uttarayana');
     expect(p.sunSign).toBe(11); // Meena
@@ -66,29 +67,33 @@ describe('panchang(day, observer, tz) — F8 fields', () => {
       expect(list[list.length - 1].end).toBeGreaterThanOrEqual(p.nextSunrise!);
       for (let i = 1; i < list.length; i++) expect(list[i].start).toBe(list[i - 1].end);
     }
-    // 2026-10-22 Delhi: Shukla Ekadashi till 14:48, Shatabhisha till 20:48, Vriddhi yoga till 23:39, Vishti (Bhadra) till 14:48 — the A02 fork values.
+    // 2026-10-22 Delhi vs Drik Panchang (reference/panchang/drikpanchang/delhi-2026-10-22.json, rounded minutes):
+    // Shukla Ekadashi upto 02:47 PM, Shatabhisha upto 08:49 PM, Vriddhi upto 11:40 PM, Vishti (Bhadra) upto 02:47 PM,
+    // moonrise 03:25 PM, moonset 03:17 AM Oct 23, Brahma Muhurta 04:45-05:35 AM. `hm` floors to the minute.
     const q = panchang('2026-10-22', DELHI, ZONE);
     expect(q.tithi.n).toBe(11);
     expect(q.tithi.paksha).toBe('shukla');
-    expect(hm(q.tithi.end)).toBe('14:48');
+    expect(hm(q.tithi.end)).toBe('14:48'); // 14:48:0x; Drik prints 02:47 PM (1 min, within the 2-min gate)
     expect(q.nakshatra.index).toBe(23);
-    expect(hm(q.nakshatra.end)).toBe('20:48');
+    expect(hm(q.nakshatra.end)).toBe('20:49');
     expect(q.yoga.index).toBe(10);
-    expect(hm(q.yoga.end)).toBe('23:39');
+    expect(hm(q.yoga.end)).toBe('23:40'); // Drik: Vriddhi upto 11:40 PM
     expect(q.karana.index).toBe(6);
     expect(q.karana.bhadra).toBe(true);
-    expect(hm(q.karana.end)).toBe('14:48');
+    expect(hm(q.karana.end)).toBe('14:48'); // = tithi end
     expect(q.bhadra[0]).toMatchObject({ location: 'earth', moonSign: 10 });
     expect(q.monthAmanta).toEqual({ index: 6, adhik: false }); // Ashwin
     expect(q.monthPurnimanta).toEqual({ index: 6, adhik: false }); // Shukla paksha: same name
     expect(q.vikramSamvat).toBe(2083);
     expect(q.shakaSamvat).toBe(1948);
-    expect(hm(q.moonrise)).toBe('15:21');
-    expect(hm(q.moonset)).toBe('02:22');
-    expect(hm(q.brahma!.start)).toBe('04:50'); // 96 min before the next sunrise 06:26 (Drik convention)
-    expect(hm(q.brahmaMorning!.start)).toBe('04:50');
+    // Vedic-day moonrise/moonset (sunrise 22 Oct -> sunrise 23 Oct), Moon's centre on the true horizon.
+    expect(hm(q.moonrise)).toBe('15:25');
+    expect(formatInZone(q.moonset!, ZONE, 'yyyy-MM-dd HH:mm')).toBe('2026-10-23 03:16');
+    expect(hm(q.brahmaMorning!.start)).toBe('04:44'); // Drik 04:45 AM (rounded); 2/15 of the 21->22 Oct night before sunrise
+    expect(hm(q.brahmaMorning!.end)).toBe('05:35');
+    expect(q.brahma!.start).toBe(Math.round(q.nextSunrise! - (2 * (q.nextSunrise! - q.sunset!)) / 15));
     expect(q.ritu.drik).toBe(3); // Sharad (tropical) on 22 Oct
-    expect(q.ritu.vedic).toBe(3); // Sharad (sidereal Sun in Tula)
+    expect(q.ritu.vedic).toBe(3); // Sharad (Amanta month Ashwin; Drik "Vedic Ritu")
     expect(q.ayana.drik).toBe('dakshinayana');
   });
 
