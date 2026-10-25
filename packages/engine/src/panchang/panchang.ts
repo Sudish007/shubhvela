@@ -353,6 +353,9 @@ const SPECIAL_YOGA_KEYS: Record<string, string> = {
   'Sarvartha Siddhi Yoga': 'sarvartha-siddhi',
 };
 
+/** Every special-yoga key specialYogas() can emit (content fragment ids of the daily note's day row). */
+export const SPECIAL_YOGA_FRAGMENT_KEYS: readonly string[] = [...Object.values(SPECIAL_YOGA_KEYS), 'tripushkar', 'dwipushkar', 'ravi-yoga'];
+
 const TRIPUSHKAR_NAKSHATRAS = [2, 6, 11, 15, 20, 24]; // Krittika, Punarvasu, U.Phalguni, Vishakha, U.Ashadha, P.Bhadrapada
 const DWIPUSHKAR_NAKSHATRAS = [4, 13, 22]; // Mrigashira, Chitra, Dhanishta
 const PUSHKAR_TITHIS = [1, 6, 11, 16, 21, 26]; // Dwitiya, Saptami, Dwadashi (both pakshas), 0-based

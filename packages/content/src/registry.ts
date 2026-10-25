@@ -8,6 +8,11 @@ import rulesEn from '../corpus/rules/en.json';
 import planetSignEn from '../corpus/planet-sign/en.json';
 import planetHouseEn from '../corpus/planet-house/en.json';
 import dignityEn from '../corpus/dignity/en.json';
+import lagnaEn from '../corpus/lagna/en.json';
+import nakshatraPadaEn from '../corpus/nakshatra-pada/en.json';
+import dashaPairsEn from '../corpus/dasha-pairs/en.json';
+import transitEn from '../corpus/transit/en.json';
+import dailyEn from '../corpus/daily/en.json';
 
 export const UI: Record<ContentLanguage, UiStrings> = {
   en: en as UiStrings,
@@ -22,4 +27,13 @@ export const CORPUS: Record<string, Partial<Record<ContentLanguage, Snippet[]>>>
   'planet-sign': { en: planetSignEn as Snippet[] },
   'planet-house': { en: planetHouseEn as Snippet[] },
   dignity: { en: dignityEn as Snippet[] },
+  // A07: lagna-<sign> (lowercase engine sign name); nakshatra-<1..27>-<pada 1..4>; dasha-maha-<PlanetId> and the engine's
+  // own daily-note keys dasha-<Maha>-<Antar> (ids Su Mo Ma Me Ju Ve Sa Ra Ke); transit-<saturn|jupiter|rahu>-<1..12> +
+  // sade-sati-phase-<1..3>; daily = one fragment per engine DAILY_FRAGMENT_KEYS entry (chandra-bala-<h>, tara-bala-<t>,
+  // tithi-<t>, nakshatra-<n>, vara-<v>, the special-yoga / bhadra / panchak keys, sade-sati states, day-strength-*).
+  lagna: { en: lagnaEn as Snippet[] },
+  'nakshatra-pada': { en: nakshatraPadaEn as Snippet[] },
+  'dasha-pairs': { en: dashaPairsEn as Snippet[] },
+  transit: { en: transitEn as Snippet[] },
+  daily: { en: dailyEn as Snippet[] },
 };

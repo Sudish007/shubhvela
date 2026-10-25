@@ -10,20 +10,73 @@
 //   sade-sati           keys sade-sati-phase-<1..3> | dhaiya-4 | dhaiya-8 | sade-sati-none
 //   dasha-lords         keys dasha-<maha>-<antar> (planet ids Su Mo Ma Me Ju Ve Sa Ra Ke), day-strength-<strong|mixed|weak>
 import { type ChartData, naturalRelation } from '../kundli/index';
-import { type PlanetId } from '../locale/index';
+import { PLANET_IDS, type PlanetId } from '../locale/index';
 import { type GeoPoint, type Tradition, resolveZone } from '../panchang/astro';
-import { type PanchangDay, type PanchangOptions, type Window, panchang } from '../panchang/panchang';
+import { type PanchangDay, type PanchangOptions, type Window, panchang, SPECIAL_YOGA_FRAGMENT_KEYS } from '../panchang/panchang';
 import { current, dasha, sadeSati, type SadeSatiReport } from '../dasha/index';
 
 export type RuleParam = string | number | boolean | null | Window[];
 
+export type DailyRuleId = 'chandra-bala' | 'tara-bala' | 'day-tithi-nakshatra' | 'sade-sati' | 'dasha-lords';
+
 export interface DailyRule {
   /** 1-based position in the fixed order. */
   order: number;
-  ruleId: 'chandra-bala' | 'tara-bala' | 'day-tithi-nakshatra' | 'sade-sati' | 'dasha-lords';
+  ruleId: DailyRuleId;
   /** Content fragment keys in reading order. */
   keys: string[];
   params: Record<string, RuleParam>;
+}
+
+/**
+ * The param names every row of a ruleId carries (the keys of DailyRule.params, in emission order). Binding for the
+ * content fragments: a fragment of key K may only interpolate names from RULE_PARAMS[ruleIdOfKey(K)]
+ * (packages/content/test reads this). Values are raw engine data — UTC ms for *EndsAt/*Start/*End/since/until/nextAt,
+ * 1-based sign and nakshatra numbers for *Sign/*Nakshatra, planet ids for maha/antar/pratyantar/varaLord — and the
+ * UI formats them in its language before interpolating.
+ */
+export const RULE_PARAMS: Record<DailyRuleId, readonly string[]> = {
+  'chandra-bala': ['house', 'natalMoonSign', 'transitMoonSign', 'favourable', 'chandrashtama', 'moonSignEndsAt', 'nextHouse'],
+  'tara-bala': ['tara', 'taraKey', 'natalNakshatra', 'dayNakshatra', 'auspicious', 'nakshatraEndsAt', 'nextTara'],
+  'day-tithi-nakshatra': ['tithi', 'paksha', 'tithiEndsAt', 'nakshatra', 'nakshatraEndsAt', 'yoga', 'vara', 'specialYogas', 'bhadraStart', 'bhadraEnd', 'bhadraLocation', 'panchakStart', 'panchakEnd'],
+  'sade-sati': ['state', 'phase', 'house', 'saturnSign', 'saturnHouseFromMoon', 'natalMoonSign', 'since', 'until', 'nextKind', 'nextAt', 'approx'],
+  'dasha-lords': ['maha', 'antar', 'pratyantar', 'mahaEnd', 'antarEnd', 'varaLord', 'mahaDayStrength', 'antarDayStrength', 'mahaRelation', 'antarRelation', 'mahaHoras', 'antarHoras'],
+};
+
+const seq = (from: number, to: number): number[] => Array.from({ length: to - from + 1 }, (_, i) => from + i);
+
+export const DAY_FLAG_KEYS: readonly string[] = ['bhadra-earth', 'bhadra-heaven', 'bhadra-patal', 'panchak'];
+export const SADE_SATI_KEYS: readonly string[] = ['sade-sati-phase-1', 'sade-sati-phase-2', 'sade-sati-phase-3', 'dhaiya-4', 'dhaiya-8', 'sade-sati-none'];
+export const DAY_STRENGTH_KEYS: readonly string[] = ['day-strength-strong', 'day-strength-mixed', 'day-strength-weak'];
+
+/** The 81 `dasha-<maha>-<antar>` keys of the dasha row (resolved by the dasha-pairs corpus). */
+export const DASHA_PAIR_KEYS: readonly string[] = PLANET_IDS.flatMap((m) => PLANET_IDS.map((a) => `dasha-${m}-${a}`));
+
+/**
+ * Every fragment key dailyNote() / familyToday() can emit apart from DASHA_PAIR_KEYS: Chandra bala 12, Tara bala 9,
+ * tithi 30, nakshatra 27, vara 7, special yogas 7, Bhadra/Panchak flags 4, Sade Sati states 6, day-strength 3 = 105.
+ * The daily corpus (packages/content/corpus/daily) has exactly one fragment per key.
+ */
+export const DAILY_FRAGMENT_KEYS: readonly string[] = [
+  ...seq(1, 12).map((h) => `chandra-bala-${h}`),
+  ...seq(1, 9).map((t) => `tara-bala-${t}`),
+  ...seq(1, 30).map((t) => `tithi-${t}`),
+  ...seq(1, 27).map((n) => `nakshatra-${n}`),
+  ...seq(0, 6).map((v) => `vara-${v}`),
+  ...SPECIAL_YOGA_FRAGMENT_KEYS,
+  ...DAY_FLAG_KEYS,
+  ...SADE_SATI_KEYS,
+  ...DAY_STRENGTH_KEYS,
+];
+
+/** The ruleId whose params a fragment key may interpolate; null for a key no daily rule emits. */
+export function ruleIdOfKey(key: string): DailyRuleId | null {
+  if (/^chandra-bala-\d+$/.test(key)) return 'chandra-bala';
+  if (/^tara-bala-\d$/.test(key)) return 'tara-bala';
+  if (/^(tithi|nakshatra|vara)-\d+$/.test(key) || SPECIAL_YOGA_FRAGMENT_KEYS.includes(key) || DAY_FLAG_KEYS.includes(key)) return 'day-tithi-nakshatra';
+  if (SADE_SATI_KEYS.includes(key)) return 'sade-sati';
+  if (DAY_STRENGTH_KEYS.includes(key) || DASHA_PAIR_KEYS.includes(key)) return 'dasha-lords';
+  return null;
 }
 
 export interface DailyNoteOptions extends PanchangOptions {
