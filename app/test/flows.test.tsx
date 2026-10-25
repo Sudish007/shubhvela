@@ -73,8 +73,9 @@ describe('flows', () => {
     insertProfile(SAMPLE_PRIYA);
     insertProfile(SAMPLE_AMMA);
     await renderWithProviders(<FamilyScreen />);
-    expect(screen.getByText('2 of 2 profiles')).toBeTruthy();
-    await fireEvent.press(screen.getByTestId('add-member'));
+    // A12: the quota line reads "2 of 2 profiles · N of 5 reminders (free)"; the "Add" avatar is the always-present entry.
+    expect(screen.getByText(/^2 of 2 profiles/)).toBeTruthy();
+    await fireEvent.press(screen.getByTestId('avatar-add'));
     expect(useRouter().push).not.toHaveBeenCalled();
     expect(screen.getByText('Free plan: two profiles')).toBeTruthy();
     expect(screen.getByText(/Pro is not in this build yet/)).toBeTruthy();

@@ -39,7 +39,7 @@ const KIND_KEY: Record<UpcomingItem['kind'], string> = {
   majorTransit: 'upcoming.transit',
 };
 
-/** Text of one card, every value from the engine item. Routes: targets that exist in Phase A (A12 adds the vrat/calendar detail routes). */
+/** Text of one card, every value from the engine item. Routes: profile editor, vrat detail (A12), Charts; saved muhurats route to Charts until B01. */
 export function upcomingCardText(item: UpcomingItem, tz: string, profileId: number, t: TFn, lang: Lang): UpcomingCardText {
   const c = cardText(item, tz, profileId, t, lang);
   return { ...c, date: glueRanges(c.date) };
@@ -61,7 +61,7 @@ function cardText(item: UpcomingItem, tz: string, profileId: number, t: TFn, lan
       let extra = '';
       if (p.keyTimeKind === 'parana' && typeof p.keyTimeStart === 'number' && typeof p.keyTimeEnd === 'number') extra = ` · ${t('upcoming.parana', { from: fmtTime(p.keyTimeStart, tz), to: fmtTime(p.keyTimeEnd, tz) })}`;
       else if (p.keyTimeKind === 'moonrise' && typeof p.keyTimeStart === 'number') extra = ` · ${t('upcoming.moonrise', { time: fmtTime(p.keyTimeStart, tz) })}`;
-      return { kind, title: name, date: `${day}${extra}`, route: '/(tabs)/family' };
+      return { kind, title: name, date: `${day}${extra}`, route: `/family/vrat/${p.family as string}` };
     }
     case 'savedMuhurat':
       return { kind, title: String(p.activity), date: `${day} · ${fmtRange(p.start as number, p.end as number, tz)}`, route: '/(tabs)/charts' };
@@ -91,7 +91,7 @@ export function UpcomingStrip({ items, tz, profileId, testID }: UpcomingStripPro
         <Txt kind="heading" accessibilityRole="header">
           {t('upcoming.title')}
         </Txt>
-        <Pressable44 accessibilityLabel={t('upcoming.allDates')} onPress={() => router.push('/(tabs)/family')} style={styles.allDates} testID="upcoming-all-dates">
+        <Pressable44 accessibilityLabel={t('upcoming.allDates')} onPress={() => router.push('/family/calendar')} style={styles.allDates} testID="upcoming-all-dates">
           <Txt kind="label" weight={600} color="accent">
             {t('upcoming.allDates')}
           </Txt>

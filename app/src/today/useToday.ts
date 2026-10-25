@@ -9,6 +9,7 @@ import { AppState } from 'react-native';
 import type { Profile } from '../db/profiles';
 import { getSetting, type LocationMode } from '../db/settings';
 import { hasDb } from '../db/connection';
+import { enabledVratFamilies } from '../db/eventSeries';
 import { getDeviceFix, type DeviceFix } from '../location/gps';
 import { computeToday, nextBoundaryAfter, observerFromProfile, type Observer, type TodayModel } from './model';
 
@@ -89,7 +90,7 @@ export function useToday(self: Profile | null, profiles: readonly Profile[], opt
     if (!self || !observer) return;
     const id = setTimeout(() => {
       try {
-        const m = computeToday(self, observer, now(), { profiles });
+        const m = computeToday(self, observer, now(), { profiles, vratFamilies: hasDb() ? enabledVratFamilies() : [] });
         modelRef.current = m;
         setComputed({ model: m, error: false, key });
       } catch (e) {

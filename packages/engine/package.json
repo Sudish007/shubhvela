@@ -13,6 +13,7 @@
     "typecheck": "tsc --noEmit",
     "build:data": "tsx scripts/build-tz-table.ts && tsx scripts/build-gazetteer.ts",
     "design-samples": "tsx scripts/design-samples.ts",
+    "build:verified": "tsx scripts/build-verified-dates.ts",
     "reference:check": "node reference/check.mjs",
     "reference:fetch:panchang": "node reference/fetch/drik-panchang.mjs",
     "reference:fetch:horizons": "node reference/fetch/jpl-horizons.mjs",

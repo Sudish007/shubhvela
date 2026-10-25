@@ -8,6 +8,8 @@ export type ChartStyle = 'north' | 'south' | 'east';
 export type Tradition = 'purnimanta' | 'amanta';
 /** Where Today computes sunrise and the band (spec F5: GPS or the chosen city). 'city' = the self profile's place. */
 export type LocationMode = 'city' | 'gps';
+/** Festival calendar region filter (F23 North/South toggle, persisted). */
+export type FestivalRegion = 'north' | 'south';
 
 export interface Settings {
   language: Lang;
@@ -17,6 +19,7 @@ export interface Settings {
   node: NodeMode;
   traditionDefault: Tradition;
   locationMode: LocationMode;
+  festivalRegion: FestivalRegion;
 }
 
 export const SETTING_DEFAULTS: Settings = {
@@ -27,6 +30,7 @@ export const SETTING_DEFAULTS: Settings = {
   node: 'mean',
   traditionDefault: 'purnimanta',
   locationMode: 'city',
+  festivalRegion: 'north',
 };
 
 const ALLOWED: { [K in keyof Settings]: readonly Settings[K][] } = {
@@ -37,6 +41,7 @@ const ALLOWED: { [K in keyof Settings]: readonly Settings[K][] } = {
   node: ['mean', 'true'],
   traditionDefault: ['purnimanta', 'amanta'],
   locationMode: ['city', 'gps'],
+  festivalRegion: ['north', 'south'],
 };
 
 /** Reads one setting; unknown or corrupt values fall back to the default (never throws for a missing row). */
@@ -60,5 +65,6 @@ export function getAllSettings(): Settings {
     node: getSetting('node'),
     traditionDefault: getSetting('traditionDefault'),
     locationMode: getSetting('locationMode'),
+    festivalRegion: getSetting('festivalRegion'),
   };
 }

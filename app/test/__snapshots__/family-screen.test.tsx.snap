@@ -1,0 +1,3502 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`<FamilyScreen> +30 % pseudo-locale (en) renders every string whole 1`] = `
+<RNCSafeAreaProvider
+  onInsetsChange={[Function]}
+  style={
+    [
+      {
+        "flex": 1,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      [
+        {
+          "flex": 1,
+        },
+        {
+          "backgroundColor": "#FAF7F2",
+          "paddingTop": 24,
+        },
+      ]
+    }
+    testID="family-screen"
+  >
+    <RCTScrollView
+      contentContainerStyle={
+        [
+          {
+            "gap": 12,
+            "paddingHorizontal": 16,
+            "paddingTop": 8,
+          },
+          {
+            "paddingBottom": 122,
+          },
+          undefined,
+        ]
+      }
+      keyboardShouldPersistTaps="handled"
+      style={
+        {
+          "flex": 1,
+        }
+      }
+      testID="screen-scroll"
+    >
+      <View>
+        <View
+          style={
+            [
+              {
+                "alignItems": "flex-start",
+                "flexDirection": "row",
+                "gap": 8,
+                "justifyContent": "space-between",
+                "minHeight": 44,
+              },
+              false,
+            ]
+          }
+        >
+          <View
+            style={
+              {
+                "flex": 1,
+                "minWidth": 0,
+                "paddingTop": 6,
+              }
+            }
+          >
+            <Text
+              accessibilityRole="header"
+              style={
+                [
+                  {
+                    "fontFamily": "TiroDevanagariHindi",
+                    "fontSize": 26,
+                    "fontWeight": "normal",
+                    "lineHeight": 32,
+                  },
+                  {
+                    "color": "#1C1A17",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              Family x
+            </Text>
+            <View
+              style={
+                {
+                  "marginTop": 4,
+                }
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 15,
+                      "fontWeight": "normal",
+                      "lineHeight": 20,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    undefined,
+                  ]
+                }
+                testID="family-date-line"
+              >
+                Thu 
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 15,
+                        "fontVariant": [
+                          "tabular-nums",
+                        ],
+                        "fontWeight": "normal",
+                        "lineHeight": 20,
+                      },
+                      {
+                        "color": "#5B554C",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  22
+                </Text>
+                 Oct 
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 15,
+                        "fontVariant": [
+                          "tabular-nums",
+                        ],
+                        "fontWeight": "normal",
+                        "lineHeight": 20,
+                      },
+                      {
+                        "color": "#5B554C",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  2026
+                </Text>
+                 · Ashwin Shukla x Ekadashi xxxxxxxxxx
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityLabel="Settings xx"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                  "minHeight": 44,
+                  "minWidth": 44,
+                },
+                undefined,
+                false,
+              ]
+            }
+            testID="screen-gear"
+          >
+            <RNSVGSvgView
+              accessible={false}
+              align="xMidYMid"
+              bbHeight={24}
+              bbWidth={24}
+              focusable={false}
+              height={24}
+              meetOrSlice={0}
+              minX={0}
+              minY={0}
+              style={
+                [
+                  {
+                    "backgroundColor": "transparent",
+                    "borderWidth": 0,
+                  },
+                  {
+                    "flex": 0,
+                    "height": 24,
+                    "width": 24,
+                  },
+                ]
+              }
+              vbHeight={24}
+              vbWidth={24}
+              width={24}
+            >
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGCircle
+                  cx="12"
+                  cy="12"
+                  fill={null}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                      "strokeLinecap",
+                      "strokeLinejoin",
+                    ]
+                  }
+                  r="3"
+                  stroke={
+                    {
+                      "payload": 4280031767,
+                      "type": 0,
+                    }
+                  }
+                  strokeLinecap={1}
+                  strokeLinejoin={1}
+                  strokeWidth={1.75}
+                />
+                <RNSVGPath
+                  d="M12 2.5l1.6 2.3 2.7-.8.7 2.7 2.7.7-.8 2.7 2.3 1.6-2.3 1.6.8 2.7-2.7.7-.7 2.7-2.7-.8L12 21.5l-1.6-2.3-2.7.8-.7-2.7-2.7-.7.8-2.7L2.5 12l2.3-1.6-.8-2.7 2.7-.7.7-2.7 2.7.8Z"
+                  fill={null}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                      "strokeLinecap",
+                      "strokeLinejoin",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4280031767,
+                      "type": 0,
+                    }
+                  }
+                  strokeLinecap={1}
+                  strokeLinejoin={1}
+                  strokeWidth={1.75}
+                />
+              </RNSVGGroup>
+            </RNSVGSvgView>
+          </View>
+        </View>
+        <RCTScrollView
+          accessibilityLabel="Profiles xx"
+          accessibilityRole="list"
+          contentContainerStyle={
+            {
+              "flexDirection": "row",
+              "gap": 12,
+              "paddingBottom": 4,
+            }
+          }
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+          testID="profile-row"
+        >
+          <View>
+            <View
+              accessibilityLabel="Priya, Me "
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": true,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "justifyContent": "center",
+                    "minHeight": 44,
+                    "minWidth": 44,
+                  },
+                  {
+                    "alignItems": "center",
+                    "gap": 4,
+                    "minWidth": 72,
+                    "paddingVertical": 2,
+                  },
+                  false,
+                ]
+              }
+              testID="avatar-1"
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "borderRadius": 28,
+                      "height": 56,
+                      "justifyContent": "center",
+                      "width": 56,
+                    },
+                    {
+                      "backgroundColor": "#FAEBE3",
+                      "borderColor": "#B83E18",
+                      "borderWidth": 2,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 20,
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#B83E18",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  P
+                </Text>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans-SemiBold",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#1C1A17",
+                    },
+                    {
+                      "maxWidth": 96,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                Priya
+              </Text>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 12,
+                      "fontWeight": "normal",
+                      "lineHeight": 16,
+                    },
+                    {
+                      "color": "#6F6960",
+                    },
+                    {
+                      "maxWidth": 96,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                Me 
+              </Text>
+            </View>
+            <View
+              accessibilityLabel="Amma, Mother x"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": false,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "justifyContent": "center",
+                    "minHeight": 44,
+                    "minWidth": 44,
+                  },
+                  {
+                    "alignItems": "center",
+                    "gap": 4,
+                    "minWidth": 72,
+                    "paddingVertical": 2,
+                  },
+                  false,
+                ]
+              }
+              testID="avatar-2"
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "borderRadius": 28,
+                      "height": 56,
+                      "justifyContent": "center",
+                      "width": 56,
+                    },
+                    {
+                      "backgroundColor": "#FFFFFF",
+                      "borderColor": "#CFC7BA",
+                      "borderWidth": 1,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 20,
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  A
+                </Text>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans-SemiBold",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#1C1A17",
+                    },
+                    {
+                      "maxWidth": 96,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                Amma
+              </Text>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 12,
+                      "fontWeight": "normal",
+                      "lineHeight": 16,
+                    },
+                    {
+                      "color": "#6F6960",
+                    },
+                    {
+                      "maxWidth": 96,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                Mother x
+              </Text>
+            </View>
+            <View
+              accessibilityLabel="Add family member xxxxx"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "justifyContent": "center",
+                    "minHeight": 44,
+                    "minWidth": 44,
+                  },
+                  {
+                    "alignItems": "center",
+                    "gap": 4,
+                    "minWidth": 72,
+                    "paddingVertical": 2,
+                  },
+                  false,
+                ]
+              }
+              testID="avatar-add"
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "borderRadius": 28,
+                      "height": 56,
+                      "justifyContent": "center",
+                      "width": 56,
+                    },
+                    {
+                      "borderStyle": "dashed",
+                      "borderWidth": 1,
+                    },
+                    {
+                      "backgroundColor": "#FFFFFF",
+                      "borderColor": "#CFC7BA",
+                    },
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 20,
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#5B554C",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  +
+                </Text>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans-SemiBold",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#1C1A17",
+                    },
+                    {
+                      "maxWidth": 96,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                Add 
+              </Text>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 12,
+                      "fontWeight": "normal",
+                      "lineHeight": 16,
+                    },
+                    {
+                      "color": "#6F6960",
+                    },
+                    {
+                      "maxWidth": 96,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                Pro · unlimited xxxx
+              </Text>
+            </View>
+          </View>
+        </RCTScrollView>
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "gap": 8,
+              "justifyContent": "space-between",
+              "minHeight": 44,
+            }
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "fontFamily": "NotoSans",
+                  "fontSize": 13,
+                  "fontWeight": "normal",
+                  "lineHeight": 18,
+                },
+                {
+                  "color": "#6F6960",
+                },
+                undefined,
+              ]
+            }
+            testID="quota-line"
+          >
+            <Text
+              style={
+                [
+                  {
+                    "fontFamily": "NotoSans",
+                    "fontSize": 13,
+                    "fontVariant": [
+                      "tabular-nums",
+                    ],
+                    "fontWeight": "normal",
+                    "lineHeight": 18,
+                  },
+                  {
+                    "color": "#6F6960",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              2
+            </Text>
+             of 
+            <Text
+              style={
+                [
+                  {
+                    "fontFamily": "NotoSans",
+                    "fontSize": 13,
+                    "fontVariant": [
+                      "tabular-nums",
+                    ],
+                    "fontWeight": "normal",
+                    "lineHeight": 18,
+                  },
+                  {
+                    "color": "#6F6960",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              2
+            </Text>
+             profiles · 
+            <Text
+              style={
+                [
+                  {
+                    "fontFamily": "NotoSans",
+                    "fontSize": 13,
+                    "fontVariant": [
+                      "tabular-nums",
+                    ],
+                    "fontWeight": "normal",
+                    "lineHeight": 18,
+                  },
+                  {
+                    "color": "#6F6960",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              0
+            </Text>
+             of 
+            <Text
+              style={
+                [
+                  {
+                    "fontFamily": "NotoSans",
+                    "fontSize": 13,
+                    "fontVariant": [
+                      "tabular-nums",
+                    ],
+                    "fontWeight": "normal",
+                    "lineHeight": 18,
+                  },
+                  {
+                    "color": "#6F6960",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              5
+            </Text>
+             reminders (free) xxxxxxxxxxxxxxxxxx
+          </Text>
+          <View
+            accessibilityLabel="Pro "
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                  "minHeight": 44,
+                  "minWidth": 44,
+                },
+                [
+                  {
+                    "paddingHorizontal": 12,
+                  },
+                  undefined,
+                  undefined,
+                ],
+                false,
+              ]
+            }
+            testID="quota-pro"
+          >
+            <Text
+              style={
+                [
+                  {
+                    "fontFamily": "NotoSans-SemiBold",
+                    "fontSize": 15,
+                    "fontWeight": "normal",
+                    "lineHeight": 20,
+                  },
+                  {
+                    "color": "#B83E18",
+                  },
+                  {
+                    "textAlign": "center",
+                  },
+                ]
+              }
+            >
+              Pro 
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            [
+              {
+                "borderRadius": 12,
+                "borderWidth": 0.5,
+                "padding": 16,
+              },
+              {
+                "backgroundColor": "#FFFFFF",
+                "borderColor": "#E4DDD2",
+              },
+              undefined,
+              undefined,
+            ]
+          }
+          testID="family-today"
+        >
+          <View
+            style={
+              {
+                "alignItems": "baseline",
+                "flexDirection": "row",
+                "gap": 8,
+                "justifyContent": "space-between",
+                "marginBottom": 4,
+              }
+            }
+          >
+            <Text
+              accessibilityRole="header"
+              style={
+                [
+                  {
+                    "fontFamily": "NotoSans-SemiBold",
+                    "fontSize": 18,
+                    "fontWeight": "normal",
+                    "lineHeight": 24,
+                  },
+                  {
+                    "color": "#1C1A17",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              Family today xxx
+            </Text>
+            <Text
+              style={
+                [
+                  {
+                    "fontFamily": "NotoSans",
+                    "fontSize": 13,
+                    "fontWeight": "normal",
+                    "lineHeight": 18,
+                  },
+                  {
+                    "color": "#6F6960",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              Moon in Kumbha xxxx
+            </Text>
+          </View>
+          <View
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "flexDirection": "row",
+                  "gap": 8,
+                  "paddingVertical": 8,
+                },
+                {
+                  "borderBottomColor": "#E4DDD2",
+                  "borderBottomWidth": 0.5,
+                },
+              ]
+            }
+            testID="family-today-1"
+          >
+            <View
+              style={
+                {
+                  "flex": 1,
+                  "minWidth": 0,
+                  "paddingTop": 2,
+                }
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 17,
+                      "fontWeight": "normal",
+                      "lineHeight": 26,
+                    },
+                    {
+                      "color": "#1C1A17",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 17,
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  Priya
+                </Text>
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 17,
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  : Moon in the 
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 17,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 26,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    6
+                  </Text>
+                  th house, Kshema x tara xxxxxxxxxxxxx
+                </Text>
+              </Text>
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "flexWrap": "wrap",
+                    "gap": 6,
+                    "marginTop": 4,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 13,
+                        "fontWeight": "normal",
+                        "lineHeight": 18,
+                      },
+                      {
+                        "color": "#5B554C",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  Today's Moon is in the 
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 13,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 18,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    6
+                  </Text>
+                  th sign from your birth Moon, a favourable Chandra bala house: a good day for clearing routines, settling obstacles and holding your own in competition.
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                {
+                  "alignItems": "flex-end",
+                  "justifyContent": "center",
+                  "minHeight": 44,
+                  "minWidth": 44,
+                }
+              }
+            >
+              <View
+                accessibilityLabel="Why? x Priya: Moon in the 6th house, Kshema x tara xxxxxxxxxxxxx"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "justifyContent": "center",
+                      "minHeight": 44,
+                      "minWidth": 44,
+                    },
+                    {
+                      "paddingHorizontal": 8,
+                    },
+                    false,
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 15,
+                        "fontWeight": "normal",
+                        "lineHeight": 20,
+                      },
+                      {
+                        "color": "#B83E18",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  Why? x
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "flexDirection": "row",
+                  "gap": 8,
+                  "paddingVertical": 8,
+                },
+                false,
+              ]
+            }
+            testID="family-today-2"
+          >
+            <View
+              style={
+                {
+                  "flex": 1,
+                  "minWidth": 0,
+                  "paddingTop": 2,
+                }
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 17,
+                      "fontWeight": "normal",
+                      "lineHeight": 26,
+                    },
+                    {
+                      "color": "#1C1A17",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 17,
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  Amma
+                </Text>
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 17,
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  : Moon in the 
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 17,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 26,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    8
+                  </Text>
+                  th house, Mitra x tara xxxxxxxxxxxxx
+                </Text>
+              </Text>
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "flexWrap": "wrap",
+                    "gap": 6,
+                    "marginTop": 4,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 13,
+                        "fontWeight": "normal",
+                        "lineHeight": 18,
+                      },
+                      {
+                        "color": "#5B554C",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  Today's Moon is in the 
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 13,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 18,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    8
+                  </Text>
+                  th sign from your birth Moon, Chandrashtama, the house Chandra bala sets aside: routine tasks today, new starts tomorrow, when the Moon has moved on.
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                {
+                  "alignItems": "flex-end",
+                  "justifyContent": "center",
+                  "minHeight": 44,
+                  "minWidth": 44,
+                }
+              }
+            >
+              <View
+                accessibilityLabel="Why? x Amma: Moon in the 8th house, Mitra x tara xxxxxxxxxxxxx"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "justifyContent": "center",
+                      "minHeight": 44,
+                      "minWidth": 44,
+                    },
+                    {
+                      "paddingHorizontal": 8,
+                    },
+                    false,
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 15,
+                        "fontWeight": "normal",
+                        "lineHeight": 20,
+                      },
+                      {
+                        "color": "#B83E18",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  Why? x
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "gap": 8,
+              "justifyContent": "space-between",
+              "minHeight": 44,
+            }
+          }
+        >
+          <Text
+            accessibilityRole="header"
+            style={
+              [
+                {
+                  "fontFamily": "NotoSans-SemiBold",
+                  "fontSize": 18,
+                  "fontWeight": "normal",
+                  "lineHeight": 24,
+                },
+                {
+                  "color": "#1C1A17",
+                },
+                undefined,
+              ]
+            }
+          >
+            Dates and reminders xxxxx
+          </Text>
+          <View
+            accessibilityLabel="Calendar xx"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                  "minHeight": 44,
+                  "minWidth": 44,
+                },
+                [
+                  {
+                    "paddingHorizontal": 12,
+                  },
+                  undefined,
+                  undefined,
+                ],
+                false,
+              ]
+            }
+            testID="open-calendar"
+          >
+            <Text
+              style={
+                [
+                  {
+                    "fontFamily": "NotoSans-SemiBold",
+                    "fontSize": 15,
+                    "fontWeight": "normal",
+                    "lineHeight": 20,
+                  },
+                  {
+                    "color": "#B83E18",
+                  },
+                  {
+                    "textAlign": "center",
+                  },
+                ]
+              }
+            >
+              Calendar xx
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityLabel="Priya · janma tithi xxxxx"
+          style={
+            [
+              {
+                "borderRadius": 12,
+                "borderWidth": 0.5,
+                "padding": 16,
+              },
+              {
+                "backgroundColor": "#FFFFFF",
+                "borderColor": "#E4DDD2",
+              },
+              undefined,
+              undefined,
+            ]
+          }
+          testID="event-tithi_birthday:1"
+        >
+          <View
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "borderBottomWidth": 0.5,
+                  "flexDirection": "row",
+                  "gap": 8,
+                  "paddingBottom": 8,
+                },
+                {
+                  "borderBottomColor": "#E4DDD2",
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityLabel="Edit x: Priya · janma tithi xxxxx"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "justifyContent": "center",
+                    "minHeight": 44,
+                    "minWidth": 44,
+                  },
+                  {
+                    "alignItems": "stretch",
+                    "flex": 1,
+                    "justifyContent": "flex-start",
+                  },
+                  false,
+                ]
+              }
+              testID="event-tithi_birthday:1-open"
+            >
+              <View
+                style={
+                  {
+                    "alignItems": "flex-start",
+                    "flex": 1,
+                    "gap": 2,
+                    "minWidth": 0,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 12,
+                        "fontWeight": "normal",
+                        "lineHeight": 16,
+                      },
+                      {
+                        "color": "#6F6960",
+                      },
+                      {
+                        "letterSpacing": 0.5,
+                        "textTransform": "uppercase",
+                      },
+                    ]
+                  }
+                >
+                  Tithi birthday xxxx · Me  · in 152 days xxxx
+                </Text>
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 17,
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans-SemiBold",
+                          "fontSize": 17,
+                          "fontWeight": "normal",
+                          "lineHeight": 26,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Priya · janma tithi xxxxx
+                  </Text>
+                </Text>
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 15,
+                        "fontWeight": "normal",
+                        "lineHeight": 20,
+                      },
+                      {
+                        "color": "#5B554C",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  Chaitra Krishna xx Pratipada xxxxx · Tue 
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    23
+                  </Text>
+                   Mar 
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    2027
+                  </Text>
+                   · year 
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    29
+                  </Text>
+                   xxxxx
+                </Text>
+              </View>
+            </View>
+            <View
+              accessibilityLabel="Reminder for Priya’s janma tithi xxxxxxxxx"
+              accessibilityRole="switch"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": false,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "justifyContent": "center",
+                    "minHeight": 44,
+                    "minWidth": 44,
+                  },
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 6,
+                    "paddingHorizontal": 4,
+                  },
+                  false,
+                ]
+              }
+              testID="event-tithi_birthday:1-switch"
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans-SemiBold",
+                      "fontSize": 12,
+                      "fontWeight": "normal",
+                      "lineHeight": 16,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Off 
+              </Text>
+              <View
+                style={
+                  [
+                    {
+                      "borderRadius": 10,
+                      "borderWidth": 1,
+                      "height": 20,
+                      "justifyContent": "center",
+                      "width": 36,
+                    },
+                    {
+                      "backgroundColor": "#F1ECE3",
+                      "borderColor": "#CFC7BA",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "borderRadius": 7,
+                        "borderWidth": 0.5,
+                        "height": 14,
+                        "position": "absolute",
+                        "width": 14,
+                      },
+                      {
+                        "backgroundColor": "#FFFFFF",
+                        "borderColor": "#CFC7BA",
+                      },
+                      {
+                        "left": 2,
+                      },
+                    ]
+                  }
+                />
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "flexDirection": "row",
+                  "gap": 8,
+                  "paddingVertical": 8,
+                },
+                false,
+              ]
+            }
+          >
+            <View
+              style={
+                {
+                  "flex": 1,
+                  "minWidth": 0,
+                  "paddingTop": 2,
+                }
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Reminder the evening before and the morning of. Tithi recurrence follows the Purnimanta xx month. xxxxxxxxxxxxxxxxxxxxxxxxxx
+              </Text>
+            </View>
+            <View
+              style={
+                {
+                  "alignItems": "flex-end",
+                  "justifyContent": "center",
+                  "minHeight": 44,
+                  "minWidth": 44,
+                }
+              }
+            >
+              <View
+                accessibilityLabel="Why? x Reminder the evening before and the morning of. Tithi recurrence follows the Purnimanta xx month. xxxxxxxxxxxxxxxxxxxxxxxxxx"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "justifyContent": "center",
+                      "minHeight": 44,
+                      "minWidth": 44,
+                    },
+                    {
+                      "paddingHorizontal": 8,
+                    },
+                    false,
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 15,
+                        "fontWeight": "normal",
+                        "lineHeight": 20,
+                      },
+                      {
+                        "color": "#B83E18",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  Why? x
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          accessibilityLabel="Amma · janma tithi xxxxx"
+          style={
+            [
+              {
+                "borderRadius": 12,
+                "borderWidth": 0.5,
+                "padding": 16,
+              },
+              {
+                "backgroundColor": "#FFFFFF",
+                "borderColor": "#E4DDD2",
+              },
+              undefined,
+              undefined,
+            ]
+          }
+          testID="event-tithi_birthday:2"
+        >
+          <View
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "borderBottomWidth": 0.5,
+                  "flexDirection": "row",
+                  "gap": 8,
+                  "paddingBottom": 8,
+                },
+                {
+                  "borderBottomColor": "#E4DDD2",
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityLabel="Edit x: Amma · janma tithi xxxxx"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "justifyContent": "center",
+                    "minHeight": 44,
+                    "minWidth": 44,
+                  },
+                  {
+                    "alignItems": "stretch",
+                    "flex": 1,
+                    "justifyContent": "flex-start",
+                  },
+                  false,
+                ]
+              }
+              testID="event-tithi_birthday:2-open"
+            >
+              <View
+                style={
+                  {
+                    "alignItems": "flex-start",
+                    "flex": 1,
+                    "gap": 2,
+                    "minWidth": 0,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 12,
+                        "fontWeight": "normal",
+                        "lineHeight": 16,
+                      },
+                      {
+                        "color": "#6F6960",
+                      },
+                      {
+                        "letterSpacing": 0.5,
+                        "textTransform": "uppercase",
+                      },
+                    ]
+                  }
+                >
+                  Tithi birthday xxxx · Mother x · in 256 days xxxx
+                </Text>
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 17,
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans-SemiBold",
+                          "fontSize": 17,
+                          "fontWeight": "normal",
+                          "lineHeight": 26,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Amma · janma tithi xxxxx
+                  </Text>
+                </Text>
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 15,
+                        "fontWeight": "normal",
+                        "lineHeight": 20,
+                      },
+                      {
+                        "color": "#5B554C",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  Ashadha Shukla x Dwitiya xxxxx · Mon 
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    5
+                  </Text>
+                   Jul 
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    2027
+                  </Text>
+                   · year 
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    57
+                  </Text>
+                   xxxxx
+                </Text>
+              </View>
+            </View>
+            <View
+              accessibilityLabel="Reminder for Amma’s janma tithi xxxxxxxxx"
+              accessibilityRole="switch"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": false,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "justifyContent": "center",
+                    "minHeight": 44,
+                    "minWidth": 44,
+                  },
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 6,
+                    "paddingHorizontal": 4,
+                  },
+                  false,
+                ]
+              }
+              testID="event-tithi_birthday:2-switch"
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans-SemiBold",
+                      "fontSize": 12,
+                      "fontWeight": "normal",
+                      "lineHeight": 16,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Off 
+              </Text>
+              <View
+                style={
+                  [
+                    {
+                      "borderRadius": 10,
+                      "borderWidth": 1,
+                      "height": 20,
+                      "justifyContent": "center",
+                      "width": 36,
+                    },
+                    {
+                      "backgroundColor": "#F1ECE3",
+                      "borderColor": "#CFC7BA",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "borderRadius": 7,
+                        "borderWidth": 0.5,
+                        "height": 14,
+                        "position": "absolute",
+                        "width": 14,
+                      },
+                      {
+                        "backgroundColor": "#FFFFFF",
+                        "borderColor": "#CFC7BA",
+                      },
+                      {
+                        "left": 2,
+                      },
+                    ]
+                  }
+                />
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "flexDirection": "row",
+                  "gap": 8,
+                  "paddingVertical": 8,
+                },
+                false,
+              ]
+            }
+          >
+            <View
+              style={
+                {
+                  "flex": 1,
+                  "minWidth": 0,
+                  "paddingTop": 2,
+                }
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Reminder the evening before and the morning of. Tithi recurrence follows the Purnimanta xx month. xxxxxxxxxxxxxxxxxxxxxxxxxx
+              </Text>
+            </View>
+            <View
+              style={
+                {
+                  "alignItems": "flex-end",
+                  "justifyContent": "center",
+                  "minHeight": 44,
+                  "minWidth": 44,
+                }
+              }
+            >
+              <View
+                accessibilityLabel="Why? x Reminder the evening before and the morning of. Tithi recurrence follows the Purnimanta xx month. xxxxxxxxxxxxxxxxxxxxxxxxxx"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "justifyContent": "center",
+                      "minHeight": 44,
+                      "minWidth": 44,
+                    },
+                    {
+                      "paddingHorizontal": 8,
+                    },
+                    false,
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 15,
+                        "fontWeight": "normal",
+                        "lineHeight": 20,
+                      },
+                      {
+                        "color": "#B83E18",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  Why? x
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          accessibilityLabel="Dadaji (Grandfather xxx) xxxx"
+          style={
+            [
+              {
+                "borderRadius": 12,
+                "borderWidth": 0.5,
+                "padding": 16,
+              },
+              {
+                "backgroundColor": "#FFFFFF",
+                "borderColor": "#E4DDD2",
+              },
+              undefined,
+              undefined,
+            ]
+          }
+          testID="event-barsi:1"
+        >
+          <View
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "borderBottomWidth": 0.5,
+                  "flexDirection": "row",
+                  "gap": 8,
+                  "paddingBottom": 8,
+                },
+                {
+                  "borderBottomColor": "#E4DDD2",
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityLabel="Edit x: Dadaji (Grandfather xxx) xxxx"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "justifyContent": "center",
+                    "minHeight": 44,
+                    "minWidth": 44,
+                  },
+                  {
+                    "alignItems": "stretch",
+                    "flex": 1,
+                    "justifyContent": "flex-start",
+                  },
+                  false,
+                ]
+              }
+              testID="event-barsi:1-open"
+            >
+              <View
+                style={
+                  {
+                    "alignItems": "flex-start",
+                    "flex": 1,
+                    "gap": 2,
+                    "minWidth": 0,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 12,
+                        "fontWeight": "normal",
+                        "lineHeight": 16,
+                      },
+                      {
+                        "color": "#6F6960",
+                      },
+                      {
+                        "letterSpacing": 0.5,
+                        "textTransform": "uppercase",
+                      },
+                    ]
+                  }
+                >
+                  Shraddha · barsi · ancestor record xxxxxxxxxx · in 338 days xxxx
+                </Text>
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 17,
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans-SemiBold",
+                          "fontSize": 17,
+                          "fontWeight": "normal",
+                          "lineHeight": 26,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Dadaji (Grandfather xxx) xxxx
+                  </Text>
+                </Text>
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 15,
+                        "fontWeight": "normal",
+                        "lineHeight": 20,
+                      },
+                      {
+                        "color": "#5B554C",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  Ashwin Krishna xx Dashami xxxxx · Sat 
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    25
+                  </Text>
+                   Sep 
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    2027
+                  </Text>
+                   · Pitru Paksha day: Sat 
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    25
+                  </Text>
+                   Sep 
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    2027
+                  </Text>
+                   xxxxxxx
+                </Text>
+              </View>
+            </View>
+            <View
+              accessibilityLabel="Reminder for Dadaji’s barsi and Pitru Paksha day xxxxxxxxxxxxxx"
+              accessibilityRole="switch"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": false,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "justifyContent": "center",
+                    "minHeight": 44,
+                    "minWidth": 44,
+                  },
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 6,
+                    "paddingHorizontal": 4,
+                  },
+                  false,
+                ]
+              }
+              testID="event-barsi:1-switch"
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans-SemiBold",
+                      "fontSize": 12,
+                      "fontWeight": "normal",
+                      "lineHeight": 16,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Off 
+              </Text>
+              <View
+                style={
+                  [
+                    {
+                      "borderRadius": 10,
+                      "borderWidth": 1,
+                      "height": 20,
+                      "justifyContent": "center",
+                      "width": 36,
+                    },
+                    {
+                      "backgroundColor": "#F1ECE3",
+                      "borderColor": "#CFC7BA",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "borderRadius": 7,
+                        "borderWidth": 0.5,
+                        "height": 14,
+                        "position": "absolute",
+                        "width": 14,
+                      },
+                      {
+                        "backgroundColor": "#FFFFFF",
+                        "borderColor": "#CFC7BA",
+                      },
+                      {
+                        "left": 2,
+                      },
+                    ]
+                  }
+                />
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "flexDirection": "row",
+                  "gap": 8,
+                  "paddingVertical": 8,
+                },
+                false,
+              ]
+            }
+          >
+            <View
+              style={
+                {
+                  "flex": 1,
+                  "minWidth": 0,
+                  "paddingTop": 2,
+                }
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Yearly barsi by the afternoon (aparahna) tithi; the same tithi number gives the Pitru Paksha day. xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+              </Text>
+            </View>
+            <View
+              style={
+                {
+                  "alignItems": "flex-end",
+                  "justifyContent": "center",
+                  "minHeight": 44,
+                  "minWidth": 44,
+                }
+              }
+            >
+              <View
+                accessibilityLabel="Why? x Yearly barsi by the afternoon (aparahna) tithi; the same tithi number gives the Pitru Paksha day. xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "justifyContent": "center",
+                      "minHeight": 44,
+                      "minWidth": 44,
+                    },
+                    {
+                      "paddingHorizontal": 8,
+                    },
+                    false,
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 15,
+                        "fontWeight": "normal",
+                        "lineHeight": 20,
+                      },
+                      {
+                        "color": "#B83E18",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  Why? x
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            [
+              {
+                "borderRadius": 12,
+                "borderWidth": 0.5,
+                "padding": 16,
+              },
+              {
+                "backgroundColor": "#FFFFFF",
+                "borderColor": "#E4DDD2",
+              },
+              undefined,
+              undefined,
+            ]
+          }
+          testID="city-card"
+        >
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "gap": 12,
+              }
+            }
+          >
+            <View
+              style={
+                {
+                  "flex": 1,
+                  "gap": 2,
+                  "minWidth": 0,
+                }
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans-SemiBold",
+                      "fontSize": 17,
+                      "fontWeight": "normal",
+                      "lineHeight": 26,
+                    },
+                    {
+                      "color": "#1C1A17",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Lucknow, Uttar Pradesh, India
+              </Text>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    undefined,
+                  ]
+                }
+                testID="city-sun-line"
+              >
+                Sunrise 
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 13,
+                        "fontVariant": [
+                          "tabular-nums",
+                        ],
+                        "fontWeight": "normal",
+                        "lineHeight": 18,
+                      },
+                      {
+                        "color": "#5B554C",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  06:09
+                </Text>
+                 · Sunset 
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 13,
+                        "fontVariant": [
+                          "tabular-nums",
+                        ],
+                        "fontWeight": "normal",
+                        "lineHeight": 18,
+                      },
+                      {
+                        "color": "#5B554C",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  17:31
+                </Text>
+                 xxxxxxxx
+              </Text>
+            </View>
+            <View
+              accessibilityLabel="Open panchang detail xxxxx"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "justifyContent": "center",
+                    "minHeight": 44,
+                    "minWidth": 44,
+                  },
+                  [
+                    {
+                      "alignItems": "center",
+                      "borderRadius": 22,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "gap": 6,
+                      "paddingHorizontal": 14,
+                    },
+                    {
+                      "backgroundColor": "#FFFFFF",
+                      "borderColor": "#CFC7BA",
+                    },
+                  ],
+                  false,
+                ]
+              }
+              testID="city-panchang"
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans-SemiBold",
+                      "fontSize": 15,
+                      "fontWeight": "normal",
+                      "lineHeight": 20,
+                    },
+                    {
+                      "color": "#1C1A17",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Panchang xx
+              </Text>
+              <RNSVGSvgView
+                accessible={false}
+                align="xMidYMid"
+                bbHeight={18}
+                bbWidth={18}
+                focusable={false}
+                height={18}
+                meetOrSlice={0}
+                minX={0}
+                minY={0}
+                style={
+                  [
+                    {
+                      "backgroundColor": "transparent",
+                      "borderWidth": 0,
+                    },
+                    {
+                      "flex": 0,
+                      "height": 18,
+                      "width": 18,
+                    },
+                  ]
+                }
+                vbHeight={24}
+                vbWidth={24}
+                width={18}
+              >
+                <RNSVGGroup
+                  fill={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                >
+                  <RNSVGPath
+                    d="M9 6 15 12 9 18"
+                    fill={null}
+                    propList={
+                      [
+                        "fill",
+                        "stroke",
+                        "strokeWidth",
+                        "strokeLinecap",
+                        "strokeLinejoin",
+                      ]
+                    }
+                    stroke={
+                      {
+                        "payload": 4280031767,
+                        "type": 0,
+                      }
+                    }
+                    strokeLinecap={1}
+                    strokeLinejoin={1}
+                    strokeWidth={1.75}
+                  />
+                </RNSVGGroup>
+              </RNSVGSvgView>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            {
+              "flexDirection": "row",
+              "flexWrap": "wrap",
+              "gap": 8,
+            }
+          }
+        >
+          <View
+            accessibilityLabel="Add family member xxxxx"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                  "minHeight": 44,
+                  "minWidth": 44,
+                },
+                [
+                  {
+                    "alignSelf": "stretch",
+                    "borderRadius": 10,
+                    "borderWidth": 1,
+                    "paddingHorizontal": 16,
+                    "paddingVertical": 8,
+                  },
+                  {
+                    "backgroundColor": "#FFFFFF",
+                    "borderColor": "#CFC7BA",
+                  },
+                  undefined,
+                  {
+                    "alignSelf": "auto",
+                    "flexGrow": 1,
+                    "minHeight": 48,
+                  },
+                ],
+                false,
+              ]
+            }
+            testID="add-member"
+          >
+            <Text
+              style={
+                [
+                  {
+                    "fontFamily": "NotoSans-SemiBold",
+                    "fontSize": 15,
+                    "fontWeight": "normal",
+                    "lineHeight": 20,
+                  },
+                  {
+                    "color": "#1C1A17",
+                  },
+                  {
+                    "textAlign": "center",
+                  },
+                ]
+              }
+            >
+              Add family member xxxxx
+            </Text>
+          </View>
+          <View
+            accessibilityLabel="Add shraddha xxx"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                  "minHeight": 44,
+                  "minWidth": 44,
+                },
+                [
+                  {
+                    "alignSelf": "stretch",
+                    "borderRadius": 10,
+                    "borderWidth": 1,
+                    "paddingHorizontal": 16,
+                    "paddingVertical": 8,
+                  },
+                  {
+                    "backgroundColor": "#FFFFFF",
+                    "borderColor": "#CFC7BA",
+                  },
+                  undefined,
+                  {
+                    "alignSelf": "auto",
+                    "flexGrow": 1,
+                    "minHeight": 48,
+                  },
+                ],
+                false,
+              ]
+            }
+            testID="add-shraddha"
+          >
+            <Text
+              style={
+                [
+                  {
+                    "fontFamily": "NotoSans-SemiBold",
+                    "fontSize": 15,
+                    "fontWeight": "normal",
+                    "lineHeight": 20,
+                  },
+                  {
+                    "color": "#1C1A17",
+                  },
+                  {
+                    "textAlign": "center",
+                  },
+                ]
+              }
+            >
+              Add shraddha xxx
+            </Text>
+          </View>
+          <View
+            accessibilityLabel="Add vrat xx"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                  "minHeight": 44,
+                  "minWidth": 44,
+                },
+                [
+                  {
+                    "alignSelf": "stretch",
+                    "borderRadius": 10,
+                    "borderWidth": 1,
+                    "paddingHorizontal": 16,
+                    "paddingVertical": 8,
+                  },
+                  {
+                    "backgroundColor": "#FFFFFF",
+                    "borderColor": "#CFC7BA",
+                  },
+                  undefined,
+                  {
+                    "alignSelf": "auto",
+                    "flexGrow": 1,
+                    "minHeight": 48,
+                  },
+                ],
+                false,
+              ]
+            }
+            testID="add-vrat"
+          >
+            <Text
+              style={
+                [
+                  {
+                    "fontFamily": "NotoSans-SemiBold",
+                    "fontSize": 15,
+                    "fontWeight": "normal",
+                    "lineHeight": 20,
+                  },
+                  {
+                    "color": "#1C1A17",
+                  },
+                  {
+                    "textAlign": "center",
+                  },
+                ]
+              }
+            >
+              Add vrat xx
+            </Text>
+          </View>
+        </View>
+        <Text
+          style={
+            [
+              {
+                "fontFamily": "NotoSans",
+                "fontSize": 13,
+                "fontWeight": "normal",
+                "lineHeight": 18,
+              },
+              {
+                "color": "#6F6960",
+              },
+              undefined,
+            ]
+          }
+          testID="family-footer"
+        >
+          Reminders are scheduled on this phone only; nothing is sent to a server. Quiet by default: only the dates you switch on. Each switch counts once toward the free limit, however many days it reminds you. Shraddha records do not use a profile slot. xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+        </Text>
+      </View>
+    </RCTScrollView>
+  </View>
+</RNCSafeAreaProvider>
+`;

@@ -1,5 +1,5 @@
 // Settings (design.md 3): one grouped list. Pro and purchases are hidden until B03; Backup and restore until C04;
-// the Vrats group arrives with A12. Each row shows its current value so the state is visible without opening it.
+// Vrats (A12) opens the 12 family switches. Each row shows its current value so the state is visible without opening it.
 import { useFocusEffect, useRouter } from 'expo-router';
 import { useCallback, useState } from 'react';
 import { Card, NavRow, Screen } from '../../src/components';
@@ -34,7 +34,8 @@ export default function SettingsScreen() {
         />
         <NavRow title={t('settings.traditionDefault')} value={t(TRADITION_KEY[s.traditionDefault])} onPress={go('/settings/tradition')} testID="settings-tradition" />
         <NavRow title={t('settings.location')} value={shortValue(t(LOCATION_KEY[s.locationMode]))} onPress={go('/settings/location')} testID="settings-location" />
-        <NavRow title={t('settings.notifications')} onPress={go('/settings/notifications')} divider={false} testID="settings-notifications" />
+        <NavRow title={t('settings.notifications')} onPress={go('/settings/notifications')} testID="settings-notifications" />
+        <NavRow title={t('settings.vrats')} onPress={go('/settings/vrats')} divider={false} testID="settings-vrats" />
       </Card>
       <Card flush>
         <NavRow title={t('settings.privacy')} onPress={go('/settings/privacy')} testID="settings-privacy" />

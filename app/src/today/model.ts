@@ -8,6 +8,8 @@ import {
   type PanchangDay,
   type Tradition,
   type UpcomingItem,
+  type VratFamily,
+  type VratOccurrence,
   dailyNote,
   goodHours,
   janmaTithiFromBirth,
@@ -21,6 +23,7 @@ import {
 import type { Profile } from '../db/profiles';
 import type { LocationMode } from '../db/settings';
 import { chartFor } from '../engine-bridge/charts';
+import { vratsOnDay } from '../family/model';
 
 /** Where Today is computed: the self profile's place or the device fix. */
 export interface Observer {
@@ -51,6 +54,8 @@ export interface TodayModel {
   note: DailyRule[];
   upcoming: UpcomingItem[];
   tithiToday: TithiTodayRow[];
+  /** F22: occurrences of the ENABLED vrat families falling on day (empty when none is switched on). */
+  vratToday: VratOccurrence[];
 }
 
 export function observerFromProfile(p: Profile): Observer {
@@ -107,6 +112,8 @@ export interface ComputeOptions {
   chart?: ChartData;
   /** Other profiles for the janma-tithi row (default: just the self profile). */
   profiles?: readonly Profile[];
+  /** Enabled vrat families (A12): the vrat-today card and the Upcoming vrat card use only these; none -> Upcoming searches all twelve. */
+  vratFamilies?: readonly VratFamily[];
 }
 
 /** The whole Today model for one instant. ~0.3 s on a mid-range phone (dailyNote dominates); call from an effect. */
@@ -118,7 +125,9 @@ export function computeToday(self: Profile, observer: Observer, nowMs: number, o
   const p = panchang(day, geo, tz, { ayanamsa: chart.meta.ayanamsa });
   const gh = goodHours(day, geo, tz, { ayanamsa: chart.meta.ayanamsa });
   const note = dailyNote(chart, day, geo, tz, { panchang: p });
-  const up = upcoming({ id: String(self.id), name: self.name ?? undefined, chart, tradition: self.tradition }, [], nowMs, geo, tz);
+  const families = opts.vratFamilies ?? [];
+  const up = upcoming({ id: String(self.id), name: self.name ?? undefined, chart, tradition: self.tradition, vratFamilies: families.length ? families : undefined }, [], nowMs, geo, tz);
   const tithiToday = tithiTodayRows(opts.profiles ?? [self], day, geo, tz);
-  return { day, nowMs, observer, profile: self, chart, panchang: p, goodHours: gh, note, upcoming: up, tithiToday };
+  const vratToday = families.length ? vratsOnDay(families, day, nowMs, { geo, tz }) : [];
+  return { day, nowMs, observer, profile: self, chart, panchang: p, goodHours: gh, note, upcoming: up, tithiToday, vratToday };
 }

@@ -1,16 +1,25 @@
 // Root layout (plan.md A09): database + migrations BEFORE the first render (module scope, synchronous), bundled fonts,
 // ThemeProvider (light first paint, persisted System/Light/Dark read synchronously), LangProvider, safe-area insets,
-// then a plain stack: index (consent gate) -> onboarding/* or (tabs); settings/*, profile/[id] and dev/state are pushed.
+// then a plain stack: index (consent gate) -> onboarding/* or (tabs); settings/*, profile/[id], family/* and dev/state are
+// pushed. On every launch the reminder planner re-plans the next 60 days (F25, N12) once the UI has painted; with no
+// enabled series the plan is empty and nothing is scheduled (quiet by default).
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
+import * as Notifications from 'expo-notifications';
+import { useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { initAppDb } from '../src/db/open';
 import { LangProvider } from '../src/i18n';
+import { replanAll } from '../src/notifications/schedule';
 import { ThemeProvider, useTokens } from '../src/theme/ThemeProvider';
 
 initAppDb();
+// Local notifications show while the app is in the foreground too (no sound beyond the channel default).
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({ shouldShowBanner: true, shouldShowList: true, shouldPlaySound: false, shouldSetBadge: false }),
+});
 
 // Static TTFs (OFL) under app/assets/fonts; names match app/src/theme/typography.ts FONT_FILES.
 const FONTS = {
@@ -39,6 +48,12 @@ function Navigator({ fontsReady }: { fontsReady: boolean }) {
         <Stack.Screen name="settings/index" />
         <Stack.Screen name="profile/[id]" />
         <Stack.Screen name="charts/dasha-tree" />
+        <Stack.Screen name="family/calendar" />
+        <Stack.Screen name="family/festival/[slug]" />
+        <Stack.Screen name="family/vrat/[id]" />
+        <Stack.Screen name="family/ancestor/[id]" />
+        <Stack.Screen name="settings/vrats" />
+        <Stack.Screen name="settings/notifications" />
         <Stack.Screen name="dev/state" />
       </Stack>
     </>
@@ -48,6 +63,11 @@ function Navigator({ fontsReady }: { fontsReady: boolean }) {
 export default function RootLayout() {
   const [fontsLoaded, fontError] = useFonts(FONTS);
   if (fontError && __DEV__) console.warn('font load failed', fontError);
+  // F25 / N12: re-plan the next 60 days of enabled series on every launch, after the first paint.
+  useEffect(() => {
+    const id = setTimeout(() => void replanAll(), 1500);
+    return () => clearTimeout(id);
+  }, []);
   return (
     <SafeAreaProvider>
       <ThemeProvider>

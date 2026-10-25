@@ -4,4 +4,5 @@ export * from './observance';
 export * from './tithiEvents';
 export * from './vrats';
 export * from './festivals';
+export * from './verified';
 export * from './upcoming';

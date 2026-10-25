@@ -39,11 +39,22 @@ jest.mock('expo-location', () => ({
     throw new Error('no location under Jest');
   }),
 }));
-jest.mock('expo-notifications', () => ({
-  getPermissionsAsync: jest.fn(async () => ({ granted: false, canAskAgain: true })),
-  requestPermissionsAsync: jest.fn(async () => ({ granted: true, canAskAgain: true })),
-  cancelAllScheduledNotificationsAsync: jest.fn(async () => {}),
-}));
+// expo-notifications: permission defaults to "not yet asked" and the request grants; scheduling is a counter so the
+// planner/scheduler tests can assert what would have reached the OS without a native module (A12).
+jest.mock('expo-notifications', () => {
+  let nextId = 1;
+  return {
+    getPermissionsAsync: jest.fn(async () => ({ granted: false, canAskAgain: true })),
+    requestPermissionsAsync: jest.fn(async () => ({ granted: true, canAskAgain: true })),
+    cancelAllScheduledNotificationsAsync: jest.fn(async () => {}),
+    scheduleNotificationAsync: jest.fn(async () => `n${nextId++}`),
+    setNotificationChannelAsync: jest.fn(async () => null),
+    setNotificationHandler: jest.fn(),
+    getAllScheduledNotificationsAsync: jest.fn(async () => []),
+    SchedulableTriggerInputTypes: { DATE: 'date' },
+    AndroidImportance: { DEFAULT: 3 },
+  };
+});
 
 // expo-sqlite is only reached through app/src/db/open.ts and gazetteer.ts; tests never open the asset database.
 jest.mock('expo-sqlite', () => ({

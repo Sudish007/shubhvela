@@ -36,6 +36,27 @@ export function listAncestors(): Ancestor[] {
   return getDb().getAllSync<Row>('SELECT id, name, relation, death_month, paksha, tithi, year FROM ancestors ORDER BY id ASC').map(fromRow);
 }
 
+export function getAncestor(id: number): Ancestor | null {
+  const r = getDb().getFirstSync<Row>('SELECT id, name, relation, death_month, paksha, tithi, year FROM ancestors WHERE id = ?', [id]);
+  return r ? fromRow(r) : null;
+}
+
+export function countAncestors(): number {
+  return getDb().getFirstSync<{ n: number }>('SELECT COUNT(*) AS n FROM ancestors')?.n ?? 0;
+}
+
+export function updateAncestor(id: number, a: AncestorInput): void {
+  getDb().runSync('UPDATE ancestors SET name = ?, relation = ?, death_month = ?, paksha = ?, tithi = ?, year = ? WHERE id = ?', [
+    a.name,
+    a.relation,
+    a.deathMonth,
+    a.paksha,
+    a.tithi,
+    a.year,
+    id,
+  ]);
+}
+
 export function insertAncestor(a: AncestorInput): number {
   return getDb().runSync('INSERT INTO ancestors (name, relation, death_month, paksha, tithi, year) VALUES (?, ?, ?, ?, ?, ?)', [
     a.name,

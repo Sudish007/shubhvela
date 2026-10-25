@@ -1,7 +1,8 @@
 // Today (design.md 10.2; plan A10): the single card stack. Header: date line + the F1 first value "Your Moon: <sign> ·
 // <nakshatra>" (N6); meta row: place pill (-> Settings -> Location) and the "Panchang" pill (-> F8 sheet); then, in the
 // intent order, the "Good hours today" card (F5/F27), the "Today is <name>'s janma tithi" row (F20), the daily note
-// (F6) and the Upcoming strip (F7). "Family dates" moves Upcoming above the note; "Learn" adds nothing until C03
+// (F6), the F22 "vrat today" card (enabled vrat families only, A12) and the Upcoming strip (F7). "Family dates" moves the
+// vrat card and Upcoming above the note; "Learn" adds nothing until C03
 // exists. The native-ad slot is asked from AdPolicy.todayNativeSlot() and renders NOTHING while it answers none.
 // Every number on this screen is engine output for the chosen place and the current instant; no Listen button until C01.
 import { useRouter } from 'expo-router';
@@ -10,6 +11,7 @@ import { StyleSheet, View } from 'react-native';
 import { todayNativeSlot } from '../../src/ads/AdPolicy';
 import { ApproxTag, Card, ChevronIcon, EmptyState, NoBreak, Pressable44, Screen, Txt } from '../../src/components';
 import { chartFor, moonLine } from '../../src/engine-bridge/charts';
+import { VratTodayCard } from '../../src/family/VratTodayCard';
 import { useLang } from '../../src/i18n';
 import { useProfiles } from '../../src/profiles/useProfiles';
 import { useTokens } from '../../src/theme/ThemeProvider';
@@ -105,6 +107,7 @@ export default function TodayScreen({ todayOptions }: TodayScreenProps) {
   const tithiRow = model ? <TodayTithiRow rows={model.tithiToday} testID="tithi-today" /> : null;
   const note = model ? <DailyNoteCard rows={model.note} name={model.profile.name} day={model.day} tz={model.observer.tz} testID="daily-note" /> : null;
   const upcomingStrip = model ? <UpcomingStrip items={model.upcoming} tz={model.observer.tz} profileId={model.profile.id} testID="upcoming" /> : null;
+  const vratCard = model && model.vratToday.length ? <VratTodayCard occurrences={model.vratToday} tz={model.observer.tz} placeName={placeName} testID="vrat-today" /> : null;
   const familyFirst = self?.intent === 'familyDates';
 
   return (
@@ -126,8 +129,10 @@ export default function TodayScreen({ todayOptions }: TodayScreenProps) {
       {loading ? <Skeleton /> : null}
       {goodHours}
       {tithiRow}
+      {familyFirst ? vratCard : null}
       {familyFirst ? upcomingStrip : null}
       {note}
+      {familyFirst ? null : vratCard}
       {familyFirst ? null : upcomingStrip}
       {/* AdPolicy.todayNativeSlot() answers 'none' in Phase A, so nothing is drawn here (no placeholder box). B03 replaces
           the empty mount point with NativeAdCard when the policy answers 'native' (after Upcoming, below the fold, M4). */}
