@@ -1,0 +1,25 @@
+{
+  "$comment": "Forbidden content per language (spec section 7, build-rules corpus rules): outcome guarantees, fear language, health/medical claims, commercial remedies (gemstone/puja sales), accuracy claims, gendered assumptions. Matching is case-insensitive substring on whole words for Latin, substring for Devanagari. Lists name CLAIMS, not words a disclaimer may negate (e.g. 'no outcome is guaranteed' is allowed; 'guaranteed to' is not). Used by packages/content/test/register.test.ts (UI + corpus) and by the translate CLI post-checks. The accuracy-percentage check (any digits followed by %) lives in code, not here.",
+  "en": [
+    "guaranteed to", "guarantee that", "guarantees", "we guarantee", "will certainly", "will definitely", "certainly will", "surely will",
+    "sure-shot", "100%", "accuracy", "accurate prediction", "foolproof",
+    "cure", "cures", "cured", "heal", "heals", "healing", "treats", "treatment for", "disease", "illness", "cancer", "infertility",
+    "danger", "dangerous", "doom", "doomed", "disaster", "curse", "cursed", "evil eye", "black magic", "misfortune will", "bad luck will",
+    "buy a gemstone", "wear a gemstone", "wear this stone", "book a puja", "book puja", "consult our astrologer", "call our astrologer", "remedy for", "remedies for", "yantra for sale",
+    "husband will", "wife will", "a girl should", "a boy should", "women are", "men are", "girls are", "boys are", "as a woman", "as a man"
+  ],
+  "hi": [
+    "गारंटी", "निश्चित रूप से होगा", "अवश्य होगा", "ज़रूर होगा", "पक्का होगा", "100%", "सटीकता", "सटीक भविष्यवाणी", "अचूक",
+    "इलाज", "रोग ठीक", "बीमारी ठीक", "ठीक हो जाएगा", "कैंसर", "बाँझपन", "उपचार",
+    "खतरा", "खतरनाक", "विनाश", "सर्वनाश", "श्राप", "शापित", "बुरी नज़र", "काला जादू", "दुर्भाग्य आएगा", "अनिष्ट होगा",
+    "रत्न खरीद", "रत्न धारण", "रत्न पहन", "पूजा बुक", "हमारे ज्योतिषी", "ज्योतिषी से संपर्क", "उपाय करें", "उपाय के लिए", "यंत्र खरीद",
+    "पति होगा", "पत्नी होगी", "लड़कियों को चाहिए", "लड़कों को चाहिए", "महिलाएँ होती हैं", "पुरुष होते हैं", "स्त्री होने के कारण", "पुरुष होने के कारण"
+  ],
+  "bho": [
+    "गारंटी", "पक्का होखबे करी", "जरूर होखी", "निश्चित होखी", "100%", "सटीकता", "सटीक भविष्यवाणी", "अचूक",
+    "इलाज", "रोग ठीक", "बेमारी ठीक", "ठीक हो जाई", "कैंसर", "बाँझपन", "उपचार",
+    "खतरा", "खतरनाक", "बिनास", "विनाश", "सराप", "श्राप", "बुरी नजर", "काला जादू", "दुर्भाग्य आई", "अनिष्ट होखी",
+    "रतन खरीद", "रत्न खरीद", "रतन पहिन", "रत्न धारण", "पूजा बुक", "हमनी के ज्योतिषी", "ज्योतिषी से संपर्क", "उपाय करीं", "उपाय खातिर", "यंत्र खरीद",
+    "पति होखी", "पत्नी होखी", "लइकी के चाहीं", "लइका के चाहीं", "मेहरारू होला", "मरद होला", "मेहरारू होखे के कारन", "मरद होखे के कारन"
+  ]
+}

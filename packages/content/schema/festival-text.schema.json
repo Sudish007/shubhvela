@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://sudish007.github.io/shubhvela/schema/festival-text.schema.json",
+  "title": "Festival text file",
+  "description": "corpus/festivals/<lang>.json: what-to-do text, the rule in words and a North/South convention note per festival slug of packages/engine/data/festival-rules.json.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["id", "slug", "name", "what", "rule", "review"],
+    "additionalProperties": false,
+    "properties": {
+      "id": { "type": "string", "pattern": "^festival-[a-z0-9-]+$" },
+      "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+      "name": { "type": "string", "minLength": 2 },
+      "what": { "type": "string", "minLength": 20 },
+      "rule": { "type": "string", "minLength": 10 },
+      "conventionNote": { "type": "string" },
+      "review": { "type": "string", "enum": ["draft", "reviewed"] }
+    }
+  }
+}

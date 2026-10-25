@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://sudish007.github.io/shubhvela/schema/glossary.schema.json",
+  "title": "Glossary file",
+  "description": "corpus/glossary/<lang>.json: >= 150 terms. term_dev is the Devanagari headword, term_lat the Latin transliteration, meaning one line in the file's language.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["id", "term_dev", "term_lat", "meaning"],
+    "additionalProperties": false,
+    "properties": {
+      "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+      "term_dev": { "type": "string", "minLength": 1 },
+      "term_lat": { "type": "string", "minLength": 1 },
+      "meaning": { "type": "string", "minLength": 8 },
+      "related": { "type": "array", "items": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" } }
+    }
+  }
+}

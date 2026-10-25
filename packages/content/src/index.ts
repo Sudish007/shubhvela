@@ -1,3 +1,7 @@
-// @shubhvela/content: loaders, t() and completeness tests arrive in A05.
-export const CONTENT_LANGUAGES = ['en', 'hi', 'bho'] as const;
-export type ContentLanguage = (typeof CONTENT_LANGUAGES)[number];
+// @shubhvela/content public API: UI strings (en/hi/bho), corpus loaders with flagged English fallback, t() with
+// {param} interpolation and plurals, and the +30 % pseudo-locale for layout tests. No runtime schema dependency.
+export { CONTENT_LANGUAGES } from './types';
+export type { ContentLanguage, UiStrings, Snippet, GlossaryEntry, FestivalText, Lesson, ReviewState, TranslationParams, CorpusLookup } from './types';
+export { loadUi, loadCorpus, lookup, ruleText, corpusDomains } from './load';
+export type { CorpusLoad } from './load';
+export { t, interpolate, pluralCategory, paramsOf, visibleLength, pseudoLocale, pseudoString } from './t';

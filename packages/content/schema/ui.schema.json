@@ -1,0 +1,10 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://sudish007.github.io/shubhvela/schema/ui.schema.json",
+  "title": "UI string file",
+  "description": "ui/<lang>.json: a flat map of dot-namespaced keys to strings. Plural forms end in _one / _other; params are {name}. Keys in constrained boxes carry a suffix (see README): tabs.* (<= 12 chars), *_tag (<= 14), *_chip (<= 18), *_col (<= 20), *_band (<= 10).",
+  "type": "object",
+  "minProperties": 1,
+  "propertyNames": { "pattern": "^[a-z][a-zA-Z0-9]*(\\.[a-zA-Z0-9][a-zA-Z0-9-]*)+(_one|_other|_chip|_col|_tag|_band)?$" },
+  "additionalProperties": { "type": "string", "minLength": 1 }
+}

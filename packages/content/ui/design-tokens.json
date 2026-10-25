@@ -1,0 +1,55 @@
+{
+  "$comment": "Shubhvela design tokens (round 2, moved from the design mocks in A05). Single source for app/src/theme/tokens.ts, web/src/tokens.css and ui/token-contrast.json, all written by packages/content/scripts/gen-tokens.ts (never edit those outputs by hand). Colours are sRGB hex; contrast ratios are computed by the generator and asserted by test/tokens.test.ts. Review fixes applied here: N7 (type.scale.micro.note no longer lists inline band labels, which are caption 13 / weight 600), M6 (size.bannerStrip removed; the strip is the measured banner height + 2 x bannerPadding, so bottomPaddingAboveBanner is a formula, not 82).",
+  "color": {
+    "paper":       { "light": "#FAF7F2", "dark": "#15130F", "use": "screen background" },
+    "surface":     { "light": "#FFFFFF", "dark": "#1E1B17", "use": "cards, sheets, tab bar, inputs" },
+    "ink":         { "light": "#1C1A17", "dark": "#F2EEE7", "use": "primary text, chart lines, now-marker line" },
+    "ink-2":       { "light": "#5B554C", "dark": "#C2BBAF", "use": "secondary text" },
+    "ink-3":       { "light": "#6F6960", "dark": "#9A9387", "use": "captions, tick labels, table headers, chart sign numerals" },
+    "hair":        { "light": "#E4DDD2", "dark": "#34302A", "use": "card borders, row dividers" },
+    "hair-2":      { "light": "#CFC7BA", "dark": "#4A443B", "use": "control borders, switch track, band hairlines" },
+    "accent":      { "light": "#B83E18", "dark": "#E8835A", "use": "primary buttons, Why?, active tab, now-marker time label, selected states" },
+    "accent-ink":  { "light": "#FFFFFF", "dark": "#15130F", "use": "text on accent" },
+    "accent-tint": { "light": "#FAEBE3", "dark": "#3B2418", "use": "selected chip fill, current dasha cell" },
+    "good":        { "light": "#C57030", "dark": "#D07A36", "use": "favourable span fill in the good-hours band (saffron), always with the dot pattern" },
+    "good-ink":    { "light": "#1C1A17", "dark": "#15130F", "use": "inline label and dot pattern on good" },
+    "neutral":     { "light": "#F1ECE3", "dark": "#27231D", "use": "neutral span fill (day), lane background, disabled fills" },
+    "avoid":       { "light": "#E3DCD0", "dark": "#2E2B26", "use": "inauspicious span fill, always with the hatch pattern" },
+    "avoid-hatch": { "light": "#6F6960", "dark": "#8A8377", "use": "hatch stroke on avoid (>=3:1 against avoid)" },
+    "night":       { "light": "#2E2A6E", "dark": "#6B68BC", "use": "neutral span fill after sunset (deep indigo); night legend swatch" },
+    "night-ink":   { "light": "#FFFFFF", "dark": "#FFFFFF", "use": "inline label on night" },
+    "indigo":      { "light": "#2E2A6E", "dark": "#A5A3E6", "use": "approx. tag text/outline, approximate glyphs, focus ring" },
+    "indigo-tint": { "light": "#E6E5F2", "dark": "#262545", "use": "flag fill, night hora cells in the expanded list" },
+    "scrim":       { "light": "rgba(28,26,23,.45)", "dark": "rgba(0,0,0,.6)", "use": "behind bottom sheets" }
+  },
+  "contrastPairs": [
+    ["ink", "surface", 4.5], ["ink", "paper", 4.5], ["ink-2", "surface", 4.5], ["ink-2", "paper", 4.5],
+    ["ink-3", "surface", 4.5], ["ink-3", "paper", 4.5], ["accent", "surface", 4.5], ["accent", "paper", 4.5],
+    ["accent-ink", "accent", 4.5], ["accent", "accent-tint", 4.5], ["indigo", "surface", 4.5], ["indigo", "paper", 4.5],
+    ["good", "neutral", 3], ["night", "neutral", 3], ["good-ink", "good", 4.5], ["night-ink", "night", 4.5],
+    ["avoid-hatch", "avoid", 3], ["good", "night", 1], ["avoid", "neutral", 1], ["ink", "neutral", 4.5], ["ink", "avoid", 4.5],
+    ["accent", "neutral", 3]
+  ],
+  "type": {
+    "families": { "display": "Tiro Devanagari Hindi", "body-en": "Noto Sans", "body-hi-bho": "Noto Sans Devanagari" },
+    "sizes": [26, 22, 20, 18, 17, 15, 13, 12],
+    "scale": {
+      "display": { "size": 26, "line": 32, "weight": 400, "family": "display", "note": "screen titles" },
+      "sheet-title": { "size": 22, "line": 28, "weight": 400, "family": "display", "note": "bottom-sheet titles" },
+      "result-when": { "size": 20, "line": 26, "weight": 600, "family": "body", "note": "muhurat window line, plan price" },
+      "heading": { "size": 18, "line": 24, "weight": 600, "family": "body", "note": "card titles" },
+      "body": { "size": 17, "line": 26, "lineDevanagari": 28, "weight": 400, "family": "body", "note": "daily note, explanations, table emphasis" },
+      "label": { "size": 15, "line": 20, "weight": 600, "family": "body", "note": "buttons, chips, the Now line, table cells (400 for secondary lines)" },
+      "caption": { "size": 13, "line": 18, "weight": 400, "family": "body", "note": "footers, legends, sunrise line, how this was computed, inline band labels (600)" },
+      "micro": { "size": 12, "line": 16, "weight": 400, "family": "body", "note": "floor; tags, tick labels, tab labels, table headers, chart sign numerals, dasha strip labels" }
+    },
+    "chart": { "signNumeral": 12, "glyphLatin": 13.5, "glyphDevanagari": 14.5, "note": "user units at viewBox 320; scaled by fontScale / (renderedWidth/320), see design.md 4" }
+  },
+  "space": [4, 8, 12, 16, 20, 24, 32],
+  "radius": { "card": 12, "button": 10, "pill": 22, "tag": 4, "sheet": 20, "avatar": 22, "band": 4 },
+  "size": {
+    "control": 44, "primaryCta": 48, "tabBar": 72, "band": 32, "statusInset": 24, "bannerPadding": 16,
+    "bottomPaddingAboveBanner": "tabBar + (measuredBannerHeight + 2 * bannerPadding, when AdPolicy shows a banner) + 16 + safeAreaBottom",
+    "bottomPaddingAboveStickyCta": "ctaHeight + 16 + safeAreaBottom"
+  }
+}

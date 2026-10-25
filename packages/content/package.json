@@ -10,7 +10,10 @@
   },
   "scripts": {
     "test": "vitest run --passWithNoTests",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "gen-tokens": "tsx scripts/gen-tokens.ts",
+    "gen-tokens:check": "tsx scripts/gen-tokens.ts --check",
+    "gen-festival-rules": "tsx scripts/gen-festival-rules.ts"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",

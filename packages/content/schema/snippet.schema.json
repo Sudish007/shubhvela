@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://sudish007.github.io/shubhvela/schema/snippet.schema.json",
+  "title": "Corpus snippet file",
+  "description": "corpus/<domain>/<lang>.json: an array of rule-grounded snippets. Ids are identical across languages. For the `rules` domain `text` is the one-sentence rule shown in the Why? sheet, `source` the classical text (or 'convention') and `params` the engine inputs the sheet lists.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["id", "rule", "level", "text", "review"],
+    "additionalProperties": false,
+    "properties": {
+      "id": { "type": "string", "pattern": "^[a-z0-9][a-zA-Z0-9-]*$", "minLength": 2 },
+      "rule": { "type": "string", "minLength": 2 },
+      "source": { "type": "string", "minLength": 2 },
+      "level": { "type": "integer", "enum": [1, 2, 3] },
+      "text": { "type": "string", "minLength": 8 },
+      "review": { "type": "string", "enum": ["draft", "reviewed"] },
+      "params": { "type": "array", "items": { "type": "string", "pattern": "^[a-zA-Z][a-zA-Z0-9]*$" } }
+    }
+  }
+}

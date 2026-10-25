@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://sudish007.github.io/shubhvela/schema/lesson.schema.json",
+  "title": "Lesson file",
+  "description": "corpus/lessons/<lang>.json: the 20 Learn lessons (spec section 7). `body` is a list of paragraphs; `terms` are glossary ids linked from the lesson.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["id", "n", "title", "minutes", "body", "terms", "review"],
+    "additionalProperties": false,
+    "properties": {
+      "id": { "type": "string", "pattern": "^lesson-[0-9]{2}$" },
+      "n": { "type": "integer", "minimum": 1, "maximum": 40 },
+      "title": { "type": "string", "minLength": 3 },
+      "minutes": { "type": "integer", "minimum": 1, "maximum": 30 },
+      "body": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 20 } },
+      "terms": { "type": "array", "items": { "type": "string", "pattern": "^[a-z0-9-]+$" } },
+      "review": { "type": "string", "enum": ["draft", "reviewed"] }
+    }
+  }
+}

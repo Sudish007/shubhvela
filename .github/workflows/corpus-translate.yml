@@ -1,0 +1,76 @@
+name: corpus-translate
+# Translates the English master corpus (packages/content/corpus/<domain>/en.json) into Hindi and Bhojpuri drafts with
+# Gemini (gemini-3.5-flash-lite, OpenAI-compatible endpoint, <= 450 requests per run) and commits the <lang>.json
+# files to main. Dispatched by hand or by the A08 / B02 / C02 build steps: the API key is the repository secret
+# GEMINI_API_KEY and is only ever referenced by name here. UI strings are never translated by this workflow.
+on:
+  workflow_dispatch:
+    inputs:
+      lang:
+        description: Target language(s)
+        type: choice
+        options: [hi, bho, both]
+        default: both
+      domains:
+        description: Comma-separated corpus domains, or "all"
+        type: string
+        default: all
+      max_requests:
+        description: Request cap for this run (free tier allows ~500 per day)
+        type: string
+        default: '450'
+      batch:
+        description: Review-queue batch label (A, B, C ...); empty = run date
+        type: string
+        default: ''
+permissions:
+  contents: write
+concurrency:
+  group: corpus-translate
+  cancel-in-progress: false
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Translate with Gemini
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: >
+          npx tsx packages/content-tools/src/cli.ts
+          --lang "${{ inputs.lang }}"
+          --domains "${{ inputs.domains }}"
+          --max-requests "${{ inputs.max_requests }}"
+          --batch "${{ inputs.batch }}"
+      - name: Content tests on the new drafts
+        if: always()
+        run: npm test -w packages/content
+      - name: Upload key-scrubbed diagnostic
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: diagnostic-${{ inputs.lang }}-${{ github.run_number }}
+          path: packages/content-tools/diagnostic.json
+          if-no-files-found: warn
+      - name: Commit drafts to main
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # corpus drafts, review queues and cursor-<lang>.json; diagnostic.json is gitignored and goes to the artifact
+          git add -A packages/content/corpus packages/content-tools
+          if git diff --cached --quiet; then
+            echo "corpus-translate: nothing changed"
+            exit 0
+          fi
+          git commit -m "chore(corpus): ${{ inputs.lang }} drafts for ${{ inputs.domains }}"
+          git pull --rebase origin main
+          git push origin HEAD:main

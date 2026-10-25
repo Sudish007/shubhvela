@@ -28,9 +28,14 @@ when it is needed and what the build does meanwhile.
 5. **Gemini key.** `gh secret set GEMINI_API_KEY --repo Sudish007/shubhvela` (free-tier key,
    pasted into the hidden prompt). This is the only item that can pause a step (the corpus
    translation batches in A08, B02, C02).
-6. **Bhojpuri review.** Review `packages/content/ui/bho.json` (including बचीं for "Avoid" and the
-   possessive राउर) and the 50-snippet queues `packages/content-tools/review-queue/bho-A.md`,
-   `bho-B.md`, `bho-C.md` as they appear; flip `review` to `reviewed` or send corrections.
+6. **Bhojpuri review.** Review `packages/content/ui/bho.json` (784 UI strings written in A05,
+   including बचीं for "Avoid", the possessive राउर and the respectful रउआ / होला / करीं / बानी / नइखे
+   register; `npm test -w packages/content` enforces Devanagari, no Hindi आप/है and no Maithili
+   forms, but naturalness needs a native reader) and the 50-snippet queues
+   `packages/content-tools/review-queue/bho-A.md`, `bho-B.md`, `bho-C.md` as the corpus-translate
+   Action writes them (50 random snippets per batch, English beside the draft); tick each box or
+   write the corrected text under it, then flip `review` to `reviewed` in
+   `packages/content/corpus/<domain>/bho.json` or send corrections. Nothing in the build waits on this.
    Review the festival rules once: `packages/engine/data/festival-rules.json` and
    `packages/engine/reference/CONVENTIONS.md`.
 7. **Keystore backup.** Copy `release/shubhvela-release.keystore` and `release/KEYSTORE-INFO.txt`

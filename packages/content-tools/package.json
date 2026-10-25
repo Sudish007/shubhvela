@@ -8,7 +8,7 @@
   "scripts": {
     "test": "vitest run --passWithNoTests",
     "typecheck": "tsc --noEmit",
-    "translate": "node -e \"console.error('translate: the Gemini translation tool arrives in A05'); process.exit(1)\""
+    "translate": "tsx src/cli.ts"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",
