@@ -9,7 +9,7 @@ import { Linking, StyleSheet, View } from 'react-native';
 import { Card, PrimaryButton, Screen, SecondaryButton, Sheet, TextButton, Txt } from '../../src/components';
 import { deleteEverything } from '../../src/db/deleteEverything';
 import { useLang } from '../../src/i18n';
-import { dataDeletionUrl, GRIEVANCE_EMAIL_PLACEHOLDER, privacyPolicyUrl } from '../../src/legal';
+import { dataDeletionUrl, grievanceText, privacyPolicyUrl } from '../../src/legal';
 
 export default function PrivacyScreen() {
   const { t } = useLang();
@@ -33,7 +33,7 @@ export default function PrivacyScreen() {
     [t('privacy.networkTitle'), t('privacy.networkList')],
     [t('consent.leavesTitle'), t('privacy.nominatim')],
     [t('consent.adsTitle'), t('consent.ads')],
-    [t('consent.grievanceTitle'), `${t('privacy.grievance', { email: GRIEVANCE_EMAIL_PLACEHOLDER })}\n${t('privacy.grievanceNote')}`],
+    [t('consent.grievanceTitle'), `${grievanceText(t, 'privacy.grievance')}\n${t('privacy.grievanceNote')}`],
   ];
 
   return (

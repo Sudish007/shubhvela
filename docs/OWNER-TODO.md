@@ -46,7 +46,11 @@ when it is needed and what the build does meanwhile.
    (both gitignored, created 2026-10-24) to an off-machine encrypted location. Losing them means
    a new app listing.
 8. **Grievance contact.** Provide the e-mail for the privacy page, consent notice and breach
-   process. Placeholder until then: `grievance@shubhvela.in`.
+   process. Placeholder until then: `grievance@shubhvela.in`; the consent notice and Settings →
+   Privacy label it "provisional … confirmed before release". When the address is final, set it in
+   `app/src/legal.ts` (`GRIEVANCE_EMAIL_PLACEHOLDER`) and flip `GRIEVANCE_EMAIL_CONFIRMED` to `true`
+   so the note disappears. The "Read the privacy policy" link targets `<webBase>/privacy/`, which
+   Phase D (D01) publishes; it is a 404 until then.
 9. **Share-code relay (deferred).** v1 ships QR + a 20-character typed code, fully offline.
    Decide later whether a Pro 8-character relay service is wanted.
 10. **Disk.** Keep at least 8 GB free on C: before build steps (Gradle + emulator). Candidates:

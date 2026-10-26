@@ -29,6 +29,8 @@ describe('flows', () => {
   it('gate: onboarding until consent AND a self profile exist', async () => {
     expect(needsOnboarding()).toBe(true);
     await renderWithProviders(<ConsentScreen />);
+    // Phase A review M4: the grievance address is a placeholder until the owner confirms it, and the notice says so (D8).
+    expect(screen.getByText(/grievance@shubhvela\.in[\s\S]*provisional[\s\S]*confirmed before release/)).toBeTruthy();
     await fireEvent.press(screen.getByTestId('consent-continue'));
     expect(consentAt()).not.toBeNull();
     expect(useRouter().replace).toHaveBeenCalledWith('/onboarding/birth');

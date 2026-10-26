@@ -7,7 +7,7 @@ import { Linking, StyleSheet, View } from 'react-native';
 import { Card, PrimaryButton, Screen, TextButton, Txt } from '../../src/components';
 import { recordConsent } from '../../src/db/appState';
 import { useLang } from '../../src/i18n';
-import { GRIEVANCE_EMAIL_PLACEHOLDER, privacyPolicyUrl } from '../../src/legal';
+import { grievanceText, privacyPolicyUrl } from '../../src/legal';
 
 export default function ConsentScreen() {
   const { t } = useLang();
@@ -18,7 +18,7 @@ export default function ConsentScreen() {
     [t('consent.leavesTitle'), t('consent.leaves')],
     [t('consent.adsTitle'), t('consent.ads')],
     [t('consent.deleteTitle'), t('consent.delete')],
-    [t('consent.grievanceTitle'), t('consent.grievance', { email: GRIEVANCE_EMAIL_PLACEHOLDER })],
+    [t('consent.grievanceTitle'), grievanceText(t, 'consent.grievance')],
   ];
   return (
     <Screen
