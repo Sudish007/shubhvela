@@ -2,7 +2,7 @@
 // (family tithi · vrat · saved muhurat · dasha change · major transit) with a micro kind label, a bold title and a
 // tabular date line (digit runs in Num, time ranges glued with NoBreak); each card is tappable and opens its detail. Empty kinds are omitted by the engine; when
 // everything is empty the strip is one row "Add a family date" (-> profile editor).
-import type { UpcomingItem } from '@shubhvela/engine';
+import { muhuratActivity, type UpcomingItem } from '@shubhvela/engine';
 import { useRouter } from 'expo-router';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { ChevronIcon } from '../components/icons';
@@ -39,7 +39,7 @@ const KIND_KEY: Record<UpcomingItem['kind'], string> = {
   majorTransit: 'upcoming.transit',
 };
 
-/** Text of one card, every value from the engine item. Routes: profile editor, vrat detail (A12), Charts; saved muhurats route to Charts until B01. */
+/** Text of one card, every value from the engine item. Routes: profile editor, vrat detail (A12), the saved-muhurats list (B05), Charts. */
 export function upcomingCardText(item: UpcomingItem, tz: string, profileId: number, t: TFn, lang: Lang): UpcomingCardText {
   const c = cardText(item, tz, profileId, t, lang);
   return { ...c, date: glueRanges(c.date) };
@@ -63,8 +63,16 @@ function cardText(item: UpcomingItem, tz: string, profileId: number, t: TFn, lan
       else if (p.keyTimeKind === 'moonrise' && typeof p.keyTimeStart === 'number') extra = ` · ${t('upcoming.moonrise', { time: fmtTime(p.keyTimeStart, tz) })}`;
       return { kind, title: name, date: `${day}${extra}`, route: `/family/vrat/${p.family as string}` };
     }
-    case 'savedMuhurat':
-      return { kind, title: String(p.activity), date: `${day} · ${fmtRange(p.start as number, p.end as number, tz)}`, route: '/(tabs)/charts' };
+    case 'savedMuhurat': {
+      // B05: the activity's name in the UI language (engine table); the card opens the saved list.
+      let title = String(p.activity);
+      try {
+        title = muhuratActivity(String(p.activity)).names[lang];
+      } catch {
+        /* unknown activity id in an old row: show the id */
+      }
+      return { kind, title, date: `${day} · ${fmtRange(p.start as number, p.end as number, tz)}`, route: '/charts/muhurat/saved' };
+    }
     case 'dashaChange': {
       const key = p.level === 'maha' ? 'upcoming.mahaChange' : p.level === 'pratyantar' ? 'upcoming.pratyantarChange' : 'upcoming.antarChange';
       return { kind, title: t(key, { from: planetName(lang, p.from as 'Su'), to: planetName(lang, p.to as 'Su') }), date: fmtDate(item.at, tz, lang), route: '/(tabs)/charts' };

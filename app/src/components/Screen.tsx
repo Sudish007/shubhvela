@@ -31,7 +31,7 @@ export interface ScreenProps {
   subtitle?: ReactNode;
   /** Sticky bottom CTA; when set the padding switches to the CTA formula. */
   stickyCta?: ReactNode;
-  /** Replaces the gear on tab screens (A11's profile picker lives in the body, not here). */
+  /** Replaces the gear on tab screens (A11's profile picker lives in the body, not here); on stack screens a 44 dp control at the right of the title (B05's saved-list icon). */
   headerRight?: ReactNode;
   /** Pinned strip between the status inset and the scrolling content (the dasha tree's "you are here" header). */
   pinned?: ReactNode;
@@ -86,7 +86,7 @@ export function Screen({ title, chrome = 'tabs', route = '', hideControl, subtit
             </Txt>
             {subtitle ? <View style={styles.subtitle}>{subtitle}</View> : null}
           </View>
-          {chrome === 'tabs' ? control : null}
+          {chrome === 'tabs' ? control : headerRight ?? null}
         </View>
         {children}
       </ScrollView>

@@ -7,6 +7,7 @@ import { Card } from '../components/Card';
 import { Pressable44 } from '../components/Pressable44';
 import { Txt } from '../components/Txt';
 import { useLang } from '../i18n';
+import { TravelTodayCard } from '../muhurat/TravelTodayCard';
 import { useTokens } from '../theme/ThemeProvider';
 import { FlagsLine, flagsText } from './FlagsLine';
 import { fmtTime, fmtTimeOrDayTime, glueRanges } from './format';
@@ -73,6 +74,12 @@ export function GoodHoursCard({ gh, panchang, nowMs, expanded, onToggleExpanded,
         </Txt>
       </Pressable44>
       {expanded ? <SegmentList gh={gh} nowMs={nowMs} testID="segment-list" /> : null}
+      {/* F27 (B05): the Travel today note (Disha Shool + Panchak/Bhadra flags as text) closes the expanded segment list. */}
+      {expanded ? (
+        <View style={styles.travel}>
+          <TravelTodayCard panchang={panchang} embedded testID="travel-today" />
+        </View>
+      ) : null}
     </Card>
   );
 }
@@ -82,4 +89,5 @@ const styles = StyleSheet.create({
   nowBox: { marginTop: 10, paddingTop: 4, borderTopWidth: StyleSheet.hairlineWidth },
   noSun: { marginTop: 8 },
   expand: { alignSelf: 'flex-start', paddingHorizontal: 0, alignItems: 'flex-start', marginTop: 4 },
+  travel: { marginTop: 12 },
 });

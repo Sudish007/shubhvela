@@ -115,3 +115,39 @@ export function CheckboxIcon({ color, size = 24, checked }: IconProps & { checke
     </Svg>
   );
 }
+/** Tick (a muhurat rule met). */
+export function CheckIcon({ color, size = 24 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24" accessible={false}>
+      <Polyline points="5 12 10 17 19 7" stroke={color} {...stroke} strokeWidth={2} />
+    </Svg>
+  );
+}
+/** Cross (a muhurat rule not met). */
+export function CrossIcon({ color, size = 24 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24" accessible={false}>
+      <Line x1="6" y1="6" x2="18" y2="18" stroke={color} {...stroke} strokeWidth={2} />
+      <Line x1="18" y1="6" x2="6" y2="18" stroke={color} {...stroke} strokeWidth={2} />
+    </Svg>
+  );
+}
+/** Bookmark (the saved-muhurats list control of the Muhurat finder header). */
+export function BookmarkIcon({ color, size = 24 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24" accessible={false}>
+      <Path d="M6 3h12v18l-6-4-6 4z" stroke={color} {...stroke} />
+    </Svg>
+  );
+}
+/** Calendar (date-range fields). */
+export function CalendarIcon({ color, size = 24 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24" accessible={false}>
+      <Rect x="3" y="5" width="18" height="16" rx="2" stroke={color} {...stroke} />
+      <Line x1="3" y1="10" x2="21" y2="10" stroke={color} {...stroke} />
+      <Line x1="8" y1="3" x2="8" y2="7" stroke={color} {...stroke} />
+      <Line x1="16" y1="3" x2="16" y2="7" stroke={color} {...stroke} />
+    </Svg>
+  );
+}

@@ -6,6 +6,7 @@ import {
   type DailyRule,
   type GoodHours,
   type PanchangDay,
+  type SavedMuhurat,
   type Tradition,
   type UpcomingItem,
   type VratFamily,
@@ -20,7 +21,9 @@ import {
   upcoming,
   addDays,
 } from '@shubhvela/engine';
+import { hasDb } from '../db/connection';
 import type { Profile } from '../db/profiles';
+import { listSavedMuhurats, toUpcomingSaved } from '../db/savedMuhurats';
 import type { LocationMode } from '../db/settings';
 import { chartFor } from '../engine-bridge/charts';
 import { vratsOnDay } from '../family/model';
@@ -114,6 +117,17 @@ export interface ComputeOptions {
   profiles?: readonly Profile[];
   /** Enabled vrat families (A12): the vrat-today card and the Upcoming vrat card use only these; none -> Upcoming searches all twelve. */
   vratFamilies?: readonly VratFamily[];
+  /** Saved muhurats for the Upcoming "Saved muhurat" card (B05); default: the saved_muhurats table when a database exists. */
+  savedMuhurats?: readonly SavedMuhurat[];
+}
+/** The saved_muhurats rows as engine input (empty without a database, e.g. component tests). */
+export function savedMuhuratsForUpcoming(): SavedMuhurat[] {
+  if (!hasDb()) return [];
+  try {
+    return toUpcomingSaved(listSavedMuhurats());
+  } catch {
+    return [];
+  }
 }
 
 /** The whole Today model for one instant. ~0.3 s on a mid-range phone (dailyNote dominates); call from an effect. */
@@ -126,7 +140,8 @@ export function computeToday(self: Profile, observer: Observer, nowMs: number, o
   const gh = goodHours(day, geo, tz, { ayanamsa: chart.meta.ayanamsa });
   const note = dailyNote(chart, day, geo, tz, { panchang: p });
   const families = opts.vratFamilies ?? [];
-  const up = upcoming({ id: String(self.id), name: self.name ?? undefined, chart, tradition: self.tradition, vratFamilies: families.length ? families : undefined }, [], nowMs, geo, tz);
+  const saved = opts.savedMuhurats ?? savedMuhuratsForUpcoming();
+  const up = upcoming({ id: String(self.id), name: self.name ?? undefined, chart, tradition: self.tradition, vratFamilies: families.length ? families : undefined }, [...saved], nowMs, geo, tz);
   const tithiToday = tithiTodayRows(opts.profiles ?? [self], day, geo, tz);
   const vratToday = families.length ? vratsOnDay(families, day, nowMs, { geo, tz }) : [];
   return { day, nowMs, observer, profile: self, chart, panchang: p, goodHours: gh, note, upcoming: up, tithiToday, vratToday };

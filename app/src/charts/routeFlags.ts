@@ -13,7 +13,8 @@ export interface TimingRouteFlags {
 }
 
 export const ROUTE_FLAGS: Readonly<TimingRouteFlags> = {
-  muhuratFinder: false,
+  // B05: app/app/charts/muhurat/index.tsx exists.
+  muhuratFinder: true,
   janamPatriPdf: false,
   shareChartCard: false,
 };

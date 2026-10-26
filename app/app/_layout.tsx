@@ -56,6 +56,9 @@ function Navigator({ fontsReady }: { fontsReady: boolean }) {
         <Stack.Screen name="charts/ashtakavarga" />
         <Stack.Screen name="charts/kp" />
         <Stack.Screen name="charts/varshaphal" />
+        <Stack.Screen name="charts/muhurat/index" />
+        <Stack.Screen name="charts/muhurat/saved" />
+        <Stack.Screen name="family/naamkaran" />
         <Stack.Screen name="family/calendar" />
         <Stack.Screen name="family/festival/[slug]" />
         <Stack.Screen name="family/vrat/[id]" />

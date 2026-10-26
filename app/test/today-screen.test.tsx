@@ -145,6 +145,10 @@ describe('<TodayScreen>', () => {
       await fireEvent.press(screen.getByTestId('segments-toggle'));
       assertNoTruncation();
       assertRangesGlued();
+      // F27 (B05): the Travel today note closes the expanded list, flags as text, with its Why?.
+      expect(screen.getByTestId('travel-today')).toBeTruthy();
+      expect(screen.getByTestId('travel-line-0')).toBeTruthy();
+      expect(screen.getByTestId('travel-row')).toBeTruthy();
     });
   }
 });

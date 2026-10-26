@@ -96,15 +96,18 @@ describe('<ChartsScreen>', () => {
     expect(screen.getByTestId('sadesati-next')).toBeTruthy();
     expect(screen.getByText('How this was computed')).toBeTruthy();
     // B04: the locked "14 more vargas" chip, the Yogas card and "More from this chart" are present (details in
-    // charts-extras.test.tsx); still not built = not rendered: Prashna (C04), "Share chart card" and the Timing and
-    // documents card (its B05/B07 route flags are all false), ads.
+    // charts-extras.test.tsx); B05 flipped the Muhurat finder route flag so the Timing and documents card renders that
+    // one row; still not built = not rendered: Prashna (C04), "Share chart card" and the Janam Patri row (B07), ads.
     expect(screen.getByTestId('chip-vargas').props.accessibilityLabel).toBe('14 more vargas, locked');
     expect(screen.getByTestId('yogas-card')).toBeTruthy();
     expect(screen.getByTestId('more-card')).toBeTruthy();
     expect(screen.queryByTestId('varshaphal-card')).toBeNull(); // next solar return is in March, > 30 days away
     expect(screen.queryByText(/Prashna/)).toBeNull();
     expect(screen.queryByText(/Share chart card/)).toBeNull();
-    expect(screen.queryByTestId('timing-card')).toBeNull();
+    expect(screen.getByTestId('timing-card')).toBeTruthy();
+    expect(screen.getByTestId('timing-row-muhuratFinder')).toBeTruthy();
+    expect(screen.queryByTestId('timing-row-janamPatriPdf')).toBeNull();
+    expect(screen.queryByTestId('timing-row-shareChartCard')).toBeNull();
     expect(screen.queryByText('Ad')).toBeNull();
     assertNoTruncation();
     assertPadaGlued();

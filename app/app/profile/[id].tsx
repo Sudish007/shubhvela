@@ -4,7 +4,9 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { CapSheet, PrimaryButton, Screen, SecondaryButton, Sheet, Txt } from '../../src/components';
+import { CapSheet, Card, NavRow, PrimaryButton, Screen, SecondaryButton, Sheet, Txt } from '../../src/components';
+import { useMountClock } from '../../src/charts/LockedFeature';
+import { isNewborn } from '../../src/family/naamkaranModel';
 import { countProfiles, deleteProfile, getProfile, insertProfile, updateProfile } from '../../src/db/profiles';
 import { getSetting } from '../../src/db/settings';
 import { canAddProfile } from '../../src/entitlements';
@@ -25,6 +27,7 @@ export default function ProfileEditor() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [capOpen, setCapOpen] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState(false);
+  const mountedAt = useMountClock();
 
   function save() {
     const e = validateForm(value);
@@ -63,6 +66,12 @@ export default function ProfileEditor() {
   return (
     <Screen title={isNew ? t('family.newProfile') : t('family.editProfile')} chrome="stack" testID="profile-editor" stickyCta={<PrimaryButton label={t('common.save')} onPress={save} testID="profile-save" />}>
       <BirthForm value={value} onChange={setValue} errors={errors} editor lockSelf={!!existing?.isSelf} />
+      {existing && isNewborn(existing, mountedAt) ? (
+        // F28 (B05): a profile younger than a year offers the naamkaran helper from its editor.
+        <Card flush>
+          <NavRow title={t('naamkaran.title')} caption={t('naamkaran.newborn')} onPress={() => router.push(`/family/naamkaran?profile=${existing.id}`)} divider={false} testID="profile-naamkaran" />
+        </Card>
+      ) : null}
       {existing ? (
         <View style={styles.danger}>
           <SecondaryButton label={t('family.deleteProfile')} onPress={() => setConfirmDelete(true)} testID="profile-delete" />

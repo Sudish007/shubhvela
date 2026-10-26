@@ -13377,6 +13377,214 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
           </View>
         </View>
         <View
+          style={
+            [
+              {
+                "borderRadius": 12,
+                "borderWidth": 0.5,
+                "padding": 16,
+              },
+              {
+                "backgroundColor": "#FFFFFF",
+                "borderColor": "#E4DDD2",
+              },
+              {
+                "overflow": "hidden",
+                "padding": 0,
+              },
+              undefined,
+            ]
+          }
+          testID="timing-card"
+        >
+          <Text
+            accessibilityRole="header"
+            style={
+              [
+                {
+                  "fontFamily": "NotoSans-SemiBold",
+                  "fontSize": 18,
+                  "fontWeight": "normal",
+                  "lineHeight": 24,
+                },
+                {
+                  "color": "#1C1A17",
+                },
+                {
+                  "paddingBottom": 4,
+                  "paddingHorizontal": 16,
+                  "paddingTop": 16,
+                },
+              ]
+            }
+          >
+            Timing and documents xxxxx
+          </Text>
+          <View
+            accessibilityLabel="Muhurat finder xxxx"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                  "minHeight": 44,
+                  "minWidth": 44,
+                },
+                [
+                  {
+                    "alignItems": "center",
+                    "alignSelf": "stretch",
+                    "flexDirection": "row",
+                    "gap": 12,
+                    "justifyContent": "flex-start",
+                    "paddingHorizontal": 16,
+                    "paddingVertical": 10,
+                  },
+                  false,
+                ],
+                false,
+              ]
+            }
+            testID="timing-row-muhuratFinder"
+          >
+            <View
+              style={
+                {
+                  "flex": 1,
+                  "gap": 2,
+                  "minWidth": 0,
+                }
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 15,
+                      "fontWeight": "normal",
+                      "lineHeight": 20,
+                    },
+                    {
+                      "color": "#1C1A17",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Muhurat finder xxxx
+              </Text>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#6F6960",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Ranked windows with the rules that scored them xxxxxxxxxxxxx
+              </Text>
+            </View>
+            <RNSVGSvgView
+              accessible={false}
+              align="xMidYMid"
+              bbHeight={24}
+              bbWidth={24}
+              focusable={false}
+              height={24}
+              meetOrSlice={0}
+              minX={0}
+              minY={0}
+              style={
+                [
+                  {
+                    "backgroundColor": "transparent",
+                    "borderWidth": 0,
+                  },
+                  {
+                    "flex": 0,
+                    "height": 24,
+                    "width": 24,
+                  },
+                ]
+              }
+              vbHeight={24}
+              vbWidth={24}
+              width={24}
+            >
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGPath
+                  d="M9 6 15 12 9 18"
+                  fill={null}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                      "strokeLinecap",
+                      "strokeLinejoin",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4285491552,
+                      "type": 0,
+                    }
+                  }
+                  strokeLinecap={1}
+                  strokeLinejoin={1}
+                  strokeWidth={1.75}
+                />
+              </RNSVGGroup>
+            </RNSVGSvgView>
+          </View>
+        </View>
+        <View
           accessibilityRole="summary"
           style={
             [
