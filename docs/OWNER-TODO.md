@@ -36,10 +36,16 @@ not set — `gh secret list` is empty, so the Hindi corpus is still English), 6 
    dispatch the Action: `gh secret set GEMINI_API_KEY --repo Sudish007/shubhvela` (free-tier key,
    pasted into the hidden prompt), then
    `gh workflow run corpus-translate.yml --repo Sudish007/shubhvela -f lang=hi`
-   (about 90 requests for the Phase A domains; re-run after B02 and C02 add their English masters,
-   or once at the end). The Action commits `packages/content/corpus/<domain>/hi.json` to main; pull
+   **One dispatch translates every English corpus domain present at that time** (the Action's
+   default `domains=all` reads every `packages/content/corpus/*/en.json` from disk; verified in B02:
+   `listDomains()` in `packages/content-tools/src/translate.ts`; `naamkaran-names` is skipped because
+   names are already Devanagari + Latin). After Phase B that is about 85 (Phase A) + 75 (Phase B:
+   yogas, koota, mangal, muhurat-activities and the 118 new rules) ≈ 160 requests, under the 450 cap;
+   Phase C adds lessons and glossary (≈ 45). If a run stops at the cap it saves a cursor and the next
+   dispatch resumes. The Action commits `packages/content/corpus/<domain>/hi.json` to main; pull
    before the next build. **Bhojpuri is intentionally excluded** (your decision 2026-10-25): the
-   corpus is never machine-translated into Bhojpuri; the app resolves bho -> hi -> en.
+   corpus is never machine-translated into Bhojpuri; the app resolves bho -> hi -> en. B02 (2026-10-27)
+   and C02 skip their Gemini batches by this decision and no build step pauses for the key.
    *Meanwhile:* the Hindi corpus falls back to English (hi -> en) with the chrome in Hindi.
 6. **Bhojpuri review.** Review `packages/content/ui/bho.json` (784 UI strings written in A05,
    including बचीं for "Avoid", the possessive राउर and the respectful रउआ / होला / करीं / बानी / नइखे

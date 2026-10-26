@@ -270,10 +270,16 @@ function placeholders(s: string): string[] {
   return Array.from(s.matchAll(/\{([a-zA-Z0-9_]+)\}/g), (m) => m[1]).sort();
 }
 
+/** Domains whose file is not prose and is never translated (B02: name lists are already Devanagari + Latin). */
+export const UNTRANSLATED_DOMAINS: readonly string[] = ['naamkaran-names'];
+
+/** Every corpus/<domain>/en.json present on disk (Phase A + B + later C), minus UNTRANSLATED_DOMAINS, so one `--domains all` run covers whatever exists at dispatch time. */
 export function listDomains(contentRoot: string): string[] {
   const dir = resolve(contentRoot, 'corpus');
   if (!existsSync(dir)) return [];
-  return readdirSync(dir).filter((d) => existsSync(resolve(dir, d, 'en.json'))).sort();
+  return readdirSync(dir)
+    .filter((d) => existsSync(resolve(dir, d, 'en.json')) && !UNTRANSLATED_DOMAINS.includes(d))
+    .sort();
 }
 
 function readJson<T>(p: string, fallback: T): T {
