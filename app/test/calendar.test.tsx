@@ -124,7 +124,9 @@ describe('<CalendarScreen> and <FestivalScreen>', () => {
     await screen.findByTestId('festival-detail', {}, FIND);
     expect(textOf(screen.getByTestId('festival-date'))).toBe('Sun 8 Nov 2026');
     expect(textOf(screen.getByTestId('festival-tithi'))).toBe('Kartik Krishna Amavasya');
-    expect(textOf(screen.getByTestId('festival-sun-moon'))).toMatch(/^Sunrise \d\d:\d\d · (Moonrise \d\d:\d\d|no moonrise this day)$/);
+    // The Vedic day's moonrise for Lucknow on Diwali 2026 falls after midnight (06:20 on 9 Nov, a minute before the next
+    // sunrise), so the line carries the weekday + date instead of a bare time that would equal the sunrise (a-fix).
+    expect(textOf(screen.getByTestId('festival-sun-moon'))).toMatch(/^Sunrise 06:20 · Moonrise Mon 9 Nov 06:20$/);
     expect(textOf(screen.getByTestId('festival-what')).length).toBeGreaterThan(80);
     expect(screen.getAllByLabelText(/^Why\? /).length).toBe(1);
     // Lucknow's Diwali date equals the Delhi-verified one, so the footer names the fetch date.

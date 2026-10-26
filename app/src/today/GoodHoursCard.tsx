@@ -9,7 +9,7 @@ import { Txt } from '../components/Txt';
 import { useLang } from '../i18n';
 import { useTokens } from '../theme/ThemeProvider';
 import { FlagsLine, flagsText } from './FlagsLine';
-import { fmtTime, glueRanges } from './format';
+import { fmtTime, fmtTimeOrDayTime, glueRanges } from './format';
 import { GoodHoursBand } from './GoodHoursBand';
 import { Legend } from './Legend';
 import { NowLine } from './NowLine';
@@ -43,8 +43,10 @@ export function GoodHoursCard({ gh, panchang, nowMs, expanded, onToggleExpanded,
       </Card>
     );
   }
+  // Moonrise belongs to the Vedic day and can fall after midnight (near Amavasya it is minutes before the next sunrise);
+  // then it carries weekday + date like the Panchang sheet's "(next day)" so it never reads as this morning's time.
   const sunLine = panchang.moonrise !== null
-    ? t('today.sunLine', { sunrise: fmtTime(gh.ticks.sunrise, tz), sunset: fmtTime(gh.ticks.sunset, tz), moonrise: fmtTime(panchang.moonrise, tz) })
+    ? t('today.sunLine', { sunrise: fmtTime(gh.ticks.sunrise, tz), sunset: fmtTime(gh.ticks.sunset, tz), moonrise: fmtTimeOrDayTime(panchang.moonrise, tz, lang, gh.day) })
     : t('today.sunLineNoMoonrise', { sunrise: fmtTime(gh.ticks.sunrise, tz), sunset: fmtTime(gh.ticks.sunset, tz) });
   const count = dayRows(gh).length;
   return (

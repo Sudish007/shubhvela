@@ -59,7 +59,10 @@ export function FestivalDetail({ occurrence: o, siblings, year, tradition, regio
   const sunLine =
     day.sunrise !== null
       ? day.moonrise !== null
-        ? t('calendar.sunMoon', { sunrise: fmtTime(day.sunrise, tz), moonrise: fmtTime(day.moonrise, tz) })
+        ? // The engine's moonrise belongs to the Vedic day (sunrise -> next sunrise) and can fall after midnight, e.g.
+          // Diwali 2026 Lucknow: moonrise 06:20 on the NEXT civil date, one minute before that day's sunrise. Carry the
+          // weekday + date in that case, as the Panchang sheet does, so "Sunrise 06:20 · Moonrise 06:20" cannot mislead.
+          t('calendar.sunMoon', { sunrise: fmtTime(day.sunrise, tz), moonrise: fmtTimeOrDayTime(day.moonrise, tz, lang, o.date) })
         : t('calendar.sunNoMoon', { sunrise: fmtTime(day.sunrise, tz) })
       : t('today.noSun');
   return (
