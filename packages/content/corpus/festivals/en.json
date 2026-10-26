@@ -40,7 +40,7 @@
     "slug": "vasant-panchami",
     "name": "Vasant Panchami (Saraswati Puja)",
     "what": "Vasant Panchami greets the spring on Magha Shukla Panchami and is kept as Saraswati Puja in much of the north and east. Yellow is the colour of the day: yellow clothes, mustard fields, saffron rice and besan sweets. Books, pens and musical instruments are placed before the goddess of learning and left untouched until the next day; small children are often taught their first letters (vidyarambha) now. Schools and colleges hold their own puja. In Punjab kites go up, and in Rajasthan the day opens the Holi season.",
-    "rule": "Vasant Panchami (Saraswati Puja) falls on Magha Shukla Panchami (Purnimanta month name), on the day whose sunrise has that tithi.",
+    "rule": "Vasant Panchami (Saraswati Puja) falls on Magha Shukla Panchami (Purnimanta month name), on the day that tithi covers the forenoon (purvahna).",
     "conventionNote": "Judged in the purvahna (sunrise plus a quarter of the daylight) rather than at sunrise, so when Panchami begins mid-morning the festival can fall a day later than the sunrise tithi. Shukla paksha: identical in Purnimanta and Amanta.",
     "review": "draft"
   },
@@ -58,7 +58,7 @@
     "slug": "bhishma-ashtami",
     "name": "Bhishma Ashtami",
     "what": "Bhishma Ashtami on Magha Shukla Ashtami remembers the Mahabharata elder who waited for Uttarayana to leave his body. People offer tarpan, water with sesame and kusha grass, in Bhishma's name at midday, even those whose own fathers are living, because he had no descendants to do it for him. A bath and a fast until the tarpan is complete are customary, and the Bhishma Stavaraja or the Vishnu Sahasranama, which Bhishma is said to have spoken, is read. Many also keep the day for ancestors in general.",
-    "rule": "Bhishma Ashtami falls on Magha Shukla Ashtami (Purnimanta month name), on the day that tithi covers midday (madhyahna).",
+    "rule": "Bhishma Ashtami falls on Magha Shukla Ashtami (Purnimanta month name), on the day that tithi covers midday (madhyahna), taking the day on which the tithi covers more of that period when it touches it on two days.",
     "conventionNote": "Judged at madhyahna (sunrise plus half the daylight), since the tarpan is a midday rite; the date can differ by a day from the sunrise tithi. Shukla paksha, so Purnimanta and Amanta agree.",
     "review": "draft"
   },
@@ -67,7 +67,7 @@
     "slug": "jaya-ekadashi",
     "name": "Jaya Ekadashi",
     "what": "Jaya Ekadashi is the bright-fortnight Ekadashi of Magha. Like every Ekadashi it is kept as a fast from grains and pulses, with fruit, milk or water according to one's strength, and the day given to reading, japa or a visit to a Vishnu temple. Its story from the Padma Purana tells of a celestial couple freed from a spell by keeping this fast unknowingly. The fast ends with parana the next morning inside the Dwadashi, after Hari Vasara has passed and before a fifth of the day is over.",
-    "rule": "Jaya Ekadashi falls on Magha Shukla Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi.",
+    "rule": "Jaya Ekadashi falls on Magha Shukla Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi, preferring the later day when the tithi covers that time on two days; when the following Dwadashi touches no sunrise, the fast stays on the day the Ekadashi began so that the parana falls inside the Dwadashi.",
     "conventionNote": "Ekadashi rule: Smarta date on the sunrise tithi, later day when two sunrises hold Ekadashi, and the Vaishnava date a day later when Dashami still runs at dawn; the app shows both. Shukla paksha, so Purnimanta and Amanta agree.",
     "review": "draft"
   },
@@ -94,7 +94,7 @@
     "slug": "shattila-ekadashi",
     "name": "Shattila Ekadashi",
     "what": "Shattila Ekadashi is the dark-fortnight Ekadashi of Magha, named for the six uses of sesame (til) on this day: bathing with sesame paste, rubbing it on the body, offering it in the fire, giving it in charity, eating it and putting it in water. The fast from grains follows the ordinary Ekadashi pattern, with Vishnu worship and reading. Gifts of sesame, blankets and food are made in the cold season. Parana is on the Dwadashi morning after Hari Vasara ends.",
-    "rule": "Shattila Ekadashi falls on Magha Krishna Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi.",
+    "rule": "Shattila Ekadashi falls on Magha Krishna Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi, preferring the later day when the tithi covers that time on two days; when the following Dwadashi touches no sunrise, the fast stays on the day the Ekadashi began so that the parana falls inside the Dwadashi.",
     "conventionNote": "Ekadashi rule (Smarta sunrise tithi, later day when doubled, Vaishnava a day later when Dashami touches dawn). Krishna paksha: Magha in Purnimanta is Pausha in Amanta; the date does not change, only the month label.",
     "review": "draft"
   },
@@ -103,7 +103,7 @@
     "slug": "vijaya-ekadashi",
     "name": "Vijaya Ekadashi",
     "what": "Vijaya Ekadashi is the dark-fortnight Ekadashi of Phalguna, which the Skanda Purana links with Rama's crossing to Lanka. The fast from grains and pulses is kept through the day with Vishnu worship; a traditional form sets a pot of water with seven grains on a bed of mud, worshipped and given away the next day. Reading, japa and a quiet day are the usual practice. Parana is the next morning inside the Dwadashi, after Hari Vasara. Many keep a lamp burning before Vishnu through the night and give grain the next morning.",
-    "rule": "Vijaya Ekadashi falls on Phalguna Krishna Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi.",
+    "rule": "Vijaya Ekadashi falls on Phalguna Krishna Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi, preferring the later day when the tithi covers that time on two days; when the following Dwadashi touches no sunrise, the fast stays on the day the Ekadashi began so that the parana falls inside the Dwadashi.",
     "conventionNote": "Ekadashi rule with Smarta and Vaishnava dates shown. Krishna paksha: Phalguna in Purnimanta is Magha in Amanta; the civil date is the same.",
     "review": "draft"
   },
@@ -121,7 +121,7 @@
     "slug": "amalaki-ekadashi",
     "name": "Amalaki Ekadashi",
     "what": "Amalaki Ekadashi is the bright-fortnight Ekadashi of Phalguna, dedicated to the amla (amalaki) tree in which Vishnu is said to dwell. Beside the usual grain fast and Vishnu worship, people water and circle an amla tree, tie thread around it and, where possible, eat a meal under it; amla fruit is given and eaten the next day. Falling about ten days before Holi, it is also called Rangbhari Ekadashi in Varanasi, where Shiva and Parvati are welcomed with colour at the Vishwanath temple.",
-    "rule": "Amalaki Ekadashi falls on Phalguna Shukla Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi.",
+    "rule": "Amalaki Ekadashi falls on Phalguna Shukla Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi, preferring the later day when the tithi covers that time on two days; when the following Dwadashi touches no sunrise, the fast stays on the day the Ekadashi began so that the parana falls inside the Dwadashi.",
     "conventionNote": "Ekadashi rule with Smarta and Vaishnava dates. Shukla paksha: Purnimanta and Amanta agree.",
     "review": "draft"
   },
@@ -166,7 +166,7 @@
     "slug": "papmochani-ekadashi",
     "name": "Papmochani Ekadashi",
     "what": "Papmochani Ekadashi is the dark-fortnight Ekadashi of Chaitra, the last Ekadashi of the Hindu year in the Purnimanta count. The day follows the common pattern: a fast from grains and pulses, early bath, Vishnu worship with tulsi and lamp, and time for reading or japa. The Bhavishyottara Purana tells its story through the sage Medhavi. Parana is the next morning inside the Dwadashi tithi after Hari Vasara has ended. Falling in the first warm days of spring, it is kept with cooling drinks, fruit and an early rest; many read the Vishnu Sahasranama in the evening.",
-    "rule": "Papmochani Ekadashi falls on Chaitra Krishna Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi.",
+    "rule": "Papmochani Ekadashi falls on Chaitra Krishna Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi, preferring the later day when the tithi covers that time on two days; when the following Dwadashi touches no sunrise, the fast stays on the day the Ekadashi began so that the parana falls inside the Dwadashi.",
     "conventionNote": "Ekadashi rule with Smarta and Vaishnava dates. Krishna paksha: Chaitra in Purnimanta is Phalguna in Amanta; the date is unchanged.",
     "review": "draft"
   },
@@ -211,7 +211,7 @@
     "slug": "ram-navami",
     "name": "Rama Navami",
     "what": "Rama Navami is Rama's birthday on Chaitra Shukla Navami, celebrated at noon, the hour of his birth. Temples bathe the image, dress it in new clothes and rock the infant Rama in a cradle at midday while the Ramayana or Tulsi's Ramcharitmanas is read; the week-long reading that began on Pratipada ends today. Many fast until the midday puja and then share panakam, neer mor, kosambari and sweets. Ayodhya holds its mela on the Sarayu, and the day closes Chaitra Navratri.",
-    "rule": "Rama Navami falls on Chaitra Shukla Navami (Purnimanta month name), on the day that tithi covers midday (madhyahna).",
+    "rule": "Rama Navami falls on Chaitra Shukla Navami (Purnimanta month name), on the day that tithi covers midday (madhyahna), taking the day on which the tithi covers more of that period when it touches it on two days.",
     "conventionNote": "Judged at madhyahna (sunrise plus half the daylight) because the birth is placed at noon; the date can differ by a day from the sunrise Navami. Shukla paksha, so Purnimanta and Amanta agree.",
     "review": "draft"
   },
@@ -220,7 +220,7 @@
     "slug": "kamada-ekadashi",
     "name": "Kamada Ekadashi",
     "what": "Kamada Ekadashi is the first Ekadashi of the Hindu year in the Purnimanta count, on Chaitra Shukla Ekadashi, two days after Rama Navami. The grain fast, Vishnu worship with tulsi and lamp, and a day of reading or japa follow the common pattern; the Varaha Purana tells its story through the gandharva Lalit. Parana is the next morning inside the Dwadashi tithi, after Hari Vasara and before a fifth of the day has passed. Many begin the year-long round of twenty-four Ekadashis here, with a lamp before Vishnu through the night.",
-    "rule": "Kamada Ekadashi falls on Chaitra Shukla Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi.",
+    "rule": "Kamada Ekadashi falls on Chaitra Shukla Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi, preferring the later day when the tithi covers that time on two days; when the following Dwadashi touches no sunrise, the fast stays on the day the Ekadashi began so that the parana falls inside the Dwadashi.",
     "conventionNote": "Ekadashi rule with Smarta and Vaishnava dates shown. Shukla paksha, so Purnimanta and Amanta agree.",
     "review": "draft"
   },
@@ -292,7 +292,7 @@
     "slug": "akshaya-tritiya",
     "name": "Akshaya Tritiya",
     "what": "Akshaya Tritiya on Vaishakha Shukla Tritiya is held to be good for any beginning without a separate muhurta: new ventures, housewarming, weddings and, in modern practice, buying gold. The classical practice is simpler: a bath, worship of Vishnu and Lakshmi, and gifts of water pots, fans, barley, cucumber and umbrellas as the heat sets in; what is given today is said to be akshaya, undiminishing. Parashurama's birth is kept the same evening, the Chardham temples open and the chariots for the Puri Rath Yatra are begun.",
-    "rule": "Akshaya Tritiya falls on Vaishakha Shukla Tritiya (Purnimanta month name), on the day whose sunrise has that tithi.",
+    "rule": "Akshaya Tritiya falls on Vaishakha Shukla Tritiya (Purnimanta month name), on the day whose sunrise has that tithi, provided it runs at least 3 muhurtas after that sunrise (else the day before).",
     "conventionNote": "Udaya rule with the tri-muhurta exception: when Tritiya runs fewer than three muhurtas (144 minutes) after its only sunrise, the festival stays on the day Tritiya began. Shukla paksha, so Purnimanta and Amanta agree.",
     "review": "draft"
   },
@@ -310,7 +310,7 @@
     "slug": "ganga-saptami",
     "name": "Ganga Saptami",
     "what": "Ganga Saptami, or Ganga Jayanti, on Vaishakha Shukla Saptami marks the day the Ganga came again to earth from the sage Jahnu's ear after he had drunk her up. A river bath at midday, arghya and lamps to the Ganga, and a reading of the Ganga Stotra or the Ganga Lahari are the practice; at Haridwar, Rishikesh and Varanasi the ghats hold a special aarti in the evening. Those far from the river bathe at home with a few drops of Gangajal added to the water. Charity of water, fruit and umbrellas suits the season.",
-    "rule": "Ganga Saptami (observed in the north) falls on Vaishakha Shukla Saptami (Purnimanta month name), on the day that tithi covers midday (madhyahna).",
+    "rule": "Ganga Saptami (observed in the north) falls on Vaishakha Shukla Saptami (Purnimanta month name), on the day that tithi covers midday (madhyahna), taking the day on which the tithi covers more of that period when it touches it on two days.",
     "conventionNote": "Judged at madhyahna, since the appearance is placed at midday; the date can differ by a day from the sunrise Saptami. Shukla paksha, so Purnimanta and Amanta agree. Ganga Dussehra in Jyeshtha marks her first descent.",
     "review": "draft"
   },
@@ -319,7 +319,7 @@
     "slug": "mohini-ekadashi",
     "name": "Mohini Ekadashi",
     "what": "Mohini Ekadashi is the bright-fortnight Ekadashi of Vaishakha, named for Vishnu's Mohini form that carried the amrit away from the asuras. The fast from grains and pulses, bath, Vishnu worship with tulsi and lamp and a day of reading or japa follow the common pattern; the Kurma Purana tells its story through Rama and Vasishtha. Parana is the next morning inside the Dwadashi tithi, after Hari Vasara and before a fifth of the day has passed. Falling in the heat of Vaishakha, the day is kept with water, fruit and an early rest, and water pots are given.",
-    "rule": "Mohini Ekadashi falls on Vaishakha Shukla Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi.",
+    "rule": "Mohini Ekadashi falls on Vaishakha Shukla Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi, preferring the later day when the tithi covers that time on two days; when the following Dwadashi touches no sunrise, the fast stays on the day the Ekadashi began so that the parana falls inside the Dwadashi.",
     "conventionNote": "Ekadashi rule with Smarta and Vaishnava dates shown. Shukla paksha, so Purnimanta and Amanta agree.",
     "review": "draft"
   },
@@ -328,7 +328,7 @@
     "slug": "narasimha-jayanti",
     "name": "Narasimha Jayanti",
     "what": "Narasimha Jayanti on Vaishakha Shukla Chaturdashi marks the appearance of Vishnu as the man-lion at dusk to protect Prahlada. The fast is kept through the day and the worship is done in the evening twilight, the hour of the appearance, with a reading of the Narasimha story from the Bhagavata, the Narasimha Kavacham and offerings of panakam and sprouted gram. Ahobilam, Simhachalam and Yadadri hold their largest festivals now, and many break the fast only on the next morning after sunrise.",
-    "rule": "Narasimha Jayanti falls on Vaishakha Shukla Chaturdashi (Purnimanta month name), on the day that tithi covers the evening (pradosh kala, the first tenth of the night).",
+    "rule": "Narasimha Jayanti falls on Vaishakha Shukla Chaturdashi (Purnimanta month name), on the day that tithi covers the evening (pradosh kala, the first tenth of the night), preferring the later day when the tithi covers that time on two days.",
     "conventionNote": "Pradosh rule with the later day preferred: the day on which Chaturdashi runs after sunset, taking the second day when it covers two evenings. Shukla paksha, so Purnimanta and Amanta agree.",
     "review": "draft"
   },
@@ -346,7 +346,7 @@
     "slug": "apara-ekadashi",
     "name": "Apara Ekadashi",
     "what": "Apara Ekadashi, also Achala Ekadashi, is the dark-fortnight Ekadashi of Jyeshtha. The grain fast, bath, Vishnu worship with tulsi and lamp and a day of reading or japa follow the common pattern; the Brahma Purana tells its story through the king Mahidhwaja. Charity of water, fans and fruit suits the hot season. Parana is the next morning inside the Dwadashi tithi after Hari Vasara has ended. Many keep a lamp before Vishnu through the night and share the fruit offered with neighbours in the morning. The Smarta and Vaishnava dates are both shown.",
-    "rule": "Apara Ekadashi falls on Jyeshtha Krishna Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi.",
+    "rule": "Apara Ekadashi falls on Jyeshtha Krishna Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi, preferring the later day when the tithi covers that time on two days; when the following Dwadashi touches no sunrise, the fast stays on the day the Ekadashi began so that the parana falls inside the Dwadashi.",
     "conventionNote": "Ekadashi rule with Smarta and Vaishnava dates. Krishna paksha: Jyeshtha in Purnimanta is Vaishakha in Amanta; the civil date is the same.",
     "review": "draft"
   },
@@ -373,7 +373,7 @@
     "slug": "vat-purnima",
     "name": "Vat Purnima Vrat",
     "what": "Vat Purnima is the Maharashtrian, Gujarati and south Indian form of the Savitri vow, kept on Jyeshtha Purnima rather than the Amavasya. Those keeping it fast through the day, dress in silk and gold, and go to a banyan tree in the evening to pour water, offer turmeric, kumkum and five fruits, and wind thread around the trunk while walking round it, usually seven times. The story of Savitri and Satyavan is read, and the fast is broken after the Moon is seen. Some keep a three-day fast ending on the Purnima.",
-    "rule": "Vat Purnima Vrat (observed in the south) falls on Jyeshtha Shukla Purnima (Purnimanta month name), on the day whose sunrise has that tithi.",
+    "rule": "Vat Purnima Vrat (observed in the south) falls on Jyeshtha Shukla Purnima (Purnimanta month name), on the day that tithi covers the evening (pradosh kala, the first tenth of the night).",
     "conventionNote": "Pradosh rule: the day on which Purnima runs in the evening after sunset, because the tree worship is done at dusk. Shukla paksha, so Purnimanta and Amanta agree. The north keeps the Amavasya date (Vat Savitri).",
     "review": "draft"
   },
@@ -391,7 +391,7 @@
     "slug": "nirjala-ekadashi",
     "name": "Nirjala Ekadashi",
     "what": "Nirjala Ekadashi on Jyeshtha Shukla Ekadashi is the strictest Ekadashi of the year, kept without food and water from sunrise until the parana the next morning, in the hottest part of the year. It is said to carry the merit of all twenty-four Ekadashis for those who cannot keep the others, and is also called Bhimseni Ekadashi after Bhima, who could keep only this one. Vishnu worship, reading and rest fill the day, and the traditional charity is water pots, fans, melons, umbrellas and sherbet for passers-by.",
-    "rule": "Nirjala Ekadashi falls on Jyeshtha Shukla Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi.",
+    "rule": "Nirjala Ekadashi falls on Jyeshtha Shukla Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi, preferring the later day when the tithi covers that time on two days; when the following Dwadashi touches no sunrise, the fast stays on the day the Ekadashi began so that the parana falls inside the Dwadashi.",
     "conventionNote": "Ekadashi rule with Smarta and Vaishnava dates. Shukla paksha, so Purnimanta and Amanta agree. The parana window is the Dwadashi morning after Hari Vasara.",
     "review": "draft"
   },
@@ -409,7 +409,7 @@
     "slug": "yogini-ekadashi",
     "name": "Yogini Ekadashi",
     "what": "Yogini Ekadashi is the dark-fortnight Ekadashi of Ashadha, between Nirjala and Devshayani Ekadashi. The grain fast, bath, Vishnu worship with tulsi and lamp and a day of reading or japa follow the common pattern; the Padma Purana tells its story through the yaksha Hemamali. Parana is the next morning inside the Dwadashi tithi, after Hari Vasara and before a fifth of the day has passed. The story links the day with the peepal tree, which many water and circle in the morning, and with gifts of food in the first weeks of the monsoon. The Smarta and Vaishnava dates are both shown.",
-    "rule": "Yogini Ekadashi falls on Ashadha Krishna Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi.",
+    "rule": "Yogini Ekadashi falls on Ashadha Krishna Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi, preferring the later day when the tithi covers that time on two days; when the following Dwadashi touches no sunrise, the fast stays on the day the Ekadashi began so that the parana falls inside the Dwadashi.",
     "conventionNote": "Ekadashi rule with Smarta and Vaishnava dates. Krishna paksha: Ashadha in Purnimanta is Jyeshtha in Amanta; the civil date is the same.",
     "review": "draft"
   },
@@ -427,7 +427,7 @@
     "slug": "devshayani-ekadashi",
     "name": "Devshayani Ekadashi",
     "what": "Devshayani Ekadashi on Ashadha Shukla Ekadashi is the night Vishnu is said to lie down to sleep for four months, opening Chaturmas. The Ekadashi fast is kept as usual, and in the evening an image of Vishnu is laid on a bed with a lamp and the Chaturmas vows are taken: giving up a chosen food, sleeping on the floor, or reading a text daily until Dev Uthani Ekadashi in Kartik. Maharashtra keeps it as Ashadhi Ekadashi, the day the Pandharpur Wari pilgrims reach Vitthal. Weddings and housewarmings pause until Chaturmas ends.",
-    "rule": "Devshayani Ekadashi falls on Ashadha Shukla Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi.",
+    "rule": "Devshayani Ekadashi falls on Ashadha Shukla Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi, preferring the later day when the tithi covers that time on two days; when the following Dwadashi touches no sunrise, the fast stays on the day the Ekadashi began so that the parana falls inside the Dwadashi.",
     "conventionNote": "Ekadashi rule with Smarta and Vaishnava dates. Shukla paksha, so Purnimanta and Amanta agree. Chaturmas closes on Dev Uthani (Prabodhini) Ekadashi.",
     "review": "draft"
   },
@@ -454,7 +454,7 @@
     "slug": "kamika-ekadashi",
     "name": "Kamika Ekadashi",
     "what": "Kamika Ekadashi is the dark-fortnight Ekadashi of Shravana, the first Ekadashi inside Chaturmas. The grain fast and Vishnu worship follow the common pattern, with tulsi leaves given special place; the Brahma Vaivarta Purana tells its story through Yudhishthira. Many visit a Vishnu or Krishna temple and offer a ghee lamp through the night. Parana is the next morning inside the Dwadashi tithi after Hari Vasara has ended. Falling in Shravana, it is often joined with the Monday or Shiva observances of the month. The Smarta and Vaishnava dates are both shown.",
-    "rule": "Kamika Ekadashi falls on Shravana Krishna Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi.",
+    "rule": "Kamika Ekadashi falls on Shravana Krishna Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi, preferring the later day when the tithi covers that time on two days; when the following Dwadashi touches no sunrise, the fast stays on the day the Ekadashi began so that the parana falls inside the Dwadashi.",
     "conventionNote": "Ekadashi rule with Smarta and Vaishnava dates. Krishna paksha: Shravana in Purnimanta is Ashadha in Amanta; the civil date is the same.",
     "review": "draft"
   },
@@ -481,7 +481,7 @@
     "slug": "shravana-putrada-ekadashi",
     "name": "Shravana Putrada Ekadashi",
     "what": "Shravana Putrada Ekadashi is the bright-fortnight Ekadashi of Shravana, traditionally kept by couples hoping for a child and by anyone keeping the Chaturmas Ekadashis. The grain fast, bath, Vishnu worship with tulsi and lamp and a day of reading or japa follow the common pattern; the Bhavishya Purana tells its story through king Mahijit. Parana is the next morning inside the Dwadashi tithi after Hari Vasara has ended. A second Putrada Ekadashi falls in Pausha. Many keep a lamp before Vishnu through the night and offer the next morning's meal to a child.",
-    "rule": "Shravana Putrada Ekadashi falls on Shravana Shukla Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi.",
+    "rule": "Shravana Putrada Ekadashi falls on Shravana Shukla Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi, preferring the later day when the tithi covers that time on two days; when the following Dwadashi touches no sunrise, the fast stays on the day the Ekadashi began so that the parana falls inside the Dwadashi.",
     "conventionNote": "Ekadashi rule with Smarta and Vaishnava dates. Shukla paksha, so Purnimanta and Amanta agree.",
     "review": "draft"
   },
@@ -535,7 +535,7 @@
     "slug": "aja-ekadashi",
     "name": "Aja Ekadashi",
     "what": "Aja Ekadashi is the dark-fortnight Ekadashi of Bhadrapada, three days after Janmashtami. The grain fast, bath, Vishnu worship with tulsi and lamp and a day of reading or japa follow the common pattern; the Brahmanda Purana tells its story through king Harishchandra. Parana is the next morning inside the Dwadashi tithi, after Hari Vasara and before a fifth of the day has passed. Falling in the last days of the monsoon, it is kept with simple food, a lamp before Vishnu through the night and gifts of grain in the morning. The Smarta and Vaishnava dates are both shown.",
-    "rule": "Aja Ekadashi falls on Bhadrapada Krishna Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi.",
+    "rule": "Aja Ekadashi falls on Bhadrapada Krishna Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi, preferring the later day when the tithi covers that time on two days; when the following Dwadashi touches no sunrise, the fast stays on the day the Ekadashi began so that the parana falls inside the Dwadashi.",
     "conventionNote": "Ekadashi rule with Smarta and Vaishnava dates. Krishna paksha: Bhadrapada in Purnimanta is Shravana in Amanta; the civil date is the same.",
     "review": "draft"
   },
@@ -553,7 +553,7 @@
     "slug": "ganesh-chaturthi",
     "name": "Ganesh Chaturthi",
     "what": "Ganesh Chaturthi on Bhadrapada Shukla Chaturthi brings Ganesha home. A clay image is installed at midday with pranapratishtha, worshipped with durva grass, red flowers, twenty-one modaks and the Atharvashirsha, and kept for one and a half, three, five, seven or ten days with morning and evening aarti before immersion in water. Maharashtra's public pandals, from Lalbaug to Pune's five manache Ganapati, and Hyderabad's Khairatabad idol are the largest. The Moon is traditionally not looked at on this night. Anant Chaturdashi ten days later is the main visarjan.",
-    "rule": "Ganesh Chaturthi falls on Bhadrapada Shukla Chaturthi (Purnimanta month name), on the day that tithi covers midday (madhyahna).",
+    "rule": "Ganesh Chaturthi falls on Bhadrapada Shukla Chaturthi (Purnimanta month name), on the day that tithi covers midday (madhyahna), taking the day on which the tithi covers more of that period when it touches it on two days.",
     "conventionNote": "Madhyahna rule: the day on which Chaturthi covers sunrise plus half the daylight, since the installation is at midday; when two days qualify the first is taken. Shukla paksha, so Purnimanta and Amanta agree.",
     "review": "draft"
   },
@@ -562,7 +562,7 @@
     "slug": "rishi-panchami",
     "name": "Rishi Panchami",
     "what": "Rishi Panchami on Bhadrapada Shukla Panchami, the day after Ganesh Chaturthi, honours the seven sages (Saptarishi). The day is kept with a bath at midday using the roots of the apamarga plant, worship of the seven sages with a kalash and grains, and a meal of wild-grown food such as morning-glory rice and vegetables, avoiding anything grown by the plough. The vow is traditionally kept to set right lapses in monthly observances, and in Nepal it is a public holiday following Teej. Jain families end their Paryushana Samvatsari close to this date.",
-    "rule": "Rishi Panchami falls on Bhadrapada Shukla Panchami (Purnimanta month name), on the day that tithi covers midday (madhyahna).",
+    "rule": "Rishi Panchami falls on Bhadrapada Shukla Panchami (Purnimanta month name), on the day that tithi covers midday (madhyahna), taking the day on which the tithi covers more of that period when it touches it on two days.",
     "conventionNote": "Judged at madhyahna (sunrise plus half the daylight), so the date can differ by a day from the sunrise Panchami. Shukla paksha, so Purnimanta and Amanta agree.",
     "review": "draft"
   },
@@ -571,7 +571,7 @@
     "slug": "radha-ashtami",
     "name": "Radha Ashtami",
     "what": "Radha Ashtami on Bhadrapada Shukla Ashtami is Radha's birthday, fifteen days after Janmashtami. Barsana, her village near Mathura, and the Radha temples of Vrindavan bathe the image at midday with panchamrit, dress it in new clothes and offer fifty-six kinds of food (chhappan bhog) after a morning of kirtan. Those keeping the day fast until the midday puja and read the Radha story from the Padma or Brahma Vaivarta Purana. Gaudiya Vaishnava and ISKCON temples everywhere keep it as a major day with a half-day fast.",
-    "rule": "Radha Ashtami falls on Bhadrapada Shukla Ashtami (Purnimanta month name), on the day that tithi covers midday (madhyahna).",
+    "rule": "Radha Ashtami falls on Bhadrapada Shukla Ashtami (Purnimanta month name), on the day that tithi covers midday (madhyahna), preferring the later day when the tithi covers that time on two days.",
     "conventionNote": "Madhyahna rule with the later day preferred: the day on which Ashtami covers midday, taking the second day when it covers two middays. Shukla paksha, so Purnimanta and Amanta agree.",
     "review": "draft"
   },
@@ -580,7 +580,7 @@
     "slug": "parivartini-ekadashi",
     "name": "Parivartini Ekadashi",
     "what": "Parivartini Ekadashi, also Parsva or Vamana Ekadashi, on Bhadrapada Shukla Ekadashi is the night Vishnu, asleep since Devshayani, is said to turn on his side (parivartan). The grain fast, Vishnu worship with tulsi and lamp and a day of reading follow the common pattern, with the Vamana avatar remembered in the evening; the Brahma Vaivarta Purana tells its story. Jains close Paryushana around this date, and the Ganesh festival is in its final days. Parana is the next morning inside the Dwadashi tithi after Hari Vasara.",
-    "rule": "Parivartini Ekadashi falls on Bhadrapada Shukla Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi.",
+    "rule": "Parivartini Ekadashi falls on Bhadrapada Shukla Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi, preferring the later day when the tithi covers that time on two days; when the following Dwadashi touches no sunrise, the fast stays on the day the Ekadashi began so that the parana falls inside the Dwadashi.",
     "conventionNote": "Ekadashi rule with Smarta and Vaishnava dates. Shukla paksha, so Purnimanta and Amanta agree.",
     "review": "draft"
   },
@@ -625,7 +625,7 @@
     "slug": "indira-ekadashi",
     "name": "Indira Ekadashi",
     "what": "Indira Ekadashi is the dark-fortnight Ekadashi of Ashwin, falling inside Pitru Paksha, and so it is kept for the ancestors as much as for Vishnu. Beside the usual grain fast and Vishnu worship, shraddha and tarpan are offered at midday and the merit of the fast is given to those who have passed on; the Brahma Vaivarta Purana tells its story through king Indrasena. Parana is the next morning inside the Dwadashi tithi after Hari Vasara has ended. Food cooked for the fast is first offered to the ancestors and to a cow before the family eats on the Dwadashi.",
-    "rule": "Indira Ekadashi falls on Ashwin Krishna Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi.",
+    "rule": "Indira Ekadashi falls on Ashwin Krishna Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi, preferring the later day when the tithi covers that time on two days; when the following Dwadashi touches no sunrise, the fast stays on the day the Ekadashi began so that the parana falls inside the Dwadashi.",
     "conventionNote": "Ekadashi rule with Smarta and Vaishnava dates. Krishna paksha: Ashwin in Purnimanta is Bhadrapada in Amanta; the civil date is the same.",
     "review": "draft"
   },
@@ -661,7 +661,7 @@
     "slug": "maha-navami",
     "name": "Maha Navami",
     "what": "Maha Navami, the ninth day of Sharad Navratri, is the day before Dussehra. The Navratri havan and kanya puja are completed, the barley sprouts from Ghatasthapana are cut, and in the south Ayudha Puja or Saraswati Puja honours the tools of one's trade: books, instruments, vehicles and machines are cleaned, marked with sandal and kumkum and left to rest for the day. Bengal offers the Navami bhog and bids Durga farewell from the next morning. Those who fasted through Navratri usually break it after today's puja.",
-    "rule": "Maha Navami falls on Ashwin Shukla Navami (Purnimanta month name), on the day whose sunrise has that tithi.",
+    "rule": "Maha Navami is 1 day before Dussehra (Vijaya Dashami).",
     "conventionNote": "Offset rule: the civil day before Dussehra, so it follows Dussehra's aparahna timing rather than the sunrise Navami. Shukla paksha, so Purnimanta and Amanta agree.",
     "review": "draft"
   },
@@ -679,7 +679,7 @@
     "slug": "papankusha-ekadashi",
     "name": "Papankusha Ekadashi",
     "what": "Papankusha Ekadashi is the bright-fortnight Ekadashi of Ashwin, the day after Dussehra. The grain fast, bath, Vishnu worship with tulsi and lamp and a day of reading or japa follow the common pattern, and the Padma Purana names it as the day for Vishnu as Padmanabha. Charity of food, cloth and umbrellas is traditional. Parana is the next morning inside the Dwadashi tithi, after Hari Vasara and before a fifth of the day has passed. Falling the day after Dussehra, it is often the quiet close of the Navratri season in a household.",
-    "rule": "Papankusha Ekadashi falls on Ashwin Shukla Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi.",
+    "rule": "Papankusha Ekadashi falls on Ashwin Shukla Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi, preferring the later day when the tithi covers that time on two days; when the following Dwadashi touches no sunrise, the fast stays on the day the Ekadashi began so that the parana falls inside the Dwadashi.",
     "conventionNote": "Ekadashi rule with Smarta and Vaishnava dates shown. Shukla paksha, so Purnimanta and Amanta agree.",
     "review": "draft"
   },
@@ -688,7 +688,7 @@
     "slug": "sharad-purnima",
     "name": "Sharad Purnima (Kojagari)",
     "what": "Sharad Purnima, or Kojagari Purnima, is the autumn full Moon on Ashwin Purnima, said to be the brightest of the year. Kheer is cooked and left in the moonlight through the night to be eaten in the morning; Lakshmi is worshipped at midnight by those who stay awake (ko jagarti, 'who is awake'), especially in Bengal, Odisha and Maharashtra, and Braj remembers Krishna's Maha Raas on this night. The month of Kartik bathing and the Kartik lamp begin the next morning. Many keep a fast until the Moon rises.",
-    "rule": "Sharad Purnima (Kojagari) falls on Ashwin Shukla Purnima (Purnimanta month name), on the day whose sunrise has that tithi.",
+    "rule": "Sharad Purnima (Kojagari) falls on Ashwin Shukla Purnima (Purnimanta month name), on the night that tithi covers midnight (nishita).",
     "conventionNote": "Nishita rule: the civil day whose midnight falls inside Purnima, since the Kojagari vigil is at midnight. Purnima is the same civil date in Purnimanta and Amanta and it opens Kartik in the Purnimanta count.",
     "review": "draft"
   },
@@ -715,7 +715,7 @@
     "slug": "rama-ekadashi",
     "name": "Rama Ekadashi",
     "what": "Rama Ekadashi is the dark-fortnight Ekadashi of Kartik, four days before Diwali, named for Rama as a name of Lakshmi. The grain fast, bath, Vishnu worship with tulsi and lamp and a day of reading or japa follow the common pattern; the Brahma Vaivarta Purana tells its story through king Muchukunda's daughter Chandrabhaga. It is the last Ekadashi of Chaturmas before Vishnu wakes on Dev Uthani. Parana is the next morning inside the Dwadashi tithi after Hari Vasara. Homes are already being cleaned and lit for Diwali, so the day is often kept simply with a lamp and fruit.",
-    "rule": "Rama Ekadashi falls on Kartik Krishna Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi.",
+    "rule": "Rama Ekadashi falls on Kartik Krishna Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi, preferring the later day when the tithi covers that time on two days; when the following Dwadashi touches no sunrise, the fast stays on the day the Ekadashi began so that the parana falls inside the Dwadashi.",
     "conventionNote": "Ekadashi rule with Smarta and Vaishnava dates. Krishna paksha: Kartik in Purnimanta is Ashwin in Amanta; the civil date is the same.",
     "review": "draft"
   },
@@ -760,7 +760,7 @@
     "slug": "bhai-dooj",
     "name": "Bhai Dooj",
     "what": "Bhai Dooj, or Yama Dwitiya and Bhau Beej, on Kartik Shukla Dwitiya closes the Diwali days. Sisters invite their brothers for a meal, apply tilak and aarti, offer sweets and dry coconut and receive gifts, in memory of Yama's visit to his sister Yamuna on this day; brothers and sisters bathe together in the Yamuna at Mathura's Vishram Ghat. The rite is done in the afternoon. In Bengal the same day is Bhai Phonta with a sandal tika on the forehead, and in Nepal it is Bhai Tika, the last day of Tihar.",
-    "rule": "Bhai Dooj falls on Kartik Shukla Dwitiya (Purnimanta month name), on the day that tithi covers the afternoon (aparahna).",
+    "rule": "Bhai Dooj falls on Kartik Shukla Dwitiya (Purnimanta month name), on the day that tithi covers the afternoon (aparahna), preferring the later day when the tithi covers that time on two days.",
     "conventionNote": "Aparahna rule with the later day preferred: the day on which Dwitiya covers sunrise plus seven tenths of the daylight, taking the second day when both do. Shukla paksha, so Purnimanta and Amanta agree.",
     "review": "draft"
   },
@@ -814,7 +814,7 @@
     "slug": "dev-uthani-ekadashi",
     "name": "Dev Uthani Ekadashi (Prabodhini)",
     "what": "Dev Uthani Ekadashi, or Prabodhini and Devutthana Ekadashi, on Kartik Shukla Ekadashi is the day Vishnu is said to wake after four months of sleep, closing Chaturmas. Beside the Ekadashi fast, an image of Vishnu is woken in the evening with bells, conch, lamps and the call 'utho Deva', a rangoli of his footprints is drawn from the door, and sugarcane, singhara and seasonal fruit are offered. Weddings, housewarmings and new ventures resume from this day, and Tulsi Vivah is kept this evening or the next. Maharashtra's Kartiki Ekadashi draws pilgrims to Pandharpur.",
-    "rule": "Dev Uthani Ekadashi (Prabodhini) falls on Kartik Shukla Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi.",
+    "rule": "Dev Uthani Ekadashi (Prabodhini) falls on Kartik Shukla Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi, preferring the later day when the tithi covers that time on two days; when the following Dwadashi touches no sunrise, the fast stays on the day the Ekadashi began so that the parana falls inside the Dwadashi.",
     "conventionNote": "Ekadashi rule with Smarta and Vaishnava dates. Shukla paksha, so Purnimanta and Amanta agree. Chaturmas began on Devshayani Ekadashi in Ashadha.",
     "review": "draft"
   },
@@ -841,7 +841,7 @@
     "slug": "karthigai-deepam",
     "name": "Karthigai Deepam",
     "what": "Karthigai Deepam is the Tamil festival of lamps on the day of Krittika (Karthigai) nakshatra in the solar month Karthigai, close to the full Moon. Every home lights rows of clay lamps (agal vilakku) at dusk on the doorstep, balcony and puja room, and offers pori (puffed rice) and appam. At Tiruvannamalai the great Mahadeepam is lit on top of Arunachala hill in a copper cauldron with tonnes of ghee, visible for miles, and the ten-day Brahmotsavam ends there. Kerala keeps the same night as Thrikkarthika for Bhagavathy with lamps.",
-    "rule": "Karthigai Deepam (observed in the south) is the day in the solar month of Vrishchika whose sunrise has Krittika nakshatra; when two days qualify, the one with more daylight under that nakshatra is taken.",
+    "rule": "Karthigai Deepam (observed in the south) is the day in the solar month of Vrishchika whose sunset falls in Krittika nakshatra (the lamps are lit at dusk); when no sunset falls in it, the day with more daylight under that nakshatra is taken.",
     "conventionNote": "Nakshatra rule in a solar month: the day in Karthigai (Sun in Vrishchika) whose daylight is mostly under Krittika, taking the passage nearest the full Moon if there are two. Listed under the South region. Also called Bharani Deepam the day before at Tiruvannamalai.",
     "review": "draft"
   },
@@ -850,7 +850,7 @@
     "slug": "kalabhairav-jayanti",
     "name": "Kalabhairav Jayanti",
     "what": "Kalabhairav Jayanti, or Bhairava Ashtami, on Margashirsha Krishna Ashtami marks the appearance of Shiva as Kala Bhairava, the keeper of time and of Kashi. The worship is done at night with lamps, sesame-oil, black cloth and offerings of mustard oil, urad dal and coconut; dogs, Bhairava's companions, are fed. The Kala Bhairava temple of Varanasi and Ujjain's Kal Bhairav temple hold all-night festivals, and the Bhairava Ashtakam of Shankara is recited. Many keep a fast through the day and a vigil through the night.",
-    "rule": "Kalabhairav Jayanti falls on Margashirsha Krishna Ashtami (Purnimanta month name), on the day whose sunrise has that tithi.",
+    "rule": "Kalabhairav Jayanti falls on Margashirsha Krishna Ashtami (Purnimanta month name), on the night that tithi covers midnight (nishita).",
     "conventionNote": "Nishita rule: the civil day whose midnight falls inside Ashtami. Krishna paksha: Margashirsha in Purnimanta is Kartik in Amanta; the civil date is the same.",
     "review": "draft"
   },
@@ -859,7 +859,7 @@
     "slug": "utpanna-ekadashi",
     "name": "Utpanna Ekadashi",
     "what": "Utpanna Ekadashi is the dark-fortnight Ekadashi of Margashirsha, remembered as the day the goddess Ekadashi herself appeared from Vishnu to overcome the demon Mura; those beginning the yearly Ekadashi vow traditionally start with this one. The grain fast, bath, Vishnu worship with tulsi and lamp and a day of reading or japa follow the common pattern; the Bhavishyottara Purana tells the story. Parana is the next morning inside the Dwadashi tithi after Hari Vasara has ended. Falling in the first cool weeks of winter, it is kept with warm gifts of blankets and sesame sweets.",
-    "rule": "Utpanna Ekadashi falls on Margashirsha Krishna Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi.",
+    "rule": "Utpanna Ekadashi falls on Margashirsha Krishna Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi, preferring the later day when the tithi covers that time on two days; when the following Dwadashi touches no sunrise, the fast stays on the day the Ekadashi began so that the parana falls inside the Dwadashi.",
     "conventionNote": "Ekadashi rule with Smarta and Vaishnava dates. Krishna paksha: Margashirsha in Purnimanta is Kartik in Amanta; the civil date is the same.",
     "review": "draft"
   },
@@ -877,7 +877,7 @@
     "slug": "gita-jayanti",
     "name": "Gita Jayanti (Mokshada Ekadashi)",
     "what": "Gita Jayanti on Margashirsha Shukla Ekadashi, the Mokshada Ekadashi, is the day Krishna spoke the Bhagavad Gita to Arjuna at Kurukshetra. Temples and homes read all eighteen chapters through the day, often in group recitation; Kurukshetra holds a week-long festival with a Gita yagna and deepdan on the Brahma Sarovar, and ISKCON temples run Gita exams and lectures. The Ekadashi fast is kept as usual, with a lamp offered to the Gita itself, and parana follows the next morning inside the Dwadashi after Hari Vasara.",
-    "rule": "Gita Jayanti (Mokshada Ekadashi) falls on Margashirsha Shukla Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi.",
+    "rule": "Gita Jayanti (Mokshada Ekadashi) falls on Margashirsha Shukla Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi, preferring the later day when the tithi covers that time on two days; when the following Dwadashi touches no sunrise, the fast stays on the day the Ekadashi began so that the parana falls inside the Dwadashi.",
     "conventionNote": "Ekadashi rule (Smarta sunrise tithi, later day when doubled, Vaishnava a day later when Dashami touches dawn). Shukla paksha, so Purnimanta and Amanta agree. The engine lists this one entry for both Gita Jayanti and Mokshada Ekadashi.",
     "review": "draft"
   },
@@ -895,7 +895,7 @@
     "slug": "saphala-ekadashi",
     "name": "Saphala Ekadashi",
     "what": "Saphala Ekadashi is the dark-fortnight Ekadashi of Pausha, the first Ekadashi of the civil year in most years. The grain fast, bath, Vishnu worship with tulsi, fruit and a lamp kept through the night, and a day of reading or japa follow the common pattern; the Brahmanda Purana tells its story through prince Lumpaka. Seasonal fruit such as coconut, pomegranate and amla is offered. Parana is the next morning inside the Dwadashi tithi after Hari Vasara has ended. Saphala means fruitful, and the day is remembered for gifts of winter fruit and warm clothing.",
-    "rule": "Saphala Ekadashi falls on Pausha Krishna Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi.",
+    "rule": "Saphala Ekadashi falls on Pausha Krishna Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi, preferring the later day when the tithi covers that time on two days; when the following Dwadashi touches no sunrise, the fast stays on the day the Ekadashi began so that the parana falls inside the Dwadashi.",
     "conventionNote": "Ekadashi rule with Smarta and Vaishnava dates. Krishna paksha: Pausha in Purnimanta is Margashirsha in Amanta; the civil date is the same.",
     "review": "draft"
   },
@@ -904,7 +904,7 @@
     "slug": "pausha-putrada-ekadashi",
     "name": "Pausha Putrada Ekadashi",
     "what": "Pausha Putrada Ekadashi is the bright-fortnight Ekadashi of Pausha, the second Putrada Ekadashi of the year after the one in Shravana, kept by couples hoping for a child and by anyone keeping the yearly round. The grain fast, bath, Vishnu worship with tulsi and lamp and a day of reading or japa follow the common pattern; the Bhavishya Purana tells its story through king Suketuman. Parana is the next morning inside the Dwadashi tithi, after Hari Vasara and before a fifth of the day has passed. In the south it is called Vaikuntha Ekadashi.",
-    "rule": "Pausha Putrada Ekadashi falls on Pausha Shukla Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi.",
+    "rule": "Pausha Putrada Ekadashi falls on Pausha Shukla Ekadashi (Purnimanta month name), on the day whose sunrise has that tithi, preferring the later day when the tithi covers that time on two days; when the following Dwadashi touches no sunrise, the fast stays on the day the Ekadashi began so that the parana falls inside the Dwadashi.",
     "conventionNote": "Ekadashi rule with Smarta and Vaishnava dates. Shukla paksha, so Purnimanta and Amanta agree; the Amanta month is also Pausha (Margazhi in Tamil, hence Vaikuntha Ekadashi at Srirangam).",
     "review": "draft"
   },

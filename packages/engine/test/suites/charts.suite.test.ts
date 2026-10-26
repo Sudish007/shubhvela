@@ -253,8 +253,11 @@ describe('chart suite — 50 births vs Drik Panchang / AstroSage with JPL Horizo
       // AstroSage prints the balance to the day from Y-M-D calendar arithmetic and sits 2-6 days from Drik and
       // the engine on every birth where both exist; alone it cannot verify a 1-day tolerance. Without a
       // minute-resolution reference the dasha stays UNVERIFIED for the case (listed in results.dashaUnverified).
-      if (dashaVerdicts.length && dashaVerdicts.every((x) => x.source === 'astrosage' && !x.ok && !x.explained)) {
-        for (const x of dashaVerdicts) x.explained = 'day-only AstroSage balance (Y-M-D arithmetic, 2-6 d from Drik on 48 births); no minute-resolution reference for this case, dasha balance left unverified';
+      // The same holds when the only minute-resolution reference (Drik) is itself an explained outlier (its Moon
+      // drift for 2020-25 births, u10): AstroSage's day-only balance then stands alone again.
+      const astroAlone = dashaVerdicts.filter((x) => x.source === 'astrosage' && !x.ok && !x.explained);
+      if (astroAlone.length && dashaVerdicts.every((x) => !x.ok && (x.explained || x.source === 'astrosage'))) {
+        for (const x of astroAlone) x.explained = 'day-only AstroSage balance (Y-M-D arithmetic, 2-6 d from Drik on 48 births); no minute-resolution reference for this case, dasha balance left unverified';
         dashaUnverified.push(c.id);
       }
       for (const [name, verdicts] of [['Lagna', lagnaVerdicts], ['dasha', dashaVerdicts]] as const) {

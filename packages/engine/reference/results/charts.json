@@ -11,7 +11,7 @@
     "lagnaDeg": 0.2494,
     "planetDeg": 0.0765,
     "nodeDeg": 0.00512,
-    "dashaBalanceDays:drikpanchang": 4.02139,
+    "dashaBalanceDays:drikpanchang": 4.0281,
     "dashaBalanceDays": 1,
     "lagnaDeg:astrosage": 0.03338,
     "dashaBalanceDays:astrosage": 6,
@@ -23,7 +23,7 @@
   "maxNodeDeg": 0.0051,
   "maxDashaBalanceDays": 1,
   "sources": {
-    "drikpanchang": 58,
+    "drikpanchang": 60,
     "astrosage": 60,
     "jpl-horizons": 60
   },
@@ -109,6 +109,7 @@
     "u04 astrosage Moon nakshatra-pada null-4 differs from engine and JPL 1-4",
     "u08 astrosage: the site's Moon implies a UTC offset of 60 min (tzdb 0 min); compared at the site's instant",
     "u08 astrosage Moon nakshatra-pada null-4 differs from engine and JPL 8-4",
+    "u10 drikpanchang dasha: first mahadasha (Sa) ends 2043-04-03T01:22:27 vs 2043-03-30T00:42 (4.03 days) > tolerance; explained: the site's Moon is 31.4\" from JPL (engine 2.6\"), which predicts a -4.54-day shift of the balance",
     "u10 astrosage dasha: first mahadasha (Sa) ends 2043-04-03T01:22:27 vs 2043-03-29 (5.00 days) > tolerance; explained: day-only AstroSage balance (Y-M-D arithmetic, 2-6 d from Drik on 48 births); no minute-resolution reference for this case, dasha balance left unverified"
   ],
   "dashaUnverified": [
@@ -158,7 +159,7 @@
       "tzdbOffsetMinutes": 0
     }
   ],
-  "generatedAt": "2026-10-25T02:09:23.756Z",
+  "generatedAt": "2026-10-26T01:48:11.491Z",
   "tolerances": {
     "lagnaDeg": 0.25,
     "planetDeg": 0.1,

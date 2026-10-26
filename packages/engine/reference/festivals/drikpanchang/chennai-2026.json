@@ -2,7 +2,7 @@
   "case": "chennai-2026",
   "source": "drikpanchang",
   "source_url": "https://www.drikpanchang.com/festivals/month/festivals-<month>.html?year=2026&geoname-id=1264527",
-  "fetched_at": "2026-10-25T02:04:01.274Z",
+  "fetched_at": "2026-10-25T23:25:09.029Z",
   "fetcher_version": "a04-1",
   "values": {
     "city": "chennai",
@@ -14,7 +14,7 @@
     "schoolShownByPage": [
       "amanta"
     ],
-    "complete": false,
+    "complete": true,
     "monthsFetched": [
       1,
       2,
@@ -24,9 +24,12 @@
       6,
       7,
       8,
-      9
+      9,
+      10,
+      11,
+      12
     ],
-    "eventCount": 512,
+    "eventCount": 720,
     "events": [
       {
         "name": "Rohini Vrat",
@@ -3611,12 +3614,1467 @@
         "text": "based on Solar calendar",
         "kind": "Hindu",
         "month": 9
+      },
+      {
+        "name": "Shashthi Shraddha",
+        "date": "2026-10-01",
+        "text": "Bhadrapada, Krishna Shashthi",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Rohini Vrat",
+        "date": "2026-10-01",
+        "text": "based on Jain calendar",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Saptami Shraddha",
+        "date": "2026-10-02",
+        "text": "Bhadrapada, Krishna Saptami",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Gandhi Jayanti",
+        "date": "2026-10-02",
+        "text": "fixed day in Gregorian calendar",
+        "kind": "Govt",
+        "month": 10
+      },
+      {
+        "name": "Ashtami Shraddha",
+        "date": "2026-10-03",
+        "text": "Bhadrapada, Krishna Ashtami",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Mahalakshmi Vrat Ends",
+        "date": "2026-10-03",
+        "text": "Bhadrapada, Krishna Ashtami",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Jivitputrika Vrat",
+        "date": "2026-10-03",
+        "text": "Bhadrapada, Krishna Ashtami",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Kalashtami",
+        "date": "2026-10-03",
+        "text": "Bhadrapada, Krishna Ashtami",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Masik Krishna Janmashtami",
+        "date": "2026-10-03",
+        "text": "Bhadrapada, Krishna Ashtami",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Navami Shraddha",
+        "date": "2026-10-04",
+        "text": "Bhadrapada, Krishna Navami",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Dashami Shraddha",
+        "date": "2026-10-05",
+        "text": "Bhadrapada, Krishna Dashami",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Ekadashi Shraddha",
+        "date": "2026-10-06",
+        "text": "Bhadrapada, Krishna Ekadashi",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Indira Ekadashi",
+        "date": "2026-10-06",
+        "text": "Bhadrapada, Krishna Ekadashi",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Krishna Kalki Dwadashi",
+        "date": "2026-10-07",
+        "text": "Bhadrapada, Krishna Dwadashi",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Dwadashi Shraddha",
+        "date": "2026-10-07",
+        "text": "Bhadrapada, Krishna Dwadashi",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Magha Shraddha",
+        "date": "2026-10-07",
+        "text": "Bhadrapada, Magha Nakshatra",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Trayodashi Shraddha",
+        "date": "2026-10-08",
+        "text": "Bhadrapada, Krishna Trayodashi",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Guru Pradosh Vrat",
+        "date": "2026-10-08",
+        "text": "Bhadrapada, Krishna Trayodashi",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Masik Shivaratri",
+        "date": "2026-10-08",
+        "text": "Bhadrapada, Krishna Chaturdashi",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Kali Yuga Diwas",
+        "date": "2026-10-08",
+        "text": "Bhadrapada, Krishna Trayodashi",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Chaturdashi Shraddha",
+        "date": "2026-10-09",
+        "text": "Bhadrapada, Krishna Chaturdashi",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Sarva Pitru Amavasya",
+        "date": "2026-10-10",
+        "text": "Bhadrapada, Krishna Amavasya",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Darsha Amavasya",
+        "date": "2026-10-10",
+        "text": "Bhadrapada, Krishna Amavasya",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Anvadhan",
+        "date": "2026-10-10",
+        "text": "Bhadrapada, Krishna Chaturdashi",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Bhadrapada Amavasya",
+        "date": "2026-10-10",
+        "text": "Bhadrapada, Krishna Amavasya",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Ashwina Begins *South",
+        "date": "2026-10-11",
+        "text": "Ashwina, Shukla Pratipada",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Maharaja Agrasen Jayanti",
+        "date": "2026-10-11",
+        "text": "Ashwina, Shukla Pratipada",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Navratri Begins",
+        "date": "2026-10-11",
+        "text": "Ashwina, Shukla Pratipada",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Ghatasthapana",
+        "date": "2026-10-11",
+        "text": "Ashwina, Shukla Pratipada",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Ishti",
+        "date": "2026-10-11",
+        "text": "Bhadrapada, Krishna Amavasya",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Chandra Darshana",
+        "date": "2026-10-12",
+        "text": "Ashwina, Shukla Pratipada",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Kapardisha Chaturthi",
+        "date": "2026-10-14",
+        "text": "Ashwina, Shukla Chaturthi",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Upang Lalita Vrat",
+        "date": "2026-10-15",
+        "text": "Ashwina, Shukla Panchami",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Saraswati Avahan",
+        "date": "2026-10-16",
+        "text": "Ashwina, Mula Nakshatra",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Bilva Nimantran",
+        "date": "2026-10-16",
+        "text": "Ashwina, Shukla Shashthi",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Kalparambha",
+        "date": "2026-10-16",
+        "text": "Ashwina, Shukla Shashthi",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Akal Bodhon",
+        "date": "2026-10-16",
+        "text": "Ashwina, Shukla Shashthi",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Skanda Sashti",
+        "date": "2026-10-16",
+        "text": "Ashwina, Shukla Shashthi",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Saraswati Puja",
+        "date": "2026-10-17",
+        "text": "Ashwina, Purva Ashadha Nakshatra",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Navpatrika Puja",
+        "date": "2026-10-17",
+        "text": "Ashwina, Shukla Saptami",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Tula Sankranti",
+        "date": "2026-10-17",
+        "text": "Kanya to Tula transit of Sun",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Ashwina Navapada Oli Begins",
+        "date": "2026-10-17",
+        "text": "based on Jain calendar",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Saraswati Balidan",
+        "date": "2026-10-18",
+        "text": "Ashwina, Uttara Ashadha Nakshatra",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Durga Ashtami",
+        "date": "2026-10-19",
+        "text": "Ashwina, Shukla Ashtami",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Sandhi Puja",
+        "date": "2026-10-19",
+        "text": "Ashwina, Shukla Ashtami",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Maha Navami",
+        "date": "2026-10-19",
+        "text": "Ashwina, Shukla Navami",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Saraswati Visarjan",
+        "date": "2026-10-19",
+        "text": "Ashwina, Shravana Nakshatra",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Masik Durgashtami",
+        "date": "2026-10-19",
+        "text": "Ashwina, Shukla Ashtami",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Ayudha Puja",
+        "date": "2026-10-20",
+        "text": "Ashwina, Shukla Navami",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Durga Balidan",
+        "date": "2026-10-20",
+        "text": "Ashwina, Shukla Navami",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Durga Visarjan",
+        "date": "2026-10-20",
+        "text": "Ashwina, Shukla Dashami",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Vijayadashami",
+        "date": "2026-10-20",
+        "text": "Ashwina, Shukla Dashami",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Dussehra",
+        "date": "2026-10-20",
+        "text": "Ashwina, Shukla Dashami",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Bengal Maha Navami",
+        "date": "2026-10-20",
+        "text": "Ashwina, Shukla Navami",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "South Saraswati Puja",
+        "date": "2026-10-20",
+        "text": "Ashwina, Shukla Navami",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Buddha Jayanti",
+        "date": "2026-10-20",
+        "text": "Ashwina, Shukla Dashami",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Aparajita Jayanti",
+        "date": "2026-10-20",
+        "text": "Ashwina, Shukla Dashami",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Daksha Savarni Manvadi",
+        "date": "2026-10-20",
+        "text": "Ashwina, Shukla Navami",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Bengal Vijayadashami",
+        "date": "2026-10-21",
+        "text": "Ashwina, Shukla Dashami",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Vidyarambham Day",
+        "date": "2026-10-21",
+        "text": "Ashwina, Shukla Dashami",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Madhvacharya Jayanti",
+        "date": "2026-10-21",
+        "text": "Ashwina, Shukla Dashami",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Mysore Dasara",
+        "date": "2026-10-21",
+        "text": "Ashwina, Shukla Dashami",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Kashi Bharat Milap",
+        "date": "2026-10-21",
+        "text": "next day of Dussehra",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Padmanabha Dwadashi",
+        "date": "2026-10-22",
+        "text": "Ashwina, Shukla Dwadashi",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Papankusha Ekadashi",
+        "date": "2026-10-22",
+        "text": "Ashwina, Shukla Ekadashi",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Shukra Pradosh Vrat",
+        "date": "2026-10-23",
+        "text": "Ashwina, Shukla Trayodashi",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Kojagara Puja",
+        "date": "2026-10-25",
+        "text": "Ashwina, Shukla Purnima",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Sharad Purnima",
+        "date": "2026-10-25",
+        "text": "Ashwina, Shukla Purnima",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Ashwina Purnima Vrat",
+        "date": "2026-10-25",
+        "text": "Ashwina, Shukla Purnima",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Anvadhan",
+        "date": "2026-10-25",
+        "text": "Ashwina, Shukla Chaturdashi",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Valmiki Jayanti",
+        "date": "2026-10-26",
+        "text": "Ashwina, Shukla Purnima",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Meerabai Jayanti",
+        "date": "2026-10-26",
+        "text": "Ashwina, Shukla Purnima",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Ashwina Navapada Oli Ends",
+        "date": "2026-10-26",
+        "text": "based on Jain calendar",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Ashwina Purnima",
+        "date": "2026-10-26",
+        "text": "Ashwina, Shukla Purnima",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Ishti",
+        "date": "2026-10-26",
+        "text": "Ashwina, Shukla Purnima",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Masik Karthigai",
+        "date": "2026-10-27",
+        "text": "based on Solar calendar",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Atla Tadde",
+        "date": "2026-10-28",
+        "text": "Ashwina, Krishna Tritiya",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Karwa Chauth",
+        "date": "2026-10-29",
+        "text": "Ashwina, Krishna Chaturthi",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Rohini Vrat",
+        "date": "2026-10-29",
+        "text": "based on Jain calendar",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Vakratunda Sankashti",
+        "date": "2026-10-29",
+        "text": "Ashwina, Krishna Chaturthi",
+        "kind": "Hindu",
+        "month": 10
+      },
+      {
+        "name": "Bhanu Saptami",
+        "date": "2026-11-01",
+        "text": "Ashwina, Krishna Saptami",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Ahoi Ashtami",
+        "date": "2026-11-01",
+        "text": "Ashwina, Krishna Ashtami",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Radha Kunda Snan",
+        "date": "2026-11-01",
+        "text": "Ashwina, Krishna Ashtami",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Kalashtami",
+        "date": "2026-11-01",
+        "text": "Ashwina, Krishna Ashtami",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Masik Krishna Janmashtami",
+        "date": "2026-11-01",
+        "text": "Ashwina, Krishna Ashtami",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Krishna Padmanabha Dwadashi",
+        "date": "2026-11-05",
+        "text": "Ashwina, Krishna Dwadashi",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Govatsa Dwadashi",
+        "date": "2026-11-05",
+        "text": "Ashwina, Krishna Dwadashi",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Rama Ekadashi",
+        "date": "2026-11-05",
+        "text": "Ashwina, Krishna Ekadashi",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Dhanteras",
+        "date": "2026-11-06",
+        "text": "Ashwina, Krishna Trayodashi",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Yama Deepam",
+        "date": "2026-11-06",
+        "text": "Ashwina, Krishna Trayodashi",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Yama Panchaka Begins",
+        "date": "2026-11-06",
+        "text": "",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Shukra Pradosh Vrat",
+        "date": "2026-11-06",
+        "text": "Ashwina, Krishna Trayodashi",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Kali Chaudas",
+        "date": "2026-11-07",
+        "text": "Ashwina, Krishna Chaturdashi",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Hanuman Puja",
+        "date": "2026-11-07",
+        "text": "Ashwina, Krishna Chaturdashi",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Masik Shivaratri",
+        "date": "2026-11-07",
+        "text": "Ashwina, Krishna Chaturdashi",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Lakshmi Puja",
+        "date": "2026-11-08",
+        "text": "Ashwina, Krishna Amavasya",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Narak Chaturdashi",
+        "date": "2026-11-08",
+        "text": "Ashwina, Krishna Chaturdashi",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Kedar Gauri Vrat",
+        "date": "2026-11-08",
+        "text": "Ashwina, Krishna Amavasya",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Tamil Deepavali",
+        "date": "2026-11-08",
+        "text": "Ashwina, Krishna Chaturdashi",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Diwali",
+        "date": "2026-11-08",
+        "text": "Ashwina, Krishna Amavasya",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Chopda Puja",
+        "date": "2026-11-08",
+        "text": "Ashwina, Krishna Amavasya",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Sharda Puja",
+        "date": "2026-11-08",
+        "text": "Ashwina, Krishna Amavasya",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Kali Puja",
+        "date": "2026-11-08",
+        "text": "Ashwina, Krishna Amavasya",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Deepamalika",
+        "date": "2026-11-08",
+        "text": "",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Kamala Jayanti",
+        "date": "2026-11-08",
+        "text": "Ashwina, Krishna Amavasya",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Darsha Amavasya",
+        "date": "2026-11-08",
+        "text": "Ashwina, Krishna Amavasya",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Anvadhan",
+        "date": "2026-11-09",
+        "text": "Ashwina, Krishna Chaturdashi",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Ashwina Amavasya",
+        "date": "2026-11-09",
+        "text": "Ashwina, Krishna Amavasya",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Kartika Begins *South",
+        "date": "2026-11-10",
+        "text": "Kartika, Shukla Pratipada",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Govardhan Puja",
+        "date": "2026-11-10",
+        "text": "Kartika, Shukla Pratipada",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Annakut",
+        "date": "2026-11-10",
+        "text": "Kartika, Shukla Pratipada",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Bali Pratipada",
+        "date": "2026-11-10",
+        "text": "Kartika, Shukla Pratipada",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Dyuta Krida",
+        "date": "2026-11-10",
+        "text": "Kartika, Shukla Pratipada",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Gujarati New Year",
+        "date": "2026-11-10",
+        "text": "Kartika, Shukla Pratipada",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Ishti",
+        "date": "2026-11-10",
+        "text": "Ashwina, Krishna Amavasya",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Chandra Darshana",
+        "date": "2026-11-10",
+        "text": "Kartika, Shukla Pratipada",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Bhaiya Dooj",
+        "date": "2026-11-11",
+        "text": "Kartika, Shukla Dwitiya",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Yama Dwitiya",
+        "date": "2026-11-11",
+        "text": "Kartika, Shukla Dwitiya",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Chitragupta Puja",
+        "date": "2026-11-11",
+        "text": "Kartika, Shukla Dwitiya",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Nagula Chavithi",
+        "date": "2026-11-13",
+        "text": "Kartika, Shukla Chaturthi",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Labh Chaturthi",
+        "date": "2026-11-13",
+        "text": "Kartika, Shukla Chaturthi",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Labh Panchami",
+        "date": "2026-11-14",
+        "text": "Kartika, Shukla Panchami",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Nehru Jayanti",
+        "date": "2026-11-14",
+        "text": "fixed day in Gregorian calendar",
+        "kind": "Govt",
+        "month": 11
+      },
+      {
+        "name": "Children's Day",
+        "date": "2026-11-14",
+        "text": "fixed day in Gregorian calendar",
+        "kind": "Modern",
+        "month": 11
+      },
+      {
+        "name": "Soora Samharam",
+        "date": "2026-11-15",
+        "text": "Kartika, Shukla Shashthi",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Chhath Puja",
+        "date": "2026-11-15",
+        "text": "Kartika, Shukla Shashthi",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Skanda Sashti",
+        "date": "2026-11-15",
+        "text": "Kartika, Shukla Shashthi",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Jalaram Bapa Jayanti",
+        "date": "2026-11-16",
+        "text": "Kartika, Shukla Saptami",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Vrishchika Sankranti",
+        "date": "2026-11-16",
+        "text": "Tula to Vrishchika transit of Sun",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Kartika Ashtahnika Begins",
+        "date": "2026-11-16",
+        "text": "based on Jain calendar",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Gopashtami",
+        "date": "2026-11-17",
+        "text": "Kartika, Shukla Ashtami",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Mandala Pooja Begins",
+        "date": "2026-11-17",
+        "text": "based on Malayalam calendar",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Masik Durgashtami",
+        "date": "2026-11-17",
+        "text": "Kartika, Shukla Ashtami",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Akshaya Navami",
+        "date": "2026-11-18",
+        "text": "Kartika, Shukla Navami",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Jagaddhatri Puja",
+        "date": "2026-11-18",
+        "text": "Kartika, Shukla Navami",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Sata Yuga Diwas",
+        "date": "2026-11-18",
+        "text": "Kartika, Shukla Navami",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Kansa Vadh",
+        "date": "2026-11-20",
+        "text": "Kartika, Shukla Dashami",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Bhishma Panchak Begins",
+        "date": "2026-11-20",
+        "text": "Kartika, Shukla Ekadashi",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Devutthana Ekadashi",
+        "date": "2026-11-20",
+        "text": "Kartika, Shukla Ekadashi",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Yogeshwara Dwadashi",
+        "date": "2026-11-21",
+        "text": "Kartika, Shukla Dwadashi",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Tulasi Vivah",
+        "date": "2026-11-21",
+        "text": "Kartika, Shukla Dwadashi",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Guruvayur Ekadashi",
+        "date": "2026-11-21",
+        "text": "based on Solar calendar",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Gauna Devutthana Ekadashi",
+        "date": "2026-11-21",
+        "text": "Kartika, Shukla Ekadashi",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Vaishnava Devutthana Ekadashi",
+        "date": "2026-11-21",
+        "text": "Kartika, Shukla Ekadashi",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Tamasa Manvadi",
+        "date": "2026-11-21",
+        "text": "Kartika, Shukla Dwadashi",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Vishweshwara Vrat",
+        "date": "2026-11-22",
+        "text": "Kartika, Shukla Chaturdashi",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Ravi Pradosh Vrat",
+        "date": "2026-11-22",
+        "text": "Kartika, Shukla Trayodashi",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Vaikuntha Chaturdashi",
+        "date": "2026-11-23",
+        "text": "Kartika, Shukla Chaturdashi",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Manikarnika Snan",
+        "date": "2026-11-23",
+        "text": "Kartika, Shukla Chaturdashi",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Kartika Chaumasi Chaudas",
+        "date": "2026-11-23",
+        "text": "based on Jain calendar",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Dev Diwali",
+        "date": "2026-11-24",
+        "text": "Kartika, Shukla Purnima",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Bhishma Panchak Ends",
+        "date": "2026-11-24",
+        "text": "Kartika, Shukla Purnima",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Guru Nanak Jayanti",
+        "date": "2026-11-24",
+        "text": "Kartika, Shukla Purnima",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Pushkara Snana",
+        "date": "2026-11-24",
+        "text": "Kartika, Shukla Purnima",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Karthigai Deepam",
+        "date": "2026-11-24",
+        "text": "based on Solar calendar",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Kartika Ashtahnika Ends",
+        "date": "2026-11-24",
+        "text": "based on Jain calendar",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Kartika Ratha Yatra",
+        "date": "2026-11-24",
+        "text": "based on Jain calendar",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Kartika Purnima Vrat",
+        "date": "2026-11-24",
+        "text": "Kartika, Shukla Purnima",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Kartika Purnima",
+        "date": "2026-11-24",
+        "text": "Kartika, Shukla Purnima",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Anvadhan",
+        "date": "2026-11-24",
+        "text": "Kartika, Shukla Chaturdashi",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Uttama Manvadi",
+        "date": "2026-11-24",
+        "text": "Kartika, Shukla Purnima",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Rohini Vrat",
+        "date": "2026-11-25",
+        "text": "based on Jain calendar",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Ishti",
+        "date": "2026-11-25",
+        "text": "Kartika, Shukla Purnima",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Ganadhipa Sankashti",
+        "date": "2026-11-27",
+        "text": "Kartika, Krishna Chaturthi",
+        "kind": "Hindu",
+        "month": 11
+      },
+      {
+        "name": "Kalabhairav Jayanti",
+        "date": "2026-12-01",
+        "text": "Kartika, Krishna Ashtami",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "World AIDS Day",
+        "date": "2026-12-01",
+        "text": "fixed day in Gregorian calendar",
+        "kind": "Modern",
+        "month": 12
+      },
+      {
+        "name": "Kalashtami",
+        "date": "2026-12-01",
+        "text": "Kartika, Krishna Ashtami",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Masik Krishna Janmashtami",
+        "date": "2026-12-01",
+        "text": "Kartika, Krishna Ashtami",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Utpanna Ekadashi",
+        "date": "2026-12-04",
+        "text": "Kartika, Krishna Ekadashi",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Krishna Yogeshwara Dwadashi",
+        "date": "2026-12-05",
+        "text": "Kartika, Krishna Dwadashi",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Ravi Pradosh Vrat",
+        "date": "2026-12-06",
+        "text": "Kartika, Krishna Trayodashi",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Bala Jayanti",
+        "date": "2026-12-07",
+        "text": "Kartika, Krishna Chaturdashi",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Masik Shivaratri",
+        "date": "2026-12-07",
+        "text": "Kartika, Krishna Chaturdashi",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Darsha Amavasya",
+        "date": "2026-12-08",
+        "text": "Kartika, Krishna Amavasya",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Anvadhan",
+        "date": "2026-12-08",
+        "text": "Kartika, Krishna Chaturdashi",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Kartika Amavasya",
+        "date": "2026-12-08",
+        "text": "Kartika, Krishna Amavasya",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Ishti",
+        "date": "2026-12-09",
+        "text": "Kartika, Krishna Amavasya",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Margashirsha Begins *South",
+        "date": "2026-12-10",
+        "text": "Margashirsha, Shukla Pratipada",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Chandra Darshana",
+        "date": "2026-12-10",
+        "text": "Margashirsha, Shukla Pratipada",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Krichchhra Chaturthi",
+        "date": "2026-12-13",
+        "text": "Margashirsha, Shukla Chaturthi",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Vivah Panchami",
+        "date": "2026-12-14",
+        "text": "Margashirsha, Shukla Panchami",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Naga Panchami *Telugu",
+        "date": "2026-12-14",
+        "text": "Margashirsha, Shukla Panchami",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Subrahmanya Sashti",
+        "date": "2026-12-15",
+        "text": "Margashirsha, Shukla Shashthi",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Champa Shashthi",
+        "date": "2026-12-15",
+        "text": "Margashirsha, Shukla Shashthi",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Skanda Sashti",
+        "date": "2026-12-15",
+        "text": "Margashirsha, Shukla Shashthi",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Dhanu Sankranti",
+        "date": "2026-12-16",
+        "text": "Vrishchika to Dhanu transit of Sun",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Masik Durgashtami",
+        "date": "2026-12-17",
+        "text": "Margashirsha, Shukla Ashtami",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Gita Jayanti",
+        "date": "2026-12-20",
+        "text": "Margashirsha, Shukla Ekadashi",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Vaikuntha Ekadashi",
+        "date": "2026-12-20",
+        "text": "based on Solar calendar",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Mokshada Ekadashi",
+        "date": "2026-12-20",
+        "text": "Margashirsha, Shukla Ekadashi",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Matsya Dwadashi",
+        "date": "2026-12-21",
+        "text": "Margashirsha, Shukla Dwadashi",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Masik Karthigai",
+        "date": "2026-12-21",
+        "text": "based on Solar calendar",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Soma Pradosh Vrat",
+        "date": "2026-12-21",
+        "text": "Margashirsha, Shukla Trayodashi",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Hanuman Jayanti *Kannada",
+        "date": "2026-12-22",
+        "text": "Margashirsha, Shukla Trayodashi",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Shortest Day of Year",
+        "date": "2026-12-22",
+        "text": "Astronomy Event",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Dattatreya Jayanti",
+        "date": "2026-12-23",
+        "text": "Margashirsha, Shukla Purnima",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Rohini Vrat",
+        "date": "2026-12-23",
+        "text": "based on Jain calendar",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Margashirsha Purnima Vrat",
+        "date": "2026-12-23",
+        "text": "Margashirsha, Shukla Purnima",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Anvadhan",
+        "date": "2026-12-23",
+        "text": "Margashirsha, Shukla Chaturdashi",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Annapurna Jayanti",
+        "date": "2026-12-24",
+        "text": "Margashirsha, Shukla Purnima",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Bhairavi Jayanti",
+        "date": "2026-12-24",
+        "text": "Margashirsha, Shukla Purnima",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Arudra Darshan",
+        "date": "2026-12-24",
+        "text": "based on Tamil calendar",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Margashirsha Purnima",
+        "date": "2026-12-24",
+        "text": "Margashirsha, Shukla Purnima",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Ishti",
+        "date": "2026-12-24",
+        "text": "Margashirsha, Shukla Purnima",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Akhuratha Sankashti",
+        "date": "2026-12-26",
+        "text": "Margashirsha, Krishna Chaturthi",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Mandala Pooja",
+        "date": "2026-12-27",
+        "text": "based on Malayalam calendar",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Kalashtami",
+        "date": "2026-12-30",
+        "text": "Margashirsha, Krishna Ashtami",
+        "kind": "Hindu",
+        "month": 12
+      },
+      {
+        "name": "Masik Krishna Janmashtami",
+        "date": "2026-12-30",
+        "text": "Margashirsha, Krishna Ashtami",
+        "kind": "Hindu",
+        "month": 12
       }
     ]
   },
   "notes": [
-    "Every event of the 9 fetched (of twelve) monthly pages (Hindu festivals, vrats, sankrantis, regional and non-Hindu holidays as listed); the tithi/basis line is kept as printed. School cookie drik-school-name=amanta.",
-    "Dates are the Gregorian dates printed by Drik for the chosen city; the suite maps slugs to event names with reference/festivals/name-map.json.",
-    "PARTIAL: months 1, 2, 3, 4, 5, 6, 7, 8, 9 only (the site served a reCAPTCHA); rerun reference/fetch/drik-festivals.mjs --city chennai --year 2026 to complete it."
+    "Every event of the twelve monthly pages (Hindu festivals, vrats, sankrantis, regional and non-Hindu holidays as listed); the tithi/basis line is kept as printed. School cookie drik-school-name=amanta.",
+    "Dates are the Gregorian dates printed by Drik for the chosen city; the suite maps slugs to event names with reference/festivals/name-map.json."
   ]
 }

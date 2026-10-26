@@ -1,18 +1,18 @@
 {
   "suite": "festivals",
   "required": 612,
-  "compared": 359,
-  "passed": 359,
+  "compared": 600,
+  "passed": 600,
   "failed": 0,
-  "skipped": 253,
+  "skipped": 12,
   "maxDeviation": {
     "dateDays": 0
   },
   "sources": {
-    "drikpanchang": 359
+    "drikpanchang": 600
   },
   "failures": [],
-  "exactDates": 352,
+  "exactDates": 592,
   "documentedDifferences": [
     "holika-dahan@delhi-2026: engine 2026-03-02 vs Drik 2026-03-03",
     "holi@delhi-2026: engine 2026-03-03 vs Drik 2026-03-04",
@@ -20,62 +20,23 @@
     "sheetala-ashtami@delhi-2028: engine 2028-03-18 vs Drik 2028-03-17",
     "holika-dahan@chennai-2026: engine 2026-03-02 vs Drik 2026-03-03",
     "holi@chennai-2026: engine 2026-03-03 vs Drik 2026-03-04",
-    "ganga-dussehra@chennai-2026: engine 2026-06-24 vs Drik 2026-05-25"
+    "ganga-dussehra@chennai-2026: engine 2026-06-24 vs Drik 2026-05-25",
+    "sheetala-ashtami@chennai-2028: engine 2028-03-18 vs Drik 2028-03-17"
   ],
   "unmapped": [
     "hanuman-jayanti-south@delhi-2026",
     "jagannath-snana-purnima@delhi-2026",
-    "shravan-somvar@delhi-2026",
-    "hal-shashthi@delhi-2026",
     "saphala-ekadashi@delhi-2026",
     "pausha-putrada-ekadashi@delhi-2026",
     "jagannath-snana-purnima@delhi-2027",
-    "shravan-somvar@delhi-2027",
-    "hal-shashthi@delhi-2027",
     "jagannath-snana-purnima@delhi-2028",
-    "shravan-somvar@delhi-2028",
-    "hal-shashthi@delhi-2028",
     "hanuman-jayanti-south@chennai-2026",
     "jagannath-snana-purnima@chennai-2026",
-    "shravan-somvar@chennai-2026",
-    "hal-shashthi@chennai-2026",
-    "jivitputrika@chennai-2026",
-    "indira-ekadashi@chennai-2026",
-    "sarva-pitru-amavasya@chennai-2026",
-    "sharad-navratri@chennai-2026",
-    "durga-ashtami@chennai-2026",
-    "maha-navami@chennai-2026",
-    "dussehra@chennai-2026",
-    "papankusha-ekadashi@chennai-2026",
-    "sharad-purnima@chennai-2026",
-    "karwa-chauth@chennai-2026",
-    "ahoi-ashtami@chennai-2026",
-    "rama-ekadashi@chennai-2026",
-    "dhanteras@chennai-2026",
-    "naraka-chaturdashi@chennai-2026",
-    "diwali@chennai-2026",
-    "govardhan-puja@chennai-2026",
-    "bhai-dooj@chennai-2026",
-    "labh-panchami@chennai-2026",
-    "chhath-puja@chennai-2026",
-    "skanda-shashthi@chennai-2026",
-    "gopashtami@chennai-2026",
-    "akshaya-navami@chennai-2026",
-    "dev-uthani-ekadashi@chennai-2026",
-    "tulsi-vivah@chennai-2026",
-    "kartik-purnima@chennai-2026",
-    "karthigai-deepam@chennai-2026",
-    "kalabhairav-jayanti@chennai-2026",
-    "utpanna-ekadashi@chennai-2026",
-    "vivah-panchami@chennai-2026",
-    "gita-jayanti@chennai-2026",
-    "dattatreya-jayanti@chennai-2026",
     "saphala-ekadashi@chennai-2026",
-    "pausha-putrada-ekadashi@chennai-2026"
+    "pausha-putrada-ekadashi@chennai-2026",
+    "jagannath-snana-purnima@chennai-2027",
+    "jagannath-snana-purnima@chennai-2028"
   ],
-  "missingPages": [
-    "chennai-2027",
-    "chennai-2028"
-  ],
-  "generatedAt": "2026-10-25T02:09:29.545Z"
+  "missingPages": [],
+  "generatedAt": "2026-10-26T01:48:19.054Z"
 }

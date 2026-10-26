@@ -77,7 +77,9 @@ describe('festival suite — every F23 festival 2026-2028 vs Drik Panchang (Delh
       const engineAll = [...festivals(year, city.tradition, city.region, geo, city.tz), ...festivals(year, city.tradition, city.region === 'north' ? 'south' : 'north', geo, city.tz)];
       for (const slug of cases.slugs) {
         const { dates: drik, matched } = drikDates(ref.values.events, slug);
-        const engineDates = [...new Set(engineAll.filter((f) => f.slug === slug && (f.day === undefined || f.day === 1)).map((f) => f.date))].sort();
+        // Multi-day SPANS (Navratri, Pitru Paksha: `end` set) compare their first day; weekday-in-month series
+        // (Shravan Somvar: `day` = nth Monday, no `end`) compare every occurrence against Drik's First..Fifth entries.
+        const engineDates = [...new Set(engineAll.filter((f) => f.slug === slug && (f.end === undefined || f.day === 1)).map((f) => f.date))].sort();
         if (!drik.length) {
           unmapped.push(`${slug}@${cityId}-${year}`);
           continue;

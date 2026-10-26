@@ -39,6 +39,7 @@ const TIMING: Record<string, string> = {
   pradosh: 'on the day that tithi covers the evening (pradosh kala, the first tenth of the night)',
   nishita: 'on the night that tithi covers midnight (nishita)',
   moonrise: 'on the day that tithi covers moonrise',
+  purvahna: 'on the day that tithi covers the forenoon (purvahna)',
 };
 
 function tithiName(paksha: string, tithi: number): string {
@@ -58,6 +59,9 @@ function sentence(row: FestivalRow, bySlug: Map<string, FestivalRow>): { text: s
       const tithi = tithiName(r.paksha as string, r.tithi as number);
       let text = `${name}${region} falls on ${month} ${paksha} ${tithi} (Purnimanta month name), ${TIMING[r.timing as string]}`;
       if (r.prefer === 'last') text += ', preferring the later day when the tithi covers that time on two days';
+      if (r.prefer === 'vyapti') text += ', taking the day on which the tithi covers more of that period when it touches it on two days';
+      if (typeof r.minMuhurtas === 'number') text += `, provided it runs at least ${r.minMuhurtas} muhurtas after that sunrise (else the day before)`;
+      if (r.ekadashiVrata) text += '; when the following Dwadashi touches no sunrise, the fast stays on the day the Ekadashi began so that the parana falls inside the Dwadashi';
       if (r.bhadraFree) text += ', and the observance moves past any Bhadra (Vishti karana) that overlaps the window';
       if (typeof r.nakshatraPreference === 'number') text += `, with a day that also has ${NAKSHATRAS[r.nakshatraPreference]} nakshatra preferred`;
       return { text: text + '.', source: 'Dharmasindhu', params: ['date', 'month', 'paksha', 'tithi', 'window'] };
@@ -77,6 +81,13 @@ function sentence(row: FestivalRow, bySlug: Map<string, FestivalRow>): { text: s
       return { text: `${name}${region} is ${rel} ${from}.`, source: 'convention', params: ['date'] };
     }
     case 'nakshatra': {
+      if (r.at === 'sunset') {
+        return {
+          text: `${name}${region} is the day in the solar month of ${SIGNS[r.solarSign as number]} whose sunset falls in ${NAKSHATRAS[r.nakshatra as number]} nakshatra (the lamps are lit at dusk); when no sunset falls in it, the day with more daylight under that nakshatra is taken.`,
+          source: 'convention',
+          params: ['date', 'nakshatra', 'span'],
+        };
+      }
       return {
         text: `${name}${region} is the day in the solar month of ${SIGNS[r.solarSign as number]} whose sunrise has ${NAKSHATRAS[r.nakshatra as number]} nakshatra; when two days qualify, the one with more daylight under that nakshatra is taken.`,
         source: 'convention',

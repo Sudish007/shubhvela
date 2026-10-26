@@ -46,7 +46,10 @@ async function fillPerson(page, prefix, c, label) {
     await page.fill(id('city-search'), '');
     await page.click(id('city-search'));
     await page.type(id('city-search'), c.place, { delay: 70 });
-    await page.waitForSelector('.ui-autocomplete li', { timeout: 25000 });
+    // The page holds one jQuery-UI autocomplete list per person; the other person's (hidden) list keeps its old
+    // <li>s, so wait for ANY visible item instead of the first attached one (Phase A fixer: the first run timed out
+    // on "resolved to 9 elements, first one not visible").
+    await page.waitForFunction(() => [...document.querySelectorAll('.ui-autocomplete li')].some((e) => e.offsetParent !== null), null, { timeout: 25000 });
     await page.waitForTimeout(600);
     items = await page.$$eval('.ui-autocomplete li', (els) => els.filter((e) => e.offsetParent !== null).map((e) => e.innerText.replace(/\s+/g, ' ').trim()));
     const visible = await page.$$('.ui-autocomplete li');

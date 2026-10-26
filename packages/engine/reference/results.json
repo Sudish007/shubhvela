@@ -1,5 +1,6 @@
 {
   "description": "Measured deviations of @shubhvela/engine against the committed reference data (spec section 6 release gate). Written by the vitest suites under test/suites; `charts.maxPlanetDeg` is injected into the web kundli footer (design-review N13).",
+  "generatedAt": "2026-10-26T01:48:19.067Z",
   "charts": {
     "required": 60,
     "compared": 60,
@@ -12,7 +13,7 @@
       "lagnaDeg": 0.2494,
       "planetDeg": 0.0765,
       "nodeDeg": 0.00512,
-      "dashaBalanceDays:drikpanchang": 4.02139,
+      "dashaBalanceDays:drikpanchang": 4.0281,
       "dashaBalanceDays": 1,
       "lagnaDeg:astrosage": 0.03338,
       "dashaBalanceDays:astrosage": 6,
@@ -24,7 +25,7 @@
     "maxNodeDeg": 0.0051,
     "maxDashaBalanceDays": 1,
     "sources": {
-      "drikpanchang": 58,
+      "drikpanchang": 60,
       "astrosage": 60,
       "jpl-horizons": 60
     },
@@ -110,6 +111,7 @@
       "u04 astrosage Moon nakshatra-pada null-4 differs from engine and JPL 1-4",
       "u08 astrosage: the site's Moon implies a UTC offset of 60 min (tzdb 0 min); compared at the site's instant",
       "u08 astrosage Moon nakshatra-pada null-4 differs from engine and JPL 8-4",
+      "u10 drikpanchang dasha: first mahadasha (Sa) ends 2043-04-03T01:22:27 vs 2043-03-30T00:42 (4.03 days) > tolerance; explained: the site's Moon is 31.4\" from JPL (engine 2.6\"), which predicts a -4.54-day shift of the balance",
       "u10 astrosage dasha: first mahadasha (Sa) ends 2043-04-03T01:22:27 vs 2043-03-29 (5.00 days) > tolerance; explained: day-only AstroSage balance (Y-M-D arithmetic, 2-6 d from Drik on 48 births); no minute-resolution reference for this case, dasha balance left unverified"
     ],
     "dashaUnverified": [
@@ -159,7 +161,6 @@
         "tzdbOffsetMinutes": 0
       }
     ],
-    "generatedAt": "2026-10-25T02:09:23.756Z",
     "tolerances": {
       "lagnaDeg": 0.25,
       "planetDeg": 0.1,
@@ -167,22 +168,23 @@
       "moonNakshatraPada": "exact",
       "dashaBalanceDays": 1
     },
-    "missingWeb": []
+    "missingWeb": [],
+    "generatedAt": "2026-10-26T01:48:11.491Z"
   },
   "festivals": {
     "required": 612,
-    "compared": 359,
-    "passed": 359,
+    "compared": 600,
+    "passed": 600,
     "failed": 0,
-    "skipped": 253,
+    "skipped": 12,
     "maxDeviation": {
       "dateDays": 0
     },
     "sources": {
-      "drikpanchang": 359
+      "drikpanchang": 600
     },
     "failures": [],
-    "exactDates": 352,
+    "exactDates": 592,
     "documentedDifferences": [
       "holika-dahan@delhi-2026: engine 2026-03-02 vs Drik 2026-03-03",
       "holi@delhi-2026: engine 2026-03-03 vs Drik 2026-03-04",
@@ -190,64 +192,25 @@
       "sheetala-ashtami@delhi-2028: engine 2028-03-18 vs Drik 2028-03-17",
       "holika-dahan@chennai-2026: engine 2026-03-02 vs Drik 2026-03-03",
       "holi@chennai-2026: engine 2026-03-03 vs Drik 2026-03-04",
-      "ganga-dussehra@chennai-2026: engine 2026-06-24 vs Drik 2026-05-25"
+      "ganga-dussehra@chennai-2026: engine 2026-06-24 vs Drik 2026-05-25",
+      "sheetala-ashtami@chennai-2028: engine 2028-03-18 vs Drik 2028-03-17"
     ],
     "unmapped": [
       "hanuman-jayanti-south@delhi-2026",
       "jagannath-snana-purnima@delhi-2026",
-      "shravan-somvar@delhi-2026",
-      "hal-shashthi@delhi-2026",
       "saphala-ekadashi@delhi-2026",
       "pausha-putrada-ekadashi@delhi-2026",
       "jagannath-snana-purnima@delhi-2027",
-      "shravan-somvar@delhi-2027",
-      "hal-shashthi@delhi-2027",
       "jagannath-snana-purnima@delhi-2028",
-      "shravan-somvar@delhi-2028",
-      "hal-shashthi@delhi-2028",
       "hanuman-jayanti-south@chennai-2026",
       "jagannath-snana-purnima@chennai-2026",
-      "shravan-somvar@chennai-2026",
-      "hal-shashthi@chennai-2026",
-      "jivitputrika@chennai-2026",
-      "indira-ekadashi@chennai-2026",
-      "sarva-pitru-amavasya@chennai-2026",
-      "sharad-navratri@chennai-2026",
-      "durga-ashtami@chennai-2026",
-      "maha-navami@chennai-2026",
-      "dussehra@chennai-2026",
-      "papankusha-ekadashi@chennai-2026",
-      "sharad-purnima@chennai-2026",
-      "karwa-chauth@chennai-2026",
-      "ahoi-ashtami@chennai-2026",
-      "rama-ekadashi@chennai-2026",
-      "dhanteras@chennai-2026",
-      "naraka-chaturdashi@chennai-2026",
-      "diwali@chennai-2026",
-      "govardhan-puja@chennai-2026",
-      "bhai-dooj@chennai-2026",
-      "labh-panchami@chennai-2026",
-      "chhath-puja@chennai-2026",
-      "skanda-shashthi@chennai-2026",
-      "gopashtami@chennai-2026",
-      "akshaya-navami@chennai-2026",
-      "dev-uthani-ekadashi@chennai-2026",
-      "tulsi-vivah@chennai-2026",
-      "kartik-purnima@chennai-2026",
-      "karthigai-deepam@chennai-2026",
-      "kalabhairav-jayanti@chennai-2026",
-      "utpanna-ekadashi@chennai-2026",
-      "vivah-panchami@chennai-2026",
-      "gita-jayanti@chennai-2026",
-      "dattatreya-jayanti@chennai-2026",
       "saphala-ekadashi@chennai-2026",
-      "pausha-putrada-ekadashi@chennai-2026"
+      "pausha-putrada-ekadashi@chennai-2026",
+      "jagannath-snana-purnima@chennai-2027",
+      "jagannath-snana-purnima@chennai-2028"
     ],
-    "missingPages": [
-      "chennai-2027",
-      "chennai-2028"
-    ],
-    "generatedAt": "2026-10-25T02:09:29.545Z"
+    "missingPages": [],
+    "generatedAt": "2026-10-26T01:48:19.054Z"
   },
   "matching": {
     "required": 20,
@@ -316,7 +279,6 @@
       "drikpanchang": 150
     },
     "failures": [],
-    "generatedAt": "2026-10-25T02:09:26.554Z",
     "tolerances": {
       "sunriseMin": 1,
       "sunsetMin": 1,
@@ -329,7 +291,8 @@
       "extraSegmentsMin": 2,
       "ayanamsaDeg": 0.01
     },
-    "missing": []
+    "missing": [],
+    "generatedAt": "2026-10-26T01:48:16.790Z"
   },
   "tz": {
     "required": 12,
@@ -345,7 +308,7 @@
       "reference-site-offsets": 77
     },
     "failures": [],
-    "generatedAt": "2026-10-25T02:09:21.853Z",
-    "tzdb": "2026e"
+    "tzdb": "2026e",
+    "generatedAt": "2026-10-26T01:48:11.442Z"
   }
 }

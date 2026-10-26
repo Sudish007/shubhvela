@@ -44,7 +44,8 @@ export type FestivalRuleSpec =
   /** dayRule: sunset = next day when the sankranti is after sunset; sunrise = next day when it is after sunrise (Malayalam Vishu); same-day = the civil date of the sankranti (Baisakhi). */
   | { kind: 'solar'; sign: number; dayRule: 'sunset' | 'sunrise' | 'same-day' }
   | { kind: 'offset'; from: string; days: number }
-  | { kind: 'nakshatra'; solarSign: number; nakshatra: number }
+  /** at: 'sunset' = the day whose sunset falls inside the nakshatra (Karthigai Deepam lamps at dusk), else daylight coverage. */
+  | { kind: 'nakshatra'; solarSign: number; nakshatra: number; at?: 'sunset' }
   | { kind: 'weekday-in-month'; month: number; weekday: number }
   | { kind: 'weekday-before'; month: number; paksha: Paksha; tithi: number; weekday: number }
   | { kind: 'span'; month: number; paksha: Paksha; fromTithi: number; toTithi: number }
@@ -321,12 +322,21 @@ function nakshatraRule(rule: FestivalRule, spec: Extract<FestivalRuleSpec, { kin
       const nearestFull = hits.reduce((a, b) => (b.fullness < a.fullness ? b : a));
       // Same passage = same start instant (bisected from different brackets, so compare within an hour).
       const samePassage = hits.filter((h) => Math.abs(h.span.start - nearestFull.span.start) < 3_600_000);
-      const best = samePassage.reduce((a, b) => (b.coverage > a.coverage ? b : a));
+      // Karthigai Deepam (`at: 'sunset'`): the lamps are lit at dusk, so the day whose SUNSET is inside Krittika wins
+      // even when the nakshatra began minutes before it (Drik Chennai 2027-12-11: Krittika 17:38 -> sunset 17:43,
+      // while Delhi's sunset 17:24 precedes it and Drik prints 12-12 there). No such day -> daylight coverage.
+      const atSunset = spec.at === 'sunset'
+        ? samePassage.find((h) => {
+            const f = dayFrame(h.date, ctx.zone, ctx.geo);
+            return !!f && f.sunset >= h.span.start && f.sunset < h.span.end;
+          })
+        : undefined;
+      const best = atSunset ?? samePassage.reduce((a, b) => (b.coverage > a.coverage ? b : a));
       const sunriseInside = (() => {
         const f = dayFrame(best.date, ctx.zone, ctx.geo);
         return !!f && f.sunrise >= best.span.start && f.sunrise < best.span.end;
       })();
-      picked = { date: best.date, convention: samePassage.length > 1 ? 'nakshatra-longer-daylight' : sunriseInside ? 'nakshatra-udaya' : 'nakshatra-daylight', span: best.span };
+      picked = { date: best.date, convention: atSunset ? 'nakshatra-sunset' : samePassage.length > 1 ? 'nakshatra-longer-daylight' : sunriseInside ? 'nakshatra-udaya' : 'nakshatra-daylight', span: best.span };
     } else {
       const begin = nextCrossing(moon, spec.nakshatra * NAKSHATRA_DEG, enter, STEP.moon);
       if (begin < leave) picked = { date: localDateOf(begin, ctx.zone), convention: 'nakshatra-begin-day' };

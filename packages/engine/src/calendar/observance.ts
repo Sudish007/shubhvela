@@ -5,7 +5,9 @@
 //                rule says `prefer: 'last'`. None (kshaya) -> the day on which the tithi begins.
 // - aparahna   : the tithi must prevail at the aparahna reference instant = sunrise + 0.7 x daylight (middle of
 //                the 4th fifth of the day). Used for shraddha/barsi, Raksha Bandhan, Vijaya Dashami.
-// - madhyahna  : reference instant = sunrise + 0.5 x daylight (Ganesh Chaturthi, Rama Navami).
+// - madhyahna  : reference instant = sunrise + 0.5 x daylight (Ganesh Chaturthi, Rama Navami), window
+//                sunrise + 0.4 .. 0.6 x daylight; `prefer: 'vyapti'` (Bhishma Ashtami) takes the day on which the
+//                tithi covers more of that window when both days qualify (A-fix, Drik Chennai 2028).
 // - purvahna   : reference instant = sunrise + 0.25 x daylight (middle of the forenoon; Vasant Panchami), window
 //                sunrise -> sunrise + 0.5 x daylight.
 // - minMuhurtas: (udaya only, A04) when the tithi touches exactly one sunrise but runs fewer than N muhurtas
@@ -43,7 +45,12 @@ import {
 export type Timing = 'udaya' | 'purvahna' | 'aparahna' | 'madhyahna' | 'pradosh' | 'nishita' | 'moonrise' | 'begin';
 /** 1 muhurta = 48 minutes; the Nirnaya Sindhu "tri-muhurta" rule needs a tithi to run >= 3 of them after sunrise. */
 export const MUHURTA_MS = 48 * MIN_MS;
-export type Prefer = 'first' | 'last';
+/**
+ * Which of two qualifying days observes the tithi: `first`/`last` by date; `vyapti` = the day on which the tithi
+ * covers MORE of the timing window (madhyahna kala = 3rd fifth of daylight, aparahna = 4th fifth, ...), ties -> first
+ * (Dharmasindhu "adhika-vyapti"; validated on Bhishma Ashtami 2028: Delhi 02-03 vs Chennai 02-04 per Drik Panchang).
+ */
+export type Prefer = 'first' | 'last' | 'vyapti';
 
 export interface TithiSpan {
   /** 0-29. */
@@ -147,6 +154,11 @@ export function observanceDay(span: { start: number; end: number }, timing: Timi
       return { date: d0, convention: `udaya-under-${opts.minMuhurtas}-muhurtas-begin-day`, span };
     }
     return only;
+  }
+  if (prefer === 'vyapti') {
+    const coverage = (h: Observance): number => (h.window ? Math.max(0, Math.min(h.window.end, span.end) - Math.max(h.window.start, span.start)) : 0);
+    const best = hits.reduce((a, b) => (coverage(b) > coverage(a) ? b : a));
+    return { ...best, convention: `${timing}-vyapti-of-two` };
   }
   const pick = prefer === 'last' ? hits[hits.length - 1] : hits[0];
   return { ...pick, convention: `${timing}-${prefer}-of-two` };
