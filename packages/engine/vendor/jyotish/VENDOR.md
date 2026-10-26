@@ -46,5 +46,17 @@ Wealth / Marriage / Health / Progeny / Education.
   used a J1900-anchored Lahiri (23°51'25.5" at J2000) that sits ~24" below Drik Panchang's printed
   ayanamsa; the new definition is within 8" (see `packages/engine/reference/CONVENTIONS.md`).
 
+## Modified (Phase A review fix, 2026-10-26)
+
+- `core/muhurta/choghadiya.ts`: upstream had Shubh and Rog swapped in `CHOGHADIYA_ORDER` and in the
+  Sunday, Monday, Wednesday and Friday `DAY_SEQUENCES` rows (`… Kaal, Rog, Shubh …`), while the Tuesday,
+  Thursday and Saturday rows and every published table (Drik Panchang, Prokerala, AstroSage) follow
+  the single hora-lord cycle Sun > Venus > Mercury > Moon > Saturn > Jupiter > Mars =
+  Udveg, Chal, Labh, Amrit, Kaal, **Shubh, Rog**. The four rows and the constant were corrected; the
+  night rows were already right. `CHOGHADIYA_ORDER`, `NIGHT_CHOGHADIYA_ORDER`, `DAY_SEQUENCES` and
+  `NIGHT_SEQUENCES` are now exported so `packages/engine/test/choghadiya.test.ts` can assert that every
+  day row is a rotation of the day cycle starting at the weekday lord and every night row a rotation of
+  the night cycle. `gowri.ts` (Gowri panchang, unused by Shubhvela) was not touched.
+
 Everything else is byte-identical to upstream. Update this file whenever the fork
 diverges further.
