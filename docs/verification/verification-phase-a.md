@@ -108,4 +108,7 @@ Both APKs: `Verifies` · v1 (JAR) false · **v2 true** · v3 false · v3.1 false
 
 ## 8. Push result
 
-(filled below after the push)
+- `2c6260d docs(phase-a): verification and release notes` — 22 files (docs/OWNER-TODO.md, docs/verification/* incl. this file, plan.md, review-phase-a.md/.json, carry-over.md). Pushed `25735b4..2c6260d main -> main`, tag `v0.1.0-phase-a` created.
+- Correction in the same step: that commit had overwritten `docs/design.md` with the older `.agents` copy (dropping the a-fix "as built 31/30/39 %" paragraph from `25735b4`) and added a duplicate `docs/plan.md`. `bf88bc9 docs(phase-a): keep as-built planet-table note in design.md; plan.md lives under docs/verification` restores the paragraph (`git checkout HEAD~1 -- docs/design.md`, `.agents` copy re-synced from it) and removes `docs/plan.md`. Pushed `2c6260d..bf88bc9 main -> main`; the tag — created by this step minutes earlier and not yet consumed by anything — was moved to `bf88bc9` (`git tag -f`, `git push origin --force v0.1.0-phase-a`); `git ls-remote --tags origin v0.1.0-phase-a` → `bf88bc9…`.
+- A final `docs(phase-a): sync verification-phase-a.md` commit copies this completed file to `docs/verification/`; the tag stays on `bf88bc9` (docs copy only).
+- `git status --porcelain` empty after each push; `git ls-files release` = `release/README.md` only; no APK, keystore or KEYSTORE-INFO.txt staged at any point.
