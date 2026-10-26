@@ -126,6 +126,22 @@ jest.mock('expo-iap', () => ({
   ErrorCode: { UserCancelled: 'user-cancelled', ItemUnavailable: 'item-unavailable', NetworkError: 'network-error' },
 }));
 
+// expo-clipboard (B06): the share sheet's Copy button; a spy records what would reach the clipboard.
+jest.mock('expo-clipboard', () => ({
+  setStringAsync: jest.fn(async () => true),
+  getStringAsync: jest.fn(async () => ''),
+}));
+// expo-camera (B06): no camera under Jest. Permission is granted by default; CameraView is a View that exposes its
+// onBarcodeScanned prop so a test can feed it a QR payload.
+jest.mock('expo-camera', () => {
+  const React = require('react');
+  const { View } = require('react-native');
+  const granted = { granted: true, status: 'granted', canAskAgain: true, expires: 'never' };
+  return {
+    CameraView: (props: Record<string, unknown>) => React.createElement(View, { testID: 'mock-camera-view', ...props }),
+    useCameraPermissions: jest.fn(() => [granted, jest.fn(async () => granted), jest.fn(async () => granted)]),
+  };
+});
 // expo-sqlite is only reached through app/src/db/open.ts and gazetteer.ts; tests never open the asset database.
 jest.mock('expo-sqlite', () => ({
   openDatabaseSync: () => {

@@ -1,10 +1,11 @@
 // Profile editor (F3, design.md 10.1): the birth form plus relationship, tradition (Purnimanta/Amanta) and PDF language;
 // /profile/new creates (under entitlements.canAddProfile(), refused with the honest cap sheet), /profile/<id> edits.
-// No "deceased" toggle (M16: ancestors are not profiles). The "Share for matching" menu item arrives with B06.
+// No "deceased" toggle (M16: ancestors are not profiles). B06 (M3): the header ⋮ control opens "More actions" with "Share for
+// matching" (the share-code sheet for this profile); the phrase "profile menu" appears nowhere.
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { CapSheet, Card, NavRow, PrimaryButton, Screen, SecondaryButton, Sheet, Txt } from '../../src/components';
+import { CapSheet, Card, ChevronIcon, MoreIcon, NavRow, Pressable44, PrimaryButton, Screen, SecondaryButton, Sheet, Txt } from '../../src/components';
 import { useMountClock } from '../../src/charts/LockedFeature';
 import { isNewborn } from '../../src/family/naamkaranModel';
 import { countProfiles, deleteProfile, getProfile, insertProfile, updateProfile } from '../../src/db/profiles';
@@ -14,9 +15,13 @@ import { useLang } from '../../src/i18n';
 import { BirthForm } from '../../src/profiles/BirthForm';
 import { formToProfile, profileToForm } from '../../src/profiles/mapping';
 import { EMPTY_FORM, validateForm, type BirthFormValue, type FormErrors } from '../../src/profiles/validate';
+import { ShareCodeSheet } from '../../src/share/ShareCodeSheet';
+import { useTokens } from '../../src/theme/ThemeProvider';
+import { radius } from '../../src/theme/tokens';
 
 export default function ProfileEditor() {
   const { t, lang } = useLang();
+  const { colors } = useTokens();
   const router = useRouter();
   const { id } = useLocalSearchParams<{ id: string }>();
   const isNew = id === 'new';
@@ -27,6 +32,8 @@ export default function ProfileEditor() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [capOpen, setCapOpen] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [shareOpen, setShareOpen] = useState(false);
   const mountedAt = useMountClock();
 
   function save() {
@@ -64,7 +71,25 @@ export default function ProfileEditor() {
 
   const name = existing?.name ?? '';
   return (
-    <Screen title={isNew ? t('family.newProfile') : t('family.editProfile')} chrome="stack" testID="profile-editor" stickyCta={<PrimaryButton label={t('common.save')} onPress={save} testID="profile-save" />}>
+    <Screen
+      title={isNew ? t('family.newProfile') : t('family.editProfile')}
+      chrome="stack"
+      testID="profile-editor"
+      headerRight={
+        existing ? (
+          <Pressable44
+            accessibilityLabel={t('family.moreActions')}
+            accessibilityState={{ expanded: menuOpen }}
+            onPress={() => setMenuOpen(true)}
+            style={[styles.menuButton, menuOpen && { borderColor: colors.accent, backgroundColor: colors.accentTint }]}
+            testID="editor-more-button"
+          >
+            <MoreIcon color={colors.ink} />
+          </Pressable44>
+        ) : undefined
+      }
+      stickyCta={<PrimaryButton label={t('common.save')} onPress={save} testID="profile-save" />}
+    >
       <BirthForm value={value} onChange={setValue} errors={errors} editor lockSelf={!!existing?.isSelf} />
       {existing && isNewborn(existing, mountedAt) ? (
         // F28 (B05): a profile younger than a year offers the naamkaran helper from its editor.
@@ -91,6 +116,26 @@ export default function ProfileEditor() {
       >
         <Txt kind="body">{t('family.deleteProfileConfirm', { name: name || t(`family.relation.${existing?.relationship ?? 'other'}`) })}</Txt>
       </Sheet>
+      {existing ? (
+        <Sheet visible={menuOpen} onClose={() => setMenuOpen(false)} title={t('family.moreActions')}>
+          <Pressable44
+            accessibilityRole="menuitem"
+            accessibilityLabel={t('share.title')}
+            onPress={() => {
+              setMenuOpen(false);
+              setShareOpen(true);
+            }}
+            style={styles.menuRow}
+            testID="menu-share-matching"
+          >
+            <Txt kind="label" weight={400} style={styles.menuRowText}>
+              {t('share.title')}
+            </Txt>
+            <ChevronIcon color={colors.ink3} />
+          </Pressable44>
+        </Sheet>
+      ) : null}
+      <ShareCodeSheet visible={shareOpen} onClose={() => setShareOpen(false)} profile={existing} />
     </Screen>
   );
 }
@@ -98,4 +143,7 @@ export default function ProfileEditor() {
 const styles = StyleSheet.create({
   danger: { marginTop: 8 },
   confirm: { gap: 8 },
+  menuButton: { borderWidth: 1, borderColor: 'transparent', borderRadius: radius.button },
+  menuRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 8, alignSelf: 'stretch', paddingVertical: 4 },
+  menuRowText: { flex: 1 },
 });

@@ -19,8 +19,18 @@ export const ROUTE_FLAGS: Readonly<TimingRouteFlags> = {
   shareChartCard: false,
 };
 
+/** B06 result screen: the "Matching report PDF" button renders ONLY when B07's /charts/pdf/matching route exists. */
+export interface MatchRouteFlags {
+  matchingReportPdf: boolean;
+}
+
+export const MATCH_ROUTE_FLAGS: Readonly<MatchRouteFlags> = {
+  matchingReportPdf: false,
+};
+
 /** Route paths the rows open once their flag is true (kept here so B05/B07 change one file). */
 export const TIMING_ROUTES = {
   muhuratFinder: '/charts/muhurat',
   janamPatriPdf: '/charts/pdf/janam_patri',
+  matchingReportPdf: '/charts/pdf/matching',
 } as const;

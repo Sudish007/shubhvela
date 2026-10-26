@@ -1,0 +1,5592 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`B06 matching +30 % pseudo-locale (en) result screen renders every string whole 1`] = `
+<RNCSafeAreaProvider
+  onInsetsChange={[Function]}
+  style={
+    [
+      {
+        "flex": 1,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      [
+        {
+          "flex": 1,
+        },
+        {
+          "backgroundColor": "#FAF7F2",
+          "paddingTop": 24,
+        },
+      ]
+    }
+    testID="match-result"
+  >
+    <RCTScrollView
+      contentContainerStyle={
+        [
+          {
+            "gap": 12,
+            "paddingHorizontal": 16,
+            "paddingTop": 8,
+          },
+          {
+            "paddingBottom": 50,
+          },
+          undefined,
+        ]
+      }
+      keyboardShouldPersistTaps="handled"
+      style={
+        {
+          "flex": 1,
+        }
+      }
+      testID="screen-scroll"
+    >
+      <View>
+        <View
+          style={
+            [
+              {
+                "alignItems": "flex-start",
+                "flexDirection": "row",
+                "gap": 8,
+                "justifyContent": "space-between",
+                "minHeight": 44,
+              },
+              {
+                "alignItems": "center",
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityLabel="Back x"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                  "minHeight": 44,
+                  "minWidth": 44,
+                },
+                undefined,
+                false,
+              ]
+            }
+            testID="screen-back"
+          >
+            <RNSVGSvgView
+              accessible={false}
+              align="xMidYMid"
+              bbHeight={24}
+              bbWidth={24}
+              focusable={false}
+              height={24}
+              meetOrSlice={0}
+              minX={0}
+              minY={0}
+              style={
+                [
+                  {
+                    "backgroundColor": "transparent",
+                    "borderWidth": 0,
+                  },
+                  {
+                    "flex": 0,
+                    "height": 24,
+                    "width": 24,
+                  },
+                ]
+              }
+              vbHeight={24}
+              vbWidth={24}
+              width={24}
+            >
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGPath
+                  d="M14 6 8 12 14 18"
+                  fill={null}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                      "strokeLinecap",
+                      "strokeLinejoin",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4280031767,
+                      "type": 0,
+                    }
+                  }
+                  strokeLinecap={1}
+                  strokeLinejoin={1}
+                  strokeWidth={1.75}
+                />
+              </RNSVGGroup>
+            </RNSVGSvgView>
+          </View>
+          <View
+            style={
+              {
+                "flex": 1,
+                "minWidth": 0,
+                "paddingTop": 6,
+              }
+            }
+          >
+            <Text
+              accessibilityRole="header"
+              style={
+                [
+                  {
+                    "fontFamily": "TiroDevanagariHindi",
+                    "fontSize": 26,
+                    "fontWeight": "normal",
+                    "lineHeight": 32,
+                  },
+                  {
+                    "color": "#1C1A17",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              Matching result xxxx
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            [
+              {
+                "borderRadius": 12,
+                "borderWidth": 0.5,
+                "padding": 16,
+              },
+              {
+                "backgroundColor": "#FFFFFF",
+                "borderColor": "#E4DDD2",
+              },
+              undefined,
+              undefined,
+            ]
+          }
+        >
+          <View
+            accessibilityLabel="25 of 36 guna points xxxxxxx"
+            accessibilityRole="header"
+            style={
+              {
+                "gap": 6,
+              }
+            }
+            testID="guna-headline"
+          >
+            <Text
+              style={
+                [
+                  {
+                    "fontFamily": "TiroDevanagariHindi",
+                    "fontSize": 26,
+                    "fontVariant": [
+                      "tabular-nums",
+                    ],
+                    "fontWeight": "normal",
+                    "lineHeight": 32,
+                  },
+                  {
+                    "color": "#1C1A17",
+                  },
+                  undefined,
+                ]
+              }
+              testID="guna-total"
+            >
+              25 of 36 guna xxxxx
+            </Text>
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "flexWrap": "wrap",
+                  "gap": 6,
+                }
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 15,
+                      "fontWeight": "normal",
+                      "lineHeight": 20,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    {
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+                testID="guna-side-a"
+              >
+                A · Priya · Moon in Kanya, Uttara Phalguni pada 4 xxxxxxxxxxxx
+              </Text>
+            </View>
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "flexWrap": "wrap",
+                  "gap": 6,
+                }
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 15,
+                      "fontWeight": "normal",
+                      "lineHeight": 20,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    {
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+                testID="guna-side-b"
+              >
+                B · Amma · Moon in Karka, Pushya pada 1 xxxxxxxxxxxx
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            [
+              {
+                "borderRadius": 12,
+                "borderWidth": 0.5,
+                "padding": 16,
+              },
+              {
+                "backgroundColor": "#FFFFFF",
+                "borderColor": "#E4DDD2",
+              },
+              undefined,
+              undefined,
+            ]
+          }
+          testID="kootas-card"
+        >
+          <Text
+            accessibilityRole="header"
+            style={
+              [
+                {
+                  "fontFamily": "NotoSans-SemiBold",
+                  "fontSize": 18,
+                  "fontWeight": "normal",
+                  "lineHeight": 24,
+                },
+                {
+                  "color": "#1C1A17",
+                },
+                undefined,
+              ]
+            }
+          >
+            Kootas x
+          </Text>
+          <View
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "flexDirection": "row",
+                  "gap": 8,
+                  "paddingVertical": 8,
+                },
+                {
+                  "borderBottomColor": "#E4DDD2",
+                  "borderBottomWidth": 0.5,
+                },
+              ]
+            }
+            testID="koota-varna"
+          >
+            <View
+              style={
+                {
+                  "flex": 1,
+                  "minWidth": 0,
+                  "paddingTop": 2,
+                }
+              }
+            >
+              <View
+                style={
+                  {
+                    "alignItems": "baseline",
+                    "flexDirection": "row",
+                    "gap": 8,
+                    "justifyContent": "space-between",
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 17,
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      {
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  Varna x
+                </Text>
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 17,
+                        "fontVariant": [
+                          "tabular-nums",
+                        ],
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      undefined,
+                    ]
+                  }
+                  testID="koota-varna-points"
+                >
+                  0 of 1 xxxx
+                </Text>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    undefined,
+                  ]
+                }
+                testID="koota-varna-sides"
+              >
+                Vaishya xx · Brahmin xx xxxx
+              </Text>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#6F6960",
+                    },
+                    undefined,
+                  ]
+                }
+                testID="koota-varna-meaning"
+              >
+                Varna (1 point) compares the temperament class of the two Moon signs and gives the point when the first side's class is the same or higher.
+              </Text>
+            </View>
+            <View
+              style={
+                {
+                  "alignItems": "flex-end",
+                  "justifyContent": "center",
+                  "minHeight": 44,
+                  "minWidth": 44,
+                }
+              }
+            >
+              <View
+                accessibilityLabel="Why? x Varna x · 0 of 1 xxxx"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "justifyContent": "center",
+                      "minHeight": 44,
+                      "minWidth": 44,
+                    },
+                    {
+                      "paddingHorizontal": 8,
+                    },
+                    false,
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 15,
+                        "fontWeight": "normal",
+                        "lineHeight": 20,
+                      },
+                      {
+                        "color": "#B83E18",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  Why? x
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "flexDirection": "row",
+                  "gap": 8,
+                  "paddingVertical": 8,
+                },
+                {
+                  "borderBottomColor": "#E4DDD2",
+                  "borderBottomWidth": 0.5,
+                },
+              ]
+            }
+            testID="koota-vashya"
+          >
+            <View
+              style={
+                {
+                  "flex": 1,
+                  "minWidth": 0,
+                  "paddingTop": 2,
+                }
+              }
+            >
+              <View
+                style={
+                  {
+                    "alignItems": "baseline",
+                    "flexDirection": "row",
+                    "gap": 8,
+                    "justifyContent": "space-between",
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 17,
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      {
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  Vashya x
+                </Text>
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 17,
+                        "fontVariant": [
+                          "tabular-nums",
+                        ],
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      undefined,
+                    ]
+                  }
+                  testID="koota-vashya-points"
+                >
+                  0.5 of 2 xxxx
+                </Text>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    undefined,
+                  ]
+                }
+                testID="koota-vashya-sides"
+              >
+                Manava x · Jalachara xx xxxx
+              </Text>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#6F6960",
+                    },
+                    undefined,
+                  ]
+                }
+                testID="koota-vashya-meaning"
+              >
+                Vashya (2 points) compares the vashya class of the two Moon signs and scores 2 for the same class, less for friendly classes and 0 for hostile ones.
+              </Text>
+            </View>
+            <View
+              style={
+                {
+                  "alignItems": "flex-end",
+                  "justifyContent": "center",
+                  "minHeight": 44,
+                  "minWidth": 44,
+                }
+              }
+            >
+              <View
+                accessibilityLabel="Why? x Vashya x · 0.5 of 2 xxxx"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "justifyContent": "center",
+                      "minHeight": 44,
+                      "minWidth": 44,
+                    },
+                    {
+                      "paddingHorizontal": 8,
+                    },
+                    false,
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 15,
+                        "fontWeight": "normal",
+                        "lineHeight": 20,
+                      },
+                      {
+                        "color": "#B83E18",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  Why? x
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "flexDirection": "row",
+                  "gap": 8,
+                  "paddingVertical": 8,
+                },
+                {
+                  "borderBottomColor": "#E4DDD2",
+                  "borderBottomWidth": 0.5,
+                },
+              ]
+            }
+            testID="koota-tara"
+          >
+            <View
+              style={
+                {
+                  "flex": 1,
+                  "minWidth": 0,
+                  "paddingTop": 2,
+                }
+              }
+            >
+              <View
+                style={
+                  {
+                    "alignItems": "baseline",
+                    "flexDirection": "row",
+                    "gap": 8,
+                    "justifyContent": "space-between",
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 17,
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      {
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  Tara x
+                </Text>
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 17,
+                        "fontVariant": [
+                          "tabular-nums",
+                        ],
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      undefined,
+                    ]
+                  }
+                  testID="koota-tara-points"
+                >
+                  1.5 of 3 xxxx
+                </Text>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    undefined,
+                  ]
+                }
+                testID="koota-tara-sides"
+              >
+                tara 5 xxx · tara 6 xxx xxxx
+              </Text>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#6F6960",
+                    },
+                    undefined,
+                  ]
+                }
+                testID="koota-tara-meaning"
+              >
+                Tara (3 points) counts each birth nakshatra from the other and gives 1½ points per direction when the remainder is not 3, 5 or 7.
+              </Text>
+            </View>
+            <View
+              style={
+                {
+                  "alignItems": "flex-end",
+                  "justifyContent": "center",
+                  "minHeight": 44,
+                  "minWidth": 44,
+                }
+              }
+            >
+              <View
+                accessibilityLabel="Why? x Tara x · 1.5 of 3 xxxx"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "justifyContent": "center",
+                      "minHeight": 44,
+                      "minWidth": 44,
+                    },
+                    {
+                      "paddingHorizontal": 8,
+                    },
+                    false,
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 15,
+                        "fontWeight": "normal",
+                        "lineHeight": 20,
+                      },
+                      {
+                        "color": "#B83E18",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  Why? x
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "flexDirection": "row",
+                  "gap": 8,
+                  "paddingVertical": 8,
+                },
+                {
+                  "borderBottomColor": "#E4DDD2",
+                  "borderBottomWidth": 0.5,
+                },
+              ]
+            }
+            testID="koota-yoni"
+          >
+            <View
+              style={
+                {
+                  "flex": 1,
+                  "minWidth": 0,
+                  "paddingTop": 2,
+                }
+              }
+            >
+              <View
+                style={
+                  {
+                    "alignItems": "baseline",
+                    "flexDirection": "row",
+                    "gap": 8,
+                    "justifyContent": "space-between",
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 17,
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      {
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  Yoni x
+                </Text>
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 17,
+                        "fontVariant": [
+                          "tabular-nums",
+                        ],
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      undefined,
+                    ]
+                  }
+                  testID="koota-yoni-points"
+                >
+                  2 of 4 xxxx
+                </Text>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    undefined,
+                  ]
+                }
+                testID="koota-yoni-sides"
+              >
+                cow  · sheep x xxxx
+              </Text>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#6F6960",
+                    },
+                    undefined,
+                  ]
+                }
+                testID="koota-yoni-meaning"
+              >
+                Yoni (4 points) compares the animal symbol of the two birth nakshatras: 4 for the same animal, 2 for neutral pairs, 1 for unfriendly pairs and 0 for sworn enemies.
+              </Text>
+            </View>
+            <View
+              style={
+                {
+                  "alignItems": "flex-end",
+                  "justifyContent": "center",
+                  "minHeight": 44,
+                  "minWidth": 44,
+                }
+              }
+            >
+              <View
+                accessibilityLabel="Why? x Yoni x · 2 of 4 xxxx"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "justifyContent": "center",
+                      "minHeight": 44,
+                      "minWidth": 44,
+                    },
+                    {
+                      "paddingHorizontal": 8,
+                    },
+                    false,
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 15,
+                        "fontWeight": "normal",
+                        "lineHeight": 20,
+                      },
+                      {
+                        "color": "#B83E18",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  Why? x
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "flexDirection": "row",
+                  "gap": 8,
+                  "paddingVertical": 8,
+                },
+                {
+                  "borderBottomColor": "#E4DDD2",
+                  "borderBottomWidth": 0.5,
+                },
+              ]
+            }
+            testID="koota-grahaMaitri"
+          >
+            <View
+              style={
+                {
+                  "flex": 1,
+                  "minWidth": 0,
+                  "paddingTop": 2,
+                }
+              }
+            >
+              <View
+                style={
+                  {
+                    "alignItems": "baseline",
+                    "flexDirection": "row",
+                    "gap": 8,
+                    "justifyContent": "space-between",
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 17,
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      {
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  Graha Maitri xxx
+                </Text>
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 17,
+                        "fontVariant": [
+                          "tabular-nums",
+                        ],
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      undefined,
+                    ]
+                  }
+                  testID="koota-grahaMaitri-points"
+                >
+                  1 of 5 xxxx
+                </Text>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    undefined,
+                  ]
+                }
+                testID="koota-grahaMaitri-sides"
+              >
+                Mercury · Moon xxxx
+              </Text>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#6F6960",
+                    },
+                    undefined,
+                  ]
+                }
+                testID="koota-grahaMaitri-meaning"
+              >
+                Graha Maitri (5 points) compares the lords of the two Moon signs by Parashara's natural friendships, from 5 for friends or the same lord down to 0 for mutual enemies.
+              </Text>
+            </View>
+            <View
+              style={
+                {
+                  "alignItems": "flex-end",
+                  "justifyContent": "center",
+                  "minHeight": 44,
+                  "minWidth": 44,
+                }
+              }
+            >
+              <View
+                accessibilityLabel="Why? x Graha Maitri xxx · 1 of 5 xxxx"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "justifyContent": "center",
+                      "minHeight": 44,
+                      "minWidth": 44,
+                    },
+                    {
+                      "paddingHorizontal": 8,
+                    },
+                    false,
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 15,
+                        "fontWeight": "normal",
+                        "lineHeight": 20,
+                      },
+                      {
+                        "color": "#B83E18",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  Why? x
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "flexDirection": "row",
+                  "gap": 8,
+                  "paddingVertical": 8,
+                },
+                {
+                  "borderBottomColor": "#E4DDD2",
+                  "borderBottomWidth": 0.5,
+                },
+              ]
+            }
+            testID="koota-gana"
+          >
+            <View
+              style={
+                {
+                  "flex": 1,
+                  "minWidth": 0,
+                  "paddingTop": 2,
+                }
+              }
+            >
+              <View
+                style={
+                  {
+                    "alignItems": "baseline",
+                    "flexDirection": "row",
+                    "gap": 8,
+                    "justifyContent": "space-between",
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 17,
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      {
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  Gana x
+                </Text>
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 17,
+                        "fontVariant": [
+                          "tabular-nums",
+                        ],
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      undefined,
+                    ]
+                  }
+                  testID="koota-gana-points"
+                >
+                  5 of 6 xxxx
+                </Text>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    undefined,
+                  ]
+                }
+                testID="koota-gana-sides"
+              >
+                Manushya xx · Deva x xxxx
+              </Text>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#6F6960",
+                    },
+                    undefined,
+                  ]
+                }
+                testID="koota-gana-meaning"
+              >
+                Gana (6 points) compares the gana of the two birth nakshatras: 6 for the same gana, 5 for Deva with Manushya, 1 for Manushya with Rakshasa, 0 for Deva with Rakshasa.
+              </Text>
+            </View>
+            <View
+              style={
+                {
+                  "alignItems": "flex-end",
+                  "justifyContent": "center",
+                  "minHeight": 44,
+                  "minWidth": 44,
+                }
+              }
+            >
+              <View
+                accessibilityLabel="Why? x Gana x · 5 of 6 xxxx"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "justifyContent": "center",
+                      "minHeight": 44,
+                      "minWidth": 44,
+                    },
+                    {
+                      "paddingHorizontal": 8,
+                    },
+                    false,
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 15,
+                        "fontWeight": "normal",
+                        "lineHeight": 20,
+                      },
+                      {
+                        "color": "#B83E18",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  Why? x
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "flexDirection": "row",
+                  "gap": 8,
+                  "paddingVertical": 8,
+                },
+                {
+                  "borderBottomColor": "#E4DDD2",
+                  "borderBottomWidth": 0.5,
+                },
+              ]
+            }
+            testID="koota-bhakoot"
+          >
+            <View
+              style={
+                {
+                  "flex": 1,
+                  "minWidth": 0,
+                  "paddingTop": 2,
+                }
+              }
+            >
+              <View
+                style={
+                  {
+                    "alignItems": "baseline",
+                    "flexDirection": "row",
+                    "gap": 8,
+                    "justifyContent": "space-between",
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 17,
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      {
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  Bhakoot xx
+                </Text>
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 17,
+                        "fontVariant": [
+                          "tabular-nums",
+                        ],
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      undefined,
+                    ]
+                  }
+                  testID="koota-bhakoot-points"
+                >
+                  7 of 7 xxxx
+                </Text>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    undefined,
+                  ]
+                }
+                testID="koota-bhakoot-sides"
+              >
+                Kanya · Karka xxxx
+              </Text>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#6F6960",
+                    },
+                    undefined,
+                  ]
+                }
+                testID="koota-bhakoot-meaning"
+              >
+                Bhakoot (7 points) counts the sign distance between the two Moons and gives all 7 unless the pair is 2/12, 5/9 or 6/8 apart or shares one nakshatra pada.
+              </Text>
+            </View>
+            <View
+              style={
+                {
+                  "alignItems": "flex-end",
+                  "justifyContent": "center",
+                  "minHeight": 44,
+                  "minWidth": 44,
+                }
+              }
+            >
+              <View
+                accessibilityLabel="Why? x Bhakoot xx · 7 of 7 xxxx"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "justifyContent": "center",
+                      "minHeight": 44,
+                      "minWidth": 44,
+                    },
+                    {
+                      "paddingHorizontal": 8,
+                    },
+                    false,
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 15,
+                        "fontWeight": "normal",
+                        "lineHeight": 20,
+                      },
+                      {
+                        "color": "#B83E18",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  Why? x
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "flexDirection": "row",
+                  "gap": 8,
+                  "paddingVertical": 8,
+                },
+                false,
+              ]
+            }
+            testID="koota-nadi"
+          >
+            <View
+              style={
+                {
+                  "flex": 1,
+                  "minWidth": 0,
+                  "paddingTop": 2,
+                }
+              }
+            >
+              <View
+                style={
+                  {
+                    "alignItems": "baseline",
+                    "flexDirection": "row",
+                    "gap": 8,
+                    "justifyContent": "space-between",
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 17,
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      {
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  Nadi x
+                </Text>
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 17,
+                        "fontVariant": [
+                          "tabular-nums",
+                        ],
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      undefined,
+                    ]
+                  }
+                  testID="koota-nadi-points"
+                >
+                  8 of 8 xxxx
+                </Text>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    undefined,
+                  ]
+                }
+                testID="koota-nadi-sides"
+              >
+                Adi  · Madhya x xxxx
+              </Text>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#6F6960",
+                    },
+                    undefined,
+                  ]
+                }
+                testID="koota-nadi-meaning"
+              >
+                Nadi (8 points) compares the nadi of the two birth nakshatras: 8 for different nadis, 0 for the same nadi unless an exception lifts it.
+              </Text>
+            </View>
+            <View
+              style={
+                {
+                  "alignItems": "flex-end",
+                  "justifyContent": "center",
+                  "minHeight": 44,
+                  "minWidth": 44,
+                }
+              }
+            >
+              <View
+                accessibilityLabel="Why? x Nadi x · 8 of 8 xxxx"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "justifyContent": "center",
+                      "minHeight": 44,
+                      "minWidth": 44,
+                    },
+                    {
+                      "paddingHorizontal": 8,
+                    },
+                    false,
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 15,
+                        "fontWeight": "normal",
+                        "lineHeight": 20,
+                      },
+                      {
+                        "color": "#B83E18",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  Why? x
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            [
+              {
+                "borderRadius": 12,
+                "borderWidth": 0.5,
+                "padding": 16,
+              },
+              {
+                "backgroundColor": "#FFFFFF",
+                "borderColor": "#E4DDD2",
+              },
+              undefined,
+              undefined,
+            ]
+          }
+        >
+          <View
+            style={
+              {
+                "gap": 4,
+              }
+            }
+            testID="dosha-section"
+          >
+            <Text
+              accessibilityRole="header"
+              style={
+                [
+                  {
+                    "fontFamily": "NotoSans-SemiBold",
+                    "fontSize": 18,
+                    "fontWeight": "normal",
+                    "lineHeight": 24,
+                  },
+                  {
+                    "color": "#1C1A17",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              Doshas x
+            </Text>
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "flex-start",
+                    "flexDirection": "row",
+                    "gap": 8,
+                    "paddingVertical": 8,
+                  },
+                  {
+                    "borderBottomColor": "#E4DDD2",
+                    "borderBottomWidth": 0.5,
+                  },
+                ]
+              }
+              testID="dosha-nadi"
+            >
+              <View
+                style={
+                  {
+                    "flex": 1,
+                    "minWidth": 0,
+                    "paddingTop": 2,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 17,
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  Nadi dosha xx: none x
+                </Text>
+              </View>
+              <View
+                style={
+                  {
+                    "alignItems": "flex-end",
+                    "justifyContent": "center",
+                    "minHeight": 44,
+                    "minWidth": 44,
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Why? x Nadi dosha xx: none x"
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "justifyContent": "center",
+                        "minHeight": 44,
+                        "minWidth": 44,
+                      },
+                      {
+                        "paddingHorizontal": 8,
+                      },
+                      false,
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans-SemiBold",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#B83E18",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Why? x
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "flex-start",
+                    "flexDirection": "row",
+                    "gap": 8,
+                    "paddingVertical": 8,
+                  },
+                  {
+                    "borderBottomColor": "#E4DDD2",
+                    "borderBottomWidth": 0.5,
+                  },
+                ]
+              }
+              testID="dosha-bhakoot"
+            >
+              <View
+                style={
+                  {
+                    "flex": 1,
+                    "minWidth": 0,
+                    "paddingTop": 2,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 17,
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  Bhakoot dosha xxx: none x
+                </Text>
+              </View>
+              <View
+                style={
+                  {
+                    "alignItems": "flex-end",
+                    "justifyContent": "center",
+                    "minHeight": 44,
+                    "minWidth": 44,
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Why? x Bhakoot dosha xxx: none x"
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "justifyContent": "center",
+                        "minHeight": 44,
+                        "minWidth": 44,
+                      },
+                      {
+                        "paddingHorizontal": 8,
+                      },
+                      false,
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans-SemiBold",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#B83E18",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Why? x
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View
+              style={
+                {
+                  "gap": 2,
+                  "marginTop": 8,
+                }
+              }
+              testID="mangal-a"
+            >
+              <Text
+                accessibilityRole="header"
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans-SemiBold",
+                      "fontSize": 15,
+                      "fontWeight": "normal",
+                      "lineHeight": 20,
+                    },
+                    {
+                      "color": "#1C1A17",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Mangal dosha · Priya xxxxxx
+              </Text>
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "flex-start",
+                      "flexDirection": "row",
+                      "gap": 8,
+                      "paddingVertical": 8,
+                    },
+                    {
+                      "borderBottomColor": "#E4DDD2",
+                      "borderBottomWidth": 0.5,
+                    },
+                  ]
+                }
+                testID="mangal-a-status"
+              >
+                <View
+                  style={
+                    {
+                      "flex": 1,
+                      "minWidth": 0,
+                      "paddingTop": 2,
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "flexWrap": "wrap",
+                        "gap": 6,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans-SemiBold",
+                            "fontSize": 17,
+                            "fontWeight": "normal",
+                            "lineHeight": 26,
+                          },
+                          {
+                            "color": "#1C1A17",
+                          },
+                          {
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
+                      Mangal dosha xxx: present xx · cancelled xx
+                    </Text>
+                  </View>
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 13,
+                          "fontWeight": "normal",
+                          "lineHeight": 18,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                    testID="mangal-a-ref-0"
+                  >
+                    Mars in house 1 from Lagna x xxxxxxxxx
+                  </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 13,
+                          "fontWeight": "normal",
+                          "lineHeight": 18,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                    testID="mangal-a-ref-1"
+                  >
+                    Mars in house 7 from Moon x xxxxxxxxx
+                  </Text>
+                </View>
+                <View
+                  style={
+                    {
+                      "alignItems": "flex-end",
+                      "justifyContent": "center",
+                      "minHeight": 44,
+                      "minWidth": 44,
+                    }
+                  }
+                >
+                  <View
+                    accessibilityLabel="Why? x Mangal dosha xxx: present xx · cancelled xx"
+                    accessibilityRole="button"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "justifyContent": "center",
+                          "minHeight": 44,
+                          "minWidth": 44,
+                        },
+                        {
+                          "paddingHorizontal": 8,
+                        },
+                        false,
+                      ]
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans-SemiBold",
+                            "fontSize": 15,
+                            "fontWeight": "normal",
+                            "lineHeight": 20,
+                          },
+                          {
+                            "color": "#B83E18",
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      Why? x
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans-SemiBold",
+                      "fontSize": 12,
+                      "fontWeight": "normal",
+                      "lineHeight": 16,
+                    },
+                    {
+                      "color": "#6F6960",
+                    },
+                    {
+                      "marginTop": 6,
+                    },
+                  ]
+                }
+              >
+                Cancellation rules xxxxx
+              </Text>
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "flex-start",
+                      "flexDirection": "row",
+                      "gap": 8,
+                      "paddingVertical": 8,
+                    },
+                    {
+                      "borderBottomColor": "#E4DDD2",
+                      "borderBottomWidth": 0.5,
+                    },
+                  ]
+                }
+                testID="mangal-a-mangal-cancel-own-exalted"
+              >
+                <View
+                  style={
+                    {
+                      "flex": 1,
+                      "minWidth": 0,
+                      "paddingTop": 2,
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "flexWrap": "wrap",
+                        "gap": 8,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans",
+                            "fontSize": 17,
+                            "fontWeight": "normal",
+                            "lineHeight": 26,
+                          },
+                          {
+                            "color": "#1C1A17",
+                          },
+                          {
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
+                      Mars in its own or exaltation sign xxxxxxxxxx
+                    </Text>
+                    <View
+                      accessibilityLabel="not applied xxx"
+                      style={
+                        [
+                          {
+                            "alignSelf": "flex-start",
+                            "borderRadius": 4,
+                            "paddingHorizontal": 6,
+                            "paddingVertical": 2,
+                          },
+                          {
+                            "backgroundColor": "transparent",
+                            "borderColor": "#CFC7BA",
+                            "borderWidth": 1,
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      <Text
+                        style={
+                          [
+                            {
+                              "fontFamily": "NotoSans-SemiBold",
+                              "fontSize": 12,
+                              "fontWeight": "normal",
+                              "lineHeight": 16,
+                            },
+                            {
+                              "color": "#5B554C",
+                            },
+                            undefined,
+                          ]
+                        }
+                      >
+                        not applied xxx
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  style={
+                    {
+                      "alignItems": "flex-end",
+                      "justifyContent": "center",
+                      "minHeight": 44,
+                      "minWidth": 44,
+                    }
+                  }
+                >
+                  <View
+                    accessibilityLabel="Why? x Mars in its own or exaltation sign xxxxxxxxxx · not applied xxx"
+                    accessibilityRole="button"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "justifyContent": "center",
+                          "minHeight": 44,
+                          "minWidth": 44,
+                        },
+                        {
+                          "paddingHorizontal": 8,
+                        },
+                        false,
+                      ]
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans-SemiBold",
+                            "fontSize": 15,
+                            "fontWeight": "normal",
+                            "lineHeight": 20,
+                          },
+                          {
+                            "color": "#B83E18",
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      Why? x
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "flex-start",
+                      "flexDirection": "row",
+                      "gap": 8,
+                      "paddingVertical": 8,
+                    },
+                    {
+                      "borderBottomColor": "#E4DDD2",
+                      "borderBottomWidth": 0.5,
+                    },
+                  ]
+                }
+                testID="mangal-a-mangal-cancel-sign-house"
+              >
+                <View
+                  style={
+                    {
+                      "flex": 1,
+                      "minWidth": 0,
+                      "paddingTop": 2,
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "flexWrap": "wrap",
+                        "gap": 8,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans",
+                            "fontSize": 17,
+                            "fontWeight": "normal",
+                            "lineHeight": 26,
+                          },
+                          {
+                            "color": "#1C1A17",
+                          },
+                          {
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
+                      Exempt sign-and-house pair xxxxxxx
+                    </Text>
+                    <View
+                      accessibilityLabel="not applied xxx"
+                      style={
+                        [
+                          {
+                            "alignSelf": "flex-start",
+                            "borderRadius": 4,
+                            "paddingHorizontal": 6,
+                            "paddingVertical": 2,
+                          },
+                          {
+                            "backgroundColor": "transparent",
+                            "borderColor": "#CFC7BA",
+                            "borderWidth": 1,
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      <Text
+                        style={
+                          [
+                            {
+                              "fontFamily": "NotoSans-SemiBold",
+                              "fontSize": 12,
+                              "fontWeight": "normal",
+                              "lineHeight": 16,
+                            },
+                            {
+                              "color": "#5B554C",
+                            },
+                            undefined,
+                          ]
+                        }
+                      >
+                        not applied xxx
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  style={
+                    {
+                      "alignItems": "flex-end",
+                      "justifyContent": "center",
+                      "minHeight": 44,
+                      "minWidth": 44,
+                    }
+                  }
+                >
+                  <View
+                    accessibilityLabel="Why? x Exempt sign-and-house pair xxxxxxx · not applied xxx"
+                    accessibilityRole="button"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "justifyContent": "center",
+                          "minHeight": 44,
+                          "minWidth": 44,
+                        },
+                        {
+                          "paddingHorizontal": 8,
+                        },
+                        false,
+                      ]
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans-SemiBold",
+                            "fontSize": 15,
+                            "fontWeight": "normal",
+                            "lineHeight": 20,
+                          },
+                          {
+                            "color": "#B83E18",
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      Why? x
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "flex-start",
+                      "flexDirection": "row",
+                      "gap": 8,
+                      "paddingVertical": 8,
+                    },
+                    {
+                      "borderBottomColor": "#E4DDD2",
+                      "borderBottomWidth": 0.5,
+                    },
+                  ]
+                }
+                testID="mangal-a-mangal-cancel-jupiter-moon-conjunction"
+              >
+                <View
+                  style={
+                    {
+                      "flex": 1,
+                      "minWidth": 0,
+                      "paddingTop": 2,
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "flexWrap": "wrap",
+                        "gap": 8,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans",
+                            "fontSize": 17,
+                            "fontWeight": "normal",
+                            "lineHeight": 26,
+                          },
+                          {
+                            "color": "#1C1A17",
+                          },
+                          {
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
+                      Mars with Jupiter or the Moon xxxxxxxx
+                    </Text>
+                    <View
+                      accessibilityLabel="not applied xxx"
+                      style={
+                        [
+                          {
+                            "alignSelf": "flex-start",
+                            "borderRadius": 4,
+                            "paddingHorizontal": 6,
+                            "paddingVertical": 2,
+                          },
+                          {
+                            "backgroundColor": "transparent",
+                            "borderColor": "#CFC7BA",
+                            "borderWidth": 1,
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      <Text
+                        style={
+                          [
+                            {
+                              "fontFamily": "NotoSans-SemiBold",
+                              "fontSize": 12,
+                              "fontWeight": "normal",
+                              "lineHeight": 16,
+                            },
+                            {
+                              "color": "#5B554C",
+                            },
+                            undefined,
+                          ]
+                        }
+                      >
+                        not applied xxx
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  style={
+                    {
+                      "alignItems": "flex-end",
+                      "justifyContent": "center",
+                      "minHeight": 44,
+                      "minWidth": 44,
+                    }
+                  }
+                >
+                  <View
+                    accessibilityLabel="Why? x Mars with Jupiter or the Moon xxxxxxxx · not applied xxx"
+                    accessibilityRole="button"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "justifyContent": "center",
+                          "minHeight": 44,
+                          "minWidth": 44,
+                        },
+                        {
+                          "paddingHorizontal": 8,
+                        },
+                        false,
+                      ]
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans-SemiBold",
+                            "fontSize": 15,
+                            "fontWeight": "normal",
+                            "lineHeight": 20,
+                          },
+                          {
+                            "color": "#B83E18",
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      Why? x
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "flex-start",
+                      "flexDirection": "row",
+                      "gap": 8,
+                      "paddingVertical": 8,
+                    },
+                    {
+                      "borderBottomColor": "#E4DDD2",
+                      "borderBottomWidth": 0.5,
+                    },
+                  ]
+                }
+                testID="mangal-a-mangal-cancel-jupiter-aspect"
+              >
+                <View
+                  style={
+                    {
+                      "flex": 1,
+                      "minWidth": 0,
+                      "paddingTop": 2,
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "flexWrap": "wrap",
+                        "gap": 8,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans",
+                            "fontSize": 17,
+                            "fontWeight": "normal",
+                            "lineHeight": 26,
+                          },
+                          {
+                            "color": "#1C1A17",
+                          },
+                          {
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
+                      Jupiter aspects Mars xxxxx
+                    </Text>
+                    <View
+                      accessibilityLabel="not applied xxx"
+                      style={
+                        [
+                          {
+                            "alignSelf": "flex-start",
+                            "borderRadius": 4,
+                            "paddingHorizontal": 6,
+                            "paddingVertical": 2,
+                          },
+                          {
+                            "backgroundColor": "transparent",
+                            "borderColor": "#CFC7BA",
+                            "borderWidth": 1,
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      <Text
+                        style={
+                          [
+                            {
+                              "fontFamily": "NotoSans-SemiBold",
+                              "fontSize": 12,
+                              "fontWeight": "normal",
+                              "lineHeight": 16,
+                            },
+                            {
+                              "color": "#5B554C",
+                            },
+                            undefined,
+                          ]
+                        }
+                      >
+                        not applied xxx
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  style={
+                    {
+                      "alignItems": "flex-end",
+                      "justifyContent": "center",
+                      "minHeight": 44,
+                      "minWidth": 44,
+                    }
+                  }
+                >
+                  <View
+                    accessibilityLabel="Why? x Jupiter aspects Mars xxxxx · not applied xxx"
+                    accessibilityRole="button"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "justifyContent": "center",
+                          "minHeight": 44,
+                          "minWidth": 44,
+                        },
+                        {
+                          "paddingHorizontal": 8,
+                        },
+                        false,
+                      ]
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans-SemiBold",
+                            "fontSize": 15,
+                            "fontWeight": "normal",
+                            "lineHeight": 20,
+                          },
+                          {
+                            "color": "#B83E18",
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      Why? x
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "flex-start",
+                      "flexDirection": "row",
+                      "gap": 8,
+                      "paddingVertical": 8,
+                    },
+                    false,
+                  ]
+                }
+                testID="mangal-a-mangal-cancel-debilitated-combust"
+              >
+                <View
+                  style={
+                    {
+                      "flex": 1,
+                      "minWidth": 0,
+                      "paddingTop": 2,
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "flexWrap": "wrap",
+                        "gap": 8,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans",
+                            "fontSize": 17,
+                            "fontWeight": "normal",
+                            "lineHeight": 26,
+                          },
+                          {
+                            "color": "#1C1A17",
+                          },
+                          {
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
+                      Mars debilitated or combust xxxxxxxx
+                    </Text>
+                    <View
+                      accessibilityLabel="applies xx"
+                      style={
+                        [
+                          {
+                            "alignSelf": "flex-start",
+                            "borderRadius": 4,
+                            "paddingHorizontal": 6,
+                            "paddingVertical": 2,
+                          },
+                          {
+                            "backgroundColor": "#F1ECE3",
+                            "borderColor": "#F1ECE3",
+                            "borderWidth": 1,
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      <Text
+                        style={
+                          [
+                            {
+                              "fontFamily": "NotoSans-SemiBold",
+                              "fontSize": 12,
+                              "fontWeight": "normal",
+                              "lineHeight": 16,
+                            },
+                            {
+                              "color": "#5B554C",
+                            },
+                            undefined,
+                          ]
+                        }
+                      >
+                        applies xx
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  style={
+                    {
+                      "alignItems": "flex-end",
+                      "justifyContent": "center",
+                      "minHeight": 44,
+                      "minWidth": 44,
+                    }
+                  }
+                >
+                  <View
+                    accessibilityLabel="Why? x Mars debilitated or combust xxxxxxxx · applies xx"
+                    accessibilityRole="button"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "justifyContent": "center",
+                          "minHeight": 44,
+                          "minWidth": 44,
+                        },
+                        {
+                          "paddingHorizontal": 8,
+                        },
+                        false,
+                      ]
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans-SemiBold",
+                            "fontSize": 15,
+                            "fontWeight": "normal",
+                            "lineHeight": 20,
+                          },
+                          {
+                            "color": "#B83E18",
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      Why? x
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              style={
+                {
+                  "gap": 2,
+                  "marginTop": 8,
+                }
+              }
+              testID="mangal-b"
+            >
+              <Text
+                accessibilityRole="header"
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans-SemiBold",
+                      "fontSize": 15,
+                      "fontWeight": "normal",
+                      "lineHeight": 20,
+                    },
+                    {
+                      "color": "#1C1A17",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Mangal dosha · Amma xxxxxx
+              </Text>
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "flex-start",
+                      "flexDirection": "row",
+                      "gap": 8,
+                      "paddingVertical": 8,
+                    },
+                    {
+                      "borderBottomColor": "#E4DDD2",
+                      "borderBottomWidth": 0.5,
+                    },
+                  ]
+                }
+                testID="mangal-b-status"
+              >
+                <View
+                  style={
+                    {
+                      "flex": 1,
+                      "minWidth": 0,
+                      "paddingTop": 2,
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "flexWrap": "wrap",
+                        "gap": 6,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans-SemiBold",
+                            "fontSize": 17,
+                            "fontWeight": "normal",
+                            "lineHeight": 26,
+                          },
+                          {
+                            "color": "#1C1A17",
+                          },
+                          {
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
+                      Mangal dosha xxx: present xx · cancelled xx
+                    </Text>
+                  </View>
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 13,
+                          "fontWeight": "normal",
+                          "lineHeight": 18,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                    testID="mangal-b-ref-0"
+                  >
+                    Mars in house 1 from Lagna x xxxxxxxxx
+                  </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 13,
+                          "fontWeight": "normal",
+                          "lineHeight": 18,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                    testID="mangal-b-ref-1"
+                  >
+                    Mars in house 12 from Moon x xxxxxxxxx
+                  </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 13,
+                          "fontWeight": "normal",
+                          "lineHeight": 18,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                    testID="mangal-b-ref-2"
+                  >
+                    Mars in house 12 from Venus x xxxxxxxxx
+                  </Text>
+                </View>
+                <View
+                  style={
+                    {
+                      "alignItems": "flex-end",
+                      "justifyContent": "center",
+                      "minHeight": 44,
+                      "minWidth": 44,
+                    }
+                  }
+                >
+                  <View
+                    accessibilityLabel="Why? x Mangal dosha xxx: present xx · cancelled xx"
+                    accessibilityRole="button"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "justifyContent": "center",
+                          "minHeight": 44,
+                          "minWidth": 44,
+                        },
+                        {
+                          "paddingHorizontal": 8,
+                        },
+                        false,
+                      ]
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans-SemiBold",
+                            "fontSize": 15,
+                            "fontWeight": "normal",
+                            "lineHeight": 20,
+                          },
+                          {
+                            "color": "#B83E18",
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      Why? x
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans-SemiBold",
+                      "fontSize": 12,
+                      "fontWeight": "normal",
+                      "lineHeight": 16,
+                    },
+                    {
+                      "color": "#6F6960",
+                    },
+                    {
+                      "marginTop": 6,
+                    },
+                  ]
+                }
+              >
+                Cancellation rules xxxxx
+              </Text>
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "flex-start",
+                      "flexDirection": "row",
+                      "gap": 8,
+                      "paddingVertical": 8,
+                    },
+                    {
+                      "borderBottomColor": "#E4DDD2",
+                      "borderBottomWidth": 0.5,
+                    },
+                  ]
+                }
+                testID="mangal-b-mangal-cancel-own-exalted"
+              >
+                <View
+                  style={
+                    {
+                      "flex": 1,
+                      "minWidth": 0,
+                      "paddingTop": 2,
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "flexWrap": "wrap",
+                        "gap": 8,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans",
+                            "fontSize": 17,
+                            "fontWeight": "normal",
+                            "lineHeight": 26,
+                          },
+                          {
+                            "color": "#1C1A17",
+                          },
+                          {
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
+                      Mars in its own or exaltation sign xxxxxxxxxx
+                    </Text>
+                    <View
+                      accessibilityLabel="not applied xxx"
+                      style={
+                        [
+                          {
+                            "alignSelf": "flex-start",
+                            "borderRadius": 4,
+                            "paddingHorizontal": 6,
+                            "paddingVertical": 2,
+                          },
+                          {
+                            "backgroundColor": "transparent",
+                            "borderColor": "#CFC7BA",
+                            "borderWidth": 1,
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      <Text
+                        style={
+                          [
+                            {
+                              "fontFamily": "NotoSans-SemiBold",
+                              "fontSize": 12,
+                              "fontWeight": "normal",
+                              "lineHeight": 16,
+                            },
+                            {
+                              "color": "#5B554C",
+                            },
+                            undefined,
+                          ]
+                        }
+                      >
+                        not applied xxx
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  style={
+                    {
+                      "alignItems": "flex-end",
+                      "justifyContent": "center",
+                      "minHeight": 44,
+                      "minWidth": 44,
+                    }
+                  }
+                >
+                  <View
+                    accessibilityLabel="Why? x Mars in its own or exaltation sign xxxxxxxxxx · not applied xxx"
+                    accessibilityRole="button"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "justifyContent": "center",
+                          "minHeight": 44,
+                          "minWidth": 44,
+                        },
+                        {
+                          "paddingHorizontal": 8,
+                        },
+                        false,
+                      ]
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans-SemiBold",
+                            "fontSize": 15,
+                            "fontWeight": "normal",
+                            "lineHeight": 20,
+                          },
+                          {
+                            "color": "#B83E18",
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      Why? x
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "flex-start",
+                      "flexDirection": "row",
+                      "gap": 8,
+                      "paddingVertical": 8,
+                    },
+                    {
+                      "borderBottomColor": "#E4DDD2",
+                      "borderBottomWidth": 0.5,
+                    },
+                  ]
+                }
+                testID="mangal-b-mangal-cancel-sign-house"
+              >
+                <View
+                  style={
+                    {
+                      "flex": 1,
+                      "minWidth": 0,
+                      "paddingTop": 2,
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "flexWrap": "wrap",
+                        "gap": 8,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans",
+                            "fontSize": 17,
+                            "fontWeight": "normal",
+                            "lineHeight": 26,
+                          },
+                          {
+                            "color": "#1C1A17",
+                          },
+                          {
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
+                      Exempt sign-and-house pair xxxxxxx
+                    </Text>
+                    <View
+                      accessibilityLabel="not applied xxx"
+                      style={
+                        [
+                          {
+                            "alignSelf": "flex-start",
+                            "borderRadius": 4,
+                            "paddingHorizontal": 6,
+                            "paddingVertical": 2,
+                          },
+                          {
+                            "backgroundColor": "transparent",
+                            "borderColor": "#CFC7BA",
+                            "borderWidth": 1,
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      <Text
+                        style={
+                          [
+                            {
+                              "fontFamily": "NotoSans-SemiBold",
+                              "fontSize": 12,
+                              "fontWeight": "normal",
+                              "lineHeight": 16,
+                            },
+                            {
+                              "color": "#5B554C",
+                            },
+                            undefined,
+                          ]
+                        }
+                      >
+                        not applied xxx
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  style={
+                    {
+                      "alignItems": "flex-end",
+                      "justifyContent": "center",
+                      "minHeight": 44,
+                      "minWidth": 44,
+                    }
+                  }
+                >
+                  <View
+                    accessibilityLabel="Why? x Exempt sign-and-house pair xxxxxxx · not applied xxx"
+                    accessibilityRole="button"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "justifyContent": "center",
+                          "minHeight": 44,
+                          "minWidth": 44,
+                        },
+                        {
+                          "paddingHorizontal": 8,
+                        },
+                        false,
+                      ]
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans-SemiBold",
+                            "fontSize": 15,
+                            "fontWeight": "normal",
+                            "lineHeight": 20,
+                          },
+                          {
+                            "color": "#B83E18",
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      Why? x
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "flex-start",
+                      "flexDirection": "row",
+                      "gap": 8,
+                      "paddingVertical": 8,
+                    },
+                    {
+                      "borderBottomColor": "#E4DDD2",
+                      "borderBottomWidth": 0.5,
+                    },
+                  ]
+                }
+                testID="mangal-b-mangal-cancel-jupiter-moon-conjunction"
+              >
+                <View
+                  style={
+                    {
+                      "flex": 1,
+                      "minWidth": 0,
+                      "paddingTop": 2,
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "flexWrap": "wrap",
+                        "gap": 8,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans",
+                            "fontSize": 17,
+                            "fontWeight": "normal",
+                            "lineHeight": 26,
+                          },
+                          {
+                            "color": "#1C1A17",
+                          },
+                          {
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
+                      Mars with Jupiter or the Moon xxxxxxxx
+                    </Text>
+                    <View
+                      accessibilityLabel="not applied xxx"
+                      style={
+                        [
+                          {
+                            "alignSelf": "flex-start",
+                            "borderRadius": 4,
+                            "paddingHorizontal": 6,
+                            "paddingVertical": 2,
+                          },
+                          {
+                            "backgroundColor": "transparent",
+                            "borderColor": "#CFC7BA",
+                            "borderWidth": 1,
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      <Text
+                        style={
+                          [
+                            {
+                              "fontFamily": "NotoSans-SemiBold",
+                              "fontSize": 12,
+                              "fontWeight": "normal",
+                              "lineHeight": 16,
+                            },
+                            {
+                              "color": "#5B554C",
+                            },
+                            undefined,
+                          ]
+                        }
+                      >
+                        not applied xxx
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  style={
+                    {
+                      "alignItems": "flex-end",
+                      "justifyContent": "center",
+                      "minHeight": 44,
+                      "minWidth": 44,
+                    }
+                  }
+                >
+                  <View
+                    accessibilityLabel="Why? x Mars with Jupiter or the Moon xxxxxxxx · not applied xxx"
+                    accessibilityRole="button"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "justifyContent": "center",
+                          "minHeight": 44,
+                          "minWidth": 44,
+                        },
+                        {
+                          "paddingHorizontal": 8,
+                        },
+                        false,
+                      ]
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans-SemiBold",
+                            "fontSize": 15,
+                            "fontWeight": "normal",
+                            "lineHeight": 20,
+                          },
+                          {
+                            "color": "#B83E18",
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      Why? x
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "flex-start",
+                      "flexDirection": "row",
+                      "gap": 8,
+                      "paddingVertical": 8,
+                    },
+                    {
+                      "borderBottomColor": "#E4DDD2",
+                      "borderBottomWidth": 0.5,
+                    },
+                  ]
+                }
+                testID="mangal-b-mangal-cancel-jupiter-aspect"
+              >
+                <View
+                  style={
+                    {
+                      "flex": 1,
+                      "minWidth": 0,
+                      "paddingTop": 2,
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "flexWrap": "wrap",
+                        "gap": 8,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans",
+                            "fontSize": 17,
+                            "fontWeight": "normal",
+                            "lineHeight": 26,
+                          },
+                          {
+                            "color": "#1C1A17",
+                          },
+                          {
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
+                      Jupiter aspects Mars xxxxx
+                    </Text>
+                    <View
+                      accessibilityLabel="applies xx"
+                      style={
+                        [
+                          {
+                            "alignSelf": "flex-start",
+                            "borderRadius": 4,
+                            "paddingHorizontal": 6,
+                            "paddingVertical": 2,
+                          },
+                          {
+                            "backgroundColor": "#F1ECE3",
+                            "borderColor": "#F1ECE3",
+                            "borderWidth": 1,
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      <Text
+                        style={
+                          [
+                            {
+                              "fontFamily": "NotoSans-SemiBold",
+                              "fontSize": 12,
+                              "fontWeight": "normal",
+                              "lineHeight": 16,
+                            },
+                            {
+                              "color": "#5B554C",
+                            },
+                            undefined,
+                          ]
+                        }
+                      >
+                        applies xx
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  style={
+                    {
+                      "alignItems": "flex-end",
+                      "justifyContent": "center",
+                      "minHeight": 44,
+                      "minWidth": 44,
+                    }
+                  }
+                >
+                  <View
+                    accessibilityLabel="Why? x Jupiter aspects Mars xxxxx · applies xx"
+                    accessibilityRole="button"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "justifyContent": "center",
+                          "minHeight": 44,
+                          "minWidth": 44,
+                        },
+                        {
+                          "paddingHorizontal": 8,
+                        },
+                        false,
+                      ]
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans-SemiBold",
+                            "fontSize": 15,
+                            "fontWeight": "normal",
+                            "lineHeight": 20,
+                          },
+                          {
+                            "color": "#B83E18",
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      Why? x
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "flex-start",
+                      "flexDirection": "row",
+                      "gap": 8,
+                      "paddingVertical": 8,
+                    },
+                    false,
+                  ]
+                }
+                testID="mangal-b-mangal-cancel-debilitated-combust"
+              >
+                <View
+                  style={
+                    {
+                      "flex": 1,
+                      "minWidth": 0,
+                      "paddingTop": 2,
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "flexWrap": "wrap",
+                        "gap": 8,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans",
+                            "fontSize": 17,
+                            "fontWeight": "normal",
+                            "lineHeight": 26,
+                          },
+                          {
+                            "color": "#1C1A17",
+                          },
+                          {
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
+                      Mars debilitated or combust xxxxxxxx
+                    </Text>
+                    <View
+                      accessibilityLabel="applies xx"
+                      style={
+                        [
+                          {
+                            "alignSelf": "flex-start",
+                            "borderRadius": 4,
+                            "paddingHorizontal": 6,
+                            "paddingVertical": 2,
+                          },
+                          {
+                            "backgroundColor": "#F1ECE3",
+                            "borderColor": "#F1ECE3",
+                            "borderWidth": 1,
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      <Text
+                        style={
+                          [
+                            {
+                              "fontFamily": "NotoSans-SemiBold",
+                              "fontSize": 12,
+                              "fontWeight": "normal",
+                              "lineHeight": 16,
+                            },
+                            {
+                              "color": "#5B554C",
+                            },
+                            undefined,
+                          ]
+                        }
+                      >
+                        applies xx
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  style={
+                    {
+                      "alignItems": "flex-end",
+                      "justifyContent": "center",
+                      "minHeight": 44,
+                      "minWidth": 44,
+                    }
+                  }
+                >
+                  <View
+                    accessibilityLabel="Why? x Mars debilitated or combust xxxxxxxx · applies xx"
+                    accessibilityRole="button"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "justifyContent": "center",
+                          "minHeight": 44,
+                          "minWidth": 44,
+                        },
+                        {
+                          "paddingHorizontal": 8,
+                        },
+                        false,
+                      ]
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans-SemiBold",
+                            "fontSize": 15,
+                            "fontWeight": "normal",
+                            "lineHeight": 20,
+                          },
+                          {
+                            "color": "#B83E18",
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      Why? x
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "flex-start",
+                    "flexDirection": "row",
+                    "gap": 8,
+                    "paddingVertical": 8,
+                  },
+                  false,
+                ]
+              }
+              testID="mangal-both"
+            >
+              <View
+                style={
+                  {
+                    "flex": 1,
+                    "minWidth": 0,
+                    "paddingTop": 2,
+                  }
+                }
+              >
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "flexWrap": "wrap",
+                      "gap": 8,
+                    }
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 17,
+                          "fontWeight": "normal",
+                          "lineHeight": 26,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        {
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    Both charts carry the dosha xxxxxxxx
+                  </Text>
+                  <View
+                    accessibilityLabel="not applied xxx"
+                    style={
+                      [
+                        {
+                          "alignSelf": "flex-start",
+                          "borderRadius": 4,
+                          "paddingHorizontal": 6,
+                          "paddingVertical": 2,
+                        },
+                        {
+                          "backgroundColor": "transparent",
+                          "borderColor": "#CFC7BA",
+                          "borderWidth": 1,
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans-SemiBold",
+                            "fontSize": 12,
+                            "fontWeight": "normal",
+                            "lineHeight": 16,
+                          },
+                          {
+                            "color": "#5B554C",
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      not applied xxx
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                style={
+                  {
+                    "alignItems": "flex-end",
+                    "justifyContent": "center",
+                    "minHeight": 44,
+                    "minWidth": 44,
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Why? x Both charts carry the dosha xxxxxxxx · not applied xxx"
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "justifyContent": "center",
+                        "minHeight": 44,
+                        "minWidth": 44,
+                      },
+                      {
+                        "paddingHorizontal": 8,
+                      },
+                      false,
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans-SemiBold",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#B83E18",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Why? x
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            [
+              {
+                "borderRadius": 12,
+                "borderWidth": 0.5,
+                "padding": 16,
+              },
+              {
+                "backgroundColor": "#FFFFFF",
+                "borderColor": "#E4DDD2",
+              },
+              undefined,
+              undefined,
+            ]
+          }
+        >
+          <View
+            style={
+              {
+                "gap": 4,
+              }
+            }
+            testID="beyond-section"
+          >
+            <Text
+              accessibilityRole="header"
+              style={
+                [
+                  {
+                    "fontFamily": "NotoSans-SemiBold",
+                    "fontSize": 18,
+                    "fontWeight": "normal",
+                    "lineHeight": 24,
+                  },
+                  {
+                    "color": "#1C1A17",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              Beyond gun milan xxxx
+            </Text>
+            <Text
+              style={
+                [
+                  {
+                    "fontFamily": "NotoSans",
+                    "fontSize": 13,
+                    "fontWeight": "normal",
+                    "lineHeight": 18,
+                  },
+                  {
+                    "color": "#6F6960",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              Read as context, not as a score. xxxxxxxxx
+            </Text>
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "flex-start",
+                    "flexDirection": "row",
+                    "gap": 8,
+                    "paddingVertical": 8,
+                  },
+                  {
+                    "borderBottomColor": "#E4DDD2",
+                    "borderBottomWidth": 0.5,
+                  },
+                ]
+              }
+              testID="beyond-seventh-lords"
+            >
+              <View
+                style={
+                  {
+                    "flex": 1,
+                    "minWidth": 0,
+                    "paddingTop": 2,
+                  }
+                }
+              >
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "flexWrap": "wrap",
+                      "gap": 6,
+                    }
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 17,
+                          "fontWeight": "normal",
+                          "lineHeight": 26,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        {
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    7th house lords xxxx: mixed x
+                  </Text>
+                </View>
+              </View>
+              <View
+                style={
+                  {
+                    "alignItems": "flex-end",
+                    "justifyContent": "center",
+                    "minHeight": 44,
+                    "minWidth": 44,
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Why? x 7th house lords xxxx: mixed x"
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "justifyContent": "center",
+                        "minHeight": 44,
+                        "minWidth": 44,
+                      },
+                      {
+                        "paddingHorizontal": 8,
+                      },
+                      false,
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans-SemiBold",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#B83E18",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Why? x
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "flex-start",
+                    "flexDirection": "row",
+                    "gap": 8,
+                    "paddingVertical": 8,
+                  },
+                  {
+                    "borderBottomColor": "#E4DDD2",
+                    "borderBottomWidth": 0.5,
+                  },
+                ]
+              }
+              testID="beyond-venus"
+            >
+              <View
+                style={
+                  {
+                    "flex": 1,
+                    "minWidth": 0,
+                    "paddingTop": 2,
+                  }
+                }
+              >
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "flexWrap": "wrap",
+                      "gap": 6,
+                    }
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 17,
+                          "fontWeight": "normal",
+                          "lineHeight": 26,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        {
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    Venus x: harmonious xx
+                  </Text>
+                </View>
+              </View>
+              <View
+                style={
+                  {
+                    "alignItems": "flex-end",
+                    "justifyContent": "center",
+                    "minHeight": 44,
+                    "minWidth": 44,
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Why? x Venus x: harmonious xx"
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "justifyContent": "center",
+                        "minHeight": 44,
+                        "minWidth": 44,
+                      },
+                      {
+                        "paddingHorizontal": 8,
+                      },
+                      false,
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans-SemiBold",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#B83E18",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Why? x
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "flex-start",
+                    "flexDirection": "row",
+                    "gap": 8,
+                    "paddingVertical": 8,
+                  },
+                  {
+                    "borderBottomColor": "#E4DDD2",
+                    "borderBottomWidth": 0.5,
+                  },
+                ]
+              }
+              testID="beyond-moon-sign-relation"
+            >
+              <View
+                style={
+                  {
+                    "flex": 1,
+                    "minWidth": 0,
+                    "paddingTop": 2,
+                  }
+                }
+              >
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "flexWrap": "wrap",
+                      "gap": 6,
+                    }
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 17,
+                          "fontWeight": "normal",
+                          "lineHeight": 26,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        {
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    Moon-sign relationship xxxxxx: mixed x
+                  </Text>
+                </View>
+              </View>
+              <View
+                style={
+                  {
+                    "alignItems": "flex-end",
+                    "justifyContent": "center",
+                    "minHeight": 44,
+                    "minWidth": 44,
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Why? x Moon-sign relationship xxxxxx: mixed x"
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "justifyContent": "center",
+                        "minHeight": 44,
+                        "minWidth": 44,
+                      },
+                      {
+                        "paddingHorizontal": 8,
+                      },
+                      false,
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans-SemiBold",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#B83E18",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Why? x
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "flex-start",
+                    "flexDirection": "row",
+                    "gap": 8,
+                    "paddingVertical": 8,
+                  },
+                  false,
+                ]
+              }
+              testID="beyond-dasha-overlap"
+            >
+              <View
+                style={
+                  {
+                    "flex": 1,
+                    "minWidth": 0,
+                    "paddingTop": 2,
+                  }
+                }
+              >
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "flexWrap": "wrap",
+                      "gap": 6,
+                    }
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 17,
+                          "fontWeight": "normal",
+                          "lineHeight": 26,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        {
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    Dasha overlap · next 5 years xxxxxxxx: harmonious xx
+                  </Text>
+                </View>
+                <View
+                  style={
+                    {
+                      "gap": 2,
+                      "marginTop": 4,
+                    }
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 13,
+                          "fontWeight": "normal",
+                          "lineHeight": 18,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                    testID="overlap-0"
+                  >
+                    22 Oct 2026 – 25 Apr 2027: Rahu–Ketu with Venus–Saturn xxxxxxxxxxxxxx
+                  </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 13,
+                          "fontWeight": "normal",
+                          "lineHeight": 18,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                    testID="overlap-1"
+                  >
+                    25 Apr 2027 – 17 Oct 2028: Rahu–Venus with Venus–Saturn xxxxxxxxxxxxxx
+                  </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 13,
+                          "fontWeight": "normal",
+                          "lineHeight": 18,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                    testID="overlap-2"
+                  >
+                    17 Oct 2028 – 25 Apr 2030: Rahu–Venus with Venus–Mercury xxxxxxxxxxxxxx
+                  </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 13,
+                          "fontWeight": "normal",
+                          "lineHeight": 18,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                    testID="overlap-3"
+                  >
+                    25 Apr 2030 – 19 Mar 2031: Rahu–Sun with Venus–Mercury xxxxxxxxxxxxxx
+                  </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 13,
+                          "fontWeight": "normal",
+                          "lineHeight": 18,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                    testID="overlap-4"
+                  >
+                    19 Mar 2031 – 18 Aug 2031: Rahu–Moon with Venus–Mercury xxxxxxxxxxxxxx
+                  </Text>
+                  <View
+                    accessibilityLabel="All 6 periods xxxxx"
+                    accessibilityRole="button"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "justifyContent": "center",
+                          "minHeight": 44,
+                          "minWidth": 44,
+                        },
+                        [
+                          {
+                            "paddingHorizontal": 12,
+                          },
+                          undefined,
+                          {
+                            "alignSelf": "flex-start",
+                            "paddingHorizontal": 0,
+                          },
+                        ],
+                        false,
+                      ]
+                    }
+                    testID="overlaps-toggle"
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans-SemiBold",
+                            "fontSize": 15,
+                            "fontWeight": "normal",
+                            "lineHeight": 20,
+                          },
+                          {
+                            "color": "#B83E18",
+                          },
+                          {
+                            "textAlign": "center",
+                          },
+                        ]
+                      }
+                    >
+                      All 6 periods xxxxx
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                style={
+                  {
+                    "alignItems": "flex-end",
+                    "justifyContent": "center",
+                    "minHeight": 44,
+                    "minWidth": 44,
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Why? x Dasha overlap · next 5 years xxxxxxxx: harmonious xx"
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "justifyContent": "center",
+                        "minHeight": 44,
+                        "minWidth": 44,
+                      },
+                      {
+                        "paddingHorizontal": 8,
+                      },
+                      false,
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans-SemiBold",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#B83E18",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Why? x
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            [
+              {
+                "borderRadius": 12,
+                "borderWidth": 0.5,
+                "padding": 16,
+              },
+              {
+                "backgroundColor": "#FFFFFF",
+                "borderColor": "#E4DDD2",
+              },
+              undefined,
+              undefined,
+            ]
+          }
+          testID="summary-card"
+        >
+          <Text
+            accessibilityRole="header"
+            style={
+              [
+                {
+                  "fontFamily": "NotoSans-SemiBold",
+                  "fontSize": 18,
+                  "fontWeight": "normal",
+                  "lineHeight": 24,
+                },
+                {
+                  "color": "#1C1A17",
+                },
+                undefined,
+              ]
+            }
+          >
+            Summary xx
+          </Text>
+          <Text
+            style={
+              [
+                {
+                  "fontFamily": "NotoSans",
+                  "fontSize": 17,
+                  "fontWeight": "normal",
+                  "lineHeight": 26,
+                },
+                {
+                  "color": "#1C1A17",
+                },
+                undefined,
+              ]
+            }
+            testID="summary-text"
+          >
+            Priya and Amma score 25 of 36 guna; 2 of 8 kootas at full points. Nadi dosha: none x. Bhakoot dosha: none x. Mangal dosha: Priya cancelled xx, Amma cancelled xx. xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+          </Text>
+          <Text
+            style={
+              [
+                {
+                  "fontFamily": "NotoSans",
+                  "fontSize": 13,
+                  "fontWeight": "normal",
+                  "lineHeight": 18,
+                },
+                {
+                  "color": "#6F6960",
+                },
+                undefined,
+              ]
+            }
+            testID="summary-free"
+          >
+            Free shows the scores and this summary; Pro opens every Why? in full and the matching report PDF. xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+          </Text>
+        </View>
+        <View
+          accessibilityRole="summary"
+          style={
+            [
+              {
+                "borderTopWidth": 0.5,
+                "gap": 2,
+                "marginTop": 8,
+                "paddingTop": 8,
+              },
+              {
+                "borderTopColor": "#E4DDD2",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "fontFamily": "NotoSans-SemiBold",
+                  "fontSize": 13,
+                  "fontWeight": "normal",
+                  "lineHeight": 18,
+                },
+                {
+                  "color": "#5B554C",
+                },
+                undefined,
+              ]
+            }
+          >
+            How this was computed xxxxxx
+          </Text>
+          <Text
+            style={
+              [
+                {
+                  "fontFamily": "NotoSans",
+                  "fontSize": 13,
+                  "fontWeight": "normal",
+                  "lineHeight": 18,
+                },
+                {
+                  "color": "#6F6960",
+                },
+                undefined,
+              ]
+            }
+          >
+            Ayanamsa xx: Lahiri (default) xxxx (23.8386°)
+          </Text>
+          <Text
+            style={
+              [
+                {
+                  "fontFamily": "NotoSans",
+                  "fontSize": 13,
+                  "fontWeight": "normal",
+                  "lineHeight": 18,
+                },
+                {
+                  "color": "#6F6960",
+                },
+                undefined,
+              ]
+            }
+          >
+            Rahu and Ketu xxx: mean node (Meeus)
+          </Text>
+          <Text
+            style={
+              [
+                {
+                  "fontFamily": "NotoSans",
+                  "fontSize": 13,
+                  "fontWeight": "normal",
+                  "lineHeight": 18,
+                },
+                {
+                  "color": "#6F6960",
+                },
+                undefined,
+              ]
+            }
+          >
+            Ephemeris: astronomy-engine 2.1.19 xxxxx
+          </Text>
+          <Text
+            style={
+              [
+                {
+                  "fontFamily": "NotoSans",
+                  "fontSize": 13,
+                  "fontWeight": "normal",
+                  "lineHeight": 18,
+                },
+                {
+                  "color": "#6F6960",
+                },
+                undefined,
+              ]
+            }
+          >
+            Time zone xx: Asia/Kolkata · Asia/Kolkata · tzdb 2026e
+          </Text>
+          <Text
+            style={
+              [
+                {
+                  "fontFamily": "NotoSans",
+                  "fontSize": 13,
+                  "fontWeight": "normal",
+                  "lineHeight": 18,
+                },
+                {
+                  "color": "#6F6960",
+                },
+                undefined,
+              ]
+            }
+          >
+            Degrees to the arc-minute; dates and times to the minute xxxxxxxxxxxxxxxx
+          </Text>
+          <Text
+            style={
+              [
+                {
+                  "fontFamily": "NotoSans",
+                  "fontSize": 13,
+                  "fontWeight": "normal",
+                  "lineHeight": 18,
+                },
+                {
+                  "color": "#6F6960",
+                },
+                undefined,
+              ]
+            }
+          >
+            How this was computed: Ashtakoota by the Muhurta Chintamani tables with Drik Panchang's conventions for the Nadi and Bhakoot exceptions; Mangal dosha from the Lagna, Moon and Venus with the listed cancellations; Lahiri (default) xxxx ayanamsa; mean node (Meeus) node. xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+          </Text>
+        </View>
+      </View>
+    </RCTScrollView>
+  </View>
+</RNCSafeAreaProvider>
+`;

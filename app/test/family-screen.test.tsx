@@ -2,7 +2,7 @@
 // (tithi birthday per profile with the relationship in the kind label - N5; barsi + Pitru Paksha per ancestor; vrat
 // cards only for enabled families), series switches (on; 6th on free refused with the honest sheet; permission denied
 // leaves the switch Off with the settings row; "not scheduled" tag), footer buttons (M7 wording), quiet-by-default
-// caption, nothing from Phase B, +30 % pseudo-locale snapshot without truncation.
+// caption, the B06 Family tools card (M3) and its routes, +30 % pseudo-locale snapshot without truncation.
 import { fireEvent, screen, waitFor } from '@testing-library/react-native';
 import { router } from 'expo-router';
 import FamilyScreen from '../app/(tabs)/family';
@@ -87,8 +87,12 @@ describe('<FamilyScreen>', () => {
     expect(screen.getByText('Add vrat')).toBeTruthy();
     expect(screen.queryByText('Add tithi birthday')).toBeNull();
     expect(textOf(screen.getByTestId('family-footer'))).toMatch(/Quiet by default/);
-    expect(screen.queryByText(/Family tools/)).toBeNull();
-    expect(screen.queryByText(/Match two profiles|Share for matching|Name syllables/)).toBeNull();
+    // B06 (M3): the Family tools card sits after the event cards with its three rows; "profile menu" wording nowhere.
+    expect(screen.getByText('Family tools')).toBeTruthy();
+    expect(screen.getByTestId('tools-match').props.accessibilityLabel).toBe('Match two profiles');
+    expect(screen.getByTestId('tools-share').props.accessibilityLabel).toBe('Share for matching');
+    expect(screen.getByTestId('tools-naamkaran').props.accessibilityLabel).toBe('Name syllables');
+    expect(screen.queryByText(/profile menu/i)).toBeNull();
     expect(screen.queryByText('Ad')).toBeNull();
     assertNoTruncation();
     await fireEvent.press(screen.getByTestId('add-shraddha'));
@@ -97,6 +101,15 @@ describe('<FamilyScreen>', () => {
     expect(router.push).toHaveBeenCalledWith('/settings/vrats');
     await fireEvent.press(screen.getByTestId('open-calendar'));
     expect(router.push).toHaveBeenCalledWith('/family/calendar');
+    await fireEvent.press(screen.getByTestId('tools-match'));
+    expect(router.push).toHaveBeenCalledWith('/family/match');
+    await fireEvent.press(screen.getByTestId('tools-naamkaran'));
+    expect(router.push).toHaveBeenCalledWith('/family/naamkaran');
+    // Share for matching opens the share-code sheet for the self profile: QR + 20-char code + the privacy copy.
+    await fireEvent.press(screen.getByTestId('tools-share'));
+    expect(textOf(screen.getByTestId('share-privacy'))).toBe('This code contains birth date, time and place but no name.');
+    expect(textOf(screen.getByTestId('share-code'))).toMatch(/^[0-9A-HJKMNP-TV-Z]{4}(-[0-9A-HJKMNP-TV-Z]{4}){4}$/);
+    expect(textOf(screen.getByTestId('share-for'))).toBe('Code for Priya');
     await fireEvent.press(screen.getByTestId('avatar-add'));
     expect(screen.getByText('Free plan: two profiles')).toBeTruthy(); // 3rd profile refused with the honest sheet
   });

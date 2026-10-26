@@ -4,8 +4,9 @@
 // event cards sorted by next date (tithi birthday per profile, barsi + Pitru Paksha per ancestor, the next occurrence
 // of every ENABLED vrat family) each with its series Switch and Why?; the city card (place, sunrise/sunset, Panchang ->
 // F8 sheet); the footer buttons "Add family member" (M7) · "Add shraddha" · "Add vrat"; the quiet-by-default caption.
-// Every number is engine output at the self profile's place for now. No "Family tools" card, no share/match/naamkaran
-// rows until Phase B (nothing fake, no disabled placeholders).
+// Every number is engine output at the self profile's place for now. B06 (M3): the "Family tools" card (Match two
+// profiles · Share for matching · Name syllables) sits after the event cards and before the city card / Add buttons;
+// "Share for matching" opens the share-code sheet for the selected (self) profile.
 import { goodHours, panchang, type GoodHours, type PanchangDay } from '@shubhvela/engine';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { useCallback, useEffect, useMemo, useState } from 'react';
@@ -16,6 +17,7 @@ import { enabledVratFamilies } from '../../src/db/eventSeries';
 import { FREE_PROFILE_CAP, canAddProfile, isPro } from '../../src/entitlements';
 import { chartFor } from '../../src/engine-bridge/charts';
 import { EventCard } from '../../src/family/EventCard';
+import { FamilyToolsCard } from '../../src/family/FamilyToolsCard';
 import { FamilyTodayCard } from '../../src/family/FamilyTodayCard';
 import { computeFamily, type FamilyModel, type FamilyObserver } from '../../src/family/model';
 import { ProfileRow } from '../../src/family/ProfileRow';
@@ -24,6 +26,7 @@ import { VratCard } from '../../src/family/VratCard';
 import { useLang } from '../../src/i18n';
 import { openSystemNotificationSettings } from '../../src/notifications/permissions';
 import { useProfiles } from '../../src/profiles/useProfiles';
+import { ShareCodeSheet } from '../../src/share/ShareCodeSheet';
 import { useTokens } from '../../src/theme/ThemeProvider';
 import { radius } from '../../src/theme/tokens';
 import { fmtCivilDate, fmtTime, lunarMonthName, tithiName } from '../../src/today/format';
@@ -55,6 +58,7 @@ export default function FamilyScreen({ now, seriesOptions }: FamilyScreenProps) 
   const [computed, setComputed] = useState<Computed | null>(null);
   const [capOpen, setCapOpen] = useState<'pro_profiles' | 'pro_feature' | null>(null);
   const [sheet, setSheet] = useState(false);
+  const [shareOpen, setShareOpen] = useState(false);
   const clock = now ?? Date.now;
 
   const refreshLists = useCallback(() => {
@@ -173,6 +177,8 @@ export default function FamilyScreen({ now, seriesOptions }: FamilyScreenProps) 
             ),
           )}
 
+          <FamilyToolsCard onMatch={() => router.push('/family/match')} onShare={() => setShareOpen(true)} onNaamkaran={() => router.push('/family/naamkaran')} testID="family-tools" />
+
           <Card testID="city-card">
             <View style={styles.cityRow}>
               <View style={styles.cityText}>
@@ -211,6 +217,7 @@ export default function FamilyScreen({ now, seriesOptions }: FamilyScreenProps) 
       ) : null}
 
       <CapSheet visible={capOpen !== null || series.capOpen} onClose={() => (series.capOpen ? series.closeCap() : setCapOpen(null))} reason={series.capOpen ? 'pro_reminders' : capOpen ?? 'pro_feature'} />
+      <ShareCodeSheet visible={shareOpen} onClose={() => setShareOpen(false)} profile={self} />
       {current && self ? (
         <PanchangSheet visible={sheet} onClose={() => setSheet(false)} panchang={current.panchang} goodHours={current.goodHours} chart={chartFor(self)} placeName={placeName} onAllSegments={() => setSheet(false)} />
       ) : null}

@@ -21,6 +21,10 @@ export interface WhyProps {
   glossary?: readonly string[];
   /** Sheet title; defaults to the row sentence when given, else "Why?". */
   title?: string;
+  /** Longer corpus explanation shown above the rule (B06: the koota text at level 1 on free / 3 on Pro). */
+  explanation?: string;
+  /** Heading of the explanation block (defaults to common.explanation). */
+  explanationTitle?: string;
 }
 
 /** Glossary ids worth showing for a rule id: the id itself and its hyphen-prefixes (rahu-kaal, sade-sati-phase-1 -> sade-sati). */
@@ -31,7 +35,7 @@ export function glossaryIdsFor(ruleId: string, extra: readonly string[] = []): s
   return [...ids];
 }
 
-export function WhySheet({ ruleId, inputs, glossary, title, visible, onClose }: WhyProps & { visible: boolean; onClose: () => void }) {
+export function WhySheet({ ruleId, inputs, glossary, title, explanation, explanationTitle, visible, onClose }: WhyProps & { visible: boolean; onClose: () => void }) {
   const { t, lang } = useLang();
   const { colors } = useTokens();
   const rule = ruleText(ruleId, lang);
@@ -41,6 +45,14 @@ export function WhySheet({ ruleId, inputs, glossary, title, visible, onClose }: 
   const inputEntries = Object.entries(inputs ?? {}).filter(([, v]) => v !== undefined && v !== null && v !== '');
   return (
     <Sheet visible={visible} onClose={onClose} title={title ?? t('common.why')}>
+      {explanation ? (
+        <View style={styles.section} testID="why-explanation">
+          <Txt kind="micro" weight={600} color="ink3">
+            {explanationTitle ?? t('common.explanation')}
+          </Txt>
+          <Txt kind="body">{explanation}</Txt>
+        </View>
+      ) : null}
       <View style={styles.section}>
         <Txt kind="micro" weight={600} color="ink3">
           {t('common.rule')}

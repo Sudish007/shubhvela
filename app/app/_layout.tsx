@@ -59,6 +59,10 @@ function Navigator({ fontsReady }: { fontsReady: boolean }) {
         <Stack.Screen name="charts/muhurat/index" />
         <Stack.Screen name="charts/muhurat/saved" />
         <Stack.Screen name="family/naamkaran" />
+        <Stack.Screen name="family/match/index" />
+        <Stack.Screen name="family/match/result" />
+        <Stack.Screen name="family/share-code" />
+        <Stack.Screen name="family/scan" />
         <Stack.Screen name="family/calendar" />
         <Stack.Screen name="family/festival/[slug]" />
         <Stack.Screen name="family/vrat/[id]" />

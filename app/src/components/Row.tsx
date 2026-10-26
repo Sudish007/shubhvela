@@ -17,6 +17,9 @@ export interface RowProps {
   /** Inputs the rule used, shown in the Why? sheet with their values. */
   inputs?: Record<string, WhyInputValue>;
   glossary?: readonly string[];
+  /** Longer corpus explanation for the Why? sheet (koota level text, Mangal cancellation text). */
+  explanation?: string;
+  explanationTitle?: string;
   /** Second line (caption) under the sentence, e.g. a tag or a time range. */
   caption?: ReactNode;
   /** Replaces the Why? control (e.g. a Switch); the rule id is still required and still reaches the sheet via `whyToo`. */
@@ -26,7 +29,7 @@ export interface RowProps {
   testID?: string;
 }
 
-export function Row({ ruleId, children, text, inputs, glossary, caption, control, divider = true, testID }: RowProps) {
+export function Row({ ruleId, children, text, inputs, glossary, explanation, explanationTitle, caption, control, divider = true, testID }: RowProps) {
   const { colors } = useTokens();
   const rowText = text ?? (typeof children === 'string' ? children : undefined);
   return (
@@ -35,7 +38,9 @@ export function Row({ ruleId, children, text, inputs, glossary, caption, control
         {typeof children === 'string' ? <Txt kind="body">{children}</Txt> : children}
         {caption ? <View style={styles.caption}>{caption}</View> : null}
       </View>
-      <View style={styles.control}>{control ?? <WhyButton ruleId={ruleId} inputs={inputs} glossary={glossary} rowText={rowText} />}</View>
+      <View style={styles.control}>
+        {control ?? <WhyButton ruleId={ruleId} inputs={inputs} glossary={glossary} explanation={explanation} explanationTitle={explanationTitle} rowText={rowText} />}
+      </View>
     </View>
   );
 }
