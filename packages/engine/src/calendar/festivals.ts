@@ -19,6 +19,7 @@ import {
   elongation,
   localDateOf,
   localMidnight,
+  lunationAt,
   lunationsBetween,
   nakshatraIndexAt,
   nextCrossing,
@@ -119,6 +120,32 @@ function tithiText(ctx: Ctx, l: Lunation, paksha: Paksha, tithi: number): Festiv
   const amanta: LunarMonth = { index: l.monthIndex, adhik: l.adhik };
   const m = ctx.tradition === 'amanta' ? amanta : purnimantaMonth(amanta, paksha);
   return { month: m.index, adhik: m.adhik, paksha, tithi, system: ctx.tradition };
+}
+
+/**
+ * Tithi label of an offset festival (review N4): the source festival's tithi moved by `days` tithis
+ * (Maha Navami = Dussehra's Dashami - 1 = Navami; Holi = Holika Dahan's Purnima + 1 = Krishna Pratipada),
+ * renamed in the requested system. Solar sources (Lohri from Makar Sankranti) have no tithi label, so
+ * null stays null; a shift that would leave the month falls back to the udaya tithi of the day.
+ */
+function shiftedTithiText(ctx: Ctx, from: FestivalTithiText | null, days: number, date: string): FestivalTithiText | null {
+  if (!from) return null;
+  const amantaIndex = amantaMonthOf(from.month, from.paksha, from.system);
+  const idx = (from.paksha === 'shukla' ? from.tithi - 1 : from.tithi + 14) + days;
+  if (idx < 0 || idx >= 30) return udayaTithiText(ctx, date);
+  const amanta: LunarMonth = { index: amantaIndex, adhik: from.adhik };
+  const paksha: Paksha = idx < 15 ? 'shukla' : 'krishna';
+  const m = ctx.tradition === 'amanta' ? amanta : purnimantaMonth(amanta, paksha);
+  return { month: m.index, adhik: m.adhik, paksha, tithi: (idx % 15) + 1, system: ctx.tradition };
+}
+
+/** The tithi prevailing at sunrise of `date` (udaya tithi) in the requested month naming; null only without a sunrise (polar). */
+function udayaTithiText(ctx: Ctx, date: string): FestivalTithiText | null {
+  const sunrise = sunriseOn(date, ctx.zone, ctx.geo);
+  if (sunrise === null) return null;
+  const idx = tithiIndexAt(sunrise);
+  const l = ctx.lunations.find((x) => x.start <= sunrise && sunrise < x.end) ?? lunationAt(sunrise);
+  return tithiText(ctx, l, idx < 15 ? 'shukla' : 'krishna', (idx % 15) + 1);
 }
 
 function base(rule: FestivalRule, date: string, convention: string, ctx: Ctx): FestivalOccurrence {
@@ -488,7 +515,11 @@ export function festivals(year: number, tradition: Tradition, region: Region, ge
         const from = festivalRule(spec.from);
         if (from) {
           res = evaluate(from)
-            .map((o) => ({ ...base(rule, addDays(o.date, spec.days), `offset-${spec.days}-from-${spec.from}`, ctx), tithiText: null }))
+            .map((o) => {
+              const date = addDays(o.date, spec.days);
+              // Phase A review N4: offset festivals (Holi, Maha Navami) carry a tithi sub-line like every tithi-ruled row.
+              return { ...base(rule, date, `offset-${spec.days}-from-${spec.from}`, ctx), tithiText: shiftedTithiText(ctx, o.tithiText, spec.days, date) };
+            })
             .filter((o) => inYear(ctx, o.date));
         }
         break;

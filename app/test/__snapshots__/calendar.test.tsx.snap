@@ -1849,7 +1849,7 @@ exports[`<CalendarScreen> and <FestivalScreen> +30 % pseudo-locale (en) calendar
                 </RNSVGSvgView>
               </View>
               <View
-                accessibilityLabel="Mon 19: Maha Navami"
+                accessibilityLabel="Mon 19: Maha Navami, Ashwin Shukla x Navami xxxxx"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -1973,6 +1973,24 @@ exports[`<CalendarScreen> and <FestivalScreen> +30 % pseudo-locale (en) calendar
                       Maha Navami
                     </Text>
                   </View>
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 13,
+                          "fontWeight": "normal",
+                          "lineHeight": 18,
+                        },
+                        {
+                          "color": "#6F6960",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Ashwin Shukla x Navami xxxxx
+                  </Text>
                 </View>
                 <RNSVGSvgView
                   accessible={false}

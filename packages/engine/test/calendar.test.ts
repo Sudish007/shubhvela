@@ -193,6 +193,14 @@ describe('festivals (F23): >= 60 rules, both traditions and regions, 2026-2028',
     expect(holika.window!.start).toBeGreaterThanOrEqual(holika.bhadra![0].end);
     const holi = north.find((o) => o.slug === 'holi')!;
     expect(holi.date).toBe('2026-03-03');
+    // Review N4: offset festivals carry the udaya tithi of their own day as the calendar sub-line.
+    expect(holi.tithiText).toMatchObject({ month: 0, paksha: 'krishna', tithi: 1, system: 'purnimanta' }); // Chaitra Krishna Pratipada (Purnimanta)
+    const holiAmanta = festivals(2026, 'amanta', 'north', DELHI, ZONE).find((o) => o.slug === 'holi')!;
+    expect(holiAmanta.tithiText).toMatchObject({ month: 11, paksha: 'krishna', tithi: 1, system: 'amanta' }); // Phalguna Krishna Pratipada (Amanta)
+    const mahaNavami = north.find((o) => o.slug === 'maha-navami')!;
+    expect(mahaNavami.date).toBe('2026-10-19');
+    expect(mahaNavami.tithiText).toMatchObject({ month: 6, paksha: 'shukla', tithi: 9, system: 'purnimanta' }); // Ashwin Shukla Navami
+    expect(north.find((o) => o.slug === 'lohri')!.tithiText).toBeNull(); // solar source: no tithi label, like Makar Sankranti
   });
 
   it('tradition-dependent dates: Shravan Somvar spans differ between Purnimanta and Amanta; others only relabel the month', () => {
