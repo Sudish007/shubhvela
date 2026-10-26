@@ -74,7 +74,11 @@ const passedOf = (suite) => (results[suite] ? results[suite].passed : null);
   if (!existsSync(casesFile)) report('festivals', 1, 0, null, 'reference/festivals/cases.json missing');
   else {
     const cases = readJson(casesFile);
-    const required = cases.slugs.length * cases.years.length * Object.keys(cases.cities).length;
+    // Slug-years Drik does not publish for these cities (cases.json `notOnDrik`, each with a reason) are not
+    // fetchable and leave the required count, so the gate measures real shortfalls only (Phase A review M2).
+    const excluded = new Set();
+    for (const e of cases.notOnDrik?.entries ?? []) for (const cityId of e.cities) excluded.add(`${e.slug}@${cityId}-${e.year}`);
+    const required = cases.slugs.length * cases.years.length * Object.keys(cases.cities).length - excluded.size;
     let fetched = 0;
     const missing = [];
     for (const cityId of Object.keys(cases.cities)) {
@@ -90,6 +94,7 @@ const passedOf = (suite) => (results[suite] ? results[suite].passed : null);
         const nameMap = readJson(join(REF, 'festivals', 'name-map.json')).map;
         const norm = (s) => String(s ?? '').toLowerCase().replace(/\(.*?\)/g, '').replace(/[^a-z]/g, '');
         for (const slug of cases.slugs) {
+          if (excluded.has(`${slug}@${cityId}-${year}`)) continue;
           const spec = nameMap[slug];
           const wanted = (spec?.names ?? []).map(norm);
           const filter = spec?.textFilter ? new RegExp(spec.textFilter, 'i') : null;
@@ -99,7 +104,8 @@ const passedOf = (suite) => (results[suite] ? results[suite].passed : null);
         }
       }
     }
-    report('festivals', required, fetched, passedOf('festivals'), missing.length ? `missing: ${missing.slice(0, 12).join(', ')}${missing.length > 12 ? ` ... (+${missing.length - 12})` : ''}` : '');
+    const note = excluded.size ? `${excluded.size} slug-years not published by Drik (cases.json notOnDrik)` : '';
+    report('festivals', required, fetched, passedOf('festivals'), [note, missing.length ? `missing: ${missing.slice(0, 12).join(', ')}${missing.length > 12 ? ` ... (+${missing.length - 12})` : ''}` : ''].filter(Boolean).join('; '));
   }
 }
 

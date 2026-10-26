@@ -18,5 +18,16 @@
     "dhanteras", "naraka-chaturdashi", "diwali", "govardhan-puja", "bhai-dooj", "labh-panchami", "chhath-puja", "skanda-shashthi", "gopashtami", "akshaya-navami",
     "dev-uthani-ekadashi", "tulsi-vivah", "kartik-purnima", "karthigai-deepam", "kalabhairav-jayanti", "utpanna-ekadashi", "vivah-panchami", "gita-jayanti", "dattatreya-jayanti", "saphala-ekadashi",
     "pausha-putrada-ekadashi", "pausha-purnima"
-  ]
+  ],
+  "notOnDrik": {
+    "description": "Slug-years that Drik Panchang does not publish for these cities (checked on the fetched monthly pages, 2026-10-26, Phase A review M2). check.mjs removes them from the required count so the gate measures real shortfalls; the festival suite never had anything to compare for them.",
+    "entries": [
+      { "slug": "hanuman-jayanti-south", "year": 2026, "cities": ["delhi", "chennai"], "reason": "Tamil Hanuman Jayanti (Margashirsha Amavasya): the engine's next occurrence is 2027-01-07 and Drik's Chennai 2026 pages list none, so there is no occurrence inside calendar 2026 to compare." },
+      { "slug": "saphala-ekadashi", "year": 2026, "cities": ["delhi", "chennai"], "reason": "Pausha Krishna Ekadashi: Pausha 2026 runs Dec 2026 - Jan 2027, the engine's next occurrence is 2027-01-03 and Drik's 2026 pages list none." },
+      { "slug": "pausha-putrada-ekadashi", "year": 2026, "cities": ["delhi", "chennai"], "reason": "Pausha Shukla Ekadashi: the engine's next occurrence is 2027-01-18 and Drik's 2026 pages list none." },
+      { "slug": "jagannath-snana-purnima", "year": 2026, "cities": ["delhi", "chennai"], "reason": "The fetched Drik monthly pages for Delhi and Chennai carry no Snana Purnima / Snana Yatra entry (engine 2026-06-29)." },
+      { "slug": "jagannath-snana-purnima", "year": 2027, "cities": ["delhi", "chennai"], "reason": "As 2026 (engine 2027-06-18)." },
+      { "slug": "jagannath-snana-purnima", "year": 2028, "cities": ["delhi", "chennai"], "reason": "As 2026 (engine 2028-06-07)." }
+    ]
+  }
 }
