@@ -12,14 +12,10 @@
     "drikpanchang": 600
   },
   "failures": [],
-  "exactDates": 592,
+  "exactDates": 596,
   "documentedDifferences": [
-    "holika-dahan@delhi-2026: engine 2026-03-02 vs Drik 2026-03-03",
-    "holi@delhi-2026: engine 2026-03-03 vs Drik 2026-03-04",
     "ganga-dussehra@delhi-2026: engine 2026-06-24 vs Drik 2026-05-25",
     "sheetala-ashtami@delhi-2028: engine 2028-03-18 vs Drik 2028-03-17",
-    "holika-dahan@chennai-2026: engine 2026-03-02 vs Drik 2026-03-03",
-    "holi@chennai-2026: engine 2026-03-03 vs Drik 2026-03-04",
     "ganga-dussehra@chennai-2026: engine 2026-06-24 vs Drik 2026-05-25",
     "sheetala-ashtami@chennai-2028: engine 2028-03-18 vs Drik 2028-03-17"
   ],
@@ -38,5 +34,5 @@
     "jagannath-snana-purnima@chennai-2028"
   ],
   "missingPages": [],
-  "generatedAt": "2026-10-26T01:48:19.054Z"
+  "generatedAt": "2026-10-26T09:19:53.753Z"
 }

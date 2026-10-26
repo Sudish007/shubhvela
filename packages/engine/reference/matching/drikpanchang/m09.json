@@ -1,0 +1,122 @@
+{
+  "case": "m09",
+  "source": "drikpanchang",
+  "source_url": "https://www.drikpanchang.com/jyotisha/horoscope-match/horoscope-match.html (POST from https://www.drikpanchang.com/jyotisha/horoscope-match/horoscope-match.html)",
+  "fetched_at": "2026-10-26T08:54:16.697Z",
+  "fetcher_version": "a04-1",
+  "values": {
+    "input": {
+      "boy": {
+        "id": "c17",
+        "date": "2010-01-01",
+        "time": "12:00",
+        "place": "Bhopal",
+        "siteGeo": {
+          "lat": 23.254722222222224,
+          "lon": 77.40277777777779,
+          "olson": "Asia/Kolkata",
+          "offset": "5.50",
+          "city": "Bhopal"
+        },
+        "suggestions": [
+          "Bhopal Madhya Pradesh, India",
+          "Bhopalwala Punjab, Pakistan"
+        ]
+      },
+      "girl": {
+        "id": "c18",
+        "date": "1989-07-21",
+        "time": "14:14",
+        "place": "Ranchi",
+        "siteGeo": {
+          "lat": 23.343055555555555,
+          "lon": 85.30944444444444,
+          "olson": "Asia/Kolkata",
+          "offset": "5.50",
+          "city": "Ranchi"
+        },
+        "suggestions": [
+          "Ranchi Jharkhand, India",
+          "Encantada-Ranchito-El Calaboz Texas, United States",
+          "El Salvador (Ranchito San Jose del Carmen) Guanajuato, Mexico",
+          "Ranchicourt Hauts-de-France, France",
+          "Las Esperanzas (El Ranchito) Zacatecas, Mexico",
+          "Emiliano Zapata (El Ranchito) Jalisco, Mexico",
+          "Southwest Ranches Florida, United States",
+          "Los Ranchos de Albuquerque New Mexico, United States"
+        ]
+      }
+    },
+    "total": 13,
+    "totalMax": 36,
+    "kootas": {
+      "varna": {
+        "score": 1,
+        "max": 1,
+        "raw": "Varna Kuta Points: 1/1"
+      },
+      "vashya": {
+        "score": 2,
+        "max": 2,
+        "raw": "Vashya Kuta Points: 2/2"
+      },
+      "tara": {
+        "score": 3,
+        "max": 3,
+        "raw": "Tara Kuta Points: 3/3"
+      },
+      "yoni": {
+        "score": 3,
+        "max": 4,
+        "raw": "Yoni Kuta Points: 3/4"
+      },
+      "grahaMaitri": {
+        "score": 4,
+        "max": 5,
+        "raw": "Maitri Kuta Points: 4/5"
+      },
+      "gana": {
+        "score": 0,
+        "max": 6,
+        "raw": "Gana Kuta Points: 0/6"
+      },
+      "bhakoot": {
+        "score": 0,
+        "max": 7,
+        "raw": "Bhakuta Kuta Points: 0/7"
+      },
+      "nadi": {
+        "score": 0,
+        "max": 8,
+        "raw": "Nadi Kuta Points: 0/8"
+      }
+    },
+    "mangal": {},
+    "moons": {
+      "boySign": "Mithuna (Gemini)",
+      "girlSign": "Kumbha (Aquarius)",
+      "boyNakshatra": "Punarvasu (7)",
+      "girlNakshatra": "Shatabhisha (24)",
+      "boyMoon": 83.31,
+      "girlMoon": 309.01
+    },
+    "rawLines": [
+      "Total Guna Milan 13/36",
+      "Varna Kuta Points: 1/1",
+      "Vashya Kuta Points: 2/2",
+      "Tara Kuta Points: 3/3",
+      "Yoni Kuta Points: 3/4",
+      "Maitri Kuta Points: 4/5",
+      "Gana Kuta Points: 0/6",
+      "Bhakuta Kuta Points: 0/7",
+      "Nadi Kuta Points: 0/8",
+      "Note - Mangal Dosha which is also known as Kuja Dosha is NOT considered while Ashtakuta match making. If Mangal Dosha is present then both Vara and Kanya should have Mangal Dosha. It is advised not to perform match making between Mangalik and Non-Mangalik couple.",
+      "Mangal Dosha Calculator",
+      "Find out the Mangal Dosha in Kundali through this calculator. Mangal Dosha is formed when Mars is situated in the First, Second, Fourth, Seventh, Eighth or Twelfth house of the Kundali. Mangal Dosha is also known as Kuja Dosha and Bhauma Dosha."
+    ],
+    "tables": []
+  },
+  "notes": [
+    "Ashta Kuta scores as printed by Drik Panchang (Lahiri/Chitrapaksha default); first person = boy, second = girl."
+  ]
+}

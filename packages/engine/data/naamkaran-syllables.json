@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "description": "Naamkaran starting syllables by Moon nakshatra and pada (spec F28, plan B01): the classical avakahada 'nama-akshara' table (Muhurta Chintamani, Samskara prakarana; as printed in Janam Patri avakahada chakras). Index = nakshatra 1-27 from Ashwini; each entry lists the four padas as {devanagari, latin}. Latin is a plain transliteration for display next to the Devanagari, not a scholarly scheme.",
+  "nakshatras": [
+    { "n": 1, "syllables": [["चु", "Chu"], ["चे", "Che"], ["चो", "Cho"], ["ला", "La"]] },
+    { "n": 2, "syllables": [["ली", "Li"], ["लू", "Lu"], ["ले", "Le"], ["लो", "Lo"]] },
+    { "n": 3, "syllables": [["अ", "A"], ["ई", "I"], ["उ", "U"], ["ए", "E"]] },
+    { "n": 4, "syllables": [["ओ", "O"], ["वा", "Va"], ["वी", "Vi"], ["वु", "Vu"]] },
+    { "n": 5, "syllables": [["वे", "Ve"], ["वो", "Vo"], ["का", "Ka"], ["की", "Ki"]] },
+    { "n": 6, "syllables": [["कु", "Ku"], ["घ", "Gha"], ["ङ", "Nga"], ["छ", "Chha"]] },
+    { "n": 7, "syllables": [["के", "Ke"], ["को", "Ko"], ["हा", "Ha"], ["ही", "Hi"]] },
+    { "n": 8, "syllables": [["हु", "Hu"], ["हे", "He"], ["हो", "Ho"], ["डा", "Da"]] },
+    { "n": 9, "syllables": [["डी", "Di"], ["डू", "Du"], ["डे", "De"], ["डो", "Do"]] },
+    { "n": 10, "syllables": [["मा", "Ma"], ["मी", "Mi"], ["मू", "Mu"], ["मे", "Me"]] },
+    { "n": 11, "syllables": [["मो", "Mo"], ["टा", "Ta"], ["टी", "Ti"], ["टू", "Tu"]] },
+    { "n": 12, "syllables": [["टे", "Te"], ["टो", "To"], ["पा", "Pa"], ["पी", "Pi"]] },
+    { "n": 13, "syllables": [["पू", "Pu"], ["ष", "Sha"], ["ण", "Na"], ["ठ", "Tha"]] },
+    { "n": 14, "syllables": [["पे", "Pe"], ["पो", "Po"], ["रा", "Ra"], ["री", "Ri"]] },
+    { "n": 15, "syllables": [["रू", "Ru"], ["रे", "Re"], ["रो", "Ro"], ["ता", "Ta"]] },
+    { "n": 16, "syllables": [["ती", "Ti"], ["तू", "Tu"], ["ते", "Te"], ["तो", "To"]] },
+    { "n": 17, "syllables": [["ना", "Na"], ["नी", "Ni"], ["नू", "Nu"], ["ने", "Ne"]] },
+    { "n": 18, "syllables": [["नो", "No"], ["या", "Ya"], ["यी", "Yi"], ["यू", "Yu"]] },
+    { "n": 19, "syllables": [["ये", "Ye"], ["यो", "Yo"], ["भा", "Bha"], ["भी", "Bhi"]] },
+    { "n": 20, "syllables": [["भू", "Bhu"], ["धा", "Dha"], ["फा", "Pha"], ["ढा", "Dha"]] },
+    { "n": 21, "syllables": [["भे", "Bhe"], ["भो", "Bho"], ["जा", "Ja"], ["जी", "Ji"]] },
+    { "n": 22, "syllables": [["खी", "Khi"], ["खू", "Khu"], ["खे", "Khe"], ["खो", "Kho"]] },
+    { "n": 23, "syllables": [["गा", "Ga"], ["गी", "Gi"], ["गू", "Gu"], ["गे", "Ge"]] },
+    { "n": 24, "syllables": [["गो", "Go"], ["सा", "Sa"], ["सी", "Si"], ["सू", "Su"]] },
+    { "n": 25, "syllables": [["से", "Se"], ["सो", "So"], ["दा", "Da"], ["दी", "Di"]] },
+    { "n": 26, "syllables": [["दू", "Du"], ["थ", "Tha"], ["झ", "Jha"], ["ञ", "Nya"]] },
+    { "n": 27, "syllables": [["दे", "De"], ["दो", "Do"], ["चा", "Cha"], ["ची", "Chi"]] }
+  ]
+}

@@ -32,6 +32,7 @@ import {
   tithiIndexAt,
   weekdayOf,
 } from '../panchang/astro';
+import { Body, EclipseKind, Equator, Horizon, Observer, SearchLunarEclipse } from 'astronomy-engine';
 import { bhadraWindows } from '../panchang/panchang';
 import { type Observance, type Prefer, type Timing, dayRef, observanceDay, sunsetRuleDay, timingPoint, tithiIndexOf, tithiSpanIn } from './observance';
 import { pitruPaksha } from './tithiEvents';
@@ -86,6 +87,8 @@ export interface FestivalOccurrence {
   window?: { start: number; end: number };
   /** Bhadra (Vishti) windows that touched the rule's window (Raksha Bandhan, Holika Dahan). */
   bhadra?: { start: number; end: number }[];
+  /** Umbral lunar eclipse inside the Purnima, visible at the place, that moved a pradosh rite (Holika Dahan) after its moksha (B01, carry-over A-REVIEW-MEDIUM-1). */
+  eclipse?: LunarEclipseWindow;
   ruleId: string;
   convention: string;
   region?: Region[];
@@ -165,6 +168,36 @@ function base(rule: FestivalRule, date: string, convention: string, ctx: Ctx): F
 /** Lunations of the Amanta month (nija) that can place a festival inside the year. */
 function lunationsOfMonth(ctx: Ctx, amantaMonth: number): Lunation[] {
   return ctx.lunations.filter((l) => l.monthIndex === amantaMonth && !l.adhik);
+}
+
+export interface LunarEclipseWindow {
+  kind: 'partial' | 'total';
+  /** First and last umbral contact (sparsha / moksha) and the maximum, UTC ms. */
+  start: number;
+  peak: number;
+  end: number;
+  /** The Moon is above the observer's horizon during some umbral phase (the sutak applies only where the eclipse is seen). */
+  visible: boolean;
+}
+
+/**
+ * Umbral (partial or total) lunar eclipse whose maximum falls inside the tithi span (a Purnima), with its visibility
+ * at the place. Penumbral-only eclipses carry no sutak in the almanacs and return null.
+ */
+export function lunarEclipseIn(span: { start: number; end: number }, geo: GeoPoint): LunarEclipseWindow | null {
+  const e = SearchLunarEclipse(new Date(span.start - 2 * DAY_MS));
+  const peak = e.peak.date.getTime();
+  if (peak < span.start || peak >= span.end) return null;
+  if (e.kind === EclipseKind.Penumbral || e.sd_partial <= 0) return null;
+  const start = Math.round(peak - e.sd_partial * 60_000);
+  const end = Math.round(peak + e.sd_partial * 60_000);
+  const observer = new Observer(geo.lat, geo.lon, geo.elevation ?? 0);
+  let visible = false;
+  for (let t = start; t <= end && !visible; t += 10 * 60_000) {
+    const eq = Equator(Body.Moon, new Date(t), observer, true, true);
+    if (Horizon(new Date(t), observer, eq.ra, eq.dec, 'normal').altitude > 0) visible = true;
+  }
+  return { kind: e.kind === EclipseKind.Total ? 'total' : 'partial', start, peak, end, visible };
 }
 
 function clipBhadra(window: { start: number; end: number } | undefined, bhadra: { start: number; end: number }[]): { start: number; end: number } | undefined {
@@ -266,12 +299,36 @@ function lunar(rule: FestivalRule, spec: Extract<FestivalRuleSpec, { kind: 'luna
         }
       }
     }
+    // Eclipse rule (B01, carry-over A-REVIEW-MEDIUM-1; Dharmasindhu grahana-sutak, Drik Panchang 2026): a Purnima
+    // holding an umbral lunar eclipse that is visible at the place is eclipse-afflicted — no rite is performed in the
+    // eclipse or its sutak (3 praharas = 9 hours before the first umbral contact), so a pradosh rite of that Purnima
+    // (Holika Dahan) moves to the pradosh kala of the eclipse day AFTER the moksha, even when the Purnima has ended by
+    // then (the Pratipada evening). Delhi/Chennai 2026: Purnima 03-02 17:56 -> 03-03 17:08 under Bhadra until 05:28,
+    // total eclipse 03-03 15:20 -> 18:47 IST -> dahan 03-03 after 18:47, Holi 03-04 (as Drik prints). Eclipses not
+    // visible at the place (below the horizon throughout) leave the ordinary rule in force.
+    let eclipse: LunarEclipseWindow | undefined;
+    if (spec.bhadraFree && spec.timing === 'pradosh') {
+      const e = lunarEclipseIn(span, ctx.geo);
+      if (e && e.visible) {
+        const eclipseDate = localDateOf(e.peak, ctx.zone);
+        const ref = dayRef(eclipseDate, ctx.zone, ctx.geo);
+        if (ref) {
+          const night = ref.nextSunrise - ref.sunset;
+          const start = Math.max(ref.sunset, e.end);
+          date = eclipseDate;
+          window = { start, end: Math.max(ref.sunset + Math.round(night / 5), start + 3_600_000) };
+          convention = 'pradosh-after-eclipse-moksha';
+          eclipse = e;
+        }
+      }
+    }
     if (!inYear(ctx, date)) continue;
     const occ = base(rule, date, convention, ctx);
     occ.tithiText = tithiText(ctx, l, spec.paksha, spec.tithi);
     occ.span = span;
     occ.window = window;
     if (bhadra && bhadra.length) occ.bhadra = bhadra;
+    if (eclipse) occ.eclipse = eclipse;
     out.push(occ);
   }
   return out;

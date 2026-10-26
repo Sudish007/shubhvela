@@ -58,5 +58,11 @@ Wealth / Marriage / Health / Progeny / Education.
   day row is a rotation of the day cycle starting at the weekday lord and every night row a rotation of
   the night cycle. `gowri.ts` (Gowri panchang, unused by Shubhvela) was not touched.
 
+## Modified (B01 engine B, 2026-10-27)
+- `kundli/kp.ts`: `calculateTropicalPlacidusCusps()` is now exported (one `export` keyword, no logic
+  change) so `packages/engine/src/kp` can build the KP chart from ChartData-consistent inputs (true
+  node option, the engine's tz table for the day lord, nine planets only) instead of calling
+  `getKpChart()`, whose `birthDetails` strings go through `Intl` with a hard-coded Asia/Kolkata zone.
+
 Everything else is byte-identical to upstream. Update this file whenever the fork
 diverges further.

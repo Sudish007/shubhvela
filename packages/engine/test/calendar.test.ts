@@ -170,7 +170,7 @@ describe('festivals (F23): >= 60 rules, both traditions and regions, 2026-2028',
     expect(by('dhanteras')).toBe('2026-11-06');
     expect(by('makar-sankranti')).toBe('2026-01-14');
     expect(by('maha-shivaratri')).toBe('2026-02-15');
-    expect(by('holi')).toBe('2026-03-03');
+    expect(by('holi')).toBe('2026-03-04'); // B01 eclipse rule (carry-over A-REVIEW-MEDIUM-1): Holika Dahan 03-03 after the eclipse, Holi 03-04 as Drik prints
     expect(by('ram-navami')).toBe('2026-03-26');
     expect(by('ganesh-chaturthi')).toBe('2026-09-14');
     expect(by('dussehra')).toBe('2026-10-20');
@@ -180,7 +180,7 @@ describe('festivals (F23): >= 60 rules, both traditions and regions, 2026-2028',
     expect(north.find((o) => o.slug === 'chaitra-navratri' && o.day === 1)!.tithiText).toMatchObject({ paksha: 'shukla', tithi: 1 });
   });
 
-  it('Bhadra-free rules: Raksha Bandhan 2026 moves to the morning of 28 Aug; Holika Dahan 2026 is after Bhadra on 2 Mar', () => {
+  it('Bhadra-free rules: Raksha Bandhan 2026 moves to the morning of 28 Aug; Holika Dahan 2026 moves to 3 Mar after the lunar-eclipse moksha', () => {
     const north = festivals(2026, 'purnimanta', 'north', DELHI, ZONE);
     const rakhi = north.find((o) => o.slug === 'raksha-bandhan')!;
     expect(rakhi.date).toBe('2026-08-28');
@@ -188,11 +188,16 @@ describe('festivals (F23): >= 60 rules, both traditions and regions, 2026-2028',
     expect(rakhi.bhadra!.length).toBeGreaterThan(0);
     expect(rakhi.window!.end).toBe(rakhi.span!.end);
     const holika = north.find((o) => o.slug === 'holika-dahan')!;
-    expect(holika.date).toBe('2026-03-02');
-    expect(holika.convention).toBe('pradosh-after-bhadra');
-    expect(holika.window!.start).toBeGreaterThanOrEqual(holika.bhadra![0].end);
+    // B01 (carry-over A-REVIEW-MEDIUM-1): the Purnima pradosh of 03-02 is under Bhadra until 05:28 and the Purnima holds the
+    // total lunar eclipse of 03-03 (visible from India at moonrise), so the dahan moves to the 03-03 pradosh after the
+    // moksha (18:47 IST) and Holi to 03-04, as Drik Panchang prints; the Bhadra windows are still reported.
+    expect(holika.date).toBe('2026-03-03');
+    expect(holika.convention).toBe('pradosh-after-eclipse-moksha');
+    expect(holika.bhadra!.length).toBeGreaterThan(0);
+    expect(holika.eclipse!.visible).toBe(true);
+    expect(holika.window!.start).toBe(holika.eclipse!.end);
     const holi = north.find((o) => o.slug === 'holi')!;
-    expect(holi.date).toBe('2026-03-03');
+    expect(holi.date).toBe('2026-03-04');
     // Review N4: offset festivals carry the udaya tithi of their own day as the calendar sub-line.
     expect(holi.tithiText).toMatchObject({ month: 0, paksha: 'krishna', tithi: 1, system: 'purnimanta' }); // Chaitra Krishna Pratipada (Purnimanta)
     const holiAmanta = festivals(2026, 'amanta', 'north', DELHI, ZONE).find((o) => o.slug === 'holi')!;

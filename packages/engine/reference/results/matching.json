@@ -1,38 +1,27 @@
 {
   "suite": "matching",
   "required": 20,
-  "compared": 0,
-  "passed": 0,
+  "compared": 20,
+  "passed": 20,
   "failed": 0,
-  "skipped": 20,
+  "skipped": 0,
   "maxDeviation": {
-    "gunaTotal": 0
+    "gunaTotal": 0,
+    "moonDeg": 0.009978410037604135
   },
   "sources": {
-    "drikpanchang": 0
+    "drikpanchang": 20
   },
   "failures": [],
-  "missing": [
-    "m01",
-    "m02",
-    "m03",
-    "m04",
-    "m05",
-    "m06",
-    "m07",
-    "m08",
-    "m09",
-    "m10",
-    "m11",
-    "m12",
-    "m13",
-    "m14",
-    "m15",
-    "m16",
-    "m17",
-    "m18",
-    "m19",
-    "m20"
+  "exactPairs": 14,
+  "documentedDifferences": [
+    "m03: yoni engine 2 vs Drik 3 (Yoni Kuta Points: 3/4)",
+    "m06: yoni engine 2 vs Drik 3 (Yoni Kuta Points: 3/4)",
+    "m08: yoni engine 2 vs Drik 1 (Yoni Kuta Points: 1/4)",
+    "m09: yoni engine 2 vs Drik 3 (Yoni Kuta Points: 3/4)",
+    "m13: yoni engine 2 vs Drik 1 (Yoni Kuta Points: 1/4)",
+    "m19: yoni engine 2 vs Drik 3 (Yoni Kuta Points: 3/4)"
   ],
-  "generatedAt": "2026-10-25T02:05:52.611Z"
+  "missing": [],
+  "generatedAt": "2026-10-26T09:19:45.332Z"
 }

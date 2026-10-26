@@ -64,19 +64,43 @@ async function fillPerson(page, prefix, c, label) {
   return { geo, suggestions: items };
 }
 
+const RESULT_RE = /Varna|Vashya|Nadi|Bhakoot|Ashta\s*Kuta|Guna|Milan/i;
+/**
+ * Submit -> optional "please confirm" overlay -> optional "continue without login" -> the result. B01 fix for the
+ * Phase A timeout (carry-over A-REVIEW-MEDIUM-2): the matching page does not always navigate after the last confirm
+ * (the kundali flow does), so instead of waitForNavigation this waits for EITHER a URL change OR the Ashta Kuta table
+ * appearing in place, whichever happens first, then lets the page settle.
+ */
 async function submitAndOpen(page) {
+  const startUrl = page.url();
   await page.click('#dp-submit-button');
-  await page.waitForSelector('#dp-button-confirm', { timeout: 25000 });
-  await page.waitForTimeout(700);
-  await page.click('#dp-button-confirm');
-  const noLogin = await page.waitForSelector('#dp-save-without-login', { timeout: 25000 }).catch(() => null);
-  if (noLogin) {
-    await page.click('#dp-save-without-login');
+  const confirm = await page.waitForSelector('#dp-button-confirm', { timeout: 25000 }).catch(() => null);
+  if (confirm) {
     await page.waitForTimeout(700);
-    await Promise.all([page.waitForNavigation({ timeout: 90000 }), page.click('#dp-button-confirm')]);
-  } else {
-    await page.waitForNavigation({ timeout: 90000 }).catch(() => {});
+    await page.click('#dp-button-confirm').catch(() => {});
+    const noLogin = await page.waitForSelector('#dp-save-without-login', { timeout: 15000 }).catch(() => null);
+    if (noLogin) {
+      await page.click('#dp-save-without-login');
+      await page.waitForTimeout(700);
+      await page.click('#dp-button-confirm').catch(() => {});
+    }
   }
+  const deadline = Date.now() + 90000;
+  for (;;) {
+    try {
+      await page.waitForFunction(
+        ({ u, re }) => location.href !== u || new RegExp(re, 'i').test(document.body ? document.body.innerText : ''),
+        { u: startUrl, re: RESULT_RE.source },
+        { timeout: Math.max(1000, deadline - Date.now()), polling: 500 },
+      );
+      break;
+    } catch (err) {
+      // A navigation destroys the execution context mid-poll: re-arm the wait until the deadline.
+      if (Date.now() >= deadline) throw err;
+      await page.waitForTimeout(500);
+    }
+  }
+  await page.waitForLoadState('domcontentloaded').catch(() => {});
   await page.waitForTimeout(6000);
 }
 
@@ -92,15 +116,24 @@ async function extractResult(page) {
   });
 }
 
-const KOOTA_NAMES = { varna: 'varna', vashya: 'vashya', vasya: 'vashya', tara: 'tara', dina: 'tara', yoni: 'yoni', grahamaitri: 'grahaMaitri', maitri: 'grahaMaitri', rasyadhipati: 'grahaMaitri', gana: 'gana', bhakoot: 'bhakoot', bhakut: 'bhakoot', rashi: 'bhakoot', nadi: 'nadi' };
-
-/** Parses "Varna 1/1", "Vashya 2/2", ... and "Total 24/36" style lines from the page text. */
+const KOOTA_NAMES = { varna: 'varna', vashya: 'vashya', vasya: 'vashya', tara: 'tara', dina: 'tara', yoni: 'yoni', grahamaitri: 'grahaMaitri', maitri: 'grahaMaitri', rasyadhipati: 'grahaMaitri', gana: 'gana', bhakoot: 'bhakoot', bhakut: 'bhakoot', bhakuta: 'bhakoot', rashi: 'bhakoot', nadi: 'nadi' };
+/**
+ * Parses the Ashta Kuta result text. Drik renders (B01 probe, 2026-10-27) "Varna Kuta Points: 1/1" ... "Nadi Kuta
+ * Points: 8/8" plus a "Total Guna Milan" block whose obtained and maximum points follow on separate lines
+ * ("Union is Very Good", "26", "36"); the older "Varna 1/1" / "Total 24/36" one-line forms are still accepted.
+ * The Moon sign, nakshatra and lunar longitude the site used for each person are recorded too (`moons`).
+ */
 export function parseKootas(text) {
-  const out = { kootas: {}, total: null, totalMax: null, mangal: {}, raw: [] };
+  const out = { kootas: {}, total: null, totalMax: null, mangal: {}, moons: {}, raw: [] };
   const lines = text.split('\n').map((l) => l.replace(/\s+/g, ' ').trim()).filter(Boolean);
+  const nextNumbers = (i, n) => {
+    const nums = [];
+    for (let j = i + 1; j < lines.length && j <= i + 6 && nums.length < n; j++) if (/^\d+(?:\.\d+)?$/.test(lines[j])) nums.push(Number(lines[j]));
+    return nums;
+  };
   for (let i = 0; i < lines.length; i++) {
     const l = lines[i];
-    const m = /^([A-Za-z ]+?)\s*(?:Koota|Kuta|Kutam|Milan)?\s*[:\-]?\s*(\d+(?:\.\d+)?)\s*(?:\/|out of|of)\s*(\d+(?:\.\d+)?)\b/i.exec(l);
+    const m = /^([A-Za-z ]+?)\s*(?:Koota|Kuta|Kutam)?\s*(?:Points|Milan)?\s*[:\-]?\s*(\d+(?:\.\d+)?)\s*(?:\/|out of|of)\s*(\d+(?:\.\d+)?)\b/i.exec(l);
     if (m) {
       const key = m[1].toLowerCase().replace(/[^a-z]/g, '');
       if (/^total|^guna|^ashtakoot|^ashtakuta|^points/.test(key)) {
@@ -108,13 +141,31 @@ export function parseKootas(text) {
         out.totalMax = Number(m[3]);
       } else if (KOOTA_NAMES[key]) out.kootas[KOOTA_NAMES[key]] = { score: Number(m[2]), max: Number(m[3]), raw: l };
       out.raw.push(l);
+    } else if (/^Total Guna Milan/i.test(l) && out.total === null) {
+      const nums = nextNumbers(i, 2);
+      if (nums.length === 2) {
+        out.total = nums[0];
+        out.totalMax = nums[1];
+        out.raw.push(`${l} ${nums[0]}/${nums[1]}`);
+      }
+    } else if (/^Janmarashi/i.test(l)) {
+      out.moons.boySign = lines[i + 1] ?? null;
+      out.moons.girlSign = lines[i + 2] ?? null;
+    } else if (/^Nakshatra \(Birthstar\)/i.test(l)) {
+      out.moons.boyNakshatra = lines[i + 1] ?? null;
+      out.moons.girlNakshatra = lines[i + 2] ?? null;
+    } else if (/^Lunar Longitude/i.test(l)) {
+      const nums = nextNumbers(i, 2);
+      if (nums.length === 2) {
+        out.moons.boyMoon = nums[0];
+        out.moons.girlMoon = nums[1];
+      }
     }
     const mg = /(Mangal|Manglik|Kuja)\s*Dosh[a]?/i.exec(l);
     if (mg) out.raw.push(l);
   }
   return out;
 }
-
 const isMain = process.argv[1] && import.meta.url === new URL(`file:///${process.argv[1].replace(/\\/g, '/')}`).href;
 if (isMain) await runFetcher('drik-matching', SITE, async (session) => {
   if (args.max) session.maxLoads = Math.min(session.maxLoads, Number(args.max));
@@ -156,6 +207,7 @@ if (isMain) await runFetcher('drik-matching', SITE, async (session) => {
       totalMax: parsed.totalMax,
       kootas: parsed.kootas,
       mangal: parsed.mangal,
+      moons: parsed.moons,
       rawLines: parsed.raw,
       tables: res.tables.filter((t) => t.rows.some((r) => r.some((c) => /Varna|Vashya|Nadi|Bhakoot|Mangal|Total|Guna/i.test(c)))).slice(0, 6),
     };

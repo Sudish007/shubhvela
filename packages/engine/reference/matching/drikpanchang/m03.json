@@ -1,0 +1,119 @@
+{
+  "case": "m03",
+  "source": "drikpanchang",
+  "source_url": "https://www.drikpanchang.com/jyotisha/horoscope-match/horoscope-match.html (POST from https://www.drikpanchang.com/jyotisha/horoscope-match/horoscope-match.html)",
+  "fetched_at": "2026-10-26T08:52:18.728Z",
+  "fetcher_version": "a04-1",
+  "values": {
+    "input": {
+      "boy": {
+        "id": "c03",
+        "date": "1970-07-05",
+        "time": "04:30",
+        "place": "Patna",
+        "siteGeo": {
+          "lat": 25.594166666666666,
+          "lon": 85.13555555555556,
+          "olson": "Asia/Kolkata",
+          "offset": "5.50",
+          "city": "Patna"
+        },
+        "suggestions": [
+          "Patna Bihar, India",
+          "Patnagarh Odisha, India",
+          "Patnanungan Calabarzon, Philippines",
+          "Patna Scotland, United Kingdom",
+          "Lares Lares, Puerto Rico",
+          "Putnam Connecticut, United States"
+        ]
+      },
+      "girl": {
+        "id": "c07",
+        "date": "1955-04-18",
+        "time": "23:50",
+        "place": "Kolkata",
+        "siteGeo": {
+          "lat": 22.5625,
+          "lon": 88.36305555555555,
+          "olson": "Asia/Kolkata",
+          "offset": "5.50",
+          "city": "Kolkata"
+        },
+        "suggestions": [
+          "Kolkata West Bengal, India"
+        ]
+      }
+    },
+    "total": 14,
+    "totalMax": 36,
+    "kootas": {
+      "varna": {
+        "score": 1,
+        "max": 1,
+        "raw": "Varna Kuta Points: 1/1"
+      },
+      "vashya": {
+        "score": 0.5,
+        "max": 2,
+        "raw": "Vashya Kuta Points: 0.5/2"
+      },
+      "tara": {
+        "score": 1.5,
+        "max": 3,
+        "raw": "Tara Kuta Points: 1.5/3"
+      },
+      "yoni": {
+        "score": 3,
+        "max": 4,
+        "raw": "Yoni Kuta Points: 3/4"
+      },
+      "grahaMaitri": {
+        "score": 0.5,
+        "max": 5,
+        "raw": "Maitri Kuta Points: 0.5/5"
+      },
+      "gana": {
+        "score": 0,
+        "max": 6,
+        "raw": "Gana Kuta Points: 0/6"
+      },
+      "bhakoot": {
+        "score": 0,
+        "max": 7,
+        "raw": "Bhakuta Kuta Points: 0/7"
+      },
+      "nadi": {
+        "score": 8,
+        "max": 8,
+        "raw": "Nadi Kuta Points: 8/8"
+      }
+    },
+    "mangal": {},
+    "moons": {
+      "boySign": "Karka (Cancer)",
+      "girlSign": "Kumbha (Aquarius)",
+      "boyNakshatra": "Pushya (8)",
+      "girlNakshatra": "Shatabhisha (24)",
+      "boyMoon": 93.83,
+      "girlMoon": 313.97
+    },
+    "rawLines": [
+      "Total Guna Milan 14/36",
+      "Varna Kuta Points: 1/1",
+      "Vashya Kuta Points: 0.5/2",
+      "Tara Kuta Points: 1.5/3",
+      "Yoni Kuta Points: 3/4",
+      "Maitri Kuta Points: 0.5/5",
+      "Gana Kuta Points: 0/6",
+      "Bhakuta Kuta Points: 0/7",
+      "Nadi Kuta Points: 8/8",
+      "Note - Mangal Dosha which is also known as Kuja Dosha is NOT considered while Ashtakuta match making. If Mangal Dosha is present then both Vara and Kanya should have Mangal Dosha. It is advised not to perform match making between Mangalik and Non-Mangalik couple.",
+      "Mangal Dosha Calculator",
+      "Find out the Mangal Dosha in Kundali through this calculator. Mangal Dosha is formed when Mars is situated in the First, Second, Fourth, Seventh, Eighth or Twelfth house of the Kundali. Mangal Dosha is also known as Kuja Dosha and Bhauma Dosha."
+    ],
+    "tables": []
+  },
+  "notes": [
+    "Ashta Kuta scores as printed by Drik Panchang (Lahiri/Chitrapaksha default); first person = boy, second = girl."
+  ]
+}

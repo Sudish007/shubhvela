@@ -1,0 +1,136 @@
+{
+  "case": "m19",
+  "source": "drikpanchang",
+  "source_url": "https://www.drikpanchang.com/jyotisha/horoscope-match/horoscope-match.html (POST from https://www.drikpanchang.com/jyotisha/horoscope-match/horoscope-match.html)",
+  "fetched_at": "2026-10-26T08:57:47.848Z",
+  "fetcher_version": "a04-1",
+  "values": {
+    "input": {
+      "boy": {
+        "id": "c37",
+        "date": "1975-05-17",
+        "time": "11:00",
+        "place": "Suva",
+        "siteGeo": {
+          "lat": -18.141666666666666,
+          "lon": 178.4413888888889,
+          "olson": "Pacific/Fiji",
+          "offset": "12.00",
+          "city": "Suva"
+        },
+        "suggestions": [
+          "Suva Central, Fiji",
+          "Suva Reka Prizren, Kosovo",
+          "Suvarli Adiyaman, Turkey",
+          "Suwannaphum Roi Et, Thailand",
+          "As Suwayrah Wasit, Iraq",
+          "Suez Suez, Egypt",
+          "Shuvalovo St.-Petersburg, Russia",
+          "Suwalki Podlasie, Poland",
+          "Savannakhet Savannahkhet, Laos",
+          "Suwa Nagano, Japan",
+          "Essaouira Marrakesh-Safi, Morocco",
+          "Suwanee Georgia, United States"
+        ]
+      },
+      "girl": {
+        "id": "c38",
+        "date": "2000-12-31",
+        "time": "15:00",
+        "place": "Suva",
+        "siteGeo": {
+          "lat": -18.141666666666666,
+          "lon": 178.4413888888889,
+          "olson": "Pacific/Fiji",
+          "offset": "12.00",
+          "city": "Suva"
+        },
+        "suggestions": [
+          "Suva Central, Fiji",
+          "Suva Reka Prizren, Kosovo",
+          "Suvarli Adiyaman, Turkey",
+          "Suwannaphum Roi Et, Thailand",
+          "As Suwayrah Wasit, Iraq",
+          "Suez Suez, Egypt",
+          "Shuvalovo St.-Petersburg, Russia",
+          "Suwalki Podlasie, Poland",
+          "Savannakhet Savannahkhet, Laos",
+          "Suwa Nagano, Japan",
+          "Essaouira Marrakesh-Safi, Morocco",
+          "Suwanee Georgia, United States"
+        ]
+      }
+    },
+    "total": 14,
+    "totalMax": 36,
+    "kootas": {
+      "varna": {
+        "score": 1,
+        "max": 1,
+        "raw": "Varna Kuta Points: 1/1"
+      },
+      "vashya": {
+        "score": 0.5,
+        "max": 2,
+        "raw": "Vashya Kuta Points: 0.5/2"
+      },
+      "tara": {
+        "score": 1.5,
+        "max": 3,
+        "raw": "Tara Kuta Points: 1.5/3"
+      },
+      "yoni": {
+        "score": 3,
+        "max": 4,
+        "raw": "Yoni Kuta Points: 3/4"
+      },
+      "grahaMaitri": {
+        "score": 0.5,
+        "max": 5,
+        "raw": "Maitri Kuta Points: 0.5/5"
+      },
+      "gana": {
+        "score": 0,
+        "max": 6,
+        "raw": "Gana Kuta Points: 0/6"
+      },
+      "bhakoot": {
+        "score": 0,
+        "max": 7,
+        "raw": "Bhakuta Kuta Points: 0/7"
+      },
+      "nadi": {
+        "score": 8,
+        "max": 8,
+        "raw": "Nadi Kuta Points: 8/8"
+      }
+    },
+    "mangal": {},
+    "moons": {
+      "boySign": "Karka (Cancer)",
+      "girlSign": "Kumbha (Aquarius)",
+      "boyNakshatra": "Pushya (8)",
+      "girlNakshatra": "Shatabhisha (24)",
+      "boyMoon": 102.5,
+      "girlMoon": 314.32
+    },
+    "rawLines": [
+      "Total Guna Milan 14/36",
+      "Varna Kuta Points: 1/1",
+      "Vashya Kuta Points: 0.5/2",
+      "Tara Kuta Points: 1.5/3",
+      "Yoni Kuta Points: 3/4",
+      "Maitri Kuta Points: 0.5/5",
+      "Gana Kuta Points: 0/6",
+      "Bhakuta Kuta Points: 0/7",
+      "Nadi Kuta Points: 8/8",
+      "Note - Mangal Dosha which is also known as Kuja Dosha is NOT considered while Ashtakuta match making. If Mangal Dosha is present then both Vara and Kanya should have Mangal Dosha. It is advised not to perform match making between Mangalik and Non-Mangalik couple.",
+      "Mangal Dosha Calculator",
+      "Find out the Mangal Dosha in Kundali through this calculator. Mangal Dosha is formed when Mars is situated in the First, Second, Fourth, Seventh, Eighth or Twelfth house of the Kundali. Mangal Dosha is also known as Kuja Dosha and Bhauma Dosha."
+    ],
+    "tables": []
+  },
+  "notes": [
+    "Ashta Kuta scores as printed by Drik Panchang (Lahiri/Chitrapaksha default); first person = boy, second = girl."
+  ]
+}

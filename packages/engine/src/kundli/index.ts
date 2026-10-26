@@ -8,7 +8,7 @@ import { getNakshatra, getNakshatraPada, getPlanetaryPosition, getRahuPosition, 
 import { getHouses } from '../../vendor/jyotish/src/kundli/houses';
 import { getAllVargas } from '../../vendor/jyotish/src/kundli/vargas';
 import { PLANET_IDS, PLANET_KEYS, SIGN_LORDS, type PlanetId } from '../locale/index';
-import { canonicalZone, localToUtc } from '../tz/index';
+import { canonicalZone, localToUtc, offsetAt } from '../tz/index';
 
 export type Ayanamsa = 'lahiri' | 'kp' | 'raman';
 export type NodeMode = 'mean' | 'true';
@@ -347,8 +347,14 @@ function buildHouses(firstHouseSign: number, planets: ChartPlanet[]): ChartHouse
   return houses;
 }
 
-function houseFromSign(sign: number, firstHouseSign: number): number {
+/** Whole-sign house (1-12) of a sign counted from the sign in house 1 (both 1-12). */
+export function houseFromSign(sign: number, firstHouseSign: number): number {
   return ((sign - firstHouseSign + 12) % 12) + 1;
+}
+
+/** Sign, degree-minute-second and nakshatra-pada of a sidereal longitude (the ChartPoint fields minus `approx`). */
+export function chartPoint(longitude: number): Omit<ChartPoint, 'approx'> {
+  return pointFromLongitude(longitude);
 }
 
 /**
@@ -356,21 +362,56 @@ function houseFromSign(sign: number, firstHouseSign: number): number {
  * noon, drift window +-12 h, lagna undefined, houses counted from the Moon sign).
  */
 export function computeChart(birth: BirthInput, opts: ChartOptions = {}): ChartData {
-  const ayanamsaType: Ayanamsa = opts.ayanamsa ?? 'lahiri';
-  const node: NodeMode = opts.node ?? 'mean';
-  const houseSystem: HouseSystem = opts.houseSystem ?? 'whole_sign';
   const zone = canonicalZone(birth.tz);
   if (!zone) throw new Error(`Unknown time zone: ${birth.tz}`);
-  if (!Number.isFinite(birth.lat) || birth.lat < -90 || birth.lat > 90) throw new Error(`Invalid latitude: ${birth.lat}`);
-  if (!Number.isFinite(birth.lon) || birth.lon < -180 || birth.lon > 180) throw new Error(`Invalid longitude: ${birth.lon}`);
   const { y, m, d } = parseDate(birth.date);
   const timeUnknown = Boolean(birth.timeUnknown) || !birth.time;
   const { hh, mm } = timeUnknown ? { hh: 12, mm: 0 } : parseTime(birth.time as string);
   const conv = localToUtc(zone, { y, m, d, hh, mm });
-  const utcMs = conv.utcMs;
-  const driftMinutes = timeUnknown ? 720 : (birth.approxMinutes ?? 0);
-  const elevation = birth.elevation ?? 0;
-  const observer = new Observer(birth.lat, birth.lon, elevation);
+  return buildChart(conv.utcMs, zone, { lat: birth.lat, lon: birth.lon, elevation: birth.elevation }, opts, {
+    timeUnknown,
+    driftMinutes: timeUnknown ? 720 : (birth.approxMinutes ?? 0),
+    offsetMinutes: conv.offsetMinutes,
+    clockGap: conv.clockGap,
+    overlap: conv.overlap,
+  });
+}
+
+export interface ChartPlace {
+  lat: number;
+  lon: number;
+  elevation?: number;
+}
+
+/**
+ * The D1 chart of an arbitrary UTC instant at a place (solar-return charts, KP ruling planets for "now", Prashna
+ * charts of the moment): the same computation as computeChart() without the wall-clock conversion; the instant is
+ * exact (seconds kept), the time is known and no uncertainty window applies.
+ */
+export function computeChartAt(utcMs: number, place: ChartPlace, tz: string, opts: ChartOptions = {}): ChartData {
+  const zone = canonicalZone(tz);
+  if (!zone) throw new Error(`Unknown time zone: ${tz}`);
+  if (!Number.isFinite(utcMs)) throw new Error(`Invalid instant: ${utcMs}`);
+  return buildChart(utcMs, zone, place, opts, { timeUnknown: false, driftMinutes: 0, offsetMinutes: offsetAt(zone, utcMs), clockGap: false, overlap: false });
+}
+
+interface BuildFlags {
+  timeUnknown: boolean;
+  driftMinutes: number;
+  offsetMinutes: number;
+  clockGap: boolean;
+  overlap: boolean;
+}
+
+function buildChart(utcMs: number, zone: string, place: ChartPlace, opts: ChartOptions, flags: BuildFlags): ChartData {
+  const ayanamsaType: Ayanamsa = opts.ayanamsa ?? 'lahiri';
+  const node: NodeMode = opts.node ?? 'mean';
+  const houseSystem: HouseSystem = opts.houseSystem ?? 'whole_sign';
+  if (!Number.isFinite(place.lat) || place.lat < -90 || place.lat > 90) throw new Error(`Invalid latitude: ${place.lat}`);
+  if (!Number.isFinite(place.lon) || place.lon < -180 || place.lon > 180) throw new Error(`Invalid longitude: ${place.lon}`);
+  const { timeUnknown, driftMinutes } = flags;
+  const elevation = place.elevation ?? 0;
+  const observer = new Observer(place.lat, place.lon, elevation);
 
   const main = computeRaw(utcMs, observer, ayanamsaType, node);
   const minus = driftMinutes ? computeRaw(utcMs - driftMinutes * 60_000, observer, ayanamsaType, node) : null;
@@ -427,11 +468,11 @@ export function computeChart(birth: BirthInput, opts: ChartOptions = {}): ChartD
       ephemeris: EPHEMERIS,
       tz: zone,
       utcMs,
-      offsetMinutes: conv.offsetMinutes,
-      clockGap: conv.clockGap,
-      overlap: conv.overlap,
-      lat: birth.lat,
-      lon: birth.lon,
+      offsetMinutes: flags.offsetMinutes,
+      clockGap: flags.clockGap,
+      overlap: flags.overlap,
+      lat: place.lat,
+      lon: place.lon,
       elevation,
       houseSystem,
       timeUnknown,

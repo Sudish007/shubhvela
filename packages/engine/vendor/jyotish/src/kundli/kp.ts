@@ -76,7 +76,7 @@ function clamp(val: number, min = -1, max = 1): number {
  * @param obliquity True obliquity of the ecliptic in degrees
  * @returns Array of 12 Tropical cusps in degrees (0-indexed: index 0 = House 1 / Ascendant)
  */
-function calculateTropicalPlacidusCusps(
+export function calculateTropicalPlacidusCusps(
   mcTropical: number,
   ascTropical: number,
   latitude: number,

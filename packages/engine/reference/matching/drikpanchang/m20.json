@@ -1,0 +1,213 @@
+{
+  "case": "m20",
+  "source": "drikpanchang",
+  "source_url": "https://www.drikpanchang.com/jyotisha/horoscope-match/horoscope-match.html (POST from https://www.drikpanchang.com/jyotisha/horoscope-match/horoscope-match.html)",
+  "fetched_at": "2026-10-26T08:58:03.743Z",
+  "fetcher_version": "a04-1",
+  "values": {
+    "input": {
+      "boy": {
+        "id": "c39",
+        "date": "1982-08-01",
+        "time": "05:45",
+        "place": "Port Louis",
+        "siteGeo": {
+          "lat": -20.161944444444444,
+          "lon": 57.49888888888889,
+          "olson": "Indian/Mauritius",
+          "offset": "4.00",
+          "city": "Port Louis"
+        },
+        "suggestions": [
+          "Port Louis Port Louis, Mauritius",
+          "Port-Saint-Louis-du-Rhone Provence-Alpes-Cote d'Azur, France",
+          "Port of Spain City of Port of Spain, Trinidad and Tobago",
+          "St. Louis Missouri, United States",
+          "Port Sudan Red Sea, Sudan",
+          "Saint Peter Port St Peter Port, Guernsey",
+          "Port-au-Prince Ouest, Haiti",
+          "Port-Louis Brittany, France",
+          "Port Elizabeth Eastern Cape, South Africa",
+          "Port Blair Andaman and Nicobar, India",
+          "Port Said Port Said, Egypt",
+          "Port Moresby National Capital, Papua New Guinea",
+          "Port-Gentil Ogooue-Maritime, Gabon",
+          "Port-aux-Francais Kerguelen, French Southern Territories",
+          "Saint-Louis Saint-Louis, Senegal",
+          "Saint-Louis-de-Montferrand Nouvelle-Aquitaine, France",
+          "Zheleznyy Port Kherson, Ukraine",
+          "Le Port Reunion, Reunion",
+          "Port Harcourt Rivers, Nigeria",
+          "Port Glasgow Scotland, United Kingdom",
+          "Saint-Jean-Pied-de-Port Nouvelle-Aquitaine, France",
+          "Port-Louis Guadeloupe, Guadeloupe",
+          "Saint-Louis du Sud Sud, Haiti",
+          "Saint-Louis du Nord Nord-Ouest, Haiti",
+          "East Saint Louis Illinois, United States",
+          "Bay Saint Louis Mississippi, United States",
+          "Louisa Virginia, United States",
+          "Saint Louis Park Minnesota, United States",
+          "Paldiski Harjumaa, Estonia",
+          "Pelabuhan Klang Selangor, Malaysia",
+          "Port Hedland Western Australia, Australia",
+          "Port Loko Northern Province, Sierra Leone",
+          "Port-Sainte-Foy-et-Ponchapt Nouvelle-Aquitaine, France",
+          "Stanley Falkland Islands",
+          "Port Arthur Texas, United States",
+          "Port Hueneme California, United States",
+          "Port Orford Oregon, United States",
+          "Port Townsend Washington, United States",
+          "Port Augusta South Australia, Australia",
+          "Port-Vila Shefa, Vanuatu",
+          "Port Macquarie New South Wales, Australia",
+          "Port Douglas Queensland, Australia",
+          "Nouadhibou Dakhlet Nouadhibou, Mauritania",
+          "Port Talbot Wales, United Kingdom",
+          "Saint-Nicolas-de-Port Grand Est, France",
+          "Port-Saint-Pere Pays de la Loire, France",
+          "Port-en-Bessin-Huppain Normandy, France",
+          "Port-de-Bouc Provence-Alpes-Cote d'Azur, France",
+          "Port-a-Piment Sud, Haiti",
+          "North Port Florida, United States",
+          "Port Gibson Mississippi, United States",
+          "Port Royal South Carolina, United States",
+          "Port Huron Michigan, United States",
+          "Port Angeles Washington, United States",
+          "Port Alberni British Columbia, Canada",
+          "Saint George's Saint George, Grenada",
+          "Saint-Louis Reunion, Reunion",
+          "Louis Trichardt Limpopo, South Africa",
+          "Saint-Louis Grand Est, France",
+          "Braud-et-Saint-Louis Nouvelle-Aquitaine, France",
+          "Louisville Georgia, United States",
+          "Louisville Illinois, United States",
+          "Louisa Kentucky, United States",
+          "Louisiana Missouri, United States",
+          "Louisburg North Carolina, United States",
+          "Port Bunyala Busia, Kenya",
+          "Kindu Maniema, Democratic Republic of the Congo",
+          "Port Shepstone KwaZulu-Natal, South Africa",
+          "Port Saint John's Eastern Cape, South Africa",
+          "Port Alfred Eastern Cape, South Africa",
+          "Port Area Metro Manila, Philippines",
+          "Lushun Liaoning, China",
+          "Port Victoria South Australia, Australia",
+          "Port Pirie South Australia, Australia",
+          "Port Lincoln South Australia, Australia",
+          "Port Fairy Victoria, Australia",
+          "Robertsport Grand Cape Mount, Liberia",
+          "Port de Soller Balearic Islands, Spain",
+          "Portree Scotland, United Kingdom",
+          "Port Erroll Scotland, United Kingdom",
+          "Ellesmere Port England, United Kingdom",
+          "Burry Port Wales, United Kingdom",
+          "Waterford Munster, Ireland",
+          "Portlaoise Leinster, Ireland",
+          "Port-sur-Saone Bourgogne-Franche-Comte, France",
+          "Port-Sainte-Marie Nouvelle-Aquitaine, France",
+          "Les Authieux-sur-le-Port-Saint-Ouen Normandy, France",
+          "Le Port-Marly Ile-de-France, France",
+          "Port Royal Kingston, Jamaica",
+          "Port Antonio Portland, Jamaica",
+          "Port Elizabeth Grenadines, Saint Vincent and the Grenadines",
+          "Port-Margot Nord, Haiti",
+          "Port-de-Paix Nord-Ouest, Haiti",
+          "Port Charlotte Florida, United States",
+          "Port Sulphur Louisiana, United States",
+          "Port Republic New Jersey, United States",
+          "Port O'Connor Texas, United States",
+          "Port Jefferson New York, United States",
+          "Port Jefferson Station New York, United States",
+          "Port Jervis New York, United States"
+        ]
+      },
+      "girl": {
+        "id": "c40",
+        "date": "1999-06-06",
+        "time": "16:16",
+        "place": "Durban",
+        "siteGeo": {
+          "lat": -29.85777777777778,
+          "lon": 31.029166666666665,
+          "olson": "Africa/Johannesburg",
+          "offset": "2.00",
+          "city": "Durban"
+        },
+        "suggestions": [
+          "Durban KwaZulu-Natal, South Africa"
+        ]
+      }
+    },
+    "total": 22,
+    "totalMax": 36,
+    "kootas": {
+      "varna": {
+        "score": 1,
+        "max": 1,
+        "raw": "Varna Kuta Points: 1/1"
+      },
+      "vashya": {
+        "score": 2,
+        "max": 2,
+        "raw": "Vashya Kuta Points: 2/2"
+      },
+      "tara": {
+        "score": 1.5,
+        "max": 3,
+        "raw": "Tara Kuta Points: 1.5/3"
+      },
+      "yoni": {
+        "score": 2,
+        "max": 4,
+        "raw": "Yoni Kuta Points: 2/4"
+      },
+      "grahaMaitri": {
+        "score": 3,
+        "max": 5,
+        "raw": "Maitri Kuta Points: 3/5"
+      },
+      "gana": {
+        "score": 6,
+        "max": 6,
+        "raw": "Gana Kuta Points: 6/6"
+      },
+      "bhakoot": {
+        "score": 7,
+        "max": 7,
+        "raw": "Bhakuta Kuta Points: 7/7"
+      },
+      "nadi": {
+        "score": 0,
+        "max": 8,
+        "raw": "Nadi Kuta Points: 0/8"
+      }
+    },
+    "mangal": {},
+    "moons": {
+      "boySign": "Dhanu (Sagittarius)",
+      "girlSign": "Kumbha (Aquarius)",
+      "boyNakshatra": "Mula (19)",
+      "girlNakshatra": "Shatabhisha (24)",
+      "boyMoon": 242.52,
+      "girlMoon": 314.4
+    },
+    "rawLines": [
+      "Total Guna Milan 22/36",
+      "Varna Kuta Points: 1/1",
+      "Vashya Kuta Points: 2/2",
+      "Tara Kuta Points: 1.5/3",
+      "Yoni Kuta Points: 2/4",
+      "Maitri Kuta Points: 3/5",
+      "Gana Kuta Points: 6/6",
+      "Bhakuta Kuta Points: 7/7",
+      "Nadi Kuta Points: 0/8",
+      "Note - Mangal Dosha which is also known as Kuja Dosha is NOT considered while Ashtakuta match making. If Mangal Dosha is present then both Vara and Kanya should have Mangal Dosha. It is advised not to perform match making between Mangalik and Non-Mangalik couple.",
+      "Mangal Dosha Calculator",
+      "Find out the Mangal Dosha in Kundali through this calculator. Mangal Dosha is formed when Mars is situated in the First, Second, Fourth, Seventh, Eighth or Twelfth house of the Kundali. Mangal Dosha is also known as Kuja Dosha and Bhauma Dosha."
+    ],
+    "tables": []
+  },
+  "notes": [
+    "Ashta Kuta scores as printed by Drik Panchang (Lahiri/Chitrapaksha default); first person = boy, second = girl."
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "case": "m12",
+  "source": "drikpanchang",
+  "source_url": "https://www.drikpanchang.com/jyotisha/horoscope-match/horoscope-match.html (POST from https://www.drikpanchang.com/jyotisha/horoscope-match/horoscope-match.html)",
+  "fetched_at": "2026-10-26T08:55:13.718Z",
+  "fetcher_version": "a04-1",
+  "values": {
+    "input": {
+      "boy": {
+        "id": "c23",
+        "date": "1981-03-26",
+        "time": "16:45",
+        "place": "Dhaka",
+        "siteGeo": {
+          "lat": 23.710277777777776,
+          "lon": 90.4075,
+          "olson": "Asia/Dhaka",
+          "offset": "6.00",
+          "city": "Dhaka"
+        },
+        "suggestions": [
+          "Dhaka Dhaka, Bangladesh",
+          "Dhaka Bihar, India",
+          "Azimpur Dhaka, Bangladesh",
+          "Paltan Dhaka, Bangladesh"
+        ]
+      },
+      "girl": {
+        "id": "c24",
+        "date": "1965-09-06",
+        "time": "03:15",
+        "place": "Karachi",
+        "siteGeo": {
+          "lat": 24.860833333333336,
+          "lon": 67.01027777777777,
+          "olson": "Asia/Karachi",
+          "offset": "5.00",
+          "city": "Karachi"
+        },
+        "suggestions": [
+          "Karachi Sindh, Pakistan",
+          "Afyonkarahisar Afyonkarahisar, Turkey"
+        ]
+      }
+    },
+    "total": 16,
+    "totalMax": 36,
+    "kootas": {
+      "varna": {
+        "score": 1,
+        "max": 1,
+        "raw": "Varna Kuta Points: 1/1"
+      },
+      "vashya": {
+        "score": 1,
+        "max": 2,
+        "raw": "Vashya Kuta Points: 1/2"
+      },
+      "tara": {
+        "score": 1.5,
+        "max": 3,
+        "raw": "Tara Kuta Points: 1.5/3"
+      },
+      "yoni": {
+        "score": 2,
+        "max": 4,
+        "raw": "Yoni Kuta Points: 2/4"
+      },
+      "grahaMaitri": {
+        "score": 5,
+        "max": 5,
+        "raw": "Maitri Kuta Points: 5/5"
+      },
+      "gana": {
+        "score": 6,
+        "max": 6,
+        "raw": "Gana Kuta Points: 6/6"
+      },
+      "bhakoot": {
+        "score": 0,
+        "max": 7,
+        "raw": "Bhakuta Kuta Points: 0/7"
+      },
+      "nadi": {
+        "score": 0,
+        "max": 8,
+        "raw": "Nadi Kuta Points: 0/8"
+      }
+    },
+    "mangal": {},
+    "moons": {
+      "boySign": "Vrishchika (Scorpio)",
+      "girlSign": "Dhanu (Sagittarius)",
+      "boyNakshatra": "Anuradha (17)",
+      "girlNakshatra": "Purva Ashadha (20)",
+      "boyMoon": 225.76,
+      "girlMoon": 264.14
+    },
+    "rawLines": [
+      "Total Guna Milan 16/36",
+      "Varna Kuta Points: 1/1",
+      "Vashya Kuta Points: 1/2",
+      "Tara Kuta Points: 1.5/3",
+      "Yoni Kuta Points: 2/4",
+      "Maitri Kuta Points: 5/5",
+      "Gana Kuta Points: 6/6",
+      "Bhakuta Kuta Points: 0/7",
+      "Nadi Kuta Points: 0/8",
+      "Note - Mangal Dosha which is also known as Kuja Dosha is NOT considered while Ashtakuta match making. If Mangal Dosha is present then both Vara and Kanya should have Mangal Dosha. It is advised not to perform match making between Mangalik and Non-Mangalik couple.",
+      "Mangal Dosha Calculator",
+      "Find out the Mangal Dosha in Kundali through this calculator. Mangal Dosha is formed when Mars is situated in the First, Second, Fourth, Seventh, Eighth or Twelfth house of the Kundali. Mangal Dosha is also known as Kuja Dosha and Bhauma Dosha."
+    ],
+    "tables": []
+  },
+  "notes": [
+    "Ashta Kuta scores as printed by Drik Panchang (Lahiri/Chitrapaksha default); first person = boy, second = girl."
+  ]
+}

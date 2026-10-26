@@ -1,6 +1,6 @@
 {
   "description": "Measured deviations of @shubhvela/engine against the committed reference data (spec section 6 release gate). Written by the vitest suites under test/suites; `charts.maxPlanetDeg` is injected into the web kundli footer (design-review N13).",
-  "generatedAt": "2026-10-26T01:48:19.067Z",
+  "generatedAt": "2026-10-26T09:19:53.763Z",
   "charts": {
     "required": 60,
     "compared": 60,
@@ -169,7 +169,7 @@
       "dashaBalanceDays": 1
     },
     "missingWeb": [],
-    "generatedAt": "2026-10-26T01:48:11.491Z"
+    "generatedAt": "2026-10-26T09:19:42.242Z"
   },
   "festivals": {
     "required": 612,
@@ -184,14 +184,10 @@
       "drikpanchang": 600
     },
     "failures": [],
-    "exactDates": 592,
+    "exactDates": 596,
     "documentedDifferences": [
-      "holika-dahan@delhi-2026: engine 2026-03-02 vs Drik 2026-03-03",
-      "holi@delhi-2026: engine 2026-03-03 vs Drik 2026-03-04",
       "ganga-dussehra@delhi-2026: engine 2026-06-24 vs Drik 2026-05-25",
       "sheetala-ashtami@delhi-2028: engine 2028-03-18 vs Drik 2028-03-17",
-      "holika-dahan@chennai-2026: engine 2026-03-02 vs Drik 2026-03-03",
-      "holi@chennai-2026: engine 2026-03-03 vs Drik 2026-03-04",
       "ganga-dussehra@chennai-2026: engine 2026-06-24 vs Drik 2026-05-25",
       "sheetala-ashtami@chennai-2028: engine 2028-03-18 vs Drik 2028-03-17"
     ],
@@ -210,44 +206,33 @@
       "jagannath-snana-purnima@chennai-2028"
     ],
     "missingPages": [],
-    "generatedAt": "2026-10-26T01:48:19.054Z"
+    "generatedAt": "2026-10-26T09:19:53.753Z"
   },
   "matching": {
     "required": 20,
-    "compared": 0,
-    "passed": 0,
+    "compared": 20,
+    "passed": 20,
     "failed": 0,
-    "skipped": 20,
+    "skipped": 0,
     "maxDeviation": {
-      "gunaTotal": 0
+      "gunaTotal": 0,
+      "moonDeg": 0.009978410037604135
     },
     "sources": {
-      "drikpanchang": 0
+      "drikpanchang": 20
     },
     "failures": [],
-    "missing": [
-      "m01",
-      "m02",
-      "m03",
-      "m04",
-      "m05",
-      "m06",
-      "m07",
-      "m08",
-      "m09",
-      "m10",
-      "m11",
-      "m12",
-      "m13",
-      "m14",
-      "m15",
-      "m16",
-      "m17",
-      "m18",
-      "m19",
-      "m20"
+    "exactPairs": 14,
+    "documentedDifferences": [
+      "m03: yoni engine 2 vs Drik 3 (Yoni Kuta Points: 3/4)",
+      "m06: yoni engine 2 vs Drik 3 (Yoni Kuta Points: 3/4)",
+      "m08: yoni engine 2 vs Drik 1 (Yoni Kuta Points: 1/4)",
+      "m09: yoni engine 2 vs Drik 3 (Yoni Kuta Points: 3/4)",
+      "m13: yoni engine 2 vs Drik 1 (Yoni Kuta Points: 1/4)",
+      "m19: yoni engine 2 vs Drik 3 (Yoni Kuta Points: 3/4)"
     ],
-    "generatedAt": "2026-10-25T02:05:52.611Z"
+    "missing": [],
+    "generatedAt": "2026-10-26T09:19:45.332Z"
   },
   "panchang": {
     "required": 150,
@@ -292,7 +277,7 @@
       "ayanamsaDeg": 0.01
     },
     "missing": [],
-    "generatedAt": "2026-10-26T01:48:16.790Z"
+    "generatedAt": "2026-10-26T09:19:49.762Z"
   },
   "tz": {
     "required": 12,
@@ -309,6 +294,6 @@
     },
     "failures": [],
     "tzdb": "2026e",
-    "generatedAt": "2026-10-26T01:48:11.442Z"
+    "generatedAt": "2026-10-26T09:19:41.619Z"
   }
 }
