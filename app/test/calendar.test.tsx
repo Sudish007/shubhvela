@@ -131,7 +131,9 @@ describe('<CalendarScreen> and <FestivalScreen>', () => {
     expect(screen.getAllByLabelText(/^Why\? /).length).toBe(1);
     // Lucknow's Diwali date equals the Delhi-verified one, so the footer names the fetch date.
     expect(textOf(screen.getByTestId('festival-verified'))).toMatch(/^Verified against Drik Panchang on /);
-    expect(screen.queryByText(/Share/)).toBeNull();
+    // B07: the F36 festival-card button is the one Share control on the detail.
+    expect(screen.getByTestId('festival-share-card')).toBeTruthy();
+    expect(screen.getAllByText(/Share/).length).toBe(1);
   });
 
   it('+30 % pseudo-locale (en) calendar renders every string whole', async () => {

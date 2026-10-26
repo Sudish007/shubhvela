@@ -2,10 +2,13 @@
 // place, the tithi/sankranti rule line, the city's sunrise and moonrise for that day, the puja window when the rule has
 // one, the "What to do" text (corpus/festivals, resolved bho -> hi -> en) as a Row whose Why? names the rule and its
 // inputs, the convention note, and the honest footer: "verified against Drik Panchang on <date>" only when this exact
-// date was checked (engine festivalVerification), else "not yet verified". The share-card button arrives in B07.
+// date was checked (engine festivalVerification), else "not yet verified"; B07: the "Share festival card" button opens
+// the F36 preview sheet with the FestivalCard.
 import { festivalText } from '@shubhvela/content';
 import { type FestivalOccurrence, type Region, type Tradition, festivalVerification, panchang } from '@shubhvela/engine';
+import { useState, type RefObject } from 'react';
 import { StyleSheet, View } from 'react-native';
+import { SecondaryButton } from '../components/Button';
 import { Card } from '../components/Card';
 import { Row } from '../components/Row';
 import { Tag } from '../components/Tag';
@@ -14,6 +17,9 @@ import type { WhyInputValue } from '../components/WhySheet';
 import { useLang, type Lang, type TFn } from '../i18n';
 import { fmtCivilDate, fmtRange, fmtTime, fmtTimeOrDayTime } from '../today/format';
 import { RichText } from '../today/RichText';
+import { FestivalCard } from '../share/cards/FestivalCard';
+import { SharePreviewSheet } from '../share/SharePreviewSheet';
+import type { CardView } from '../share/ShareCard';
 import { festivalTithiLine, systemName } from './format';
 
 export interface FestivalDetailProps {
@@ -56,6 +62,8 @@ export function FestivalDetail({ occurrence: o, siblings, year, tradition, regio
   const day = panchang(o.date, geo, tz);
   const tithiLine = festivalTithiLine(t, lang, o.tithiText);
   const footer = verificationFooter(o.slug, year, tradition, o.date, t, lang);
+  const [shareOpen, setShareOpen] = useState(false);
+  const city = placeName.split(',')[0].trim() || placeName;
   const sunLine =
     day.sunrise !== null
       ? day.moonrise !== null
@@ -81,7 +89,11 @@ export function FestivalDetail({ occurrence: o, siblings, year, tradition, regio
         <RichText kind="label" color="ink2" text={sunLine} testID="festival-sun-moon" />
         {o.window ? <RichText kind="label" color="ink2" text={t('calendar.pujaWindow', { from: fmtTime(o.window.start, tz), to: fmtTime(o.window.end, tz) })} /> : null}
         {o.bhadra?.length ? <Tag variant="kind">{t('calendar.bhadraMoved')}</Tag> : null}
+        <SecondaryButton label={t('share.shareFestival')} onPress={() => setShareOpen(true)} style={styles.share} testID="festival-share-card" />
       </Card>
+      {shareOpen ? (
+        <SharePreviewSheet visible onClose={() => setShareOpen(false)} title={t('share.cardFestival')} renderCard={(ref: RefObject<CardView | null>) => <FestivalCard ref={ref} occurrence={o} day={day} city={city} />} />
+      ) : null}
       <Card>
         <Txt kind="heading" accessibilityRole="header">
           {t('vrat.whatToDo')}
@@ -111,4 +123,5 @@ export function FestivalDetail({ occurrence: o, siblings, year, tradition, regio
 const styles = StyleSheet.create({
   root: { gap: 12 },
   rule: { marginTop: 8 },
+  share: { marginTop: 8 },
 });

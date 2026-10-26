@@ -196,3 +196,37 @@ export function reportCredits(report: ReportKind): number {
   const row = getDb().getFirstSync<{ n: number }>('SELECT COUNT(*) AS n FROM purchases WHERE product = ? AND delivered_at IS NULL', [`report_${report}`]);
   return row?.n ?? 0;
 }
+
+/** True when a report consumable has already been delivered for this profile / pair reference (P19: one purchase = one report). */
+export function reportDelivered(report: ReportKind, refId: string): boolean {
+  if (!hasDb()) return false;
+  const row = getDb().getFirstSync<{ n: number }>('SELECT COUNT(*) AS n FROM purchases WHERE product = ? AND ref_id = ? AND delivered_at IS NOT NULL', [`report_${report}`, refId]);
+  return (row?.n ?? 0) > 0;
+}
+
+/**
+ * What the preview CTA may do (M2 + P19): 'included' (Pro, Janam Patri / Matching), 'delivered' (this profile or pair
+ * already consumed a purchase), 'credit' (an unused purchase exists and will be delivered on Download), 'buy'.
+ */
+export type ReportAccess = 'included' | 'delivered' | 'credit' | 'buy';
+
+export function reportAccess(report: ReportKind, refId: string): ReportAccess {
+  if (reportIncluded(report)) return 'included';
+  if (reportDelivered(report, refId)) return 'delivered';
+  if (reportCredits(report) > 0) return 'credit';
+  return 'buy';
+}
+
+/**
+ * Delivers one report credit to a profile / pair: the oldest undelivered `purchases` row of that product gets
+ * ref_id + delivered_at. Idempotent for an already-delivered reference. Returns true when the reference is delivered
+ * afterwards (false when no credit existed). The preview screen is the only caller.
+ */
+export function deliverReport(report: ReportKind, refId: string, now: Date = new Date()): boolean {
+  if (reportDelivered(report, refId)) return true;
+  const row = getDb().getFirstSync<{ id: number }>('SELECT id FROM purchases WHERE product = ? AND delivered_at IS NULL ORDER BY id ASC LIMIT 1', [`report_${report}`]);
+  if (!row) return false;
+  getDb().runSync('UPDATE purchases SET ref_id = ?, delivered_at = ? WHERE id = ?', [refId, now.toISOString(), row.id]);
+  notify();
+  return true;
+}

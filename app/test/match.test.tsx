@@ -1,7 +1,7 @@
 // FEAT-B06 matching (F29) + the pick screen's code entry (F30): the result screen's "N of 36 guna" and every koota row
 // equal engine.ashtakoota() for the two sample profiles; Why? opens the corpus text at level 1 on free and level 3 on
 // Pro; Nadi/Bhakoot rows name their state; Mangal dosha per person with every cancellation rule as a row; the four
-// "beyond" rows; the computed summary; no "Matching report PDF" button before B07; the pick screen validates sides,
+// "beyond" rows; the computed summary; the "Matching report PDF" button (B07 route flag) priced for free / "included in Pro"; the pick screen validates sides,
 // routes with the sides as params, rejects a bad typed code with the one message and consumes a scanned code; the
 // +30 % pseudo-locale snapshot of the result does not truncate.
 import { act, fireEvent, screen } from '@testing-library/react-native';
@@ -141,7 +141,8 @@ describe('B06 matching', () => {
     const summary = textOf(screen.getByTestId('summary-text'));
     expect(summary).toMatch(new RegExp(`^Priya and Amma score ${fmtGuna(guna.total)} of 36 guna; ${fullKootaCount(guna)} of 8 kootas at full points\\.`));
     expect(screen.getByTestId('summary-free')).toBeTruthy();
-    expect(screen.queryByTestId('match-report-pdf')).toBeNull();
+    expect(textOf(screen.getByTestId('match-report-pdf'))).toBe('Matching report PDF · ₹99');
+    expect(screen.getByTestId('match-share-card')).toBeTruthy();
     expect(screen.getByText('How this was computed')).toBeTruthy();
     // Why? on the Varna row: level-1 text on free (not the level-3 text).
     await fireEvent.press(screen.getByLabelText(/^Why\? Varna · /));
@@ -151,11 +152,13 @@ describe('B06 matching', () => {
     assertNoTruncation();
   });
 
-  it('Pro result: Why? opens the level-3 explanation and the free caption is gone; the PDF button still waits for B07', async () => {
+  it('Pro result: Why? opens the level-3 explanation and the free caption is gone; the PDF button reads included in Pro', async () => {
     setEntitlement('shubhvela_pro_lifetime', 'active', 'tok', new Date(NOW));
     await renderWithProviders(<MatchResultScreen now={now} sides={{ a: { kind: 'profile', id: priyaId }, b: { kind: 'profile', id: ammaId } }} />);
     expect(screen.queryByTestId('summary-free')).toBeNull();
-    expect(screen.queryByTestId('match-report-pdf')).toBeNull();
+    expect(textOf(screen.getByTestId('match-report-pdf'))).toBe('Matching report PDF · included in Pro');
+    await fireEvent.press(screen.getByTestId('match-report-pdf'));
+    expect(router.push).toHaveBeenCalledWith({ pathname: '/charts/pdf/matching', params: { a: `p${priyaId}`, b: `p${ammaId}` } });
     await fireEvent.press(screen.getByLabelText(/^Why\? Nadi · /));
     expect(screen.getAllByText(lookup('koota', 'koota-nadi-3', 'en')!.text).length).toBeGreaterThan(0);
     expect(screen.getByText('Full explanation')).toBeTruthy();

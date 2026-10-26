@@ -103,11 +103,12 @@ describe('<ChartsScreen>', () => {
     expect(screen.getByTestId('more-card')).toBeTruthy();
     expect(screen.queryByTestId('varshaphal-card')).toBeNull(); // next solar return is in March, > 30 days away
     expect(screen.queryByText(/Prashna/)).toBeNull();
-    expect(screen.queryByText(/Share chart card/)).toBeNull();
+    // B07: the Janam Patri PDF and Share chart card rows render (route flags on); free tier shows the fallback price.
     expect(screen.getByTestId('timing-card')).toBeTruthy();
     expect(screen.getByTestId('timing-row-muhuratFinder')).toBeTruthy();
-    expect(screen.queryByTestId('timing-row-janamPatriPdf')).toBeNull();
-    expect(screen.queryByTestId('timing-row-shareChartCard')).toBeNull();
+    expect(screen.getByTestId('timing-row-janamPatriPdf')).toBeTruthy();
+    expect(screen.getByText('₹99 · store price may differ')).toBeTruthy();
+    expect(screen.getByTestId('timing-row-shareChartCard')).toBeTruthy();
     expect(screen.queryByText('Ad')).toBeNull();
     assertNoTruncation();
     assertPadaGlued();
@@ -131,7 +132,7 @@ describe('<ChartsScreen>', () => {
     expect(screen.getByText('Chart style · also in Settings')).toBeTruthy();
     expect(screen.getByTestId('style-north').props.accessibilityState.checked).toBe(true);
     expect(screen.getByTestId('menu-legend')).toBeTruthy();
-    expect(screen.queryByText(/Share chart card/)).toBeNull();
+    expect(screen.getByTestId('menu-share-card')).toBeTruthy();
     await fireEvent.press(screen.getByTestId('style-south'));
     expect(getSetting('chartStyle')).toBe('south');
     expect(screen.getByTestId('chart').props.accessibilityLabel).toMatch(/^South Indian chart/);

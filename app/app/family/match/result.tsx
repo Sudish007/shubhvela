@@ -2,14 +2,15 @@
 // Top to bottom: "N of 36 guna" (ink count, no colour grading) with one line per side; the eight koota rows (name,
 // "x of y", one-line meaning, Why? at corpus level 1 on free / 3 on Pro); the dosha section (Nadi / Bhakoot with the
 // exceptions named, Mangal dosha per person with every cancellation rule as a row); "Beyond gun milan"; the computed
-// one-paragraph summary (free adds the honest tier caption); the "Matching report PDF" button ONLY once B07 has flipped
-// its route flag; the "How this was computed" footer. Route name MatchingResults = banner allow-listed (M5).
+// one-paragraph summary (free adds the honest tier caption); the "Matching report PDF" button (B07 route flag) and the
+// "Share our 36-guna card" button (F36 preview sheet, GunaCard); the "How this was computed" footer. Route name
+// MatchingResults = banner allow-listed (M5).
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { useMemo } from 'react';
+import { useMemo, useState, type RefObject } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useMountClock } from '../../../src/charts/LockedFeature';
 import { MATCH_ROUTE_FLAGS, TIMING_ROUTES } from '../../../src/charts/routeFlags';
-import { Card, ComputedFooter, EmptyState, PrimaryButton, Screen, Txt } from '../../../src/components';
+import { Card, ComputedFooter, EmptyState, PrimaryButton, Screen, SecondaryButton, Txt } from '../../../src/components';
 import { isPro, priceLabel, reportIncluded } from '../../../src/entitlements';
 import { useLang } from '../../../src/i18n';
 import { BeyondSection } from '../../../src/match/BeyondSection';
@@ -18,6 +19,9 @@ import { GunaHeadline } from '../../../src/match/GunaHeadline';
 import { KootaRow } from '../../../src/match/KootaRow';
 import { computeMatch, kootaLevel, resolveSide, sideFromParams, sidesToParams, summaryParams, type MatchRouteParams, type MatchSide, type ResolvedSide } from '../../../src/match/model';
 import { useProfiles } from '../../../src/profiles/useProfiles';
+import { GunaCard } from '../../../src/share/cards/GunaCard';
+import { SharePreviewSheet } from '../../../src/share/SharePreviewSheet';
+import type { CardView } from '../../../src/share/ShareCard';
 import { AYANAMSA_KEY, shortValue } from '../../../src/settingsLabels';
 
 export interface MatchResultScreenProps {
@@ -36,6 +40,7 @@ export default function MatchResultScreen({ now, sides }: MatchResultScreenProps
   const sideB = sides?.b ?? sideFromParams(params, 'b');
   const pro = isPro();
   const level = kootaLevel(pro);
+  const [shareOpen, setShareOpen] = useState(false);
 
   const computed = useMemo(() => {
     if (!sideA || !sideB) return null;
@@ -103,7 +108,14 @@ export default function MatchResultScreen({ now, sides }: MatchResultScreenProps
             <PrimaryButton label={reportState} onPress={() => router.push({ pathname: TIMING_ROUTES.matchingReportPdf, params: sidesToParams(sideA!, sideB!) })} testID="match-report-pdf" />
           </View>
         ) : null}
+        <View style={styles.reportBtn}>
+          <SecondaryButton label={t('share.shareGuna')} onPress={() => setShareOpen(true)} testID="match-share-card" />
+        </View>
       </Card>
+
+      {shareOpen ? (
+        <SharePreviewSheet visible onClose={() => setShareOpen(false)} title={t('share.cardGuna')} renderCard={(ref: RefObject<CardView | null>) => <GunaCard ref={ref} guna={report.guna} aLabel={a.label} bLabel={b.label} />} />
+      ) : null}
 
       <ComputedFooter
         ayanamsa={`${ayanamsaLabel} (${chart.meta.ayanamsaDegrees.toFixed(4)}°)`}

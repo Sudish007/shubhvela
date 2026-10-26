@@ -8,7 +8,7 @@
 // only when its onLayout.y >= windowHeight (below the fold) and collapses on no fill.
 // Every number on this screen is engine output for the chosen place and the current instant; no Listen button until C01.
 import { useRouter } from 'expo-router';
-import React, { useState } from 'react';
+import React, { useState, type RefObject } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { todayCardOrder, todayNativeSlot, type TodayCardKey } from '../../src/ads/AdPolicy';
 import { NativeAdCard } from '../../src/ads/NativeAdCard';
@@ -23,6 +23,9 @@ import { DailyNoteCard } from '../../src/today/DailyNoteCard';
 import { fmtCivilDate, lunarMonthName, tithiName } from '../../src/today/format';
 import { GoodHoursCard } from '../../src/today/GoodHoursCard';
 import { PanchangSheet } from '../../src/today/PanchangSheet';
+import { PanchangCard } from '../../src/share/cards/PanchangCard';
+import { SharePreviewSheet } from '../../src/share/SharePreviewSheet';
+import type { CardView } from '../../src/share/ShareCard';
 import { RichText } from '../../src/today/RichText';
 import { TodayTithiRow } from '../../src/today/TodayTithiRow';
 import { UpcomingStrip } from '../../src/today/UpcomingStrip';
@@ -40,7 +43,7 @@ export default function TodayScreen({ todayOptions }: TodayScreenProps) {
   const { self, profiles } = useProfiles();
   const { model, nowMs, loading, error, locationFallback } = useToday(self, profiles, todayOptions);
   const [expanded, setExpanded] = useState(false);
-  const [sheet, setSheet] = useState(false);
+  const [sheet, setSheet] = useState<null | 'panchang' | 'share'>(null);
 
   // The F1 first value is synchronous (chartFor is memoised), so it paints before the rest of the model is computed.
   let moon: ReturnType<typeof moonLine> | null = null;
@@ -94,7 +97,7 @@ export default function TodayScreen({ todayOptions }: TodayScreenProps) {
           {placeName}
         </Txt>
       </Pressable44>
-      <Pressable44 accessibilityLabel={t('today.openPanchang')} onPress={() => setSheet(true)} style={pillStyle} testID="panchang-pill">
+      <Pressable44 accessibilityLabel={t('today.openPanchang')} onPress={() => setSheet('panchang')} style={pillStyle} testID="panchang-pill">
         <Txt kind="label" weight={600}>
           {t('today.panchang')}
         </Txt>
@@ -141,16 +144,25 @@ export default function TodayScreen({ todayOptions }: TodayScreenProps) {
       {order.map((key) => (cards[key] ? <React.Fragment key={key}>{cards[key]}</React.Fragment> : null))}
       {model ? (
         <PanchangSheet
-          visible={sheet}
-          onClose={() => setSheet(false)}
+          visible={sheet === 'panchang'}
+          onClose={() => setSheet(null)}
           panchang={model.panchang}
           goodHours={model.goodHours}
           chart={model.chart}
           placeName={placeName}
           onAllSegments={() => {
-            setSheet(false);
+            setSheet(null);
             setExpanded(true);
           }}
+          onShareCard={() => setSheet('share')}
+        />
+      ) : null}
+      {model && sheet === 'share' ? (
+        <SharePreviewSheet
+          visible
+          onClose={() => setSheet(null)}
+          title={t('share.cardPanchang', { city: placeName })}
+          renderCard={(ref: RefObject<CardView | null>) => <PanchangCard ref={ref} panchang={model.panchang} goodHours={model.goodHours} nowMs={nowMs} city={placeName} />}
         />
       ) : null}
     </Screen>

@@ -8,10 +8,12 @@
 // switches the hero to "Moon chart · birth time unknown", hides the Lagna/Chalit chips, the Lagna row and the Houses
 // card. B04: the "14 more vargas" chip (lock icon on the free tier; "till <time> tomorrow" after a rewarded unlock)
 // opens the vargas sheet; a chosen varga swaps the hero ChartData for the same Chart component (F12). Still not
-// rendered because not built: Prashna / Ask my chart rows (C04), "Share chart card" (B07).
+// rendered because not built: Prashna / Ask my chart rows (C04). B07: "Share chart card" (⋮ menu + Timing row) opens the
+// F36 preview sheet with the KundliCard of the hero chart; "Janam Patri PDF" pushes the report preview.
 // Every number is engine output for the chosen profile under the F19 settings; sheets never nest (one open at a time).
 import type { ChartData, DivisionalChartId, PlanetId } from '@shubhvela/engine';
 import { useFocusEffect, useRouter } from 'expo-router';
+import type { RefObject } from 'react';
 import { useCallback, useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { Card, CapSheet, Chip, ChevronIcon, ComputedFooter, EmptyState, LockIcon, MoreIcon, Pressable44, Row, Screen, Txt, ApproxTag } from '../../src/components';
@@ -22,6 +24,9 @@ import { CHIP_KEY, approxRuleId, chartForChip, chipsFor, degreeText, fmtBirthDat
 import { MoreFromChartCard } from '../../src/charts/MoreFromChartCard';
 import { PlanetTable, type TableSubject } from '../../src/charts/PlanetTable';
 import { TIMING_ROUTES } from '../../src/charts/routeFlags';
+import { KundliCard } from '../../src/share/cards/KundliCard';
+import type { CardView } from '../../src/share/ShareCard';
+import { SharePreviewSheet } from '../../src/share/SharePreviewSheet';
 import { SadeSatiCard } from '../../src/charts/SadeSatiCard';
 import { GlossarySheet, HouseSheet, LegendSheet, PlanetSheet, ProfileSheet, StyleMenu, profileLabel, type PlanetSheetSubject } from '../../src/charts/sheets';
 import { TimingDocumentsCard } from '../../src/charts/TimingDocumentsCard';
@@ -54,7 +59,8 @@ type SheetState =
   | { kind: 'profiles' }
   | { kind: 'pro' }
   | { kind: 'vargas' }
-  | { kind: 'unlock'; feature: UnlockKey };
+  | { kind: 'unlock'; feature: UnlockKey }
+  | { kind: 'shareCard' };
 
 export interface ChartsScreenProps {
   /** Clock for tests; production uses Date.now(). */
@@ -370,7 +376,7 @@ export default function ChartsScreen({ now, chartWidth, getPermission = getPermi
           <TimingDocumentsCard
             onMuhurat={() => router.push(TIMING_ROUTES.muhuratFinder)}
             onJanamPatri={() => router.push(`${TIMING_ROUTES.janamPatriPdf}?profile=${profile.id}`)}
-            onShareCard={() => setSheet({ kind: 'menu' })}
+            onShareCard={() => setSheet({ kind: 'shareCard' })}
             testID="timing-card"
           />
 
@@ -394,7 +400,7 @@ export default function ChartsScreen({ now, chartWidth, getPermission = getPermi
           {sheet?.kind === 'house' ? <HouseSheet visible onClose={() => setSheet(null)} chart={base} house={sheet.n} onPressPlanet={openPlanet} /> : null}
           {sheet?.kind === 'legend' ? <LegendSheet visible onClose={() => setSheet(null)} /> : null}
           {sheet?.kind === 'glossary' ? <GlossarySheet visible onClose={() => setSheet(null)} id={sheet.id} term={sheet.term} /> : null}
-          {sheet?.kind === 'menu' ? <StyleMenu visible onClose={() => setSheet(null)} style={style} onSelectStyle={selectStyle} onLegend={() => setSheet({ kind: 'legend' })} /> : null}
+          {sheet?.kind === 'menu' ? <StyleMenu visible onClose={() => setSheet(null)} style={style} onSelectStyle={selectStyle} onLegend={() => setSheet({ kind: 'legend' })} onShareCard={() => setSheet({ kind: 'shareCard' })} /> : null}
           {sheet?.kind === 'pro' ? <CapSheet visible onClose={() => setSheet(null)} reason="pro_feature" /> : null}
           {sheet?.kind === 'vargas' ? (
             <VargaSheet
@@ -413,6 +419,15 @@ export default function ChartsScreen({ now, chartWidth, getPermission = getPermi
               }}
               nowMs={nowMs}
               tz={profile.tz}
+            />
+          ) : null}
+          {sheet?.kind === 'shareCard' ? (
+            <SharePreviewSheet
+              visible
+              onClose={() => setSheet(null)}
+              title={t('share.cardKundli')}
+              hasBirthTime
+              renderCard={(ref: RefObject<CardView | null>, showBirthTime: boolean) => <KundliCard ref={ref} profile={profile} chart={hero} style={style} label={profileLabel(profile, t)} showBirthTime={showBirthTime} />}
             />
           ) : null}
           {sheet?.kind === 'unlock' ? <UnlockSheet visible onClose={() => setSheet(null)} feature={sheet.feature} onUnlocked={() => setNowMs(now ? now() : Date.now())} /> : null}

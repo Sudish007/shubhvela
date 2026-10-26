@@ -2,13 +2,15 @@
 // Active ONLY when the bundle was built with EXPO_PUBLIC_SCREENSHOT_MODE=1 (inlined by Expo); any other build renders
 // nothing and goes home. `sample=1` seeds Priya / Amma / Dadaji (engine-computed on the screens) and consent_at=now;
 // `font` is accepted for the shots manifest but the font scale itself is a device setting (adb settings put system
-// font_scale), so it is only echoed in the dev log. `screen` is a route path (default /(tabs)/today).
+// font_scale), so it is only echoed in the dev log. `screen` is a route path (default /(tabs)/today). `pdf_dump=1` (B07)
+// prints the three reports to the cache directory and logs their URIs for B08 to pull.
 import { Redirect, useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect } from 'react';
 import { View } from 'react-native';
 import { getSelfProfile } from '../../src/db/profiles';
 import { setSetting } from '../../src/db/settings';
 import { parseDevParams } from '../../src/dev/params';
+import { dumpReports } from '../../src/dev/pdfDump';
 import { seedSampleState } from '../../src/dev/seed';
 import { scheduleTestReminder } from '../../src/dev/testReminder';
 import { useLang } from '../../src/i18n';
@@ -30,6 +32,12 @@ export default function DevState() {
     if (p.style) setSetting('chartStyle', p.style);
     // After the launch re-plan (app/_layout.tsx, 1.5 s after mount), which cancels every scheduled notification first.
     if (p.testReminder) setTimeout(() => void scheduleTestReminder(p.lang), 6000);
+    if (p.pdfDump)
+      setTimeout(() => {
+        dumpReports(p.lang)
+          .then((r) => console.log('dev/state pdf-dump', JSON.stringify(r)))
+          .catch((e) => console.warn('dev/state pdf-dump failed', e));
+      }, 2000);
     setLang(p.lang);
     setThemeSetting(p.theme);
     if (__DEV__) console.log('dev/state', p);

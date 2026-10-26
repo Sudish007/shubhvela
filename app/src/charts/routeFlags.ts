@@ -15,8 +15,9 @@ export interface TimingRouteFlags {
 export const ROUTE_FLAGS: Readonly<TimingRouteFlags> = {
   // B05: app/app/charts/muhurat/index.tsx exists.
   muhuratFinder: true,
-  janamPatriPdf: false,
-  shareChartCard: false,
+  // B07: app/app/charts/pdf/[kind].tsx and src/share/SharePreviewSheet.tsx exist.
+  janamPatriPdf: true,
+  shareChartCard: true,
 };
 
 /** B06 result screen: the "Matching report PDF" button renders ONLY when B07's /charts/pdf/matching route exists. */
@@ -25,7 +26,8 @@ export interface MatchRouteFlags {
 }
 
 export const MATCH_ROUTE_FLAGS: Readonly<MatchRouteFlags> = {
-  matchingReportPdf: false,
+  // B07: /charts/pdf/matching exists.
+  matchingReportPdf: true,
 };
 
 /** Route paths the rows open once their flag is true (kept here so B05/B07 change one file). */

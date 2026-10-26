@@ -142,6 +142,27 @@ jest.mock('expo-camera', () => {
     useCameraPermissions: jest.fn(() => [granted, jest.fn(async () => granted), jest.fn(async () => granted)]),
   };
 });
+// B07 documents and share cards: react-native-webview renders as a View that keeps its `source` prop (tests read the
+// HTML from it); expo-print / expo-sharing / react-native-view-shot / expo-asset are spies - the preview screen and the
+// share sheet inject their own deps in tests, these defaults only keep the modules loadable.
+jest.mock('react-native-webview', () => {
+  const React = require('react');
+  const { View } = require('react-native');
+  return { WebView: (props: Record<string, unknown>) => React.createElement(View, { testID: 'mock-webview', ...props }) };
+});
+jest.mock('expo-print', () => ({
+  printToFileAsync: jest.fn(async () => ({ uri: 'file:///cache/Print.pdf', numberOfPages: 3 })),
+}));
+jest.mock('expo-sharing', () => ({
+  isAvailableAsync: jest.fn(async () => true),
+  shareAsync: jest.fn(async () => {}),
+}));
+jest.mock('react-native-view-shot', () => ({
+  captureRef: jest.fn(async () => 'file:///cache/card.png'),
+}));
+jest.mock('expo-asset', () => ({
+  Asset: { fromModule: jest.fn(() => ({ localUri: 'file:///assets/font.ttf', uri: 'file:///assets/font.ttf', downloadAsync: jest.fn(async () => {}) })) },
+}));
 // expo-sqlite is only reached through app/src/db/open.ts and gazetteer.ts; tests never open the asset database.
 jest.mock('expo-sqlite', () => ({
   openDatabaseSync: () => {

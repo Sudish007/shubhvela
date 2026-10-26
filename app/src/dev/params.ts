@@ -16,6 +16,8 @@ export interface DevParams {
   style?: ChartStyle;
   /** test_reminder=1 schedules one notification 2 minutes ahead through the real bridge (F25 airplane-mode smoke). */
   testReminder: boolean;
+  /** pdf_dump=1 (B07/B08) prints the three reports for the seeded household into the cache directory and logs the URIs. */
+  pdfDump: boolean;
 }
 export function parseDevParams(p: Record<string, string | string[] | undefined>): DevParams {
   const one = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0] : v) ?? '';
@@ -23,7 +25,7 @@ export function parseDevParams(p: Record<string, string | string[] | undefined>)
   const theme = (THEMES as readonly string[]).includes(one(p.theme)) ? (one(p.theme) as ThemeSetting) : 'light';
   const screenRaw = one(p.screen) || '/(tabs)/today';
   const screen = screenRaw.startsWith('/') ? screenRaw : `/${screenRaw}`;
-  const out: DevParams = { lang, theme, screen, sample: one(p.sample) === '1', font: one(p.font) || '1.0', testReminder: one(p.test_reminder) === '1' };
+  const out: DevParams = { lang, theme, screen, sample: one(p.sample) === '1', font: one(p.font) || '1.0', testReminder: one(p.test_reminder) === '1', pdfDump: one(p.pdf_dump) === '1' };
   if ((STYLES as readonly string[]).includes(one(p.style))) out.style = one(p.style) as ChartStyle;
   return out;
 }

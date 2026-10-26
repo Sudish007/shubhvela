@@ -299,11 +299,13 @@ export interface StyleMenuProps {
   style: ChartStyle;
   onSelectStyle: (s: ChartStyle) => void;
   onLegend: () => void;
+  /** B07: "Share chart card" item (F36); omitted = no row. */
+  onShareCard?: () => void;
 }
 
 export const STYLE_ORDER: readonly ChartStyle[] = ['north', 'south', 'east'];
 
-export function StyleMenu({ visible, onClose, style, onSelectStyle, onLegend }: StyleMenuProps) {
+export function StyleMenu({ visible, onClose, style, onSelectStyle, onLegend, onShareCard }: StyleMenuProps) {
   const { t } = useLang();
   const { colors } = useTokens();
   return (
@@ -322,6 +324,14 @@ export function StyleMenu({ visible, onClose, style, onSelectStyle, onLegend }: 
         </Txt>
         <ChevronIcon color={colors.ink3} />
       </Pressable44>
+      {onShareCard ? (
+        <Pressable44 accessibilityRole="menuitem" accessibilityLabel={t('share.cardTitle')} onPress={onShareCard} style={styles.menuRow} testID="menu-share-card">
+          <Txt kind="label" weight={400} style={styles.menuRowText}>
+            {t('share.cardTitle')}
+          </Txt>
+          <ChevronIcon color={colors.ink3} />
+        </Pressable44>
+      ) : null}
     </Sheet>
   );
 }

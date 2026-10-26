@@ -2,9 +2,11 @@
 // date · city · sunrise line; key/value rows with end times for Tithi, Nakshatra, Yoga and Karana (each with Why?);
 // Samvat (Vikram, Shaka); Month (Purnimanta and Amanta names, ritu, ayana); Sun · Moon rashi; Moonrise · Moonset;
 // the "Segments" row (Rahu Kaal · Abhijit · Brahma) with an "All 13" button that opens the expanded list; and the
-// "How this was computed" footer. Every value is engine.panchang output for the chosen place and day.
+// "How this was computed" footer; B07 adds the "Share today's panchang card" row (F36). Every value is engine.panchang
+// output for the chosen place and day.
 import { formatInZone, locale, type ChartData, type GoodHours, type PanchangDay } from '@shubhvela/engine';
 import { StyleSheet, View } from 'react-native';
+import { ChevronIcon } from '../components/icons';
 import { ComputedFooter } from '../components/ComputedFooter';
 import { Pressable44 } from '../components/Pressable44';
 import { Row } from '../components/Row';
@@ -28,6 +30,8 @@ export interface PanchangSheetProps {
   placeName: string;
   /** "All 13" -> close the sheet and expand the segment list in the card. */
   onAllSegments: () => void;
+  /** B07: "Share today's panchang card" (the caller closes this sheet and opens the preview; sheets never nest). */
+  onShareCard?: () => void;
 }
 
 const RITU_KEYS = ['vasanta', 'grishma', 'varsha', 'sharad', 'hemanta', 'shishira'] as const;
@@ -88,7 +92,7 @@ function WhyKV({ label, value, ruleId, inputs, glossary }: { label: string; valu
   );
 }
 
-export function PanchangSheet({ visible, onClose, panchang: p, goodHours: gh, chart, placeName, onAllSegments }: PanchangSheetProps) {
+export function PanchangSheet({ visible, onClose, panchang: p, goodHours: gh, chart, placeName, onAllSegments, onShareCard }: PanchangSheetProps) {
   const { t, lang } = useLang();
   const { colors } = useTokens();
   const rows = panchangRows(p, t, lang);
@@ -127,6 +131,14 @@ export function PanchangSheet({ visible, onClose, panchang: p, goodHours: gh, ch
           ) : null}
         </View>
       </View>
+      {onShareCard ? (
+        <Pressable44 accessibilityRole="menuitem" accessibilityLabel={t('share.sharePanchang')} onPress={onShareCard} style={[styles.shareRow, { borderTopColor: colors.hair }]} testID="panchang-share-card">
+          <Txt kind="label" weight={600} color="accent" style={styles.segText}>
+            {t('share.sharePanchang')}
+          </Txt>
+          <ChevronIcon color={colors.ink3} />
+        </Pressable44>
+      ) : null}
       <ComputedFooter
         ayanamsa={shortValue(t(AYANAMSA_KEY[p.ayanamsa]))}
         node={shortValue(t(NODE_KEY[chart.meta.node]))}
@@ -143,4 +155,5 @@ const styles = StyleSheet.create({
   segRow: { flexDirection: 'row', alignItems: 'center', gap: 12 },
   segText: { flex: 1, minWidth: 0, gap: 2 },
   allBtn: { paddingHorizontal: 8 },
+  shareRow: { flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 10, borderTopWidth: StyleSheet.hairlineWidth },
 });

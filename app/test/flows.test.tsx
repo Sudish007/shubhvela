@@ -86,9 +86,10 @@ describe('flows', () => {
   });
 
   it('dev route parameters fall back to en / light / Today', () => {
-    expect(parseDevParams({ lang: 'hi', theme: 'dark', screen: 'settings', sample: '1', font: '1.3' })).toEqual({ lang: 'hi', theme: 'dark', screen: '/settings', sample: true, font: '1.3', testReminder: false });
-    expect(parseDevParams({ lang: 'xx', theme: 'neon' })).toEqual({ lang: 'en', theme: 'light', screen: '/(tabs)/today', sample: false, font: '1.0', testReminder: false });
+    expect(parseDevParams({ lang: 'hi', theme: 'dark', screen: 'settings', sample: '1', font: '1.3' })).toEqual({ lang: 'hi', theme: 'dark', screen: '/settings', sample: true, font: '1.3', testReminder: false, pdfDump: false });
+    expect(parseDevParams({ lang: 'xx', theme: 'neon' })).toEqual({ lang: 'en', theme: 'light', screen: '/(tabs)/today', sample: false, font: '1.0', testReminder: false, pdfDump: false });
     expect(parseDevParams({ test_reminder: '1' }).testReminder).toBe(true);
+    expect(parseDevParams({ pdf_dump: '1' }).pdfDump).toBe(true);
     expect(parseDevParams({ screen: '/(tabs)/charts', style: 'south' }).style).toBe('south');
     expect(parseDevParams({ style: 'round' }).style).toBeUndefined();
   });
