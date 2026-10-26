@@ -1,7 +1,8 @@
 // Full Vimshottari tree (F14, design.md 10.3 M13): pinned "You are here · <date> · <maha> – <antar>" header, then an
 // accordion maha -> antar -> pratyantar with exact dates in tabular numerals. The running maha and antar start expanded.
 // Pratyantar rows are free-tier locked: the lord order is listed with a Pro tag and no dates; tapping one opens the
-// honest "Pro is not in this build yet" sheet until B03 (entitlements.canSeeFeature is the only gate).
+// Pro sheet (-> /pro); Pro shows the dates (entitlements.canSeeFeature('dasha_pratyantar') is the only gate, F14).
+// Banner route "FullDashaTree" (M5 allow-list; AdPolicy decides whether a strip appears).
 import { current, type DashaNode } from '@shubhvela/engine';
 import { useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
@@ -36,7 +37,7 @@ export default function DashaTreeScreen({ now, profileId }: DashaTreeScreenProps
 
   if (!profile) {
     return (
-      <Screen title={t('dasha.treeTitle')} chrome="stack" testID="dasha-tree-screen">
+      <Screen title={t('dasha.treeTitle')} chrome="stack" route="FullDashaTree" testID="dasha-tree-screen">
         <Txt kind="body" color="ink2">
           {t('charts.noProfile')}
         </Txt>
@@ -65,7 +66,7 @@ export default function DashaTreeScreen({ now, profileId }: DashaTreeScreenProps
   const divider = { borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: colors.hair };
 
   return (
-    <Screen title={t('charts.treeFor', { name: profile.name ?? t(`family.relation.${profile.relationship}`) })} chrome="stack" pinned={pinned} testID="dasha-tree-screen">
+    <Screen title={t('charts.treeFor', { name: profile.name ?? t(`family.relation.${profile.relationship}`) })} chrome="stack" route="FullDashaTree" pinned={pinned} testID="dasha-tree-screen">
       <Card flush>
         {tree.mahas.map((m, mi) => {
           const mk = keyOf(m);

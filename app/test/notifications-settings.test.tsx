@@ -42,7 +42,13 @@ describe('<NotificationsScreen>', () => {
     expect(daily.props.accessibilityState.disabled).toBe(true); // no permission yet
     expect(getDailyNoteSetting()).toEqual({ enabled: false, time: '07:00' });
     expect(textOf(screen.getByTestId('scheduled-count'))).toBe('Nothing scheduled: no series is switched on.');
-    expect(screen.queryByText(/Dasha change alerts/)).toBeNull();
+    // B04: dasha change alerts are Pro-only -> the free tier sees the row as a "Pro only" link, no switch; the
+    // "Year begins" switch is for everyone, default Off and disabled until permission.
+    expect(screen.getByTestId('dasha-alerts-pro').props.accessibilityLabel).toBe('Dasha change alerts, Pro only');
+    expect(screen.queryByTestId('dasha-alerts-switch')).toBeNull();
+    const yearBegins = screen.getByTestId('year-begins-switch');
+    expect(yearBegins.props.accessibilityState.checked).toBe(false);
+    expect(yearBegins.props.accessibilityState.disabled).toBe(true);
     expect(screen.queryByText(/Exact widget updates/)).toBeNull();
     // Granting re-plans once.
     await fireEvent.press(screen.getByTestId('permission-button'));

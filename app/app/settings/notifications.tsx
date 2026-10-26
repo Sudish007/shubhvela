@@ -2,8 +2,9 @@
 // request / open-settings action; the evening-before and morning-of times per event kind (defaults 19:00 / 07:00, native
 // time picker, re-planned on change); the opt-in "Daily note" switch (default Off) with its time; the "Scheduled" count
 // (what the OS really holds after the last re-plan) with the next entries as a plain list; the quiet-by-default line.
-// "Dasha change alerts" (B04) and "Exact widget updates" (C01) are NOT rendered before those builds - nothing fake.
-import { useFocusEffect } from 'expo-router';
+// B04: "Dasha change alerts" (F14; Pro shows the switch, default Off; free sees the row with a Pro tag -> /pro) and
+// "Notify when the year begins" (F17; default Off). "Exact widget updates" (C01) is NOT rendered before that build.
+import { useFocusEffect, useRouter } from 'expo-router';
 import { useCallback, useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Card, NavRow, PrimaryButton, Screen, SwitchRow, Txt } from '../../src/components';
@@ -13,15 +14,20 @@ import { getProfile, getSelfProfile } from '../../src/db/profiles';
 import {
   SERIES_KINDS,
   getDailyNoteSetting,
+  getDashaAlertsEnabled,
   getLastPlannedAt,
   getReminderTimes,
+  getYearBeginsEnabled,
   setDailyNoteEnabled,
   setDailyNoteTime,
+  setDashaAlertsEnabled,
   setReminderTime,
+  setYearBeginsEnabled,
   type ReminderSlot,
   type ReminderTimes,
 } from '../../src/db/reminderSettings';
 import { countScheduled, listScheduledDetailed, type ScheduledDetail } from '../../src/db/scheduled';
+import { canSeeFeature, onEntitlementsChanged } from '../../src/entitlements';
 import { useLang } from '../../src/i18n';
 import { getPermissionState, openSystemNotificationSettings, requestPermission, type PermissionState } from '../../src/notifications/permissions';
 import { replanAll, type ReplanResult } from '../../src/notifications/schedule';
@@ -40,7 +46,9 @@ export interface NotificationsScreenProps {
 const KIND_KEY: Record<SeriesKind, string> = { tithi_birthday: 'reminders.kind.tithiBirthday', barsi: 'reminders.kind.barsi', vrat_family: 'reminders.kind.vrat' };
 
 function scheduledLabel(d: ScheduledDetail, t: (k: string, p?: Record<string, string | number>) => string): string {
-  if (!d.kind) return t('reminders.kind.dailyNote');
+  if (!d.kind || d.kind === 'daily_note') return t('reminders.kind.dailyNote');
+  if (d.kind === 'dasha_change') return t('reminders.kind.dashaChange');
+  if (d.kind === 'year_begins') return t('reminders.kind.yearBegins');
   const kind = t(KIND_KEY[d.kind as SeriesKind] ?? 'reminders.title');
   if (d.kind === 'tithi_birthday' && d.refId) {
     const p = getProfile(Number(d.refId));
@@ -57,13 +65,19 @@ export default function NotificationsScreen(props: NotificationsScreenProps) {
   const askPerm = props.requestPermission ?? requestPermission;
   const replan = props.replan ?? (() => replanAll());
   const pick = props.pickTime ?? pickTime;
+  const router = useRouter();
   const [perm, setPerm] = useState<PermissionState>('unknown');
   const [times, setTimes] = useState<ReminderTimes>(() => getReminderTimes());
   const [daily, setDaily] = useState(() => getDailyNoteSetting());
+  const [dashaAlerts, setDashaAlerts] = useState(() => getDashaAlertsEnabled());
+  const [yearBegins, setYearBegins] = useState(() => getYearBeginsEnabled());
+  const [pratyantarPro, setPratyantarPro] = useState(() => canSeeFeature('dasha_pratyantar').allowed);
   const [scheduled, setScheduled] = useState(() => ({ count: countScheduled(), list: listScheduledDetailed(20), at: getLastPlannedAt() }));
 
   const refreshScheduled = useCallback(() => setScheduled({ count: countScheduled(), list: listScheduledDetailed(20), at: getLastPlannedAt() }), []);
   useFocusEffect(refreshScheduled);
+  // The Pro state can change while this screen is open (restore on the Pro screen): follow entitlements.
+  useEffect(() => onEntitlementsChanged(() => setPratyantarPro(canSeeFeature('dasha_pratyantar').allowed)), []);
 
   useEffect(() => {
     let alive = true;
@@ -105,6 +119,18 @@ export default function NotificationsScreen(props: NotificationsScreenProps) {
     });
   }
 
+  function toggleDashaAlerts(v: boolean) {
+    setDashaAlertsEnabled(v);
+    setDashaAlerts(getDashaAlertsEnabled());
+    void replan().then(refreshScheduled);
+  }
+
+  function toggleYearBegins(v: boolean) {
+    setYearBeginsEnabled(v);
+    setYearBegins(getYearBeginsEnabled());
+    void replan().then(refreshScheduled);
+  }
+
   const permText = perm === 'granted' ? t('reminders.permissionGranted') : perm === 'denied' ? t('reminders.permissionDenied') : t('reminders.permission');
 
   return (
@@ -134,6 +160,18 @@ export default function NotificationsScreen(props: NotificationsScreenProps) {
       <Card flush>
         <SwitchRow title={t('reminders.kind.dailyNote')} caption={t('reminders.dailyNoteBody')} value={daily.enabled} onValueChange={toggleDaily} disabled={perm !== 'granted'} divider={daily.enabled} testID="daily-note-switch" />
         {daily.enabled ? <NavRow title={t('reminders.morning')} value={daily.time} onPress={changeDailyTime} divider={false} testID="daily-note-time" /> : null}
+      </Card>
+
+      <Card flush testID="dasha-alerts-card">
+        {pratyantarPro ? (
+          <SwitchRow title={t('dasha.alertsTitle')} caption={t('dasha.alertsBody')} value={dashaAlerts} onValueChange={toggleDashaAlerts} disabled={perm !== 'granted'} divider={false} testID="dasha-alerts-switch" />
+        ) : (
+          <NavRow title={t('dasha.alertsTitle')} caption={t('dasha.alertsBody')} value={t('reminders.proOnly')} onPress={() => router.push('/pro')} divider={false} testID="dasha-alerts-pro" />
+        )}
+      </Card>
+
+      <Card flush testID="year-begins-card">
+        <SwitchRow title={t('varshaphal.notifyToggle')} caption={t('reminders.yearBeginsBody')} value={yearBegins} onValueChange={toggleYearBegins} disabled={perm !== 'granted'} divider={false} testID="year-begins-switch" />
       </Card>
 
       <Card testID="scheduled-card">

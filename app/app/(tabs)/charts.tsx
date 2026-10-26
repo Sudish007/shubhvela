@@ -1,27 +1,43 @@
 // Charts (design.md 4, 10.3; plan A11). Header (title + gear); ONE row with the profile picker pill (the only
 // profile control on this screen) and the chart-type chips Lagna · Moon · Sun · Chalit · D9 (scrolls horizontally);
 // hero card = title, Lagna line with approx tag + Why?, the ⋮ menu (North/South/East radios + Legend), the Chart,
-// the birth caption; Planets card (fixed-column table + Legend); Houses card (N6); Dasha card; Sade Sati card;
-// "How this was computed". Unknown birth time (F2) switches the hero to "Moon chart · birth time unknown", hides the
-// Lagna/Chalit chips, the Lagna row and the Houses card. Not rendered in Phase A because they are not built: the
-// "14 more vargas" chip (B04), yogas (B04), Varshaphal/Prashna rows (B/C), "Share chart card" (B07).
+// the birth caption; Planets card (fixed-column table + Legend); Houses card (N6); Dasha card (F14: Pro gets the
+// pratyantar row + "Dasha change alerts" switch, default Off); Yogas card (F16); Sade Sati card; the Varshaphal card
+// (F17, only in the 30 days before the next solar return); "More from this chart" (one row per unlock key, M14);
+// "Timing and documents" (M3, rows only once B05/B07 routes exist); "How this was computed". Unknown birth time (F2)
+// switches the hero to "Moon chart · birth time unknown", hides the Lagna/Chalit chips, the Lagna row and the Houses
+// card. B04: the "14 more vargas" chip (lock icon on the free tier; "till <time> tomorrow" after a rewarded unlock)
+// opens the vargas sheet; a chosen varga swaps the hero ChartData for the same Chart component (F12). Still not
+// rendered because not built: Prashna / Ask my chart rows (C04), "Share chart card" (B07).
 // Every number is engine output for the chosen profile under the F19 settings; sheets never nest (one open at a time).
-import type { ChartData, PlanetId } from '@shubhvela/engine';
+import type { ChartData, DivisionalChartId, PlanetId } from '@shubhvela/engine';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { useCallback, useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
-import { Card, CapSheet, Chip, ChevronIcon, ComputedFooter, EmptyState, MoreIcon, Pressable44, Row, Screen, Txt, ApproxTag } from '../../src/components';
+import { Card, CapSheet, Chip, ChevronIcon, ComputedFooter, EmptyState, LockIcon, MoreIcon, Pressable44, Row, Screen, Txt, ApproxTag } from '../../src/components';
 import { Chart, type ChartLongPressTarget } from '../../src/charts/Chart';
 import { DashaCard } from '../../src/charts/DashaCard';
 import { HousesCard } from '../../src/charts/HousesCard';
-import { CHIP_KEY, approxRuleId, chartForChip, chipsFor, degreeText, fmtBirthDate, heroTitle, nakshatraName, planetName, PLANET_SLUG, shortPlace, signName, signSlug, type ChartVariantChip } from '../../src/charts/model';
+import { CHIP_KEY, approxRuleId, chartForChip, chipsFor, degreeText, fmtBirthDate, heroTitle, isLockedVarga, nakshatraName, planetName, PLANET_SLUG, shortPlace, signName, signSlug, vargaLabel, type ChartVariantChip } from '../../src/charts/model';
+import { MoreFromChartCard } from '../../src/charts/MoreFromChartCard';
 import { PlanetTable, type TableSubject } from '../../src/charts/PlanetTable';
+import { TIMING_ROUTES } from '../../src/charts/routeFlags';
 import { SadeSatiCard } from '../../src/charts/SadeSatiCard';
 import { GlossarySheet, HouseSheet, LegendSheet, PlanetSheet, ProfileSheet, StyleMenu, profileLabel, type PlanetSheetSubject } from '../../src/charts/sheets';
+import { TimingDocumentsCard } from '../../src/charts/TimingDocumentsCard';
+import { UnlockSheet } from '../../src/charts/UnlockSheet';
+import { chipTillText, useFeatureAccess, type UnlockKey } from '../../src/charts/unlockState';
+import { VargaSheet } from '../../src/charts/VargaSheet';
+import { VarshaphalCard } from '../../src/charts/VarshaphalCard';
+import { varshaphalPromoted } from '../../src/charts/varshaphalModel';
+import { YogasCard } from '../../src/charts/YogasCard';
 import type { Profile } from '../../src/db/profiles';
+import { getDashaAlertsEnabled, getYearBeginsEnabled, setDashaAlertsEnabled, setYearBeginsEnabled } from '../../src/db/reminderSettings';
 import { getSetting, setSetting, type ChartStyle } from '../../src/db/settings';
-import { chartFor, dashaFor, sadeSatiFor } from '../../src/engine-bridge/charts';
+import { chartFor, dashaFor, sadeSatiFor, vedicYearAt, yogasFor } from '../../src/engine-bridge/charts';
 import { useLang } from '../../src/i18n';
+import { getPermissionState, requestPermission, type PermissionState } from '../../src/notifications/permissions';
+import { replanAll } from '../../src/notifications/schedule';
 import { useProfiles } from '../../src/profiles/useProfiles';
 import { AYANAMSA_KEY, CHART_STYLE_KEY, NODE_KEY, shortValue } from '../../src/settingsLabels';
 import { useTokens } from '../../src/theme/ThemeProvider';
@@ -36,13 +52,19 @@ type SheetState =
   | { kind: 'glossary'; id: string; term: string }
   | { kind: 'menu' }
   | { kind: 'profiles' }
-  | { kind: 'pro' };
+  | { kind: 'pro' }
+  | { kind: 'vargas' }
+  | { kind: 'unlock'; feature: UnlockKey };
 
 export interface ChartsScreenProps {
   /** Clock for tests; production uses Date.now(). */
   now?: () => number;
   /** Hero width for tests; measured by onLayout otherwise (card inner width). */
   chartWidth?: number;
+  /** Injection for tests (notification permission flow behind the two toggles). */
+  getPermission?: () => Promise<PermissionState>;
+  requestPermission?: () => Promise<PermissionState>;
+  replan?: () => Promise<unknown>;
 }
 
 /** Hero width before onLayout: 390 dp - 2 x 16 gutter - 2 x 16 card padding. */
@@ -59,7 +81,7 @@ function safeChart(profile: Profile | null): { chart: ChartData | null; error: b
   }
 }
 
-export default function ChartsScreen({ now, chartWidth }: ChartsScreenProps) {
+export default function ChartsScreen({ now, chartWidth, getPermission = getPermissionState, requestPermission: askPermission = requestPermission, replan = () => replanAll() }: ChartsScreenProps) {
   const { t, lang } = useLang();
   const { colors } = useTokens();
   const router = useRouter();
@@ -70,29 +92,85 @@ export default function ChartsScreen({ now, chartWidth }: ChartsScreenProps) {
   const [sheet, setSheet] = useState<SheetState>(null);
   const [measured, setMeasured] = useState<number | null>(null);
   const [nowMs, setNowMs] = useState(() => (now ? now() : Date.now()));
-  // Settings (chart style, ayanamsa, node) may change on pushed screens: re-read on focus, together with the clock.
-  // chartFor() is memoised per profile + settings, so the re-render picks up a recomputed chart (F19) by itself.
+  const [dashaAlerts, setDashaAlerts] = useState(() => getDashaAlertsEnabled());
+  const [yearBegins, setYearBegins] = useState(() => getYearBeginsEnabled());
+  // Settings (chart style, ayanamsa, node, notification toggles) may change on pushed screens: re-read on focus,
+  // together with the clock. chartFor() is memoised per profile + settings, so the re-render picks up a recomputed
+  // chart (F19) by itself.
   useFocusEffect(
     useCallback(() => {
       setStyle(getSetting('chartStyle'));
       setNowMs(now ? now() : Date.now());
+      setDashaAlerts(getDashaAlertsEnabled());
+      setYearBegins(getYearBeginsEnabled());
     }, [now]),
   );
+  // Unlock keys (M14): live state, re-rendered on every entitlement change (unlock granted, Pro restored).
+  const accessVargas = useFeatureAccess('vargas', nowMs);
+  const accessAshtakavarga = useFeatureAccess('ashtakavarga', nowMs);
+  const accessKp = useFeatureAccess('kp', nowMs);
+  const accessVarshaphal = useFeatureAccess('varshaphal', nowMs);
+  const accessPrashna = useFeatureAccess('prashna', nowMs);
+  const accessPratyantar = useFeatureAccess('dasha_pratyantar', nowMs);
+  const access = { vargas: accessVargas, ashtakavarga: accessAshtakavarga, kp: accessKp, varshaphal: accessVarshaphal, prashna: accessPrashna };
 
   const profile: Profile | null = profiles.find((p) => p.id === selectedId) ?? self ?? profiles[0] ?? null;
   const width = chartWidth ?? measured ?? DEFAULT_CHART_WIDTH;
 
   const { chart: base, error } = safeChart(profile);
   const chips = base ? chipsFor(base) : [];
-  const activeChip: ChartVariantChip = base && !chips.includes(chip) ? (base.moonChart ? 'moon' : 'lagna') : chip;
-  // All three are memoised in their modules per chart object (and instant), so a re-render costs nothing.
+  // A locked varga stays the hero only while the key is open; otherwise fall back to the row chips (M14 honesty).
+  const vargaActive = isLockedVarga(chip) && accessVargas.allowed;
+  const activeChip: ChartVariantChip = base && !vargaActive && !(chips as readonly string[]).includes(chip) ? (base.moonChart ? 'moon' : 'lagna') : chip;
+  const selectedVarga: DivisionalChartId | null = isLockedVarga(activeChip) ? activeChip : null;
+  // All of these are memoised in their modules per chart object (and instant), so a re-render costs nothing.
   const hero = base ? chartForChip(base, activeChip) : null;
   const tree = base ? dashaFor(base) : null;
+  const yogaReport = base ? yogasFor(base) : null;
   const sade = base ? sadeSatiFor(base, nowMs) : null;
+  const vedicYear = base ? vedicYearAt(base, nowMs) : null;
+  const promoted = vedicYear ? varshaphalPromoted(vedicYear, nowMs) : false;
 
   const ayanamsaLabel = base ? shortValue(t(AYANAMSA_KEY[base.meta.ayanamsa])) : '';
   const nodeLabel = base ? shortValue(t(NODE_KEY[base.meta.node])) : '';
   const styleName = t(CHART_STYLE_KEY[style]);
+
+  /** Both notification toggles: On needs the OS permission first (asked on the spot); every change re-plans. */
+  async function setToggle(on: boolean, write: (v: boolean) => void, setLocal: (v: boolean) => void) {
+    if (on) {
+      let perm = await getPermission();
+      if (perm !== 'granted') perm = await askPermission();
+      if (perm !== 'granted') return;
+    }
+    write(on);
+    setLocal(on);
+    await replan();
+  }
+  const toggleDashaAlerts = (on: boolean) => void setToggle(on, setDashaAlertsEnabled, setDashaAlerts);
+  const toggleYearBegins = (on: boolean) => void setToggle(on, setYearBeginsEnabled, setYearBegins);
+
+  const openFeature = (key: UnlockKey) => {
+    if (!profile || !vedicYear) return;
+    switch (key) {
+      case 'vargas':
+        setSheet({ kind: 'vargas' });
+        return;
+      case 'ashtakavarga':
+        router.push(`/charts/ashtakavarga?profile=${profile.id}`);
+        return;
+      case 'kp':
+        router.push(`/charts/kp?profile=${profile.id}`);
+        return;
+      case 'varshaphal':
+        router.push(`/charts/varshaphal?profile=${profile.id}&year=${vedicYear.runningYear}`);
+        return;
+      default:
+        return;
+    }
+  };
+
+  const vargaChipLabel = selectedVarga ? vargaLabel(selectedVarga, t) : t('charts.moreVargas_chip');
+  const vargaChipCaption = accessVargas.until && profile ? chipTillText(accessVargas.until, nowMs, profile.tz, lang, t) : undefined;
 
   const pillStyle = [styles.pill, { borderColor: colors.hair2, backgroundColor: colors.surface }];
   const pickerRow = profile ? (
@@ -111,6 +189,15 @@ export default function ChartsScreen({ now, chartWidth }: ChartsScreenProps) {
       {chips.map((c) => (
         <Chip key={c} label={t(CHIP_KEY[c])} selected={c === activeChip} onPress={() => setChip(c)} testID={`chip-${c}`} />
       ))}
+      <Chip
+        label={vargaChipLabel}
+        caption={vargaChipCaption}
+        icon={accessVargas.allowed ? undefined : <LockIcon color={colors.ink} size={18} />}
+        accessibilityLabel={accessVargas.allowed ? (vargaChipCaption ? `${vargaChipLabel}, ${vargaChipCaption}` : vargaChipLabel) : t('charts.moreVargasA11y')}
+        selected={!!selectedVarga}
+        onPress={() => setSheet({ kind: 'vargas' })}
+        testID="chip-vargas"
+      />
     </ScrollView>
   ) : null;
 
@@ -254,11 +341,38 @@ export default function ChartsScreen({ now, chartWidth }: ChartsScreenProps) {
               ayanamsaLabel={ayanamsaLabel}
               onFullTree={() => router.push(`/charts/dasha-tree?profile=${profile.id}`)}
               onPressPro={() => setSheet({ kind: 'pro' })}
+              alerts={accessPratyantar.allowed ? { pro: true, on: dashaAlerts, onToggle: toggleDashaAlerts } : undefined}
               testID="dasha-card"
             />
           ) : null}
 
+          {yogaReport ? <YogasCard report={yogaReport} testID="yogas-card" /> : null}
+
           {sade ? <SadeSatiCard report={sade} tz={profile.tz} ayanamsaLabel={ayanamsaLabel} nowMs={nowMs} testID="sadesati-card" /> : null}
+
+          {vedicYear && promoted ? (
+            <VarshaphalCard
+              vedicYear={vedicYear}
+              nowMs={nowMs}
+              tz={profile.tz}
+              access={accessVarshaphal}
+              notifyOn={yearBegins}
+              onToggleNotify={toggleYearBegins}
+              onOpen={() => (accessVarshaphal.allowed ? router.push(`/charts/varshaphal?profile=${profile.id}&year=${vedicYear.nextYear}`) : setSheet({ kind: 'unlock', feature: 'varshaphal' }))}
+              testID="varshaphal-card"
+            />
+          ) : null}
+
+          {vedicYear ? (
+            <MoreFromChartCard access={access} nowMs={nowMs} tz={profile.tz} vedicYearStart={vedicYear.runningStart} onOpen={openFeature} onUnlock={(key) => setSheet({ kind: 'unlock', feature: key })} testID="more-card" />
+          ) : null}
+
+          <TimingDocumentsCard
+            onMuhurat={() => router.push(TIMING_ROUTES.muhuratFinder)}
+            onJanamPatri={() => router.push(`${TIMING_ROUTES.janamPatriPdf}?profile=${profile.id}`)}
+            onShareCard={() => setSheet({ kind: 'menu' })}
+            testID="timing-card"
+          />
 
           <ComputedFooter
             ayanamsa={`${ayanamsaLabel} (${base.meta.ayanamsaDegrees.toFixed(4)}°)`}
@@ -282,6 +396,26 @@ export default function ChartsScreen({ now, chartWidth }: ChartsScreenProps) {
           {sheet?.kind === 'glossary' ? <GlossarySheet visible onClose={() => setSheet(null)} id={sheet.id} term={sheet.term} /> : null}
           {sheet?.kind === 'menu' ? <StyleMenu visible onClose={() => setSheet(null)} style={style} onSelectStyle={selectStyle} onLegend={() => setSheet({ kind: 'legend' })} /> : null}
           {sheet?.kind === 'pro' ? <CapSheet visible onClose={() => setSheet(null)} reason="pro_feature" /> : null}
+          {sheet?.kind === 'vargas' ? (
+            <VargaSheet
+              visible
+              onClose={() => setSheet(null)}
+              access={accessVargas}
+              selected={selectedVarga}
+              onSelect={(id) => {
+                setChip(id);
+                setSheet(null);
+              }}
+              onUnlocked={() => setNowMs(now ? now() : Date.now())}
+              onOpenFull={(id) => {
+                setSheet(null);
+                router.push(`/charts/vargas?profile=${profile.id}&varga=${id}`);
+              }}
+              nowMs={nowMs}
+              tz={profile.tz}
+            />
+          ) : null}
+          {sheet?.kind === 'unlock' ? <UnlockSheet visible onClose={() => setSheet(null)} feature={sheet.feature} onUnlocked={() => setNowMs(now ? now() : Date.now())} /> : null}
         </>
       ) : null}
       {sheet?.kind === 'profiles' && profile ? (

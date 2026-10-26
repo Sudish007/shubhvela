@@ -1,15 +1,18 @@
 // Vimshottari card (F14, design.md 10.3 M13): "Full tree" link; maha line; the antar strip = nine cells proportional
 // to duration (current cell accent-tint + accent border, 2 px ink marker, "You are here · <date>" above; a planet label
 // only in cells >= 28 dp, narrower cells are named only in the accessible label and in the full tree, N7); rows Now /
-// Next (with Why?) / "Pratyantar dasha and change notifications (off until you switch them on) · Pro" whose Pro tag
-// opens the honest pre-B03 sheet. Every date is engine.dasha() output in the profile's zone.
-import { current, type ChartData, type DashaTree, type PlanetId } from '@shubhvela/engine';
+// Next (with Why?) / the F14 Pro row: free = "Pratyantar dasha and change notifications (off until you switch them
+// on)" with a Pro tag (-> Pro screen); Pro (B04) = the running pratyantar with its dates plus "Dasha change alerts"
+// with a Switch (default Off; On -> caption names the next antar/pratyantar change the planner will announce).
+// Every date is engine.dasha() output in the profile's zone.
+import { current, nextChange, type ChartData, type DashaChange, type DashaTree, type PlanetId } from '@shubhvela/engine';
 import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Card } from '../components/Card';
 import { Num } from '../components/Num';
 import { Pressable44 } from '../components/Pressable44';
 import { Row } from '../components/Row';
+import { Switch } from '../components/Switch';
 import { Tag } from '../components/Tag';
 import { Txt } from '../components/Txt';
 import { useLang, type Lang, type TFn } from '../i18n';
@@ -19,6 +22,14 @@ import { fmtDate } from '../today/format';
 import { RichText } from '../today/RichText';
 import { antarCells, antarMarkerX, dateRange, durationText, nakshatraName, nextAntar, planetName } from './model';
 
+export interface DashaAlertsState {
+  /** entitlements.canSeeFeature('dasha_pratyantar'): Pro shows the switch, free shows the Pro tag. */
+  pro: boolean;
+  /** Stored preference (default Off). */
+  on: boolean;
+  onToggle: (on: boolean) => void;
+}
+
 export interface DashaCardProps {
   chart: ChartData;
   tree: DashaTree;
@@ -27,6 +38,8 @@ export interface DashaCardProps {
   ayanamsaLabel: string;
   onFullTree: () => void;
   onPressPro: () => void;
+  /** F14 (B04): the pratyantar + change-alerts row state; omitted = free tier (Pro tag only). */
+  alerts?: DashaAlertsState;
   /** Strip width for tests; measured by onLayout otherwise. */
   width?: number;
   testID?: string;
@@ -44,7 +57,7 @@ export function stripA11y(maha: { lord: PlanetId; children?: { lord: PlanetId; s
   return t('dasha.antarStripA11y', { lord: planetName(lang, maha.lord), list });
 }
 
-export function DashaCard({ chart, tree, nowMs, tz, ayanamsaLabel, onFullTree, onPressPro, width: widthProp, testID }: DashaCardProps) {
+export function DashaCard({ chart, tree, nowMs, tz, ayanamsaLabel, onFullTree, onPressPro, alerts, width: widthProp, testID }: DashaCardProps) {
   const { t, lang } = useLang();
   const { colors } = useTokens();
   const [measured, setMeasured] = useState<number | null>(null);
@@ -52,6 +65,10 @@ export function DashaCard({ chart, tree, nowMs, tz, ayanamsaLabel, onFullTree, o
   const cur = current(tree, nowMs);
   const next = nextAntar(tree, nowMs);
   const moon = chart.planets.find((p) => p.id === 'Mo');
+  const pro = !!alerts?.pro;
+  // Pro: the next antar or pratyantar change the alerts would announce (engine nextChange; pratyantar comes first).
+  const nextAlert = pro ? [nextChange(tree, nowMs, 'pratyantar'), nextChange(tree, nowMs, 'antar')].filter((c): c is DashaChange => !!c).sort((a, b) => a.at - b.at)[0] ?? null : null;
+  const alertsCaption = pro ? (alerts?.on && nextAlert ? t('dasha.alertsNext', { date: fmtDate(nextAlert.at, tz, lang) }) : t('dasha.proOff')) : t('dasha.proOff');
 
   return (
     <Card testID={testID}>
@@ -130,23 +147,41 @@ export function DashaCard({ chart, tree, nowMs, tz, ayanamsaLabel, onFullTree, o
                 </Txt>
               </Row>
             ) : null}
-            <Row
-              ruleId="dasha-vimshottari"
-              text={t('dasha.pratyantarPro')}
-              divider={false}
-              caption={
-                <Txt kind="caption" color="ink3">
-                  {t('dasha.proOff')}
+            {pro && cur ? (
+              <Row
+                ruleId="dasha-vimshottari"
+                text={`${t('dasha.pratyantar')}: ${planetName(lang, cur.pratyantar.lord)}`}
+                inputs={{ maha: planetName(lang, cur.maha.lord), antar: planetName(lang, cur.antar.lord), pratyantar: planetName(lang, cur.pratyantar.lord), start: fmtDate(cur.pratyantar.start, tz, lang), end: fmtDate(cur.pratyantar.end, tz, lang) }}
+                glossary={['pratyantardasha']}
+                caption={<Num kind="caption" color="ink3">{dateRange(cur.pratyantar.start, cur.pratyantar.end, tz, lang, t)}</Num>}
+                testID="dasha-pratyantar-now"
+              >
+                <Txt kind="body">
+                  <Txt kind="body" color="ink3">{`${t('dasha.pratyantar')}  `}</Txt>
+                  <Txt kind="body" weight={600}>
+                    {planetName(lang, cur.pratyantar.lord)}
+                  </Txt>
                 </Txt>
-              }
+              </Row>
+            ) : null}
+            <Row
+              ruleId="dasha-change"
+              text={pro ? t('dasha.alertsTitle') : t('dasha.pratyantarPro')}
+              inputs={nextAlert ? { level: t(`dasha.${nextAlert.level}`), from: planetName(lang, nextAlert.from), to: planetName(lang, nextAlert.to), date: fmtDate(nextAlert.at, tz, lang) } : undefined}
+              divider={false}
+              caption={<RichText kind="caption" color="ink3" text={alertsCaption} testID="dasha-alerts-caption" />}
               control={
-                <Pressable44 accessibilityLabel={`${t('dasha.pratyantarPro')}, ${t('common.pro')}`} onPress={onPressPro} testID="dasha-pro">
-                  <Tag variant="kind">{t('dasha.pro_tag')}</Tag>
-                </Pressable44>
+                pro && alerts ? (
+                  <Switch value={alerts.on} onValueChange={alerts.onToggle} accessibilityLabel={t('dasha.alertsA11y', { state: alerts.on ? t('common.on') : t('common.off') })} testID="dasha-alerts" />
+                ) : (
+                  <Pressable44 accessibilityLabel={`${t('dasha.pratyantarPro')}, ${t('common.pro')}`} onPress={onPressPro} testID="dasha-pro">
+                    <Tag variant="kind">{t('dasha.pro_tag')}</Tag>
+                  </Pressable44>
+                )
               }
               testID="dasha-pratyantar"
             >
-              <Txt kind="body">{t('dasha.pratyantarPro')}</Txt>
+              <Txt kind="body">{pro ? t('dasha.alertsTitle') : t('dasha.pratyantarPro')}</Txt>
             </Row>
           </View>
         </>

@@ -3,20 +3,26 @@
 // engine and turns each into two local notifications: the evening before (default 19:00) and the morning of (default
 // 07:00), in the profile's zone. The result is sorted nearest first and capped at MAX_SCHEDULED (300) so Android's
 // per-app alarm limit is never reached. No series enabled -> an empty plan (quiet by default). The opt-in daily-note
-// notification adds one morning entry per day when the user switched it on. schedule.ts hands the plan to the OS.
+// notification adds one morning entry per day when the user switched it on. B04 adds two more opt-ins, both default
+// Off: Pro dasha change alerts (one entry per antar/pratyantar change, F14) and the "Year begins" instant (F17); both
+// count against the same cap. schedule.ts hands the plan to the OS.
 import {
   type ChartData,
+  type DashaTree,
   type GeoPoint,
   type KeyTime,
   type Paksha,
+  type PlanetId,
   type Tradition,
   type VratFamily,
   DAY_MS,
   addDays,
   barsiDates,
+  changesBetween,
   janmaTithiFromBirth,
   localDateOf,
   localToUtc,
+  locale,
   tithiEventDates,
   vratOccurrences,
 } from '@shubhvela/engine';
@@ -25,7 +31,7 @@ import { seriesKey } from '../db/eventSeries';
 import type { ReminderTimes } from '../db/reminderSettings';
 import { makeT, type Lang, type TFn } from '../i18n';
 import { tithiText, vratKeyTimeText, vratName } from '../family/format';
-import { fmtCivilDate } from '../today/format';
+import { fmtCivilDate, fmtDate, fmtTime } from '../today/format';
 
 /** Hard cap on notifications handed to the OS at once (design-review N12). */
 export const MAX_SCHEDULED = 300;
@@ -65,8 +71,30 @@ export interface PlannerInput {
   vratFamilies: readonly VratFamily[];
   times: ReminderTimes;
   dailyNote?: { enabled: boolean; time: string };
+  /**
+   * F14 (Pro, default Off): one notification at every antar and pratyantar change inside the horizon, per profile.
+   * schedule.ts passes it only when entitlements allow pratyantar dashas AND the user switched the alerts on.
+   */
+  dashaAlerts?: { profiles: readonly DashaAlertProfile[] };
+  /** F17 (default Off): one notification at each profile's next solar-return instant ("Year begins"). */
+  yearBegins?: { profiles: readonly YearBeginsProfile[] };
   horizonDays?: number;
   cap?: number;
+}
+
+export interface DashaAlertProfile {
+  id: number;
+  name: string;
+  tree: DashaTree;
+  tz: string;
+}
+
+export interface YearBeginsProfile {
+  id: number;
+  name: string;
+  /** UTC ms of the next solar return (engine solarReturnInstant). */
+  instant: number;
+  tz: string;
 }
 
 export type OccurrenceKind = SeriesKind;
@@ -87,12 +115,15 @@ export interface Occurrence {
   keyTime?: KeyTime;
 }
 
-export type Slot = 'evening' | 'morning' | 'daily';
+export type Slot = 'evening' | 'morning' | 'daily' | 'instant';
+
+/** Notification kinds that belong to no event series (series_id 0 in `scheduled`, their own `kind` column). */
+export type SeriesLessKind = 'daily_note' | 'dasha_change' | 'year_begins';
 
 export interface PlannedNotification {
-  /** Series key, or 'daily_note'. */
+  /** Series key, or 'daily_note' | 'dasha_change:<profile>' | 'year_begins:<profile>'. */
   key: string;
-  kind: OccurrenceKind | 'daily_note';
+  kind: OccurrenceKind | SeriesLessKind;
   refId: string | null;
   /** Civil date of the event (not of the notification). */
   date: string;
@@ -232,6 +263,60 @@ export function planNotifications(input: PlannerInput): PlannedNotification[] {
       out.push({ key: 'daily_note', kind: 'daily_note', refId: null, date, slot: 'daily', fireAtMs, title: t('reminders.kind.dailyNote'), body: t('reminders.body.dailyNote') });
     }
   }
+  out.push(...planDashaChanges(input, t));
+  out.push(...planYearBegins(input, t));
   out.sort((a, b) => a.fireAtMs - b.fireAtMs || (a.key < b.key ? -1 : a.key > b.key ? 1 : 0));
   return out.slice(0, cap);
+}
+
+/**
+ * F14 Pro alerts: every antar and pratyantar change of each profile inside the horizon (engine changesBetween), one
+ * notification at the exact instant. Maha changes are also antar changes, so the antar list already covers them.
+ */
+export function planDashaChanges(input: Pick<PlannerInput, 'nowMs' | 'lang' | 'dashaAlerts' | 'horizonDays'>, t: TFn = makeT(input.lang)): PlannedNotification[] {
+  if (!input.dashaAlerts) return [];
+  const horizon = input.horizonDays ?? HORIZON_DAYS;
+  const toMs = input.nowMs + horizon * DAY_MS;
+  const out: PlannedNotification[] = [];
+  for (const p of input.dashaAlerts.profiles) {
+    const name = (id: PlanetId) => locale.planetNames[input.lang][id];
+    for (const c of changesBetween(p.tree, input.nowMs, toMs)) {
+      if (c.level === 'maha') continue;
+      const body =
+        c.level === 'antar'
+          ? t('reminders.body.antarChange', { name: p.name, maha: name(c.within[0]), antar: name(c.to) })
+          : t('reminders.body.pratyantarChange', { name: p.name, maha: name(c.within[0]), antar: name(c.within[1]), pratyantar: name(c.to) });
+      out.push({
+        key: `dasha_change:${p.id}`,
+        kind: 'dasha_change',
+        refId: String(p.id),
+        date: localDateOf(c.at, p.tz),
+        slot: 'instant',
+        fireAtMs: c.at,
+        title: t('reminders.kind.dashaChange'),
+        body,
+      });
+    }
+  }
+  return out;
+}
+
+/** F17: one local notification at the solar-return instant of each profile (only instants still in the future). */
+export function planYearBegins(input: Pick<PlannerInput, 'nowMs' | 'lang' | 'yearBegins'>, t: TFn = makeT(input.lang)): PlannedNotification[] {
+  if (!input.yearBegins) return [];
+  const out: PlannedNotification[] = [];
+  for (const p of input.yearBegins.profiles) {
+    if (p.instant <= input.nowMs) continue;
+    out.push({
+      key: `year_begins:${p.id}`,
+      kind: 'year_begins',
+      refId: String(p.id),
+      date: localDateOf(p.instant, p.tz),
+      slot: 'instant',
+      fireAtMs: p.instant,
+      title: t('varshaphal.yearBegins'),
+      body: t('varshaphal.yearBeginsBodyNamed', { name: p.name, date: fmtDate(p.instant, p.tz, input.lang), time: fmtTime(p.instant, p.tz) }),
+    });
+  }
+  return out;
 }

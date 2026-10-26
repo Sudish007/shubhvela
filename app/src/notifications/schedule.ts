@@ -11,13 +11,15 @@ import { hasDb } from '../db/connection';
 import { listAncestors } from '../db/ancestors';
 import { enabledVratFamilies, listEnabledSeries, seriesId, type SeriesKind } from '../db/eventSeries';
 import { getProfile, getSelfProfile, type Profile } from '../db/profiles';
-import { getDailyNoteSetting, getReminderTimes, setFailedSeries, setLastPlannedAt } from '../db/reminderSettings';
+import { getDailyNoteSetting, getDashaAlertsEnabled, getReminderTimes, getYearBeginsEnabled, setFailedSeries, setLastPlannedAt } from '../db/reminderSettings';
 import { clearScheduled, insertScheduled } from '../db/scheduled';
 import { getSetting } from '../db/settings';
-import { chartFor } from '../engine-bridge/charts';
+import { listProfiles } from '../db/profiles';
+import { canSeeFeature } from '../entitlements';
+import { chartFor, dashaFor, nextSolarReturn } from '../engine-bridge/charts';
 import { translate, type Lang } from '../i18n';
 import { getPermissionState } from './permissions';
-import { planNotifications, type PlannedNotification, type PlannerAncestor, type PlannerInput, type PlannerProfile } from './planner';
+import { planNotifications, type DashaAlertProfile, type PlannedNotification, type PlannerAncestor, type PlannerInput, type PlannerProfile, type YearBeginsProfile } from './planner';
 
 export const EVENTS_CHANNEL = 'events';
 
@@ -62,12 +64,13 @@ export async function applyPlan(plan: readonly PlannedNotification[], lang: Lang
   await deps.cancelAll();
   if (hasDb()) clearScheduled();
   const failed = new Set<string>();
-  const rows: { seriesId: number; fireAt: string; notificationId: string }[] = [];
+  const rows: { seriesId: number; fireAt: string; notificationId: string; kind: string | null }[] = [];
   if (plan.length) await deps.ensureChannel(lang);
   for (const n of plan) {
     try {
       const id = await deps.schedule(n);
-      rows.push({ seriesId: n.kind === 'daily_note' ? 0 : seriesId(n.kind as SeriesKind, n.refId ?? ''), fireAt: new Date(n.fireAtMs).toISOString(), notificationId: id });
+      const seriesLess = n.kind === 'daily_note' || n.kind === 'dasha_change' || n.kind === 'year_begins';
+      rows.push({ seriesId: seriesLess ? 0 : seriesId(n.kind as SeriesKind, n.refId ?? ''), fireAt: new Date(n.fireAtMs).toISOString(), notificationId: id, kind: seriesLess ? n.kind : null });
     } catch (e) {
       if (__DEV__) console.warn('schedule failed', n.key, n.date, e);
       failed.add(n.key);
@@ -106,6 +109,33 @@ export function plannerInputFromDb(nowMs: number, lang: Lang): PlannerInput | nu
   const ancestors: PlannerAncestor[] = listAncestors()
     .filter((a) => enabledAncestors.has(String(a.id)))
     .map((a) => ({ id: a.id, name: a.name, deathMonth: a.deathMonth, paksha: a.paksha, tithi: a.tithi, year: a.year }));
+  const label = (p: Profile) => p.name ?? translate(lang, `family.relation.${p.relationship}`);
+  // F14: the stored switch is a preference; entitlements decides (Pro only). Free tier -> nothing, whatever the flag.
+  let dashaAlerts: PlannerInput['dashaAlerts'];
+  if (getDashaAlertsEnabled() && canSeeFeature('dasha_pratyantar', new Date(nowMs)).allowed) {
+    const list: DashaAlertProfile[] = [];
+    for (const p of listProfiles()) {
+      try {
+        list.push({ id: p.id, name: label(p), tree: dashaFor(chartFor(p)), tz: p.tz });
+      } catch (e) {
+        if (__DEV__) console.warn('dasha failed for alerts', p.id, e);
+      }
+    }
+    dashaAlerts = { profiles: list };
+  }
+  // F17: the "Year begins" instant per profile (default Off; no tier gate - it is a notification, not the summary).
+  let yearBegins: PlannerInput['yearBegins'];
+  if (getYearBeginsEnabled()) {
+    const list: YearBeginsProfile[] = [];
+    for (const p of listProfiles()) {
+      try {
+        list.push({ id: p.id, name: label(p), instant: nextSolarReturn(chartFor(p), nowMs), tz: p.tz });
+      } catch (e) {
+        if (__DEV__) console.warn('solar return failed', p.id, e);
+      }
+    }
+    yearBegins = { profiles: list };
+  }
   return {
     nowMs,
     geo,
@@ -117,6 +147,8 @@ export function plannerInputFromDb(nowMs: number, lang: Lang): PlannerInput | nu
     vratFamilies: enabledVratFamilies(),
     times: getReminderTimes(),
     dailyNote: getDailyNoteSetting(),
+    dashaAlerts,
+    yearBegins,
   };
 }
 

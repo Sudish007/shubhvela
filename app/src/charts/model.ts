@@ -1,27 +1,43 @@
 // Pure helpers behind the Charts tab (design.md 4, 10.3; plan A11): variant selection, corpus/glossary ids, the
 // antar-strip geometry (M13: labels only in cells >= 28 dp), duration and position formatting, the chart's
 // accessibility summary. No React here so every rule is unit-testable; every value derives from engine output.
-import { chalit, locale, moonChart, sunChart, varga, type ChartData, type ChartPlanet, type DashaNode, type DashaTree, type PlanetId } from '@shubhvela/engine';
+import { chalit, isDivisionalChartId, locale, LOCKED_VARGA_IDS, moonChart, sunChart, varga, vargaInfo, type ChartData, type ChartPlanet, type DashaNode, type DashaTree, type DivisionalChartId, type PlanetId } from '@shubhvela/engine';
 import { noBreak } from '../components/Num';
 import type { Lang, TFn } from '../i18n';
 import { fmtDate } from '../today/format';
 
-/** Chips of the Phase A chip row (design 3: "14 more vargas" is B04's). */
-export type ChartVariantChip = 'lagna' | 'moon' | 'sun' | 'chalit' | 'D9';
-export const VARIANT_CHIPS: readonly ChartVariantChip[] = ['lagna', 'moon', 'sun', 'chalit', 'D9'];
+/** Row chips (Lagna · Moon · Sun · Chalit · D9) plus the 14 locked vargas chosen from the "14 more vargas" sheet (B04). */
+export type RowChip = 'lagna' | 'moon' | 'sun' | 'chalit' | 'D9';
+export type ChartVariantChip = RowChip | DivisionalChartId;
+export const VARIANT_CHIPS: readonly RowChip[] = ['lagna', 'moon', 'sun', 'chalit', 'D9'];
 
-/** Chips available for a chart: Moon-chart mode (F2) drops Lagna and Chalit, which need a birth time. */
-export function chipsFor(chart: Pick<ChartData, 'moonChart'>): ChartVariantChip[] {
+/** Row chips available for a chart: Moon-chart mode (F2) drops Lagna and Chalit, which need a birth time. */
+export function chipsFor(chart: Pick<ChartData, 'moonChart'>): RowChip[] {
   return chart.moonChart ? ['moon', 'sun', 'D9'] : [...VARIANT_CHIPS];
 }
 
-export const CHIP_KEY: Record<ChartVariantChip, string> = {
+/** True for the 14 vargas that sit behind the `vargas` key (D9 is a row chip and free). */
+export function isLockedVarga(chip: ChartVariantChip): chip is DivisionalChartId {
+  return isDivisionalChartId(chip) && (LOCKED_VARGA_IDS as readonly string[]).includes(chip);
+}
+
+export const CHIP_KEY: Record<RowChip, string> = {
   lagna: 'charts.lagna_chip',
   moon: 'charts.moon_chip',
   sun: 'charts.sun_chip',
   chalit: 'charts.chalit_chip',
   D9: 'charts.d9_chip',
 };
+
+/** "D10 Dasamsa" from the vargas.* strings (identical in every language: the Sanskrit name is the term). */
+export function vargaLabel(id: DivisionalChartId, t: TFn): string {
+  return t(`vargas.${id.toLowerCase()}`);
+}
+
+/** "read for work and standing" - the classical area a varga is read for (never a prediction). */
+export function vargaDomainText(id: DivisionalChartId, t: TFn): string {
+  return t('vargas.readFor', { domain: t(`vargas.domain.${vargaInfo(id).domainKey.replace('varga-domain-', '')}`) });
+}
 
 const variantCache = new WeakMap<ChartData, Map<ChartVariantChip, ChartData>>();
 
@@ -49,8 +65,9 @@ function computeVariant(base: ChartData, chip: ChartVariantChip): ChartData {
       return sunChart(base);
     case 'chalit':
       return chalit(base);
-    case 'D9':
-      return varga(base, 'D9');
+    default:
+      // D9 and the 14 locked vargas all go through the same engine varga() and the same Chart component (F12).
+      return varga(base, chip);
   }
 }
 
@@ -68,6 +85,8 @@ export function heroTitle(chip: ChartVariantChip, base: Pick<ChartData, 'moonCha
       return t('charts.chalitTitle');
     case 'D9':
       return t('charts.d9Title');
+    default:
+      return vargaLabel(chip, t);
   }
 }
 

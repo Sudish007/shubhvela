@@ -1,6 +1,27 @@
 // Chart computation for the app: engine.computeChart with the F19 settings, memoised per profile + settings.
 // Everything shown about a chart comes from here (D8: every number computed).
-import { computeChart, dasha, locale, sadeSati, type ChartData, type ChartOptions, type DashaTree, type SadeSatiReport } from '@shubhvela/engine';
+import {
+  ashtakavarga,
+  computeChart,
+  dasha,
+  kp,
+  locale,
+  rulingPlanets,
+  sadeSati,
+  solarReturnInstant,
+  utcToWall,
+  varshaphal,
+  yogas,
+  type AshtakavargaReport,
+  type ChartData,
+  type ChartOptions,
+  type DashaTree,
+  type KpReport,
+  type KpRulingPlanetsReport,
+  type SadeSatiReport,
+  type VarshaphalReport,
+  type YogasReport,
+} from '@shubhvela/engine';
 import { listProfiles, type Profile } from '../db/profiles';
 import { getSetting, type Lang } from '../db/settings';
 import { toBirthInput } from './profiles';
@@ -69,6 +90,107 @@ export function sadeSatiFor(chart: ChartData, nowMs: number): SadeSatiReport {
   const report = sadeSati(chart, nowMs);
   sadeSatiCache.set(chart, { nowMs, report });
   return report;
+}
+
+// ---- Phase B (B04): yogas, Ashtakavarga, KP, Varshaphal - all memoised per chart object like the dasha tree ----
+
+const yogasCache = new WeakMap<ChartData, YogasReport>();
+
+/** F16 yoga detection for a chart (engine.yogas), memoised per chart object. */
+export function yogasFor(chart: ChartData): YogasReport {
+  const hit = yogasCache.get(chart);
+  if (hit) return hit;
+  const r = yogas(chart);
+  yogasCache.set(chart, r);
+  return r;
+}
+
+const avCache = new WeakMap<ChartData, AshtakavargaReport>();
+
+/** F15 BAV/SAV for a chart, memoised per chart object. */
+export function ashtakavargaFor(chart: ChartData): AshtakavargaReport {
+  const hit = avCache.get(chart);
+  if (hit) return hit;
+  const r = ashtakavarga(chart);
+  avCache.set(chart, r);
+  return r;
+}
+
+const kpCache = new Map<string, KpReport>();
+
+/**
+ * F15 KP report for a profile: Placidus cusps with the KP ayanamsa (engine default) and the F19 node setting,
+ * memoised per profile + node. The KP ayanamsa is fixed by the system itself, not by the Lahiri/Raman setting.
+ */
+export function kpFor(p: Profile): KpReport {
+  const node = getSetting('node');
+  const k = [p.id, p.birthDate, p.birthTime, p.timeUnknown, p.lat, p.lon, p.tz, node].join('|');
+  const hit = kpCache.get(k);
+  if (hit) return hit;
+  const r = kp(toBirthInput(p), { node });
+  kpCache.set(k, r);
+  return r;
+}
+
+/** KP ruling planets for an instant at the profile's place (design 10.3: "ruling planets for now"). */
+export function rulingPlanetsFor(p: Profile, nowMs: number): KpRulingPlanetsReport {
+  return rulingPlanets(nowMs, { lat: p.lat, lon: p.lon, elevation: 0 }, p.tz, { node: getSetting('node') });
+}
+
+const vpCache = new WeakMap<ChartData, Map<number, VarshaphalReport>>();
+
+/** F17 Varshaphal of a Gregorian year for a natal chart (birthplace, natal zone), memoised per chart + year. */
+export function varshaphalFor(chart: ChartData, year: number): VarshaphalReport {
+  let m = vpCache.get(chart);
+  if (!m) {
+    m = new Map();
+    vpCache.set(chart, m);
+  }
+  const hit = m.get(year);
+  if (hit) return hit;
+  const r = varshaphal(chart, year);
+  m.set(year, r);
+  return r;
+}
+
+const srCache = new WeakMap<ChartData, Map<number, number>>();
+
+/** Solar-return instant of a Gregorian year, memoised (the search costs a few ms per call). */
+export function solarReturnFor(chart: ChartData, year: number): number {
+  let m = srCache.get(chart);
+  if (!m) {
+    m = new Map();
+    srCache.set(chart, m);
+  }
+  const hit = m.get(year);
+  if (hit != null) return hit;
+  const ms = solarReturnInstant(chart, year);
+  m.set(year, ms);
+  return ms;
+}
+
+export interface VedicYear {
+  /** Gregorian year of the solar return that opened the running Vedic year. */
+  runningYear: number;
+  /** Instant that opened the running year (<= nowMs). */
+  runningStart: number;
+  /** Gregorian year of the next solar return. */
+  nextYear: number;
+  /** Instant of the next solar return (> nowMs). */
+  nextStart: number;
+}
+
+/** The running Vedic year and the next return around `nowMs` (the civil year of `nowMs` in the natal zone decides). */
+export function vedicYearAt(chart: ChartData, nowMs: number): VedicYear {
+  const y = utcToWall(nowMs, chart.meta.tz).y;
+  const thisYear = solarReturnFor(chart, y);
+  if (thisYear <= nowMs) return { runningYear: y, runningStart: thisYear, nextYear: y + 1, nextStart: solarReturnFor(chart, y + 1) };
+  return { runningYear: y - 1, runningStart: solarReturnFor(chart, y - 1), nextYear: y, nextStart: thisYear };
+}
+
+/** Instant of the next solar return after `nowMs` (the "Year begins" notification, F17). */
+export function nextSolarReturn(chart: ChartData, nowMs: number): number {
+  return vedicYearAt(chart, nowMs).nextStart;
 }
 
 export interface MoonLine {

@@ -3482,27 +3482,37 @@ exports[`pseudo-locale +30 % birth screen (en) shows every padded label whole 1`
                     }
                   }
                 >
-                  <Text
+                  <View
                     style={
-                      [
-                        {
-                          "fontFamily": "NotoSans-SemiBold",
-                          "fontSize": 15,
-                          "fontWeight": "normal",
-                          "lineHeight": 20,
-                        },
-                        {
-                          "color": "#1C1A17",
-                        },
-                        {
-                          "maxWidth": 180,
-                          "textAlign": "center",
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "gap": 6,
+                      }
                     }
                   >
-                    Female x
-                  </Text>
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans-SemiBold",
+                            "fontSize": 15,
+                            "fontWeight": "normal",
+                            "lineHeight": 20,
+                          },
+                          {
+                            "color": "#1C1A17",
+                          },
+                          {
+                            "maxWidth": 180,
+                            "textAlign": "center",
+                          },
+                        ]
+                      }
+                    >
+                      Female x
+                    </Text>
+                  </View>
                   <View
                     style={
                       [
@@ -3583,27 +3593,37 @@ exports[`pseudo-locale +30 % birth screen (en) shows every padded label whole 1`
                     }
                   }
                 >
-                  <Text
+                  <View
                     style={
-                      [
-                        {
-                          "fontFamily": "NotoSans-SemiBold",
-                          "fontSize": 15,
-                          "fontWeight": "normal",
-                          "lineHeight": 20,
-                        },
-                        {
-                          "color": "#1C1A17",
-                        },
-                        {
-                          "maxWidth": 180,
-                          "textAlign": "center",
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "gap": 6,
+                      }
                     }
                   >
-                    Male x
-                  </Text>
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans-SemiBold",
+                            "fontSize": 15,
+                            "fontWeight": "normal",
+                            "lineHeight": 20,
+                          },
+                          {
+                            "color": "#1C1A17",
+                          },
+                          {
+                            "maxWidth": 180,
+                            "textAlign": "center",
+                          },
+                        ]
+                      }
+                    >
+                      Male x
+                    </Text>
+                  </View>
                   <View
                     style={
                       [
@@ -3684,27 +3704,37 @@ exports[`pseudo-locale +30 % birth screen (en) shows every padded label whole 1`
                     }
                   }
                 >
-                  <Text
+                  <View
                     style={
-                      [
-                        {
-                          "fontFamily": "NotoSans-SemiBold",
-                          "fontSize": 15,
-                          "fontWeight": "normal",
-                          "lineHeight": 20,
-                        },
-                        {
-                          "color": "#1C1A17",
-                        },
-                        {
-                          "maxWidth": 180,
-                          "textAlign": "center",
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "gap": 6,
+                      }
                     }
                   >
-                    Other x
-                  </Text>
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans-SemiBold",
+                            "fontSize": 15,
+                            "fontWeight": "normal",
+                            "lineHeight": 20,
+                          },
+                          {
+                            "color": "#1C1A17",
+                          },
+                          {
+                            "maxWidth": 180,
+                            "textAlign": "center",
+                          },
+                        ]
+                      }
+                    >
+                      Other x
+                    </Text>
+                  </View>
                   <View
                     style={
                       [
@@ -3785,27 +3815,37 @@ exports[`pseudo-locale +30 % birth screen (en) shows every padded label whole 1`
                     }
                   }
                 >
-                  <Text
+                  <View
                     style={
-                      [
-                        {
-                          "fontFamily": "NotoSans-SemiBold",
-                          "fontSize": 15,
-                          "fontWeight": "normal",
-                          "lineHeight": 20,
-                        },
-                        {
-                          "color": "#B83E18",
-                        },
-                        {
-                          "maxWidth": 180,
-                          "textAlign": "center",
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "gap": 6,
+                      }
                     }
                   >
-                    Prefer not to say xxxxx
-                  </Text>
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans-SemiBold",
+                            "fontSize": 15,
+                            "fontWeight": "normal",
+                            "lineHeight": 20,
+                          },
+                          {
+                            "color": "#B83E18",
+                          },
+                          {
+                            "maxWidth": 180,
+                            "textAlign": "center",
+                          },
+                        ]
+                      }
+                    >
+                      Prefer not to say xxxxx
+                    </Text>
+                  </View>
                   <View
                     style={
                       [

@@ -52,6 +52,10 @@ function Navigator({ fontsReady }: { fontsReady: boolean }) {
         <Stack.Screen name="pro" />
         <Stack.Screen name="profile/[id]" />
         <Stack.Screen name="charts/dasha-tree" />
+        <Stack.Screen name="charts/vargas" />
+        <Stack.Screen name="charts/ashtakavarga" />
+        <Stack.Screen name="charts/kp" />
+        <Stack.Screen name="charts/varshaphal" />
         <Stack.Screen name="family/calendar" />
         <Stack.Screen name="family/festival/[slug]" />
         <Stack.Screen name="family/vrat/[id]" />

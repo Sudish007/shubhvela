@@ -17,7 +17,7 @@ const BUDGETS: [RegExp, number, string][] = [
 
 const PHASE_A_NAMESPACES = [
   'common', 'tabs', 'onboarding', 'consent', 'today', 'band', 'verdict', 'panchang', 'note', 'upcoming', 'charts', 'dignity', 'dasha',
-  'sadesati', 'family', 'events', 'vrat', 'calendar', 'reminders', 'settings', 'privacy', 'disclaimer', 'about', 'errors',
+  'yogas', 'sadesati', 'family', 'events', 'vrat', 'calendar', 'reminders', 'settings', 'privacy', 'disclaimer', 'about', 'errors',
 ];
 /** Phase B namespaces (plan.md section 2 i18n; FEAT-B02). */
 const PHASE_B_NAMESPACES = ['pro', 'ads', 'unlock', 'vargas', 'kp', 'ashtakavarga', 'varshaphal', 'muhurat', 'travel', 'naamkaran', 'match', 'share', 'pdf', 'report'];

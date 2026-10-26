@@ -73,6 +73,27 @@ export function setDailyNoteTime(hhmm: string): void {
   write('reminder.dailyNote.time', hhmm);
 }
 
+/**
+ * F14 (Pro): antar + pratyantar change notifications, default Off (design.md 10.3 M13). The stored flag is only a
+ * preference; entitlements.canSeeFeature('dasha_pratyantar') decides in the planner whether anything is scheduled.
+ */
+export function getDashaAlertsEnabled(): boolean {
+  return read('reminder.dashaAlerts.enabled') === '1';
+}
+
+export function setDashaAlertsEnabled(enabled: boolean): void {
+  write('reminder.dashaAlerts.enabled', enabled ? '1' : '0');
+}
+
+/** F17: one local notification at each profile's solar-return instant ("Year begins"), default Off. */
+export function getYearBeginsEnabled(): boolean {
+  return read('reminder.yearBegins.enabled') === '1';
+}
+
+export function setYearBeginsEnabled(enabled: boolean): void {
+  write('reminder.yearBegins.enabled', enabled ? '1' : '0');
+}
+
 /** Series keys (eventSeries.seriesKey) whose notifications the OS refused in the last re-plan. */
 export function getFailedSeries(): string[] {
   const v = read('reminder.failedSeries');

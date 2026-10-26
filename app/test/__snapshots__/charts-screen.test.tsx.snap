@@ -477,27 +477,37 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                   }
                 }
               >
-                <Text
+                <View
                   style={
-                    [
-                      {
-                        "fontFamily": "NotoSans-SemiBold",
-                        "fontSize": 15,
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#B83E18",
-                      },
-                      {
-                        "maxWidth": 180,
-                        "textAlign": "center",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "gap": 6,
+                    }
                   }
                 >
-                  Lagna x
-                </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans-SemiBold",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#B83E18",
+                        },
+                        {
+                          "maxWidth": 180,
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    Lagna x
+                  </Text>
+                </View>
                 <View
                   style={
                     [
@@ -579,27 +589,37 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                   }
                 }
               >
-                <Text
+                <View
                   style={
-                    [
-                      {
-                        "fontFamily": "NotoSans-SemiBold",
-                        "fontSize": 15,
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#1C1A17",
-                      },
-                      {
-                        "maxWidth": 180,
-                        "textAlign": "center",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "gap": 6,
+                    }
                   }
                 >
-                  Moon x
-                </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans-SemiBold",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        {
+                          "maxWidth": 180,
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    Moon x
+                  </Text>
+                </View>
                 <View
                   style={
                     [
@@ -681,27 +701,37 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                   }
                 }
               >
-                <Text
+                <View
                   style={
-                    [
-                      {
-                        "fontFamily": "NotoSans-SemiBold",
-                        "fontSize": 15,
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#1C1A17",
-                      },
-                      {
-                        "maxWidth": 180,
-                        "textAlign": "center",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "gap": 6,
+                    }
                   }
                 >
-                  Sun 
-                </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans-SemiBold",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        {
+                          "maxWidth": 180,
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    Sun 
+                  </Text>
+                </View>
                 <View
                   style={
                     [
@@ -783,27 +813,37 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                   }
                 }
               >
-                <Text
+                <View
                   style={
-                    [
-                      {
-                        "fontFamily": "NotoSans-SemiBold",
-                        "fontSize": 15,
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#1C1A17",
-                      },
-                      {
-                        "maxWidth": 180,
-                        "textAlign": "center",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "gap": 6,
+                    }
                   }
                 >
-                  Chalit x
-                </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans-SemiBold",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        {
+                          "maxWidth": 180,
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    Chalit x
+                  </Text>
+                </View>
                 <View
                   style={
                     [
@@ -885,27 +925,245 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                   }
                 }
               >
-                <Text
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "gap": 6,
+                    }
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans-SemiBold",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        {
+                          "maxWidth": 180,
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    D9 Navamsa xx
+                  </Text>
+                </View>
+                <View
                   style={
                     [
                       {
-                        "fontFamily": "NotoSans-SemiBold",
-                        "fontSize": 15,
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
+                        "alignSelf": "stretch",
+                        "borderRadius": 1,
+                        "height": 2,
+                        "marginTop": 2,
                       },
                       {
-                        "color": "#1C1A17",
-                      },
-                      {
-                        "maxWidth": 180,
-                        "textAlign": "center",
+                        "backgroundColor": "transparent",
                       },
                     ]
                   }
+                />
+              </View>
+            </View>
+            <View
+              accessibilityLabel="14 more vargas, locked xxxxxx"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": false,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "justifyContent": "center",
+                    "minHeight": 44,
+                    "minWidth": 44,
+                  },
+                  [
+                    {
+                      "borderRadius": 22,
+                      "borderWidth": 1,
+                      "paddingHorizontal": 14,
+                      "paddingVertical": 4,
+                    },
+                    {
+                      "backgroundColor": "#FFFFFF",
+                      "borderColor": "#CFC7BA",
+                    },
+                  ],
+                  false,
+                ]
+              }
+              testID="chip-vargas"
+            >
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                  }
+                }
+              >
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "gap": 6,
+                    }
+                  }
                 >
-                  D9 Navamsa xx
-                </Text>
+                  <View
+                    style={
+                      {
+                        "alignItems": "center",
+                        "height": 18,
+                        "justifyContent": "center",
+                        "width": 18,
+                      }
+                    }
+                  >
+                    <RNSVGSvgView
+                      accessible={false}
+                      align="xMidYMid"
+                      bbHeight={18}
+                      bbWidth={18}
+                      focusable={false}
+                      height={18}
+                      meetOrSlice={0}
+                      minX={0}
+                      minY={0}
+                      style={
+                        [
+                          {
+                            "backgroundColor": "transparent",
+                            "borderWidth": 0,
+                          },
+                          {
+                            "flex": 0,
+                            "height": 18,
+                            "width": 18,
+                          },
+                        ]
+                      }
+                      vbHeight={24}
+                      vbWidth={24}
+                      width={18}
+                    >
+                      <RNSVGGroup
+                        fill={
+                          {
+                            "payload": 4278190080,
+                            "type": 0,
+                          }
+                        }
+                      >
+                        <RNSVGRect
+                          fill={null}
+                          height="10"
+                          propList={
+                            [
+                              "fill",
+                              "stroke",
+                              "strokeWidth",
+                              "strokeLinecap",
+                              "strokeLinejoin",
+                            ]
+                          }
+                          rx="2"
+                          stroke={
+                            {
+                              "payload": 4280031767,
+                              "type": 0,
+                            }
+                          }
+                          strokeLinecap={1}
+                          strokeLinejoin={1}
+                          strokeWidth={1.75}
+                          width="14"
+                          x="5"
+                          y="11"
+                        />
+                        <RNSVGPath
+                          d="M8 11V8a4 4 0 0 1 8 0v3"
+                          fill={null}
+                          propList={
+                            [
+                              "fill",
+                              "stroke",
+                              "strokeWidth",
+                              "strokeLinecap",
+                              "strokeLinejoin",
+                            ]
+                          }
+                          stroke={
+                            {
+                              "payload": 4280031767,
+                              "type": 0,
+                            }
+                          }
+                          strokeLinecap={1}
+                          strokeLinejoin={1}
+                          strokeWidth={1.75}
+                        />
+                      </RNSVGGroup>
+                    </RNSVGSvgView>
+                  </View>
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans-SemiBold",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        {
+                          "maxWidth": 180,
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    14 more vargas xxxx
+                  </Text>
+                </View>
                 <View
                   style={
                     [
@@ -8786,6 +9044,7 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                         undefined,
                       ]
                     }
+                    testID="dasha-alerts-caption"
                   >
                     (off until you switch them on) xxxxxxxx
                   </Text>
@@ -8974,6 +9233,1797 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
               365.2425
             </Text>
              days; Lahiri (default) xxxx ayanamsa. xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "borderRadius": 12,
+                "borderWidth": 0.5,
+                "padding": 16,
+              },
+              {
+                "backgroundColor": "#FFFFFF",
+                "borderColor": "#E4DDD2",
+              },
+              undefined,
+              undefined,
+            ]
+          }
+          testID="yogas-card"
+        >
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "gap": 8,
+                "justifyContent": "space-between",
+              }
+            }
+          >
+            <Text
+              accessibilityRole="header"
+              style={
+                [
+                  {
+                    "fontFamily": "NotoSans-SemiBold",
+                    "fontSize": 18,
+                    "fontWeight": "normal",
+                    "lineHeight": 24,
+                  },
+                  {
+                    "color": "#1C1A17",
+                  },
+                  {
+                    "flex": 1,
+                    "minWidth": 0,
+                  },
+                ]
+              }
+            >
+              Yogas in this chart xxxxx
+            </Text>
+            <Text
+              style={
+                [
+                  {
+                    "fontFamily": "NotoSans",
+                    "fontSize": 13,
+                    "fontWeight": "normal",
+                    "lineHeight": 18,
+                  },
+                  {
+                    "color": "#5B554C",
+                  },
+                  undefined,
+                ]
+              }
+              testID="yogas-found"
+            >
+              7 found xxx
+            </Text>
+          </View>
+          <View
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "flexDirection": "row",
+                  "gap": 8,
+                  "paddingVertical": 8,
+                },
+                {
+                  "borderBottomColor": "#E4DDD2",
+                  "borderBottomWidth": 0.5,
+                },
+              ]
+            }
+            testID="yoga-row-kemadruma"
+          >
+            <View
+              style={
+                {
+                  "flex": 1,
+                  "gap": 2,
+                  "minWidth": 0,
+                  "paddingTop": 2,
+                }
+              }
+            >
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "flexWrap": "wrap",
+                    "gap": 8,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 17,
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  Kemadruma xx
+                </Text>
+                <View
+                  testID="yoga-state-kemadruma"
+                >
+                  <View
+                    accessibilityLabel="cancelled xx"
+                    style={
+                      [
+                        {
+                          "alignSelf": "flex-start",
+                          "borderRadius": 4,
+                          "paddingHorizontal": 6,
+                          "paddingVertical": 2,
+                        },
+                        {
+                          "backgroundColor": "transparent",
+                          "borderColor": "#CFC7BA",
+                          "borderWidth": 1,
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans-SemiBold",
+                            "fontSize": 12,
+                            "fontWeight": "normal",
+                            "lineHeight": 16,
+                          },
+                          {
+                            "color": "#5B554C",
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      cancelled xx
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Kemadruma: no planet other than the Sun and the nodes in the 2nd or 12th from the Moon; cancelled by a planet with the Moon, in a kendra from the Moon or in a kendra from the Lagna
+              </Text>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#6F6960",
+                    },
+                    undefined,
+                  ]
+                }
+                testID="yoga-cancelled-kemadruma"
+              >
+                cancelled: Kemadruma cancelled: a planet other than the Moon and the nodes in the 4th, 7th or 10th from the Moon xxxxx
+              </Text>
+            </View>
+            <View
+              accessibilityLabel="Why? x Kemadruma xx, cancelled xx: Kemadruma: no planet other than the Sun and the nodes in the 2nd or 12th from the Moon; cancelled by a planet with the Moon, in a kendra from the Moon or in a kendra from the Lagna xxxxxx"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "justifyContent": "center",
+                    "minHeight": 44,
+                    "minWidth": 44,
+                  },
+                  {
+                    "paddingHorizontal": 8,
+                  },
+                  false,
+                ]
+              }
+              testID="yoga-why-kemadruma"
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans-SemiBold",
+                      "fontSize": 15,
+                      "fontWeight": "normal",
+                      "lineHeight": 20,
+                    },
+                    {
+                      "color": "#B83E18",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Why? x
+              </Text>
+            </View>
+          </View>
+          <View
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "flexDirection": "row",
+                  "gap": 8,
+                  "paddingVertical": 8,
+                },
+                {
+                  "borderBottomColor": "#E4DDD2",
+                  "borderBottomWidth": 0.5,
+                },
+              ]
+            }
+            testID="yoga-row-shakata"
+          >
+            <View
+              style={
+                {
+                  "flex": 1,
+                  "gap": 2,
+                  "minWidth": 0,
+                  "paddingTop": 2,
+                }
+              }
+            >
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "flexWrap": "wrap",
+                    "gap": 8,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 17,
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  Shakata xx
+                </Text>
+                <View
+                  testID="yoga-state-shakata"
+                >
+                  <View
+                    accessibilityLabel="formed x"
+                    style={
+                      [
+                        {
+                          "alignSelf": "flex-start",
+                          "borderRadius": 4,
+                          "paddingHorizontal": 6,
+                          "paddingVertical": 2,
+                        },
+                        {
+                          "backgroundColor": "transparent",
+                          "borderColor": "#CFC7BA",
+                          "borderWidth": 1,
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans-SemiBold",
+                            "fontSize": 12,
+                            "fontWeight": "normal",
+                            "lineHeight": 16,
+                          },
+                          {
+                            "color": "#5B554C",
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      formed x
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Shakata: Jupiter in the 6th, 8th or 12th from the Moon; cancelled when Jupiter is in a kendra from the Lagna
+              </Text>
+            </View>
+            <View
+              accessibilityLabel="Why? x Shakata xx, formed x: Shakata: Jupiter in the 6th, 8th or 12th from the Moon; cancelled when Jupiter is in a kendra from the Lagna xxxxxx"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "justifyContent": "center",
+                    "minHeight": 44,
+                    "minWidth": 44,
+                  },
+                  {
+                    "paddingHorizontal": 8,
+                  },
+                  false,
+                ]
+              }
+              testID="yoga-why-shakata"
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans-SemiBold",
+                      "fontSize": 15,
+                      "fontWeight": "normal",
+                      "lineHeight": 20,
+                    },
+                    {
+                      "color": "#B83E18",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Why? x
+              </Text>
+            </View>
+          </View>
+          <View
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "flexDirection": "row",
+                  "gap": 8,
+                  "paddingVertical": 8,
+                },
+                {
+                  "borderBottomColor": "#E4DDD2",
+                  "borderBottomWidth": 0.5,
+                },
+              ]
+            }
+            testID="yoga-row-ubhayachari"
+          >
+            <View
+              style={
+                {
+                  "flex": 1,
+                  "gap": 2,
+                  "minWidth": 0,
+                  "paddingTop": 2,
+                }
+              }
+            >
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "flexWrap": "wrap",
+                    "gap": 8,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 17,
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  Ubhayachari xxx
+                </Text>
+                <View
+                  testID="yoga-state-ubhayachari"
+                >
+                  <View
+                    accessibilityLabel="formed x"
+                    style={
+                      [
+                        {
+                          "alignSelf": "flex-start",
+                          "borderRadius": 4,
+                          "paddingHorizontal": 6,
+                          "paddingVertical": 2,
+                        },
+                        {
+                          "backgroundColor": "transparent",
+                          "borderColor": "#CFC7BA",
+                          "borderWidth": 1,
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans-SemiBold",
+                            "fontSize": 12,
+                            "fontWeight": "normal",
+                            "lineHeight": 16,
+                          },
+                          {
+                            "color": "#5B554C",
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      formed x
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Ubhayachari: planets other than the Moon and the nodes on both sides of the Sun (2nd and 12th)
+              </Text>
+            </View>
+            <View
+              accessibilityLabel="Why? x Ubhayachari xxx, formed x: Ubhayachari: planets other than the Moon and the nodes on both sides of the Sun (2nd and 12th) xxxxxx"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "justifyContent": "center",
+                    "minHeight": 44,
+                    "minWidth": 44,
+                  },
+                  {
+                    "paddingHorizontal": 8,
+                  },
+                  false,
+                ]
+              }
+              testID="yoga-why-ubhayachari"
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans-SemiBold",
+                      "fontSize": 15,
+                      "fontWeight": "normal",
+                      "lineHeight": 20,
+                    },
+                    {
+                      "color": "#B83E18",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Why? x
+              </Text>
+            </View>
+          </View>
+          <View
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "flexDirection": "row",
+                  "gap": 8,
+                  "paddingVertical": 8,
+                },
+                {
+                  "borderBottomColor": "#E4DDD2",
+                  "borderBottomWidth": 0.5,
+                },
+              ]
+            }
+            testID="yoga-row-guru-chandala"
+          >
+            <View
+              style={
+                {
+                  "flex": 1,
+                  "gap": 2,
+                  "minWidth": 0,
+                  "paddingTop": 2,
+                }
+              }
+            >
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "flexWrap": "wrap",
+                    "gap": 8,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 17,
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  Guru-Chandala xxx
+                </Text>
+                <View
+                  testID="yoga-state-guru-chandala"
+                >
+                  <View
+                    accessibilityLabel="formed x"
+                    style={
+                      [
+                        {
+                          "alignSelf": "flex-start",
+                          "borderRadius": 4,
+                          "paddingHorizontal": 6,
+                          "paddingVertical": 2,
+                        },
+                        {
+                          "backgroundColor": "transparent",
+                          "borderColor": "#CFC7BA",
+                          "borderWidth": 1,
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans-SemiBold",
+                            "fontSize": 12,
+                            "fontWeight": "normal",
+                            "lineHeight": 16,
+                          },
+                          {
+                            "color": "#5B554C",
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      formed x
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Guru-Chandala: Jupiter in the same sign as Rahu or Ketu
+              </Text>
+            </View>
+            <View
+              accessibilityLabel="Why? x Guru-Chandala xxx, formed x: Guru-Chandala: Jupiter in the same sign as Rahu or Ketu xxxxxx"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "justifyContent": "center",
+                    "minHeight": 44,
+                    "minWidth": 44,
+                  },
+                  {
+                    "paddingHorizontal": 8,
+                  },
+                  false,
+                ]
+              }
+              testID="yoga-why-guru-chandala"
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans-SemiBold",
+                      "fontSize": 15,
+                      "fontWeight": "normal",
+                      "lineHeight": 20,
+                    },
+                    {
+                      "color": "#B83E18",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Why? x
+              </Text>
+            </View>
+          </View>
+          <View
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "flexDirection": "row",
+                  "gap": 8,
+                  "paddingVertical": 8,
+                },
+                {
+                  "borderBottomColor": "#E4DDD2",
+                  "borderBottomWidth": 0.5,
+                },
+              ]
+            }
+            testID="yoga-row-neecha-bhanga-raja"
+          >
+            <View
+              style={
+                {
+                  "flex": 1,
+                  "gap": 2,
+                  "minWidth": 0,
+                  "paddingTop": 2,
+                }
+              }
+            >
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "flexWrap": "wrap",
+                    "gap": 8,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 17,
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  Neecha Bhanga Raja xxxxx
+                </Text>
+                <View
+                  testID="yoga-state-neecha-bhanga-raja"
+                >
+                  <View
+                    accessibilityLabel="formed x"
+                    style={
+                      [
+                        {
+                          "alignSelf": "flex-start",
+                          "borderRadius": 4,
+                          "paddingHorizontal": 6,
+                          "paddingVertical": 2,
+                        },
+                        {
+                          "backgroundColor": "transparent",
+                          "borderColor": "#CFC7BA",
+                          "borderWidth": 1,
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans-SemiBold",
+                            "fontSize": 12,
+                            "fontWeight": "normal",
+                            "lineHeight": 16,
+                          },
+                          {
+                            "color": "#5B554C",
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      formed x
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Neecha Bhanga Raja: a debilitated planet whose fall is cancelled by the debilitation-sign lord or exaltation-sign lord in a kendra, by the planet itself in a kendra, or by exchange with its sign lord
+              </Text>
+            </View>
+            <View
+              accessibilityLabel="Why? x Neecha Bhanga Raja xxxxx, formed x: Neecha Bhanga Raja: a debilitated planet whose fall is cancelled by the debilitation-sign lord or exaltation-sign lord in a kendra, by the planet itself in a kendra, or by exchange with its sign lord xxxxxx"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "justifyContent": "center",
+                    "minHeight": 44,
+                    "minWidth": 44,
+                  },
+                  {
+                    "paddingHorizontal": 8,
+                  },
+                  false,
+                ]
+              }
+              testID="yoga-why-neecha-bhanga-raja"
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans-SemiBold",
+                      "fontSize": 15,
+                      "fontWeight": "normal",
+                      "lineHeight": 20,
+                    },
+                    {
+                      "color": "#B83E18",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Why? x
+              </Text>
+            </View>
+          </View>
+          <View
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "flexDirection": "row",
+                  "gap": 8,
+                  "paddingVertical": 8,
+                },
+                {
+                  "borderBottomColor": "#E4DDD2",
+                  "borderBottomWidth": 0.5,
+                },
+              ]
+            }
+            testID="yoga-row-harsha"
+          >
+            <View
+              style={
+                {
+                  "flex": 1,
+                  "gap": 2,
+                  "minWidth": 0,
+                  "paddingTop": 2,
+                }
+              }
+            >
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "flexWrap": "wrap",
+                    "gap": 8,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 17,
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  Harsha x
+                </Text>
+                <View
+                  testID="yoga-state-harsha"
+                >
+                  <View
+                    accessibilityLabel="formed x"
+                    style={
+                      [
+                        {
+                          "alignSelf": "flex-start",
+                          "borderRadius": 4,
+                          "paddingHorizontal": 6,
+                          "paddingVertical": 2,
+                        },
+                        {
+                          "backgroundColor": "transparent",
+                          "borderColor": "#CFC7BA",
+                          "borderWidth": 1,
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans-SemiBold",
+                            "fontSize": 12,
+                            "fontWeight": "normal",
+                            "lineHeight": 16,
+                          },
+                          {
+                            "color": "#5B554C",
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      formed x
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Harsha (Vipreet Raja): the 6th lord in the 6th, 8th or 12th house
+              </Text>
+            </View>
+            <View
+              accessibilityLabel="Why? x Harsha x, formed x: Harsha (Vipreet Raja): the 6th lord in the 6th, 8th or 12th house xxxxxx"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "justifyContent": "center",
+                    "minHeight": 44,
+                    "minWidth": 44,
+                  },
+                  {
+                    "paddingHorizontal": 8,
+                  },
+                  false,
+                ]
+              }
+              testID="yoga-why-harsha"
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans-SemiBold",
+                      "fontSize": 15,
+                      "fontWeight": "normal",
+                      "lineHeight": 20,
+                    },
+                    {
+                      "color": "#B83E18",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Why? x
+              </Text>
+            </View>
+          </View>
+          <View
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "flexDirection": "row",
+                  "gap": 8,
+                  "paddingVertical": 8,
+                },
+                {
+                  "borderBottomColor": "#E4DDD2",
+                  "borderBottomWidth": 0.5,
+                },
+              ]
+            }
+            testID="yoga-row-dhana-2-11"
+          >
+            <View
+              style={
+                {
+                  "flex": 1,
+                  "gap": 2,
+                  "minWidth": 0,
+                  "paddingTop": 2,
+                }
+              }
+            >
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "flexWrap": "wrap",
+                    "gap": 8,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 17,
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  Dhana (2nd and 11th lords) xxxxxxx
+                </Text>
+                <View
+                  testID="yoga-state-dhana-2-11"
+                >
+                  <View
+                    accessibilityLabel="formed x"
+                    style={
+                      [
+                        {
+                          "alignSelf": "flex-start",
+                          "borderRadius": 4,
+                          "paddingHorizontal": 6,
+                          "paddingVertical": 2,
+                        },
+                        {
+                          "backgroundColor": "transparent",
+                          "borderColor": "#CFC7BA",
+                          "borderWidth": 1,
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans-SemiBold",
+                            "fontSize": 12,
+                            "fontWeight": "normal",
+                            "lineHeight": 16,
+                          },
+                          {
+                            "color": "#5B554C",
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      formed x
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Dhana: the 2nd and 11th lords conjunct, in exchange or in mutual aspect
+              </Text>
+            </View>
+            <View
+              accessibilityLabel="Why? x Dhana (2nd and 11th lords) xxxxxxx, formed x: Dhana: the 2nd and 11th lords conjunct, in exchange or in mutual aspect xxxxxx"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "justifyContent": "center",
+                    "minHeight": 44,
+                    "minWidth": 44,
+                  },
+                  {
+                    "paddingHorizontal": 8,
+                  },
+                  false,
+                ]
+              }
+              testID="yoga-why-dhana-2-11"
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans-SemiBold",
+                      "fontSize": 15,
+                      "fontWeight": "normal",
+                      "lineHeight": 20,
+                    },
+                    {
+                      "color": "#B83E18",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Why? x
+              </Text>
+            </View>
+          </View>
+          <View
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "flexDirection": "row",
+                  "gap": 8,
+                  "paddingVertical": 8,
+                },
+                {
+                  "borderBottomColor": "#E4DDD2",
+                  "borderBottomWidth": 0.5,
+                },
+              ]
+            }
+            testID="yoga-row-raja-kendra-trikona"
+          >
+            <View
+              style={
+                {
+                  "flex": 1,
+                  "gap": 2,
+                  "minWidth": 0,
+                  "paddingTop": 2,
+                }
+              }
+            >
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "flexWrap": "wrap",
+                    "gap": 8,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 17,
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  Raja (kendra and trikona lords) xxxxxxxxx
+                </Text>
+                <View
+                  testID="yoga-state-raja-kendra-trikona"
+                >
+                  <View
+                    accessibilityLabel="formed x"
+                    style={
+                      [
+                        {
+                          "alignSelf": "flex-start",
+                          "borderRadius": 4,
+                          "paddingHorizontal": 6,
+                          "paddingVertical": 2,
+                        },
+                        {
+                          "backgroundColor": "transparent",
+                          "borderColor": "#CFC7BA",
+                          "borderWidth": 1,
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans-SemiBold",
+                            "fontSize": 12,
+                            "fontWeight": "normal",
+                            "lineHeight": 16,
+                          },
+                          {
+                            "color": "#5B554C",
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      formed x
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Raja yoga: a kendra lord and a trikona lord conjunct or in exchange (every pair listed)
+              </Text>
+            </View>
+            <View
+              accessibilityLabel="Why? x Raja (kendra and trikona lords) xxxxxxxxx, formed x: Raja yoga: a kendra lord and a trikona lord conjunct or in exchange (every pair listed) xxxxxx"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "justifyContent": "center",
+                    "minHeight": 44,
+                    "minWidth": 44,
+                  },
+                  {
+                    "paddingHorizontal": 8,
+                  },
+                  false,
+                ]
+              }
+              testID="yoga-why-raja-kendra-trikona"
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans-SemiBold",
+                      "fontSize": 15,
+                      "fontWeight": "normal",
+                      "lineHeight": 20,
+                    },
+                    {
+                      "color": "#B83E18",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Why? x
+              </Text>
+            </View>
+          </View>
+          <View
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "flexDirection": "row",
+                  "gap": 8,
+                  "paddingVertical": 8,
+                },
+                false,
+              ]
+            }
+            testID="yoga-row-parivartana"
+          >
+            <View
+              style={
+                {
+                  "flex": 1,
+                  "gap": 2,
+                  "minWidth": 0,
+                  "paddingTop": 2,
+                }
+              }
+            >
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "flexWrap": "wrap",
+                    "gap": 8,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans-SemiBold",
+                        "fontSize": 17,
+                        "fontWeight": "normal",
+                        "lineHeight": 26,
+                      },
+                      {
+                        "color": "#1C1A17",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  Parivartana xxx
+                </Text>
+                <View
+                  testID="yoga-state-parivartana"
+                >
+                  <View
+                    accessibilityLabel="cancelled xx"
+                    style={
+                      [
+                        {
+                          "alignSelf": "flex-start",
+                          "borderRadius": 4,
+                          "paddingHorizontal": 6,
+                          "paddingVertical": 2,
+                        },
+                        {
+                          "backgroundColor": "transparent",
+                          "borderColor": "#CFC7BA",
+                          "borderWidth": 1,
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "NotoSans-SemiBold",
+                            "fontSize": 12,
+                            "fontWeight": "normal",
+                            "lineHeight": 16,
+                          },
+                          {
+                            "color": "#5B554C",
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      cancelled xx
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Parivartana: two planets each in the sign the other rules; Maha, Khala or Dainya by the houses exchanged; all-Dainya shown as cancelled
+              </Text>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#6F6960",
+                    },
+                    undefined,
+                  ]
+                }
+                testID="yoga-cancelled-parivartana"
+              >
+                cancelled: Parivartana shown as cancelled: every exchange involves the 6th, 8th or 12th house (Dainya) xxxxx
+              </Text>
+            </View>
+            <View
+              accessibilityLabel="Why? x Parivartana xxx, cancelled xx: Parivartana: two planets each in the sign the other rules; Maha, Khala or Dainya by the houses exchanged; all-Dainya shown as cancelled xxxxxx"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "justifyContent": "center",
+                    "minHeight": 44,
+                    "minWidth": 44,
+                  },
+                  {
+                    "paddingHorizontal": 8,
+                  },
+                  false,
+                ]
+              }
+              testID="yoga-why-parivartana"
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans-SemiBold",
+                      "fontSize": 15,
+                      "fontWeight": "normal",
+                      "lineHeight": 20,
+                    },
+                    {
+                      "color": "#B83E18",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Why? x
+              </Text>
+            </View>
+          </View>
+          <Text
+            style={
+              [
+                {
+                  "fontFamily": "NotoSans",
+                  "fontSize": 13,
+                  "fontWeight": "normal",
+                  "lineHeight": 18,
+                },
+                {
+                  "color": "#6F6960",
+                },
+                {
+                  "marginTop": 8,
+                },
+              ]
+            }
+          >
+            31 yogas checked xxxxx · Yogas are rule checks on this chart, not predictions; each names its classical source. xxxxxxxxxxxxxxxxxxxxxxxxx
           </Text>
         </View>
         <View
@@ -10076,6 +12126,1255 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
           >
             Dates from Saturn's exact sidereal sign entries (Lahiri (default) xxxx ayanamsa); no mean motion, so no approx. tag. xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
           </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "borderRadius": 12,
+                "borderWidth": 0.5,
+                "padding": 16,
+              },
+              {
+                "backgroundColor": "#FFFFFF",
+                "borderColor": "#E4DDD2",
+              },
+              undefined,
+              undefined,
+            ]
+          }
+          testID="more-card"
+        >
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "gap": 8,
+                "justifyContent": "space-between",
+              }
+            }
+          >
+            <Text
+              accessibilityRole="header"
+              style={
+                [
+                  {
+                    "fontFamily": "NotoSans-SemiBold",
+                    "fontSize": 18,
+                    "fontWeight": "normal",
+                    "lineHeight": 24,
+                  },
+                  {
+                    "color": "#1C1A17",
+                  },
+                  {
+                    "flex": 1,
+                    "minWidth": 0,
+                  },
+                ]
+              }
+            >
+              More from this chart xxxxx
+            </Text>
+            <Text
+              style={
+                [
+                  {
+                    "fontFamily": "NotoSans",
+                    "fontSize": 13,
+                    "fontWeight": "normal",
+                    "lineHeight": 18,
+                  },
+                  {
+                    "color": "#5B554C",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              24-h unlock or Pro xxxxx
+            </Text>
+          </View>
+          <View
+            accessibilityLabel="Divisional charts (14) xxxxxx, locked, unlock with an ad for 24 hours or with Pro xxxxxxxxxxxxxxxxx"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                  "minHeight": 44,
+                  "minWidth": 44,
+                },
+                [
+                  {
+                    "alignItems": "center",
+                    "alignSelf": "stretch",
+                    "flexDirection": "row",
+                    "gap": 8,
+                    "justifyContent": "space-between",
+                    "paddingVertical": 8,
+                  },
+                  {
+                    "borderBottomColor": "#E4DDD2",
+                    "borderBottomWidth": 0.5,
+                  },
+                ],
+                false,
+              ]
+            }
+            testID="more-row-vargas"
+          >
+            <View
+              style={
+                {
+                  "flex": 1,
+                  "gap": 2,
+                  "minWidth": 0,
+                }
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans-SemiBold",
+                      "fontSize": 17,
+                      "fontWeight": "normal",
+                      "lineHeight": 26,
+                    },
+                    {
+                      "color": "#1C1A17",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Divisional charts (14) xxxxxx
+              </Text>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                D2 to D60 · D9 is free xxxxxx
+              </Text>
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 4,
+                  }
+                }
+              >
+                <RNSVGSvgView
+                  accessible={false}
+                  align="xMidYMid"
+                  bbHeight={14}
+                  bbWidth={14}
+                  focusable={false}
+                  height={14}
+                  meetOrSlice={0}
+                  minX={0}
+                  minY={0}
+                  style={
+                    [
+                      {
+                        "backgroundColor": "transparent",
+                        "borderWidth": 0,
+                      },
+                      {
+                        "flex": 0,
+                        "height": 14,
+                        "width": 14,
+                      },
+                    ]
+                  }
+                  vbHeight={24}
+                  vbWidth={24}
+                  width={14}
+                >
+                  <RNSVGGroup
+                    fill={
+                      {
+                        "payload": 4278190080,
+                        "type": 0,
+                      }
+                    }
+                  >
+                    <RNSVGRect
+                      fill={null}
+                      height="10"
+                      propList={
+                        [
+                          "fill",
+                          "stroke",
+                          "strokeWidth",
+                          "strokeLinecap",
+                          "strokeLinejoin",
+                        ]
+                      }
+                      rx="2"
+                      stroke={
+                        {
+                          "payload": 4285491552,
+                          "type": 0,
+                        }
+                      }
+                      strokeLinecap={1}
+                      strokeLinejoin={1}
+                      strokeWidth={1.75}
+                      width="14"
+                      x="5"
+                      y="11"
+                    />
+                    <RNSVGPath
+                      d="M8 11V8a4 4 0 0 1 8 0v3"
+                      fill={null}
+                      propList={
+                        [
+                          "fill",
+                          "stroke",
+                          "strokeWidth",
+                          "strokeLinecap",
+                          "strokeLinejoin",
+                        ]
+                      }
+                      stroke={
+                        {
+                          "payload": 4285491552,
+                          "type": 0,
+                        }
+                      }
+                      strokeLinecap={1}
+                      strokeLinejoin={1}
+                      strokeWidth={1.75}
+                    />
+                  </RNSVGGroup>
+                </RNSVGSvgView>
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 13,
+                        "fontWeight": "normal",
+                        "lineHeight": 18,
+                      },
+                      {
+                        "color": "#6F6960",
+                      },
+                      undefined,
+                    ]
+                  }
+                  testID="more-state-vargas"
+                >
+                  watch an ad · 
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 13,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 18,
+                        },
+                        {
+                          "color": "#6F6960",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    24
+                  </Text>
+                   h xxxxx
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                [
+                  {
+                    "alignSelf": "flex-start",
+                    "borderRadius": 4,
+                    "paddingHorizontal": 6,
+                    "paddingVertical": 2,
+                  },
+                  {
+                    "backgroundColor": "transparent",
+                    "borderColor": "#CFC7BA",
+                    "borderWidth": 1,
+                  },
+                  undefined,
+                ]
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans-SemiBold",
+                      "fontSize": 12,
+                      "fontWeight": "normal",
+                      "lineHeight": 16,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Unlock x
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityLabel="Ashtakavarga xxx, locked, unlock with an ad for 24 hours or with Pro xxxxxxxxxxxxxxxxx"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                  "minHeight": 44,
+                  "minWidth": 44,
+                },
+                [
+                  {
+                    "alignItems": "center",
+                    "alignSelf": "stretch",
+                    "flexDirection": "row",
+                    "gap": 8,
+                    "justifyContent": "space-between",
+                    "paddingVertical": 8,
+                  },
+                  {
+                    "borderBottomColor": "#E4DDD2",
+                    "borderBottomWidth": 0.5,
+                  },
+                ],
+                false,
+              ]
+            }
+            testID="more-row-ashtakavarga"
+          >
+            <View
+              style={
+                {
+                  "flex": 1,
+                  "gap": 2,
+                  "minWidth": 0,
+                }
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans-SemiBold",
+                      "fontSize": 17,
+                      "fontWeight": "normal",
+                      "lineHeight": 26,
+                    },
+                    {
+                      "color": "#1C1A17",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Ashtakavarga xxx
+              </Text>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                BAV and SAV, house strength xxxxxxxx
+              </Text>
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 4,
+                  }
+                }
+              >
+                <RNSVGSvgView
+                  accessible={false}
+                  align="xMidYMid"
+                  bbHeight={14}
+                  bbWidth={14}
+                  focusable={false}
+                  height={14}
+                  meetOrSlice={0}
+                  minX={0}
+                  minY={0}
+                  style={
+                    [
+                      {
+                        "backgroundColor": "transparent",
+                        "borderWidth": 0,
+                      },
+                      {
+                        "flex": 0,
+                        "height": 14,
+                        "width": 14,
+                      },
+                    ]
+                  }
+                  vbHeight={24}
+                  vbWidth={24}
+                  width={14}
+                >
+                  <RNSVGGroup
+                    fill={
+                      {
+                        "payload": 4278190080,
+                        "type": 0,
+                      }
+                    }
+                  >
+                    <RNSVGRect
+                      fill={null}
+                      height="10"
+                      propList={
+                        [
+                          "fill",
+                          "stroke",
+                          "strokeWidth",
+                          "strokeLinecap",
+                          "strokeLinejoin",
+                        ]
+                      }
+                      rx="2"
+                      stroke={
+                        {
+                          "payload": 4285491552,
+                          "type": 0,
+                        }
+                      }
+                      strokeLinecap={1}
+                      strokeLinejoin={1}
+                      strokeWidth={1.75}
+                      width="14"
+                      x="5"
+                      y="11"
+                    />
+                    <RNSVGPath
+                      d="M8 11V8a4 4 0 0 1 8 0v3"
+                      fill={null}
+                      propList={
+                        [
+                          "fill",
+                          "stroke",
+                          "strokeWidth",
+                          "strokeLinecap",
+                          "strokeLinejoin",
+                        ]
+                      }
+                      stroke={
+                        {
+                          "payload": 4285491552,
+                          "type": 0,
+                        }
+                      }
+                      strokeLinecap={1}
+                      strokeLinejoin={1}
+                      strokeWidth={1.75}
+                    />
+                  </RNSVGGroup>
+                </RNSVGSvgView>
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 13,
+                        "fontWeight": "normal",
+                        "lineHeight": 18,
+                      },
+                      {
+                        "color": "#6F6960",
+                      },
+                      undefined,
+                    ]
+                  }
+                  testID="more-state-ashtakavarga"
+                >
+                  watch an ad · 
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 13,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 18,
+                        },
+                        {
+                          "color": "#6F6960",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    24
+                  </Text>
+                   h xxxxx
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                [
+                  {
+                    "alignSelf": "flex-start",
+                    "borderRadius": 4,
+                    "paddingHorizontal": 6,
+                    "paddingVertical": 2,
+                  },
+                  {
+                    "backgroundColor": "transparent",
+                    "borderColor": "#CFC7BA",
+                    "borderWidth": 1,
+                  },
+                  undefined,
+                ]
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans-SemiBold",
+                      "fontSize": 12,
+                      "fontWeight": "normal",
+                      "lineHeight": 16,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Unlock x
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityLabel="KP system xx, locked, unlock with an ad for 24 hours or with Pro xxxxxxxxxxxxxxxxx"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                  "minHeight": 44,
+                  "minWidth": 44,
+                },
+                [
+                  {
+                    "alignItems": "center",
+                    "alignSelf": "stretch",
+                    "flexDirection": "row",
+                    "gap": 8,
+                    "justifyContent": "space-between",
+                    "paddingVertical": 8,
+                  },
+                  {
+                    "borderBottomColor": "#E4DDD2",
+                    "borderBottomWidth": 0.5,
+                  },
+                ],
+                false,
+              ]
+            }
+            testID="more-row-kp"
+          >
+            <View
+              style={
+                {
+                  "flex": 1,
+                  "gap": 2,
+                  "minWidth": 0,
+                }
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans-SemiBold",
+                      "fontSize": 17,
+                      "fontWeight": "normal",
+                      "lineHeight": 26,
+                    },
+                    {
+                      "color": "#1C1A17",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                KP system xx
+              </Text>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Placidus cusps, sub-lords, significators, ruling planets xxxxxxxxxxxxxxxx
+              </Text>
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 4,
+                  }
+                }
+              >
+                <RNSVGSvgView
+                  accessible={false}
+                  align="xMidYMid"
+                  bbHeight={14}
+                  bbWidth={14}
+                  focusable={false}
+                  height={14}
+                  meetOrSlice={0}
+                  minX={0}
+                  minY={0}
+                  style={
+                    [
+                      {
+                        "backgroundColor": "transparent",
+                        "borderWidth": 0,
+                      },
+                      {
+                        "flex": 0,
+                        "height": 14,
+                        "width": 14,
+                      },
+                    ]
+                  }
+                  vbHeight={24}
+                  vbWidth={24}
+                  width={14}
+                >
+                  <RNSVGGroup
+                    fill={
+                      {
+                        "payload": 4278190080,
+                        "type": 0,
+                      }
+                    }
+                  >
+                    <RNSVGRect
+                      fill={null}
+                      height="10"
+                      propList={
+                        [
+                          "fill",
+                          "stroke",
+                          "strokeWidth",
+                          "strokeLinecap",
+                          "strokeLinejoin",
+                        ]
+                      }
+                      rx="2"
+                      stroke={
+                        {
+                          "payload": 4285491552,
+                          "type": 0,
+                        }
+                      }
+                      strokeLinecap={1}
+                      strokeLinejoin={1}
+                      strokeWidth={1.75}
+                      width="14"
+                      x="5"
+                      y="11"
+                    />
+                    <RNSVGPath
+                      d="M8 11V8a4 4 0 0 1 8 0v3"
+                      fill={null}
+                      propList={
+                        [
+                          "fill",
+                          "stroke",
+                          "strokeWidth",
+                          "strokeLinecap",
+                          "strokeLinejoin",
+                        ]
+                      }
+                      stroke={
+                        {
+                          "payload": 4285491552,
+                          "type": 0,
+                        }
+                      }
+                      strokeLinecap={1}
+                      strokeLinejoin={1}
+                      strokeWidth={1.75}
+                    />
+                  </RNSVGGroup>
+                </RNSVGSvgView>
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 13,
+                        "fontWeight": "normal",
+                        "lineHeight": 18,
+                      },
+                      {
+                        "color": "#6F6960",
+                      },
+                      undefined,
+                    ]
+                  }
+                  testID="more-state-kp"
+                >
+                  watch an ad · 
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 13,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 18,
+                        },
+                        {
+                          "color": "#6F6960",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    24
+                  </Text>
+                   h xxxxx
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                [
+                  {
+                    "alignSelf": "flex-start",
+                    "borderRadius": 4,
+                    "paddingHorizontal": 6,
+                    "paddingVertical": 2,
+                  },
+                  {
+                    "backgroundColor": "transparent",
+                    "borderColor": "#CFC7BA",
+                    "borderWidth": 1,
+                  },
+                  undefined,
+                ]
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans-SemiBold",
+                      "fontSize": 12,
+                      "fontWeight": "normal",
+                      "lineHeight": 16,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Unlock x
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityLabel="Varshaphal xx, locked, unlock with an ad for 24 hours or with Pro xxxxxxxxxxxxxxxxx"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                  "minHeight": 44,
+                  "minWidth": 44,
+                },
+                [
+                  {
+                    "alignItems": "center",
+                    "alignSelf": "stretch",
+                    "flexDirection": "row",
+                    "gap": 8,
+                    "justifyContent": "space-between",
+                    "paddingVertical": 8,
+                  },
+                  false,
+                ],
+                false,
+              ]
+            }
+            testID="more-row-varshaphal"
+          >
+            <View
+              style={
+                {
+                  "flex": 1,
+                  "gap": 2,
+                  "minWidth": 0,
+                }
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans-SemiBold",
+                      "fontSize": 17,
+                      "fontWeight": "normal",
+                      "lineHeight": 26,
+                    },
+                    {
+                      "color": "#1C1A17",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Varshaphal xx
+              </Text>
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "lineHeight": 18,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Your Vedic year from 
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 13,
+                        "fontVariant": [
+                          "tabular-nums",
+                        ],
+                        "fontWeight": "normal",
+                        "lineHeight": 18,
+                      },
+                      {
+                        "color": "#5B554C",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  14
+                </Text>
+                 Mar 
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 13,
+                        "fontVariant": [
+                          "tabular-nums",
+                        ],
+                        "fontWeight": "normal",
+                        "lineHeight": 18,
+                      },
+                      {
+                        "color": "#5B554C",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  2026
+                </Text>
+                 · 
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 13,
+                        "fontVariant": [
+                          "tabular-nums",
+                        ],
+                        "fontWeight": "normal",
+                        "lineHeight": 18,
+                      },
+                      {
+                        "color": "#5B554C",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  11:04
+                </Text>
+                 xxxxxxxxxx
+              </Text>
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 4,
+                  }
+                }
+              >
+                <RNSVGSvgView
+                  accessible={false}
+                  align="xMidYMid"
+                  bbHeight={14}
+                  bbWidth={14}
+                  focusable={false}
+                  height={14}
+                  meetOrSlice={0}
+                  minX={0}
+                  minY={0}
+                  style={
+                    [
+                      {
+                        "backgroundColor": "transparent",
+                        "borderWidth": 0,
+                      },
+                      {
+                        "flex": 0,
+                        "height": 14,
+                        "width": 14,
+                      },
+                    ]
+                  }
+                  vbHeight={24}
+                  vbWidth={24}
+                  width={14}
+                >
+                  <RNSVGGroup
+                    fill={
+                      {
+                        "payload": 4278190080,
+                        "type": 0,
+                      }
+                    }
+                  >
+                    <RNSVGRect
+                      fill={null}
+                      height="10"
+                      propList={
+                        [
+                          "fill",
+                          "stroke",
+                          "strokeWidth",
+                          "strokeLinecap",
+                          "strokeLinejoin",
+                        ]
+                      }
+                      rx="2"
+                      stroke={
+                        {
+                          "payload": 4285491552,
+                          "type": 0,
+                        }
+                      }
+                      strokeLinecap={1}
+                      strokeLinejoin={1}
+                      strokeWidth={1.75}
+                      width="14"
+                      x="5"
+                      y="11"
+                    />
+                    <RNSVGPath
+                      d="M8 11V8a4 4 0 0 1 8 0v3"
+                      fill={null}
+                      propList={
+                        [
+                          "fill",
+                          "stroke",
+                          "strokeWidth",
+                          "strokeLinecap",
+                          "strokeLinejoin",
+                        ]
+                      }
+                      stroke={
+                        {
+                          "payload": 4285491552,
+                          "type": 0,
+                        }
+                      }
+                      strokeLinecap={1}
+                      strokeLinejoin={1}
+                      strokeWidth={1.75}
+                    />
+                  </RNSVGGroup>
+                </RNSVGSvgView>
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "NotoSans",
+                        "fontSize": 13,
+                        "fontWeight": "normal",
+                        "lineHeight": 18,
+                      },
+                      {
+                        "color": "#6F6960",
+                      },
+                      undefined,
+                    ]
+                  }
+                  testID="more-state-varshaphal"
+                >
+                  watch an ad · 
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 13,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 18,
+                        },
+                        {
+                          "color": "#6F6960",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    24
+                  </Text>
+                   h xxxxx
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                [
+                  {
+                    "alignSelf": "flex-start",
+                    "borderRadius": 4,
+                    "paddingHorizontal": 6,
+                    "paddingVertical": 2,
+                  },
+                  {
+                    "backgroundColor": "transparent",
+                    "borderColor": "#CFC7BA",
+                    "borderWidth": 1,
+                  },
+                  undefined,
+                ]
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans-SemiBold",
+                      "fontSize": 12,
+                      "fontWeight": "normal",
+                      "lineHeight": 16,
+                    },
+                    {
+                      "color": "#5B554C",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Unlock x
+              </Text>
+            </View>
+          </View>
         </View>
         <View
           accessibilityRole="summary"

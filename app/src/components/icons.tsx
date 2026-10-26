@@ -80,6 +80,16 @@ export function MoreIcon({ color, size = 24 }: IconProps) {
   );
 }
 
+/** Padlock: the locked state of a chip or row behind a rewarded key / Pro (design.md 10.3 F12; charts.html chip). */
+export function LockIcon({ color, size = 24 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24" accessible={false}>
+      <Rect x="5" y="11" width="14" height="10" rx="2" stroke={color} {...stroke} />
+      <Path d="M8 11V8a4 4 0 0 1 8 0v3" stroke={color} {...stroke} />
+    </Svg>
+  );
+}
+
 export function ChevronIcon({ color, size = 24 }: IconProps) {
   return (
     <Svg width={size} height={size} viewBox="0 0 24 24" accessible={false}>

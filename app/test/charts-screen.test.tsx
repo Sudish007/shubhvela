@@ -1,8 +1,10 @@
 // Charts tab end to end (fixed clock, seeded sample household): profile pill + chip row, hero card (title, Lagna row
 // with Why?, ⋮ menu with style radios + Legend, chart, birth caption), Planets table rows opening the planet sheet with
 // rule ids and Why?, Houses card with 12 Why? rows (N6), Dasha card (strip, Now/Next/Pro rows, Full tree), Sade Sati
-// card, computed footer; Moon-chart mode for an unknown-time profile; chart style change persists; nothing from Phase B/C
-// is rendered; +30 % pseudo-locale snapshot with no truncation and no split nakshatra+pada (N4).
+// card, computed footer; Moon-chart mode for an unknown-time profile; chart style change persists; nothing from Phase C
+// or from unbuilt B05/B07 routes is rendered; +30 % pseudo-locale snapshot with no truncation and no split
+// nakshatra+pada (N4). The B04 additions (vargas sheet, unlock flow, yogas, Varshaphal, More from this chart, Timing
+// and documents) have their own suite in charts-extras.test.tsx.
 import { fireEvent, screen } from '@testing-library/react-native';
 import { router } from 'expo-router';
 import ChartsScreen from '../app/(tabs)/charts';
@@ -93,12 +95,16 @@ describe('<ChartsScreen>', () => {
     expect(screen.getByText(/^None at present\. Saturn is in Meena, the 7th from your Moon\.$/)).toBeTruthy();
     expect(screen.getByTestId('sadesati-next')).toBeTruthy();
     expect(screen.getByText('How this was computed')).toBeTruthy();
-    // Not built = not rendered.
-    expect(screen.queryByText('14 more vargas')).toBeNull();
-    expect(screen.queryByText(/Yogas/)).toBeNull();
-    expect(screen.queryByText(/Varshaphal/)).toBeNull();
+    // B04: the locked "14 more vargas" chip, the Yogas card and "More from this chart" are present (details in
+    // charts-extras.test.tsx); still not built = not rendered: Prashna (C04), "Share chart card" and the Timing and
+    // documents card (its B05/B07 route flags are all false), ads.
+    expect(screen.getByTestId('chip-vargas').props.accessibilityLabel).toBe('14 more vargas, locked');
+    expect(screen.getByTestId('yogas-card')).toBeTruthy();
+    expect(screen.getByTestId('more-card')).toBeTruthy();
+    expect(screen.queryByTestId('varshaphal-card')).toBeNull(); // next solar return is in March, > 30 days away
     expect(screen.queryByText(/Prashna/)).toBeNull();
     expect(screen.queryByText(/Share chart card/)).toBeNull();
+    expect(screen.queryByTestId('timing-card')).toBeNull();
     expect(screen.queryByText('Ad')).toBeNull();
     assertNoTruncation();
     assertPadaGlued();

@@ -1,6 +1,6 @@
 // SQLite schema (plan.md section 2). Each entry of MIGRATIONS is applied once, in order, and PRAGMA user_version
 // records how many have run. Never edit a shipped migration: append a new one.
-export const SCHEMA_VERSION = 1;
+export const SCHEMA_VERSION = 2;
 
 export const USER_TABLES = [
   'settings',
@@ -115,5 +115,10 @@ export const MIGRATIONS: readonly string[] = [
   CREATE INDEX IF NOT EXISTS idx_profiles_self ON profiles (is_self);
   CREATE INDEX IF NOT EXISTS idx_event_series_kind ON event_series (kind, enabled);
   CREATE INDEX IF NOT EXISTS idx_scheduled_series ON scheduled (series_id);
+  `,
+  // v2 (B04): notifications that belong to no event series (dasha changes, the Vedic-year instant) record their kind
+  // so Settings -> Notifications labels them honestly instead of as the daily note (series_id 0).
+  `
+  ALTER TABLE scheduled ADD COLUMN kind TEXT;
   `,
 ];
