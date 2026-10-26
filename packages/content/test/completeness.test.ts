@@ -19,6 +19,9 @@ const PHASE_A_NAMESPACES = [
   'common', 'tabs', 'onboarding', 'consent', 'today', 'band', 'verdict', 'panchang', 'note', 'upcoming', 'charts', 'dignity', 'dasha',
   'sadesati', 'family', 'events', 'vrat', 'calendar', 'reminders', 'settings', 'privacy', 'disclaimer', 'about', 'errors',
 ];
+/** Phase B namespaces (plan.md section 2 i18n; FEAT-B02). */
+const PHASE_B_NAMESPACES = ['pro', 'ads', 'unlock', 'vargas', 'kp', 'ashtakavarga', 'varshaphal', 'muhurat', 'travel', 'naamkaran', 'match', 'share', 'pdf', 'report'];
+const NAMESPACES = [...PHASE_A_NAMESPACES, ...PHASE_B_NAMESPACES];
 
 describe('UI string completeness', () => {
   it('en, hi and bho have identical key sets', () => {
@@ -28,10 +31,56 @@ describe('UI string completeness', () => {
     expect(enKeys.length).toBeGreaterThan(300);
   });
 
-  it('every Phase A namespace is present and no key is outside the declared namespaces', () => {
+  it('every Phase A and Phase B namespace is present and no key is outside the declared namespaces', () => {
     const present = new Set(Object.keys(en).map((k) => k.split('.')[0]));
-    for (const ns of PHASE_A_NAMESPACES) expect(present.has(ns), `namespace ${ns} missing`).toBe(true);
-    for (const ns of present) expect(PHASE_A_NAMESPACES, `unexpected namespace ${ns}`).toContain(ns);
+    for (const ns of NAMESPACES) expect(present.has(ns), `namespace ${ns} missing`).toBe(true);
+    for (const ns of present) expect(NAMESPACES, `unexpected namespace ${ns}`).toContain(ns);
+  });
+
+  it('Phase B binding copy (spec section 9 matrix verbatim, M2 "included in Pro", N5 "All 14 activities", design 5 / 10.6 strings)', () => {
+    const rows: [string, string, string][] = [
+      ['Kundli D1 + D9, planet table, dignities, yogas, current + next dasha', '✓', '✓'],
+      ['Today bar, daily note, panchang sheet, widgets, TTS', '✓', '✓'],
+      ['Profiles', '2', 'unlimited'],
+      ['Tithi birthday / shraddha / vrat reminders', '5', 'unlimited'],
+      ['Muhurat finder', 'today + 7 days', 'any range + .ics'],
+      ['Dasha', 'maha + antar', 'pratyantar + alerts'],
+      ['Matching', 'scores + summary', 'full explanations + PDF'],
+      ['D2–D60 (except D9), KP, Ashtakavarga, Prashna, Varshaphal', '24-h rewarded unlock', '✓'],
+      ['Lessons, glossary, journal', '✓', '✓'],
+      ['Ask my chart (on-device)', '—', '✓'],
+      ['Janam Patri PDF', '₹99', 'included'],
+      ['Ads', 'native + banner + capped interstitial + rewarded', 'none'],
+    ];
+    rows.forEach(([label, free, pro], i) => {
+      expect(en[`pro.row.${i + 1}.label`]).toBe(label);
+      expect(en[`pro.row.${i + 1}.free`]).toBe(free);
+      expect(en[`pro.row.${i + 1}.pro`]).toBe(pro);
+    });
+    expect(en['pro.includedInPro']).toBe('included in Pro');
+    expect(en['pdf.includedInPro']).toBe('included in Pro');
+    expect(en['report.includedInPro']).toBe('included in Pro');
+    expect(en['pro.recurring']).toBe('Recurring. Cancel in Play → Subscriptions.');
+    expect(en['pro.graceNotice']).toBe('Payment issue — update your card in Play');
+    expect(en['muhurat.allActivities_chip']).toBe('All 14 activities');
+    expect(en['share.codeContains']).toBe('This code contains birth date, time and place but no name.');
+    expect(en['ads.label']).toBe('Ad');
+    expect(en['ads.proRemoves']).toBe('Pro removes every ad');
+    expect(en['ads.removeAds']).toBe('Remove ads');
+    expect(en['unlock.row']).toBe('Unlock {feature} · watch an ad · 24 h');
+    expect(en['unlock.till']).toBe('unlocked till {time} tomorrow');
+    expect(en['unlock.watch']).toBe('Watch an ad · unlock for 24 h');
+    expect(en['muhurat.rulesMet']).toBe('{met}/{of} rules met');
+    expect(en['muhurat.partialTitle']).toBe('Best partial matches');
+    expect(en['match.gunaHeadline']).toBe('{total} of 36 guna');
+    expect(en['varshaphal.yearFrom']).toBe('Your Vedic year from {date} · {time}');
+    expect(en['pro.storePriceMayDiffer']).toBe('store price may differ');
+    // Pro screen never carries testimonials, counts or "most popular" badges (design 5): no such key exists.
+    expect(Object.keys(en).filter((k) => /popular|testimonial|usersCount|liveCount/i.test(k))).toEqual([]);
+    // Bhojpuri Pro copy addresses the user as रउआ/राउर; Hindi as आप.
+    expect(bho['pro.pricesNote']).toMatch(/राउर/);
+    expect(bho['unlock.onlyOnTap']).toMatch(/रउआ/);
+    expect(hi['unlock.onlyOnTap']).toMatch(/आप/);
   });
 
   it('no string is empty or whitespace in any language', () => {

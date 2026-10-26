@@ -11,6 +11,7 @@ const SCHEMA_BY_DOMAIN: Record<string, string> = {
   festivals: 'festival-text.schema.json',
   lessons: 'lesson.schema.json',
   glossary: 'glossary.schema.json',
+  'naamkaran-names': 'naamkaran-names.schema.json',
 };
 
 describe('schemas', () => {

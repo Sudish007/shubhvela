@@ -1,7 +1,7 @@
 // Static registry of every bundled JSON file. Add a line here when a corpus file lands (English masters in
 // A06-A08 / B02 / C02; hi drafts after the owner dispatches the corpus-translate Action — no bho corpus files ever,
 // owner decision 2026-10-25; load.ts resolves bho -> hi -> en). Nothing else in the package knows paths.
-import type { ContentLanguage, FestivalText, GlossaryEntry, Snippet, UiStrings } from './types';
+import type { ContentLanguage, FestivalText, GlossaryEntry, NaamkaranNames, Snippet, UiStrings } from './types';
 import en from '../ui/en.json';
 import hi from '../ui/hi.json';
 import bho from '../ui/bho.json';
@@ -17,6 +17,11 @@ import dailyEn from '../corpus/daily/en.json';
 import vratsEn from '../corpus/vrats/en.json';
 import festivalsEn from '../corpus/festivals/en.json';
 import glossaryEn from '../corpus/glossary/en.json';
+import yogasEn from '../corpus/yogas/en.json';
+import kootaEn from '../corpus/koota/en.json';
+import mangalEn from '../corpus/mangal/en.json';
+import muhuratActivitiesEn from '../corpus/muhurat-activities/en.json';
+import naamkaranNamesEn from '../corpus/naamkaran-names/en.json';
 
 export const UI: Record<ContentLanguage, UiStrings> = {
   en: en as UiStrings,
@@ -43,6 +48,20 @@ export const CORPUS: Record<string, Partial<Record<ContentLanguage, Snippet[]>>>
   // A08: vrats = one snippet per engine VratFamily with the engine ruleId as id (vrat-ekadashi ... vrat-satyanarayan);
   // `rule` is the timing sentence (same as corpus/rules), `text` the what-to-do paragraph.
   vrats: { en: vratsEn as Snippet[] },
+  // B02: yogas = one snippet per engine yoga rule id (`yoga-<id>`, the 7 bhanga ids, plus `yoga-kala-amrita` for the
+  // reversed Kala Sarpa direction and `yoga-none` for the empty card); koota = `koota-<id>-<level 1|2|3>` for the 8
+  // kootas + the 4 KOOTA_EXCEPTION_IDS (level 3); mangal = `mangal-dosha`, `mangal-dosha-none` and the 6
+  // `mangal-cancel-*` ids; muhurat-activities = the 14 `muhurat-<activity>` tables, the 10 `muhurat-rule-<rule>` chips
+  // and `muhurat-ranking` (N18). hi/bho drafts arrive from the corpus-translate Action (batch B).
+  yogas: { en: yogasEn as Snippet[] },
+  koota: { en: kootaEn as Snippet[] },
+  mangal: { en: mangalEn as Snippet[] },
+  'muhurat-activities': { en: muhuratActivitiesEn as Snippet[] },
+};
+
+/** Naamkaran name lists (schema/naamkaran-names.schema.json): 108 entries `nakshatra-<n>-<pada>`; English only (names are not translated). */
+export const NAAMKARAN_NAMES: Partial<Record<ContentLanguage, NaamkaranNames[]>> = {
+  en: naamkaranNamesEn as NaamkaranNames[],
 };
 
 /** Festival texts (schema/festival-text.schema.json): one per slug of packages/engine/data/festival-rules.json, id festival-<slug>. */

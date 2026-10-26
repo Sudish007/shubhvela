@@ -27,7 +27,7 @@ function corpusTexts(lang: Lang): { file: string; id: string; text: string }[] {
 }
 
 /** Keys whose Latin content is the product's own name or a code (not translatable text). */
-const LATIN_OK_KEYS = new Set(['settings.lang.en', 'charts.retroMark', 'charts.degree', 'common.range', 'common.pro', 'dasha.pro_tag']);
+const LATIN_OK_KEYS = new Set(['settings.lang.en', 'charts.retroMark', 'charts.degree', 'common.range', 'common.pro', 'dasha.pro_tag', 'share.footerUrl']);
 
 describe('register: Hindi and Bhojpuri UI strings are Devanagari-dominant', () => {
   for (const lang of ['hi', 'bho'] as const) {

@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://sudish007.github.io/shubhvela/schema/naamkaran-names.schema.json",
+  "title": "Naamkaran name lists",
+  "description": "corpus/naamkaran-names/<lang>.json: one entry per nakshatra pada (108), id nakshatra-<1..27>-<1..4>, the pada's starting syllable from packages/engine/data/naamkaran-syllables.json and 3-5 names that begin with it, each in Devanagari and Latin. No meanings are claimed (spec F28). `note` names the almanac substitution used when the syllable has no common names. Names are not translated; the file exists in English only.",
+  "type": "array",
+  "minItems": 108,
+  "items": {
+    "type": "object",
+    "required": ["id", "nakshatra", "pada", "syllable", "names", "review"],
+    "additionalProperties": false,
+    "properties": {
+      "id": { "type": "string", "pattern": "^nakshatra-[0-9]+-[1-4]$" },
+      "nakshatra": { "type": "integer", "minimum": 1, "maximum": 27 },
+      "pada": { "type": "integer", "minimum": 1, "maximum": 4 },
+      "syllable": {
+        "type": "object",
+        "required": ["dev", "lat"],
+        "additionalProperties": false,
+        "properties": { "dev": { "type": "string", "minLength": 1 }, "lat": { "type": "string", "minLength": 1 } }
+      },
+      "names": {
+        "type": "array",
+        "minItems": 3,
+        "items": {
+          "type": "object",
+          "required": ["dev", "lat"],
+          "additionalProperties": false,
+          "properties": { "dev": { "type": "string", "minLength": 2 }, "lat": { "type": "string", "minLength": 2 } }
+        }
+      },
+      "note": { "type": "string", "minLength": 8 },
+      "review": { "type": "string", "enum": ["draft", "reviewed"] }
+    }
+  }
+}

@@ -6,8 +6,8 @@
 // into Bhojpuri. Every resolver walks FALLBACK_CHAIN[lang] and returns the FIRST language that has the id:
 // bho -> hi -> en, hi -> en, en. The result records which language was actually used (`lang`) so the UI keeps its
 // chrome in the requested language and shows the snippet in the resolved one; no empty strings, no badge.
-import type { ContentLanguage, CorpusLookup, FestivalText, GlossaryEntry, Snippet, UiStrings } from './types';
-import { CORPUS, FESTIVALS, GLOSSARY, UI } from './registry';
+import type { ContentLanguage, CorpusLookup, FestivalText, GlossaryEntry, NaamkaranNames, Snippet, UiStrings } from './types';
+import { CORPUS, FESTIVALS, GLOSSARY, NAAMKARAN_NAMES, UI } from './registry';
 
 /** Languages tried, in order, when `lang` has no file or no entry for an id. */
 export const FALLBACK_CHAIN: Record<ContentLanguage, readonly ContentLanguage[]> = {
@@ -105,4 +105,15 @@ export function loadGlossary(lang: ContentLanguage): { items: GlossaryEntry[]; l
 /** One glossary entry by id, walking the fallback chain per entry. */
 export function glossaryTerm(id: string, lang: ContentLanguage): Resolved<GlossaryEntry> | null {
   return resolve(GLOSSARY, lang, (rows) => rows.find((g) => g.id === id));
+}
+
+/** All 108 naamkaran name lists (F28). Names are Devanagari + Latin in every language, so the file is English-only and `fallback` is true for hi/bho. */
+export function loadNaamkaranNames(lang: ContentLanguage): { items: NaamkaranNames[]; lang: ContentLanguage; fallback: boolean } {
+  const r = resolveAll(NAAMKARAN_NAMES, lang);
+  return { items: r.item, lang: r.lang, fallback: r.fallback };
+}
+
+/** Name list for one nakshatra (1-27) and pada (1-4); null when out of range. */
+export function naamkaranNames(nakshatra: number, pada: number, lang: ContentLanguage): Resolved<NaamkaranNames> | null {
+  return resolve(NAAMKARAN_NAMES, lang, (rows) => rows.find((n) => n.nakshatra === nakshatra && n.pada === pada));
 }

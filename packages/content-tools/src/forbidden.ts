@@ -34,7 +34,7 @@ export const LATIN_ALLOWLIST = [
   'Shubhvela', 'Pro', 'AdMob', 'Google', 'Play', 'Android', 'OpenStreetMap', 'Nominatim', 'GeoNames', 'KP', 'TTS', 'PDF', 'QR',
   'DPDP', 'HH:MM', 'MIT', 'ISC', 'OFL', 'CC', 'BY', 'CC0', 'IANA', 'tz', 'tz-lookup', 'astronomy-engine', 'jyotish', 'Drik', 'Panchang',
   'Tiro', 'Devanagari', 'Hindi', 'Noto', 'Sans', 'English', 'Asia/Kolkata', 'Lahiri', 'R', 'D1', 'D9', 'D2', 'D3', 'D4', 'D7', 'D10', 'D12',
-  'D16', 'D20', 'D24', 'D27', 'D30', 'D40', 'D45', 'D60', 'BAV', 'SAV', 'AI', 'Wi-Fi', 'Placidus', 'AppLovin', 'Gemma',
+  'D16', 'D20', 'D24', 'D27', 'D30', 'D40', 'D45', 'D60', 'BAV', 'SAV', 'AI', 'Wi-Fi', 'Placidus', 'AppLovin', 'Gemma', 'ics',
 ];
 // Longest first so "tz-lookup" is removed before "tz", "QR" before "R".
 const ALLOWLIST_SORTED = [...LATIN_ALLOWLIST].sort((a, b) => b.length - a.length);

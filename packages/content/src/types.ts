@@ -41,6 +41,24 @@ export interface FestivalText {
   review: ReviewState;
 }
 
+/** One name in Devanagari and Latin (schema/naamkaran-names.schema.json). */
+export interface NameEntry {
+  dev: string;
+  lat: string;
+}
+
+/** Name list for one nakshatra pada (F28): the starting syllable and 3-5 names, no meanings claimed. */
+export interface NaamkaranNames {
+  id: string;
+  nakshatra: number;
+  pada: number;
+  syllable: NameEntry;
+  names: NameEntry[];
+  /** Almanac substitution used when the syllable has no common names. */
+  note?: string;
+  review: ReviewState;
+}
+
 export interface Lesson {
   id: string;
   n: number;
