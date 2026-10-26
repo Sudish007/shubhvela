@@ -14,6 +14,7 @@ import { getSetting, setSetting } from '../src/db/settings';
 import { chartFor, clearChartCache, dashaFor } from '../src/engine-bridge/charts';
 import { noBreak } from '../src/components';
 import { fmtDate } from '../src/today/format';
+import { PixelRatio } from 'react-native';
 import { installTestDb } from './helpers/nodeDb';
 import { allTexts, renderWithProviders, textOf } from './helpers/render';
 
@@ -38,6 +39,9 @@ describe('<ChartsScreen>', () => {
   let close: () => void;
   let priyaId: number;
   beforeEach(() => {
+    // jest-expo mocks PixelRatio.getFontScale() as 2; the table switches to its large-text layout above 1.15, so pin the
+    // regular 1.0x layout here (the large layout has its own test in charts-components.test.tsx).
+    jest.spyOn(PixelRatio, 'getFontScale').mockReturnValue(1);
     ({ close } = installTestDb());
     clearChartCache();
     priyaId = insertProfile(SAMPLE_PRIYA, new Date(NOW));

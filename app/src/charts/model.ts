@@ -111,6 +111,10 @@ export function signName(lang: Lang, sign: number): string {
   return locale.signNames[lang][((sign - 1) % 12 + 12) % 12];
 }
 
+export function nakshatraShortName(lang: Lang, n: number): string {
+  return locale.nakshatraShort[lang][((n - 1) % 27 + 27) % 27];
+}
+
 export function nakshatraName(lang: Lang, n: number): string {
   return locale.nakshatraNames[lang][((n - 1) % 27 + 27) % 27];
 }
@@ -120,9 +124,18 @@ export function degreeText(p: { degree: number; minute: number }, t: TFn): strin
   return t('charts.degree', { deg: p.degree, min: locale.pad2(p.minute) });
 }
 
-/** "Revati 4" as one unbreakable run (N4). */
+/**
+ * Planet-table nakshatra cell: the SHORT name of design 4 / charts.html ("U. Bhadrapada 2") with the pada glued to the
+ * last word only (N4). Only the space next to the pada becomes U+00A0, so "U." may wrap away from "Bhadrapada 2";
+ * the full name in a forced single run broke mid-word in the table column on the A13 emulator shots
+ * ("Uttara Bhadr / apada 2"; fixed by the Phase A fixer together with the 39 % column).
+ */
 export function padaText(p: { nakshatra: number; pada: number }, lang: Lang, t: TFn): string {
-  return noBreak(t('charts.pada', { nakshatra: nakshatraName(lang, p.nakshatra), pada: p.pada }));
+  const pada = String(p.pada);
+  const s = t('charts.pada', { nakshatra: nakshatraShortName(lang, p.nakshatra), pada });
+  const i = s.lastIndexOf(pada);
+  if (i < 0) return noBreak(s);
+  return s.slice(0, i).replace(/\s+$/, '\u00A0') + pada + s.slice(i + pada.length).replace(/^\s+/, '\u00A0');
 }
 
 /** The dignity/mark tags of a planet in display order; `approx` is the F2 marker (design 4 table). */

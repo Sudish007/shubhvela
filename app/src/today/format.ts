@@ -83,6 +83,11 @@ export function nakshatraName(lang: Lang, n1: number): string {
   return locale.nakshatraNames[lang][((n1 - 1) % 27 + 27) % 27];
 }
 
+/** Short form for narrow table columns ("U. Bhadrapada", design 4 / charts.html). */
+export function nakshatraShortName(lang: Lang, n1: number): string {
+  return locale.nakshatraShort[lang][((n1 - 1) % 27 + 27) % 27];
+}
+
 export function weekdayName(lang: Lang, vara: number): string {
   return locale.weekdayNames[lang][vara];
 }

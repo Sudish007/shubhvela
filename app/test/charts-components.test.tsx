@@ -6,12 +6,12 @@ import { fireEvent, screen } from '@testing-library/react-native';
 import { computeChart, layout, pointInPolygon, type ChartData, type ChartPlanet } from '@shubhvela/engine';
 import { Chart, resolveLongPress, resolvePress } from '../src/charts/Chart';
 import { DashaCard, stripA11y } from '../src/charts/DashaCard';
-import { ANTAR_LABEL_MIN_DP, antarCells, chipsFor, chartForChip, durationText, fmtBirthDate, heroTitle, nextAntar, shortPlace, tagsFor } from '../src/charts/model';
-import { COLUMN_WIDTHS, PlanetTable, tagLabels } from '../src/charts/PlanetTable';
+import { ANTAR_LABEL_MIN_DP, antarCells, chipsFor, chartForChip, durationText, fmtBirthDate, heroTitle, nextAntar, padaText, shortPlace, tagsFor } from '../src/charts/model';
+import { COLUMN_WIDTHS, PlanetTable, padaCellText, tagLabels } from '../src/charts/PlanetTable';
 import { episodeToShow, sadeSatiRuleId } from '../src/charts/SadeSatiCard';
 import { dashaFor, sadeSatiFor } from '../src/engine-bridge/charts';
 import { makeT } from '../src/i18n';
-import { renderWithProviders } from './helpers/render';
+import { renderWithProviders, textOf } from './helpers/render';
 
 const PRIYA = computeChart({ date: '1998-03-14', time: '06:42', tz: 'Asia/Kolkata', lat: 26.85, lon: 80.95 }, { ayanamsa: 'lahiri', node: 'mean' });
 const UNKNOWN = computeChart({ date: '1998-03-14', timeUnknown: true, tz: 'Asia/Kolkata', lat: 26.85, lon: 80.95 });
@@ -118,8 +118,31 @@ describe('PlanetTable', () => {
     expect(onPress).toHaveBeenCalledWith({ kind: 'lagna' });
     // Fixed widths on every cell of the header.
     const row = screen.getByTestId('planet-row-Ma');
-    const widths = row.children.map((c) => (c as unknown as { props: { style: { width: string } } }).props.style.width);
-    expect(widths).toEqual(['31%', '36%', '33%']);
+    const cells = (row.children[0] as unknown as { children: { props: { style: { width: string } } }[] }).children;
+    const widths = cells.map((c) => c.props.style.width);
+    expect(widths).toEqual(['31%', '30%', '39%']);
+  });
+
+  it('large text (font scale > 1.15): tags move to a full-width line and the pada may wrap (a-fix)', async () => {
+    expect(padaCellText('U. Bhadrapada\u00A02', false)).toBe('U. Bhadrapada\u00A02');
+    expect(padaCellText('U. Bhadrapada\u00A02', true)).toBe('U. Bhadrapada 2');
+    await renderWithProviders(<PlanetTable chart={PRIYA} approxMinutes={30} onPressRow={() => {}} fontScale={1.3} testID="pt" />);
+    const row = screen.getByTestId('planet-row-Ma');
+    // children: the three-cell line, then the tags line (not inside the 31 % cell).
+    expect(row.children.length).toBe(2);
+    expect((row.children[0] as unknown as { children: unknown[] }).children.length).toBe(3);
+    expect(screen.getByTestId('planet-tags-Ma')).toBe(row.children[1]);
+    expect(textOf(screen.getByTestId('planet-row-lagna'))).toContain('U. Bhadrapada 2');
+  });
+
+  it('short nakshatra name with the pada glued to its last word only (N4, design 4 table; a-fix)', () => {
+    // Priya's Moon: Uttara Phalguni 4; Lagna: Uttara Bhadrapada 2 (the A13 shots broke the forced full-name run mid-word);
+    // the table uses the design's short names (charts.html: 'P. Bhadrapada 4').
+    const moon = PRIYA.planets.find((p) => p.id === 'Mo')!;
+    expect(padaText(moon, 'en', t)).toBe('U. Phalguni\u00A04');
+    expect(padaText(PRIYA.lagna!, 'en', t)).toBe('U. Bhadrapada\u00A02');
+    expect(padaText({ nakshatra: 27, pada: 1 }, 'en', t)).toBe('Revati\u00A01');
+    expect(padaText(moon, 'hi', makeT('hi'))).toBe('उ. फाल्गुनी\u00A04');
   });
 
   it('Moon-chart mode has no Lagna row', async () => {

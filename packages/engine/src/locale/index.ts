@@ -93,9 +93,24 @@ export const nakshatraNames: Record<Lang, readonly string[]> = {
 /** Short forms for narrow table columns (design 4: "P. Bhadrapada 4"). */
 export const nakshatraShort: Record<Lang, readonly string[]> = {
   en: nakshatraNames.en.map((n) => n.replace(/^Purva /, 'P. ').replace(/^Uttara /, 'U. ')),
-  hi: nakshatraNames.hi.map((n) => n.replace(/^पूर्वा /, 'पू. ').replace(/^उत्तरा /, 'उ. ').replace(/^पूर्व/, 'पू. ').replace(/^उत्तर/, 'उ. ')),
-  bho: nakshatraNames.bho.map((n) => n.replace(/^पूर्वा /, 'पू. ').replace(/^उत्तरा /, 'उ. ').replace(/^पूर्व/, 'पू. ').replace(/^उत्तर/, 'उ. ')),
+  hi: nakshatraNames.hi.map(shortDevanagari),
+  bho: nakshatraNames.bho.map(shortDevanagari),
 };
+
+/**
+ * पूर्वाषाढ़ा / उत्तराषाढ़ा are sandhi forms (पूर्व + आषाढ़ा): the vowel sign ा after व belongs to the second word, so the
+ * abbreviation must restore the independent आ ("पू. आषाढ़ा"), not leave a bare sign ("पू. ाषाढ़ा" - the A02 output, fixed
+ * by the Phase A fixer). पूर्वभाद्रपदा / उत्तरभाद्रपदा are plain compounds -> "पू. भाद्रपदा".
+ */
+function shortDevanagari(n: string): string {
+  return n
+    .replace(/^पूर्वा /, 'पू. ')
+    .replace(/^उत्तरा /, 'उ. ')
+    .replace(/^पूर्वा(?=ष)/, 'पू. आ')
+    .replace(/^उत्तरा(?=ष)/, 'उ. आ')
+    .replace(/^पूर्व/, 'पू. ')
+    .replace(/^उत्तर/, 'उ. ');
+}
 
 // ---- Planets ----
 export const planetNames: Record<Lang, Record<PlanetId, string>> = {

@@ -1544,7 +1544,7 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     font={
                       {
                         "fontFamily": "NotoSans",
-                        "fontSize": 25.945945945945944,
+                        "fontSize": 12.972972972972972,
                         "textAnchor": "middle",
                       }
                     }
@@ -1562,7 +1562,7 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     }
                     y={
                       [
-                        147.08108108108107,
+                        142.54054054054055,
                       ]
                     }
                   >
@@ -1595,7 +1595,7 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     font={
                       {
                         "fontFamily": "NotoSans",
-                        "fontSize": 25.945945945945944,
+                        "fontSize": 12.972972972972972,
                         "textAnchor": "middle",
                       }
                     }
@@ -1613,7 +1613,7 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     }
                     y={
                       [
-                        65.58108108108108,
+                        61.04054054054054,
                       ]
                     }
                   >
@@ -1646,7 +1646,7 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     font={
                       {
                         "fontFamily": "NotoSans",
-                        "fontSize": 25.945945945945944,
+                        "fontSize": 12.972972972972972,
                         "textAnchor": "middle",
                       }
                     }
@@ -1664,7 +1664,7 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     }
                     y={
                       [
-                        89.58108108108108,
+                        85.04054054054053,
                       ]
                     }
                   >
@@ -1697,7 +1697,7 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     font={
                       {
                         "fontFamily": "NotoSans",
-                        "fontSize": 25.945945945945944,
+                        "fontSize": 12.972972972972972,
                         "textAnchor": "middle",
                       }
                     }
@@ -1715,7 +1715,7 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     }
                     y={
                       [
-                        169.08108108108107,
+                        164.54054054054055,
                       ]
                     }
                   >
@@ -1748,7 +1748,7 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     font={
                       {
                         "fontFamily": "NotoSans",
-                        "fontSize": 25.945945945945944,
+                        "fontSize": 12.972972972972972,
                         "textAnchor": "middle",
                       }
                     }
@@ -1766,7 +1766,7 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     }
                     y={
                       [
-                        248.58108108108107,
+                        244.04054054054055,
                       ]
                     }
                   >
@@ -1799,7 +1799,7 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     font={
                       {
                         "fontFamily": "NotoSans",
-                        "fontSize": 25.945945945945944,
+                        "fontSize": 12.972972972972972,
                         "textAnchor": "middle",
                       }
                     }
@@ -1817,7 +1817,7 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     }
                     y={
                       [
-                        272.5810810810811,
+                        268.0405405405405,
                       ]
                     }
                   >
@@ -1850,7 +1850,7 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     font={
                       {
                         "fontFamily": "NotoSans",
-                        "fontSize": 25.945945945945944,
+                        "fontSize": 12.972972972972972,
                         "textAnchor": "middle",
                       }
                     }
@@ -1868,7 +1868,7 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     }
                     y={
                       [
-                        191.08108108108107,
+                        186.54054054054055,
                       ]
                     }
                   >
@@ -1901,7 +1901,7 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     font={
                       {
                         "fontFamily": "NotoSans",
-                        "fontSize": 25.945945945945944,
+                        "fontSize": 12.972972972972972,
                         "textAnchor": "middle",
                       }
                     }
@@ -1919,7 +1919,7 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     }
                     y={
                       [
-                        272.5810810810811,
+                        268.0405405405405,
                       ]
                     }
                   >
@@ -1952,7 +1952,7 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     font={
                       {
                         "fontFamily": "NotoSans",
-                        "fontSize": 25.945945945945944,
+                        "fontSize": 12.972972972972972,
                         "textAnchor": "middle",
                       }
                     }
@@ -1970,7 +1970,7 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     }
                     y={
                       [
-                        248.58108108108107,
+                        244.04054054054055,
                       ]
                     }
                   >
@@ -2003,7 +2003,7 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     font={
                       {
                         "fontFamily": "NotoSans",
-                        "fontSize": 25.945945945945944,
+                        "fontSize": 12.972972972972972,
                         "textAnchor": "middle",
                       }
                     }
@@ -2021,7 +2021,7 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     }
                     y={
                       [
-                        169.08108108108107,
+                        164.54054054054055,
                       ]
                     }
                   >
@@ -2054,7 +2054,7 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     font={
                       {
                         "fontFamily": "NotoSans",
-                        "fontSize": 25.945945945945944,
+                        "fontSize": 12.972972972972972,
                         "textAnchor": "middle",
                       }
                     }
@@ -2072,7 +2072,7 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     }
                     y={
                       [
-                        89.58108108108108,
+                        85.04054054054053,
                       ]
                     }
                   >
@@ -2105,7 +2105,7 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     font={
                       {
                         "fontFamily": "NotoSans",
-                        "fontSize": 25.945945945945944,
+                        "fontSize": 12.972972972972972,
                         "textAnchor": "middle",
                       }
                     }
@@ -2123,7 +2123,7 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     }
                     y={
                       [
-                        65.58108108108108,
+                        61.04054054054054,
                       ]
                     }
                   >
@@ -2156,7 +2156,7 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     font={
                       {
                         "fontFamily": "NotoSans-SemiBold",
-                        "fontSize": 17.513513513513512,
+                        "fontSize": 14.594594594594595,
                         "textAnchor": "middle",
                       }
                     }
@@ -2169,12 +2169,12 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     testID="chart-glyph-Ma"
                     x={
                       [
-                        144.23783783783784,
+                        146.86486486486487,
                       ]
                     }
                     y={
                       [
-                        74.95405405405405,
+                        75.87837837837839,
                       ]
                     }
                   >
@@ -2207,7 +2207,7 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     font={
                       {
                         "fontFamily": "NotoSans-SemiBold",
-                        "fontSize": 17.513513513513512,
+                        "fontSize": 14.594594594594595,
                         "textAnchor": "middle",
                       }
                     }
@@ -2220,12 +2220,12 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     testID="chart-glyph-Me"
                     x={
                       [
-                        175.76216216216216,
+                        173.13513513513513,
                       ]
                     }
                     y={
                       [
-                        74.95405405405405,
+                        75.87837837837839,
                       ]
                     }
                   >
@@ -2258,7 +2258,7 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     font={
                       {
                         "fontFamily": "NotoSans-SemiBold",
-                        "fontSize": 17.513513513513512,
+                        "fontSize": 14.594594594594595,
                         "textAnchor": "middle",
                       }
                     }
@@ -2276,7 +2276,7 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     }
                     y={
                       [
-                        98.30540540540541,
+                        95.33783783783784,
                       ]
                     }
                   >
@@ -2309,7 +2309,7 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     font={
                       {
                         "fontFamily": "NotoSans-SemiBold",
-                        "fontSize": 17.513513513513512,
+                        "fontSize": 14.594594594594595,
                         "textAnchor": "middle",
                       }
                     }
@@ -2327,7 +2327,7 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     }
                     y={
                       [
-                        298.6297297297297,
+                        297.6081081081081,
                       ]
                     }
                   >
@@ -2360,7 +2360,7 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     font={
                       {
                         "fontFamily": "NotoSans-SemiBold",
-                        "fontSize": 17.513513513513512,
+                        "fontSize": 14.594594594594595,
                         "textAnchor": "middle",
                       }
                     }
@@ -2378,7 +2378,7 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     }
                     y={
                       [
-                        245.62972972972972,
+                        244.6081081081081,
                       ]
                     }
                   >
@@ -2411,7 +2411,7 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     font={
                       {
                         "fontFamily": "NotoSans-SemiBold",
-                        "fontSize": 17.513513513513512,
+                        "fontSize": 14.594594594594595,
                         "textAnchor": "middle",
                       }
                     }
@@ -2429,7 +2429,7 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     }
                     y={
                       [
-                        86.62972972972973,
+                        85.60810810810811,
                       ]
                     }
                   >
@@ -2462,7 +2462,7 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     font={
                       {
                         "fontFamily": "NotoSans-SemiBold",
-                        "fontSize": 15.762162162162161,
+                        "fontSize": 14.594594594594595,
                         "textAnchor": "middle",
                       }
                     }
@@ -2475,12 +2475,12 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     testID="chart-glyph-Su"
                     x={
                       [
-                        211.1281081081081,
+                        226.36486486486487,
                       ]
                     }
                     y={
                       [
-                        33.016756756756756,
+                        22.87837837837838,
                       ]
                     }
                   >
@@ -2513,7 +2513,7 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     font={
                       {
                         "fontFamily": "NotoSans-SemiBold",
-                        "fontSize": 15.762162162162161,
+                        "fontSize": 14.594594594594595,
                         "textAnchor": "middle",
                       }
                     }
@@ -2526,12 +2526,12 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     testID="chart-glyph-Ju"
                     x={
                       [
-                        239.5,
+                        252.63513513513513,
                       ]
                     }
                     y={
                       [
-                        33.016756756756756,
+                        22.87837837837838,
                       ]
                     }
                   >
@@ -2564,7 +2564,7 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     font={
                       {
                         "fontFamily": "NotoSans-SemiBold",
-                        "fontSize": 15.762162162162161,
+                        "fontSize": 14.594594594594595,
                         "textAnchor": "middle",
                       }
                     }
@@ -2577,12 +2577,12 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                     testID="chart-glyph-Ke"
                     x={
                       [
-                        267.8718918918919,
+                        239.5,
                       ]
                     }
                     y={
                       [
-                        33.016756756756756,
+                        42.33783783783783,
                       ]
                     }
                   >
@@ -2855,9 +2855,9 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
               style={
                 [
                   {
-                    "alignItems": "flex-start",
+                    "alignItems": "stretch",
                     "alignSelf": "stretch",
-                    "flexDirection": "row",
+                    "flexDirection": "column",
                     "justifyContent": "flex-start",
                     "paddingVertical": 8,
                   },
@@ -2871,83 +2871,94 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
               <View
                 style={
                   {
-                    "paddingRight": 8,
-                    "width": "31%",
+                    "alignItems": "flex-start",
+                    "alignSelf": "stretch",
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
                   }
                 }
               >
-                <Text
+                <View
                   style={
-                    [
-                      {
-                        "fontFamily": "NotoSans-SemiBold",
-                        "fontSize": 12,
-                        "fontWeight": "normal",
-                        "lineHeight": 16,
-                      },
-                      {
-                        "color": "#6F6960",
-                      },
-                      undefined,
-                    ]
+                    {
+                      "paddingRight": 8,
+                      "width": "31%",
+                    }
                   }
                 >
-                  Planet x
-                </Text>
-              </View>
-              <View
-                style={
-                  {
-                    "paddingRight": 8,
-                    "width": "36%",
-                  }
-                }
-              >
-                <Text
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans-SemiBold",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "lineHeight": 16,
+                        },
+                        {
+                          "color": "#6F6960",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Planet x
+                  </Text>
+                </View>
+                <View
                   style={
-                    [
-                      {
-                        "fontFamily": "NotoSans-SemiBold",
-                        "fontSize": 12,
-                        "fontWeight": "normal",
-                        "lineHeight": 16,
-                      },
-                      {
-                        "color": "#6F6960",
-                      },
-                      undefined,
-                    ]
+                    {
+                      "paddingRight": 8,
+                      "width": "30%",
+                    }
                   }
                 >
-                  Sign · degree xxx
-                </Text>
-              </View>
-              <View
-                style={
-                  {
-                    "paddingRight": 8,
-                    "width": "33%",
-                  }
-                }
-              >
-                <Text
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans-SemiBold",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "lineHeight": 16,
+                        },
+                        {
+                          "color": "#6F6960",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Sign · degree xxx
+                  </Text>
+                </View>
+                <View
                   style={
-                    [
-                      {
-                        "fontFamily": "NotoSans-SemiBold",
-                        "fontSize": 12,
-                        "fontWeight": "normal",
-                        "lineHeight": 16,
-                      },
-                      {
-                        "color": "#6F6960",
-                      },
-                      undefined,
-                    ]
+                    {
+                      "paddingRight": 8,
+                      "width": "39%",
+                    }
                   }
                 >
-                  Nakshatra · pada xxxx
-                </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans-SemiBold",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "lineHeight": 16,
+                        },
+                        {
+                          "color": "#6F6960",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Nakshatra · pada xxxx
+                  </Text>
+                </View>
               </View>
             </View>
             <View
@@ -2992,9 +3003,9 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                   },
                   [
                     {
-                      "alignItems": "flex-start",
+                      "alignItems": "stretch",
                       "alignSelf": "stretch",
-                      "flexDirection": "row",
+                      "flexDirection": "column",
                       "justifyContent": "flex-start",
                       "paddingVertical": 8,
                     },
@@ -3011,104 +3022,115 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
               <View
                 style={
                   {
-                    "paddingRight": 8,
-                    "width": "31%",
+                    "alignItems": "flex-start",
+                    "alignSelf": "stretch",
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
                   }
                 }
               >
-                <Text
+                <View
                   style={
-                    [
-                      {
-                        "fontFamily": "NotoSans-SemiBold",
-                        "fontSize": 15,
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#1C1A17",
-                      },
-                      undefined,
-                    ]
+                    {
+                      "paddingRight": 8,
+                      "width": "31%",
+                    }
                   }
                 >
-                  Lagna x
-                </Text>
-              </View>
-              <View
-                style={
-                  {
-                    "paddingRight": 8,
-                    "width": "36%",
-                  }
-                }
-              >
-                <Text
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans-SemiBold",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Lagna x
+                  </Text>
+                </View>
+                <View
                   style={
-                    [
-                      {
-                        "fontFamily": "NotoSans",
-                        "fontSize": 15,
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#1C1A17",
-                      },
-                      undefined,
-                    ]
+                    {
+                      "paddingRight": 8,
+                      "width": "30%",
+                    }
                   }
                 >
-                  Meena
-                </Text>
-                <Text
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Meena
+                  </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    6°44′ xxxx
+                  </Text>
+                </View>
+                <View
                   style={
-                    [
-                      {
-                        "fontFamily": "NotoSans",
-                        "fontSize": 15,
-                        "fontVariant": [
-                          "tabular-nums",
-                        ],
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#5B554C",
-                      },
-                      undefined,
-                    ]
+                    {
+                      "paddingRight": 8,
+                      "width": "39%",
+                    }
                   }
                 >
-                  6°44′ xxxx
-                </Text>
-              </View>
-              <View
-                style={
-                  {
-                    "paddingRight": 8,
-                    "width": "33%",
-                  }
-                }
-              >
-                <Text
-                  style={
-                    [
-                      {
-                        "fontFamily": "NotoSans",
-                        "fontSize": 15,
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#1C1A17",
-                      },
-                      undefined,
-                    ]
-                  }
-                >
-                  Uttara Bhadrapada 2 xxx
-                </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    U. Bhadrapada 2 xxx
+                  </Text>
+                </View>
               </View>
             </View>
             <View
@@ -3153,9 +3175,9 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                   },
                   [
                     {
-                      "alignItems": "flex-start",
+                      "alignItems": "stretch",
                       "alignSelf": "stretch",
-                      "flexDirection": "row",
+                      "flexDirection": "column",
                       "justifyContent": "flex-start",
                       "paddingVertical": 8,
                     },
@@ -3172,191 +3194,205 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
               <View
                 style={
                   {
-                    "paddingRight": 8,
-                    "width": "31%",
+                    "alignItems": "flex-start",
+                    "alignSelf": "stretch",
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
                   }
                 }
               >
-                <Text
-                  style={
-                    [
-                      {
-                        "fontFamily": "NotoSans-SemiBold",
-                        "fontSize": 15,
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#1C1A17",
-                      },
-                      undefined,
-                    ]
-                  }
-                >
-                  Sun
-                </Text>
                 <View
                   style={
                     {
-                      "flexDirection": "row",
-                      "flexWrap": "wrap",
-                      "gap": 4,
-                      "marginTop": 4,
+                      "paddingRight": 8,
+                      "width": "31%",
                     }
                   }
-                  testID="planet-tags-Su"
                 >
-                  <View
+                  <Text
                     style={
                       [
                         {
-                          "alignSelf": "flex-start",
-                          "borderRadius": 4,
-                          "paddingHorizontal": 6,
-                          "paddingVertical": 2,
+                          "fontFamily": "NotoSans-SemiBold",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
                         },
                         {
-                          "backgroundColor": "#F1ECE3",
-                          "borderColor": "#F1ECE3",
-                          "borderWidth": 1,
+                          "color": "#1C1A17",
                         },
                         undefined,
                       ]
                     }
                   >
-                    <Text
-                      style={
-                        [
-                          {
-                            "fontFamily": "NotoSans-SemiBold",
-                            "fontSize": 12,
-                            "fontWeight": "normal",
-                            "lineHeight": 16,
-                          },
-                          {
-                            "color": "#5B554C",
-                          },
-                          undefined,
-                        ]
-                      }
-                    >
-                      enemy sign xx
-                    </Text>
-                  </View>
+                    Sun
+                  </Text>
                   <View
-                    accessibilityLabel="approx. xx"
                     style={
                       [
                         {
-                          "alignSelf": "flex-start",
-                          "borderRadius": 4,
-                          "paddingHorizontal": 6,
-                          "paddingVertical": 2,
+                          "flexDirection": "row",
+                          "flexWrap": "wrap",
+                          "gap": 4,
+                          "marginTop": 4,
                         },
-                        {
-                          "backgroundColor": "transparent",
-                          "borderColor": "#2E2A6E",
-                          "borderWidth": 1,
-                        },
-                        undefined,
+                        false,
                       ]
                     }
+                    testID="planet-tags-Su"
                   >
-                    <Text
+                    <View
                       style={
                         [
                           {
-                            "fontFamily": "NotoSans-SemiBold",
-                            "fontSize": 12,
-                            "fontWeight": "normal",
-                            "lineHeight": 16,
+                            "alignSelf": "flex-start",
+                            "borderRadius": 4,
+                            "paddingHorizontal": 6,
+                            "paddingVertical": 2,
                           },
                           {
-                            "color": "#2E2A6E",
+                            "backgroundColor": "#F1ECE3",
+                            "borderColor": "#F1ECE3",
+                            "borderWidth": 1,
                           },
                           undefined,
                         ]
                       }
                     >
-                      approx. xx
-                    </Text>
+                      <Text
+                        style={
+                          [
+                            {
+                              "fontFamily": "NotoSans-SemiBold",
+                              "fontSize": 12,
+                              "fontWeight": "normal",
+                              "lineHeight": 16,
+                            },
+                            {
+                              "color": "#5B554C",
+                            },
+                            undefined,
+                          ]
+                        }
+                      >
+                        enemy sign xx
+                      </Text>
+                    </View>
+                    <View
+                      accessibilityLabel="approx. xx"
+                      style={
+                        [
+                          {
+                            "alignSelf": "flex-start",
+                            "borderRadius": 4,
+                            "paddingHorizontal": 6,
+                            "paddingVertical": 2,
+                          },
+                          {
+                            "backgroundColor": "transparent",
+                            "borderColor": "#2E2A6E",
+                            "borderWidth": 1,
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      <Text
+                        style={
+                          [
+                            {
+                              "fontFamily": "NotoSans-SemiBold",
+                              "fontSize": 12,
+                              "fontWeight": "normal",
+                              "lineHeight": 16,
+                            },
+                            {
+                              "color": "#2E2A6E",
+                            },
+                            undefined,
+                          ]
+                        }
+                      >
+                        approx. xx
+                      </Text>
+                    </View>
                   </View>
                 </View>
-              </View>
-              <View
-                style={
-                  {
-                    "paddingRight": 8,
-                    "width": "36%",
-                  }
-                }
-              >
-                <Text
+                <View
                   style={
-                    [
-                      {
-                        "fontFamily": "NotoSans",
-                        "fontSize": 15,
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#1C1A17",
-                      },
-                      undefined,
-                    ]
+                    {
+                      "paddingRight": 8,
+                      "width": "30%",
+                    }
                   }
                 >
-                  Kumbha
-                </Text>
-                <Text
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Kumbha
+                  </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    29°24′ xxxx
+                  </Text>
+                </View>
+                <View
                   style={
-                    [
-                      {
-                        "fontFamily": "NotoSans",
-                        "fontSize": 15,
-                        "fontVariant": [
-                          "tabular-nums",
-                        ],
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#5B554C",
-                      },
-                      undefined,
-                    ]
+                    {
+                      "paddingRight": 8,
+                      "width": "39%",
+                    }
                   }
                 >
-                  29°24′ xxxx
-                </Text>
-              </View>
-              <View
-                style={
-                  {
-                    "paddingRight": 8,
-                    "width": "33%",
-                  }
-                }
-              >
-                <Text
-                  style={
-                    [
-                      {
-                        "fontFamily": "NotoSans",
-                        "fontSize": 15,
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#1C1A17",
-                      },
-                      undefined,
-                    ]
-                  }
-                >
-                  Purva Bhadrapada 3 xxx
-                </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    P. Bhadrapada 3 xxx
+                  </Text>
+                </View>
               </View>
             </View>
             <View
@@ -3401,9 +3437,9 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                   },
                   [
                     {
-                      "alignItems": "flex-start",
+                      "alignItems": "stretch",
                       "alignSelf": "stretch",
-                      "flexDirection": "row",
+                      "flexDirection": "column",
                       "justifyContent": "flex-start",
                       "paddingVertical": 8,
                     },
@@ -3420,153 +3456,167 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
               <View
                 style={
                   {
-                    "paddingRight": 8,
-                    "width": "31%",
+                    "alignItems": "flex-start",
+                    "alignSelf": "stretch",
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
                   }
                 }
               >
-                <Text
-                  style={
-                    [
-                      {
-                        "fontFamily": "NotoSans-SemiBold",
-                        "fontSize": 15,
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#1C1A17",
-                      },
-                      undefined,
-                    ]
-                  }
-                >
-                  Moon
-                </Text>
                 <View
                   style={
                     {
-                      "flexDirection": "row",
-                      "flexWrap": "wrap",
-                      "gap": 4,
-                      "marginTop": 4,
+                      "paddingRight": 8,
+                      "width": "31%",
                     }
                   }
-                  testID="planet-tags-Mo"
                 >
-                  <View
+                  <Text
                     style={
                       [
                         {
-                          "alignSelf": "flex-start",
-                          "borderRadius": 4,
-                          "paddingHorizontal": 6,
-                          "paddingVertical": 2,
+                          "fontFamily": "NotoSans-SemiBold",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
                         },
                         {
-                          "backgroundColor": "#F1ECE3",
-                          "borderColor": "#F1ECE3",
-                          "borderWidth": 1,
+                          "color": "#1C1A17",
                         },
                         undefined,
                       ]
                     }
                   >
-                    <Text
+                    Moon
+                  </Text>
+                  <View
+                    style={
+                      [
+                        {
+                          "flexDirection": "row",
+                          "flexWrap": "wrap",
+                          "gap": 4,
+                          "marginTop": 4,
+                        },
+                        false,
+                      ]
+                    }
+                    testID="planet-tags-Mo"
+                  >
+                    <View
                       style={
                         [
                           {
-                            "fontFamily": "NotoSans-SemiBold",
-                            "fontSize": 12,
-                            "fontWeight": "normal",
-                            "lineHeight": 16,
+                            "alignSelf": "flex-start",
+                            "borderRadius": 4,
+                            "paddingHorizontal": 6,
+                            "paddingVertical": 2,
                           },
                           {
-                            "color": "#5B554C",
+                            "backgroundColor": "#F1ECE3",
+                            "borderColor": "#F1ECE3",
+                            "borderWidth": 1,
                           },
                           undefined,
                         ]
                       }
                     >
-                      friend's sign xxx
-                    </Text>
+                      <Text
+                        style={
+                          [
+                            {
+                              "fontFamily": "NotoSans-SemiBold",
+                              "fontSize": 12,
+                              "fontWeight": "normal",
+                              "lineHeight": 16,
+                            },
+                            {
+                              "color": "#5B554C",
+                            },
+                            undefined,
+                          ]
+                        }
+                      >
+                        friend's sign xxx
+                      </Text>
+                    </View>
                   </View>
                 </View>
-              </View>
-              <View
-                style={
-                  {
-                    "paddingRight": 8,
-                    "width": "36%",
-                  }
-                }
-              >
-                <Text
+                <View
                   style={
-                    [
-                      {
-                        "fontFamily": "NotoSans",
-                        "fontSize": 15,
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#1C1A17",
-                      },
-                      undefined,
-                    ]
+                    {
+                      "paddingRight": 8,
+                      "width": "30%",
+                    }
                   }
                 >
-                  Kanya
-                </Text>
-                <Text
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Kanya
+                  </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    8°44′ xxxx
+                  </Text>
+                </View>
+                <View
                   style={
-                    [
-                      {
-                        "fontFamily": "NotoSans",
-                        "fontSize": 15,
-                        "fontVariant": [
-                          "tabular-nums",
-                        ],
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#5B554C",
-                      },
-                      undefined,
-                    ]
+                    {
+                      "paddingRight": 8,
+                      "width": "39%",
+                    }
                   }
                 >
-                  8°44′ xxxx
-                </Text>
-              </View>
-              <View
-                style={
-                  {
-                    "paddingRight": 8,
-                    "width": "33%",
-                  }
-                }
-              >
-                <Text
-                  style={
-                    [
-                      {
-                        "fontFamily": "NotoSans",
-                        "fontSize": 15,
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#1C1A17",
-                      },
-                      undefined,
-                    ]
-                  }
-                >
-                  Uttara Phalguni 4 xxx
-                </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    U. Phalguni 4 xxx
+                  </Text>
+                </View>
               </View>
             </View>
             <View
@@ -3611,9 +3661,9 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                   },
                   [
                     {
-                      "alignItems": "flex-start",
+                      "alignItems": "stretch",
                       "alignSelf": "stretch",
-                      "flexDirection": "row",
+                      "flexDirection": "column",
                       "justifyContent": "flex-start",
                       "paddingVertical": 8,
                     },
@@ -3630,190 +3680,204 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
               <View
                 style={
                   {
-                    "paddingRight": 8,
-                    "width": "31%",
+                    "alignItems": "flex-start",
+                    "alignSelf": "stretch",
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
                   }
                 }
               >
-                <Text
-                  style={
-                    [
-                      {
-                        "fontFamily": "NotoSans-SemiBold",
-                        "fontSize": 15,
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#1C1A17",
-                      },
-                      undefined,
-                    ]
-                  }
-                >
-                  Mars
-                </Text>
                 <View
                   style={
                     {
-                      "flexDirection": "row",
-                      "flexWrap": "wrap",
-                      "gap": 4,
-                      "marginTop": 4,
+                      "paddingRight": 8,
+                      "width": "31%",
                     }
                   }
-                  testID="planet-tags-Ma"
                 >
-                  <View
+                  <Text
                     style={
                       [
                         {
-                          "alignSelf": "flex-start",
-                          "borderRadius": 4,
-                          "paddingHorizontal": 6,
-                          "paddingVertical": 2,
+                          "fontFamily": "NotoSans-SemiBold",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
                         },
                         {
-                          "backgroundColor": "#F1ECE3",
-                          "borderColor": "#F1ECE3",
-                          "borderWidth": 1,
+                          "color": "#1C1A17",
                         },
                         undefined,
                       ]
                     }
                   >
-                    <Text
-                      style={
-                        [
-                          {
-                            "fontFamily": "NotoSans-SemiBold",
-                            "fontSize": 12,
-                            "fontWeight": "normal",
-                            "lineHeight": 16,
-                          },
-                          {
-                            "color": "#5B554C",
-                          },
-                          undefined,
-                        ]
-                      }
-                    >
-                      friend's sign xxx
-                    </Text>
-                  </View>
+                    Mars
+                  </Text>
                   <View
                     style={
                       [
                         {
-                          "alignSelf": "flex-start",
-                          "borderRadius": 4,
-                          "paddingHorizontal": 6,
-                          "paddingVertical": 2,
+                          "flexDirection": "row",
+                          "flexWrap": "wrap",
+                          "gap": 4,
+                          "marginTop": 4,
                         },
-                        {
-                          "backgroundColor": "#F1ECE3",
-                          "borderColor": "#F1ECE3",
-                          "borderWidth": 1,
-                        },
-                        undefined,
+                        false,
                       ]
                     }
+                    testID="planet-tags-Ma"
                   >
-                    <Text
+                    <View
                       style={
                         [
                           {
-                            "fontFamily": "NotoSans-SemiBold",
-                            "fontSize": 12,
-                            "fontWeight": "normal",
-                            "lineHeight": 16,
+                            "alignSelf": "flex-start",
+                            "borderRadius": 4,
+                            "paddingHorizontal": 6,
+                            "paddingVertical": 2,
                           },
                           {
-                            "color": "#5B554C",
+                            "backgroundColor": "#F1ECE3",
+                            "borderColor": "#F1ECE3",
+                            "borderWidth": 1,
                           },
                           undefined,
                         ]
                       }
                     >
-                      combust xx
-                    </Text>
+                      <Text
+                        style={
+                          [
+                            {
+                              "fontFamily": "NotoSans-SemiBold",
+                              "fontSize": 12,
+                              "fontWeight": "normal",
+                              "lineHeight": 16,
+                            },
+                            {
+                              "color": "#5B554C",
+                            },
+                            undefined,
+                          ]
+                        }
+                      >
+                        friend's sign xxx
+                      </Text>
+                    </View>
+                    <View
+                      style={
+                        [
+                          {
+                            "alignSelf": "flex-start",
+                            "borderRadius": 4,
+                            "paddingHorizontal": 6,
+                            "paddingVertical": 2,
+                          },
+                          {
+                            "backgroundColor": "#F1ECE3",
+                            "borderColor": "#F1ECE3",
+                            "borderWidth": 1,
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      <Text
+                        style={
+                          [
+                            {
+                              "fontFamily": "NotoSans-SemiBold",
+                              "fontSize": 12,
+                              "fontWeight": "normal",
+                              "lineHeight": 16,
+                            },
+                            {
+                              "color": "#5B554C",
+                            },
+                            undefined,
+                          ]
+                        }
+                      >
+                        combust xx
+                      </Text>
+                    </View>
                   </View>
                 </View>
-              </View>
-              <View
-                style={
-                  {
-                    "paddingRight": 8,
-                    "width": "36%",
-                  }
-                }
-              >
-                <Text
+                <View
                   style={
-                    [
-                      {
-                        "fontFamily": "NotoSans",
-                        "fontSize": 15,
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#1C1A17",
-                      },
-                      undefined,
-                    ]
+                    {
+                      "paddingRight": 8,
+                      "width": "30%",
+                    }
                   }
                 >
-                  Meena
-                </Text>
-                <Text
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Meena
+                  </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    13°24′ xxxx
+                  </Text>
+                </View>
+                <View
                   style={
-                    [
-                      {
-                        "fontFamily": "NotoSans",
-                        "fontSize": 15,
-                        "fontVariant": [
-                          "tabular-nums",
-                        ],
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#5B554C",
-                      },
-                      undefined,
-                    ]
+                    {
+                      "paddingRight": 8,
+                      "width": "39%",
+                    }
                   }
                 >
-                  13°24′ xxxx
-                </Text>
-              </View>
-              <View
-                style={
-                  {
-                    "paddingRight": 8,
-                    "width": "33%",
-                  }
-                }
-              >
-                <Text
-                  style={
-                    [
-                      {
-                        "fontFamily": "NotoSans",
-                        "fontSize": 15,
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#1C1A17",
-                      },
-                      undefined,
-                    ]
-                  }
-                >
-                  Uttara Bhadrapada 4 xxx
-                </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    U. Bhadrapada 4 xxx
+                  </Text>
+                </View>
               </View>
             </View>
             <View
@@ -3858,9 +3922,9 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                   },
                   [
                     {
-                      "alignItems": "flex-start",
+                      "alignItems": "stretch",
                       "alignSelf": "stretch",
-                      "flexDirection": "row",
+                      "flexDirection": "column",
                       "justifyContent": "flex-start",
                       "paddingVertical": 8,
                     },
@@ -3877,153 +3941,167 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
               <View
                 style={
                   {
-                    "paddingRight": 8,
-                    "width": "31%",
+                    "alignItems": "flex-start",
+                    "alignSelf": "stretch",
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
                   }
                 }
               >
-                <Text
-                  style={
-                    [
-                      {
-                        "fontFamily": "NotoSans-SemiBold",
-                        "fontSize": 15,
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#1C1A17",
-                      },
-                      undefined,
-                    ]
-                  }
-                >
-                  Mercury
-                </Text>
                 <View
                   style={
                     {
-                      "flexDirection": "row",
-                      "flexWrap": "wrap",
-                      "gap": 4,
-                      "marginTop": 4,
+                      "paddingRight": 8,
+                      "width": "31%",
                     }
                   }
-                  testID="planet-tags-Me"
                 >
-                  <View
+                  <Text
                     style={
                       [
                         {
-                          "alignSelf": "flex-start",
-                          "borderRadius": 4,
-                          "paddingHorizontal": 6,
-                          "paddingVertical": 2,
+                          "fontFamily": "NotoSans-SemiBold",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
                         },
                         {
-                          "backgroundColor": "#F1ECE3",
-                          "borderColor": "#F1ECE3",
-                          "borderWidth": 1,
+                          "color": "#1C1A17",
                         },
                         undefined,
                       ]
                     }
                   >
-                    <Text
+                    Mercury
+                  </Text>
+                  <View
+                    style={
+                      [
+                        {
+                          "flexDirection": "row",
+                          "flexWrap": "wrap",
+                          "gap": 4,
+                          "marginTop": 4,
+                        },
+                        false,
+                      ]
+                    }
+                    testID="planet-tags-Me"
+                  >
+                    <View
                       style={
                         [
                           {
-                            "fontFamily": "NotoSans-SemiBold",
-                            "fontSize": 12,
-                            "fontWeight": "normal",
-                            "lineHeight": 16,
+                            "alignSelf": "flex-start",
+                            "borderRadius": 4,
+                            "paddingHorizontal": 6,
+                            "paddingVertical": 2,
                           },
                           {
-                            "color": "#5B554C",
+                            "backgroundColor": "#F1ECE3",
+                            "borderColor": "#F1ECE3",
+                            "borderWidth": 1,
                           },
                           undefined,
                         ]
                       }
                     >
-                      debilitated xxx
-                    </Text>
+                      <Text
+                        style={
+                          [
+                            {
+                              "fontFamily": "NotoSans-SemiBold",
+                              "fontSize": 12,
+                              "fontWeight": "normal",
+                              "lineHeight": 16,
+                            },
+                            {
+                              "color": "#5B554C",
+                            },
+                            undefined,
+                          ]
+                        }
+                      >
+                        debilitated xxx
+                      </Text>
+                    </View>
                   </View>
                 </View>
-              </View>
-              <View
-                style={
-                  {
-                    "paddingRight": 8,
-                    "width": "36%",
-                  }
-                }
-              >
-                <Text
+                <View
                   style={
-                    [
-                      {
-                        "fontFamily": "NotoSans",
-                        "fontSize": 15,
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#1C1A17",
-                      },
-                      undefined,
-                    ]
+                    {
+                      "paddingRight": 8,
+                      "width": "30%",
+                    }
                   }
                 >
-                  Meena
-                </Text>
-                <Text
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Meena
+                  </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    16°00′ xxxx
+                  </Text>
+                </View>
+                <View
                   style={
-                    [
-                      {
-                        "fontFamily": "NotoSans",
-                        "fontSize": 15,
-                        "fontVariant": [
-                          "tabular-nums",
-                        ],
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#5B554C",
-                      },
-                      undefined,
-                    ]
+                    {
+                      "paddingRight": 8,
+                      "width": "39%",
+                    }
                   }
                 >
-                  16°00′ xxxx
-                </Text>
-              </View>
-              <View
-                style={
-                  {
-                    "paddingRight": 8,
-                    "width": "33%",
-                  }
-                }
-              >
-                <Text
-                  style={
-                    [
-                      {
-                        "fontFamily": "NotoSans",
-                        "fontSize": 15,
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#1C1A17",
-                      },
-                      undefined,
-                    ]
-                  }
-                >
-                  Uttara Bhadrapada 4 xxx
-                </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    U. Bhadrapada 4 xxx
+                  </Text>
+                </View>
               </View>
             </View>
             <View
@@ -4068,9 +4146,9 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                   },
                   [
                     {
-                      "alignItems": "flex-start",
+                      "alignItems": "stretch",
                       "alignSelf": "stretch",
-                      "flexDirection": "row",
+                      "flexDirection": "column",
                       "justifyContent": "flex-start",
                       "paddingVertical": 8,
                     },
@@ -4087,190 +4165,204 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
               <View
                 style={
                   {
-                    "paddingRight": 8,
-                    "width": "31%",
+                    "alignItems": "flex-start",
+                    "alignSelf": "stretch",
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
                   }
                 }
               >
-                <Text
-                  style={
-                    [
-                      {
-                        "fontFamily": "NotoSans-SemiBold",
-                        "fontSize": 15,
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#1C1A17",
-                      },
-                      undefined,
-                    ]
-                  }
-                >
-                  Jupiter
-                </Text>
                 <View
                   style={
                     {
-                      "flexDirection": "row",
-                      "flexWrap": "wrap",
-                      "gap": 4,
-                      "marginTop": 4,
+                      "paddingRight": 8,
+                      "width": "31%",
                     }
                   }
-                  testID="planet-tags-Ju"
                 >
-                  <View
+                  <Text
                     style={
                       [
                         {
-                          "alignSelf": "flex-start",
-                          "borderRadius": 4,
-                          "paddingHorizontal": 6,
-                          "paddingVertical": 2,
+                          "fontFamily": "NotoSans-SemiBold",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
                         },
                         {
-                          "backgroundColor": "#F1ECE3",
-                          "borderColor": "#F1ECE3",
-                          "borderWidth": 1,
+                          "color": "#1C1A17",
                         },
                         undefined,
                       ]
                     }
                   >
-                    <Text
-                      style={
-                        [
-                          {
-                            "fontFamily": "NotoSans-SemiBold",
-                            "fontSize": 12,
-                            "fontWeight": "normal",
-                            "lineHeight": 16,
-                          },
-                          {
-                            "color": "#5B554C",
-                          },
-                          undefined,
-                        ]
-                      }
-                    >
-                      neutral xx
-                    </Text>
-                  </View>
+                    Jupiter
+                  </Text>
                   <View
                     style={
                       [
                         {
-                          "alignSelf": "flex-start",
-                          "borderRadius": 4,
-                          "paddingHorizontal": 6,
-                          "paddingVertical": 2,
+                          "flexDirection": "row",
+                          "flexWrap": "wrap",
+                          "gap": 4,
+                          "marginTop": 4,
                         },
-                        {
-                          "backgroundColor": "#F1ECE3",
-                          "borderColor": "#F1ECE3",
-                          "borderWidth": 1,
-                        },
-                        undefined,
+                        false,
                       ]
                     }
+                    testID="planet-tags-Ju"
                   >
-                    <Text
+                    <View
                       style={
                         [
                           {
-                            "fontFamily": "NotoSans-SemiBold",
-                            "fontSize": 12,
-                            "fontWeight": "normal",
-                            "lineHeight": 16,
+                            "alignSelf": "flex-start",
+                            "borderRadius": 4,
+                            "paddingHorizontal": 6,
+                            "paddingVertical": 2,
                           },
                           {
-                            "color": "#5B554C",
+                            "backgroundColor": "#F1ECE3",
+                            "borderColor": "#F1ECE3",
+                            "borderWidth": 1,
                           },
                           undefined,
                         ]
                       }
                     >
-                      vargottama xx
-                    </Text>
+                      <Text
+                        style={
+                          [
+                            {
+                              "fontFamily": "NotoSans-SemiBold",
+                              "fontSize": 12,
+                              "fontWeight": "normal",
+                              "lineHeight": 16,
+                            },
+                            {
+                              "color": "#5B554C",
+                            },
+                            undefined,
+                          ]
+                        }
+                      >
+                        neutral xx
+                      </Text>
+                    </View>
+                    <View
+                      style={
+                        [
+                          {
+                            "alignSelf": "flex-start",
+                            "borderRadius": 4,
+                            "paddingHorizontal": 6,
+                            "paddingVertical": 2,
+                          },
+                          {
+                            "backgroundColor": "#F1ECE3",
+                            "borderColor": "#F1ECE3",
+                            "borderWidth": 1,
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      <Text
+                        style={
+                          [
+                            {
+                              "fontFamily": "NotoSans-SemiBold",
+                              "fontSize": 12,
+                              "fontWeight": "normal",
+                              "lineHeight": 16,
+                            },
+                            {
+                              "color": "#5B554C",
+                            },
+                            undefined,
+                          ]
+                        }
+                      >
+                        vargottama xx
+                      </Text>
+                    </View>
                   </View>
                 </View>
-              </View>
-              <View
-                style={
-                  {
-                    "paddingRight": 8,
-                    "width": "36%",
-                  }
-                }
-              >
-                <Text
+                <View
                   style={
-                    [
-                      {
-                        "fontFamily": "NotoSans",
-                        "fontSize": 15,
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#1C1A17",
-                      },
-                      undefined,
-                    ]
+                    {
+                      "paddingRight": 8,
+                      "width": "30%",
+                    }
                   }
                 >
-                  Kumbha
-                </Text>
-                <Text
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Kumbha
+                  </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    15°10′ xxxx
+                  </Text>
+                </View>
+                <View
                   style={
-                    [
-                      {
-                        "fontFamily": "NotoSans",
-                        "fontSize": 15,
-                        "fontVariant": [
-                          "tabular-nums",
-                        ],
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#5B554C",
-                      },
-                      undefined,
-                    ]
+                    {
+                      "paddingRight": 8,
+                      "width": "39%",
+                    }
                   }
                 >
-                  15°10′ xxxx
-                </Text>
-              </View>
-              <View
-                style={
-                  {
-                    "paddingRight": 8,
-                    "width": "33%",
-                  }
-                }
-              >
-                <Text
-                  style={
-                    [
-                      {
-                        "fontFamily": "NotoSans",
-                        "fontSize": 15,
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#1C1A17",
-                      },
-                      undefined,
-                    ]
-                  }
-                >
-                  Shatabhisha 3 xxx
-                </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Shatabhisha 3 xxx
+                  </Text>
+                </View>
               </View>
             </View>
             <View
@@ -4315,9 +4407,9 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                   },
                   [
                     {
-                      "alignItems": "flex-start",
+                      "alignItems": "stretch",
                       "alignSelf": "stretch",
-                      "flexDirection": "row",
+                      "flexDirection": "column",
                       "justifyContent": "flex-start",
                       "paddingVertical": 8,
                     },
@@ -4334,153 +4426,167 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
               <View
                 style={
                   {
-                    "paddingRight": 8,
-                    "width": "31%",
+                    "alignItems": "flex-start",
+                    "alignSelf": "stretch",
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
                   }
                 }
               >
-                <Text
-                  style={
-                    [
-                      {
-                        "fontFamily": "NotoSans-SemiBold",
-                        "fontSize": 15,
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#1C1A17",
-                      },
-                      undefined,
-                    ]
-                  }
-                >
-                  Venus
-                </Text>
                 <View
                   style={
                     {
-                      "flexDirection": "row",
-                      "flexWrap": "wrap",
-                      "gap": 4,
-                      "marginTop": 4,
+                      "paddingRight": 8,
+                      "width": "31%",
                     }
                   }
-                  testID="planet-tags-Ve"
                 >
-                  <View
+                  <Text
                     style={
                       [
                         {
-                          "alignSelf": "flex-start",
-                          "borderRadius": 4,
-                          "paddingHorizontal": 6,
-                          "paddingVertical": 2,
+                          "fontFamily": "NotoSans-SemiBold",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
                         },
                         {
-                          "backgroundColor": "#F1ECE3",
-                          "borderColor": "#F1ECE3",
-                          "borderWidth": 1,
+                          "color": "#1C1A17",
                         },
                         undefined,
                       ]
                     }
                   >
-                    <Text
+                    Venus
+                  </Text>
+                  <View
+                    style={
+                      [
+                        {
+                          "flexDirection": "row",
+                          "flexWrap": "wrap",
+                          "gap": 4,
+                          "marginTop": 4,
+                        },
+                        false,
+                      ]
+                    }
+                    testID="planet-tags-Ve"
+                  >
+                    <View
                       style={
                         [
                           {
-                            "fontFamily": "NotoSans-SemiBold",
-                            "fontSize": 12,
-                            "fontWeight": "normal",
-                            "lineHeight": 16,
+                            "alignSelf": "flex-start",
+                            "borderRadius": 4,
+                            "paddingHorizontal": 6,
+                            "paddingVertical": 2,
                           },
                           {
-                            "color": "#5B554C",
+                            "backgroundColor": "#F1ECE3",
+                            "borderColor": "#F1ECE3",
+                            "borderWidth": 1,
                           },
                           undefined,
                         ]
                       }
                     >
-                      friend's sign xxx
-                    </Text>
+                      <Text
+                        style={
+                          [
+                            {
+                              "fontFamily": "NotoSans-SemiBold",
+                              "fontSize": 12,
+                              "fontWeight": "normal",
+                              "lineHeight": 16,
+                            },
+                            {
+                              "color": "#5B554C",
+                            },
+                            undefined,
+                          ]
+                        }
+                      >
+                        friend's sign xxx
+                      </Text>
+                    </View>
                   </View>
                 </View>
-              </View>
-              <View
-                style={
-                  {
-                    "paddingRight": 8,
-                    "width": "36%",
-                  }
-                }
-              >
-                <Text
+                <View
                   style={
-                    [
-                      {
-                        "fontFamily": "NotoSans",
-                        "fontSize": 15,
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#1C1A17",
-                      },
-                      undefined,
-                    ]
+                    {
+                      "paddingRight": 8,
+                      "width": "30%",
+                    }
                   }
                 >
-                  Makara
-                </Text>
-                <Text
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Makara
+                  </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    13°45′ xxxx
+                  </Text>
+                </View>
+                <View
                   style={
-                    [
-                      {
-                        "fontFamily": "NotoSans",
-                        "fontSize": 15,
-                        "fontVariant": [
-                          "tabular-nums",
-                        ],
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#5B554C",
-                      },
-                      undefined,
-                    ]
+                    {
+                      "paddingRight": 8,
+                      "width": "39%",
+                    }
                   }
                 >
-                  13°45′ xxxx
-                </Text>
-              </View>
-              <View
-                style={
-                  {
-                    "paddingRight": 8,
-                    "width": "33%",
-                  }
-                }
-              >
-                <Text
-                  style={
-                    [
-                      {
-                        "fontFamily": "NotoSans",
-                        "fontSize": 15,
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#1C1A17",
-                      },
-                      undefined,
-                    ]
-                  }
-                >
-                  Shravana 2 xxx
-                </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Shravana 2 xxx
+                  </Text>
+                </View>
               </View>
             </View>
             <View
@@ -4525,9 +4631,9 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                   },
                   [
                     {
-                      "alignItems": "flex-start",
+                      "alignItems": "stretch",
                       "alignSelf": "stretch",
-                      "flexDirection": "row",
+                      "flexDirection": "column",
                       "justifyContent": "flex-start",
                       "paddingVertical": 8,
                     },
@@ -4544,153 +4650,167 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
               <View
                 style={
                   {
-                    "paddingRight": 8,
-                    "width": "31%",
+                    "alignItems": "flex-start",
+                    "alignSelf": "stretch",
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
                   }
                 }
               >
-                <Text
-                  style={
-                    [
-                      {
-                        "fontFamily": "NotoSans-SemiBold",
-                        "fontSize": 15,
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#1C1A17",
-                      },
-                      undefined,
-                    ]
-                  }
-                >
-                  Saturn
-                </Text>
                 <View
                   style={
                     {
-                      "flexDirection": "row",
-                      "flexWrap": "wrap",
-                      "gap": 4,
-                      "marginTop": 4,
+                      "paddingRight": 8,
+                      "width": "31%",
                     }
                   }
-                  testID="planet-tags-Sa"
                 >
-                  <View
+                  <Text
                     style={
                       [
                         {
-                          "alignSelf": "flex-start",
-                          "borderRadius": 4,
-                          "paddingHorizontal": 6,
-                          "paddingVertical": 2,
+                          "fontFamily": "NotoSans-SemiBold",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
                         },
                         {
-                          "backgroundColor": "#F1ECE3",
-                          "borderColor": "#F1ECE3",
-                          "borderWidth": 1,
+                          "color": "#1C1A17",
                         },
                         undefined,
                       ]
                     }
                   >
-                    <Text
+                    Saturn
+                  </Text>
+                  <View
+                    style={
+                      [
+                        {
+                          "flexDirection": "row",
+                          "flexWrap": "wrap",
+                          "gap": 4,
+                          "marginTop": 4,
+                        },
+                        false,
+                      ]
+                    }
+                    testID="planet-tags-Sa"
+                  >
+                    <View
                       style={
                         [
                           {
-                            "fontFamily": "NotoSans-SemiBold",
-                            "fontSize": 12,
-                            "fontWeight": "normal",
-                            "lineHeight": 16,
+                            "alignSelf": "flex-start",
+                            "borderRadius": 4,
+                            "paddingHorizontal": 6,
+                            "paddingVertical": 2,
                           },
                           {
-                            "color": "#5B554C",
+                            "backgroundColor": "#F1ECE3",
+                            "borderColor": "#F1ECE3",
+                            "borderWidth": 1,
                           },
                           undefined,
                         ]
                       }
                     >
-                      neutral xx
-                    </Text>
+                      <Text
+                        style={
+                          [
+                            {
+                              "fontFamily": "NotoSans-SemiBold",
+                              "fontSize": 12,
+                              "fontWeight": "normal",
+                              "lineHeight": 16,
+                            },
+                            {
+                              "color": "#5B554C",
+                            },
+                            undefined,
+                          ]
+                        }
+                      >
+                        neutral xx
+                      </Text>
+                    </View>
                   </View>
                 </View>
-              </View>
-              <View
-                style={
-                  {
-                    "paddingRight": 8,
-                    "width": "36%",
-                  }
-                }
-              >
-                <Text
+                <View
                   style={
-                    [
-                      {
-                        "fontFamily": "NotoSans",
-                        "fontSize": 15,
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#1C1A17",
-                      },
-                      undefined,
-                    ]
+                    {
+                      "paddingRight": 8,
+                      "width": "30%",
+                    }
                   }
                 >
-                  Meena
-                </Text>
-                <Text
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Meena
+                  </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    25°44′ xxxx
+                  </Text>
+                </View>
+                <View
                   style={
-                    [
-                      {
-                        "fontFamily": "NotoSans",
-                        "fontSize": 15,
-                        "fontVariant": [
-                          "tabular-nums",
-                        ],
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#5B554C",
-                      },
-                      undefined,
-                    ]
+                    {
+                      "paddingRight": 8,
+                      "width": "39%",
+                    }
                   }
                 >
-                  25°44′ xxxx
-                </Text>
-              </View>
-              <View
-                style={
-                  {
-                    "paddingRight": 8,
-                    "width": "33%",
-                  }
-                }
-              >
-                <Text
-                  style={
-                    [
-                      {
-                        "fontFamily": "NotoSans",
-                        "fontSize": 15,
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#1C1A17",
-                      },
-                      undefined,
-                    ]
-                  }
-                >
-                  Revati 3 xxx
-                </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Revati 3 xxx
+                  </Text>
+                </View>
               </View>
             </View>
             <View
@@ -4735,9 +4855,9 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                   },
                   [
                     {
-                      "alignItems": "flex-start",
+                      "alignItems": "stretch",
                       "alignSelf": "stretch",
-                      "flexDirection": "row",
+                      "flexDirection": "column",
                       "justifyContent": "flex-start",
                       "paddingVertical": 8,
                     },
@@ -4754,153 +4874,167 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
               <View
                 style={
                   {
-                    "paddingRight": 8,
-                    "width": "31%",
+                    "alignItems": "flex-start",
+                    "alignSelf": "stretch",
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
                   }
                 }
               >
-                <Text
-                  style={
-                    [
-                      {
-                        "fontFamily": "NotoSans-SemiBold",
-                        "fontSize": 15,
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#1C1A17",
-                      },
-                      undefined,
-                    ]
-                  }
-                >
-                  Rahu
-                </Text>
                 <View
                   style={
                     {
-                      "flexDirection": "row",
-                      "flexWrap": "wrap",
-                      "gap": 4,
-                      "marginTop": 4,
+                      "paddingRight": 8,
+                      "width": "31%",
                     }
                   }
-                  testID="planet-tags-Ra"
                 >
-                  <View
+                  <Text
                     style={
                       [
                         {
-                          "alignSelf": "flex-start",
-                          "borderRadius": 4,
-                          "paddingHorizontal": 6,
-                          "paddingVertical": 2,
+                          "fontFamily": "NotoSans-SemiBold",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
                         },
                         {
-                          "backgroundColor": "#F1ECE3",
-                          "borderColor": "#F1ECE3",
-                          "borderWidth": 1,
+                          "color": "#1C1A17",
                         },
                         undefined,
                       ]
                     }
                   >
-                    <Text
+                    Rahu
+                  </Text>
+                  <View
+                    style={
+                      [
+                        {
+                          "flexDirection": "row",
+                          "flexWrap": "wrap",
+                          "gap": 4,
+                          "marginTop": 4,
+                        },
+                        false,
+                      ]
+                    }
+                    testID="planet-tags-Ra"
+                  >
+                    <View
                       style={
                         [
                           {
-                            "fontFamily": "NotoSans-SemiBold",
-                            "fontSize": 12,
-                            "fontWeight": "normal",
-                            "lineHeight": 16,
+                            "alignSelf": "flex-start",
+                            "borderRadius": 4,
+                            "paddingHorizontal": 6,
+                            "paddingVertical": 2,
                           },
                           {
-                            "color": "#5B554C",
+                            "backgroundColor": "#F1ECE3",
+                            "borderColor": "#F1ECE3",
+                            "borderWidth": 1,
                           },
                           undefined,
                         ]
                       }
                     >
-                      vargottama xx
-                    </Text>
+                      <Text
+                        style={
+                          [
+                            {
+                              "fontFamily": "NotoSans-SemiBold",
+                              "fontSize": 12,
+                              "fontWeight": "normal",
+                              "lineHeight": 16,
+                            },
+                            {
+                              "color": "#5B554C",
+                            },
+                            undefined,
+                          ]
+                        }
+                      >
+                        vargottama xx
+                      </Text>
+                    </View>
                   </View>
                 </View>
-              </View>
-              <View
-                style={
-                  {
-                    "paddingRight": 8,
-                    "width": "36%",
-                  }
-                }
-              >
-                <Text
+                <View
                   style={
-                    [
-                      {
-                        "fontFamily": "NotoSans",
-                        "fontSize": 15,
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#1C1A17",
-                      },
-                      undefined,
-                    ]
+                    {
+                      "paddingRight": 8,
+                      "width": "30%",
+                    }
                   }
                 >
-                  Simha
-                </Text>
-                <Text
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Simha
+                  </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    16°04′ xxxx
+                  </Text>
+                </View>
+                <View
                   style={
-                    [
-                      {
-                        "fontFamily": "NotoSans",
-                        "fontSize": 15,
-                        "fontVariant": [
-                          "tabular-nums",
-                        ],
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#5B554C",
-                      },
-                      undefined,
-                    ]
+                    {
+                      "paddingRight": 8,
+                      "width": "39%",
+                    }
                   }
                 >
-                  16°04′ xxxx
-                </Text>
-              </View>
-              <View
-                style={
-                  {
-                    "paddingRight": 8,
-                    "width": "33%",
-                  }
-                }
-              >
-                <Text
-                  style={
-                    [
-                      {
-                        "fontFamily": "NotoSans",
-                        "fontSize": 15,
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#1C1A17",
-                      },
-                      undefined,
-                    ]
-                  }
-                >
-                  Purva Phalguni 1 xxx
-                </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    P. Phalguni 1 xxx
+                  </Text>
+                </View>
               </View>
             </View>
             <View
@@ -4945,9 +5079,9 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
                   },
                   [
                     {
-                      "alignItems": "flex-start",
+                      "alignItems": "stretch",
                       "alignSelf": "stretch",
-                      "flexDirection": "row",
+                      "flexDirection": "column",
                       "justifyContent": "flex-start",
                       "paddingVertical": 8,
                     },
@@ -4961,153 +5095,167 @@ exports[`<ChartsScreen> pseudo-locale +30 % (en): nothing truncates, table heade
               <View
                 style={
                   {
-                    "paddingRight": 8,
-                    "width": "31%",
+                    "alignItems": "flex-start",
+                    "alignSelf": "stretch",
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
                   }
                 }
               >
-                <Text
-                  style={
-                    [
-                      {
-                        "fontFamily": "NotoSans-SemiBold",
-                        "fontSize": 15,
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#1C1A17",
-                      },
-                      undefined,
-                    ]
-                  }
-                >
-                  Ketu
-                </Text>
                 <View
                   style={
                     {
-                      "flexDirection": "row",
-                      "flexWrap": "wrap",
-                      "gap": 4,
-                      "marginTop": 4,
+                      "paddingRight": 8,
+                      "width": "31%",
                     }
                   }
-                  testID="planet-tags-Ke"
                 >
-                  <View
+                  <Text
                     style={
                       [
                         {
-                          "alignSelf": "flex-start",
-                          "borderRadius": 4,
-                          "paddingHorizontal": 6,
-                          "paddingVertical": 2,
+                          "fontFamily": "NotoSans-SemiBold",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
                         },
                         {
-                          "backgroundColor": "#F1ECE3",
-                          "borderColor": "#F1ECE3",
-                          "borderWidth": 1,
+                          "color": "#1C1A17",
                         },
                         undefined,
                       ]
                     }
                   >
-                    <Text
+                    Ketu
+                  </Text>
+                  <View
+                    style={
+                      [
+                        {
+                          "flexDirection": "row",
+                          "flexWrap": "wrap",
+                          "gap": 4,
+                          "marginTop": 4,
+                        },
+                        false,
+                      ]
+                    }
+                    testID="planet-tags-Ke"
+                  >
+                    <View
                       style={
                         [
                           {
-                            "fontFamily": "NotoSans-SemiBold",
-                            "fontSize": 12,
-                            "fontWeight": "normal",
-                            "lineHeight": 16,
+                            "alignSelf": "flex-start",
+                            "borderRadius": 4,
+                            "paddingHorizontal": 6,
+                            "paddingVertical": 2,
                           },
                           {
-                            "color": "#5B554C",
+                            "backgroundColor": "#F1ECE3",
+                            "borderColor": "#F1ECE3",
+                            "borderWidth": 1,
                           },
                           undefined,
                         ]
                       }
                     >
-                      vargottama xx
-                    </Text>
+                      <Text
+                        style={
+                          [
+                            {
+                              "fontFamily": "NotoSans-SemiBold",
+                              "fontSize": 12,
+                              "fontWeight": "normal",
+                              "lineHeight": 16,
+                            },
+                            {
+                              "color": "#5B554C",
+                            },
+                            undefined,
+                          ]
+                        }
+                      >
+                        vargottama xx
+                      </Text>
+                    </View>
                   </View>
                 </View>
-              </View>
-              <View
-                style={
-                  {
-                    "paddingRight": 8,
-                    "width": "36%",
-                  }
-                }
-              >
-                <Text
+                <View
                   style={
-                    [
-                      {
-                        "fontFamily": "NotoSans",
-                        "fontSize": 15,
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#1C1A17",
-                      },
-                      undefined,
-                    ]
+                    {
+                      "paddingRight": 8,
+                      "width": "30%",
+                    }
                   }
                 >
-                  Kumbha
-                </Text>
-                <Text
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Kumbha
+                  </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#5B554C",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    16°04′ xxxx
+                  </Text>
+                </View>
+                <View
                   style={
-                    [
-                      {
-                        "fontFamily": "NotoSans",
-                        "fontSize": 15,
-                        "fontVariant": [
-                          "tabular-nums",
-                        ],
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#5B554C",
-                      },
-                      undefined,
-                    ]
+                    {
+                      "paddingRight": 8,
+                      "width": "39%",
+                    }
                   }
                 >
-                  16°04′ xxxx
-                </Text>
-              </View>
-              <View
-                style={
-                  {
-                    "paddingRight": 8,
-                    "width": "33%",
-                  }
-                }
-              >
-                <Text
-                  style={
-                    [
-                      {
-                        "fontFamily": "NotoSans",
-                        "fontSize": 15,
-                        "fontWeight": "normal",
-                        "lineHeight": 20,
-                      },
-                      {
-                        "color": "#1C1A17",
-                      },
-                      undefined,
-                    ]
-                  }
-                >
-                  Shatabhisha 3 xxx
-                </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "NotoSans",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#1C1A17",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Shatabhisha 3 xxx
+                  </Text>
+                </View>
               </View>
             </View>
           </View>
