@@ -1,7 +1,9 @@
 // Today screen end to end (fixed clock, seeded self profile, profile place): header first value + date line, Panchang
 // pill -> F8 sheet with every field, good-hours card, daily note, Upcoming, "All 13 segments" expanding in place, no
-// Listen button and no ad box; +30 % pseudo-locale snapshot with no truncation and no split time range (N4).
+// Listen button and no ad box (B03: the native-ad gate measures the last slot but draws nothing without fill);
+// +30 % pseudo-locale snapshot with no truncation and no split time range (N4).
 import { fireEvent, screen } from '@testing-library/react-native';
+import { StyleSheet } from 'react-native';
 import TodayScreen from '../app/(tabs)/today';
 import { SAMPLE_PRIYA } from '../src/dev/seed';
 import { insertProfile, setProfileIntent } from '../src/db/profiles';
@@ -56,7 +58,10 @@ describe('<TodayScreen>', () => {
     expect(screen.getByTestId('place-pill')).toBeTruthy();
     expect(screen.queryByText('Listen')).toBeNull();
     expect(screen.queryByText('Ad')).toBeNull();
-    expect(screen.queryByTestId('native-ad-slot')).toBeNull();
+    expect(screen.queryByTestId('native-ad-card')).toBeNull();
+    // B03/M4: the gate is the last child of the stack and takes no room while there is no fill.
+    const gate = screen.getByTestId('native-ad-gate');
+    expect(StyleSheet.flatten(gate.props.style).height).toBe(0);
     expect(screen.queryByTestId('today-skeleton')).toBeNull();
     assertNoTruncation();
     assertRangesGlued();
@@ -119,11 +124,12 @@ describe('<TodayScreen>', () => {
     const root = screen.getByTestId('screen-scroll');
     const ids: string[] = [];
     const walk = (n: { props?: { testID?: string }; children?: readonly unknown[] }) => {
-      if (n.props?.testID && ['upcoming', 'daily-note', 'good-hours-card'].includes(n.props.testID)) ids.push(n.props.testID);
+      if (n.props?.testID && ['upcoming', 'daily-note', 'good-hours-card', 'native-ad-gate'].includes(n.props.testID)) ids.push(n.props.testID);
       for (const c of n.children ?? []) if (typeof c === 'object' && c) walk(c as { props?: { testID?: string }; children?: readonly unknown[] });
     };
     walk(root);
-    expect(ids).toEqual(['good-hours-card', 'upcoming', 'daily-note']);
+    // M4: the native-ad slot is the LAST card of the stack in every intent order.
+    expect(ids).toEqual(['good-hours-card', 'upcoming', 'daily-note', 'native-ad-gate']);
   });
 
   for (const lang of ['en', 'hi', 'bho'] as const) {

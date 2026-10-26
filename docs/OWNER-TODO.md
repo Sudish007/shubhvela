@@ -25,13 +25,20 @@ not set — `gh secret list` is empty, so the Hindi corpus is still English), 6 
    Add licence-tester accounts. Upload the Phase D AAB to the internal testing track. Paste the
    Play Store URL into `web/src/strings/*.json` (`playUrl`) and `app/app.json` (`extra.playUrl`).
    Answer the Data safety form and content rating from `app/playstore-assets/store-listing.md`
-   (Phase D). *Meanwhile:* the app reads prices from Play and shows the spec INR strings offline.
+   (Phase D). *Meanwhile:* the app reads prices from Play and shows the spec INR strings offline
+   (captioned "store price may differ"); until the products exist, "Continue" on the Pro screen shows Play's
+   "This item isn't available in Play yet" inline and the entitlement cache stays untouched (B03, 2026-10-27).
+   The product ids the app requests are fixed in `app/src/billing/products.ts`.
 4. **AdMob (only after the Phase B review).** Create the app in AdMob, note the App ID and the
    four unit IDs (banner, native, interstitial, rewarded). Then edit `app/app.json`
    `extra.admob` (set `live: true`) and the `com.google.android.gms.ads.APPLICATION_ID`
    meta-data in `app/android/app/src/main/AndroidManifest.xml`. Do NOT create an AppLovin
    mediation group (the adapter is wired but disabled); `applovinSdkKey` stays empty.
-   *Meanwhile:* every build uses Google's test IDs.
+   *Meanwhile:* every build uses Google's test IDs. B03 (2026-10-27) wired it so that `app/src/ads/config.ts`
+   falls back to the test units whenever `live` is false or any unit id is missing; `app/android/app/build.gradle`
+   reads `extra.applovinSdkKey` into the `applovin.sdk.key` manifest placeholder and carries
+   `com.google.ads.mediation:applovin:13.6.4.2`, which only ever initialises through the AdMob SDK - and Pro
+   users never initialise that SDK (`app/src/ads/AdsRoot.tsx`, asserted by `app/test/ads-root.test.tsx`).
 5. **Gemini key and the Hindi corpus (no step waits on this any more).** Set the secret, then
    dispatch the Action: `gh secret set GEMINI_API_KEY --repo Sudish007/shubhvela` (free-tier key,
    pasted into the hidden prompt), then

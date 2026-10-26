@@ -1,7 +1,7 @@
 // entitlements.ts caps (spec section 9): 2 profiles, 5 enabled reminder series (tithi birthdays + ancestors + vrat
 // families all count; ancestors never count toward profiles), Pro-only features refused, rewarded unlocks honoured until
 // expiry, Pro lifts every cap.
-import { FREE_PROFILE_CAP, FREE_REMINDER_SERIES_CAP, canAddProfile, canAddReminder, canSeeFeature, isPro } from '../src/entitlements';
+import { FREE_PROFILE_CAP, FREE_REMINDER_SERIES_CAP, INR_FALLBACK, canAddProfile, canAddReminder, canSeeFeature, grantUnlock, inGracePeriod, isPro, onEntitlementsChanged, priceLabel, reportIncluded, setEntitlement, unlockedUntil } from '../src/entitlements';
 import { countAncestors, insertAncestor } from '../src/db/ancestors';
 import { countEnabledSeries, enabledVratFamilies, listEnabledSeries, seriesKey, setSeriesEnabled } from '../src/db/eventSeries';
 import { countProfiles, insertProfile } from '../src/db/profiles';
@@ -91,5 +91,45 @@ describe('entitlements', () => {
     expect(canAddProfile(99)).toEqual({ allowed: true });
     expect(canAddReminder(99)).toEqual({ allowed: true });
     expect(canSeeFeature('ask_my_chart')).toEqual({ allowed: true });
+  });
+
+  it('B03: grace keeps Pro on and is reported; pending and expired do not grant Pro', () => {
+    setEntitlement('shubhvela_pro', 'pending', 't');
+    expect(isPro()).toBe(false);
+    setEntitlement('shubhvela_pro', 'grace', 't');
+    expect(isPro()).toBe(true);
+    expect(inGracePeriod()).toBe(true);
+    expect(canAddProfile(99)).toEqual({ allowed: true });
+    setEntitlement('shubhvela_pro', 'expired', 't');
+    expect(isPro()).toBe(false);
+    expect(inGracePeriod()).toBe(false);
+  });
+
+  it('B03: M2 report table and price labels (Play price or the spec fallback flagged "store price may differ")', () => {
+    expect(reportIncluded('janam_patri')).toBe(false);
+    expect(reportIncluded('varshaphal')).toBe(false);
+    setEntitlement('shubhvela_pro_lifetime', 'active', 't');
+    expect(reportIncluded('janam_patri')).toBe(true);
+    expect(reportIncluded('matching')).toBe(true);
+    expect(reportIncluded('varshaphal')).toBe(false);
+    expect(priceLabel('yearly', '₹299.00')).toEqual({ label: '₹299.00', fallback: false });
+    expect(priceLabel('yearly', null)).toEqual({ label: '₹299', fallback: true });
+    expect(priceLabel('varshaphal', '')).toEqual({ label: '₹149', fallback: true });
+    expect(INR_FALLBACK.janam_patri.label).toBe('₹99');
+    expect(INR_FALLBACK.matching.label).toBe('₹99');
+  });
+
+  it('B03: grantUnlock writes a 24 h row for rewarded keys only and notifies subscribers', () => {
+    const now = new Date('2026-10-25T12:00:00Z');
+    const seen = jest.fn();
+    const off = onEntitlementsChanged(seen);
+    const until = grantUnlock('vargas', now);
+    expect(until.toISOString()).toBe('2026-10-26T12:00:00.000Z');
+    expect(unlockedUntil('vargas', now)?.toISOString()).toBe(until.toISOString());
+    expect(canSeeFeature('vargas', now).allowed).toBe(true);
+    expect(canSeeFeature('vargas', new Date(until.getTime())).allowed).toBe(false);
+    expect(() => grantUnlock('ask_my_chart', now)).toThrow();
+    expect(seen).toHaveBeenCalledTimes(1);
+    off();
   });
 });

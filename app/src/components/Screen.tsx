@@ -1,16 +1,18 @@
 // Screen (design.md 2.3, M4/M6/N15): the single owner of the fixed-chrome padding formula. Scroll content ends with
-//   tab screens:      paddingBottom = tabBar(72) + bannerStrip (measured banner + 2 x 16 when AdPolicy shows one; 0 in Phase A) + 16 + insets.bottom
+//   tab screens:      paddingBottom = tabBar(72) + bannerStrip (measured banner + 2 x 16 when AdPolicy shows one) + 16 + insets.bottom
 //   sticky-CTA screens: paddingBottom = measuredCtaHeight (onLayout) + 16 + insets.bottom
-//   plain stack screens (no tab bar, no CTA): paddingBottom = 16 + insets.bottom
+//   plain stack screens (no tab bar, no CTA): paddingBottom = bannerStrip (allow-listed pushed screens, else 0) + 16 + insets.bottom
+// The strip itself (BannerStrip) is rendered here when AdPolicy.bannerFor(route) === 'anchored' - screens never do.
 // Header: title in Tiro 26/32 and either the gear (tab screens; accessibilityLabel "Settings") or a 44 dp Back control.
 import { useRouter } from 'expo-router';
 import { useState, type ReactNode } from 'react';
 import { ScrollView, StyleSheet, View, type StyleProp, type ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useBannerHeight } from '../ads/AdPolicy';
+import { useBannerHeight, useBannerPlacement } from '../ads/AdPolicy';
+import { BannerStrip } from '../ads/BannerStrip';
 import { useLang } from '../i18n';
 import { useTokens } from '../theme/ThemeProvider';
-import { bottomPaddingAboveBanner, bottomPaddingAboveStickyCta } from '../theme/tokens';
+import { bottomPaddingAboveBanner, bottomPaddingAboveStickyCta, size } from '../theme/tokens';
 import { BackIcon, GearIcon } from './icons';
 import { Pressable44 } from './Pressable44';
 import { Txt } from './Txt';
@@ -42,7 +44,8 @@ export interface ScreenProps {
 export function screenBottomPadding(args: { chrome: ScreenChrome; bannerHeight: number | null; ctaHeight: number | null; insetBottom: number }): number {
   if (args.ctaHeight != null) return bottomPaddingAboveStickyCta(args.ctaHeight, args.insetBottom);
   if (args.chrome === 'tabs') return bottomPaddingAboveBanner(args.bannerHeight, args.insetBottom);
-  return 16 + args.insetBottom;
+  const strip = args.bannerHeight == null ? 0 : args.bannerHeight + 2 * size.bannerPadding;
+  return strip + 16 + args.insetBottom;
 }
 
 export function Screen({ title, chrome = 'tabs', route = '', hideControl, subtitle, stickyCta, headerRight, pinned, children, contentStyle, testID, onBack }: ScreenProps) {
@@ -51,6 +54,7 @@ export function Screen({ title, chrome = 'tabs', route = '', hideControl, subtit
   const insets = useSafeAreaInsets();
   const router = useRouter();
   const bannerHeight = useBannerHeight(route);
+  const banner = useBannerPlacement(route);
   const [ctaHeight, setCtaHeight] = useState<number | null>(null);
   const paddingBottom = screenBottomPadding({ chrome, bannerHeight, ctaHeight: stickyCta ? ctaHeight ?? 0 : null, insetBottom: insets.bottom });
 
@@ -86,6 +90,7 @@ export function Screen({ title, chrome = 'tabs', route = '', hideControl, subtit
         </View>
         {children}
       </ScrollView>
+      {banner === 'anchored' && !stickyCta ? <BannerStrip route={route} insetBottom={chrome === 'tabs' ? 0 : insets.bottom} /> : null}
       {stickyCta ? (
         <View style={[styles.cta, { backgroundColor: colors.surface, borderTopColor: colors.hair, paddingBottom: insets.bottom }]}>
           {/* The measured box excludes the safe-area inset so the formula adds it exactly once. */}

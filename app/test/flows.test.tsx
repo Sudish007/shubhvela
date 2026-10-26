@@ -80,7 +80,8 @@ describe('flows', () => {
     await fireEvent.press(screen.getByTestId('avatar-add'));
     expect(useRouter().push).not.toHaveBeenCalled();
     expect(screen.getByText('Free plan: two profiles')).toBeTruthy();
-    expect(screen.getByText(/Pro is not in this build yet/)).toBeTruthy();
+    expect(screen.getByText('The free plan keeps two profiles. Pro removes the limit.')).toBeTruthy();
+    expect(screen.getByTestId('cap-go-pro')).toBeTruthy();
     expect(listProfiles()).toHaveLength(2);
   });
 

@@ -183,14 +183,15 @@ describe('<ChartsScreen>', () => {
     expect(textOf(screen.getByTestId('glossary-text')).length).toBeGreaterThan(20);
   });
 
-  it('Legend lists the ten dignity/mark terms; the Pro tag opens the honest pre-B03 sheet; Full tree navigates', async () => {
+  it('Legend lists the ten dignity/mark terms; the Pro tag opens the Pro sheet (Go Pro -> /pro); Full tree navigates', async () => {
     await renderWithProviders(<ChartsScreen now={now} chartWidth={326} />);
     await fireEvent.press(screen.getByTestId('legend-button'));
     expect(screen.getAllByTestId(/^legend-item-/).length).toBe(10);
     expect(screen.getByText('Same sign in D1 and D9')).toBeTruthy();
     await fireEvent.press(screen.getByLabelText('Close'));
     await fireEvent.press(screen.getByTestId('dasha-pro'));
-    expect(screen.getByText('Pro is not in this build yet')).toBeTruthy();
+    expect(screen.getByText('This is a Pro feature')).toBeTruthy();
+    expect(screen.getByTestId('cap-go-pro')).toBeTruthy();
     await fireEvent.press(screen.getByLabelText('Close'));
     await fireEvent.press(screen.getByTestId('dasha-full-tree'));
     expect(router.push).toHaveBeenCalledWith(`/charts/dasha-tree?profile=${priyaId}`);
@@ -253,7 +254,7 @@ describe('<ChartsScreen>', () => {
     expect(praty.length).toBe(9);
     expect(screen.getAllByText('Pro').length).toBe(9);
     await fireEvent.press(praty[0]);
-    expect(screen.getByText('Pro is not in this build yet')).toBeTruthy();
+    expect(screen.getByText('This is a Pro feature')).toBeTruthy();
     // Dates equal the engine tree (F14 acceptance).
     const tree = dashaFor(chartFor(getProfile(priyaId)!));
     const ra = tree.mahas.find((m) => m.lord === 'Ra')!;

@@ -2,7 +2,8 @@
 // ThemeProvider (light first paint, persisted System/Light/Dark read synchronously), LangProvider, safe-area insets,
 // then a plain stack: index (consent gate) -> onboarding/* or (tabs); settings/*, profile/[id], family/* and dev/state are
 // pushed. On every launch the reminder planner re-plans the next 60 days (F25, N12) once the UI has painted; with no
-// enabled series the plan is empty and nothing is scheduled (quiet by default).
+// enabled series the plan is empty and nothing is scheduled (quiet by default). AdsRoot (B03) counts sessions, restores
+// the Play entitlement and - only when not Pro - runs UMP consent and initialises the ads SDK.
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
@@ -10,6 +11,7 @@ import * as Notifications from 'expo-notifications';
 import { useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { AdsRoot } from '../src/ads/AdsRoot';
 import { initAppDb } from '../src/db/open';
 import { LangProvider } from '../src/i18n';
 import { replanAll } from '../src/notifications/schedule';
@@ -46,6 +48,8 @@ function Navigator({ fontsReady }: { fontsReady: boolean }) {
         <Stack.Screen name="onboarding/birth" />
         <Stack.Screen name="onboarding/intent" />
         <Stack.Screen name="settings/index" />
+        <Stack.Screen name="settings/pro" />
+        <Stack.Screen name="pro" />
         <Stack.Screen name="profile/[id]" />
         <Stack.Screen name="charts/dasha-tree" />
         <Stack.Screen name="family/calendar" />
@@ -72,6 +76,7 @@ export default function RootLayout() {
     <SafeAreaProvider>
       <ThemeProvider>
         <LangProvider>
+          <AdsRoot />
           <Navigator fontsReady={fontsLoaded || !!fontError} />
         </LangProvider>
       </ThemeProvider>

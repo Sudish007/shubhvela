@@ -4874,6 +4874,16 @@ exports[`<TodayScreen> pseudo-locale +30 % (en): nothing truncates and no time r
             </View>
           </RCTScrollView>
         </View>
+        <View
+          onLayout={[Function]}
+          style={
+            {
+              "alignSelf": "stretch",
+              "height": 0,
+            }
+          }
+          testID="native-ad-gate"
+        />
       </View>
     </RCTScrollView>
   </View>

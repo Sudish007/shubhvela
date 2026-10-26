@@ -3,12 +3,15 @@
 // intent order, the "Good hours today" card (F5/F27), the "Today is <name>'s janma tithi" row (F20), the daily note
 // (F6), the F22 "vrat today" card (enabled vrat families only, A12) and the Upcoming strip (F7). "Family dates" moves the
 // vrat card and Upcoming above the note; "Learn" adds nothing until C03
-// exists. The native-ad slot is asked from AdPolicy.todayNativeSlot() and renders NOTHING while it answers none.
+// exists. The card order comes from AdPolicy.todayCardOrder(intent) so the native ad card is provably the LAST card
+// (M4); AdPolicy.todayNativeSlot() answers 'none' for Pro and nothing is drawn; otherwise NativeAdCard mounts its view
+// only when its onLayout.y >= windowHeight (below the fold) and collapses on no fill.
 // Every number on this screen is engine output for the chosen place and the current instant; no Listen button until C01.
 import { useRouter } from 'expo-router';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { todayNativeSlot } from '../../src/ads/AdPolicy';
+import { todayCardOrder, todayNativeSlot, type TodayCardKey } from '../../src/ads/AdPolicy';
+import { NativeAdCard } from '../../src/ads/NativeAdCard';
 import { ApproxTag, Card, ChevronIcon, EmptyState, NoBreak, Pressable44, Screen, Txt } from '../../src/components';
 import { chartFor, moonLine } from '../../src/engine-bridge/charts';
 import { VratTodayCard } from '../../src/family/VratTodayCard';
@@ -38,7 +41,6 @@ export default function TodayScreen({ todayOptions }: TodayScreenProps) {
   const { model, nowMs, loading, error, locationFallback } = useToday(self, profiles, todayOptions);
   const [expanded, setExpanded] = useState(false);
   const [sheet, setSheet] = useState(false);
-  const adSlot = todayNativeSlot();
 
   // The F1 first value is synchronous (chartFor is memoised), so it paints before the rest of the model is computed.
   let moon: ReturnType<typeof moonLine> | null = null;
@@ -108,7 +110,16 @@ export default function TodayScreen({ todayOptions }: TodayScreenProps) {
   const note = model ? <DailyNoteCard rows={model.note} name={model.profile.name} day={model.day} tz={model.observer.tz} testID="daily-note" /> : null;
   const upcomingStrip = model ? <UpcomingStrip items={model.upcoming} tz={model.observer.tz} profileId={model.profile.id} testID="upcoming" /> : null;
   const vratCard = model && model.vratToday.length ? <VratTodayCard occurrences={model.vratToday} tz={model.observer.tz} placeName={placeName} testID="vrat-today" /> : null;
-  const familyFirst = self?.intent === 'familyDates';
+  const order = todayCardOrder(self?.intent);
+  const adSlot = todayNativeSlot(order.length - 1);
+  const cards: Record<TodayCardKey, React.ReactNode> = {
+    goodHours,
+    tithiToday: tithiRow,
+    vratToday: vratCard,
+    upcoming: upcomingStrip,
+    dailyNote: note,
+    nativeAd: adSlot.kind === 'native' && model ? <NativeAdCard unitId={adSlot.unitId} /> : null,
+  };
 
   return (
     <Screen title={t('today.title')} route="Today" subtitle={subtitle} testID="today-screen">
@@ -127,16 +138,7 @@ export default function TodayScreen({ todayOptions }: TodayScreenProps) {
         </Card>
       ) : null}
       {loading ? <Skeleton /> : null}
-      {goodHours}
-      {tithiRow}
-      {familyFirst ? vratCard : null}
-      {familyFirst ? upcomingStrip : null}
-      {note}
-      {familyFirst ? null : vratCard}
-      {familyFirst ? null : upcomingStrip}
-      {/* AdPolicy.todayNativeSlot() answers 'none' in Phase A, so nothing is drawn here (no placeholder box). B03 replaces
-          the empty mount point with NativeAdCard when the policy answers 'native' (after Upcoming, below the fold, M4). */}
-      {adSlot.kind === 'native' ? <View testID="native-ad-slot" /> : null}
+      {order.map((key) => (cards[key] ? <React.Fragment key={key}>{cards[key]}</React.Fragment> : null))}
       {model ? (
         <PanchangSheet
           visible={sheet}

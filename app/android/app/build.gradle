@@ -81,6 +81,18 @@ def enableMinifyInReleaseBuilds = (findProperty('android.enableMinifyInReleaseBu
  */
 def jscFlavor = 'io.github.react-native-community:jsc-android:2026004.+'
 
+/**
+ * Hand-maintained (B03, M10). Reads app.json extra.applovinSdkKey so the manifest placeholder and the JS side share
+ * one source. Empty string when absent: the adapter is compiled in but never gets a mediation group (OWNER-TODO item 4).
+ */
+def shubhvelaAppLovinSdkKey() {
+    def appJson = new File(projectRoot, 'app.json')
+    if (!appJson.exists()) return ''
+    def extra = new groovy.json.JsonSlurper().parse(appJson)?.expo?.extra
+    def key = extra?.applovinSdkKey
+    return key instanceof String ? key : ''
+}
+
 android {
     ndkVersion = rootProject.ext.ndkVersion
     buildToolsVersion = rootProject.ext.buildToolsVersion
@@ -94,6 +106,9 @@ android {
         versionName "0.1.0"
 
         buildConfigField "String", "REACT_NATIVE_RELEASE_LEVEL", "\"${findProperty('reactNativeReleaseLevel') ?: 'stable'}\""
+        // Hand-maintained (B03, M10): the AppLovin mediation adapter needs applovin.sdk.key in the manifest. The value
+        // comes from app.json extra.applovinSdkKey ('' until the owner acts; no mediation group exists in v1).
+        manifestPlaceholders.put('applovinSdkKey', shubhvelaAppLovinSdkKey())
     }
     signingConfigs {
         debug {
@@ -188,6 +203,10 @@ dependencies {
         }
     }
 
+    // Hand-maintained (B03, M10): AppLovin mediation adapter for AdMob (spec section 10 'wired but disabled'). It
+    // initialises only through the Google Mobile Ads SDK, which Pro users never initialise (app/src/ads/AdsRoot.tsx),
+    // and no AdMob mediation group references it until the owner creates one (docs/OWNER-TODO.md item 4).
+    implementation 'com.google.ads.mediation:applovin:13.6.4.2'
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")
     } else {

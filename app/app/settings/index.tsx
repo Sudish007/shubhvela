@@ -1,7 +1,8 @@
-// Settings (design.md 3): one grouped list. Pro and purchases are hidden until B03; Backup and restore until C04;
+// Settings (design.md 3): one grouped list. Pro and purchases (B03) sit first; Backup and restore arrive in C04;
 // Vrats (A12) opens the 12 family switches. Each row shows its current value so the state is visible without opening it.
 import { useFocusEffect, useRouter } from 'expo-router';
 import { useCallback, useState } from 'react';
+import { useProStatus } from '../../src/billing/ui';
 import { Card, NavRow, Screen } from '../../src/components';
 import { getAllSettings, type Settings } from '../../src/db/settings';
 import { useLang } from '../../src/i18n';
@@ -12,6 +13,7 @@ export default function SettingsScreen() {
   const { t } = useLang();
   const { setting: themeSetting } = useTokens();
   const router = useRouter();
+  const pro = useProStatus();
   const [s, setS] = useState<Settings>(() => getAllSettings());
   useFocusEffect(
     useCallback(() => {
@@ -21,6 +23,9 @@ export default function SettingsScreen() {
   const go = (path: string) => () => router.push(path);
   return (
     <Screen title={t('settings.title')} chrome="stack" testID="settings-screen">
+      <Card flush>
+        <NavRow title={t('settings.pro')} value={pro.pro ? t('pro.openPro') : undefined} caption={pro.grace ? t('pro.graceNotice') : undefined} onPress={go('/settings/pro')} divider={false} testID="settings-pro" />
+      </Card>
       <Card flush>
         <NavRow title={t('settings.profiles')} onPress={() => router.replace('/(tabs)/family')} testID="settings-profiles" />
         <NavRow title={t('settings.language')} value={t(LANG_KEY[s.language])} onPress={go('/settings/language')} testID="settings-language" />
