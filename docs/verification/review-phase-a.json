@@ -1,0 +1,54 @@
+{
+  "verdict": "APPROVED",
+  "findings": [
+    {
+      "severity": "MEDIUM",
+      "title": "Holi 2026 date differs from Drik (eclipse sutak not modelled)",
+      "detail": "Engine Holika Dahan 2026-03-02 / Holi 03-03; Drik and the press 03-03 / 03-04 because of the 2026-03-03 total lunar eclipse. Documented in reference/CONVENTIONS.md and excluded from data/verified-dates.json so the festival footer reads 'not yet verified' (honest). Add an eclipse check (astronomy-engine SearchLunarEclipse) to the Purnima-night / pradosh festivals before the Phase D release gate. Owner cluster B01 (carry-over A-MEDIUM-2).",
+      "feature": "F23"
+    },
+    {
+      "severity": "MEDIUM",
+      "title": "reference:check exits 1 on the matching suite (0/20)",
+      "detail": "charts 60/60, panchang 150/150, festivals 600/600 (12 documented notOnDrik slug-years excluded), tz 12/12 pass; matching 0/20 because reference/fetch/drik-matching.mjs times out at waitForNavigation after Submit; suite it.skip. Fix the fetcher and populate the 20 pairs in Phase B. Owner cluster B01/B02 (remainder of carry-over A-MEDIUM-1).",
+      "feature": "F23"
+    },
+    {
+      "severity": "MEDIUM",
+      "title": "Hindi UI shows English interpretive sentences (no hi corpus yet)",
+      "detail": "Daily note, Family Today and festival 'what to do' bodies are English on hi/bho (today-hi-dark-390.png, family-bho-dark-390.png, festival-detail-hi-dark-390.png) because no corpus/<domain>/hi.json exists; GEMINI_API_KEY is not set (gh secret list empty). Owner item 5: set the secret and dispatch corpus-translate.yml -f lang=hi; the bho -> hi -> en fallback stays until then (carry-over A-INFO-1). Spec D3 is unmet for Hindi content until the batch lands.",
+      "feature": "F6"
+    },
+    {
+      "severity": "MEDIUM",
+      "title": "Grievance address and privacy-policy URL are provisional",
+      "detail": "The consent notice and Settings -> Privacy now label grievance@shubhvela.in as provisional (fixed for Phase A, app/src/legal.ts GRIEVANCE_EMAIL_CONFIRMED=false), but the real address must replace it and the flag flip before any public build (docs/OWNER-TODO.md item 8); 'Read the privacy policy' opens <webBase>/privacy/, which is a 404 until D01 publishes the page. Owner clusters D01 (page) / D04 (release gate).",
+      "feature": "F1"
+    },
+    {
+      "severity": "NIT",
+      "title": "Family Today addresses another member in the second person",
+      "detail": "Under Amma the body reads 'Today's Moon is in the 9th sign from your birth Moon' (family-en-light-390.png); daily fragments are authored for the self profile. Render a third-person variant or prefix the member's name in the fragment. Owner cluster B02/C02 (content authoring).",
+      "feature": "F24"
+    },
+    {
+      "severity": "NIT",
+      "title": "Place name stays Latin in hi/bho",
+      "detail": "'Lucknow, Uttar Pradesh, India' in the Today pill, the panchang sheet and the festival detail on hi/bho screens; gazetteer name_hi (758 of 37,937 rows) is not stored with the profile place. Needs a schema + editor change; design.md 7 only fixes numerals. Owner cluster B06 or later.",
+      "feature": "F8"
+    },
+    {
+      "severity": "NIT",
+      "title": "Sheetala Ashtami 2028: Drik 03-17 vs engine 03-18",
+      "detail": "Rule not inferable (Drik's 2027/2028 Saptami dates are not udaya days either; 'tithi at sunrise + 0.84-0.88 x daylight' fits but has no classical source). Keyed as intentional in CONVENTIONS.md; footer reads 'not yet verified'. Re-check with Drik's 2029 page. Owner cluster D01 or later (carry-over A-NIT-1).",
+      "feature": "F23"
+    },
+    {
+      "severity": "NIT",
+      "title": "Hindi consent button is gendered ('समझ गया')",
+      "detail": "packages/content/ui/hi.json consent.agree = 'समझ गया, आगे बढ़ें' is the masculine past form (spec 7: no gendered assumptions); Bhojpuri 'समझ गइल' does not inflect. Use e.g. 'समझ लिया, आगे बढ़ें' or 'ठीक है, आगे बढ़ें'. Owner cluster B03 (first Phase B cluster touching ui/*.json) or the owner's Hindi copy review.",
+      "feature": "F1"
+    }
+  ],
+  "reviewDoc": "c:/Users/sudiskmr/Downloads/DomainClassification/shubhvela/.agents/tasks/v1-build/review-phase-a.md"
+}

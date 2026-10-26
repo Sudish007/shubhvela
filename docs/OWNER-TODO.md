@@ -3,6 +3,13 @@
 Created in A01 from plan.md section 13; refreshed at the end of every phase. Each item says
 when it is needed and what the build does meanwhile.
 
+**Phase A shipped (2026-10-26, tag `v0.1.0-phase-a`):** `release/Shubhvela-0.1.0-arm64.apk` (device) and
+`release/Shubhvela-0.1.0-x86_64.apk` (emulator, screenshot mode) are on this PC only (gitignored). Open
+owner items at this point: 1 (name/domains), 2 (Instagram), 3 (Play Console), 5 (`GEMINI_API_KEY` still
+not set — `gh secret list` is empty, so the Hindi corpus is still English), 6 (Bhojpuri review), 7
+(keystore backup), 8 (grievance e-mail). Item 4 (AdMob) waits for the Phase B review. Details in
+`docs/verification/verification-phase-a.md`.
+
 1. **Name and domains.** Confirm "Shubhvela" (शुभवेला). It must be final before the first Play
    upload: the Android `applicationId com.shubhvela.app` cannot change afterwards. Buy
    `shubhvela.in` and `shubhvela.com` the same day (`.app` optional). Later: custom domain ->
@@ -58,3 +65,14 @@ when it is needed and what the build does meanwhile.
     needed again in Phase D). At A01 the machine had 3.8 GB free; A13 will pause and ask if it
     is still below 4 GB.
 11. **Post-1.0 fixes** carried from the Phase D review (appended by the reviewer).
+
+## Status after Phase A (shipped 2026-10-26, tag `v0.1.0-phase-a`)
+
+- Built and signed (local, gitignored): `release/Shubhvela-0.1.0-arm64.apk` (device, 90.3 MB) and
+  `release/Shubhvela-0.1.0-x86_64.apk` (emulator, screenshot mode, 100.6 MB). Not yet run on a real phone.
+- Still open for you: items 1 (name/domains), 2 (Instagram), 3 (Play Console; needed from Phase D),
+  4 (AdMob ids; wait for the Phase B review), 5 (`GEMINI_API_KEY` — `gh secret list` was still empty on
+  2026-10-26, so Hindi/Bhojpuri screens show English interpretive sentences), 6 (Bhojpuri review of
+  `packages/content/ui/bho.json`; no `bho-A.md` review queue exists because the corpus is not translated
+  into Bhojpuri by your decision), 7 (keystore backup — do this now), 8 (grievance e-mail).
+- Phase B must also pick up the review leftovers in `docs/verification/carry-over.md`.
