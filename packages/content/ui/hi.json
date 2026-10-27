@@ -1568,7 +1568,7 @@
   "pdf.born": "जन्म {line}",
   "pdf.place": "स्थान",
   "pdf.coordinates": "{lat}, {lon}",
-  "pdf.timezone": "समय क्षेत्र {tz} ({offset})",
+  "pdf.timezone": "{tz} ({offset})",
   "pdf.approxBirthTime": "जन्म समय लगभग (±{minutes} मिनट)",
   "pdf.vedicDay": "वैदिक दिन",
   "pdf.monthLine": "{purnimanta} (पूर्णिमांत) · {amanta} (अमांत)",
