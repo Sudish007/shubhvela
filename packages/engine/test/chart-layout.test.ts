@@ -224,4 +224,21 @@ describe('chart-layout geometry (design 4)', () => {
     expect(centre[0].x).toBe(160);
     expect(centre[1].y).toBeGreaterThan(centre[0].y);
   });
+
+  it('East centre lines wrap at " · " so they stay inside the centre cell (b-fix, 360 dp)', () => {
+    // 360 dp screen -> card inner width 296; "Lahiri · Mean node" is wider than the 106-unit centre cell.
+    for (const width of [296, 326, 348]) {
+      const lay = layout('east', SAMPLE, 1, width, { lang: 'en', centreLines: ['Priya', 'Lahiri · Mean node'] });
+      const centre = lay.labels.filter((l) => l.kind === 'centre');
+      for (const l of centre) {
+        expect(l.x - l.width / 2).toBeGreaterThan(107 + 1.5);
+        expect(l.x + l.width / 2).toBeLessThan(213 - 1.5);
+      }
+      expect(centre.map((l) => l.text)).toEqual(width === 296 ? ['Priya', 'Lahiri', 'Mean node'] : expect.arrayContaining(['Priya']));
+      expect(centre.length).toBeLessThanOrEqual(3);
+    }
+    // South has a 2x2 centre block: the same lines stay unsplit.
+    const south = layout('south', SAMPLE, 1, 296, { lang: 'en', centreLines: ['Priya', 'Lahiri · Mean node'] });
+    expect(south.labels.filter((l) => l.kind === 'centre').map((l) => l.text)).toEqual(['Priya', 'Lahiri · Mean node']);
+  });
 });

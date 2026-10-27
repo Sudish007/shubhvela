@@ -173,6 +173,32 @@ export function estimateTextWidth(text: string, size: number): number {
   return em * size;
 }
 
+/**
+ * Splits centre lines that would not fit `maxWidth` at their " · " separators, packing consecutive parts back
+ * together while they fit. A part that is too wide on its own is kept whole (nothing shorter exists).
+ */
+export function wrapCentreLines(lines: readonly string[], size: number, maxWidth: number): string[] {
+  const out: string[] = [];
+  for (const line of lines) {
+    if (estimateTextWidth(line, size) <= maxWidth) {
+      out.push(line);
+      continue;
+    }
+    let current = '';
+    for (const part of line.split(' · ')) {
+      const joined = current ? `${current} · ${part}` : part;
+      if (current && estimateTextWidth(joined, size) > maxWidth) {
+        out.push(current);
+        current = part;
+      } else {
+        current = joined;
+      }
+    }
+    if (current) out.push(current);
+  }
+  return out;
+}
+
 function polygonCentroid(poly: Point[]): Point {
   // Area-weighted centroid (exact for the triangles, rhombi and rectangles used here).
   let a = 0;
@@ -675,9 +701,12 @@ export function layout(style: ChartStyle, chart: ChartData, fontScale: number, r
     });
   });
 
-  // Centre text (South/East) when the caller supplies it.
+  // Centre text (South/East) when the caller supplies it. A line wider than the centre box (East: one 106-unit
+  // cell; South: the 2x2 inner block) is split at its " · " separators so it never crosses a grid line
+  // (b-fix: "Lahiri · Mean node" at 360 dp); at most three lines are drawn.
   if (style !== 'north' && opts.centreLines && opts.centreLines.length) {
-    const lines = opts.centreLines.slice(0, 3);
+    const centreMax = (style === 'east' ? EAST_G : 2 * SOUTH_CELL) - 2 * (FRAME_MARGIN + LABEL_PAD);
+    const lines = wrapCentreLines(opts.centreLines, labelSize, centreMax).slice(0, 3);
     const gap = labelSize * 1.5;
     lines.forEach((t, i) => {
       const cy = C + (i - (lines.length - 1) / 2) * gap;
