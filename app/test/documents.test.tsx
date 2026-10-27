@@ -224,9 +224,12 @@ describe('B07 documents', () => {
       return { uri: 'file:///cache/Print.pdf', pages: 4 };
     });
     const rename = jest.fn(async (_uri: string, name: string) => `file:///cache/${name}`);
+    // The shown page count comes from the PDF bytes (B08: expo-print's numberOfPages was 23 for a 9-page file), so the
+    // printer's "4" is overridden by the two page objects in the file; "/Pages" (the tree node) is not a page.
+    const readBytes = jest.fn(async () => new TextEncoder().encode('%PDF-1.4\n1 0 obj << /Type /Pages /Kids [2 0 R 3 0 R] /Count 2 >> endobj\n2 0 obj << /Type /Page /Parent 1 0 R >> endobj\n3 0 obj <</Type/Page /Parent 1 0 R>> endobj\n'));
     const share = jest.fn(async () => {});
     const onDone = jest.fn();
-    await renderWithProviders(<PreviewScreen params={janam()} now={now} fonts={fonts} pdf={{ print, rename, share }} onDone={onDone} />);
+    await renderWithProviders(<PreviewScreen params={janam()} now={now} fonts={fonts} pdf={{ print, rename, share, readBytes }} onDone={onDone} />);
     await screen.findByTestId('pdf-webview');
     expect(textOf(screen.getByTestId('pdf-included'))).toBe('included in Pro');
     expect(screen.queryByTestId('pdf-buy')).toBeNull();
@@ -237,7 +240,8 @@ describe('B07 documents', () => {
     fail = false;
     await fireEvent.press(screen.getByTestId('pdf-retry'));
     await screen.findByTestId('pdf-created');
-    expect(textOf(screen.getByTestId('pdf-created'))).toBe('PDF created · 4 pages');
+    expect(textOf(screen.getByTestId('pdf-created'))).toBe('PDF created · 2 pages');
+    expect(readBytes).toHaveBeenCalledWith('file:///cache/shubhvela-janam-patri-Priya.pdf');
     expect(print).toHaveBeenCalledTimes(2);
     expect(rename).toHaveBeenCalledWith('file:///cache/Print.pdf', 'shubhvela-janam-patri-Priya.pdf');
     expect(share).toHaveBeenCalledWith('file:///cache/shubhvela-janam-patri-Priya.pdf', 'shubhvela-janam-patri-Priya.pdf');

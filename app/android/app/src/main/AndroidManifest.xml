@@ -20,6 +20,10 @@
     <meta-data android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="ca-app-pub-3940256099942544~3347511713" tools:replace="android:value"/>
     <meta-data android:name="com.google.android.gms.ads.flag.OPTIMIZE_AD_LOADING" android:value="true" tools:replace="android:value"/>
     <meta-data android:name="com.google.android.gms.ads.flag.OPTIMIZE_INITIALIZATION" android:value="true" tools:replace="android:value"/>
+    <!-- Hand-maintained (B08, M10 / F39 "Pro = zero ad SDK calls"): without this flag the GMA SDK starts its app
+         measurement from a ContentProvider at every process start, before AdsRoot can check isPro(). With it nothing
+         runs until mobileAds().initialize(), which AdsRoot never calls for Pro. Mirrors app.json plugin option delayAppMeasurementInit. -->
+    <meta-data android:name="com.google.android.gms.ads.DELAY_APP_MEASUREMENT_INIT" android:value="true" tools:replace="android:value"/>
     <!-- Hand-maintained (B03, M10): AppLovin adapter SDK key from app.json extra.applovinSdkKey via build.gradle manifestPlaceholders ('' until the owner acts). -->
     <meta-data android:name="applovin.sdk.key" android:value="${applovinSdkKey}"/>
     <meta-data android:name="com.google.firebase.messaging.default_notification_color" android:resource="@color/notification_icon_color"/>

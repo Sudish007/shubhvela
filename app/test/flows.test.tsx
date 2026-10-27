@@ -9,7 +9,7 @@ import ConsentScreen from '../app/onboarding/consent';
 import { needsOnboarding } from '../src/gate';
 import { consentAt } from '../src/db/appState';
 import { getProfile, getSelfProfile, insertProfile, listProfiles } from '../src/db/profiles';
-import { parseDevParams } from '../src/dev/params';
+import { parseDevParams, withForwardedQuery } from '../src/dev/params';
 import { SAMPLE_AMMA, SAMPLE_PRIYA, seedSampleState } from '../src/dev/seed';
 import { chartFor, moonLine } from '../src/engine-bridge/charts';
 import { formToProfile } from '../src/profiles/mapping';
@@ -97,6 +97,13 @@ describe('flows', () => {
     expect(parseDevParams({ pro: '0', session: 'x', intent: 'money', pdf_lang: 'ta' })).toMatchObject({ pro: false });
     expect(parseDevParams({ session: 'x' }).session).toBeUndefined();
     expect(parseDevParams({ intent: 'money' }).intent).toBeUndefined();
+    // q_<name> parameters are forwarded to the target screen (the outer link cannot carry a second "&" inside screen=).
+    const fwd = parseDevParams({ screen: '/family/match/result', q_a: 'p{self}', q_b: 'p{other}', q_empty: '' });
+    expect(fwd.forward).toEqual({ a: 'p{self}', b: 'p{other}' });
+    expect(withForwardedQuery('/family/match/result', { a: 'p3', b: 'p4' })).toBe('/family/match/result?a=p3&b=p4');
+    expect(withForwardedQuery('/charts/pdf/janam_patri?profile=3', { kind: 'x y' })).toBe('/charts/pdf/janam_patri?profile=3&kind=x%20y');
+    expect(withForwardedQuery('/pro', undefined)).toBe('/pro');
+    expect(parseDevParams({}).forward).toBeUndefined();
     expect(parseDevParams({ test_reminder: '1' }).testReminder).toBe(true);
     expect(parseDevParams({ pdf_dump: '1' }).pdfDump).toBe(true);
     expect(parseDevParams({ screen: '/(tabs)/charts', style: 'south' }).style).toBe('south');

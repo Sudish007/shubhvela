@@ -16,6 +16,27 @@ export interface PdfDeps {
   share?: (uri: string, title: string) => Promise<void>;
   /** Moves the printed file to a readable name inside the cache (default expo-file-system). */
   rename?: (uri: string, fileName: string) => Promise<string>;
+  /** Reads the finished file so the page count shown to the user comes from the PDF itself (default expo-file-system). */
+  readBytes?: (uri: string) => Promise<Uint8Array>;
+}
+
+/**
+ * Page count read from the PDF bytes: the number of "/Type /Page" page objects (not "/Pages"). B08 found expo-print's
+ * `numberOfPages` on Android to be the WebView print adapter's estimate (23 and 85 for 9-page files), and "PDF created
+ * · N pages" must be a true number. Android's print pipeline writes plain object headers, so the scan is exact; 0 means
+ * the structure was not recognised and the caller falls back to the printer's figure.
+ */
+export function countPdfPages(bytes: Uint8Array): number {
+  const TYPE = [0x2f, 0x54, 0x79, 0x70, 0x65]; // "/Type"
+  const PAGE = [0x2f, 0x50, 0x61, 0x67, 0x65]; // "/Page"
+  let n = 0;
+  for (let i = 0; i + 5 <= bytes.length; i++) {
+    if (bytes[i] !== 0x2f || !TYPE.every((b, k) => bytes[i + k] === b)) continue;
+    let j = i + 5;
+    while (j < bytes.length && (bytes[j] === 0x20 || bytes[j] === 0x0a || bytes[j] === 0x0d || bytes[j] === 0x09)) j++;
+    if (PAGE.every((b, k) => bytes[j + k] === b) && bytes[j + 5] !== 0x73) n++;
+  }
+  return n;
 }
 
 async function defaultPrint(html: string): Promise<PdfFile> {
@@ -47,7 +68,14 @@ export async function createPdf(html: string, fileName: string, deps: PdfDeps = 
   } catch {
     // Keep expo-print's own file name when the move fails; the PDF itself is fine.
   }
-  return { uri, pages: printed.pages };
+  let pages = printed.pages;
+  try {
+    const counted = countPdfPages(await (deps.readBytes ?? ((u: string) => new File(u).bytes()))(uri));
+    if (counted > 0) pages = counted;
+  } catch {
+    // Unreadable file: the printer's figure stands rather than failing a PDF that exists.
+  }
+  return { uri, pages };
 }
 
 /** Hands a PDF to the system share sheet. */

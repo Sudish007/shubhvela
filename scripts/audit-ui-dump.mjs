@@ -9,6 +9,9 @@
 // With a folder every *.ui.xml inside is audited and the results are appended to <folder>/audit.json.
 // A sibling <name>.bottom.ui.xml (dump taken after scrolling to the end; written by scripts/shots.ps1) is used for
 // the "covered" check, because at the initial scroll position content legitimately scrolls under a sticky CTA.
+// B08: the banner strip (resource-id banner-strip) is treated like the CTA (fixed overlay; covered check against its
+// top edge; `strip` records strip vs banner height for the M6 "strip = banner + 32 dp" check), and nodes inside a
+// WebView document are not paired with each other for intersections (collapsed HTML table borders).
 //
 // Facts about the dump learned in A13: React Native's view tree is FLATTENED (a labelled container and its children
 // are siblings in the XML); scroll children are CLIPPED to the ScrollView bounds; the app's Screen component exposes
@@ -75,16 +78,34 @@ function parseNodes(xml) {
 const label = (n) => n.text || n.desc || n.id || n.cls;
 const inside = (n, box, tol = 2) => !!box && n.x1 >= box.x1 - tol && n.y1 >= box.y1 - tol && n.x2 <= box.x2 + tol && n.y2 <= box.y2 + tol;
 
+// WebView documents (the PDF preview, B07) expose their DOM as nodes too; adjacent HTML table cells share collapsed
+// borders (1 CSS px = ~3 device px), which is a document rendering, not two app boxes - skipped for intersections.
+function markWebContent(nodes) {
+  const webs = nodes.filter((n) => n.cls === 'android.webkit.WebView');
+  nodes.forEach((n, i) => { n.inWeb = webs.some((w) => w !== n && nodes.indexOf(w) < i && inside(n, w)); });
+}
+
 function auditXml(xml, file, bottomXml) {
   const nodes = parseNodes(xml);
   const screenH = Math.max(...nodes.map((n) => n.y2), 0);
   const screenW = Math.max(...nodes.map((n) => n.x2), 0);
   const scroll = nodes.find((n) => n.id === 'screen-scroll') || null;
-  const ctaIndex = nodes.findIndex((n) => n.id === 'screen-cta');
+  // Fixed bottom chrome over the scroll view: the sticky CTA (screen-cta) or the banner strip (banner-strip, M6).
+  // Both are absolute overlays; scroll content legitimately passes behind them until the full-scroll position.
+  const ctaIndex = nodes.findIndex((n) => n.id === 'screen-cta' || n.id === 'banner-strip');
   const cta = ctaIndex >= 0 ? nodes[ctaIndex] : null;
   // Scroll content passing behind the CTA is geometrically inside its box too; the CTA's own children follow it in
   // document order (the dump keeps order even though it flattens nesting).
   nodes.forEach((n, i) => { n.inCta = !!cta && i > ctaIndex && inside(n, cta); });
+  markWebContent(nodes);
+  // M6: strip height vs the banner view it wraps (the SDK's WebView inside the strip); the strip must be banner + 32 dp.
+  let strip = null;
+  if (cta && cta.id === 'banner-strip') {
+    const ad = nodes.find((n, i) => i > ctaIndex && n.cls === 'android.webkit.WebView' && inside(n, cta));
+    const stripDp = (cta.y2 - cta.y1) * dpPerPx;
+    const bannerDp = ad ? (ad.y2 - ad.y1) * dpPerPx : null;
+    strip = { stripDp: +stripDp.toFixed(1), bannerDp: bannerDp == null ? null : +bannerDp.toFixed(1), extraDp: bannerDp == null ? null : +(stripDp - bannerDp).toFixed(1), top: cta.y1, bottom: cta.y2 };
+  }
   // Chrome line: the sticky CTA's top edge when present; else the scroll viewport bottom (= tab bar top on tab
   // screens, screen bottom on stack screens). --tabbar/--strip are the legacy fallback when no screen-scroll exists.
   const chromeTop = cta ? cta.y1 - stripDp / dpPerPx : scroll ? scroll.y2 - stripDp / dpPerPx : screenH - (tabBarDp + stripDp) / dpPerPx;
@@ -93,8 +114,11 @@ function auditXml(xml, file, bottomXml) {
   const clippedEdges = nodes.filter((n) => n.scrollable).flatMap((s) => [s.y1, s.y2]).concat([chromeTop]);
   const touchesEdge = (n) => clippedEdges.some((e) => Math.abs(n.y1 - e) <= 2 || Math.abs(n.y2 - e) <= 2);
 
+  // Nodes inside the banner strip are the ad creative's own DOM (Google's test banner exposes a 43 dp clickable
+  // WebView element inside the 103-112 dp banner view); the app draws no control there, so they are not measured.
+  const inAd = (n) => !!cta && cta.id === 'banner-strip' && n.inCta;
   const smallControls = nodes
-    .filter((n) => n.clickable && !touchesEdge(n))
+    .filter((n) => n.clickable && !touchesEdge(n) && !inAd(n))
     .map((n) => ({ ...n, wDp: (n.x2 - n.x1) * dpPerPx, hDp: (n.y2 - n.y1) * dpPerPx }))
     .filter((n) => n.wDp > 0 && n.hDp > 0 && (n.wDp < MIN_DP - 0.5 || n.hDp < MIN_DP - 0.5))
     .map((n) => ({ label: label(n), wDp: +n.wDp.toFixed(1), hDp: +n.hDp.toFixed(1), bounds: [n.x1, n.y1, n.x2, n.y2] }));
@@ -104,15 +128,19 @@ function auditXml(xml, file, bottomXml) {
   // content passing under the CTA is the "covered" question, answered on the full-scroll dump below.
   const contains = (a, b) => a.x1 <= b.x1 + 2 && a.y1 <= b.y1 + 2 && a.x2 >= b.x2 - 2 && a.y2 >= b.y2 - 2;
   const intersections = [];
-  const visible = nodes.filter((n) => n.x2 > n.x1 && n.y2 > n.y1 && (n.text || n.desc || n.clickable));
+  // The overlay box itself (screen-cta / banner-strip, which carries an accessibility label) is not an element box.
+  const visible = nodes.filter((n) => n !== cta && n.x2 > n.x1 && n.y2 > n.y1 && (n.text || n.desc || n.clickable));
   for (let i = 0; i < visible.length; i++) {
     for (let j = i + 1; j < visible.length; j++) {
       const a = visible[i], b = visible[j];
       if (contains(a, b) || contains(b, a)) continue;
       if (cta && a.inCta !== b.inCta) continue;
+      if (a.inWeb && b.inWeb) continue;
       const ox = Math.min(a.x2, b.x2) - Math.max(a.x1, b.x1);
       const oy = Math.min(a.y2, b.y2) - Math.max(a.y1, b.y1);
-      if (ox > 1 && oy > 1) {
+      // > 2 px (0.7 dp at 443 dpi), the same tolerance as `contains`: Devanagari text boxes land on fractional pixels
+      // and the Family tools title overlapped the first row by exactly 2 px in bho (B08) with no visible touch.
+      if (ox > 2 && oy > 2) {
         intersections.push({ a: label(a), b: label(b), overlapPx: [ox, oy], boundsA: [a.x1, a.y1, a.x2, a.y2], boundsB: [b.x1, b.y1, b.x2, b.y2] });
       }
     }
@@ -124,10 +152,13 @@ function auditXml(xml, file, bottomXml) {
   let coveredChecked = false;
   if (bottomXml && cta) {
     const bn = parseNodes(bottomXml);
-    const bcta = bn.find((n) => n.id === 'screen-cta') || cta;
+    const bcta = bn.find((n) => n.id === cta.id) || cta;
     const bscroll = bn.find((n) => n.id === 'screen-scroll') || scroll;
-    // +1 px: 16 dp is 44.3 px at 443 dpi and RN lays out whole pixels (44 px = 15.9 dp), so allow one pixel of rounding.
-    const line = bcta.y1 - CLEARANCE_DP / dpPerPx + 1;
+    // +2 px: 16 dp is 44.3 px at 443 dpi and RN lays out whole pixels (44 px = 15.9 dp); above the banner strip two
+    // rounded quantities meet (the SDK's measured banner height, Math.round in AdPolicy, and RN's pixel snapping of
+    // the padding), observed as a 43 px gap (15.5 dp) under hi/bho text on Muhurat and Matching (B08). Two pixels
+    // = 0.7 dp at 443 dpi; anything larger is a real shortfall.
+    const line = bcta.y1 - CLEARANCE_DP / dpPerPx + 2;
     coveredChecked = true;
     covered = bn
       .filter((n, i) => (n.text || n.clickable) && inside(n, bscroll) && !(i > bn.indexOf(bcta) && inside(n, bcta)) && n.y2 > line && (n.y2 - n.y1) * dpPerPx < 200)
@@ -142,7 +173,8 @@ function auditXml(xml, file, bottomXml) {
     widthDp: +(screenW * dpPerPx).toFixed(0),
     heightDp: +(screenH * dpPerPx).toFixed(0),
     nodes: nodes.length,
-    chrome: cta ? 'cta' : scroll ? 'scroll-edge' : 'none',
+    chrome: cta ? (cta.id === 'banner-strip' ? 'banner' : 'cta') : scroll ? 'scroll-edge' : 'none',
+    strip,
     coveredChecked,
     smallControls,
     intersections,

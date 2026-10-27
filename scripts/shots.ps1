@@ -86,6 +86,12 @@ function Wait-ForId([string]$xml, [string]$id, [int]$maxSeconds) {
   return $xml
 }
 
+# Text nodes + bounds only: the test banner's WebView nodes change their content-desc between dumps and would never
+# let the "scrolled to the end" comparison settle.
+function Scroll-Signature([string]$xml) {
+  return (([regex]::Matches($xml, 'text="[^"]+"[^>]*bounds="[^"]+"') | ForEach-Object { $_.Value }) -join '|')
+}
+
 function Tap-Node([string]$xml, [string]$id) {
   $m = [regex]::Match($xml, 'resource-id="' + [regex]::Escape($id) + '"[^>]*bounds="\[(\d+),(\d+)\]\[(\d+),(\d+)\]"')
   if (-not $m.Success) {
@@ -140,6 +146,9 @@ foreach ($spec in $Screens) {
       Adb-Quiet @('shell', 'am', 'start', '-S', '-W', '--activity-clear-task', '-a', 'android.intent.action.VIEW', '-d', "'$url'", $Package) | Out-Null
       Start-Sleep -Seconds 6
       $xml = Wait-Ready 60
+      # Ads run: UMP consent + SDK init + the banner request take 10-15 s after the dev route (B08 logcat); on a
+      # banner-bearing route wait for the strip so the shot and the M6 dump carry it (no-fill falls through after 40 s).
+      if ($Extra -match 'session=' -and $route -match 'charts$|family$|muhurat$|match/result|festival|calendar|dasha-tree|ashtakavarga|kp$|vrat') { $xml = Wait-ForId $xml 'banner-strip' 40 }
       if ($hscroll) {
         # Wait-Ready can return while the previous screen is still up (no skeleton node on Charts): wait for the row itself.
         $xml = Wait-ForId $xml $hscroll 30
@@ -190,12 +199,20 @@ foreach ($spec in $Screens) {
         node (Join-Path $Root 'scripts/shrink-png.mjs') $png | Out-Null
         Write-Host "shot: $name.png"
       }
-      # Full-scroll dump for the "covered" check (design.md 13: >= 16 dp clearance above the CTA at full scroll).
-      if ($xml -match 'resource-id="screen-cta"') {
-        for ($s = 0; $s -lt 4; $s++) { Adb-Quiet @('shell', 'input', 'swipe', '540', '1700', '540', '500', '200') | Out-Null; Start-Sleep -Milliseconds 700 }
+      # Full-scroll dump for the "covered" check (design.md 13: >= 16 dp clearance above the CTA / banner strip at full
+      # scroll, M6). Swipe until the hierarchy stops changing (a 3-page PDF preview is ~15 screens long; cap 40).
+      if ($xml -match 'resource-id="(screen-cta|banner-strip)"') {
+        # Rounds of five fast flings, one dump per round (a dump costs ~5 s; the 42-window muhurat list is ~16 screens).
+        $prev = ''; $cur = Scroll-Signature $xml
+        for ($s = 0; $s -lt 12 -and $cur -ne $prev; $s++) {
+          # Start above the banner strip (its top is >= 1778 px at 480 dpi): a fling that begins on the ad WebView is eaten by it.
+          for ($k = 0; $k -lt 5; $k++) { Adb-Quiet @('shell', 'input', 'swipe', '540', '1600', '540', '200', '60') | Out-Null; Start-Sleep -Milliseconds 500 }
+          Start-Sleep -Milliseconds 1200
+          $prev = $cur; $cur = Scroll-Signature (Get-UiDump)
+        }
         Start-Sleep -Seconds 1
         [IO.File]::WriteAllText((Join-Path $OutDir "$name.bottom.ui.xml"), (Get-UiDump))
-        Write-Host "  bottom dump: $name.bottom.ui.xml"
+        Write-Host "  bottom dump: $name.bottom.ui.xml ($s fling rounds)"
       }
       $count++
     }

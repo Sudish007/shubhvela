@@ -12,7 +12,7 @@ import { View } from 'react-native';
 import { initAds, isAdsInitialized } from '../../src/ads/AdsRoot';
 import { getSelfProfile, listProfiles } from '../../src/db/profiles';
 import { setSetting } from '../../src/db/settings';
-import { parseDevParams } from '../../src/dev/params';
+import { parseDevParams, withForwardedQuery } from '../../src/dev/params';
 import { dumpReports } from '../../src/dev/pdfDump';
 import { seedSampleState } from '../../src/dev/seed';
 import { scheduleTestReminder } from '../../src/dev/testReminder';
@@ -52,10 +52,14 @@ export default function DevState() {
     // `{self}` = the self profile id, `{other}` = the first non-self profile (Amma) for matching / PDF routes (B08).
     const selfId = getSelfProfile()?.id;
     const otherId = listProfiles().find((x) => !x.isSelf)?.id;
-    let screen = p.screen;
-    if (selfId !== undefined) screen = screen.replace('{self}', String(selfId));
-    if (otherId !== undefined) screen = screen.replace('{other}', String(otherId));
-    router.replace(screen);
+    const ids = (s: string) => {
+      let out = s;
+      if (selfId !== undefined) out = out.replace('{self}', String(selfId));
+      if (otherId !== undefined) out = out.replace('{other}', String(otherId));
+      return out;
+    };
+    const forward = p.forward ? Object.fromEntries(Object.entries(p.forward).map(([k, v]) => [k, ids(v)])) : undefined;
+    router.replace(withForwardedQuery(ids(p.screen), forward));
     // One run per deep link (the params object changes identity on every link; `key` captures its content).
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [enabled, key]);
