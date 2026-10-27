@@ -4,7 +4,7 @@
 
 .DESCRIPTION
   scripts/shots.ps1 -Phase <a|b|c|d> -Screens <spec,spec,...> [-Langs en,hi,bho] [-Themes light,dark]
-                    [-Density 443] [-FontScale 1.0] [-Scrolled] [-Variant <suffix>]
+                    [-Density 443] [-FontScale 1.0] [-Scrolled] [-Variant <suffix>] [-Extra 'session=4&pro=1']
 
   A screen spec is  <label>=<route>[;style=<north|south|east>][;tap=<resource-id>[,<resource-id>...]]
   e.g.  today=/(tabs)/today            charts-south=/(tabs)/charts;style=south
@@ -33,7 +33,11 @@ param(
   [string]$FontScale = '1.0',
   [switch]$Scrolled,
   [string]$Variant = '',
-  [switch]$BottomOnly
+  [switch]$BottomOnly,
+  # Extra dev/state query parameters appended to every link, e.g. 'session=4' (ads shown) or 'pro=1' (B08 Pro variants).
+  [string]$Extra = '',
+  # Number of swipes for -Scrolled (1 = one screen; Today's last card needs ~4).
+  [int]$ScrollCount = 1
 )
 
 $ErrorActionPreference = 'Stop'
@@ -73,6 +77,15 @@ function Wait-Ready([int]$maxSeconds) {
   return $xml
 }
 
+function Wait-ForId([string]$xml, [string]$id, [int]$maxSeconds) {
+  $deadline = (Get-Date).AddSeconds($maxSeconds)
+  while (-not ($xml -match ('resource-id="' + [regex]::Escape($id) + '"')) -and (Get-Date) -lt $deadline) {
+    Start-Sleep -Seconds 3
+    $xml = Get-UiDump
+  }
+  return $xml
+}
+
 function Tap-Node([string]$xml, [string]$id) {
   $m = [regex]::Match($xml, 'resource-id="' + [regex]::Escape($id) + '"[^>]*bounds="\[(\d+),(\d+)\]\[(\d+),(\d+)\]"')
   if (-not $m.Success) {
@@ -105,16 +118,21 @@ foreach ($spec in $Screens) {
   $head = $parts[0]
   if ($head -notmatch '^([A-Za-z0-9_-]+)=(.+)$') { Write-Error "Bad screen spec '$spec' (want label=route[;style=..][;tap=..])"; exit 3 }
   $label = $Matches[1]; $route = $Matches[2]
-  $style = ''; $taps = @()
+  $style = ''; $taps = @(); $hscroll = ''
   foreach ($p in $parts[1..($parts.Count - 1)]) {
     if ($p -match '^style=(north|south|east)$') { $style = $Matches[1] }
     elseif ($p -match '^tap=(.+)$') { $taps = $Matches[1] -split ',' }
+    # hscroll=<resource-id>: swipe that horizontal row to its end before tapping (off-screen chips, B08).
+    elseif ($p -match '^hscroll=(.+)$') { $hscroll = $Matches[1] }
   }
   foreach ($lang in $Langs) {
     foreach ($theme in $Themes) {
       $name = "$label-$lang-$theme$suffix"
+      # The emulator has exited by itself mid-batch (A13, B08): fail fast instead of looping on an absent device.
+      if ((Adb-Quiet @('get-state')).Trim() -ne 'device') { Write-Error "Emulator gone before $name (adb get-state)"; exit 1 }
       $url = "shubhvela://dev/state?lang=$lang&theme=$theme&screen=$([uri]::EscapeDataString($route))&sample=1&font=$FontScale"
       if ($style) { $url += "&style=$style" }
+      if ($Extra) { $url += "&$Extra" }
       # Cold start per shot: repeated deep links into a running app left Today stuck on its skeleton and ANR'd on the
       # emulator (A13); a fresh process is slower (~12 s to the full Today stack) but deterministic.
       # -S force-stops first; --activity-clear-task drops the task whose ROOT intent (an older deep link) Android would
@@ -122,18 +140,45 @@ foreach ($spec in $Screens) {
       Adb-Quiet @('shell', 'am', 'start', '-S', '-W', '--activity-clear-task', '-a', 'android.intent.action.VIEW', '-d', "'$url'", $Package) | Out-Null
       Start-Sleep -Seconds 6
       $xml = Wait-Ready 60
+      if ($hscroll) {
+        # Wait-Ready can return while the previous screen is still up (no skeleton node on Charts): wait for the row itself.
+        $xml = Wait-ForId $xml $hscroll 30
+        $hm = [regex]::Match($xml, 'resource-id="' + [regex]::Escape($hscroll) + '"[^>]*bounds="\[(\d+),(\d+)\]\[(\d+),(\d+)\]"')
+        if ($hm.Success) {
+          $hy = [int](([int]$hm.Groups[2].Value + [int]$hm.Groups[4].Value) / 2)
+          # Start 120 px inside the right edge: a touch within the system back-gesture inset (~22 dp) navigates back instead.
+          Adb-Quiet @('shell', 'input', 'swipe', "$([int]$hm.Groups[3].Value - 120)", "$hy", "$([int]$hm.Groups[1].Value + 20)", "$hy", '400') | Out-Null
+          Start-Sleep -Seconds 2
+          $xml = Get-UiDump
+        } else { Write-Host "  hscroll row '$hscroll' not found" }
+      }
       foreach ($id in $taps) {
-        # Targets below the fold: scroll up to three screens until the node is in the dump.
+        # Give the screen time to render the target before scrolling for it (see the hscroll note above).
+        if (-not $hscroll) { $xml = Wait-ForId $xml $id 20 }
+        # Targets below the fold: scroll up to fourteen screens until the node is in the dump (Charts is ~10 screens long).
         $tries = 0
-        while (-not ($xml -match ('resource-id="' + [regex]::Escape($id) + '"')) -and $tries -lt 3) {
+        while (-not ($xml -match ('resource-id="' + [regex]::Escape($id) + '"')) -and $tries -lt 14) {
           Adb-Quiet @('shell', 'input', 'swipe', '540', '1700', '540', '700', '300') | Out-Null
           Start-Sleep -Seconds 2
           $xml = Get-UiDump
           $tries++
         }
+        # A target found but lying under the banner strip (which overlays the scroll view's bottom) would tap the ad
+        # (B08: Chrome opened on the test banner): nudge it above the strip first.
+        $nm = [regex]::Match($xml, 'resource-id="' + [regex]::Escape($id) + '"[^>]*bounds="\[(\d+),(\d+)\]\[(\d+),(\d+)\]"')
+        $sm = [regex]::Match($xml, 'resource-id="banner-strip"[^>]*bounds="\[(\d+),(\d+)\]\[(\d+),(\d+)\]"')
+        if ($nm.Success -and $sm.Success -and [int]$nm.Groups[4].Value -gt [int]$sm.Groups[2].Value - 10) {
+          $dy = [int]$nm.Groups[4].Value - [int]$sm.Groups[2].Value + 200
+          Adb-Quiet @('shell', 'input', 'swipe', '540', '1400', '540', "$(1400 - $dy)", '400') | Out-Null
+          Start-Sleep -Seconds 2
+          $xml = Get-UiDump
+        }
         if (Tap-Node $xml $id) { Start-Sleep -Seconds 2; $xml = Wait-Ready 20 }
       }
-      if ($Scrolled) { Adb-Quiet @('shell', 'input', 'swipe', '540', '1800', '540', '600', '300') | Out-Null; Start-Sleep -Seconds 2 }
+      if ($Scrolled) {
+        for ($s = 0; $s -lt $ScrollCount; $s++) { Adb-Quiet @('shell', 'input', 'swipe', '540', '1800', '540', '600', '300') | Out-Null; Start-Sleep -Milliseconds 900 }
+        Start-Sleep -Seconds 2
+      }
       if (-not $BottomOnly) {
         Adb-Quiet @('shell', 'cmd', 'statusbar', 'collapse') | Out-Null
         Start-Sleep -Milliseconds 800

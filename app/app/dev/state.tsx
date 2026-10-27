@@ -3,11 +3,14 @@
 // nothing and goes home. `sample=1` seeds Priya / Amma / Dadaji (engine-computed on the screens) and consent_at=now;
 // `font` is accepted for the shots manifest but the font scale itself is a device setting (adb settings put system
 // font_scale), so it is only echoed in the dev log. `screen` is a route path (default /(tabs)/today). `pdf_dump=1` (B07)
-// prints the three reports to the cache directory and logs their URIs for B08 to pull.
+// prints the three reports to the cache directory and logs their URIs for B08 to pull. B08 audit extras (all with
+// sample=1): `pro=1` seeds an active Pro entitlement (absent = Free), `session=N` sets the session counter (4 = ads),
+// `intent=` sets the self profile's intent (M4), `pdf_lang=` the profiles' PDF language.
 import { Redirect, useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect } from 'react';
 import { View } from 'react-native';
-import { getSelfProfile } from '../../src/db/profiles';
+import { initAds, isAdsInitialized } from '../../src/ads/AdsRoot';
+import { getSelfProfile, listProfiles } from '../../src/db/profiles';
 import { setSetting } from '../../src/db/settings';
 import { parseDevParams } from '../../src/dev/params';
 import { dumpReports } from '../../src/dev/pdfDump';
@@ -28,7 +31,12 @@ export default function DevState() {
   useEffect(() => {
     if (!enabled) return;
     const p = parseDevParams(params);
-    if (p.sample) seedSampleState({ lang: p.lang, theme: p.theme });
+    if (p.sample) {
+      seedSampleState({ lang: p.lang, theme: p.theme, intent: p.intent, pdfLang: p.pdfLang, pro: p.pro, sessions: p.session });
+      // AdsRoot decided about the SDK at cold start, before this seed: a Free shot after a Pro run would otherwise show
+      // no ads this session. Idempotent (initAds returns early when Pro or already initialised).
+      if (!p.pro && !isAdsInitialized()) void initAds();
+    }
     if (p.style) setSetting('chartStyle', p.style);
     // After the launch re-plan (app/_layout.tsx, 1.5 s after mount), which cancels every scheduled notification first.
     if (p.testReminder) setTimeout(() => void scheduleTestReminder(p.lang), 6000);
@@ -41,8 +49,13 @@ export default function DevState() {
     setLang(p.lang);
     setThemeSetting(p.theme);
     if (__DEV__) console.log('dev/state', p);
+    // `{self}` = the self profile id, `{other}` = the first non-self profile (Amma) for matching / PDF routes (B08).
     const selfId = getSelfProfile()?.id;
-    router.replace(selfId !== undefined ? p.screen.replace('{self}', String(selfId)) : p.screen);
+    const otherId = listProfiles().find((x) => !x.isSelf)?.id;
+    let screen = p.screen;
+    if (selfId !== undefined) screen = screen.replace('{self}', String(selfId));
+    if (otherId !== undefined) screen = screen.replace('{other}', String(otherId));
+    router.replace(screen);
     // One run per deep link (the params object changes identity on every link; `key` captures its content).
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [enabled, key]);

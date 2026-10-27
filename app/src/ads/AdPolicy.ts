@@ -120,6 +120,16 @@ export function beginSession(): number {
   return n;
 }
 
+/**
+ * Screenshot-build seeding only (dev/state?session=N, B08 audit): sets the persisted session counter so the banner /
+ * native placements can be shot in "session 4" without four cold starts. Not called by any user-facing code.
+ */
+export function seedSessionsForScreenshots(n: number): void {
+  mem.sessions = n;
+  if (hasDb()) setAppState('sessions', String(n));
+  emit();
+}
+
 export function noteBackground(now: number = Date.now()): void {
   mem.backgroundedAt = now;
 }

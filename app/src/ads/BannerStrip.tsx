@@ -3,7 +3,7 @@
 // rendered by Screen only when AdPolicy.bannerFor(route) === 'anchored'; the measured banner height is published to
 // AdPolicy so Screen's padding formula (measured + 32) keeps scrolled content 16 dp clear. No fill -> the strip
 // reports failure, AdPolicy answers 'none', the strip unmounts and the padding recalculates (never a blank box).
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, useWindowDimensions, View } from 'react-native';
 import { BannerAd, BannerAdSize } from 'react-native-google-mobile-ads';
 import { useLang } from '../i18n';
 import { useTokens } from '../theme/ThemeProvider';
@@ -22,6 +22,9 @@ export function BannerStrip({ route, insetBottom }: BannerStripProps) {
   const { t } = useLang();
   const ready = useAdsInitialized();
   const measured = useBannerHeight(route);
+  // B08 emulator finding: without `width` the adaptive banner takes the full device width and overflows the 16 dp side
+  // padding (design.md 5 "16 dp padding on all sides"); request the strip's inner width instead.
+  const adWidth = Math.floor(useWindowDimensions().width - 2 * size.bannerPadding);
   if (!ready) return null;
   return (
     <View
@@ -32,6 +35,7 @@ export function BannerStrip({ route, insetBottom }: BannerStripProps) {
       <BannerAd
         unitId={unitIds().banner}
         size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
+        width={adWidth}
         onAdLoaded={({ height }) => reportBannerLoaded(route, height)}
         onAdFailedToLoad={() => reportBannerFailed(route)}
       />

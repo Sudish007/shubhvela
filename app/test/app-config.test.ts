@@ -1,4 +1,6 @@
 // Guards the app.json invariants that the committed android/ depends on (plan P1, P13, 4.1 step 6).
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import appJson from '../app.json';
 
 const expo = appJson.expo;
@@ -11,9 +13,12 @@ describe('app.json', () => {
     expect(expo.android.package).toBe('com.shubhvela.app');
   });
 
-  it('keeps version and versionCode paired for Phase A', () => {
-    expect(expo.version).toBe('0.1.0');
-    expect(expo.android.versionCode).toBe(1);
+  it('keeps version and versionCode paired for Phase B (P13: 0.2.0 / 2) in app.json and build.gradle', () => {
+    expect(expo.version).toBe('0.2.0');
+    expect(expo.android.versionCode).toBe(2);
+    const gradle = readFileSync(join(__dirname, '..', 'android', 'app', 'build.gradle'), 'utf8');
+    expect(gradle).toMatch(/versionCode 2\b/);
+    expect(gradle).toMatch(/versionName "0\.2\.0"/);
   });
 
   it('uses only Google test AdMob ids until the owner supplies live ones', () => {

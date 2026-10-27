@@ -86,7 +86,8 @@ def jscFlavor = 'io.github.react-native-community:jsc-android:2026004.+'
  * one source. Empty string when absent: the adapter is compiled in but never gets a mediation group (OWNER-TODO item 4).
  */
 def shubhvelaAppLovinSdkKey() {
-    def appJson = new File(projectRoot, 'app.json')
+    // Script-level `def projectRoot` (line 5) is a local variable, invisible inside a method: recompute it (B08 build fix).
+    def appJson = new File(rootDir.getAbsoluteFile().getParentFile(), 'app.json')
     if (!appJson.exists()) return ''
     def extra = new groovy.json.JsonSlurper().parse(appJson)?.expo?.extra
     def key = extra?.applovinSdkKey
@@ -102,8 +103,8 @@ android {
         applicationId 'com.shubhvela.app'
         minSdk = rootProject.ext.minSdkVersion
         targetSdk = rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "0.1.0"
+        versionCode 2
+        versionName "0.2.0"
 
         buildConfigField "String", "REACT_NATIVE_RELEASE_LEVEL", "\"${findProperty('reactNativeReleaseLevel') ?: 'stable'}\""
         // Hand-maintained (B03, M10): the AppLovin mediation adapter needs applovin.sdk.key in the manifest. The value
