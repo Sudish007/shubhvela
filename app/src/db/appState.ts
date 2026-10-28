@@ -1,7 +1,7 @@
 // app_state: small flags that are not user preferences (consent_at, sessions counter, last_ad_at ...).
 import { getDb } from './connection';
 
-export type AppStateKey = 'consent_at' | 'sessions' | 'last_ad_at' | 'onboarding_intent_seen' | 'tts_hindi_voice_toast';
+export type AppStateKey = 'consent_at' | 'sessions' | 'last_ad_at' | 'onboarding_intent_seen' | 'tts_hindi_voice_toast' | 'ask_model';
 
 export function getAppState(key: AppStateKey): string | null {
   const row = getDb().getFirstSync<{ value: string }>('SELECT value FROM app_state WHERE key = ?', [key]);

@@ -1,12 +1,12 @@
 // Settings -> Privacy (spec section 10, design.md 3): the consent notice text, what leaves the phone, grievance contact,
 // policy and deletion links, and "Delete everything" behind a confirm sheet (drops every table, cancels scheduled
 // notifications, clears unlocks and the entitlement cache; the gate then re-opens the consent screen).
-// "Backup and restore" is C04's and is not shown until it exists.
+// C04: the "Backup and restore" row opens the encrypted export/import screen (/settings/backup).
 import * as Notifications from 'expo-notifications';
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { Linking, StyleSheet, View } from 'react-native';
-import { Card, PrimaryButton, Screen, SecondaryButton, Sheet, TextButton, Txt } from '../../src/components';
+import { Card, NavRow, PrimaryButton, Screen, SecondaryButton, Sheet, TextButton, Txt } from '../../src/components';
 import { deleteEverything } from '../../src/db/deleteEverything';
 import { useLang } from '../../src/i18n';
 import { dataDeletionUrl, grievanceText, privacyPolicyUrl } from '../../src/legal';
@@ -56,6 +56,9 @@ export default function PrivacyScreen() {
             {t('consent.law')}
           </Txt>
         </View>
+      </Card>
+      <Card flush>
+        <NavRow title={t('privacy.backup')} caption={t('backup.lede')} onPress={() => router.push('/settings/backup')} divider={false} testID="privacy-backup" />
       </Card>
       <Card>
         <View style={styles.links}>

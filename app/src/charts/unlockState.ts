@@ -10,8 +10,17 @@ import { fmtDate, fmtTime } from '../today/format';
 
 export type UnlockKey = 'vargas' | 'kp' | 'ashtakavarga' | 'prashna' | 'varshaphal';
 
-/** Keys of the "More from this chart" rows in this build (Prashna and Ask my chart are added by C04). */
-export const MORE_FROM_CHART_KEYS: readonly UnlockKey[] = ['vargas', 'ashtakavarga', 'kp', 'varshaphal'];
+/** Keys of the "More from this chart" rows: the four Phase B keys, then Prashna (C04; the Ask row is not an unlock key). */
+export const MORE_FROM_CHART_KEYS: readonly UnlockKey[] = ['vargas', 'ashtakavarga', 'kp', 'varshaphal', 'prashna'];
+
+/**
+ * Row order of the card (design.md 10.1 F2 / 10.3 F18): a time-unknown profile gets "Prashna · ask a question now" as
+ * the FIRST row; otherwise Prashna follows Varshaphal.
+ */
+export function moreFromChartOrder(moonChart: boolean): UnlockKey[] {
+  const rest = MORE_FROM_CHART_KEYS.filter((k) => k !== 'prashna');
+  return moonChart ? ['prashna', ...rest] : [...rest, 'prashna'];
+}
 
 export interface FeatureAccess {
   allowed: boolean;

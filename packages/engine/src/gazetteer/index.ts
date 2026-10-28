@@ -121,3 +121,6 @@ export function gazetteerMeta(db: GazetteerDb): Record<string, string> {
   for (const r of rows) out[r.key] = r.value;
   return out;
 }
+
+// C04 (F37): the 331 web-companion cities by slug for the shubhvela://panchang/<city> deep link.
+export { WEB_CITIES, webCity, normaliseCitySlug, type WebCity } from './webCities';

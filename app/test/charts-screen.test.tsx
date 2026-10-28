@@ -97,12 +97,13 @@ describe('<ChartsScreen>', () => {
     expect(screen.getByText('How this was computed')).toBeTruthy();
     // B04: the locked "14 more vargas" chip, the Yogas card and "More from this chart" are present (details in
     // charts-extras.test.tsx); B05 flipped the Muhurat finder route flag so the Timing and documents card renders that
-    // one row; still not built = not rendered: Prashna (C04), "Share chart card" and the Janam Patri row (B07), ads.
+    // one row; C04 added the Prashna row (after Varshaphal for a timed birth) and the Ask my chart row; ads never render here.
     expect(screen.getByTestId('chip-vargas').props.accessibilityLabel).toBe('14 more vargas, locked');
     expect(screen.getByTestId('yogas-card')).toBeTruthy();
     expect(screen.getByTestId('more-card')).toBeTruthy();
     expect(screen.queryByTestId('varshaphal-card')).toBeNull(); // next solar return is in March, > 30 days away
-    expect(screen.queryByText(/Prashna/)).toBeNull();
+    expect(screen.getByTestId('more-row-prashna')).toBeTruthy();
+    expect(screen.getByTestId('more-row-ask')).toBeTruthy();
     // B07: the Janam Patri PDF and Share chart card rows render (route flags on); free tier shows the fallback price.
     expect(screen.getByTestId('timing-card')).toBeTruthy();
     expect(screen.getByTestId('timing-row-muhuratFinder')).toBeTruthy();

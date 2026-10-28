@@ -2,7 +2,7 @@ import { existsSync, readFileSync, statSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { gazetteerMeta, placeById, searchPlaces, type GazetteerDb } from '../src/gazetteer/index';
+import { gazetteerMeta, placeById, searchPlaces, WEB_CITIES, webCity, type GazetteerDb } from '../src/gazetteer/index';
 import { canonicalZone, hasZone } from '../src/tz/index';
 
 const dataDir = resolve(__dirname, '..', 'data');
@@ -63,6 +63,16 @@ describe('gazetteer.sqlite (plan P3)', () => {
     for (const must of ['Mumbai', 'Delhi', 'Kathmandu', 'London', 'Dubai', 'Port of Spain', 'Suva', 'Edison', 'Leicester', 'Port Louis']) {
       expect(names.has(must), must).toBe(true);
     }
+  });
+
+  it('webCity() resolves every published slug and rejects unknown ones (F37 panchang deep link)', () => {
+    expect(WEB_CITIES).toHaveLength(331);
+    for (const c of WEB_CITIES) expect(webCity(c.slug)?.geonameid).toBe(c.geonameid);
+    expect(webCity('Delhi')?.slug).toBe('delhi');
+    expect(webCity(' new_delhi ')?.slug).toBe('new-delhi');
+    expect(webCity('kathmandu')?.tz).toBe('Asia/Kathmandu');
+    expect(webCity('atlantis')).toBeNull();
+    expect(webCity('')).toBeNull();
   });
 
   it("every row's tz is a canonical id of the tz table (N8)", () => {

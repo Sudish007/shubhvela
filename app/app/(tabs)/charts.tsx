@@ -7,8 +7,9 @@
 // "Timing and documents" (M3, rows only once B05/B07 routes exist); "How this was computed". Unknown birth time (F2)
 // switches the hero to "Moon chart · birth time unknown", hides the Lagna/Chalit chips, the Lagna row and the Houses
 // card. B04: the "14 more vargas" chip (lock icon on the free tier; "till <time> tomorrow" after a rewarded unlock)
-// opens the vargas sheet; a chosen varga swaps the hero ChartData for the same Chart component (F12). Still not
-// rendered because not built: Prashna / Ask my chart rows (C04). B07: "Share chart card" (⋮ menu + Timing row) opens the
+// opens the vargas sheet; a chosen varga swaps the hero ChartData for the same Chart component (F12). C04: the Prashna
+// row (first for a time-unknown profile, F2/F18) and the "Ask my chart" row (F35: device gate -> Pro -> model state,
+// honest unsupported text, no cloud fallback) complete the card. B07: "Share chart card" (⋮ menu + Timing row) opens the
 // F36 preview sheet with the KundliCard of the hero chart; "Janam Patri PDF" pushes the report preview. C03: a lesson's
 // "Try it on your chart" arrives with `?card=planets|houses|sadesati|yogas` and the screen scrolls to that card once
 // (src/learn/arrival: the param is cleared after the scroll).
@@ -18,6 +19,7 @@ import { useFocusEffect, useRouter } from 'expo-router';
 import type { RefObject } from 'react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { ScrollView, StyleSheet, View, type LayoutChangeEvent, type ScrollViewInstance } from 'react-native';
+import { askRouteFor, askSnapshot, type AskRowState } from '../../src/ai/askState';
 import { Card, CapSheet, Chip, ChevronIcon, ComputedFooter, EmptyState, LockIcon, MoreIcon, Pressable44, Row, Screen, Txt, ApproxTag } from '../../src/components';
 import { Chart, type ChartLongPressTarget } from '../../src/charts/Chart';
 import { DashaCard } from '../../src/charts/DashaCard';
@@ -76,6 +78,8 @@ export interface ChartsScreenProps {
   replan?: () => Promise<unknown>;
   /** `?card=` override for tests (a lesson's "Try it on your chart" target). */
   card?: TryItCard;
+  /** F35 row state for tests (device gate -> tier -> model); production reads askSnapshot(). */
+  ask?: () => AskRowState;
 }
 
 /** Hero width before onLayout: 390 dp - 2 x 16 gutter - 2 x 16 card padding. */
@@ -94,7 +98,7 @@ function safeChart(profile: Profile | null): { chart: ChartData | null; error: b
   }
 }
 
-export default function ChartsScreen({ now, chartWidth, getPermission = getPermissionState, requestPermission: askPermission = requestPermission, replan = () => replanAll(), card }: ChartsScreenProps) {
+export default function ChartsScreen({ now, chartWidth, getPermission = getPermissionState, requestPermission: askPermission = requestPermission, replan = () => replanAll(), card, ask }: ChartsScreenProps) {
   const { t, lang } = useLang();
   const { colors } = useTokens();
   const router = useRouter();
@@ -208,9 +212,23 @@ export default function ChartsScreen({ now, chartWidth, getPermission = getPermi
       case 'varshaphal':
         router.push(`/charts/varshaphal?profile=${profile.id}&year=${vedicYear.runningYear}`);
         return;
+      case 'prashna':
+        router.push(`/charts/prashna?profile=${profile.id}`);
+        return;
       default:
         return;
     }
+  };
+  // F35 row: device gate first (honest unsupported text, no cloud fallback), then tier, then model presence (C04).
+  const [askState, setAskState] = useState<AskRowState>(() => (ask ? ask() : askSnapshot().state));
+  useFocusEffect(
+    useCallback(() => {
+      setAskState(ask ? ask() : askSnapshot().state);
+    }, [ask]),
+  );
+  const openAsk = () => {
+    if (!profile) return;
+    router.push(`${askRouteFor(askState)}?profile=${profile.id}`);
   };
 
   const vargaChipLabel = selectedVarga ? vargaLabel(selectedVarga, t) : t('charts.moreVargas_chip');
@@ -420,7 +438,7 @@ export default function ChartsScreen({ now, chartWidth, getPermission = getPermi
           ) : null}
 
           {vedicYear ? (
-            <MoreFromChartCard access={access} nowMs={nowMs} tz={profile.tz} vedicYearStart={vedicYear.runningStart} onOpen={openFeature} onUnlock={(key) => setSheet({ kind: 'unlock', feature: key })} testID="more-card" />
+            <MoreFromChartCard access={access} nowMs={nowMs} tz={profile.tz} vedicYearStart={vedicYear.runningStart} moonChart={base.moonChart} ask={askState} onOpen={openFeature} onUnlock={(key) => setSheet({ kind: 'unlock', feature: key })} onOpenAsk={openAsk} testID="more-card" />
           ) : null}
 
           <TimingDocumentsCard

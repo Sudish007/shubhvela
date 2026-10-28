@@ -79,6 +79,18 @@ function Navigator({ fontsReady }: { fontsReady: boolean }) {
         <Stack.Screen name="learn/journal" />
         <Stack.Screen name="settings/vrats" />
         <Stack.Screen name="settings/notifications" />
+        <Stack.Screen name="settings/backup" />
+        <Stack.Screen name="charts/prashna/index" />
+        <Stack.Screen name="charts/prashna/history" />
+        <Stack.Screen name="charts/ask/gate" />
+        <Stack.Screen name="charts/ask/consent" />
+        <Stack.Screen name="charts/ask/download" />
+        <Stack.Screen name="charts/ask/chat" />
+        {/* F37 deep links (C04): shubhvela://kundli, shubhvela://m, shubhvela://festival/<slug>/<year>, shubhvela://panchang/<city>. */}
+        <Stack.Screen name="kundli" />
+        <Stack.Screen name="m" />
+        <Stack.Screen name="festival/[slug]/[year]" />
+        <Stack.Screen name="panchang/[city]" />
         <Stack.Screen name="dev/state" />
       </Stack>
     </>

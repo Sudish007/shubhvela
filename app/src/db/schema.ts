@@ -1,6 +1,6 @@
 // SQLite schema (plan.md section 2). Each entry of MIGRATIONS is applied once, in order, and PRAGMA user_version
 // records how many have run. Never edit a shipped migration: append a new one.
-export const SCHEMA_VERSION = 2;
+export const SCHEMA_VERSION = 3;
 
 export const USER_TABLES = [
   'settings',
@@ -120,5 +120,10 @@ export const MIGRATIONS: readonly string[] = [
   // so Settings -> Notifications labels them honestly instead of as the daily note (series_id 0).
   `
   ALTER TABLE scheduled ADD COLUMN kind TEXT;
+  `,
+  // v3 (C04, F18): a Prashna is re-rendered in the zone of the place it was asked at, so the zone is stored with the
+  // instant and the coordinates (older rows have no zone and render in UTC).
+  `
+  ALTER TABLE prashna ADD COLUMN tz TEXT;
   `,
 ];

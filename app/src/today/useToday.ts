@@ -31,6 +31,8 @@ export interface UseTodayOptions {
   now?: () => number;
   /** Device-fix provider (tests). */
   fix?: () => Promise<DeviceFix | null>;
+  /** F37: a city observer from a shubhvela://panchang/<city> link replaces the place/GPS rule while set. */
+  observerOverride?: Observer | null;
 }
 
 const MINUTE = 60_000;
@@ -76,15 +78,17 @@ export function useToday(self: Profile | null, profiles: readonly Profile[], opt
     };
   }, [self, mode, fix, tick]);
 
+  const override = opts.observerOverride ?? null;
   const observer = useMemo<Observer | null>(() => {
     if (!self) return null;
+    if (override) return override;
     if (mode === 'gps' && fixState.status === 'resolved' && fixState.fix) {
       const f = fixState.fix;
       return { lat: f.lat, lon: f.lon, tz: f.tz, placeName: null, source: 'gps' };
     }
     return observerFromProfile(self);
-  }, [self, mode, fixState]);
-  const locationFallback = mode === 'gps' && fixState.status === 'resolved' && fixState.fix === null;
+  }, [self, mode, fixState, override]);
+  const locationFallback = !override && mode === 'gps' && fixState.status === 'resolved' && fixState.fix === null;
 
   // Model: computed after the first paint (skeleton), recomputed when observer / profile / focus / day change.
   const key = self && observer ? `${self.id}|${observer.lat}|${observer.lon}|${observer.tz}|${tick}|${profiles.length}` : '';

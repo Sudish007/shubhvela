@@ -31,6 +31,8 @@ export interface DevParams {
   forward?: Record<string, string>;
   /** widget_state=<stale|exhausted> (C01/C05) writes files/widget_state.json as if written 40 h / 9 days ago so the widgets show the "Open Shubhvela to refresh" footer. */
   widgetState?: DevWidgetState;
+  /** backup_roundtrip=1 (C04/C05) exports the seeded household through the real encrypt path (react-native-quick-crypto), re-imports it (Merge) and logs the counts and the wrong-passphrase rejection. */
+  backupRoundtrip: boolean;
 }
 export type DevWidgetState = 'stale' | 'exhausted';
 const WIDGET_STATES: readonly DevWidgetState[] = ['stale', 'exhausted'];
@@ -49,6 +51,7 @@ export function parseDevParams(p: Record<string, string | string[] | undefined>)
     testReminder: one(p.test_reminder) === '1',
     pdfDump: one(p.pdf_dump) === '1',
     pro: one(p.pro) === '1',
+    backupRoundtrip: one(p.backup_roundtrip) === '1',
   };
   if ((STYLES as readonly string[]).includes(one(p.style))) out.style = one(p.style) as ChartStyle;
   const session = Number(one(p.session));

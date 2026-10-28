@@ -9,12 +9,13 @@
 // A lesson's "Try it on your chart" may arrive with `?sheet=panchang` (C03): the panchang sheet opens once the model is
 // ready and the param is cleared (src/learn/arrival).
 // Every number on this screen is engine output for the chosen place and the current instant; no Listen button until C01.
-import { useRouter } from 'expo-router';
-import React, { useEffect, useState, type RefObject } from 'react';
+import { useLocalSearchParams, useRouter } from 'expo-router';
+import React, { useEffect, useMemo, useState, type RefObject } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { todayCardOrder, todayNativeSlot, type TodayCardKey } from '../../src/ads/AdPolicy';
 import { NativeAdCard } from '../../src/ads/NativeAdCard';
 import { ApproxTag, Card, ChevronIcon, EmptyState, NoBreak, Pressable44, Screen, Txt } from '../../src/components';
+import { parseDeepLink } from '../../src/deeplinks';
 import { chartFor, moonLine } from '../../src/engine-bridge/charts';
 import { VratTodayCard } from '../../src/family/VratTodayCard';
 import { useLang } from '../../src/i18n';
@@ -33,6 +34,7 @@ import type { CardView } from '../../src/share/ShareCard';
 import { RichText } from '../../src/today/RichText';
 import { TodayTithiRow } from '../../src/today/TodayTithiRow';
 import { UpcomingStrip } from '../../src/today/UpcomingStrip';
+import type { Observer } from '../../src/today/model';
 import { useToday, type UseTodayOptions } from '../../src/today/useToday';
 
 export interface TodayScreenProps {
@@ -40,14 +42,25 @@ export interface TodayScreenProps {
   todayOptions?: UseTodayOptions;
   /** `?sheet=` override for tests (a lesson's "Try it on your chart" target). */
   sheet?: TryItSheet;
+  /** `?city=` override for tests (a shubhvela://panchang/<city> deep link, F37). */
+  city?: string;
 }
 
-export default function TodayScreen({ todayOptions, sheet: sheetProp }: TodayScreenProps) {
+export default function TodayScreen({ todayOptions, sheet: sheetProp, city: cityProp }: TodayScreenProps) {
   const { t, lang } = useLang();
   const { colors } = useTokens();
   const router = useRouter();
   const { self, profiles } = useProfiles();
-  const { model, nowMs, loading, error, locationFallback } = useToday(self, profiles, todayOptions);
+  // F37: shubhvela://panchang/<city> arrives as ?city=<slug>; the city becomes the observer until the user changes the
+  // location (place pill) or the tab is left. The param is consumed so a later plain visit shows the usual place.
+  const params = useLocalSearchParams<{ city?: string }>();
+  const citySlug = cityProp ?? params.city;
+  const cityObserver = useMemo<Observer | null>(() => {
+    if (!citySlug) return null;
+    const target = parseDeepLink(`shubhvela://panchang/${encodeURIComponent(citySlug)}`);
+    return target.kind === 'panchang' ? target.observer : null;
+  }, [citySlug]);
+  const { model, nowMs, loading, error, locationFallback } = useToday(self, profiles, { ...todayOptions, observerOverride: cityObserver });
   const [expanded, setExpanded] = useState(false);
   const [sheet, setSheet] = useState<null | 'panchang' | 'share'>(null);
   // "Try it on your chart" (F32): ?sheet=panchang opens the sheet right after the model's first paint, then the param
@@ -111,7 +124,15 @@ export default function TodayScreen({ todayOptions, sheet: sheetProp }: TodayScr
   const pillStyle = [styles.pill, { borderColor: colors.hair2, backgroundColor: colors.surface }];
   const meta = model ? (
     <View style={styles.meta}>
-      <Pressable44 accessibilityLabel={`${t('today.changeLocation')}: ${placeName}`} onPress={() => router.push('/settings/location')} style={pillStyle} testID="place-pill">
+      <Pressable44
+        accessibilityLabel={`${t('today.changeLocation')}: ${placeName}`}
+        onPress={() => {
+          if (citySlug) router.setParams({ city: undefined });
+          router.push('/settings/location');
+        }}
+        style={pillStyle}
+        testID="place-pill"
+      >
         <Txt kind="label" weight={600}>
           {placeName}
         </Txt>

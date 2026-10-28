@@ -7,10 +7,12 @@
 // sample=1): `pro=1` seeds an active Pro entitlement (absent = Free), `session=N` sets the session counter (4 = ads),
 // `intent=` sets the self profile's intent (M4), `pdf_lang=` the profiles' PDF language. C01/C05: `widget_state=stale|exhausted`
 // rewrites files/widget_state.json with a clock moved 40 h / 9 days back so the home-screen widgets show their footer state.
+// C04/C05: `backup_roundtrip=1` runs the encrypted backup export -> import (Merge) through react-native-quick-crypto and logs it.
 import { Redirect, useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect } from 'react';
 import { View } from 'react-native';
 import { initAds, isAdsInitialized } from '../../src/ads/AdsRoot';
+import { runBackupRoundtrip } from '../../src/dev/backupRoundtrip';
 import { getSelfProfile, listProfiles } from '../../src/db/profiles';
 import { setSetting } from '../../src/db/settings';
 import { parseDevParams, withForwardedQuery } from '../../src/dev/params';
@@ -48,6 +50,13 @@ export default function DevState() {
           .then((r) => console.log('dev/state pdf-dump', JSON.stringify(r)))
           .catch((e) => console.warn('dev/state pdf-dump failed', e));
       }, 2000);
+    // C04: the encrypted backup round trip through the native crypto (C05 reads the line from logcat).
+    if (p.backupRoundtrip)
+      setTimeout(() => {
+        runBackupRoundtrip()
+          .then((r) => console.log('dev/state backup-roundtrip', JSON.stringify(r)))
+          .catch((e) => console.warn('dev/state backup-roundtrip failed', e));
+      }, 2500);
     // After the launch write (WidgetStateSync, 2.5 s) and Today's observer write, so the moved clock wins for 10 minutes.
     if (p.widgetState) {
       const mode = p.widgetState;

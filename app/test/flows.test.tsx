@@ -86,8 +86,8 @@ describe('flows', () => {
   });
 
   it('dev route parameters fall back to en / light / Today', () => {
-    expect(parseDevParams({ lang: 'hi', theme: 'dark', screen: 'settings', sample: '1', font: '1.3' })).toEqual({ lang: 'hi', theme: 'dark', screen: '/settings', sample: true, font: '1.3', testReminder: false, pdfDump: false, pro: false });
-    expect(parseDevParams({ lang: 'xx', theme: 'neon' })).toEqual({ lang: 'en', theme: 'light', screen: '/(tabs)/today', sample: false, font: '1.0', testReminder: false, pdfDump: false, pro: false });
+    expect(parseDevParams({ lang: 'hi', theme: 'dark', screen: 'settings', sample: '1', font: '1.3' })).toEqual({ lang: 'hi', theme: 'dark', screen: '/settings', sample: true, font: '1.3', testReminder: false, pdfDump: false, pro: false, backupRoundtrip: false });
+    expect(parseDevParams({ lang: 'xx', theme: 'neon' })).toEqual({ lang: 'en', theme: 'light', screen: '/(tabs)/today', sample: false, font: '1.0', testReminder: false, pdfDump: false, pro: false, backupRoundtrip: false });
     // B08 audit extras: pro=1, session=N, intent=, pdf_lang= (unknown values are dropped, never defaulted).
     const b08 = parseDevParams({ pro: '1', session: '4', intent: 'career', pdf_lang: 'bho' });
     expect(b08.pro).toBe(true);

@@ -24,8 +24,12 @@ jest.mock('expo-router', () => {
   };
 });
 
+// C04: the model downloader reads NetworkStateType.WIFI and subscribes to changes; the download machine itself is tested
+// with injected deps, so the default mock only has to keep the module loadable (type WIFI, no change events).
 jest.mock('expo-network', () => ({
-  getNetworkStateAsync: jest.fn(async () => ({ isConnected: true, isInternetReachable: true })),
+  NetworkStateType: { NONE: 'NONE', UNKNOWN: 'UNKNOWN', CELLULAR: 'CELLULAR', WIFI: 'WIFI', BLUETOOTH: 'BLUETOOTH', ETHERNET: 'ETHERNET', WIMAX: 'WIMAX', VPN: 'VPN', OTHER: 'OTHER' },
+  getNetworkStateAsync: jest.fn(async () => ({ type: 'WIFI', isConnected: true, isInternetReachable: true })),
+  addNetworkStateListener: jest.fn(() => ({ remove: jest.fn() })),
 }));
 
 const mockDatePicker = { open: jest.fn(), dismiss: jest.fn() };
