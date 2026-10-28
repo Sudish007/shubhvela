@@ -4,8 +4,12 @@ import { seedSessionsForScreenshots } from '../ads/AdPolicy';
 import { getDb } from '../db/connection';
 import { insertAncestor } from '../db/ancestors';
 import { recordConsent } from '../db/appState';
+import { saveJournalEntry } from '../db/journal';
+import { markLessonDone } from '../db/lessonsDone';
+import { insertPrashna } from '../db/prashna';
 import { insertProfile, type Intent } from '../db/profiles';
 import { setSetting, type Lang, type ThemeSetting } from '../db/settings';
+import { formatInZone } from '@shubhvela/engine';
 import { clearChartCache } from '../engine-bridge/charts';
 import { setEntitlement } from '../entitlements';
 
@@ -60,7 +64,16 @@ export interface SeedOptions {
   pro?: boolean;
   /** Persisted session counter (B08: 4 = ads shown); undefined = untouched. */
   sessions?: number;
+  /** C05: seed Learn/Prashna history (one question asked 2 h ago at Lucknow, three journal days, lesson 1 done). */
+  history?: boolean;
 }
+
+/** The sample Prashna question per language (user-typed text, never shown as a computed value). */
+export const SAMPLE_PRASHNA_QUESTION: Record<Lang, string> = {
+  en: 'Should I take the new job this month?',
+  hi: 'क्या मुझे इस महीने नई नौकरी स्वीकार करनी चाहिए?',
+  bho: 'का हमरा ई महीना नया नोकरी ले लेवे के चाहीं?',
+};
 
 /** Replaces all user data with the sample household and the requested language/theme. Idempotent. */
 export function seedSampleState(opts: SeedOptions): { priyaId: number; ammaId: number; dadajiId: number } {
@@ -74,6 +87,15 @@ export function seedSampleState(opts: SeedOptions): { priyaId: number; ammaId: n
     const ammaId = insertProfile({ ...SAMPLE_AMMA, pdfLanguage }, opts.now);
     const dadajiId = insertAncestor(SAMPLE_DADAJI);
     recordConsent(opts.now);
+    if (opts.history) {
+      const twoHoursAgo = new Date(now.getTime() - 2 * 3600_000);
+      insertPrashna({ question: SAMPLE_PRASHNA_QUESTION[opts.lang], ts: twoHoursAgo.toISOString(), lat: SAMPLE_PRIYA.lat, lon: SAMPLE_PRIYA.lon, tz: SAMPLE_PRIYA.tz });
+      const dayOf = (daysAgo: number) => formatInZone(now.getTime() - daysAgo * 86_400_000, SAMPLE_PRIYA.tz, 'yyyy-MM-dd');
+      saveJournalEntry(dayOf(1), 'calm', null);
+      saveJournalEntry(dayOf(3), 'busy', null);
+      saveJournalEntry(dayOf(6), 'bright', null);
+      markLessonDone('lesson-01', now);
+    }
     setSetting('language', opts.lang);
     setSetting('theme', opts.theme);
     db.execSync('COMMIT');

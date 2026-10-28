@@ -19,6 +19,8 @@ export interface FamilyTodayCardProps {
   tz: string;
   /** Transit Moon sign (1-12) for the card caption. */
   moonSign?: number;
+  /** Profile id of the self profile: its note keeps the second person, other members get the third-person fragment. */
+  selfId?: string;
   testID?: string;
 }
 
@@ -34,11 +36,16 @@ export function familyTodayHead(row: FamilyTodayRow, t: TFn, lang: Lang): { name
   return { name, rest };
 }
 
-/** One-line note: the corpus Chandra bala fragment of the row (chandra-bala-<house>), interpolated. */
-export function familyTodayNote(row: FamilyTodayRow, lang: Lang): string | null {
+/**
+ * One-line note: the corpus Chandra bala fragment of the row (chandra-bala-<house>), interpolated. The `daily` fragments
+ * speak to the reader ("your birth Moon"); for another member with a name the third-person `daily-third` variant
+ * (carry-over B-REVIEW-MEDIUM-2, same ids, `{name}`) is used, falling back to the second-person text when absent.
+ */
+export function familyTodayNote(row: FamilyTodayRow, lang: Lang, isSelf = true): string | null {
   const key = row.keys.find((k) => k.startsWith('chandra-bala-'));
   if (!key) return null;
-  const text = lookup('daily', key, lang)?.text;
+  const third = !isSelf && row.name ? lookup('daily-third', key, lang)?.text : undefined;
+  const text = third ?? lookup('daily', key, lang)?.text;
   if (!text) return null;
   const params: Record<string, string | number | boolean | null | undefined> = {};
   for (const [k, v] of Object.entries(row.params)) if (typeof v === 'string' || typeof v === 'number' || typeof v === 'boolean') params[k] = v;
@@ -62,7 +69,7 @@ export function familyTodayInputs(row: FamilyTodayRow, tz: string, t: TFn, lang:
   return out;
 }
 
-export function FamilyTodayCard({ rows, tz, moonSign, testID }: FamilyTodayCardProps) {
+export function FamilyTodayCard({ rows, tz, moonSign, selfId, testID }: FamilyTodayCardProps) {
   const { t, lang } = useLang();
   return (
     <Card testID={testID}>
@@ -83,7 +90,7 @@ export function FamilyTodayCard({ rows, tz, moonSign, testID }: FamilyTodayCardP
       ) : (
         rows.map((row, i) => {
           const head = familyTodayHead(row, t, lang);
-          const note = familyTodayNote(row, lang);
+          const note = familyTodayNote(row, lang, selfId === undefined || row.profileId === selfId);
           const plain = `${head.name}${head.rest}`;
           return (
             <Row

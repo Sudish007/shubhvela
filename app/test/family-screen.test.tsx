@@ -64,6 +64,11 @@ describe('<FamilyScreen>', () => {
     const priyaRow = screen.getByTestId(`family-today-${priyaId}`);
     expect(textOf(priyaRow).replace(/\s+/g, ' ')).toMatch(/^Priya: Moon in the 6th house, Kshema tara/);
     expect(screen.getByTestId(`family-today-${ammaId}`)).toBeTruthy();
+    // B-REVIEW-MEDIUM-2: the self row keeps the second person, another member's note is the third-person fragment.
+    expect(textOf(priyaRow)).toMatch(/your birth Moon/);
+    const ammaRow = textOf(screen.getByTestId(`family-today-${ammaId}`));
+    expect(ammaRow).toMatch(/Amma's birth Moon/);
+    expect(ammaRow).not.toMatch(/\byour\b/);
     expect(screen.getAllByLabelText(/^Why\? /).length).toBeGreaterThanOrEqual(5);
     // F20 / F21 cards: name is the title, relationship in the kind label (N5).
     const priyaCard = screen.getByTestId(`event-tithi_birthday:${priyaId}`);

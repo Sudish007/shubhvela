@@ -33,6 +33,8 @@ export interface DevParams {
   widgetState?: DevWidgetState;
   /** backup_roundtrip=1 (C04/C05) exports the seeded household through the real encrypt path (react-native-quick-crypto), re-imports it (Merge) and logs the counts and the wrong-passphrase rejection. */
   backupRoundtrip: boolean;
+  /** history=1 (C05) seeds one Prashna question, three journal days and lesson 1 done so the history/journal shots show content. */
+  history: boolean;
 }
 export type DevWidgetState = 'stale' | 'exhausted';
 const WIDGET_STATES: readonly DevWidgetState[] = ['stale', 'exhausted'];
@@ -52,6 +54,7 @@ export function parseDevParams(p: Record<string, string | string[] | undefined>)
     pdfDump: one(p.pdf_dump) === '1',
     pro: one(p.pro) === '1',
     backupRoundtrip: one(p.backup_roundtrip) === '1',
+    history: one(p.history) === '1',
   };
   if ((STYLES as readonly string[]).includes(one(p.style))) out.style = one(p.style) as ChartStyle;
   const session = Number(one(p.session));

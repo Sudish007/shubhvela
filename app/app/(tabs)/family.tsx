@@ -129,7 +129,7 @@ export default function FamilyScreen({ now, seriesOptions }: FamilyScreenProps) 
       {!self ? <EmptyState title={t('family.title')} body={t('today.noProfile')} /> : null}
       {self && !current ? <Skeleton /> : null}
 
-      {current && self ? <FamilyTodayCard rows={current.model.today} tz={self.tz} moonSign={current.panchang.moonSign + 1} testID="family-today" /> : null}
+      {current && self ? <FamilyTodayCard rows={current.model.today} tz={self.tz} moonSign={current.panchang.moonSign + 1} selfId={String(self.id)} testID="family-today" /> : null}
 
       {current ? (
         <>

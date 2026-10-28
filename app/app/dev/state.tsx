@@ -36,7 +36,7 @@ export default function DevState() {
     if (!enabled) return;
     const p = parseDevParams(params);
     if (p.sample) {
-      seedSampleState({ lang: p.lang, theme: p.theme, intent: p.intent, pdfLang: p.pdfLang, pro: p.pro, sessions: p.session });
+      seedSampleState({ lang: p.lang, theme: p.theme, intent: p.intent, pdfLang: p.pdfLang, pro: p.pro, sessions: p.session, history: p.history });
       // AdsRoot decided about the SDK at cold start, before this seed: a Free shot after a Pro run would otherwise show
       // no ads this session. Idempotent (initAds returns early when Pro or already initialised).
       if (!p.pro && !isAdsInitialized()) void initAds();

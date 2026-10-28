@@ -124,10 +124,13 @@ foreach ($spec in $Screens) {
   $head = $parts[0]
   if ($head -notmatch '^([A-Za-z0-9_-]+)=(.+)$') { Write-Error "Bad screen spec '$spec' (want label=route[;style=..][;tap=..])"; exit 3 }
   $label = $Matches[1]; $route = $Matches[2]
-  $style = ''; $taps = @(); $hscroll = ''
+  $style = ''; $taps = @(); $hscroll = ''; $scrollTo = ''
   foreach ($p in $parts[1..($parts.Count - 1)]) {
     if ($p -match '^style=(north|south|east)$') { $style = $Matches[1] }
     elseif ($p -match '^tap=(.+)$') { $taps = $Matches[1] -split ',' }
+    # scrollto=<resource-id>: scroll until that node is on screen (fully above the fixed chrome) but do NOT tap it (C05:
+    # frame the "More from this chart" card without opening a row).
+    elseif ($p -match '^scrollto=(.+)$') { $scrollTo = $Matches[1] }
     # hscroll=<resource-id>: swipe that horizontal row to its end before tapping (off-screen chips, B08).
     elseif ($p -match '^hscroll=(.+)$') { $hscroll = $Matches[1] }
   }
@@ -161,7 +164,9 @@ foreach ($spec in $Screens) {
           $xml = Get-UiDump
         } else { Write-Host "  hscroll row '$hscroll' not found" }
       }
-      foreach ($id in $taps) {
+      $targets = @($taps)
+      if ($scrollTo) { $targets = @($scrollTo) + $targets }
+      foreach ($id in $targets) {
         # Give the screen time to render the target before scrolling for it (see the hscroll note above).
         if (-not $hscroll) { $xml = Wait-ForId $xml $id 20 }
         # Targets below the fold: scroll up to fourteen screens until the node is in the dump (Charts is ~10 screens long).
@@ -181,6 +186,15 @@ foreach ($spec in $Screens) {
           Adb-Quiet @('shell', 'input', 'swipe', '540', '1400', '540', "$(1400 - $dy)", '400') | Out-Null
           Start-Sleep -Seconds 2
           $xml = Get-UiDump
+        }
+        if ($id -eq $scrollTo) {
+          # Bring the whole node (and ~1 row above it) into view: scroll so its top sits ~400 px below the screen top.
+          $tm = [regex]::Match($xml, 'resource-id="' + [regex]::Escape($id) + '"[^>]*bounds="\[(\d+),(\d+)\]\[(\d+),(\d+)\]"')
+          if ($tm.Success) {
+            $dy = [math]::Min(1200, [int]$tm.Groups[2].Value - 400)
+            if ([math]::Abs($dy) -gt 40) { Adb-Quiet @('shell', 'input', 'swipe', '540', '1400', '540', "$(1400 - $dy)", '400') | Out-Null; Start-Sleep -Seconds 2; $xml = Get-UiDump }
+          }
+          continue
         }
         if (Tap-Node $xml $id) { Start-Sleep -Seconds 2; $xml = Wait-Ready 20 }
       }

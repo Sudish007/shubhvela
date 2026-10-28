@@ -20,7 +20,13 @@
 param(
   [Parameter(Mandatory = $true)][ValidateSet('arm64-v8a', 'x86_64')][string]$Abi,
   [Parameter(Mandatory = $true)][string]$Version,
-  [switch]$ScreenshotMode
+  [switch]$ScreenshotMode,
+  # C05: launch gradlew in a hidden, detached cmd.exe and return at once (prints the PID). A tool timeout in the calling
+  # harness then cannot send Ctrl+C into the batch job ("Terminate batch job (Y/N)?" hung the whole shell on 2026-10-28).
+  # Poll build-run.log and app/build/outputs/apk/release, then run this script again with -Finish to copy/verify/clean.
+  [switch]$Detached,
+  # Skip the build: copy + verify + clean an APK that a previous -Detached run has already produced.
+  [switch]$Finish
 )
 
 $ErrorActionPreference = 'Stop'
@@ -93,8 +99,25 @@ else { Remove-Item Env:EXPO_PUBLIC_SCREENSHOT_MODE -ErrorAction SilentlyContinue
 # so export it for the child process (A13 finding: "SDK location not found" after a 10-minute configuration).
 if (-not $env:ANDROID_HOME) { $env:ANDROID_HOME = Join-Path $env:LOCALAPPDATA 'Android\Sdk' }
 $log = Join-Path $AndroidDir 'build-run.log'
+if ($Detached) {
+  # Env vars set above (signing, screenshot flag, ANDROID_HOME) are inherited by the child. The caller polls and finishes.
+  $p = Start-Process -FilePath 'cmd.exe' -ArgumentList '/c', "`"gradlew.bat assembleRelease -PreactNativeArchitectures=$Abi --max-workers=2 --console=plain > `"$log`" 2>&1`"" -WorkingDirectory $AndroidDir -WindowStyle Hidden -PassThru
+  Write-Host ("Detached gradlew started: PID {0} at {1} (log: {2})" -f $p.Id, (Get-Date -Format 'HH:mm:ss'), $log)
+  Write-Host "Poll: Get-Process -Id $($p.Id); Get-Content $log -Tail 3; then scripts/build-apk.ps1 -Abi $Abi -Version $Version -Finish"
+  exit 0
+}
+$gradleExit = 0
+if ($Finish) {
+  Write-Host "Finish mode: skipping the build; last log lines:"
+  Get-Content $log -Tail 3
+  Push-Location $AndroidDir
+  cmd /c "gradlew.bat --stop > nul 2>&1"
+  Pop-Location
+  if (Select-String -Path $log -Pattern 'BUILD FAILED' -Quiet) { $gradleExit = 1 }
+}
 Push-Location $AndroidDir
 try {
+  if ($Finish) { throw 'skip' }
   Write-Host "Running gradlew.bat assembleRelease -PreactNativeArchitectures=$Abi (log: $log)"
   $t0 = Get-Date
   # cmd redirect instead of PowerShell `*>`: under ErrorActionPreference=Stop PowerShell 5.1 turns the first
@@ -105,6 +128,9 @@ try {
   Show-PageFile 'after'
   # Stop the Gradle (and Kotlin) daemons: they hold ~5 GB of commit charge and must not overlap the emulator.
   cmd /c "gradlew.bat --stop > nul 2>&1"
+}
+catch {
+  if ($_.ToString() -ne 'skip') { throw }
 }
 finally {
   Pop-Location
