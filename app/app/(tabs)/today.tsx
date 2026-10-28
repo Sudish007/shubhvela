@@ -6,9 +6,11 @@
 // note. The card order comes from AdPolicy.todayCardOrder(intent) so the native ad card is provably the LAST card
 // (M4); AdPolicy.todayNativeSlot() answers 'none' for Pro and nothing is drawn; otherwise NativeAdCard mounts its view
 // only when its onLayout.y >= windowHeight (below the fold) and collapses on no fill.
+// A lesson's "Try it on your chart" may arrive with `?sheet=panchang` (C03): the panchang sheet opens once the model is
+// ready and the param is cleared (src/learn/arrival).
 // Every number on this screen is engine output for the chosen place and the current instant; no Listen button until C01.
 import { useRouter } from 'expo-router';
-import React, { useState, type RefObject } from 'react';
+import React, { useEffect, useState, type RefObject } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { todayCardOrder, todayNativeSlot, type TodayCardKey } from '../../src/ads/AdPolicy';
 import { NativeAdCard } from '../../src/ads/NativeAdCard';
@@ -16,6 +18,7 @@ import { ApproxTag, Card, ChevronIcon, EmptyState, NoBreak, Pressable44, Screen,
 import { chartFor, moonLine } from '../../src/engine-bridge/charts';
 import { VratTodayCard } from '../../src/family/VratTodayCard';
 import { useLang } from '../../src/i18n';
+import { TRY_IT_SHEETS, useArrivalParam, type TryItSheet } from '../../src/learn/arrival';
 import { TodayLessonRow } from '../../src/learn/TodayLessonRow';
 import { useProfiles } from '../../src/profiles/useProfiles';
 import { useTokens } from '../../src/theme/ThemeProvider';
@@ -35,9 +38,11 @@ import { useToday, type UseTodayOptions } from '../../src/today/useToday';
 export interface TodayScreenProps {
   /** Clock and fix providers for tests; production uses Date.now and expo-location. */
   todayOptions?: UseTodayOptions;
+  /** `?sheet=` override for tests (a lesson's "Try it on your chart" target). */
+  sheet?: TryItSheet;
 }
 
-export default function TodayScreen({ todayOptions }: TodayScreenProps) {
+export default function TodayScreen({ todayOptions, sheet: sheetProp }: TodayScreenProps) {
   const { t, lang } = useLang();
   const { colors } = useTokens();
   const router = useRouter();
@@ -45,6 +50,19 @@ export default function TodayScreen({ todayOptions }: TodayScreenProps) {
   const { model, nowMs, loading, error, locationFallback } = useToday(self, profiles, todayOptions);
   const [expanded, setExpanded] = useState(false);
   const [sheet, setSheet] = useState<null | 'panchang' | 'share'>(null);
+  // "Try it on your chart" (F32): ?sheet=panchang opens the sheet right after the model's first paint, then the param
+  // is cleared so a later plain visit of the tab does not re-open it.
+  const arrival = useArrivalParam('sheet', TRY_IT_SHEETS, sheetProp);
+  const arrivalSheet = model ? arrival.value : null;
+  const consumeArrival = arrival.consume;
+  useEffect(() => {
+    if (arrivalSheet !== 'panchang') return;
+    const id = setTimeout(() => {
+      setSheet('panchang');
+      consumeArrival();
+    }, 0);
+    return () => clearTimeout(id);
+  }, [arrivalSheet, consumeArrival]);
 
   // The F1 first value is synchronous (chartFor is memoised), so it paints before the rest of the model is computed.
   let moon: ReturnType<typeof moonLine> | null = null;

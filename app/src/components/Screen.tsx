@@ -5,8 +5,8 @@
 // The strip itself (BannerStrip) is rendered here when AdPolicy.bannerFor(route) === 'anchored' - screens never do.
 // Header: title in Tiro 26/32 and either the gear (tab screens; accessibilityLabel "Settings") or a 44 dp Back control.
 import { useRouter } from 'expo-router';
-import { useState, type ReactNode } from 'react';
-import { ScrollView, StyleSheet, View, type StyleProp, type ViewStyle } from 'react-native';
+import { useState, type ReactNode, type RefObject } from 'react';
+import { ScrollView, StyleSheet, View, type ScrollViewInstance, type StyleProp, type ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useBannerHeight, useBannerPlacement } from '../ads/AdPolicy';
 import { BannerStrip } from '../ads/BannerStrip';
@@ -39,6 +39,8 @@ export interface ScreenProps {
   contentStyle?: StyleProp<ViewStyle>;
   testID?: string;
   onBack?: () => void;
+  /** Ref to the content ScrollView for programmatic scrolling (Charts "Try it on your chart" card anchors, F32). */
+  scrollRef?: RefObject<ScrollViewInstance | null>;
 }
 
 export function screenBottomPadding(args: { chrome: ScreenChrome; bannerHeight: number | null; ctaHeight: number | null; insetBottom: number }): number {
@@ -48,7 +50,7 @@ export function screenBottomPadding(args: { chrome: ScreenChrome; bannerHeight: 
   return strip + 16 + args.insetBottom;
 }
 
-export function Screen({ title, chrome = 'tabs', route = '', hideControl, subtitle, stickyCta, headerRight, pinned, children, contentStyle, testID, onBack }: ScreenProps) {
+export function Screen({ title, chrome = 'tabs', route = '', hideControl, subtitle, stickyCta, headerRight, pinned, children, contentStyle, testID, onBack, scrollRef }: ScreenProps) {
   const { colors } = useTokens();
   const { t } = useLang();
   const insets = useSafeAreaInsets();
@@ -77,7 +79,7 @@ export function Screen({ title, chrome = 'tabs', route = '', hideControl, subtit
           {pinned}
         </View>
       ) : null}
-      <ScrollView testID="screen-scroll" style={styles.scroll} contentContainerStyle={[styles.content, { paddingBottom }, contentStyle]} keyboardShouldPersistTaps="handled">
+      <ScrollView ref={scrollRef} testID="screen-scroll" style={styles.scroll} contentContainerStyle={[styles.content, { paddingBottom }, contentStyle]} keyboardShouldPersistTaps="handled">
         <View style={[styles.header, chrome === 'stack' && styles.headerStack]}>
           {chrome === 'stack' ? control : null}
           <View style={styles.titleBlock}>

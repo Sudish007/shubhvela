@@ -7,9 +7,10 @@
 // LearnRoot/GlossaryList vs reader/journal; +30 % pseudo-locale snapshots of the lesson list and the journal.
 import { act, fireEvent, screen } from '@testing-library/react-native';
 import { LESSON_PLACEHOLDERS, lessonPlaceholders, loadGlossary, loadLessons, lookup, renderLesson } from '@shubhvela/content';
-import { changesBetween, DAY_MS, localDateOf, sadeSati } from '@shubhvela/engine';
+import { changesBetween, DAY_MS, localDateOf, sadeSati, TARA_KEYS } from '@shubhvela/engine';
 import { router } from 'expo-router';
-import { PixelRatio } from 'react-native';
+import { PixelRatio, ScrollView } from 'react-native';
+import ChartsScreen from '../app/(tabs)/charts';
 import LearnScreen from '../app/(tabs)/learn';
 import TodayScreen from '../app/(tabs)/today';
 import MatchResultScreen from '../app/family/match/result';
@@ -27,8 +28,9 @@ import GlossaryList, { filterGlossary, sortGlossary } from '../src/learn/Glossar
 import { journalMonth, moonHouseOnDay, shiftYearMonth } from '../src/learn/journalModel';
 import LessonReader, { lessonSegments } from '../src/learn/LessonReader';
 import { lessonValues, moonHouseOf } from '../src/learn/placeholders';
+import { TRY_IT_CARDS, TRY_IT_SHEETS } from '../src/learn/arrival';
 import { levelFromDone, unlockedLevel, whyLevel } from '../src/learn/progress';
-import { kootaLevel } from '../src/match/model';
+import { kootaLevel, kootaSideText } from '../src/match/model';
 import { planetName, signName } from '../src/today/format';
 import { installTestDb } from './helpers/nodeDb';
 import { allTexts, renderWithProviders, textOf } from './helpers/render';
@@ -240,6 +242,72 @@ describe('C03 Learn tab', () => {
     expect(textOf(row)).toContain(loadLessons('en').items[1].title);
     await fireEvent.press(row);
     expect(router.push).toHaveBeenCalledWith('/learn/lesson/lesson-02');
+  });
+
+  it('every tryIt route in the corpus is a known screen; its ?card= / ?sheet= / ?varga= value is one the target honours', () => {
+    const known = ['/(tabs)/charts', '/(tabs)/today', '/family/calendar', '/charts/dasha-tree', '/charts/vargas', '/charts/ashtakavarga', '/charts/kp', '/family/match', '/charts/muhurat', '/settings/calculation'];
+    for (const l of loadLessons('en').items) {
+      const [path, query = ''] = l.tryIt.route.split('?');
+      expect(known).toContain(path);
+      for (const pair of query ? query.split('&') : []) {
+        const [k, v] = pair.split('=');
+        if (k === 'card') expect(TRY_IT_CARDS).toContain(v);
+        else if (k === 'sheet') expect(TRY_IT_SHEETS).toContain(v);
+        else if (k === 'varga') expect(v).toBe('D9');
+        else throw new Error(`unknown tryIt param ${pair} in ${l.id}`);
+      }
+    }
+  });
+
+  it('Charts arriving with ?card=yogas scrolls once to the Yogas card when its layout is known and clears the param', async () => {
+    (router.setParams as jest.Mock).mockClear();
+    // The jest preset's ScrollView mock keeps scrollTo as one jest.fn on the class prototype; the Screen's ref reaches it.
+    const scrollTo = (ScrollView.prototype as unknown as { scrollTo: jest.Mock }).scrollTo;
+    expect(jest.isMockFunction(scrollTo)).toBe(true);
+    scrollTo.mockClear();
+    await renderWithProviders(<ChartsScreen now={now} chartWidth={326} card="yogas" />);
+    expect(scrollTo).not.toHaveBeenCalled();
+    // Another card laying out first does not scroll.
+    await act(async () => {
+      fireEvent(screen.getByTestId('houses-anchor'), 'layout', { nativeEvent: { layout: { x: 0, y: 900, width: 358, height: 300 } } });
+    });
+    expect(scrollTo).not.toHaveBeenCalled();
+    await act(async () => {
+      fireEvent(screen.getByTestId('yogas-anchor'), 'layout', { nativeEvent: { layout: { x: 0, y: 1840, width: 358, height: 400 } } });
+    });
+    expect(scrollTo).toHaveBeenCalledTimes(1);
+    expect(scrollTo).toHaveBeenCalledWith({ y: 1832, animated: true });
+    expect(router.setParams).toHaveBeenCalledWith({ card: undefined });
+    // A second layout pass (font scale change, rotation) never scrolls again.
+    await act(async () => {
+      fireEvent(screen.getByTestId('yogas-anchor'), 'layout', { nativeEvent: { layout: { x: 0, y: 1900, width: 358, height: 400 } } });
+    });
+    expect(scrollTo).toHaveBeenCalledTimes(1);
+    // The Planets card is its own anchor (the Card takes onLayout); Sade Sati has one too.
+    expect(screen.getByTestId('planets-card')).toBeTruthy();
+    expect(screen.getByTestId('sadesati-anchor')).toBeTruthy();
+  });
+
+  it('Today arriving with ?sheet=panchang opens the panchang sheet once the model is ready and clears the param', async () => {
+    (router.setParams as jest.Mock).mockClear();
+    await renderWithProviders(<TodayScreen todayOptions={{ now }} sheet="panchang" />);
+    expect(screen.queryByTestId('panchang-header')).toBeNull();
+    await screen.findByTestId('daily-note', {}, { timeout: 20000 });
+    await screen.findByTestId('panchang-header', {}, { timeout: 20000 });
+    expect(router.setParams).toHaveBeenCalledWith({ sheet: undefined });
+    // Without the param the sheet stays closed.
+    (router.setParams as jest.Mock).mockClear();
+    await renderWithProviders(<TodayScreen todayOptions={{ now }} />);
+    await screen.findByTestId('daily-note', {}, { timeout: 20000 });
+    expect(screen.queryByTestId('panchang-header')).toBeNull();
+    expect(router.setParams).not.toHaveBeenCalled();
+  });
+
+  it('B-REVIEW-NIT-3: the matching Tara side text carries the tara name, as the muhurat chip does', () => {
+    const row = { id: 'tara' } as Parameters<typeof kootaSideText>[0];
+    expect(kootaSideText(row, '5', t, 'en')).toBe('tara 5 (Pratyari)');
+    expect(kootaSideText(row, '4', t, 'en')).toBe('tara 4 (Kshema)');
+    for (let n = 1; n <= 9; n++) expect(kootaSideText(row, String(n), t, 'en')).toContain(`(${t(`note.tara.${TARA_KEYS[n]}`)})`);
   });
 
   // ---- F33 glossary ----

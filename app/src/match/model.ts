@@ -8,6 +8,7 @@ import {
   computeChart,
   decodeShareCode,
   mangalDoshaPair,
+  TARA_KEYS,
   type AshtakootaResult,
   type BeyondGunMilanReport,
   type ChartData,
@@ -151,8 +152,12 @@ export function kootaSideText(row: KootaRow, value: string, t: TFn, lang: Lang):
     case 'gana':
     case 'nadi':
       return t(`match.${row.id}.${value}`);
-    case 'tara':
-      return t('match.tara.n', { n: value });
+    case 'tara': {
+      // B-REVIEW-NIT-3: the tara number plus its name, as the muhurat chip renders it ("tara 5 (Pratyari)").
+      const key = TARA_KEYS[Number(value)];
+      const n = t('match.tara.n', { n: value });
+      return key ? `${n} (${t(`note.tara.${key}`)})` : n;
+    }
     case 'grahaMaitri':
       return planetName(lang, value as Parameters<typeof planetName>[1]);
     case 'bhakoot':

@@ -9,13 +9,15 @@
 // card. B04: the "14 more vargas" chip (lock icon on the free tier; "till <time> tomorrow" after a rewarded unlock)
 // opens the vargas sheet; a chosen varga swaps the hero ChartData for the same Chart component (F12). Still not
 // rendered because not built: Prashna / Ask my chart rows (C04). B07: "Share chart card" (⋮ menu + Timing row) opens the
-// F36 preview sheet with the KundliCard of the hero chart; "Janam Patri PDF" pushes the report preview.
+// F36 preview sheet with the KundliCard of the hero chart; "Janam Patri PDF" pushes the report preview. C03: a lesson's
+// "Try it on your chart" arrives with `?card=planets|houses|sadesati|yogas` and the screen scrolls to that card once
+// (src/learn/arrival: the param is cleared after the scroll).
 // Every number is engine output for the chosen profile under the F19 settings; sheets never nest (one open at a time).
 import type { ChartData, DivisionalChartId, PlanetId } from '@shubhvela/engine';
 import { useFocusEffect, useRouter } from 'expo-router';
 import type { RefObject } from 'react';
-import { useCallback, useState } from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { ScrollView, StyleSheet, View, type LayoutChangeEvent, type ScrollViewInstance } from 'react-native';
 import { Card, CapSheet, Chip, ChevronIcon, ComputedFooter, EmptyState, LockIcon, MoreIcon, Pressable44, Row, Screen, Txt, ApproxTag } from '../../src/components';
 import { Chart, type ChartLongPressTarget } from '../../src/charts/Chart';
 import { DashaCard } from '../../src/charts/DashaCard';
@@ -41,6 +43,7 @@ import { getDashaAlertsEnabled, getYearBeginsEnabled, setDashaAlertsEnabled, set
 import { getSetting, setSetting, type ChartStyle } from '../../src/db/settings';
 import { chartFor, dashaFor, sadeSatiFor, vedicYearAt, yogasFor } from '../../src/engine-bridge/charts';
 import { useLang } from '../../src/i18n';
+import { TRY_IT_CARDS, useArrivalParam, type TryItCard } from '../../src/learn/arrival';
 import { getPermissionState, requestPermission, type PermissionState } from '../../src/notifications/permissions';
 import { replanAll } from '../../src/notifications/schedule';
 import { useProfiles } from '../../src/profiles/useProfiles';
@@ -71,10 +74,14 @@ export interface ChartsScreenProps {
   getPermission?: () => Promise<PermissionState>;
   requestPermission?: () => Promise<PermissionState>;
   replan?: () => Promise<unknown>;
+  /** `?card=` override for tests (a lesson's "Try it on your chart" target). */
+  card?: TryItCard;
 }
 
 /** Hero width before onLayout: 390 dp - 2 x 16 gutter - 2 x 16 card padding. */
 const DEFAULT_CHART_WIDTH = 326;
+/** The scrolled-to card sits this far below the top edge (the content's own top padding). */
+const CARD_SCROLL_MARGIN = 8;
 
 /** The memoised chart, or an error flag when the birth details cannot be computed (design.md 11: errors.chart). */
 function safeChart(profile: Profile | null): { chart: ChartData | null; error: boolean } {
@@ -87,7 +94,7 @@ function safeChart(profile: Profile | null): { chart: ChartData | null; error: b
   }
 }
 
-export default function ChartsScreen({ now, chartWidth, getPermission = getPermissionState, requestPermission: askPermission = requestPermission, replan = () => replanAll() }: ChartsScreenProps) {
+export default function ChartsScreen({ now, chartWidth, getPermission = getPermissionState, requestPermission: askPermission = requestPermission, replan = () => replanAll(), card }: ChartsScreenProps) {
   const { t, lang } = useLang();
   const { colors } = useTokens();
   const router = useRouter();
@@ -110,6 +117,37 @@ export default function ChartsScreen({ now, chartWidth, getPermission = getPermi
       setDashaAlerts(getDashaAlertsEnabled());
       setYearBegins(getYearBeginsEnabled());
     }, [now]),
+  );
+  // "Try it on your chart" (F32): scroll once to the card named by ?card= as soon as its layout is known, then clear the
+  // param. Anchors record their y inside the Screen's content, so a param arriving after layout scrolls at once; a param
+  // arriving before layout is kept in pendingCard until that card's onLayout. Nothing here needs a re-render (refs only).
+  const { value: arrivalCard, consume: consumeArrival } = useArrivalParam('card', TRY_IT_CARDS, card);
+  const scrollRef = useRef<ScrollViewInstance | null>(null);
+  const cardY = useRef<Partial<Record<TryItCard, number>>>({});
+  const pendingCard = useRef<TryItCard | null>(null);
+  const scrollToCard = useCallback((key: TryItCard): boolean => {
+    const y = cardY.current[key];
+    if (y == null) return false;
+    scrollRef.current?.scrollTo({ y: Math.max(0, y - CARD_SCROLL_MARGIN), animated: true });
+    return true;
+  }, []);
+  useEffect(() => {
+    if (!arrivalCard) return;
+    pendingCard.current = arrivalCard;
+    if (scrollToCard(arrivalCard)) {
+      pendingCard.current = null;
+      consumeArrival();
+    }
+  }, [arrivalCard, consumeArrival, scrollToCard]);
+  const onAnchorLayout = useCallback(
+    (key: TryItCard, e: LayoutChangeEvent) => {
+      cardY.current[key] = e.nativeEvent.layout.y;
+      if (pendingCard.current === key && scrollToCard(key)) {
+        pendingCard.current = null;
+        consumeArrival();
+      }
+    },
+    [consumeArrival, scrollToCard],
   );
   // Unlock keys (M14): live state, re-rendered on every entitlement change (unlock granted, Pro restored).
   const accessVargas = useFeatureAccess('vargas', nowMs);
@@ -270,7 +308,7 @@ export default function ChartsScreen({ now, chartWidth, getPermission = getPermi
     ) : null;
 
   return (
-    <Screen title={t('charts.title')} route="Charts" testID="charts-screen">
+    <Screen title={t('charts.title')} route="Charts" scrollRef={scrollRef} testID="charts-screen">
       {!profile ? <EmptyState title={t('charts.title')} body={t('charts.noProfile')} /> : null}
       {pickerRow}
       {error ? (
@@ -319,7 +357,7 @@ export default function ChartsScreen({ now, chartWidth, getPermission = getPermi
             </Txt>
           </Card>
 
-          <Card testID="planets-card">
+          <Card testID="planets-card" onLayout={(e) => onAnchorLayout('planets', e)}>
             <View style={styles.heroHead}>
               <Txt kind="heading" accessibilityRole="header" style={styles.heroTitle}>
                 {t('charts.planets')}
@@ -336,7 +374,11 @@ export default function ChartsScreen({ now, chartWidth, getPermission = getPermi
             </Txt>
           </Card>
 
-          {!base.moonChart ? <HousesCard chart={base} onPressHouse={(n) => setSheet({ kind: 'house', n })} testID="houses-card" /> : null}
+          {!base.moonChart ? (
+            <View onLayout={(e) => onAnchorLayout('houses', e)} testID="houses-anchor">
+              <HousesCard chart={base} onPressHouse={(n) => setSheet({ kind: 'house', n })} testID="houses-card" />
+            </View>
+          ) : null}
 
           {tree ? (
             <DashaCard
@@ -352,9 +394,17 @@ export default function ChartsScreen({ now, chartWidth, getPermission = getPermi
             />
           ) : null}
 
-          {yogaReport ? <YogasCard report={yogaReport} testID="yogas-card" /> : null}
+          {yogaReport ? (
+            <View onLayout={(e) => onAnchorLayout('yogas', e)} testID="yogas-anchor">
+              <YogasCard report={yogaReport} testID="yogas-card" />
+            </View>
+          ) : null}
 
-          {sade ? <SadeSatiCard report={sade} tz={profile.tz} ayanamsaLabel={ayanamsaLabel} nowMs={nowMs} testID="sadesati-card" /> : null}
+          {sade ? (
+            <View onLayout={(e) => onAnchorLayout('sadesati', e)} testID="sadesati-anchor">
+              <SadeSatiCard report={sade} tz={profile.tz} ayanamsaLabel={ayanamsaLabel} nowMs={nowMs} testID="sadesati-card" />
+            </View>
+          ) : null}
 
           {vedicYear && promoted ? (
             <VarshaphalCard

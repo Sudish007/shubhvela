@@ -7,6 +7,7 @@ const mockRouter = {
   push: jest.fn(),
   replace: jest.fn(),
   back: jest.fn(),
+  setParams: jest.fn(),
   canGoBack: jest.fn(() => true),
 };
 

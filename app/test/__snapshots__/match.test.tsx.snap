@@ -841,7 +841,7 @@ exports[`B06 matching +30 % pseudo-locale (en) result screen renders every strin
                 }
                 testID="koota-tara-sides"
               >
-                tara 5 xxx · tara 6 xxx xxxx
+                tara 5 xxx (Pratyari xx) · tara 6 xxx (Sadhaka xx) xxxx
               </Text>
               <Text
                 style={
