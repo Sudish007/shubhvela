@@ -1,0 +1,78 @@
+{
+  "verdict": "APPROVED",
+  "findings": [
+    {
+      "severity": "MEDIUM",
+      "title": "Matching suite 14/20 exact; six Yoni one-point differences vs Drik (spec section 6 release gate requires exact totals)",
+      "detail": "Drik's five-level Yoni table is not sourced; six koota-yoni@mXX keys are documented in reference/CONVENTIONS.md section 3 and the suite passes with them. Before the Phase D 'beta' gate either source the table and remove the keys or record the owner's acceptance of the convention. Typing a table from memory is correctly refused (fake number).",
+      "feature": "F29"
+    },
+    {
+      "severity": "MEDIUM",
+      "title": "Carry-over A-REVIEW-NIT-1 not implemented: Family Today speaks to other members in the second person",
+      "detail": "B02 (assigned owner) did not add a third-person or name-prefixed daily-fragment variant in corpus/daily/en.json; Family Today still renders 'your birth Moon' under Amma. Promoted to MEDIUM because a mandatory Phase B carry-over was skipped. Owner C02 (content) with the Family UI.",
+      "feature": "F24"
+    },
+    {
+      "severity": "MEDIUM",
+      "title": "F17 'Year begins' notification: emulator dumpsys check never run",
+      "detail": "plan.md B04/B08 acceptance asks for a planner unit test AND an emulator dumpsys notification/alarm check. planYearBegins() is unit-tested; no dumpsys evidence exists in verification-b04/b08/b-fix. C05 must toggle 'Notify when the year begins' on the emulator and record adb shell dumpsys alarm output.",
+      "feature": "F17"
+    },
+    {
+      "severity": "MEDIUM",
+      "title": "M10 Pro never-initialised logcat not re-measured after DELAY_APP_MEASUREMENT_INIT landed",
+      "detail": "verification-b08.md section 6 logcat runs (Pro: 0 AppLovin/GMA lines) were made with build 2, before the manifest flag; the flag's effect on the GMS-side 'Initialized AdMob' line is unmeasured (B08 section 10, b-fix section 8). C05 must repeat the Pro cold-start logcat on the current APK.",
+      "feature": "F38"
+    },
+    {
+      "severity": "NIT",
+      "title": "Carry-over A-REVIEW-NIT-2 not implemented: place names stay Latin in hi/bho",
+      "detail": "Seen on family-tools-hi-light-390-scrolled.png and pdf-preview-bho-light-390.png ('Lucknow, Uttar Pradesh, India'); gazetteer name_hi is not stored with the profile place. B06 (assigned owner) did not do it. Owner: the Phase C cluster touching the profile editor/DB (C04) or D01; fall back to Latin when absent.",
+      "feature": "F8"
+    },
+    {
+      "severity": "NIT",
+      "title": "Pro lede promises on-device 'Ask my chart', which is not in APK B",
+      "detail": "pro-en-light-390.png lede: 'No ads. Every chart, every family date, any muhurat range, on-device \"Ask my chart\".' F35 ships in Phase C. The matrix row is spec-pinned, but the Phase C review must confirm the lede matches shipped features (or reword until F35 lands).",
+      "feature": "F39"
+    },
+    {
+      "severity": "NIT",
+      "title": "Tara koota side labels show the raw index ('tara 5 · tara 6')",
+      "detail": "match-result-en-light-390.png: the Tara row's side line prints 'tara 5 · tara 6' while the muhurat rule chip names the tara ('Tara bala (Kshema)'). Render the tara name (match.tara.<n> strings) on the matching row.",
+      "feature": "F29"
+    },
+    {
+      "severity": "NIT",
+      "title": "Native ad card pixels never rendered (no fill on the Play-less emulator)",
+      "detail": "The dashed-border card, 'Ad' tag, SDK AdChoices view and 16 dp footer separation are verified under Jest only; the fold gate (16/16) is measured. Verify once on a device with Play before the Phase D ship.",
+      "feature": "F38"
+    },
+    {
+      "severity": "NIT",
+      "title": "verification-b08.md cites a shots/phase-b/m4/ folder that does not exist",
+      "detail": "Only shots/phase-b/m4-native-ad-gate.json is present (16 records, all pass); the 16 Today dumps referenced in B08 sections 3 and 5 are absent. Correct the doc or restore the dumps; the JSON is sufficient evidence for M4.",
+      "feature": "F38"
+    },
+    {
+      "severity": "NIT",
+      "title": "Empty Learn shell is on the banner allow-list (LearnRoot)",
+      "detail": "app/app/(tabs)/learn.tsx renders the Phase A honest EmptyState with route=\"LearnRoot\", so sessions >= 4 show a banner under an empty screen until C03 fills the tab. Fill it in C03 or omit the route name while the tab is empty.",
+      "feature": "F38"
+    },
+    {
+      "severity": "NIT",
+      "title": "Muhurat finder scores at the self profile's place, not Today's GPS mode",
+      "detail": "B05 note: observerFromProfile(self) is used; the caption says 'Windows computed for <place>'. Acceptable per F26 inputs (date range, profiles) but inconsistent with Today when GPS mode is on. Decide in Phase C/D.",
+      "feature": "F26"
+    },
+    {
+      "severity": "NIT",
+      "title": "F30 cross-instance acceptance not run",
+      "detail": "A code produced on one emulator was not scanned/typed on a second instance or decoded by the web /m/ page; only the engine round trip and this review's decode of the on-screen code (A61M-CJ2V-9B5X-WPXT-R000 -> Priya's data, tampered code rejected) exist. D01 (/m/ page) or C05 (two emulator instances) must run it.",
+      "feature": "F30"
+    }
+  ],
+  "reviewDoc": "c:/Users/sudiskmr/Downloads/DomainClassification/shubhvela/.agents/tasks/v1-build/review-phase-b.md"
+}

@@ -89,3 +89,19 @@ not set — `gh secret list` is empty, so the Hindi corpus is still English), 6 
   `packages/content/ui/bho.json`; no `bho-A.md` review queue exists because the corpus is not translated
   into Bhojpuri by your decision), 7 (keystore backup — do this now), 8 (grievance e-mail).
 - Phase B must also pick up the review leftovers in `docs/verification/carry-over.md`.
+
+## Status after Phase B (shipped 2026-10-28, tag `v0.2.0-phase-b`)
+
+- Built and signed (local, gitignored): `release/Shubhvela-0.2.0-arm64.apk` (device, 93.7 MB) and
+  `release/Shubhvela-0.2.0-x86_64.apk` (emulator, screenshot mode, 104.0 MB). Not yet run on a real phone.
+  Phase B review verdict APPROVED (0 blocking); details in `docs/verification/verification-phase-b.md` and `review-phase-b.md`.
+- **Item 4 is now open: the AdMob app and the four unit ids (banner, native, interstitial, rewarded) may be created.**
+  Until you edit `app/app.json` `extra.admob` (`live: true`) and the manifest `APPLICATION_ID`, every build keeps Google's test units.
+- **Item 3 (Play Console products) can start now** so the Phase C/D builds can exercise purchases: subscription `shubhvela_pro`
+  (base plans `monthly`, `yearly`), in-app `shubhvela_pro_lifetime`, consumables `report_janam_patri`, `report_matching`,
+  `report_varshaphal`. Until they exist the Pro screen shows Play's inline "item unavailable" and purchases cannot be tested.
+- Still open: items 1 (name/domains), 2 (Instagram), 5 (`GEMINI_API_KEY` — `gh secret list` still empty on 2026-10-28; one dispatch
+  now covers the Phase A + B English masters, ≈160 requests), 6 (Bhojpuri review), 7 (keystore backup — do this now), 8 (grievance e-mail).
+- Not verified in Phase B (needs you or a device): live purchases/restore, real ad fill and the native ad card on a phone with Play,
+  cross-device share-code scan, anything on a real arm64 device.
+- Phase C must pick up the review leftovers in `docs/verification/carry-over.md` ("Phase B review leftovers").
