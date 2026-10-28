@@ -17,6 +17,7 @@ import { BeyondSection } from '../../../src/match/BeyondSection';
 import { DoshaSection } from '../../../src/match/DoshaSection';
 import { GunaHeadline } from '../../../src/match/GunaHeadline';
 import { KootaRow } from '../../../src/match/KootaRow';
+import { unlockedLevel } from '../../../src/learn/progress';
 import { computeMatch, kootaLevel, resolveSide, sideFromParams, sidesToParams, summaryParams, type MatchRouteParams, type MatchSide, type ResolvedSide } from '../../../src/match/model';
 import { useProfiles } from '../../../src/profiles/useProfiles';
 import { GunaCard } from '../../../src/share/cards/GunaCard';
@@ -39,7 +40,7 @@ export default function MatchResultScreen({ now, sides }: MatchResultScreenProps
   const sideA = sides?.a ?? sideFromParams(params, 'a');
   const sideB = sides?.b ?? sideFromParams(params, 'b');
   const pro = isPro();
-  const level = kootaLevel(pro);
+  const level = kootaLevel(pro, unlockedLevel());
   const [shareOpen, setShareOpen] = useState(false);
 
   const computed = useMemo(() => {

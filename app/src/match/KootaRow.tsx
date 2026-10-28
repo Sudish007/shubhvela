@@ -12,8 +12,8 @@ import { kootaSideText } from './model';
 
 export interface KootaRowProps {
   row: EngineKootaRow;
-  /** 1 (free) or 3 (Pro). */
-  level: 1 | 3;
+  /** 1 (free), 2 (free after a lesson unlock, C03) or 3 (Pro). */
+  level: 1 | 2 | 3;
   aLabel: string;
   bLabel: string;
   divider?: boolean;
@@ -35,7 +35,7 @@ export function KootaRow({ row, level, aLabel, bLabel, divider = true, testID }:
       text={text}
       inputs={{ [aLabel]: aText, [bLabel]: bText }}
       explanation={explanation}
-      explanationTitle={t(level === 3 ? 'match.fullExplanation' : 'match.kootaMeaning')}
+      explanationTitle={t(level === 3 ? 'match.fullExplanation' : level === 2 ? 'common.explanation' : 'match.kootaMeaning')}
       divider={divider}
       testID={testID}
     >

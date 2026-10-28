@@ -18,6 +18,7 @@ import {
 import type { Profile } from '../db/profiles';
 import { chartFor, chartOptions } from '../engine-bridge/charts';
 import type { Lang, TFn } from '../i18n';
+import { MAX_FREE_UNLOCK, type CorpusLevel } from '../learn/progress';
 import { profileLabel } from '../muhurat/ForField';
 import { birthOf } from '../share/payload';
 import { planetName, signName } from '../today/format';
@@ -133,9 +134,12 @@ export function fmtGuna(total: number): string {
   return Number.isInteger(total) ? String(total) : total.toFixed(1);
 }
 
-/** Corpus explanation level behind every "Why?" on the result screen: 1 on free, 3 on Pro (spec section 9). */
-export function kootaLevel(pro: boolean): 1 | 3 {
-  return pro ? 3 : 1;
+/**
+ * Corpus explanation level behind every "Why?" on the result screen: 3 on Pro (spec section 9); on free, 1 until a Learn
+ * lesson marked done unlocks level 2 (F32 "deeper Why? text", capped below the Pro full explanation; src/learn/progress).
+ */
+export function kootaLevel(pro: boolean, unlocked: CorpusLevel = 1): CorpusLevel {
+  return pro ? 3 : Math.min(unlocked, MAX_FREE_UNLOCK) as CorpusLevel;
 }
 
 /** Display value of a koota's side key (varna/vashya/yoni/gana/nadi keys, tara numbers, planet ids, sign numbers). */

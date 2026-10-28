@@ -73,6 +73,10 @@ function Navigator({ fontsReady }: { fontsReady: boolean }) {
         <Stack.Screen name="family/festival/[slug]" />
         <Stack.Screen name="family/vrat/[id]" />
         <Stack.Screen name="family/ancestor/[id]" />
+        <Stack.Screen name="learn/lesson/[id]" />
+        <Stack.Screen name="learn/glossary/index" />
+        <Stack.Screen name="learn/glossary/[term]" />
+        <Stack.Screen name="learn/journal" />
         <Stack.Screen name="settings/vrats" />
         <Stack.Screen name="settings/notifications" />
         <Stack.Screen name="dev/state" />

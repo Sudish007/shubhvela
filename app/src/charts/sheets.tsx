@@ -4,6 +4,7 @@
 // A-INFO-1) and every snippet shows its rule id; the Why? reveals the rule sentence, the inputs and the source.
 import { glossaryTerm, lookup, ruleText, type CorpusLookup } from '@shubhvela/content';
 import type { ChartData, ChartPlanet, PlanetId } from '@shubhvela/engine';
+import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import type { Profile } from '../db/profiles';
@@ -278,15 +279,35 @@ export interface GlossarySheetProps {
 
 export function GlossarySheet({ visible, onClose, id, term }: GlossarySheetProps) {
   const { t, lang } = useLang();
+  const { colors } = useTokens();
+  const router = useRouter();
   const entry = glossaryTerm(id, lang)?.item ?? null;
   return (
     <Sheet visible={visible} onClose={onClose} title={entry ? `${entry.term_dev} (${entry.term_lat})` : term}>
       <Txt kind="body" testID="glossary-text">
         {entry ? entry.meaning : t('charts.glossaryNone', { term })}
       </Txt>
-      <Txt kind="caption" color="ink3">
-        {t('common.glossary')}
-      </Txt>
+      {entry ? (
+        // C03 (F33): the one-liner stays as the preview; the term page in the Learn glossary is one tap away.
+        <Pressable44
+          accessibilityLabel={`${t('common.glossary')}: ${entry.term_lat}`}
+          onPress={() => {
+            onClose();
+            router.push(`/learn/glossary/${entry.id}?from=why`);
+          }}
+          style={styles.glossaryLink}
+          testID="glossary-open"
+        >
+          <Txt kind="label" weight={600} color="accent">
+            {t('common.glossary')}
+          </Txt>
+          <ChevronIcon color={colors.accent} size={18} />
+        </Pressable44>
+      ) : (
+        <Txt kind="caption" color="ink3">
+          {t('common.glossary')}
+        </Txt>
+      )}
     </Sheet>
   );
 }
@@ -373,6 +394,7 @@ export function ProfileSheet({ visible, onClose, profiles, selectedId, onSelect 
 }
 
 const styles = StyleSheet.create({
+  glossaryLink: { flexDirection: 'row', alignItems: 'center', gap: 4, alignSelf: 'flex-start', paddingHorizontal: 4 },
   position: { gap: 6 },
   tags: { flexDirection: 'row', flexWrap: 'wrap', gap: 4 },
   block: { gap: 4 },

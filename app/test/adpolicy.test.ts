@@ -229,7 +229,7 @@ describe('AdPolicy', () => {
 
     it('the mount gate requires onLayout.y >= windowHeight at 360/390/412 x 1.0/1.3 for every intent', () => {
       // Nominal card heights at 1.0x (dp) for the simulation; text-driven cards grow with the font scale, gaps are 12.
-      const nominal: Record<string, number> = { header: 140, goodHours: 320, tithiToday: 56, vratToday: 140, upcoming: 120, dailyNote: 260 };
+      const nominal: Record<string, number> = { header: 140, goodHours: 320, tithiToday: 56, vratToday: 140, upcoming: 120, dailyNote: 260, todayLesson: 72 };
       for (const intent of intents) {
         for (const w of widths) {
           for (const scale of scales) {

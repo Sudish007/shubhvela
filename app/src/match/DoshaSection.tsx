@@ -18,8 +18,8 @@ export interface DoshaSectionProps {
   mangal: MangalPairReport;
   a: ResolvedSide;
   b: ResolvedSide;
-  /** 1 (free) or 3 (Pro): depth of the Why? explanation. */
-  level: 1 | 3;
+  /** 1 (free), 2 (lesson unlock, C03) or 3 (Pro): depth of the Why? explanation (the dosha texts exist at 3 only). */
+  level: 1 | 2 | 3;
   testID?: string;
 }
 
@@ -47,7 +47,7 @@ export function bhakootText(guna: AshtakootaResult, t: TFn): string {
   return `${t('match.bhakootDosha')}: ${t('match.doshaNone')}`;
 }
 
-function CancellationRow({ c, level, divider, testID }: { c: MangalCancellation; level: 1 | 3; divider: boolean; testID: string }) {
+function CancellationRow({ c, level, divider, testID }: { c: MangalCancellation; level: 1 | 2 | 3; divider: boolean; testID: string }) {
   const { t, lang } = useLang();
   const name = t(`match.cancel.${c.ruleId}`);
   const text = `${name} · ${t(c.applies ? 'match.applies_tag' : 'match.notApplied_tag')}`;
@@ -68,7 +68,7 @@ function CancellationRow({ c, level, divider, testID }: { c: MangalCancellation;
   );
 }
 
-function MangalBlock({ side, report, level, testID }: { side: ResolvedSide; report: MangalDoshaReport; level: 1 | 3; testID: string }) {
+function MangalBlock({ side, report, level, testID }: { side: ResolvedSide; report: MangalDoshaReport; level: 1 | 2 | 3; testID: string }) {
   const { t, lang } = useLang();
   const refs = report.references.filter((r) => r.dosha).map((r) => t('match.mangalRefs', { house: r.house, reference: t(`match.ref.${r.from}`) }));
   const explanation = lookup('mangal', report.present ? 'mangal-dosha' : 'mangal-dosha-none', lang)?.text;

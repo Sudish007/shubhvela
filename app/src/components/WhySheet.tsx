@@ -1,11 +1,14 @@
 // WhyButton + WhySheet (design.md 6): the 44 dp "Why?" text control at the right of every interpretive row opens a
 // sheet with the rule in one sentence (corpus/rules by ruleId), the inputs used with their values, the classical
-// source name when the corpus has one, and glossary one-liners for the Sanskrit terms (links become navigation in C03).
+// source name when the corpus has one, and the glossary terms as 44 dp rows: one-liner preview + navigation to the
+// Learn glossary page /learn/glossary/<id> (F33, C03 - the sheet closes first because it is a Modal).
 import { glossaryTerm, ruleText, type GlossaryEntry } from '@shubhvela/content';
+import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useLang } from '../i18n';
 import { useTokens } from '../theme/ThemeProvider';
+import { ChevronIcon } from './icons';
 import { Pressable44 } from './Pressable44';
 import { Sheet } from './Sheet';
 import { Txt } from './Txt';
@@ -38,6 +41,7 @@ export function glossaryIdsFor(ruleId: string, extra: readonly string[] = []): s
 export function WhySheet({ ruleId, inputs, glossary, title, explanation, explanationTitle, visible, onClose }: WhyProps & { visible: boolean; onClose: () => void }) {
   const { t, lang } = useLang();
   const { colors } = useTokens();
+  const router = useRouter();
   const rule = ruleText(ruleId, lang);
   const terms = glossaryIdsFor(ruleId, glossary)
     .map((id) => glossaryTerm(id, lang)?.item)
@@ -94,13 +98,26 @@ export function WhySheet({ ruleId, inputs, glossary, title, explanation, explana
           <Txt kind="micro" weight={600} color="ink3">
             {t('common.glossary')}
           </Txt>
-          {terms.map((g) => (
-            <Txt key={g.id} kind="caption" color="ink2">
-              <Txt kind="caption" weight={600}>
-                {g.term_dev}
+          {terms.map((g, i) => (
+            <Pressable44
+              key={g.id}
+              accessibilityLabel={`${g.term_lat}, ${g.meaning}`}
+              onPress={() => {
+                // The sheet is a Modal: close it first, then push the term page (F33: every Why? links to the glossary).
+                onClose();
+                router.push(`/learn/glossary/${g.id}?from=why`);
+              }}
+              style={[styles.termRow, i < terms.length - 1 && { borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: colors.hair }]}
+              testID={`why-term-${g.id}`}
+            >
+              <Txt kind="caption" color="ink2" style={styles.termText}>
+                <Txt kind="caption" weight={600}>
+                  {g.term_dev}
+                </Txt>
+                {` (${g.term_lat}) · ${g.meaning}`}
               </Txt>
-              {` (${g.term_lat}) · ${g.meaning}`}
-            </Txt>
+              <ChevronIcon color={colors.ink3} size={18} />
+            </Pressable44>
           ))}
         </View>
       ) : null}
@@ -135,5 +152,7 @@ const styles = StyleSheet.create({
   inputRow: { flexDirection: 'row', justifyContent: 'space-between', gap: 12, paddingVertical: 6, borderBottomWidth: StyleSheet.hairlineWidth },
   inputKey: { flexShrink: 1 },
   inputValue: { flexShrink: 1, textAlign: 'right' },
+  termRow: { flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 6, alignSelf: 'stretch', justifyContent: 'flex-start' },
+  termText: { flex: 1, minWidth: 0 },
   button: { paddingHorizontal: 8 },
 });

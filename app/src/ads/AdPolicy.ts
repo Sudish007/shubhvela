@@ -212,12 +212,20 @@ export function useBannerHeight(route: string): number | null {
 export type TodayNativeSlot = { kind: 'none' } | { kind: 'native'; index: number; unitId: string };
 
 /** Card keys of the Today stack; the order is decided once here so the ad is provably the last card. */
-export type TodayCardKey = 'goodHours' | 'tithiToday' | 'vratToday' | 'upcoming' | 'dailyNote' | 'nativeAd';
+export type TodayCardKey = 'goodHours' | 'tithiToday' | 'vratToday' | 'upcoming' | 'dailyNote' | 'todayLesson' | 'nativeAd';
 export type TodayIntent = 'marriage' | 'career' | 'familyDates' | 'learn' | null | undefined;
 
-/** The Today card order per onboarding intent (design.md 3): "Family dates" lifts vrat + Upcoming above the note. */
+/**
+ * The Today card order per onboarding intent (design.md 3): "Family dates" lifts vrat + Upcoming above the note;
+ * "Learn" adds the "Today's lesson" row right under the note (C03). The ad is always last.
+ */
 export function todayCardOrder(intent: TodayIntent): TodayCardKey[] {
-  const content: TodayCardKey[] = intent === 'familyDates' ? ['goodHours', 'tithiToday', 'vratToday', 'upcoming', 'dailyNote'] : ['goodHours', 'tithiToday', 'dailyNote', 'vratToday', 'upcoming'];
+  const content: TodayCardKey[] =
+    intent === 'familyDates'
+      ? ['goodHours', 'tithiToday', 'vratToday', 'upcoming', 'dailyNote']
+      : intent === 'learn'
+        ? ['goodHours', 'tithiToday', 'dailyNote', 'todayLesson', 'vratToday', 'upcoming']
+        : ['goodHours', 'tithiToday', 'dailyNote', 'vratToday', 'upcoming'];
   return [...content, 'nativeAd'];
 }
 
