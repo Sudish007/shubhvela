@@ -7,6 +7,7 @@ import { Chip, InlineNotice, PrimaryButton, Screen, Txt } from '../../src/compon
 import { INTENTS, getSelfProfile, setProfileIntent, type Intent } from '../../src/db/profiles';
 import { chartFor } from '../../src/engine-bridge/charts';
 import { useLang } from '../../src/i18n';
+import { registerExtendWidgetStateTask } from '../../src/widgets/backgroundTask';
 
 const CHIP_KEY: Record<Intent, string> = {
   marriage: 'onboarding.marriage_chip',
@@ -32,6 +33,9 @@ export default function IntentScreen() {
       setError(t('errors.chart'));
       return;
     }
+    // C01 (F9/N12): consent and the first profile now exist, so the 12 h background job can be registered today rather
+    // than at the next launch (WidgetStateSync registers it at launch once consent exists).
+    void registerExtendWidgetStateTask();
     router.replace('/(tabs)/today');
   }
 

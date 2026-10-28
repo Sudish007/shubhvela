@@ -5,7 +5,8 @@
 // font_scale), so it is only echoed in the dev log. `screen` is a route path (default /(tabs)/today). `pdf_dump=1` (B07)
 // prints the three reports to the cache directory and logs their URIs for B08 to pull. B08 audit extras (all with
 // sample=1): `pro=1` seeds an active Pro entitlement (absent = Free), `session=N` sets the session counter (4 = ads),
-// `intent=` sets the self profile's intent (M4), `pdf_lang=` the profiles' PDF language.
+// `intent=` sets the self profile's intent (M4), `pdf_lang=` the profiles' PDF language. C01/C05: `widget_state=stale|exhausted`
+// rewrites files/widget_state.json with a clock moved 40 h / 9 days back so the home-screen widgets show their footer state.
 import { Redirect, useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect } from 'react';
 import { View } from 'react-native';
@@ -16,6 +17,7 @@ import { parseDevParams, withForwardedQuery } from '../../src/dev/params';
 import { dumpReports } from '../../src/dev/pdfDump';
 import { seedSampleState } from '../../src/dev/seed';
 import { scheduleTestReminder } from '../../src/dev/testReminder';
+import { writeDevWidgetState } from '../../src/dev/widgetState';
 import { useLang } from '../../src/i18n';
 import { isScreenshotBuild } from '../../src/legal';
 import { useTokens } from '../../src/theme/ThemeProvider';
@@ -46,6 +48,15 @@ export default function DevState() {
           .then((r) => console.log('dev/state pdf-dump', JSON.stringify(r)))
           .catch((e) => console.warn('dev/state pdf-dump failed', e));
       }, 2000);
+    // After the launch write (WidgetStateSync, 2.5 s) and Today's observer write, so the moved clock wins for 10 minutes.
+    if (p.widgetState) {
+      const mode = p.widgetState;
+      setTimeout(() => {
+        writeDevWidgetState(mode)
+          .then((r) => console.log('dev/state widget-state', mode, JSON.stringify({ written: r.written, skipped: r.skipped, widgets: r.widgetsRefreshed, days: r.file?.days.length })))
+          .catch((e) => console.warn('dev/state widget-state failed', e));
+      }, 4000);
+    }
     setLang(p.lang);
     setThemeSetting(p.theme);
     if (__DEV__) console.log('dev/state', p);

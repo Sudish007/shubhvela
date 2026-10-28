@@ -1,8 +1,8 @@
 // Settings -> Notifications, Settings -> Vrats and the shraddha editor (A12): default times 19:00 / 07:00 per kind, the
 // time picker persists a new time and re-plans, the daily note is opt-in (Off, disabled until permission), "Scheduled"
 // is honest (nothing until a series is on), the Vrats screen lists the 12 families with switches and the cap line, the
-// ancestor editor validates and saves a record that never touches the profile count. Rows that belong to B04/C01
-// ("Dasha change alerts", "Exact widget updates") are not rendered.
+// ancestor editor validates and saves a record that never touches the profile count. B04 rows ("Dasha change alerts",
+// "Year begins") and the C01 widgets card ("Add widget to home screen", "Exact widget updates") render with honest states.
 import { fireEvent, screen, waitFor } from '@testing-library/react-native';
 import { router } from 'expo-router';
 import AncestorEditor, { validateAncestor } from '../app/family/ancestor/[id]';
@@ -49,7 +49,12 @@ describe('<NotificationsScreen>', () => {
     const yearBegins = screen.getByTestId('year-begins-switch');
     expect(yearBegins.props.accessibilityState.checked).toBe(false);
     expect(yearBegins.props.accessibilityState.disabled).toBe(true);
-    expect(screen.queryByText(/Exact widget updates/)).toBeNull();
+    // C01: the widgets card exists; without the native module (Jest) pinning is honestly "unsupported" and the exact-alarm
+    // row says the permission is not applicable instead of pretending a state.
+    expect(screen.getByText('Exact widget updates')).toBeTruthy();
+    expect(screen.getByTestId('exact-alarms-na')).toBeTruthy();
+    expect(screen.getByTestId('add-widget-unsupported')).toBeTruthy();
+    expect(screen.queryByTestId('add-widget-small')).toBeNull();
     // Granting re-plans once.
     await fireEvent.press(screen.getByTestId('permission-button'));
     await waitFor(() => expect(replan).toHaveBeenCalledTimes(1), FIND);
@@ -76,6 +81,37 @@ describe('<NotificationsScreen>', () => {
     await fireEvent.press(screen.getByTestId('daily-note-switch'));
     await waitFor(() => expect(getDailyNoteSetting().enabled).toBe(true), FIND);
     expect(screen.getByTestId('daily-note-time').props.accessibilityLabel).toBe('Morning of, 07:00');
+  });
+
+  it('C01 widgets card: pin buttons call requestPinAppWidget per size, a refusal shows the honest notice, the exact-alarm row shows the real state and opens the system page', async () => {
+    const widgets = {
+      isPinSupported: jest.fn(() => true),
+      requestPin: jest.fn((kind: string) => kind === 'small'),
+      exactAlarmState: jest.fn(() => 'denied' as const),
+      openExactAlarmSettings: jest.fn(() => true),
+    };
+    await renderWithProviders(<NotificationsScreen getPermission={async () => 'granted'} widgets={widgets} />);
+    await screen.findByText('Notifications are allowed for Shubhvela', {}, FIND);
+    expect(screen.getByText('Home-screen widgets')).toBeTruthy();
+    expect(screen.getByTestId('exact-alarms-row').props.accessibilityLabel).toBe('Exact widget updates, Not allowed');
+    await fireEvent.press(screen.getByTestId('exact-alarms-row'));
+    expect(widgets.openExactAlarmSettings).toHaveBeenCalledTimes(1);
+    await fireEvent.press(screen.getByTestId('add-widget-medium'));
+    expect(widgets.requestPin).toHaveBeenCalledWith('medium');
+    // The launcher refused the medium pin -> the notice replaces the buttons instead of a silent no-op.
+    await screen.findByTestId('add-widget-unsupported', {}, FIND);
+    expect(screen.queryByTestId('add-widget-small')).toBeNull();
+  });
+
+  it('C01 widgets card: a granted exact-alarm permission reads Allowed; the small pin keeps the buttons when accepted', async () => {
+    const widgets = { isPinSupported: () => true, requestPin: jest.fn(() => true), exactAlarmState: () => 'granted' as const, openExactAlarmSettings: () => true };
+    await renderWithProviders(<NotificationsScreen getPermission={async () => 'granted'} widgets={widgets} />);
+    await screen.findByText('Notifications are allowed for Shubhvela', {}, FIND);
+    expect(screen.getByTestId('exact-alarms-row').props.accessibilityLabel).toBe('Exact widget updates, Allowed');
+    await fireEvent.press(screen.getByTestId('add-widget-small'));
+    expect(widgets.requestPin).toHaveBeenCalledWith('small');
+    expect(screen.getByTestId('add-widget-medium')).toBeTruthy();
+    expect(screen.queryByTestId('add-widget-unsupported')).toBeNull();
   });
 });
 

@@ -2,19 +2,24 @@
 // Tara bala -> tithi/nakshatra (+ Bhadra/Panchak) -> Sade Sati/Dhaiya -> dasha lords). Each row is a Row (ruleId
 // required) whose sentence is the corpus fragment(s) of the row's keys with the engine params interpolated, and whose
 // "Why?" shows the rule, the inputs with values and the source. Footer: "Guidance for reflection ... Not a prediction."
-// The "Listen" button (F10) is NOT rendered until C01 wires TTS - nothing fake, no disabled placeholder.
+// F10 (C01): the title row carries a 44 dp "Listen" text button that toggles to "Stop" while expo-speech reads the rows'
+// sentences in the UI language (useListen: en-IN/hi-IN voice lookup, Bhojpuri -> Hindi voice with a one-time toast). When no
+// voice is installed an inline notice says so and offers the Android text-to-speech settings - nothing is faked.
 // Corpus language: the content package resolves bho -> hi -> en per id (carry-over A-INFO-1); the chrome stays in the
 // UI language and the resolved snippet is shown as is, without a badge.
 import { interpolate, lookup, type TranslationParams } from '@shubhvela/content';
 import type { DailyRule, RuleParam } from '@shubhvela/engine';
 import { Fragment } from 'react';
 import { StyleSheet, View } from 'react-native';
+import { TextButton } from '../components/Button';
 import { Card } from '../components/Card';
+import { InlineNotice } from '../components/Notices';
 import { Latin, Num } from '../components/Num';
 import { Row } from '../components/Row';
 import { Txt } from '../components/Txt';
 import type { WhyInputValue } from '../components/WhySheet';
 import { useLang, type Lang, type TFn } from '../i18n';
+import { useListen, type SpeechDeps } from '../tts/useListen';
 import { fmtDate, fmtTime, fmtTimeOrDayTime, nakshatraName, ordinal, planetName, signName, tithiName, weekdayName } from './format';
 import { num, RichText, richSegments, type RichParams } from './RichText';
 
@@ -24,6 +29,8 @@ export interface DailyNoteCardProps {
   /** Civil date shown (for same-day vs other-day time formatting). */
   day: string;
   tz: string;
+  /** Speech bridge override for tests (production: expo-speech). */
+  speech?: SpeechDeps;
   testID?: string;
 }
 
@@ -112,18 +119,51 @@ export function rowCaption(rule: DailyRule, tz: string, t: TFn, lang: Lang): str
   }
 }
 
-export function DailyNoteCard({ rows, name, day, tz, testID }: DailyNoteCardProps) {
+/** The spoken text of the note: every row's sentence in the UI language, in row order (same text the rows display). */
+export function noteSentences(rows: readonly DailyRule[], tz: string, day: string, t: TFn, lang: Lang): string[] {
+  return rows.map((rule) =>
+    rowSegments(rule, tz, day, t, lang)
+      .map((s) => s.text)
+      .join(''),
+  );
+}
+
+export function DailyNoteCard({ rows, name, day, tz, speech, testID }: DailyNoteCardProps) {
   const { t, lang } = useLang();
+  const sentences = noteSentences(rows, tz, day, t, lang);
+  const listen = useListen(sentences, lang, { deps: speech, hindiVoiceToast: t('tts.hindiVoice') });
   // The Latin name run inside a Devanagari title (N19): split the template around {name}.
   const MARK = '\u0000';
   const [before = '', after = ''] = name ? t('today.yourDay', { name: MARK }).split(MARK) : [t('today.yourDayNoName'), ''];
+  const speaking = listen.status === 'speaking';
   return (
     <Card testID={testID}>
-      <Txt kind="heading" accessibilityRole="header" testID="note-title">
-        {before}
-        {name ? <Latin kind="heading">{name}</Latin> : null}
-        {after}
-      </Txt>
+      <View style={styles.titleRow}>
+        <Txt kind="heading" accessibilityRole="header" style={styles.title} testID="note-title">
+          {before}
+          {name ? <Latin kind="heading">{name}</Latin> : null}
+          {after}
+        </Txt>
+        {rows.length ? (
+          <TextButton
+            label={speaking ? t('tts.stop') : t('tts.listen')}
+            accessibilityLabel={speaking ? t('tts.stop') : t('tts.listen')}
+            onPress={() => void listen.toggle()}
+            testID="note-listen"
+          />
+        ) : null}
+      </View>
+      {listen.status === 'noVoice' ? (
+        <View style={styles.notice} testID="note-tts-notice">
+          <InlineNotice>{t('errors.tts', { language: t(`tts.language.${lang}`) })}</InlineNotice>
+          <TextButton label={t('tts.openSettings')} onPress={() => void listen.openTtsSettings()} style={styles.noticeAction} testID="note-tts-settings" />
+        </View>
+      ) : null}
+      {listen.status === 'error' ? (
+        <View style={styles.notice} testID="note-tts-error">
+          <InlineNotice tone="error">{t('tts.failed')}</InlineNotice>
+        </View>
+      ) : null}
       <View style={styles.rows}>
         {rows.map((rule, i) => {
           const segments = rowSegments(rule, tz, day, t, lang);
@@ -163,6 +203,10 @@ export function DailyNoteCard({ rows, name, day, tz, testID }: DailyNoteCardProp
 }
 
 const styles = StyleSheet.create({
+  titleRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+  title: { flex: 1, minWidth: 0 },
+  notice: { marginTop: 8, gap: 4 },
+  noticeAction: { alignSelf: 'flex-start' },
   rows: { marginTop: 8 },
   footer: { marginTop: 12 },
 });

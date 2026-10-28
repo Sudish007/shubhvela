@@ -1,0 +1,20 @@
+// Local Expo module (plan C01 "app/modules/widget-pin"): autolinked by expo-modules-autolinking from app/modules.
+// Same shape as the create-expo-module local template; no dependency on the app module (component names only).
+plugins {
+  id 'com.android.library'
+  id 'expo-module-gradle-plugin'
+}
+
+group = 'com.shubhvela.app'
+version = '0.3.0'
+
+android {
+  namespace "expo.modules.shubhvelawidgets"
+  defaultConfig {
+    versionCode 1
+    versionName "0.3.0"
+  }
+  lintOptions {
+    abortOnError false
+  }
+}

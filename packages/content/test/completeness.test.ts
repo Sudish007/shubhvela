@@ -21,7 +21,9 @@ const PHASE_A_NAMESPACES = [
 ];
 /** Phase B namespaces (plan.md section 2 i18n; FEAT-B02). */
 const PHASE_B_NAMESPACES = ['pro', 'ads', 'unlock', 'vargas', 'kp', 'ashtakavarga', 'varshaphal', 'muhurat', 'travel', 'naamkaran', 'match', 'share', 'pdf', 'report'];
-const NAMESPACES = [...PHASE_A_NAMESPACES, ...PHASE_B_NAMESPACES];
+/** Phase C namespaces present so far (plan.md section 2 i18n): widget + tts land in C01; learn/lesson/glossary/journal/prashna/ask/backup/deeplink in C02. */
+const PHASE_C_NAMESPACES = ['widget', 'tts'];
+const NAMESPACES = [...PHASE_A_NAMESPACES, ...PHASE_B_NAMESPACES, ...PHASE_C_NAMESPACES];
 
 describe('UI string completeness', () => {
   it('en, hi and bho have identical key sets', () => {

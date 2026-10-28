@@ -3039,26 +3039,17 @@ exports[`<TodayScreen> pseudo-locale +30 % (en): nothing truncates and no time r
           }
           testID="daily-note"
         >
-          <Text
-            accessibilityRole="header"
+          <View
             style={
-              [
-                {
-                  "fontFamily": "NotoSans-SemiBold",
-                  "fontSize": 18,
-                  "fontWeight": "normal",
-                  "lineHeight": 24,
-                },
-                {
-                  "color": "#1C1A17",
-                },
-                undefined,
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "gap": 8,
+              }
             }
-            testID="note-title"
           >
-            Your day, 
             <Text
+              accessibilityRole="header"
               style={
                 [
                   {
@@ -3070,14 +3061,109 @@ exports[`<TodayScreen> pseudo-locale +30 % (en): nothing truncates and no time r
                   {
                     "color": "#1C1A17",
                   },
-                  undefined,
+                  {
+                    "flex": 1,
+                    "minWidth": 0,
+                  },
                 ]
               }
+              testID="note-title"
             >
-              Priya
+              Your day, 
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans-SemiBold",
+                      "fontSize": 18,
+                      "fontWeight": "normal",
+                      "lineHeight": 24,
+                    },
+                    {
+                      "color": "#1C1A17",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Priya
+              </Text>
+               xxxx
             </Text>
-             xxxx
-          </Text>
+            <View
+              accessibilityLabel="Listen x"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "justifyContent": "center",
+                    "minHeight": 44,
+                    "minWidth": 44,
+                  },
+                  [
+                    {
+                      "paddingHorizontal": 12,
+                    },
+                    undefined,
+                    undefined,
+                  ],
+                  false,
+                ]
+              }
+              testID="note-listen"
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoSans-SemiBold",
+                      "fontSize": 15,
+                      "fontWeight": "normal",
+                      "lineHeight": 20,
+                    },
+                    {
+                      "color": "#B83E18",
+                    },
+                    {
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                Listen x
+              </Text>
+            </View>
+          </View>
           <View
             style={
               {

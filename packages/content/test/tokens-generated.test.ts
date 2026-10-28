@@ -21,6 +21,21 @@ describe('generated token outputs are current', () => {
     expect(g.tokensTs).toMatch(/bannerPadding: 16/);
   });
 
+  it('widget_tokens.xml carries every colour per theme, the band height and sp sizes at or above the 12 sp floor (C01)', () => {
+    const tokens = loadTokens();
+    for (const theme of ['light', 'dark'] as const) {
+      const xml = g.widgetXml[theme];
+      expect(normaliseEol(readFileSync(theme === 'light' ? PATHS.widgetXmlLight : PATHS.widgetXmlDark, 'utf8'))).toBe(normaliseEol(xml));
+      for (const n of Object.keys(tokens.color)) expect(xml).toContain(`<color name="widget_${n.replace(/-/g, '_')}">`);
+      expect(xml.replace(/<!--[\s\S]*?-->/g, '')).not.toMatch(/gradient|shadow/i);
+    }
+    expect(g.widgetXml.light).toContain('<color name="widget_good">#C57030</color>');
+    expect(g.widgetXml.dark).toContain('<color name="widget_good">#D07A36</color>');
+    expect(g.widgetXml.light).toContain('<color name="widget_scrim">#73' + '1C1A17</color>');
+    expect(g.widgetXml.light).toContain('<dimen name="widget_band_height">32dp</dimen>');
+    expect(g.widgetXml.light).toContain('<dimen name="widget_text_floor">12sp</dimen>');
+    for (const m of g.widgetXml.light.matchAll(/widget_text_\w+">(\d+)sp/g)) expect(Number(m[1])).toBeGreaterThanOrEqual(12);
+  });
   it('tokens.css has :root and html[data-theme="dark"] blocks with every colour and no gradient', () => {
     expect(g.tokensCss).toMatch(/^:root\{--paper:#FAF7F2;/m);
     expect(g.tokensCss).toMatch(/^html\[data-theme="dark"\]\{--paper:#15130F;/m);

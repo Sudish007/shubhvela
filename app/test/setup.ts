@@ -163,6 +163,35 @@ jest.mock('react-native-view-shot', () => ({
 jest.mock('expo-asset', () => ({
   Asset: { fromModule: jest.fn(() => ({ localUri: 'file:///assets/font.ttf', uri: 'file:///assets/font.ttf', downloadAsync: jest.fn(async () => {}) })) },
 }));
+// C01: expo-speech (F10) has no engine under Jest - the hook is tested through its injectable SpeechDeps; these defaults
+// report no voices so a screen that forgets to inject sees the honest "no voice" notice rather than a crash.
+jest.mock('expo-speech', () => ({
+  speak: jest.fn(),
+  stop: jest.fn(async () => {}),
+  getAvailableVoicesAsync: jest.fn(async () => []),
+  isSpeakingAsync: jest.fn(async () => false),
+}));
+// C01: expo-task-manager / expo-background-task (F9 `extend-widget-state`): defineTask records the executor so a test can
+// run it; registration is a spy. Status reports Available so registerExtendWidgetStateTask reaches registerTaskAsync.
+jest.mock('expo-task-manager', () => {
+  const tasks = new Map<string, unknown>();
+  return {
+    __tasks: tasks,
+    defineTask: jest.fn((name: string, executor: unknown) => {
+      tasks.set(name, executor);
+    }),
+    isTaskRegisteredAsync: jest.fn(async () => false),
+    isAvailableAsync: jest.fn(async () => true),
+  };
+});
+jest.mock('expo-background-task', () => ({
+  BackgroundTaskStatus: { Restricted: 1, Available: 2 },
+  BackgroundTaskResult: { Success: 1, Failed: 2 },
+  getStatusAsync: jest.fn(async () => 2),
+  registerTaskAsync: jest.fn(async () => {}),
+  unregisterTaskAsync: jest.fn(async () => {}),
+  triggerTaskWorkerForTestingAsync: jest.fn(async () => false),
+}));
 // expo-sqlite is only reached through app/src/db/open.ts and gazetteer.ts; tests never open the asset database.
 jest.mock('expo-sqlite', () => ({
   openDatabaseSync: () => {

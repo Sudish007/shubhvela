@@ -3,7 +3,9 @@
 // then a plain stack: index (consent gate) -> onboarding/* or (tabs); settings/*, profile/[id], family/* and dev/state are
 // pushed. On every launch the reminder planner re-plans the next 60 days (F25, N12) once the UI has painted; with no
 // enabled series the plan is empty and nothing is scheduled (quiet by default). AdsRoot (B03) counts sessions, restores
-// the Play entitlement and - only when not Pro - runs UMP consent and initialises the ads SDK.
+// the Play entitlement and - only when not Pro - runs UMP consent and initialises the ads SDK. C01 (F9): the background
+// task `extend-widget-state` is DEFINED here at module scope (expo-task-manager requirement) and WidgetStateSync writes
+// files/widget_state.json after launch and on language change, registering the task once consent exists.
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
@@ -16,8 +18,11 @@ import { initAppDb } from '../src/db/open';
 import { LangProvider } from '../src/i18n';
 import { replanAll } from '../src/notifications/schedule';
 import { ThemeProvider, useTokens } from '../src/theme/ThemeProvider';
+import { defineExtendWidgetStateTask } from '../src/widgets/backgroundTask';
+import { WidgetStateSync } from '../src/widgets/WidgetStateSync';
 
 initAppDb();
+defineExtendWidgetStateTask();
 // Local notifications show while the app is in the foreground too (no sound beyond the channel default).
 Notifications.setNotificationHandler({
   handleNotification: async () => ({ shouldShowBanner: true, shouldShowList: true, shouldPlaySound: false, shouldSetBadge: false }),
@@ -89,6 +94,7 @@ export default function RootLayout() {
       <ThemeProvider>
         <LangProvider>
           <AdsRoot />
+          <WidgetStateSync />
           <Navigator fontsReady={fontsLoaded || !!fontError} />
         </LangProvider>
       </ThemeProvider>

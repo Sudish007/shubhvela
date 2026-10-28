@@ -3,11 +3,15 @@
 // time picker, re-planned on change); the opt-in "Daily note" switch (default Off) with its time; the "Scheduled" count
 // (what the OS really holds after the last re-plan) with the next entries as a plain list; the quiet-by-default line.
 // B04: "Dasha change alerts" (F14; Pro shows the switch, default Off; free sees the row with a Pro tag -> /pro) and
-// "Notify when the year begins" (F17; default Off). "Exact widget updates" (C01) is NOT rendered before that build.
+// "Notify when the year begins" (F17; default Off). C01 (F9): the "Home-screen widgets" card with "Add widget to home
+// screen" (requestPinAppWidget for the small 2x1 / medium 4x2 widget; an honest notice when the launcher cannot pin) and
+// "Exact widget updates" (the SCHEDULE_EXACT_ALARM special access: shows Allowed / Not allowed, opens the system page;
+// "Not needed" below Android 12 where no such permission exists).
 import { useFocusEffect, useRouter } from 'expo-router';
 import { useCallback, useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Card, NavRow, PrimaryButton, Screen, SwitchRow, Txt } from '../../src/components';
+import { exactAlarmState, isPinSupported, openExactAlarmSettings, requestPin, type ExactAlarmState, type WidgetKind } from '../../modules/widget-pin';
+import { Card, InlineNotice, NavRow, PrimaryButton, Screen, SecondaryButton, SwitchRow, Txt } from '../../src/components';
 import { getAncestor } from '../../src/db/ancestors';
 import type { SeriesKind } from '../../src/db/eventSeries';
 import { getProfile, getSelfProfile } from '../../src/db/profiles';
@@ -32,6 +36,7 @@ import { useLang } from '../../src/i18n';
 import { getPermissionState, openSystemNotificationSettings, requestPermission, type PermissionState } from '../../src/notifications/permissions';
 import { replanAll, type ReplanResult } from '../../src/notifications/schedule';
 import { pickTime } from '../../src/profiles/nativePickers';
+import { useTokens } from '../../src/theme/ThemeProvider';
 import { fmtDayTime } from '../../src/today/format';
 import { RichText } from '../../src/today/RichText';
 
@@ -41,7 +46,18 @@ export interface NotificationsScreenProps {
   requestPermission?: () => Promise<PermissionState>;
   replan?: () => Promise<ReplanResult>;
   pickTime?: (current: string, onPick: (hhmm: string) => void) => void;
+  /** Widget bridge override for tests (production: the local Expo module). */
+  widgets?: WidgetBridge;
 }
+
+export interface WidgetBridge {
+  isPinSupported(): boolean;
+  requestPin(kind: WidgetKind): boolean;
+  exactAlarmState(): ExactAlarmState;
+  openExactAlarmSettings(): boolean;
+}
+
+const nativeWidgetBridge: WidgetBridge = { isPinSupported, requestPin, exactAlarmState, openExactAlarmSettings };
 
 const KIND_KEY: Record<SeriesKind, string> = { tithi_birthday: 'reminders.kind.tithiBirthday', barsi: 'reminders.kind.barsi', vrat_family: 'reminders.kind.vrat' };
 
@@ -61,6 +77,7 @@ function scheduledLabel(d: ScheduledDetail, t: (k: string, p?: Record<string, st
 
 export default function NotificationsScreen(props: NotificationsScreenProps) {
   const { t, lang } = useLang();
+  const { colors } = useTokens();
   const getPerm = props.getPermission ?? getPermissionState;
   const askPerm = props.requestPermission ?? requestPermission;
   const replan = props.replan ?? (() => replanAll());
@@ -73,9 +90,22 @@ export default function NotificationsScreen(props: NotificationsScreenProps) {
   const [yearBegins, setYearBegins] = useState(() => getYearBeginsEnabled());
   const [pratyantarPro, setPratyantarPro] = useState(() => canSeeFeature('dasha_pratyantar').allowed);
   const [scheduled, setScheduled] = useState(() => ({ count: countScheduled(), list: listScheduledDetailed(20), at: getLastPlannedAt() }));
+  const widgets = props.widgets ?? nativeWidgetBridge;
+  const [exact, setExact] = useState<ExactAlarmState>(() => widgets.exactAlarmState());
+  const [pinSupported] = useState(() => widgets.isPinSupported());
+  const [pinNotice, setPinNotice] = useState(false);
 
-  const refreshScheduled = useCallback(() => setScheduled({ count: countScheduled(), list: listScheduledDetailed(20), at: getLastPlannedAt() }), []);
+  const refreshScheduled = useCallback(() => {
+    setScheduled({ count: countScheduled(), list: listScheduledDetailed(20), at: getLastPlannedAt() });
+    // Back from the system "Alarms & reminders" page: re-read the special-access state.
+    setExact(widgets.exactAlarmState());
+  }, [widgets]);
   useFocusEffect(refreshScheduled);
+
+  function addWidget(kind: WidgetKind) {
+    // The launcher shows its own confirmation dialog; false means it refused (no dialog), so say so instead of pretending.
+    setPinNotice(!widgets.requestPin(kind));
+  }
   // The Pro state can change while this screen is open (restore on the Pro screen): follow entitlements.
   useEffect(() => onEntitlementsChanged(() => setPratyantarPro(canSeeFeature('dasha_pratyantar').allowed)), []);
 
@@ -174,6 +204,49 @@ export default function NotificationsScreen(props: NotificationsScreenProps) {
         <SwitchRow title={t('varshaphal.notifyToggle')} caption={t('reminders.yearBeginsBody')} value={yearBegins} onValueChange={toggleYearBegins} disabled={perm !== 'granted'} divider={false} testID="year-begins-switch" />
       </Card>
 
+      <Card testID="widgets-card">
+        <Txt kind="heading" accessibilityRole="header">
+          {t('settings.widgetsTitle')}
+        </Txt>
+        <Txt kind="label" weight={400} style={styles.widgetTitle}>
+          {t('settings.addWidget')}
+        </Txt>
+        <Txt kind="caption" color="ink3">
+          {t('settings.addWidgetBody')}
+        </Txt>
+        {pinSupported && !pinNotice ? (
+          <View style={styles.widgetButtons}>
+            <SecondaryButton label={t('settings.addWidgetSmall')} onPress={() => addWidget('small')} style={styles.widgetButton} testID="add-widget-small" />
+            <SecondaryButton label={t('settings.addWidgetMedium')} onPress={() => addWidget('medium')} style={styles.widgetButton} testID="add-widget-medium" />
+          </View>
+        ) : (
+          <View style={styles.widgetNotice} testID="add-widget-unsupported">
+            <InlineNotice>{t('settings.addWidgetUnsupported')}</InlineNotice>
+          </View>
+        )}
+        <View style={[styles.exactRow, { borderTopColor: colors.hair }]}>
+          {exact === 'not-applicable' ? (
+            <View style={styles.exactText} testID="exact-alarms-na">
+              <Txt kind="label" weight={400}>
+                {t('settings.exactAlarms')}
+              </Txt>
+              <Txt kind="caption" color="ink3">
+                {t('settings.exactAlarms.na')}
+              </Txt>
+            </View>
+          ) : (
+            <NavRow
+              title={t('settings.exactAlarms')}
+              caption={t('settings.exactAlarmsBody')}
+              value={exact === 'granted' ? t('settings.exactAlarms.on') : t('settings.exactAlarms.off')}
+              onPress={() => widgets.openExactAlarmSettings()}
+              divider={false}
+              testID="exact-alarms-row"
+            />
+          )}
+        </View>
+      </Card>
+
       <Card testID="scheduled-card">
         <Txt kind="heading" accessibilityRole="header">
           {t('reminders.scheduled')}
@@ -213,4 +286,11 @@ const styles = StyleSheet.create({
   scheduledRow: { flexDirection: 'row', gap: 12, paddingVertical: 4 },
   scheduledWhen: { width: 132 },
   scheduledWhat: { flex: 1, minWidth: 0 },
+  widgetTitle: { marginTop: 8 },
+  widgetButtons: { marginTop: 12, gap: 8 },
+  widgetButton: { alignSelf: 'stretch' },
+  widgetNotice: { marginTop: 12 },
+  // NavRow carries the 16 dp row padding itself (flush-card convention): pull it out to the card edge.
+  exactRow: { marginTop: 12, marginHorizontal: -16, borderTopWidth: StyleSheet.hairlineWidth, paddingTop: 4 },
+  exactText: { paddingHorizontal: 16, paddingVertical: 10, gap: 2 },
 });

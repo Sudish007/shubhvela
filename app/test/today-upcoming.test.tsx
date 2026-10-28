@@ -68,7 +68,7 @@ describe('<DailyNoteCard>', () => {
     expect(dayRow.keys).toContain('panchak');
     expect(rowSegments(dayRow, TZ, '2026-10-22', t, 'en').some((s) => s.num)).toBe(true);
     expect(screen.getByTestId('note-footer').props.children).toBe("Guidance for reflection, computed from your chart and today's sky. Not a prediction.");
-    // No Listen button until C01 (nothing fake).
-    expect(screen.queryByText('Listen')).toBeNull();
+    // C01 (F10): the real Listen button sits in the title row (toggles to Stop; covered in listen.test.tsx).
+    expect(screen.getByTestId('note-listen').props.accessibilityLabel).toBe('Listen');
   });
 });

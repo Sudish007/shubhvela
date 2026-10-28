@@ -160,6 +160,12 @@ android {
     androidResources {
         ignoreAssetsPattern = '!.svn:!.git:!.ds_store:!*.scc:!CVS:!thumbs.db:!picasa.ini:!*~'
     }
+    // Hand-maintained (C01, F9): JVM unit tests for the widget band maths (android/app/src/test). android.jar is stubbed on
+    // the JVM; the tested code (BandGeometry, WidgetState) uses no Android classes apart from org.json, which the real
+    // artifact below provides.
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
 }
 
 // Apply static values from `gradle.properties` to the `android.packagingOptions`
@@ -208,6 +214,12 @@ dependencies {
     // initialises only through the Google Mobile Ads SDK, which Pro users never initialise (app/src/ads/AdsRoot.tsx),
     // and no AdMob mediation group references it until the owner creates one (docs/OWNER-TODO.md item 4).
     implementation 'com.google.ads.mediation:applovin:13.6.4.2'
+    // Hand-maintained (C01, F9 / plan P4): WorkManager periodic job (15 min) that redraws the home-screen widgets from
+    // files/widget_state.json (widgets/WidgetRefreshWorker.kt). 2.12.0 = current stable (2026-09-23, minSdk 24).
+    implementation 'androidx.work:work-runtime-ktx:2.12.0'
+    // JVM unit tests of the widget band maths and the state parser (org.json is a stub in android.jar).
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.json:json:20250517'
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")
     } else {

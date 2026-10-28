@@ -29,7 +29,11 @@ export interface DevParams {
   pdfLang?: Lang;
   /** q_<name>=<value> (B08) parameters forwarded to the target screen as <name>=<value>; `{self}`/`{other}` substituted. */
   forward?: Record<string, string>;
+  /** widget_state=<stale|exhausted> (C01/C05) writes files/widget_state.json as if written 40 h / 9 days ago so the widgets show the "Open Shubhvela to refresh" footer. */
+  widgetState?: DevWidgetState;
 }
+export type DevWidgetState = 'stale' | 'exhausted';
+const WIDGET_STATES: readonly DevWidgetState[] = ['stale', 'exhausted'];
 export function parseDevParams(p: Record<string, string | string[] | undefined>): DevParams {
   const one = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0] : v) ?? '';
   const lang = (LANGS as readonly string[]).includes(one(p.lang)) ? (one(p.lang) as Lang) : 'en';
@@ -51,6 +55,7 @@ export function parseDevParams(p: Record<string, string | string[] | undefined>)
   if (one(p.session) !== '' && Number.isInteger(session) && session >= 0) out.session = session;
   if ((INTENTS as readonly string[]).includes(one(p.intent))) out.intent = one(p.intent) as Intent;
   if ((LANGS as readonly string[]).includes(one(p.pdf_lang))) out.pdfLang = one(p.pdf_lang) as Lang;
+  if ((WIDGET_STATES as readonly string[]).includes(one(p.widget_state))) out.widgetState = one(p.widget_state) as DevWidgetState;
   // Query parameters the target screen should receive (B08: the router splits the outer link on "&" before decoding, so
   // a second "?x=&y=" parameter inside `screen` never arrives; `q_a=p{self}&q_b=p{other}` reaches the screen as a=&b=).
   const forward: Record<string, string> = {};

@@ -2,7 +2,8 @@
 // coarse device fix when Settings -> Location is 'Use my location' (permission optional; denial falls back to the
 // place and says so). Re-renders every 60 s (now-marker), recomputes at the next sunrise (new Vedic day), on return
 // to the foreground, on focus (settings may have changed) and when the observer or the profile changes. The language
-// does not enter the model: components format in the UI language at render time.
+// does not enter the model: components format in the UI language at render time. Every successful compute also hands
+// its observer to the widget state writer (C01, F9) so the home-screen widgets show the same place as Today.
 import { useFocusEffect } from 'expo-router';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { AppState } from 'react-native';
@@ -11,6 +12,7 @@ import { getSetting, type LocationMode } from '../db/settings';
 import { hasDb } from '../db/connection';
 import { enabledVratFamilies } from '../db/eventSeries';
 import { getDeviceFix, type DeviceFix } from '../location/gps';
+import { writeWidgetState } from '../widgets/writeState';
 import { computeToday, nextBoundaryAfter, observerFromProfile, type Observer, type TodayModel } from './model';
 
 export interface TodayState {
@@ -93,6 +95,8 @@ export function useToday(self: Profile | null, profiles: readonly Profile[], opt
         const m = computeToday(self, observer, now(), { profiles, vratFamilies: hasDb() ? enabledVratFamilies() : [] });
         modelRef.current = m;
         setComputed({ model: m, error: false, key });
+        // F9 data contract: the widgets follow Today's observer (chosen city or device fix); debounced inside, Android only.
+        void writeWidgetState({ observer: m.observer, nowMs: m.nowMs });
       } catch (e) {
         if (__DEV__) console.warn('today failed', e);
         modelRef.current = null;

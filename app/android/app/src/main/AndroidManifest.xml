@@ -4,6 +4,12 @@
   <uses-permission android:name="android.permission.CAMERA"/>
   <uses-permission android:name="android.permission.INTERNET"/>
   <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+  <!-- Hand-maintained (C01, F9 / plan P4): the widget boot receiver re-arms the boundary alarm after a reboot. -->
+  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+  <!-- Hand-maintained (C01, F9 / plan P4): OPTIONAL special access, never requested at runtime; the user grants it from
+       Settings -> Notifications -> "Exact widget updates" (system "Alarms and reminders" page). Without it the widgets use
+       AlarmManager.setWindow (inexact). No USE_EXACT_ALARM, no battery-optimisation exemption, no foreground service. -->
+  <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" tools:replace="android:maxSdkVersion"/>
   <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
   <uses-permission android:name="android.permission.VIBRATE"/>
@@ -46,5 +52,28 @@
         <data android:scheme="shubhvela"/>
       </intent-filter>
     </activity>
+    <!-- Hand-maintained (C01, F9): home-screen widgets, Kotlin under java/com/shubhvela/app/widgets (design.md 10.2, plan P4). -->
+    <receiver android:name=".widgets.SmallWidgetProvider" android:exported="true" android:label="@string/widget_small_description">
+      <intent-filter>
+        <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+      </intent-filter>
+      <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_small_info"/>
+    </receiver>
+    <receiver android:name=".widgets.MediumWidgetProvider" android:exported="true" android:label="@string/widget_medium_description">
+      <intent-filter>
+        <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+      </intent-filter>
+      <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_medium_info"/>
+    </receiver>
+    <!-- Span-boundary alarm (AlarmManager.setWindow; exact only after the opt-in). Private to the app. -->
+    <receiver android:name=".widgets.BoundaryAlarmReceiver" android:exported="false"/>
+    <!-- Reboot / app update: re-arm the alarm and the periodic job when a widget is placed. -->
+    <receiver android:name=".widgets.WidgetBootReceiver" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.BOOT_COMPLETED"/>
+        <action android:name="android.intent.action.MY_PACKAGE_REPLACED"/>
+        <action android:name="android.intent.action.QUICKBOOT_POWERON"/>
+      </intent-filter>
+    </receiver>
   </application>
 </manifest>

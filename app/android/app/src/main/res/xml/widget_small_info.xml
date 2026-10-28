@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Small widget 2x1 (design.md 10.2 F9, plan P4): updatePeriodMillis 30 min is the system baseline; WorkManager (15 min)
+     and the boundary alarm do the real refreshing. Sizes follow the 70n-30 dp cell formula (2x1 = 110x40). -->
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minWidth="110dp"
+    android:minHeight="40dp"
+    android:minResizeWidth="110dp"
+    android:minResizeHeight="40dp"
+    android:targetCellWidth="2"
+    android:targetCellHeight="1"
+    android:updatePeriodMillis="1800000"
+    android:initialLayout="@layout/widget_small"
+    android:previewLayout="@layout/widget_small"
+    android:description="@string/widget_small_description"
+    android:resizeMode="horizontal"
+    android:widgetCategory="home_screen"/>

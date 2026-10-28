@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Widget surface (design.md 2.3): surface on paper with a 1 dp hairline, radius 12, no shadow, no gradient.
+     Colours come from res/values(-night)/widget_tokens.xml (generated), so the host theme picks light or dark. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <solid android:color="@color/widget_surface"/>
+    <stroke android:width="1dp" android:color="@color/widget_hair"/>
+    <corners android:radius="@dimen/widget_radius_card"/>
+</shape>

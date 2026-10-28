@@ -1,0 +1,7 @@
+<resources>
+  <!-- Hand-added (C01, F9): Bhojpuri widget picker texts (respectful standard register, Devanagari). -->
+  <string name="widget_small_description">आज के शुभ समय: अबहीं के निर्णय आ अगिला खंड</string>
+  <string name="widget_medium_description">आज के शुभ-समय पट्टी, “अबहीं” पंक्ति आ अगिला परिवार के तिथि</string>
+  <string name="widget_band_description">शुभ-समय पट्टी</string>
+  <string name="widget_no_state">विजेट चालू करे खातिर शुभवेला एक बेर खोलीं</string>
+</resources>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 4x2 widget (design.md 10.2 F9): the merged band bitmap (BandRenderer: 32 dp band + tick row), the Now line (caption
+     13 sp), the next family date (micro 12 sp = the floor) or, when stale/exhausted, the footer "Open Shubhvela to refresh".
+     No ads. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    android:background="@drawable/widget_background"
+    android:paddingStart="12dp"
+    android:paddingEnd="12dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp">
+
+    <ImageView
+        android:id="@+id/widget_band"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="fitStart"
+        android:contentDescription="@string/widget_band_description"/>
+
+    <TextView
+        android:id="@+id/widget_now"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textSize="@dimen/widget_text_caption"
+        android:textColor="@color/widget_ink"
+        android:maxLines="2"
+        android:ellipsize="end"/>
+
+    <TextView
+        android:id="@+id/widget_next_event"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:textSize="@dimen/widget_text_micro"
+        android:textColor="@color/widget_ink_2"
+        android:maxLines="1"
+        android:ellipsize="end"/>
+
+    <TextView
+        android:id="@+id/widget_footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:textSize="@dimen/widget_text_micro"
+        android:textColor="@color/widget_accent"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:visibility="gone"/>
+</LinearLayout>

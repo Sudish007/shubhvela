@@ -1,6 +1,6 @@
 // Today screen end to end (fixed clock, seeded self profile, profile place): header first value + date line, Panchang
-// pill -> F8 sheet with every field, good-hours card, daily note, Upcoming, "All 13 segments" expanding in place, no
-// Listen button and no ad box (B03: the native-ad gate measures the last slot but draws nothing without fill);
+// pill -> F8 sheet with every field, good-hours card, daily note with its Listen button (C01), Upcoming, "All 13 segments"
+// expanding in place, no ad box (B03: the native-ad gate measures the last slot but draws nothing without fill);
 // +30 % pseudo-locale snapshot with no truncation and no split time range (N4).
 import { fireEvent, screen } from '@testing-library/react-native';
 import { StyleSheet } from 'react-native';
@@ -56,7 +56,7 @@ describe('<TodayScreen>', () => {
     expect(screen.getByTestId('daily-note')).toBeTruthy();
     expect(screen.getByTestId('upcoming')).toBeTruthy();
     expect(screen.getByTestId('place-pill')).toBeTruthy();
-    expect(screen.queryByText('Listen')).toBeNull();
+    expect(screen.getByTestId('note-listen').props.accessibilityLabel).toBe('Listen'); // C01 (F10)
     expect(screen.queryByText('Ad')).toBeNull();
     expect(screen.queryByTestId('native-ad-card')).toBeNull();
     // B03/M4: the gate is the last child of the stack and takes no room while there is no fill.
