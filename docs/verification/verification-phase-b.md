@@ -140,4 +140,8 @@ Both APKs: `Verifies` · v1 (JAR) false · **v2 true** · v3 false · v3.1 false
 
 ## 8. Push result
 
-(filled in after the push — see the end of this file)
+- `ae41b99 docs(phase-b): verification and release notes` — 14 files, 1,043 insertions (docs/OWNER-TODO.md, docs/verification/carry-over.md,
+  review-phase-b.md/.json, verification-b01…b08.md, verification-b-fix.md, verification-phase-b.md). `git pull --rebase` → up to date;
+  pushed `3aa826e..ae41b99 main -> main`, tag `v0.2.0-phase-b` → `ae41b99` (`git ls-remote --tags origin v0.2.0-phase-b` confirms).
+- A final `docs(phase-b): sync verification-phase-b.md` commit copies this completed file to `docs/verification/`; the tag stays on `ae41b99`.
+- `git status --porcelain` empty after each push; `git ls-files release` = `release/README.md` only; no APK, keystore or KEYSTORE-INFO.txt staged at any point.
