@@ -1,0 +1,380 @@
+[
+  {
+    "id": "lesson-01",
+    "n": 1,
+    "title": "What a kundli is",
+    "minutes": 5,
+    "body": [
+      "A kundli is a map of the sky at the moment and place you were born, drawn in the sidereal zodiac that Jyotish uses. It is not a prophecy. It is a record: where the Sun, the Moon, the five visible planets and the two lunar nodes stood, seen from {birthPlace}, and which sign was rising in the east. Everything else in this app, the daily note, the dashas, the yogas, the matching scores, is a rule applied to that record.",
+      "Your own chart is the worked example for every lesson here. {name}, your Moon was in {moonSign} and your rising sign, the Lagna, was {lagna}. Those two signs are the frame the rest of the chart hangs on. The Moon sign is what most family almanacs mean when they ask for your rashi; the Lagna is what a full birth-time chart adds.",
+      "The chart has twelve houses, one for each sign, counted from the first house. In Shubhvela the first house holds your Lagna sign when the birth time is known, and your Moon sign when it is not. Each house gathers a set of life matters: the first is the self and the body, the fourth is home and mother, the seventh is partnership, the tenth is work and public duty. A planet sitting in a house is read in the light of that house.",
+      "Planets also carry their own meanings, and they are stronger or weaker depending on the sign they occupy. Your {moonSignLord}, the lord of your Moon sign, and your {lagnaLord}, the lord of the Lagna, are the two planets a reader looks at first. Later lessons explain dignities, house lords and the Vimshottari dasha that turns the still chart into a timeline.",
+      "Two honesty points before you go on. First, the chart is only as exact as the birth time and place that were typed in; a Lagna can change within minutes, and the app marks anything that depends on an uncertain time with approx. Second, every sentence the app derives from your chart has a Why? button that shows the rule, its inputs and its classical source. Nothing here is hidden, and nothing is a promise about the future.",
+      "Open your chart now and find the Moon and the Lagna. Tap either one; the sheet that opens is the same kind of explanation this lesson has just given, written for that one placement."
+    ],
+    "terms": ["kundli", "lagna", "rashi", "bhava", "jyotish", "chandra-kundli"],
+    "tryIt": { "route": "/(tabs)/charts", "label": "charts.title" },
+    "unlocksLevel": 2,
+    "review": "draft"
+  },
+  {
+    "id": "lesson-02",
+    "n": 2,
+    "title": "Signs and houses",
+    "minutes": 5,
+    "body": [
+      "The sidereal zodiac is a ring of twelve signs, each thirty degrees wide, starting at Mesha and ending at Meena. The signs are fixed against the stars. The houses are not: they are counted from whichever sign stands first in your chart, so two people born on the same day in different hours share the same planetary signs but different houses.",
+      "In your chart the first house is {lagna}. Counting on from there, the sign {moonSign} falls in house {moonHouse}, and the Sun in {sunSign} falls in house {sunHouse}. Shubhvela uses whole-sign houses, the oldest and simplest convention: each sign is one house, so there is nothing to interpolate and no cusp to argue about. The chalit view in the chart menu shows the alternative, where house boundaries are drawn from the midpoint of the Lagna.",
+      "Signs describe how a planet acts; houses describe where it acts. Mesha, Simha and Dhanu are fire signs, read as direct and quick. Vrishabha, Kanya and Makara are earth, read as steady and practical. Mithuna, Tula and Kumbha are air, read as social and reasoning. Karka, Vrishchika and Meena are water, read as feeling and inward. These are the tradition's descriptions, not test results, and the app shows them as such.",
+      "Houses group into kinds. The kendras, houses one, four, seven and ten, are the pillars of the chart and give planets in them prominence. The trikonas, houses one, five and nine, are the fortunate set. Houses six, eight and twelve are the dusthanas, where planets are read as working through difficulty, debt, loss or retreat. Houses two, three and eleven sit between: resources, effort and gains.",
+      "A useful habit: when the daily note mentions a house, count it on your own chart rather than taking the number on trust. Start at {lagna} as one and move anticlockwise in the North Indian style or clockwise in the South Indian style; the house numbers do not change, only the drawing does. The Houses card lists all twelve rows with the sign, its lord and the planets in it, each with a Why? button.",
+      "Try it now: open the Houses card and find the house your Moon occupies. Then find the sign opposite it, the seventh from the Moon; that pairing comes back in the lesson on matching."
+    ],
+    "terms": ["rashi", "bhava", "kendra", "trikona", "dusthana", "bhava-chalit", "mesha", "meena"],
+    "tryIt": { "route": "/(tabs)/charts?card=houses", "label": "charts.houses" },
+    "unlocksLevel": 2,
+    "review": "draft"
+  },
+  {
+    "id": "lesson-03",
+    "n": 3,
+    "title": "The Moon and the nakshatras",
+    "minutes": 5,
+    "body": [
+      "If the Lagna is the frame of the chart, the Moon is its clock. The Moon moves through the whole zodiac in about twenty-seven days, so it changes sign every two and a half days and changes nakshatra roughly once a day. Most of what the Today tab says about you starts from where your birth Moon stood.",
+      "The twenty-seven nakshatras divide the zodiac into equal arcs of thirteen degrees and twenty minutes, each named after a star group the Moon passes. Your birth Moon was in {nakshatra}, pada {pada}, at {moonDegree} degrees of {moonSign}. Each nakshatra has a Vimshottari lord; yours is {nakshatraLord}, and that planet decides which dasha you were born into, a point the dasha lesson picks up.",
+      "A pada is a quarter of a nakshatra, three degrees and twenty minutes wide. Four padas make one nakshatra, and nine padas make one sign, so the padas are also the cells of the D9 chart. This is why the nakshatra and pada matter more than the degree for most classical rules: they are the grain the texts were written in.",
+      "Two daily measures come straight from the birth Moon. Chandra bala counts today's Moon sign from your birth Moon sign and reads houses one, three, six, seven, ten and eleven as favourable; today the Moon is in {todayMoonSign}, house {todayMoonHouseFromMoon} from yours. Tara bala counts today's nakshatra from your birth nakshatra in cycles of nine; today's count gives {todayTara}. Both are shown on the Today tab with a Why? button that names the count.",
+      "The Moon is also the fallback. When the birth time is unknown, Shubhvela cannot compute the Lagna, so it draws a Moon chart with your Moon sign in house one and marks the title accordingly. Dashas, Chandra bala, Tara bala, Sade Sati and the matching kootas all depend only on the Moon, so they stay valid; only the Lagna-based rows are left out rather than guessed.",
+      "Open the Planets card and tap the Moon row. The sheet names the nakshatra, pada, lord and the degree, and links each Sanskrit term to the glossary. Then look at the Today tab and find the Chandra bala and Tara bala rows; the numbers there are today's counts from the Moon you have just read about."
+    ],
+    "terms": ["nakshatra", "pada", "chandra-bala", "tara-bala", "janma-nakshatra", "chandra-kundli"],
+    "tryIt": { "route": "/(tabs)/charts?card=planets", "label": "charts.planets" },
+    "unlocksLevel": 2,
+    "review": "draft"
+  },
+  {
+    "id": "lesson-04",
+    "n": 4,
+    "title": "Lagna and approximate times",
+    "minutes": 5,
+    "body": [
+      "The Lagna is the sign rising on the eastern horizon at the moment of birth, seen from the birth place. Because the Earth turns once a day, all twelve signs rise in turn, so the Lagna changes roughly every two hours, faster for some signs and slower for others depending on latitude. Your Lagna is {lagna}; the Lagna lord, the planet that owns that sign, is {lagnaLord}.",
+      "This speed is why birth time matters so much. A chart with a time written on a hospital record is one thing; a chart with a time remembered as around dawn is another. Shubhvela handles the two differently. When you enter a profile you can mark the time as exact, or as approximate to within fifteen, thirty or sixty minutes, or as unknown.",
+      "With an approximate time the app computes the chart at the recorded moment and also at the two ends of the uncertainty window. If the Lagna or any planet crosses a sign boundary inside that window, the value is tagged approx. so you know it could be the neighbouring sign. The same tag appears when a planet sits within one degree of a boundary even with an exact time, because small differences in ayanamsa could move it.",
+      "With an unknown time the Lagna is not shown at all. The chart becomes a Moon chart, the title says so, and every row that needs the Lagna, including the houses, the house lords, the KP cusps and the Lagna-based yogas, is left out. Rows that need only the Moon stay. The app never fills an unknown time with noon or sunrise silently; if you want to try a time, you type it and the tag tells you what depends on it.",
+      "Checking a birth time is called rectification in the tradition, and it is a long exercise rather than a button. The honest version in this app is simple: if the time is uncertain, say so in the profile and read the approx. tags as what they are, a statement of what the record can and cannot support.",
+      "Open your profile from the Charts tab and look at how the time is recorded. If it is marked approximate, come back to the chart and find the approx. tags; the Why? sheet on each one lists the drift the window produces."
+    ],
+    "terms": ["lagna", "lagnesh", "udaya-lagna", "chandra-kundli", "ayanamsa"],
+    "tryIt": { "route": "/(tabs)/charts", "label": "charts.title" },
+    "unlocksLevel": 2,
+    "review": "draft"
+  },
+  {
+    "id": "lesson-05",
+    "n": 5,
+    "title": "Planets and dignities",
+    "minutes": 5,
+    "body": [
+      "Jyotish works with nine grahas: the Sun, the Moon, Mars, Mercury, Jupiter, Venus and Saturn, plus Rahu and Ketu, the two points where the Moon's path crosses the Sun's. Rahu and Ketu are not bodies but they are always opposite each other and are read as planets. In your chart Rahu is in house {rahuHouse} and Ketu in house {ketuHouse}.",
+      "A planet's strength in a sign is called its dignity. Each of the seven bodies has one sign of exaltation where it is read as strongest, one of debilitation opposite it where it is read as weakest, and one or two own signs. The remaining signs are rated by the natural friendship between the planet and the sign's lord, following Parashara's table: friend, neutral or enemy.",
+      "Your Jupiter is in {jupiterSign}, house {jupiterHouse}, and your Venus in {venusSign}; your Saturn is in {saturnSign}. Tap any of these on the Planets card and the sheet names the dignity in words, exalted, own sign, friend's sign, neutral, enemy sign or debilitated, together with the rule that produced it. Shubhvela never shows dignity as a number or a colour, only as the word the tradition uses.",
+      "Three more tags can appear. Combust means the planet is within a fixed arc of the Sun, which the texts read as the planet's light being swallowed; the orb differs per planet and is listed under How this was computed. Retrograde, marked R, means the planet appears to move backwards against the stars as seen from Earth. Vargottama means the planet occupies the same sign in the birth chart and in the D9, which the tradition reads as steadying it.",
+      "Dignity is a description of condition, not a verdict on your life. A debilitated planet is a planet whose matters are read as needing more effort; an exalted one is read as having an easier path. The texts list many cancellations, and the app shows them where it computes them. Treat the tags as the first thing to notice, not the last word.",
+      "Open the Planets card and read the dignity column for all nine rows. Count how many are in a friend's sign or better; that count is one input to the lesson on yogas."
+    ],
+    "terms": ["graha", "uchcha", "neecha", "swakshetra", "asta", "vakri", "vargottama", "rahu", "ketu"],
+    "tryIt": { "route": "/(tabs)/charts?card=planets", "label": "charts.planets" },
+    "unlocksLevel": 2,
+    "review": "draft"
+  },
+  {
+    "id": "lesson-06",
+    "n": 6,
+    "title": "House lords",
+    "minutes": 5,
+    "body": [
+      "Every sign has a lord, and because every house holds a sign, every house has a lord too. The Sun owns Simha, the Moon owns Karka, and the other five visible planets own two signs each: Mars has Mesha and Vrishchika, Mercury has Mithuna and Kanya, Jupiter has Dhanu and Meena, Venus has Vrishabha and Tula, Saturn has Makara and Kumbha. Rahu and Ketu own no sign in Parashara's system.",
+      "A house lord carries the matters of its house wherever it goes. If the lord of the tenth house, which is work and public duty, sits in the fourth house, which is home, the tradition reads work and home as bound together. In your chart the tenth lord is {tenthLord} and the seventh lord is {seventhLord}; the Houses card shows where each of them sits.",
+      "This is why the Lagna lord is read first. It owns the first house, the self, and its placement says where the self is drawn. Your Lagna lord is {lagnaLord}. If the birth time is unknown the app does not name a Lagna lord at all, because the Lagna is unknown and a guess would be worse than a blank.",
+      "Lordship also creates relationships between houses. When two house lords sit in each other's signs it is called a parivartana, an exchange, and the yogas lesson lists the kinds. When a lord sits in a kendra or trikona from the Lagna it is read as well placed; when it sits in a dusthana it is read as working through difficulty. Both readings are shown with the rule, never as a score.",
+      "One caution the classical texts repeat: a lord's placement is read together with its dignity, its aspects and the dasha running at the time. A single placement is a sentence, not a story. Shubhvela keeps each sentence attached to its rule and lets you read as many or as few as you like.",
+      "Open the Houses card. For each of the twelve rows the app names the sign, the lord and the house where that lord sits. Follow the lord of your Moon sign, {moonSignLord}, to the house it occupies and read the Why? sheet there; it combines the house lord rule with the planet-in-house text."
+    ],
+    "terms": ["bhava", "lagnesh", "parivartana", "kendra", "trikona", "dusthana", "rashyadhipati"],
+    "tryIt": { "route": "/(tabs)/charts?card=houses", "label": "charts.houses" },
+    "unlocksLevel": 2,
+    "review": "draft"
+  },
+  {
+    "id": "lesson-07",
+    "n": 7,
+    "title": "The panchang",
+    "minutes": 5,
+    "body": [
+      "A panchang is the almanac of one day at one place. The name means five limbs: tithi, nakshatra, yoga, karana and vara. Together with sunrise, sunset and moonrise they are what a traditional household checks before fixing a date, and they are what the Today tab computes for your location every morning.",
+      "Tithi is the lunar day, each one twelve degrees of the Moon's gain over the Sun; thirty tithis make a lunar month, fifteen in the bright half, Shukla paksha, and fifteen in the dark half, Krishna paksha. Tithis do not start at midnight. They can begin or end at any hour, so the panchang names the tithi at sunrise and gives the time it ends. Today's tithi at your place is {todayTithi}; at your birth it was {birthTithi}, under the yoga {birthYoga} and the karana {birthKarana}.",
+      "Nakshatra here means the Moon's nakshatra of the day, the same arcs you met in lesson three. Today's is {todayNakshatra}. Yoga is a count made from the combined longitude of the Sun and Moon, giving twenty-seven names; karana is half a tithi, with eleven names in rotation. Vara is simply the weekday, counted from sunrise to sunrise rather than midnight to midnight; today is {todayVara}, and you were born on a {birthVara}.",
+      "The panchang also carries the calendar frame: the lunar month under both the Purnimanta and Amanta conventions, the Vikram and Shaka samvat years, the ritu or season, and the ayana, the Sun's northern or southern half-year. Shubhvela shows all of these in the panchang sheet with a note on which convention your tradition setting uses.",
+      "Everything in the sheet is computed from the ephemeris for your coordinates and time zone, so the times are local to where you are, not to a printed almanac's city. Sunrise today is {sunriseToday} and sunset {sunsetToday}. If you travel, the location setting moves the panchang with you.",
+      "Open the panchang sheet from the Today tab. Read the five limbs in order, then find the end time of today's tithi. If it ends before tomorrow's sunrise, tomorrow's tithi will skip ahead, which is the kshaya case the family-dates lesson explains. The footer of the sheet names the ephemeris and the ayanamsa used, so you can compare the figures with a printed almanac and understand any small difference."
+    ],
+    "terms": ["panchang", "tithi", "nakshatra", "yoga", "karana", "vara", "shukla-paksha", "krishna-paksha", "purnimanta", "amanta", "samvat", "ritu", "ayana"],
+    "tryIt": { "route": "/(tabs)/today?sheet=panchang", "label": "panchang.title" },
+    "unlocksLevel": 2,
+    "review": "draft"
+  },
+  {
+    "id": "lesson-08",
+    "n": 8,
+    "title": "The good-hours band and the kaals",
+    "minutes": 5,
+    "body": [
+      "The band at the top of the Today tab is the day from sunrise to the next sunrise, drawn as one strip. Dotted spans are the hours the tradition favours, hatched spans are the hours it sets aside, and the night is marked by a pattern of its own. The Now line shows where you are in it. Every span has a rule, and tapping the band lists them.",
+      "The spans to avoid come first, because they are the oldest and most widely kept. Rahu Kaal is one eighth of the daylight, placed by weekday: it is today's {rahuKaalToday} at your location. Yamaganda and Gulika, also called Mandi, are two more eighths of the day, placed by a different weekday table. They are computed from your sunrise and sunset, so they shift with the season and the place.",
+      "The spans to favour are Abhijit, the eighth of fifteen daytime muhurtas around local noon, and Brahma muhurta, the hour and a half before sunrise. Abhijit is set aside on Wednesdays in most traditions and the app follows that. Both are drawn as dotted spans and both are named in the Why? sheet with their rule.",
+      "Two day-long flags can sit above the band. Bhadra is the Vishti karana, read as unfit for beginnings while it runs; the tradition softens it when the Moon places Bhadra in the heavens or the underworld, and the app names the location. Panchak is the Moon's passage through the last five nakshatras, read as a caution for five kinds of work. Both are shown as words, never as colours.",
+      "When several spans overlap, the band follows a fixed precedence: an avoid span always wins over a favour span, so an Abhijit that falls inside Rahu Kaal is drawn as avoid and the sheet says why. This merge happens in one place in the engine and the widget draws from the same result, so the phone and the home screen never disagree.",
+      "Tap the band now. Read the list of segments, find Rahu Kaal, and check its times against the sunrise shown in the panchang: it should start exactly at the weekday's eighth of the daylight."
+    ],
+    "terms": ["rahu-kaal", "yamaganda", "gulika", "abhijit", "brahma-muhurta", "bhadra", "vishti", "panchak", "muhurta"],
+    "tryIt": { "route": "/(tabs)/today", "label": "today.goodHours" },
+    "unlocksLevel": 2,
+    "review": "draft"
+  },
+  {
+    "id": "lesson-09",
+    "n": 9,
+    "title": "Choghadiya and hora",
+    "minutes": 5,
+    "body": [
+      "Besides the kaals, two finer grids divide the day. Both are drawn inside the good-hours band when you expand it, and both are used by the muhurat finder as candidate windows. They are older than clocks, which is why they are measured in eighths and twelfths of daylight rather than in hours of sixty minutes.",
+      "Choghadiya splits the daylight into eight equal parts and the night into eight more. Each part takes one of seven names in a fixed rotation that starts from the weekday's lord: Amrit, Shubh and Labh are read as good, Chal as neutral and usable for travel, and Rog, Kaal and Udveg as to be avoided. The first choghadiya of the day always carries the name of the weekday's planet, so a Monday opens with Amrit and a Saturday with Kaal.",
+      "Hora is the planetary hour. The daylight is divided into twelve, the night into twelve, and each twelfth is ruled by a planet in the Chaldean order Sun, Venus, Mercury, Moon, Saturn, Jupiter, Mars, starting from the weekday's lord at sunrise. There are twenty-four horas a day, and the order wraps so that each weekday's first hora is its own planet. Horas are read by the nature of the planet: the daily note uses your dasha lords' horas as the hours that suit the running period.",
+      "Your mahadasha lord today is {mahaLord}. Find its horas in the expanded band and you have the tradition's answer to when in the day matters of the running period are best begun. The daily note names this in words and shows the times in the Why? sheet; it does not promise anything about how those hours will go.",
+      "Neither grid is a verdict on its own. The band merges them with the kaals and the flags in a fixed order, avoid over favour, so a Labh choghadiya that overlaps Rahu Kaal is drawn as avoid. Expand the band to see the finer grid under the merged strip; collapse it and the verdict words remain.",
+      "Open the Today tab, expand the band and count the choghadiya segments: eight in daylight, eight at night. Then find the hora of {mahaLord} and note when it falls relative to Rahu Kaal."
+    ],
+    "terms": ["choghadiya", "amrit", "shubh", "labh", "chal", "rog", "kaal", "udveg", "hora"],
+    "tryIt": { "route": "/(tabs)/today", "label": "today.goodHours" },
+    "unlocksLevel": 2,
+    "review": "draft"
+  },
+  {
+    "id": "lesson-10",
+    "n": 10,
+    "title": "Tithi birthdays and family dates",
+    "minutes": 5,
+    "body": [
+      "A tithi birthday, the janma tithi, is the return of the lunar day and lunar month you were born on, not the calendar date. Because the lunar year is about eleven days shorter than the solar one, it falls on a different Gregorian date each year, and that is the date many families keep for a long-life blessing, a temple visit or a sweet. Yours this coming year is {nextJanmaTithi}.",
+      "The rule the app applies is the one most almanacs use: the tithi that prevails at sunrise on a day is the tithi of that day. A tithi that begins after sunrise and ends before the next sunrise never prevails at any sunrise and is called kshaya, dropped; a tithi that spans two sunrises is vriddhi, repeated. For a kshaya janma tithi the app takes the day on which the tithi was running at the usual hour of the rite and marks the convention in the Why? sheet.",
+      "Months have a similar wrinkle. About every thirty-two months the lunar calendar inserts an adhik maas, an extra month with the same name, so that the lunar months stay aligned with the seasons. Tithi events are not observed in the adhik month; the app moves them to the nija, the real month of that name, and says so.",
+      "Family dates in Shubhvela cover more than birthdays. A barsi is the yearly death anniversary by tithi, and the shraddha during Pitru Paksha falls on the ancestor's tithi in the dark fortnight of Ashwin, counted under the Purnimanta convention in the north and Amanta in the south. You can record an ancestor with the paksha and tithi and the app finds the dates for the coming years.",
+      "Each recorded date can set a reminder. The free tier schedules up to five reminders at a time; the app says plainly when the cap is reached rather than silently dropping one. Dates are computed for your profile's time zone, and if you change tradition in Settings the Purnimanta or Amanta month names move with it.",
+      "Open the Family tab and the festival calendar. Find your own janma tithi in the coming months, then add a family member with a known birth date and compare how far their lunar and solar birthdays drift apart this year."
+    ],
+    "terms": ["janma-tithi", "kshaya-tithi", "vriddhi-tithi", "adhik-maas", "nija-maas", "barsi", "shraddha", "pitru-paksha", "udaya"],
+    "tryIt": { "route": "/family/calendar", "label": "calendar.title" },
+    "unlocksLevel": 2,
+    "review": "draft"
+  },
+  {
+    "id": "lesson-11",
+    "n": 11,
+    "title": "Vrats and the rules behind festivals",
+    "minutes": 5,
+    "body": [
+      "A festival date is not looked up; it is computed from a rule. Diwali is the Amavasya of Kartik under the Amanta reckoning when it falls in the evening; Holi is the day after the Purnima of Phalguna; Janmashtami is the Krishna Ashtami of Bhadrapada when Rohini joins it, with a different answer for the Smarta and Vaishnava traditions. Shubhvela keeps one rule per festival and shows it on the festival page under Why?.",
+      "Rules differ in what part of the day they look at. Some festivals follow the tithi at sunrise, the udaya rule. Others follow the tithi at a particular time: aparahna, the afternoon, for shraddha and for Ganesh Chaturthi; pradosh, the evening twilight, for Diwali's Lakshmi puja and the Pradosh vrat; nishita, the midnight hour, for Janmashtami and Shivaratri. When the tithi spans two days, the time-of-day rule decides which day wins.",
+      "Vrats are the recurring observances: Ekadashi twice a month, Pradosh twice a month, Sankashti and Vinayaka Chaturthi, Masik Shivaratri, Purnima and Amavasya, Satyanarayan, and the seasonal ones such as Chhath, Teej and Karwa Chauth. Each has a timing rule, and most have a parana, the time the fast is broken, which the app computes from the next sunrise, the end of the tithi and in some cases Hari Vasara, the first quarter of Dwadashi, which must pass first.",
+      "North and south can disagree. The Purnimanta month begins after Purnima and the Amanta month after Amavasya, so the same tithi carries a different month name in the dark fortnight. Most festival rules are written in the Amanta month even in the north, but a few regional ones are not, and the app's tradition setting picks the convention and says so on each date.",
+      "Sixty festival rules and twelve vrat families are in the engine, and every computed date was compared with a published almanac before it was marked verified. Where a convention is contested, the festival page carries a note rather than a silent choice. Dates for which the engine has no verified comparison are shown without the verified mark.",
+      "Open the festival calendar and pick the next vrat. Today's tithi where you are is {todayTithi}, so you can see at once which fortnight you are in. Read the timing rule, then the parana time, and check which of the four time-of-day windows the rule used."
+    ],
+    "terms": ["vrat", "udaya", "aparahna", "pradosh", "nishita", "parana", "hari-vasara", "smarta", "vaishnava", "ekadashi", "purnimanta", "amanta"],
+    "tryIt": { "route": "/family/calendar", "label": "calendar.title" },
+    "unlocksLevel": 2,
+    "review": "draft"
+  },
+  {
+    "id": "lesson-12",
+    "n": 12,
+    "title": "Vimshottari dasha",
+    "minutes": 5,
+    "body": [
+      "A chart is a still picture. The dasha system turns it into a timeline by giving each planet a period of years in a fixed order: Ketu seven, Venus twenty, Sun six, Moon ten, Mars seven, Rahu eighteen, Jupiter sixteen, Saturn nineteen, Mercury seventeen, one hundred and twenty years in all. This is Vimshottari, the system Parashara gives first and the one almost every Indian almanac uses.",
+      "Where the cycle starts depends on the birth Moon. Each nakshatra belongs to one of the nine lords, and the lord of your birth nakshatra, {nakshatraLord}, rules the first period. How much of that period was left at birth depends on how far through the nakshatra the Moon had travelled. You were born with {balanceYears} years of {balanceLord} remaining; from then the sequence runs on in order.",
+      "Each major period, the mahadasha, is divided into nine antardashas in the same order starting from the major lord, each in proportion to its own years. Each antardasha divides again into pratyantar periods. The app shows maha and antar to everyone and the finer level to Pro; the dates are exact to the day because they are computed from the Moon's longitude, not from a table.",
+      "Today you are in the mahadasha of {mahaLord}, which ends on {mahaEnds}, and within it the antardasha of {antarLord}, ending {antarEnds}. The texts read a period by the lord's dignity, its house and the houses it owns, and by its relationship to the mahadasha lord; the daily note's day-strength line also uses the maha lord's friendship with the weekday's planet.",
+      "A dasha is read as a theme, not a forecast. Saying that a Saturn period is read for duty and slow building tells you what the tradition says to pay attention to; it does not foretell events. Shubhvela phrases every dasha sentence that way and never attaches a date to an event.",
+      "Open the dasha card and expand the running mahadasha. Find today's antardasha and the date it changes; if you have Pro, open the full tree and find the pratyantar as well. Then set the dasha change alert if you want a notification on that day."
+    ],
+    "terms": ["dasha", "vimshottari", "mahadasha", "antardasha", "pratyantar-dasha", "dasha-balance", "parashara"],
+    "tryIt": { "route": "/charts/dasha-tree", "label": "dasha.title" },
+    "unlocksLevel": 2,
+    "review": "draft"
+  },
+  {
+    "id": "lesson-13",
+    "n": 13,
+    "title": "Sade Sati, honestly",
+    "minutes": 5,
+    "body": [
+      "Sade Sati means seven and a half, the years Saturn takes to pass through the sign before your birth Moon, the Moon sign itself and the sign after. Saturn spends about two and a half years in each sign, so the three together make seven and a half. Everyone experiences it roughly every thirty years, which is why almost every adult has heard the word.",
+      "The three phases are read differently. The first, Saturn in the twelfth from the Moon, is read for expenses and the clearing of old commitments. The second, Saturn on the Moon, is read for slowed pace and duties that feel personal. The third, Saturn in the second from the Moon, is read for careful speech and resources rebuilt. Two shorter transits, Saturn in the fourth and the eighth from the Moon, are the Kantaka and Ashtama Dhaiya, two and a half years each.",
+      "Your Moon is in {moonSign}, and your natal Saturn stands in the {saturnHouseFromMoon} sign counted from it, house {saturnHouse} of the chart. Whether a Sade Sati is running now, and when the next one begins, is computed from Saturn's exact sidereal sign entries, including retrograde re-entries, so the dates on the Sade Sati card carry no approx. tag. The card names the phase, the dates and the rule.",
+      "Here is the honest part. The classical texts describe Sade Sati as a period of weight and slow work. They do not describe it as a sentence, and the tradition's own almanacs note that Saturn's effects depend on its dignity, the Moon's strength and the running dasha. People are sold fear and expensive fixes around this transit every day. Shubhvela sells nothing for it and promises nothing about it; it tells you the dates and the reading and leaves the rest to you.",
+      "What the card can do is practical: show you how far through a phase you are, when it ends, and which phase comes next. If no Sade Sati or Dhaiya is running it says so and names the next change. Reflecting on a slow season with a date attached is often steadier than hearing about it secondhand.",
+      "Open the Sade Sati card now. Read the current state, the next change and its date, and then read the Why? sheet, which shows Saturn's sign, your Moon sign and the count between them."
+    ],
+    "terms": ["sade-sati", "dhaiya", "saturn", "gochar"],
+    "tryIt": { "route": "/(tabs)/charts?card=sadesati", "label": "sadesati.title" },
+    "unlocksLevel": 3,
+    "review": "draft"
+  },
+  {
+    "id": "lesson-14",
+    "n": 14,
+    "title": "Yogas",
+    "minutes": 5,
+    "body": [
+      "A yoga, in the chart sense, is a named pattern formed by planets in particular signs or houses. The texts list hundreds; Shubhvela computes forty of the most cited, from Gaja Kesari, Jupiter in a kendra from the Moon, to the five Mahapurusha yogas, a planet in its own or exalted sign in a kendra from the Lagna, to Kemadruma, a Moon with no planet on either side.",
+      "Your chart forms {yogaCount} of the forty. The first listed is {firstYoga}. Every one on the card has a Why? sheet that names the participating planets, the houses or signs that make the pattern, and the classical source the definition comes from. Where a yoga depends on the Lagna and your birth time is unknown, the card says the yoga cannot be checked rather than checking it from the Moon silently.",
+      "The important half of the lesson is cancellation. Classical authors list bhanga conditions that undo a yoga: Kemadruma is cancelled by a planet in a kendra from the Moon or the Lagna; Gaja Kesari is weakened when Jupiter is combust or debilitated; a Mahapurusha yoga does not hold when the planet is combust. Shubhvela computes seven of these and shows a cancelled yoga as formed but cancelled, with the cancelling rule named, instead of dropping it from the list.",
+      "Yogas are read as tendencies in the chart's own terms. A Budha Aditya yoga, Mercury with the Sun, is read for a mind that speaks clearly, and your Mercury in {mercurySign} is where the card checks for it; a Shakata yoga, Jupiter in the sixth, eighth or twelfth from the Moon, is read for fortunes that rise and fall. These are descriptions from the texts, shown with their source. They are not scores, and the app does not count good against bad.",
+      "Two exchanges deserve a mention. Parivartana is two planets each in the other's sign; the tradition grades the exchange by the houses involved, and the card names the grade. Kala Sarpa, all seven planets on one side of the Rahu-Ketu axis, is listed with its reversed form and a note that the texts disagree about it.",
+      "Open the Yogas card. Count the formed yogas, then find any marked cancelled and read which rule cancelled it. If the list is short, that is a fact about the chart, not a judgement."
+    ],
+    "terms": ["jataka-yoga", "gaja-kesari", "mahapurusha", "kemadruma", "parivartana", "bhanga", "kala-sarpa"],
+    "tryIt": { "route": "/(tabs)/charts?card=yogas", "label": "yogas.title" },
+    "unlocksLevel": 3,
+    "review": "draft"
+  },
+  {
+    "id": "lesson-15",
+    "n": 15,
+    "title": "Divisional charts and the D9",
+    "minutes": 5,
+    "body": [
+      "The birth chart, called D1 or the rashi chart, divides the zodiac into twelve signs. A divisional chart, a varga, divides each sign into equal parts and assigns each part to a sign of its own, producing a new twelve-house chart that the tradition reads for one department of life. Parashara lists sixteen; the app computes all sixteen and shows the D9 to everyone.",
+      "The D9, the navamsa, divides each sign into nine parts of three degrees twenty minutes, the same size as a nakshatra pada. The first navamsa of a fire sign is Mesha, of an earth sign Makara, of an air sign Tula, of a water sign Karka, and the nine run on in order. Your Moon at {moonDegree} degrees of {moonSign} falls in {moonNavamsaSign} in the D9; your Lagna's navamsa sign is {lagnaNavamsaSign}.",
+      "The navamsa is read for the strength behind the birth chart and, by long custom, for marriage and partnership. A planet in the same sign in D1 and D9 is vargottama and is read as steadied; a planet strong in D1 but weak in D9 is read as promising more than it delivers. The Planets card tags vargottama planets and the D9 view lets you see the rest.",
+      "The other vargas each have a department. The D2 hora is read for resources, the D3 drekkana for siblings and effort, the D7 saptamsa for children, the D10 dashamsa for work and public standing, the D12 dwadashamsa for parents, the D30 trimshamsa for difficulty, and the D60 shashtiamsa for the finest grain, the one Parashara weights most heavily. Every varga's division rule is shown under its Why? button.",
+      "The D9 is free; the other fourteen are opened by a day pass or by Pro. Nothing in a varga is hidden behind the pass except the chart itself: the rule that builds it, the dignity of each planet in it and its department are all in the glossary and the lessons.",
+      "Open the divisional charts and pick D9. Find your Moon's navamsa sign and compare it with the birth chart. Then check whether any planet is marked vargottama; if one is, it sits in the same sign on both drawings."
+    ],
+    "terms": ["varga", "navamsa", "hora-varga", "drekkana", "dashamsa", "trimshamsa", "shashtiamsa", "vargottama"],
+    "tryIt": { "route": "/charts/vargas?varga=D9", "label": "vargas.d9" },
+    "unlocksLevel": 3,
+    "review": "draft"
+  },
+  {
+    "id": "lesson-16",
+    "n": 16,
+    "title": "Ashtakavarga basics",
+    "minutes": 5,
+    "body": [
+      "Ashtakavarga is a counting system. For each of the seven planets and the Lagna, Parashara gives a table of which houses, counted from each of the eight reference points, receive a benefic point, a bindu. Add the points up and every sign gets a score for every planet. It is arithmetic rather than interpretation, which is why it has stayed popular with practical astrologers.",
+      "The per-planet table is the bhinnashtakavarga, BAV: each sign holds from zero to eight bindus for that planet, and the tradition reads a planet as supported in a sign with four or more and strained with fewer. The sum of all seven planets' tables is the sarvashtakavarga, SAV: each sign holds between about fifteen and forty bindus, three hundred and thirty-seven in total across the twelve, by construction.",
+      "In your chart the first house holds {savLagna} bindus in the SAV and the tenth holds {savTenth}. The tradition's rule of thumb is that twenty-eight or more marks a strong house, twenty-five to twenty-seven an average one and fewer a weak one; the app prints the thresholds next to the scores so the word strong is never unexplained. Because the count is made from the Lagna, it is not shown when the birth time is unknown.",
+      "Ashtakavarga is used in two main ways. The first is to weigh a house: a planet in a sign with many bindus is read as giving more of what it promises, and a transit through a low-bindu sign is read as leaner. The second is transit timing: when Saturn or Jupiter enters a sign, its own BAV score for that sign is read as the tone of the transit. The Today tab does not yet do this automatically; the lesson is here so you can read the table yourself.",
+      "A few cautions. Different texts give slightly different tables; the app follows Parashara and names the source. Reductions, the trikona and ekadhipatya adjustments used for longevity work, are not computed. And the bindus count conditions, not results: a house with thirty bindus is a house the tradition reads as well supported, nothing more.",
+      "Open the Ashtakavarga screen. Find the SAV row for your Lagna sign and your Moon sign, then look at Saturn's BAV in the sign it occupies today; the Why? sheet shows which of the eight contributors gave a point."
+    ],
+    "terms": ["ashtakavarga", "bindu", "bhinnashtakavarga", "sarvashtakavarga"],
+    "tryIt": { "route": "/charts/ashtakavarga", "label": "ashtakavarga.title" },
+    "unlocksLevel": 3,
+    "review": "draft"
+  },
+  {
+    "id": "lesson-17",
+    "n": 17,
+    "title": "KP in one page",
+    "minutes": 5,
+    "body": [
+      "Krishnamurti Paddhati, KP, is a twentieth-century method built on top of the Vimshottari lords. It keeps the sidereal zodiac but makes three changes: it uses Placidus house cusps instead of whole signs, it uses its own ayanamsa, a little different from Lahiri, and it divides each nakshatra into nine unequal sub-parts in proportion to the dasha years of the nine lords.",
+      "Every point in the zodiac therefore has three lords: the sign lord, the star lord, which is the nakshatra's Vimshottari lord, and the sub lord, the lord of the sub-division the point falls in. KP reads the sub lord of a house cusp as the decider of that house's matters. The sub lord of your Lagna cusp is {kpLagnaSubLord}.",
+      "Houses in KP run from cusp to cusp, so a planet can sit in a different house than it does in the whole-sign chart. A planet's significance for a house is graded in four levels: by the star lord's occupation, by its own occupation, by the star lord's ownership and by its own ownership. The app lists the significators for each house in those grades, A to D, with the rule under Why?.",
+      "Ruling planets are KP's tool for the moment: the lords of the Lagna rising now, the Moon's position now and the weekday. Practitioners use them to pick a time or to check a question, and the KP screen computes them for the present moment at your location so you can see the method at work.",
+      "Two honest limits. Placidus cusps cannot be computed above the polar circles, and the app says so rather than approximating. And because KP depends on the Lagna cusp to the minute, nothing in it is shown when the birth time is unknown or approximate beyond fifteen minutes; the approx. rule applies with more force here than anywhere else in the app.",
+      "KP is Pro or day-pass content, but the method is not secret: the division of a nakshatra into subs, the four grades and the ruling-planet rule are all in the glossary. Open the KP screen, find your Lagna cusp and its three lords, then compare the Placidus house of your Moon with its whole-sign house on the main chart."
+    ],
+    "terms": ["kp", "placidus", "sub-lord", "star-lord", "significator", "ruling-planets", "cusp"],
+    "tryIt": { "route": "/charts/kp", "label": "kp.title" },
+    "unlocksLevel": 3,
+    "review": "draft"
+  },
+  {
+    "id": "lesson-18",
+    "n": 18,
+    "title": "Matching beyond the score",
+    "minutes": 5,
+    "body": [
+      "Ashtakoota matching compares two birth Moons under eight headings, the kootas, and adds their points to a total out of thirty-six. The headings weigh different things: Varna one point, Vashya two, Tara three, Yoni four, Graha Maitri five, Gana six, Bhakoot seven and Nadi eight. The app computes all eight from the two Moon signs and nakshatras and shows each row with its rule.",
+      "The total is the part everyone quotes, and it is the least informative part. Nadi alone is eight points, and the texts give exceptions that restore the points when both Moons share a sign or a nakshatra with different padas. Bhakoot, seven points, has its own exceptions when the two sign lords are the same or friends. The app applies the classical exceptions and names them, so two charts that score zero on a koota may still be read as clear of the dosha.",
+      "Mangal dosha is checked separately: Mars in the first, second, fourth, seventh, eighth or twelfth house from the Lagna, the Moon or Venus. Your Mars is in house {marsHouse} from your first house. The texts give six cancellations, from Mars in its own or exalted sign to both partners having the dosha, and the app lists which apply. A dosha with a cancellation is shown as present but cancelled, not hidden.",
+      "Beyond the kootas the app adds four rows the tradition reads but the score ignores: the relationship between the two seventh lords, the two Venus placements, the natural relation between the two Moon signs, and how the two dasha sequences overlap over the next five years. Your seventh lord is {seventhLord}; the Why? sheet on that row shows the other person's and the relation between them.",
+      "Here is what the score is not. It is not a probability of happiness and it is not advice. Two people who get along do not need a number to tell them so, and two who do not will not be fixed by one. Shubhvela labels the result as a count of rules met, shows the reasoning, and leaves the decision where it belongs.",
+      "Open Match two profiles and pick two members of your family. Read the eight rows before you read the total, then the Mangal row and the four beyond rows. If any row has an exception, read why."
+    ],
+    "terms": ["ashtakoota", "guna", "varna", "vashya", "yoni", "graha-maitri", "gana", "bhakoot", "nadi", "mangal-dosha"],
+    "tryIt": { "route": "/family/match", "label": "match.title" },
+    "unlocksLevel": 3,
+    "review": "draft"
+  },
+  {
+    "id": "lesson-19",
+    "n": 19,
+    "title": "Muhurat rules",
+    "minutes": 5,
+    "body": [
+      "A muhurat is a chosen time. The tradition's method is elimination followed by preference: rule out the parts of the day that are set aside, then prefer the tithis, nakshatras and weekdays that the texts list for the kind of work. The muhurat finder in this app does exactly that, in the open, for fourteen kinds of activity from marriage and griha pravesh to travel and the first day of a business.",
+      "Each activity has a table: allowed tithis, allowed nakshatras, allowed weekdays, and whether night-time windows count. These come from Muhurta Chintamani and from the conventions printed in almanacs, and the source is named on each table. A window is a choghadiya segment, clipped by Rahu Kaal, that satisfies the rules; adjacent windows with the same set of rules met are merged into one.",
+      "Ten rules are checked for every window: tithi, nakshatra, weekday, Chandra bala and Tara bala from your Moon, Rahu Kaal, Bhadra, Panchak, Abhijit and the choghadiya's own name. A window needs at least four rules met to be listed. The result says rules met as a fraction, eight of ten for instance, and the chips name which ones. It is a count, not a grade.",
+      "Your birth Moon in {moonSign} and your birth nakshatra {nakshatra} are the personal inputs: Chandra bala asks whether the day's Moon sign is in a favourable house from yours and Tara bala whether the day's nakshatra is a favourable tara from yours. When two profiles are chosen, both Moons must pass. Everything else in the table is the same for everyone at the same place.",
+      "Ranking is deliberate and published: more rules met first, then a window that contains Abhijit, then the earlier start, then the longer window. The free tier searches today and the next seven days; Pro searches any range and exports a window to your calendar. Nothing in the ranking changes with the tier.",
+      "Open the muhurat finder, choose an activity you might actually plan, and read the best window's chips. Then open the Why? sheet on the Tara bala chip and check the count against your nakshatra. If no window reaches four rules in the range, the finder says so and shows the best partial matches instead of lowering the bar quietly."
+    ],
+    "terms": ["muhurat", "muhurta", "choghadiya", "rahu-kaal", "chandra-bala", "tara-bala", "abhijit", "griha-pravesh"],
+    "tryIt": { "route": "/charts/muhurat", "label": "muhurat.title" },
+    "unlocksLevel": 3,
+    "review": "draft"
+  },
+  {
+    "id": "lesson-20",
+    "n": 20,
+    "title": "Reading Why? and the honesty markers",
+    "minutes": 5,
+    "body": [
+      "Every interpretive sentence in Shubhvela carries a Why? button. It opens a sheet with four parts: the rule in one sentence, the inputs the rule used with their values, the classical source when there is one, and a glossary link for every Sanskrit term. The sheet is the same whether you are reading the daily note, a yoga, a dasha row or a matching koota. If a sentence has no Why?, it is not an interpretation; it is a label.",
+      "The approx. tag marks any value that depends on an uncertain birth time, any planet or Lagna within one degree of a sign boundary, and any future date computed from a mean motion. It is a statement about the inputs, not about the rule. When you see it, the Why? sheet lists the drift so you can judge for yourself.",
+      "How this was computed is the footer on the panchang sheet, the chart, the dasha, matching, muhurat results, every PDF and every web page. It names the ayanamsa, {ayanamsa} in your settings, the node mode, {nodeMode}, the ephemeris, the time-zone source and the rounding. If two almanacs disagree with the app by a few minutes, the footer usually explains why.",
+      "For reflection appears on the journal and in the footer of the daily note, which reads: guidance for reflection, computed from your chart and today's sky, not a prediction. That sentence is the whole philosophy. The daily note tells you what the tradition says to notice; it does not foretell events, and it never uses fear to hold your attention.",
+      "Scores are counts. A muhurat shows rules met out of ten; matching shows guna out of thirty-six; a lesson shows done or not. There are no percentages, no stars and no word for how right the app is. On the Pro tier, Ask my chart answers always carry the fixed line AI explanation from your chart, can be wrong, and list the rule ids they drew on, because a language model can be fluent and mistaken at the same time.",
+      "Go to the Today tab and open the Why? sheet on the first sentence of your daily note. Find the four parts. Then find an approx. tag anywhere in your chart and read what it depends on; if there is none, your chart has no boundary cases today."
+    ],
+    "terms": ["ayanamsa", "lahiri", "rahu", "ephemeris"],
+    "tryIt": { "route": "/(tabs)/today", "label": "today.title" },
+    "unlocksLevel": 3,
+    "review": "draft"
+  },
+  {
+    "id": "lesson-21",
+    "n": 21,
+    "title": "How this app computes",
+    "minutes": 5,
+    "body": [
+      "Nothing in Shubhvela is looked up from a server. Every position is computed on your phone from an astronomical ephemeris, {ephemeris}, which models the Sun, the Moon and the planets to within a small fraction of a degree across the years the app covers. The chart you see for a birth in 1950 and the panchang for a day in 2040 come from the same equations.",
+      "The ephemeris gives tropical positions, measured from the equinox. Jyotish uses sidereal positions, measured from a fixed star point, and the difference between the two is the ayanamsa. It grows by about fifty seconds of arc a year because the equinox drifts. Your settings use the {ayanamsa} ayanamsa, which was {ayanamsaDegrees} degrees at your birth; the KP screen uses the KP value and says so. Changing the ayanamsa can move a planet near a sign boundary into the next sign, which is one reason the approx. tag exists.",
+      "Rahu and Ketu can be computed as the mean nodes, which move smoothly backwards, or as the true nodes, which wobble around the mean by up to about a degree and a half. Your setting is {nodeMode}. The app's true node is interpolated between the Moon's actual crossings of the ecliptic; the footer names the method.",
+      "Time is the other half. Your birth was recorded in the {birthTz} zone, and the app converts it to universal time using its own table of historical zone rules, not the phone's clock, so that a birth in 1975 uses the offset that applied in 1975. Place coordinates come from a bundled gazetteer of about forty-five thousand towns, with online search only as a fallback you can switch off. Sunrise and sunset are computed for your coordinates with the standard refraction allowance, which is why they can differ by a minute or two from a city almanac printed for a different point.",
+      "Houses are whole-sign by default; KP uses Placidus. Dasha years are 365.2425 days. Festival dates follow the rules in the calendar lesson and were compared against published almanacs before being marked verified. All of these choices are listed in Settings under Calculation, and each one is named in the footer of any screen it affects.",
+      "Open Settings, then Calculation. Read the ayanamsa, node and house options, and change nothing yet. Then open your chart and find the footer; every value in it should match what you just read."
+    ],
+    "terms": ["ayanamsa", "lahiri", "ephemeris", "mean-node", "true-node", "sidereal", "tropical"],
+    "tryIt": { "route": "/settings/calculation", "label": "settings.calculation" },
+    "unlocksLevel": 3,
+    "review": "draft"
+  }
+]

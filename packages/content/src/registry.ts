@@ -1,7 +1,7 @@
 // Static registry of every bundled JSON file. Add a line here when a corpus file lands (English masters in
 // A06-A08 / B02 / C02; hi drafts after the owner dispatches the corpus-translate Action — no bho corpus files ever,
 // owner decision 2026-10-25; load.ts resolves bho -> hi -> en). Nothing else in the package knows paths.
-import type { ContentLanguage, FestivalText, GlossaryEntry, NaamkaranNames, Snippet, UiStrings } from './types';
+import type { ContentLanguage, FestivalText, GlossaryEntry, Lesson, NaamkaranNames, Snippet, UiStrings } from './types';
 import en from '../ui/en.json';
 import hi from '../ui/hi.json';
 import bho from '../ui/bho.json';
@@ -22,6 +22,8 @@ import kootaEn from '../corpus/koota/en.json';
 import mangalEn from '../corpus/mangal/en.json';
 import muhuratActivitiesEn from '../corpus/muhurat-activities/en.json';
 import naamkaranNamesEn from '../corpus/naamkaran-names/en.json';
+import dailyThirdEn from '../corpus/daily-third/en.json';
+import lessonsEn from '../corpus/lessons/en.json';
 
 export const UI: Record<ContentLanguage, UiStrings> = {
   en: en as UiStrings,
@@ -57,6 +59,15 @@ export const CORPUS: Record<string, Partial<Record<ContentLanguage, Snippet[]>>>
   koota: { en: kootaEn as Snippet[] },
   mangal: { en: mangalEn as Snippet[] },
   'muhurat-activities': { en: muhuratActivitiesEn as Snippet[] },
+  // C02 (carry-over B-REVIEW-MEDIUM-2): third-person variants of the 32 `daily` fragments that address the reader
+  // ("your birth Moon"), same ids, params = ['name', ...daily params]. Family Today renders
+  // lookup('daily-third', id, lang) ?? lookup('daily', id, lang) for profiles that are not the self profile.
+  'daily-third': { en: dailyThirdEn as Snippet[] },
+};
+
+/** Lessons (schema/lesson.schema.json): lesson-01 .. lesson-21, bodies with {placeholders} from LESSON_PLACEHOLDERS (src/lessons.ts). hi/bho drafts arrive from the corpus-translate Action (batch C, one lesson per request). */
+export const LESSONS: Partial<Record<ContentLanguage, Lesson[]>> = {
+  en: lessonsEn as Lesson[],
 };
 
 /** Naamkaran name lists (schema/naamkaran-names.schema.json): 108 entries `nakshatra-<n>-<pada>`; English only (names are not translated). */

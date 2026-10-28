@@ -21,8 +21,8 @@ const PHASE_A_NAMESPACES = [
 ];
 /** Phase B namespaces (plan.md section 2 i18n; FEAT-B02). */
 const PHASE_B_NAMESPACES = ['pro', 'ads', 'unlock', 'vargas', 'kp', 'ashtakavarga', 'varshaphal', 'muhurat', 'travel', 'naamkaran', 'match', 'share', 'pdf', 'report'];
-/** Phase C namespaces present so far (plan.md section 2 i18n): widget + tts land in C01; learn/lesson/glossary/journal/prashna/ask/backup/deeplink in C02. */
-const PHASE_C_NAMESPACES = ['widget', 'tts'];
+/** Phase C namespaces (plan.md section 2 i18n): widget + tts landed in C01; learn/lesson/glossary/journal/prashna/ask/backup/deeplink in C02. */
+const PHASE_C_NAMESPACES = ['widget', 'tts', 'learn', 'lesson', 'glossary', 'journal', 'prashna', 'ask', 'backup', 'deeplink'];
 const NAMESPACES = [...PHASE_A_NAMESPACES, ...PHASE_B_NAMESPACES, ...PHASE_C_NAMESPACES];
 
 describe('UI string completeness', () => {
@@ -83,6 +83,54 @@ describe('UI string completeness', () => {
     expect(bho['pro.pricesNote']).toMatch(/राउर/);
     expect(bho['unlock.onlyOnTap']).toMatch(/रउआ/);
     expect(hi['unlock.onlyOnTap']).toMatch(/आप/);
+  });
+
+  it('Phase C binding copy (spec F35 label, design 10.7 device gate / download / inference strings, F34 mood words and "for reflection, not proof", F32 rows)', () => {
+    expect(en['ask.label']).toBe('AI explanation from your chart — can be wrong');
+    expect(en['ask.rowUnsupported']).toBe('Not available on this phone — needs Android 12, 6 GB RAM and 4 GB free');
+    expect(en['ask.consentSize']).toBe('Model size: 2.6 GB');
+    expect(en['ask.downloadPaused']).toBe('Download paused — reconnect to Wi-Fi');
+    expect(en['ask.thinking']).toBe('Thinking…');
+    expect(en['ask.inferenceFailed']).toBe("Couldn't run the model on this phone right now");
+    expect(en['ask.deleteModel']).toBe('Delete model');
+    expect(en['ask.retry']).toBe('Retry');
+    for (const ui of [en, hi, bho]) {
+      // The exact size appears in every language's consent copy and the gate names the three thresholds (spec F35).
+      expect(ui['ask.consentSize']).toContain('2.6 GB');
+      expect(ui['ask.consentCta']).toContain('2.6 GB');
+      expect(ui['ask.rowUnsupported']).toMatch(/Android 12/);
+      expect(ui['ask.rowUnsupported']).toMatch(/6 GB/);
+      expect(ui['ask.rowUnsupported']).toMatch(/4 GB/);
+      expect(ui['ask.label']).toMatch(/AI/);
+      // Mood chips are words, never emoji (design 10.7 F34).
+      for (const m of ['calm', 'low', 'busy', 'bright', 'tense']) expect(ui[`journal.mood.${m}`]).toMatch(/^[\p{L}\p{M}]+$/u);
+    }
+    expect(['calm', 'low', 'busy', 'bright', 'tense'].map((m) => en[`journal.mood.${m}`])).toEqual(['Calm', 'Low', 'Busy', 'Bright', 'Tense']);
+    expect(en['journal.legendFooter']).toBe('for reflection, not proof');
+    expect(en['journal.title']).toContain('for reflection');
+    expect(en['journal.howWasToday']).toBe('How was today?');
+    expect(en['lesson.tryIt']).toBe('Try it on your chart');
+    expect(en['lesson.markDone']).toBe('Mark done');
+    expect(en['lesson.unlocked']).toBe('Deeper explanations unlocked');
+    expect(en['learn.fiveMin']).toBe('5 min');
+    expect(en['prashna.title']).toBe('Prashna · ask a question now');
+    expect(en['prashna.chartThisMoment']).toBe('Chart this moment');
+    expect(visibleLength(en['prashna.fieldHint'])).toBeLessThanOrEqual(120);
+    expect(en['backup.wrongPassphrase']).toBe("Couldn't open this backup — check the passphrase");
+    expect(en['backup.newerApp']).toBe('This backup needs a newer app');
+    expect(en['widget.refresh']).toBe('Open Shubhvela to refresh');
+    expect(en['widget.nextPrefix']).toBe('next:');
+    expect(en['widget.exactUpdates']).toBe('Exact widget updates');
+    expect(en['widget.addToHome']).toBe('Add widget to home screen');
+    expect(en['tts.listen']).toBe('Listen');
+    expect(en['tts.stop']).toBe('Stop');
+    expect(en['tts.hindiVoice']).toBe('Reading in the Hindi voice');
+    expect(en['tts.noVoice']).toBe('No Hindi/Bhojpuri voice installed — open TTS settings');
+    // Register: Bhojpuri रउआ/राउर, Hindi आप, in the Phase C namespaces too.
+    expect(bho['ask.label']).toMatch(/राउर/);
+    expect(bho['ask.consentDelete']).toMatch(/रउआ/);
+    expect(hi['ask.label']).toMatch(/आपकी/);
+    expect(hi['journal.legendMoonHouse']).toMatch(/आपके/);
   });
 
   it('no string is empty or whitespace in any language', () => {

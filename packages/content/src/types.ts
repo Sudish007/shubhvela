@@ -59,13 +59,25 @@ export interface NaamkaranNames {
   review: ReviewState;
 }
 
+/** "Try it on your chart" row of a lesson: an expo-router route inside the app and the ui key of the card it opens. */
+export interface LessonTryIt {
+  route: string;
+  /** UI string key (e.g. `charts.houses`) resolved with t() in the UI language. */
+  label: string;
+}
+
+/** One Learn lesson (schema/lesson.schema.json, F32). `body` paragraphs may contain only LESSON_PLACEHOLDERS (src/lessons.ts). */
 export interface Lesson {
   id: string;
   n: number;
   title: string;
   minutes: number;
   body: string[];
+  /** Glossary ids linked from the lesson. */
   terms: string[];
+  tryIt: LessonTryIt;
+  /** Corpus snippet level (2 | 3) that "Mark done" unlocks for the Why? sheets; never a commercial item. */
+  unlocksLevel: 2 | 3;
   review: ReviewState;
 }
 

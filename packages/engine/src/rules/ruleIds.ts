@@ -209,6 +209,47 @@ export function ruleParamsB(ruleId: string): readonly string[] | undefined {
   return undefined;
 }
 
+// ---------------------------------------------------------------- Phase C (C02 corpus; C04 Prashna + Ask my chart)
+
+/** Prashna F18: the chart of the moment the question is asked, at the place of asking (C04 `app/app/charts/prashna`). */
+export const PRASHNA_RULE_IDS = ['prashna-chart-of-the-moment', 'prashna-lagna-of-the-hour', 'prashna-question-private'] as const;
+
+/**
+ * Ask my chart F35 system rules (spec 3.7 / design 10.7). The prompt builder (C04 `app/src/ai/prompt.ts`) reads these
+ * sentences from the rules corpus in the UI language and prepends them to the chart JSON and the corpus snippets, so the
+ * rules the model is given are the same rules the Why? sheet can show; `ask-label` is the fixed line above every answer.
+ */
+export const ASK_RULE_IDS = [
+  'ask-system-explain-from-chart',
+  'ask-system-cite-rule',
+  'ask-system-no-outcome-promises',
+  'ask-system-no-medical-legal-financial',
+  'ask-system-grounded-corpus',
+  'ask-system-honest-limits',
+  'ask-label',
+] as const;
+
+export const PHASE_C_RULE_IDS: readonly string[] = [...PRASHNA_RULE_IDS, ...ASK_RULE_IDS];
+
+/** Why?-sheet inputs of the Phase C rule ids (counterpart of RULE_PARAMS_B). */
+export const RULE_PARAMS_C: Record<string, readonly string[]> = {
+  'prashna-chart-of-the-moment': ['askedAt', 'lat', 'lon', 'tz', 'lagnaSign', 'moonSign', 'moonNakshatra'],
+  'prashna-lagna-of-the-hour': ['askedAt', 'lagnaSign', 'lagnaLord', 'lagnaDegree', 'hora'],
+  'prashna-question-private': ['storedLocally', 'question'],
+  'ask-system-explain-from-chart': ['chartJson', 'profileName'],
+  'ask-system-cite-rule': ['ruleIds'],
+  'ask-system-no-outcome-promises': ['forbidden'],
+  'ask-system-no-medical-legal-financial': ['forbidden'],
+  'ask-system-grounded-corpus': ['snippetIds', 'lang'],
+  'ask-system-honest-limits': ['model', 'onDevice'],
+  'ask-label': ['model'],
+};
+
+/** Params of a Phase C rule id. */
+export function ruleParamsC(ruleId: string): readonly string[] | undefined {
+  return RULE_PARAMS_C[ruleId];
+}
+
 /** The union, in a stable order; the content tests iterate this list. */
 export const RULE_IDS: readonly string[] = [
   ...GOOD_HOURS_RULE_IDS,
@@ -218,4 +259,5 @@ export const RULE_IDS: readonly string[] = [
   ...VRAT_RULE_IDS,
   ...FESTIVAL_RULE_IDS,
   ...PHASE_B_RULE_IDS,
+  ...PHASE_C_RULE_IDS,
 ];
