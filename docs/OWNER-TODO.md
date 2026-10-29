@@ -1,127 +1,138 @@
 # Owner steps (Sudish) — nothing in the build waits on these
 
-Created in A01 from plan.md section 13; refreshed at the end of every phase. Each item says
-when it is needed and what the build does meanwhile.
+Created in A01 from plan.md section 13; refreshed at the end of every phase; **final form written by D04 (2026-10-30,
+release 1.0.0 / versionCode 4)**. Each item says when it is needed, what the build does meanwhile, and its status.
+The Play Console walk-through with every form location is `docs/PLAY-RELEASE-CHECKLIST.md`; the texts and answers to
+paste are in `app/playstore-assets/store-listing.md`.
 
-**Phase A shipped (2026-10-26, tag `v0.1.0-phase-a`):** `release/Shubhvela-0.1.0-arm64.apk` (device) and
-`release/Shubhvela-0.1.0-x86_64.apk` (emulator, screenshot mode) are on this PC only (gitignored). Open
-owner items at this point: 1 (name/domains), 2 (Instagram), 3 (Play Console), 5 (`GEMINI_API_KEY` still
-not set — `gh secret list` is empty, so the Hindi corpus is still English), 6 (Bhojpuri review), 7
-(keystore backup), 8 (grievance e-mail). Item 4 (AdMob) waits for the Phase B review. Details in
-`docs/verification/verification-phase-a.md`.
+## Status at a glance (2026-10-30)
 
-1. **Name and domains.** Confirm "Shubhvela" (शुभवेला). It must be final before the first Play
-   upload: the Android `applicationId com.shubhvela.app` cannot change afterwards. Buy
-   `shubhvela.in` and `shubhvela.com` the same day (`.app` optional). Later: custom domain ->
-   GitHub Pages CNAME + `/.well-known/assetlinks.json` for verified App Links. Alternative (N17):
-   create the user-pages repo `Sudish007/Sudish007.github.io` (with `.nojekyll`) serving
-   `/.well-known/assetlinks.json` at the origin root, verify once with a test APK.
-   *Meanwhile:* the web companion lives at https://sudish007.github.io/shubhvela/.
+| # | Item | Needed by | Status |
+|---|---|---|---|
+| 1 | Name + domains (+ N17 alternative) | before the first Play upload | **open** — nothing blocks on it; the user-pages alternative is below |
+| 2 | Instagram handle | launch marketing | **open** |
+| 3 | Play Console listing + products + licence testers + AAB upload | to publish | **open** — everything to paste is ready |
+| 4 | AdMob app + unit ids (+ app-ads.txt) | before the public release; test units until then | **open** |
+| 5 | `GEMINI_API_KEY` secret | no longer needed for the corpus | **superseded** — a separate translation run wrote hi/bho for 14 of 19 domains without the Action; `gh secret list` was still empty on 2026-10-30 |
+| 6 | Bhojpuri review (UI strings, corpus, festival names) | before calling the Bhojpuri listing "reviewed" | **open** |
+| 7 | Keystore off-machine backup | **now** | **open** — do this today |
+| 8 | Grievance e-mail | before publishing (Play requires a working address) | **open** — placeholder `grievance@shubhvela.in` in 5 places |
+| 9 | Share-code relay | deferred, optional | **deferred** |
+| 10 | Disk headroom | before d-ship's 4-ABI AAB build | check `(Get-PSDrive C).Free` ≥ 4 GB |
+| 11 | Post-1.0 fixes | after the Phase D review | list below, appended by the reviewer |
+
+## The items
+
+1. **Name and domains.** Confirm "Shubhvela" (शुभवेला). It must be final before the first Play upload: the Android
+   `applicationId com.shubhvela.app` cannot change afterwards. Buy `shubhvela.in` and `shubhvela.com` the same day
+   (`.app` optional). Later: custom domain → GitHub Pages CNAME (`web/public/CNAME` + `web/src/config.mjs` BASE_URL /
+   BASE_PATH `/`) + `/.well-known/assetlinks.json` for verified App Links.
+   **Alternative without a domain (N17):** create the user-pages repo `Sudish007/Sudish007.github.io` (public, with a
+   `.nojekyll` file) and put `/.well-known/assetlinks.json` at its root — user pages serve the origin
+   `https://sudish007.github.io/`, which is where Android looks for App Links for every `sudish007.github.io/...` URL,
+   including `/shubhvela/`. Contents: one entry with `relation ["delegate_permission/common.handle_all_urls"]`,
+   `package_name "com.shubhvela.app"` and the SHA-256 of the **app signing** certificate from Play Console → Setup → App
+   signing (not the upload key). Then add an `autoVerify="true"` https intent filter for host `sudish007.github.io`
+   and `pathPrefix /shubhvela/` to `app/android/app/src/main/AndroidManifest.xml` (one-time app change, next build),
+   and verify once on a test phone with `adb shell pm get-app-links com.shubhvela.app`. *Meanwhile:* the site uses
+   `intent://` buttons with a Play fallback (M9), which work without verification.
 2. **Instagram.** Claim the handle by hand (not scriptable).
-3. **Play Console.** Create the app listing (category Astrology; a personal account is fine).
-   Create subscription `shubhvela_pro` with base plans `monthly` (INR 49) and `yearly` (INR 299);
-   USD 2.99 / 19.99 elsewhere. In-app product `shubhvela_pro_lifetime` INR 999 / USD 49.99.
-   Consumables `report_janam_patri` INR 99, `report_matching` INR 99, `report_varshaphal` INR 149.
-   Add licence-tester accounts. Upload the Phase D AAB to the internal testing track. Paste the
-   Play Store URL into `web/src/strings/*.json` (`playUrl`) and `app/app.json` (`extra.playUrl`).
-   Answer the Data safety form and content rating from `app/playstore-assets/store-listing.md`
-   (Phase D). *Meanwhile:* the app reads prices from Play and shows the spec INR strings offline
-   (captioned "store price may differ"); until the products exist, "Continue" on the Pro screen shows Play's
-   "This item isn't available in Play yet" inline and the entitlement cache stays untouched (B03, 2026-10-27).
-   The product ids the app requests are fixed in `app/src/billing/products.ts`.
-4. **AdMob (only after the Phase B review).** Create the app in AdMob, note the App ID and the
-   four unit IDs (banner, native, interstitial, rewarded). Then edit `app/app.json`
-   `extra.admob` (set `live: true`) and the `com.google.android.gms.ads.APPLICATION_ID`
-   meta-data in `app/android/app/src/main/AndroidManifest.xml`. Do NOT create an AppLovin
-   mediation group (the adapter is wired but disabled); `applovinSdkKey` stays empty.
-   *Meanwhile:* every build uses Google's test IDs. B03 (2026-10-27) wired it so that `app/src/ads/config.ts`
-   falls back to the test units whenever `live` is false or any unit id is missing; `app/android/app/build.gradle`
-   reads `extra.applovinSdkKey` into the `applovin.sdk.key` manifest placeholder and carries
-   `com.google.ads.mediation:applovin:13.6.4.2`, which only ever initialises through the AdMob SDK - and Pro
-   users never initialise that SDK (`app/src/ads/AdsRoot.tsx`, asserted by `app/test/ads-root.test.tsx`).
-5. **Gemini key and the Hindi corpus (no step waits on this any more).** Set the secret, then
-   dispatch the Action: `gh secret set GEMINI_API_KEY --repo Sudish007/shubhvela` (free-tier key,
-   pasted into the hidden prompt), then
-   `gh workflow run corpus-translate.yml --repo Sudish007/shubhvela -f lang=hi`
-   **One dispatch translates every English corpus domain present at that time** (the Action's
-   default `domains=all` reads every `packages/content/corpus/*/en.json` from disk; verified in B02:
-   `listDomains()` in `packages/content-tools/src/translate.ts`; `naamkaran-names` is skipped because
-   names are already Devanagari + Latin). After Phase B that is about 85 (Phase A) + 75 (Phase B:
-   yogas, koota, mangal, muhurat-activities and the 118 new rules) ≈ 160 requests, under the 450 cap;
-   Phase C adds lessons and glossary (≈ 45). If a run stops at the cap it saves a cursor and the next
-   dispatch resumes. The Action commits `packages/content/corpus/<domain>/hi.json` to main; pull
-   before the next build. **Bhojpuri is intentionally excluded** (your decision 2026-10-25): the
-   corpus is never machine-translated into Bhojpuri; the app resolves bho -> hi -> en. B02 (2026-10-27)
-   and C02 skip their Gemini batches by this decision and no build step pauses for the key.
-   *Meanwhile:* the Hindi corpus falls back to English (hi -> en) with the chrome in Hindi.
-6. **Bhojpuri review.** Review `packages/content/ui/bho.json` (784 UI strings written in A05,
-   including बचीं for "Avoid", the possessive राउर and the respectful रउआ / होला / करीं / बानी / नइखे
-   register; `npm test -w packages/content` enforces Devanagari, no Hindi आप/है and no Maithili
-   forms, but naturalness needs a native reader) and the Bhojpuri festival names in
-   `packages/engine/data/festival-rules.json` (`names.bho`). No Bhojpuri corpus review queues are
-   produced (see item 5). Nothing in the build waits on this.
-   Review the festival rules once: `packages/engine/data/festival-rules.json` and
-   `packages/engine/reference/CONVENTIONS.md`.
-7. **Keystore backup.** Copy `release/shubhvela-release.keystore` and `release/KEYSTORE-INFO.txt`
-   (both gitignored, created 2026-10-24) to an off-machine encrypted location. Losing them means
-   a new app listing.
-8. **Grievance contact.** Provide the e-mail for the privacy page, consent notice and breach
-   process. Placeholder until then: `grievance@shubhvela.in`; the consent notice and Settings →
-   Privacy label it "provisional … confirmed before release". When the address is final, set it in
-   `app/src/legal.ts` (`GRIEVANCE_EMAIL_PLACEHOLDER`) and flip `GRIEVANCE_EMAIL_CONFIRMED` to `true`
-   so the note disappears. The web pages read the same placeholder from `web/src/strings/<lang>.json`
-   (`site.grievanceEmail`, note `site.grievanceProvisional`): replace it in all three files at the same time.
-   The "Read the privacy policy" link targets `<webBase>/privacy/`, published by D01 (2026-10-29) together with
-   `/terms/` and `/data-deletion/`; each redirects to its English page and has hi/bho versions.
-9. **Share-code relay (deferred).** v1 ships QR + a 20-character typed code, fully offline.
-   Decide later whether a Pro 8-character relay service is wanted.
-10. **Disk.** Keep at least 8 GB free on C: before build steps (Gradle + emulator). Candidates:
-    `~/.gradle/caches` (~4 GB, rebuilds itself) and `%LOCALAPPDATA%\ms-playwright` (~1.4 GB,
-    needed again in Phase D). At A01 the machine had 3.8 GB free; A13 will pause and ask if it
-    is still below 4 GB.
-11. **Post-1.0 fixes** carried from the Phase D review (appended by the reviewer).
+3. **Play Console.** Create the app (category **Lifestyle**, tag Astrology — Play has no Astrology category; a personal
+   account is fine). Paste title / short / full descriptions (en-IN, hi-IN), upload `app/playstore-assets/icon-512.png`,
+   `feature-graphic-1024x500.png` and `screenshots/en|hi/*.png` (only after d-ship has re-shot the 21 stand-in slots —
+   `screenshots/sources.json` must show no `pending: true`). Answer Data safety, content rating, target audience (18+),
+   ads declaration and the account-deletion declaration from `store-listing.md`. Create subscription `shubhvela_pro`
+   (base plans `monthly` ₹49 / `yearly` ₹299; $2.99 / $19.99 elsewhere), in-app product `shubhvela_pro_lifetime` ₹999 /
+   $49.99, consumables `report_janam_patri` ₹99, `report_matching` ₹99, `report_varshaphal` ₹149. Add licence-tester
+   accounts (Settings → Licence testing), upload `release/Shubhvela-1.0.0.aab` (built by d-ship) to the internal
+   testing track, follow the tester script in `store-listing.md` → "Licence testers and the test track". Paste the Play
+   Store URL into `web/src/strings/{en,hi,bho}.json` (`site.playUrl`) and `app/app.json` (`extra.playUrl`); the site's
+   "Coming to Google Play" buttons and the JSON-LD `installUrl` switch automatically on the next Pages build.
+   *Meanwhile:* the app reads prices from Play and shows the spec INR strings offline ("store price may differ"); until
+   the products exist, "Continue" on the Pro screen shows Play's "item not available" inline and the entitlement cache
+   stays untouched. The product ids the app requests are fixed in `app/src/billing/products.ts`.
+4. **AdMob.** Create the app in AdMob, note the App ID and the four unit IDs (banner, native, interstitial, rewarded).
+   Edit `app/app.json` `extra.admob` (set `live: true`, fill the ids) and the `com.google.android.gms.ads.APPLICATION_ID`
+   meta-data in `app/android/app/src/main/AndroidManifest.xml`; rebuild. Do NOT create an AppLovin mediation group
+   (the adapter is wired but disabled); `applovinSdkKey` stays empty. Publish `app-ads.txt` from AdMob's snippet at
+   `web/public/app-ads.txt` (served at `https://sudish007.github.io/shubhvela/app-ads.txt`; the Play listing's website
+   field must point at `https://sudish007.github.io/shubhvela/` for AdMob to find it). Verify in AdMob → Apps → app-ads.txt.
+   *Meanwhile:* every build uses Google's test IDs (`app/src/ads/config.ts` falls back whenever `live` is false or any
+   id is missing); Pro never initialises the SDK (`app/test/ads-root.test.tsx`).
+5. **Gemini key — superseded.** The corpus-translate Action was never run (`gh secret list --repo Sudish007/shubhvela`
+   empty on 2026-10-30). A separate translation run committed `packages/content/corpus/<domain>/hi.json` and `bho.json`
+   for 14 of 19 domains (1,020 of 1,542 snippets; `naamkaran-names` needs none). Still English by fallback:
+   `dasha-pairs`, `nakshatra-pada`, `planet-house`, `planet-sign`. Nothing for you to do unless you want the Action
+   as a second path: `gh secret set GEMINI_API_KEY --repo Sudish007/shubhvela`, then
+   `gh workflow run corpus-translate.yml --repo Sudish007/shubhvela -f lang=hi` (and the run's own rules for `bho`).
+6. **Bhojpuri review.** `packages/content/ui/bho.json` (UI strings written by the build, including बचीं for "Avoid", the
+   possessive राउर and the respectful रउआ / होला / करीं / बानी / नइखे register; tests enforce Devanagari, no Hindi
+   आप/है and no Maithili forms, but naturalness needs a native reader), the Bhojpuri festival names in
+   `packages/engine/data/festival-rules.json` (`names.bho`), the translated corpus files `corpus/*/bho.json` (all marked
+   `review: "draft"`), the Play texts in `app/playstore-assets/store-listing.md` (bho blocks; Play has no Bhojpuri
+   listing locale, so they are for the website and later) and `release-notes/1.0.0.bho.md`. Also review the festival
+   rules once: `packages/engine/data/festival-rules.json` and `packages/engine/reference/CONVENTIONS.md`, including the
+   six `koota-yoni@mXX` matching conventions (C-REVIEW-MEDIUM-6: Drik's five-level Yoni table was not sourced; record
+   your acceptance of the convention there or supply the table).
+7. **Keystore backup.** Copy `release/shubhvela-release.keystore` and `release/KEYSTORE-INFO.txt` (both gitignored,
+   created 2026-10-24) to an off-machine encrypted location. Losing them means a new upload key (recoverable through
+   Play App Signing's upload-key reset, but only once the app is enrolled — upload the first AAB soon after the backup).
+   The breach process (`docs/BREACH-PROCESS.md` §4.1 B1) depends on this copy.
+8. **Grievance contact.** Provide the e-mail for the privacy page, consent notice, Play listing and breach process.
+   Placeholder until then: `grievance@shubhvela.in`; the consent notice and Settings → Privacy label it "provisional".
+   When the address is final, on the same day: `app/src/legal.ts` (`GRIEVANCE_EMAIL_PLACEHOLDER`, flip
+   `GRIEVANCE_EMAIL_CONFIRMED` to `true`), `web/src/strings/{en,hi,bho}.json` (`site.grievanceEmail`; the provisional
+   note disappears when the string changes — check `site.grievanceProvisional` usage), `app/playstore-assets/store-listing.md`,
+   `docs/BREACH-PROCESS.md`, Play Console → Store listing → Contact details. Play rejects listings with a non-working
+   address, so this must precede item 3's publish step. The privacy, terms and data-deletion pages are live at
+   `https://sudish007.github.io/shubhvela/<lang>/privacy/`, `/terms/`, `/data-deletion/` (HTTP 200 on 2026-10-30).
+9. **Share-code relay (deferred).** v1 ships QR + a 20-character typed code, fully offline. Decide later whether a Pro
+   8-character relay service is wanted; if yes, `docs/BREACH-PROCESS.md` must be rewritten first (it assumes no server).
+10. **Disk.** Keep at least 4 GB free on C: before d-ship's 4-ABI `bundleRelease` (8 GB is comfortable). Candidates:
+    `~/.gradle/caches` (~4 GB, rebuilds itself) and `%LOCALAPPDATA%\ms-playwright` (~1.4 GB, needed by the web audits).
+11. **Post-1.0 fixes** carried from the Phase D review (appended by the reviewer below). Already known before the review:
+    - Re-shoot the 21 stand-in Play screenshots raw (d-ship; `scripts/shots.ps1 -KeepRaw`, pro=1 seed, light, en/hi/bho).
+    - Translate the four remaining corpus domains (item 5).
+    - C-REVIEW items still open at D04: C-M1 small-widget reason filter, C-M2 `settings.exactAlarmsBody` "10 minutes"
+      wording, C-M3 TTS error "Open TTS settings" link, C-M4 level-2 "Why?" snippets, C-N1 widget picker labels, C-N2
+      journal mood marks, C-N3 widget hora word, C-N4 "From a link" label; B-N1 Devanagari place names (`name_hi`);
+      B-N7 muhurat finder location mode; A-N3 Sheetala Ashtami 2028 rule. Full list: `docs/verification/carry-over.md`.
+    - Notification icon source in `app/app.json` points at the adaptive monochrome layer; harmless while `android/` is
+      committed, but add a dedicated 96×96 source under `app/assets/` before anyone runs a prebuild (brand review note).
 
 ## Status after Phase A (shipped 2026-10-26, tag `v0.1.0-phase-a`)
 
 - Built and signed (local, gitignored): `release/Shubhvela-0.1.0-arm64.apk` (device, 90.3 MB) and
-  `release/Shubhvela-0.1.0-x86_64.apk` (emulator, screenshot mode, 100.6 MB). Not yet run on a real phone.
-- Still open for you: items 1 (name/domains), 2 (Instagram), 3 (Play Console; needed from Phase D),
-  4 (AdMob ids; wait for the Phase B review), 5 (`GEMINI_API_KEY` — `gh secret list` was still empty on
-  2026-10-26, so Hindi/Bhojpuri screens show English interpretive sentences), 6 (Bhojpuri review of
-  `packages/content/ui/bho.json`; no `bho-A.md` review queue exists because the corpus is not translated
-  into Bhojpuri by your decision), 7 (keystore backup — do this now), 8 (grievance e-mail).
-- Phase B must also pick up the review leftovers in `docs/verification/carry-over.md`.
+  `release/Shubhvela-0.1.0-x86_64.apk` (emulator, screenshot mode, 100.6 MB). Not run on a real phone.
+- Details in `docs/verification/verification-phase-a.md`; Phase B picked up `carry-over.md`.
 
 ## Status after Phase B (shipped 2026-10-28, tag `v0.2.0-phase-b`)
 
-- Built and signed (local, gitignored): `release/Shubhvela-0.2.0-arm64.apk` (device, 93.7 MB) and
-  `release/Shubhvela-0.2.0-x86_64.apk` (emulator, screenshot mode, 104.0 MB). Not yet run on a real phone.
-  Phase B review verdict APPROVED (0 blocking); details in `docs/verification/verification-phase-b.md` and `review-phase-b.md`.
-- **Item 4 is now open: the AdMob app and the four unit ids (banner, native, interstitial, rewarded) may be created.**
-  Until you edit `app/app.json` `extra.admob` (`live: true`) and the manifest `APPLICATION_ID`, every build keeps Google's test units.
-- **Item 3 (Play Console products) can start now** so the Phase C/D builds can exercise purchases: subscription `shubhvela_pro`
-  (base plans `monthly`, `yearly`), in-app `shubhvela_pro_lifetime`, consumables `report_janam_patri`, `report_matching`,
-  `report_varshaphal`. Until they exist the Pro screen shows Play's inline "item unavailable" and purchases cannot be tested.
-- Still open: items 1 (name/domains), 2 (Instagram), 5 (`GEMINI_API_KEY` — `gh secret list` still empty on 2026-10-28; one dispatch
-  now covers the Phase A + B English masters, ≈160 requests), 6 (Bhojpuri review), 7 (keystore backup — do this now), 8 (grievance e-mail).
+- Built and signed (local, gitignored): `release/Shubhvela-0.2.0-arm64.apk` (93.7 MB) and `release/Shubhvela-0.2.0-x86_64.apk`
+  (104.0 MB). Review verdict APPROVED (0 blocking); details in `docs/verification/verification-phase-b.md` and `review-phase-b.md`.
 - Not verified in Phase B (needs you or a device): live purchases/restore, real ad fill and the native ad card on a phone with Play,
-  cross-device share-code scan, anything on a real arm64 device.
-- Phase C must pick up the review leftovers in `docs/verification/carry-over.md` ("Phase B review leftovers").
+  cross-device share-code scan.
 
 ## Status after Phase C (shipped 2026-10-29, tag `v0.3.0-phase-c`, release candidate)
 
-- Built and signed (local, gitignored): `release/Shubhvela-0.3.0-arm64.apk` (device, 94.6 MB) and
-  `release/Shubhvela-0.3.0-x86_64.apk` (emulator, screenshot mode, 105.0 MB). Phase C review verdict APPROVED (0 blocking, 6 medium, 7 nit);
-  details in `docs/verification/verification-phase-c.md` and `review-phase-c.md`. Release notes: `docs/RELEASE-NOTES.md`.
-- **KNOWN ISSUE DEV-1 (your report from a real phone):** the bottom tab bar can be hidden behind the phone's system navigation bar. The 0.3.0
-  APKs still carry it; the fix lands in the next build (step `c06-device-fixes`). Please report any further device findings the same way —
-  they are appended to `carry-over.md` as DEV-2, DEV-3 … and fixed together.
-- **Item 5 (`GEMINI_API_KEY`) is still not set** — `gh secret list --repo Sudish007/shubhvela` was empty on 2026-10-29. Until the secret exists and
-  the Action runs, the interpretive text (daily note, lesson bodies, Why? sheets, koota rules) is **English under Hindi/Bhojpuri chrome by fallback**
-  (hi → en, bho → hi → en). One dispatch now covers the Phase A + B + C English masters.
-- Still open: items 1 (name/domains), 2 (Instagram), 3 (Play Console products — needed before purchases can be tested), 4 (AdMob ids), 6 (Bhojpuri
-  review), 7 (keystore backup — do this now), 8 (grievance e-mail).
-- Not verified in Phase C (emulator only, see `verification-phase-c.md` §8): Gemma inference and the supported-device "Ask my chart" path, multi-day
-  Doze/WorkManager behaviour of the widgets, a real exact-alarm grant, Hindi/Bhojpuri TTS voices, live purchases, real ads, anything on an arm64 device.
-- Phase D must pick up the review leftovers in `docs/verification/carry-over.md` ("Phase C review leftovers") and the Yoni koota table
-  (B-REVIEW-MEDIUM-1 / C-M6) before any APK is called beta.
+- Built and signed (local, gitignored): `release/Shubhvela-0.3.0-arm64.apk` (94.6 MB) and `release/Shubhvela-0.3.0-x86_64.apk`
+  (105.0 MB). Review verdict APPROVED (0 blocking, 6 medium, 7 nit); details in `docs/verification/verification-phase-c.md`,
+  `review-phase-c.md`, `docs/RELEASE-NOTES.md`.
+- **DEV-1 (your report from a real phone: tab bar hidden behind the system navigation bar)** was fixed by c06 (commits `a2843b0`,
+  `d0dcb0b`): hotfix build `release/Shubhvela-0.3.1-arm64.apk` (versionCode 4) is on this PC for you to re-test; your confirmation
+  is the remaining acceptance. Report any further device findings the same way (appended as DEV-2, DEV-3 … in `carry-over.md`).
+- Not verified in Phase C (emulator only): Gemma inference and the supported-device "Ask my chart" path, multi-day Doze/WorkManager
+  behaviour of the widgets, a real exact-alarm grant, Hindi/Bhojpuri TTS voices, live purchases, real ads.
+
+## Status at D04 (2026-10-30, version 1.0.0 / versionCode 4 set; AAB not yet built)
+
+- Web companion live at https://sudish007.github.io/shubhvela/ (D01–D03: 28 page types × 3 languages, Lighthouse 100/100/100/100
+  on four pages, live check 28/28). Privacy / terms / data-deletion pages are the URLs in the Play listing.
+- Play listing kit complete except graphics re-shoot: `app/playstore-assets/store-listing.md` (texts en/hi/bho, Data safety,
+  content rating, products, tester script), `release-notes/1.0.0.{en,hi,bho}.md`, icon + feature graphic + 24 screenshots from the
+  brand run (21 slots pending the raw re-shoot by d-ship). `node scripts/gen-store-assets.mjs --check` exits 0.
+- `docs/BREACH-PROCESS.md` written (N14). `THIRD-PARTY-NOTICES.md` regenerated from `npm ls --prod` (775 packages).
+- d-ship still has to: pull the newest translations, build `release/Shubhvela-1.0.0.aab` (4 ABIs) + arm64/x86_64 APKs, re-shoot
+  the Play screenshots, run the emulator audit in both navigation modes, tag `v1.0.0`.
+- Open for you, in order of urgency: 7 (keystore backup), 8 (grievance e-mail), 3 (Play Console), 4 (AdMob), 1 (name/domains or
+  the N17 user-pages repo), 6 (Bhojpuri review), 2 (Instagram).

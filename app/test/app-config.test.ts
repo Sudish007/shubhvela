@@ -13,12 +13,12 @@ describe('app.json', () => {
     expect(expo.android.package).toBe('com.shubhvela.app');
   });
 
-  it('keeps version and versionCode paired for the DEV-1 hotfix (0.3.1 / 4) in app.json and build.gradle', () => {
-    expect(expo.version).toBe('0.3.1');
+  it('keeps version and versionCode paired for release 1.0.0 (P13: Phase D = 1.0.0 / 4) in app.json and build.gradle', () => {
+    expect(expo.version).toBe('1.0.0');
     expect(expo.android.versionCode).toBe(4);
     const gradle = readFileSync(join(__dirname, '..', 'android', 'app', 'build.gradle'), 'utf8');
     expect(gradle).toMatch(/versionCode 4\b/);
-    expect(gradle).toMatch(/versionName "0\.3\.1"/);
+    expect(gradle).toMatch(/versionName "1\.0\.0"/);
   });
 
   it('uses only Google test AdMob ids until the owner supplies live ones', () => {

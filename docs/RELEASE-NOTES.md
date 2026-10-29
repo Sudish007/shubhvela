@@ -2,6 +2,25 @@
 
 Internal builds. APKs are local, gitignored outputs of `scripts/build-apk.ps1` (see `release/README.md`); the tags mark the source tree of each build.
 
+## 1.0.0 (versionCode 4) — Phase D release — version set 2026-10-30 by D04; AAB and APKs built by d-ship
+
+Play-facing notes (≤ 500 chars, en/hi/bho): `app/playstore-assets/release-notes/1.0.0.<lang>.md`. Added since 0.3.1:
+
+- Web companion live at https://sudish007.github.io/shubhvela/ (kundli, panchang for 331 cities, festivals, muhurat months, glossary,
+  vrats; privacy, terms and data-deletion pages) in English, Hindi and Bhojpuri.
+- Hindi and Bhojpuri corpus for 14 of 19 domains (1,020 of 1,542 snippets) from the parallel translation run; `dasha-pairs`,
+  `nakshatra-pada`, `planet-house`, `planet-sign` still resolve to English.
+- Brand: launcher icon, adaptive layers, splash, Play icon and feature graphic from `app/brand/`.
+- Play listing kit, breach process, third-party notices, owner runbook.
+
+Known issues carried into 1.0.0 (fixes after the Phase D review): small widget may name a not-yet-active reason; exact-alarm copy says
+2 minutes where Android 12+ gives 10; TTS error notice lacks the settings link; six Yoni koota pairs differ from Drik by one point
+under the documented convention; 21 Play screenshots are stand-ins until d-ship re-shoots them.
+
+## 0.3.1 (versionCode 4, superseded by 1.0.0 before any upload) — DEV-1 hotfix — 2026-10-29
+
+Tab bar / bottom chrome cleared of the system navigation bar in both navigation modes (c06, `release/Shubhvela-0.3.1-arm64.apk`).
+
 ## 0.3.0 (versionCode 3) — Phase C release candidate — 2026-10-29 — tag `v0.3.0-phase-c`
 
 Added since 0.2.0:
