@@ -155,6 +155,49 @@ describe('translated corpus files (hi / bho) mirror their English master', () =>
     for (const grade of ['A', 'B', 'C', 'D']) expect(kpHi.text).toContain(`${grade},`);
   });
 
+  it('T04: the festivals slice is registered in hi and bho with one id set, festivalText resolves a translated slug in its own language with the engine name and the Why?-sheet rule sentence, and an untranslated slug along the chain', () => {
+    const en = FESTIVALS.en!;
+    const hi = FESTIVALS.hi!;
+    const bho = FESTIVALS.bho!;
+    expect(hi.length).toBeGreaterThanOrEqual(51);
+    expect(hi.length).toBeLessThanOrEqual(en.length);
+    expect(bho.map((r) => r.id).sort(), 'festivals hi and bho carry the same slice').toEqual(hi.map((r) => r.id).sort());
+    // `rule` is the same sentence the Why? sheet shows (corpus/rules festival-<slug>) in every language, as in en.json.
+    for (const lang of LANGS) {
+      for (const f of FESTIVALS[lang]!) expect(f.rule, `${f.slug} ${lang} rule == rules/festival-${f.slug}`).toBe(ruleText(`festival-${f.slug}`, lang)!.text);
+    }
+    // Diwali: translated in both languages, named as the engine festival table names it, Smarta/Amanta note in Devanagari.
+    const diwaliHi = festivalText('diwali', 'hi')!;
+    expect(diwaliHi.lang).toBe('hi');
+    expect(diwaliHi.fallback).toBe(false);
+    expect(diwaliHi.item.name).toBe('दीपावली (लक्ष्मी पूजा)');
+    expect(diwaliHi.item.what).toContain('प्रदोष काल');
+    expect(diwaliHi.item.conventionNote).toContain('पूर्णिमांत');
+    const diwaliBho = festivalText('diwali', 'bho')!;
+    expect(diwaliBho.lang).toBe('bho');
+    expect(diwaliBho.fallback).toBe(false);
+    expect(diwaliBho.item.name).toContain('दियरी');
+    expect(diwaliBho.item.what).toContain('दियरी');
+    expect(diwaliBho.item.what).not.toMatch(/(^|\s)(है|हैं)(\s|।)/);
+    // Chhath keeps the four step names of the vrat screen in Bhojpuri (nahay khay, kharna, sandhya / usha arghya).
+    const chhathBho = festivalText('chhath-puja', 'bho')!;
+    expect(chhathBho.lang).toBe('bho');
+    expect(chhathBho.item.what).toContain('नहाय खाय');
+    expect(chhathBho.item.what).toContain('खरना');
+    expect(chhathBho.item.what).toContain('अरघ');
+    expect(festivalText('chhath-puja', 'hi')!.item.what).toContain('अर्घ्य');
+    // Slugs outside the integrated slice resolve further down the chain (bho -> hi -> en) and say so.
+    const translated = new Set(hi.map((r) => r.id));
+    const pending = en.filter((r) => !translated.has(r.id));
+    for (const f of pending.slice(0, 20)) {
+      for (const lang of LANGS) {
+        const r = festivalText(f.slug, lang)!;
+        expect(r, `${f.slug} ${lang}`).not.toBeNull();
+        expect(r.fallback).toBe(r.lang !== lang);
+      }
+    }
+  });
+
   it('every registered domain has an English master and only hi / bho translations', () => {
     for (const t of TABLES) {
       expect(t.rows.en, `${t.domain} has no en`).toBeDefined();

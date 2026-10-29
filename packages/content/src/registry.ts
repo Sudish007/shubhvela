@@ -22,6 +22,8 @@ import dailyHi from '../corpus/daily/hi.json';
 import dailyBho from '../corpus/daily/bho.json';
 import vratsEn from '../corpus/vrats/en.json';
 import festivalsEn from '../corpus/festivals/en.json';
+import festivalsHi from '../corpus/festivals/hi.json';
+import festivalsBho from '../corpus/festivals/bho.json';
 import glossaryEn from '../corpus/glossary/en.json';
 import yogasEn from '../corpus/yogas/en.json';
 import kootaEn from '../corpus/koota/en.json';
@@ -84,9 +86,11 @@ export const NAAMKARAN_NAMES: Partial<Record<ContentLanguage, NaamkaranNames[]>>
   en: naamkaranNamesEn as NaamkaranNames[],
 };
 
-/** Festival texts (schema/festival-text.schema.json): one per slug of packages/engine/data/festival-rules.json, id festival-<slug>. */
+/** Festival texts (schema/festival-text.schema.json): one per slug of packages/engine/data/festival-rules.json, id festival-<slug>. hi/bho land in two slices (corpus-translate T04: ids 1-51 sorted, T05: the rest); festivalText falls back per slug. */
 export const FESTIVALS: Partial<Record<ContentLanguage, FestivalText[]>> = {
   en: festivalsEn as FestivalText[],
+  hi: festivalsHi as FestivalText[],
+  bho: festivalsBho as FestivalText[],
 };
 
 /** Glossary (schema/glossary.schema.json): ids are plain slugs (tithi, rahu-kaal, sade-sati ...); `related` lists other glossary ids. */
