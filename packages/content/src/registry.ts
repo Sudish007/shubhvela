@@ -27,6 +27,8 @@ import festivalsEn from '../corpus/festivals/en.json';
 import festivalsHi from '../corpus/festivals/hi.json';
 import festivalsBho from '../corpus/festivals/bho.json';
 import glossaryEn from '../corpus/glossary/en.json';
+import glossaryHi from '../corpus/glossary/hi.json';
+import glossaryBho from '../corpus/glossary/bho.json';
 import yogasEn from '../corpus/yogas/en.json';
 import kootaEn from '../corpus/koota/en.json';
 import kootaHi from '../corpus/koota/hi.json';
@@ -101,7 +103,9 @@ export const FESTIVALS: Partial<Record<ContentLanguage, FestivalText[]>> = {
   bho: festivalsBho as FestivalText[],
 };
 
-/** Glossary (schema/glossary.schema.json): ids are plain slugs (tithi, rahu-kaal, sade-sati ...); `related` lists other glossary ids. */
+/** Glossary (schema/glossary.schema.json): ids are plain slugs (tithi, rahu-kaal, sade-sati ...); `related` lists other glossary ids. hi/bho are complete (corpus-translate T07): the list screen renders one whole file, so a glossary translation is registered only when it covers every English id. */
 export const GLOSSARY: Partial<Record<ContentLanguage, GlossaryEntry[]>> = {
   en: glossaryEn as GlossaryEntry[],
+  hi: glossaryHi as GlossaryEntry[],
+  bho: glossaryBho as GlossaryEntry[],
 };

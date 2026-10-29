@@ -7,7 +7,7 @@
 import { describe, expect, it } from 'vitest';
 import { LATIN_ALLOWLIST } from '../../content-tools/src/forbidden';
 import { CORPUS, FESTIVALS, GLOSSARY, LESSONS } from '../src/registry';
-import { festivalText, glossaryTerm, loadUi, lookup, lesson, ruleText, type ContentLanguage } from '../src/index';
+import { festivalText, glossaryTerm, loadGlossary, loadUi, lookup, lesson, ruleText, type ContentLanguage } from '../src/index';
 
 type Row = Record<string, unknown> & { id: string };
 type Lang = Exclude<ContentLanguage, 'en'>;
@@ -313,6 +313,67 @@ describe('translated corpus files (hi / bho) mirror their English master', () =>
     expect(lookup('mangal', 'mangal-cancel-both-manglik', 'hi')!.text).toContain(`“${loadUi('hi')['match.notApplied_tag']}”`);
     expect(lookup('mangal', 'mangal-cancel-both-manglik', 'bho')!.text).toContain(`“${loadUi('bho')['match.notApplied_tag']}”`);
     expect(lookup('mangal', 'mangal-cancel-sign-house', 'bho')!.text).toContain('राशि-भाव जोड़ी');
+  });
+
+  it('T07: the glossary is complete in hi and bho (whole-file domain), every term resolves in its own language with the headwords untouched, the UI / engine names and the degree ranges of the English master', () => {
+    const en = GLOSSARY.en!;
+    for (const lang of LANGS) {
+      const rows = GLOSSARY[lang];
+      expect(rows, `glossary/${lang} registered`).toBeDefined();
+      expect(rows!.map((r) => r.id).sort(), `glossary/${lang} complete`).toEqual(en.map((r) => r.id).sort());
+      // The list screen renders one whole file, so loadGlossary must return the requested language without fallback.
+      const list = loadGlossary(lang);
+      expect(list.lang).toBe(lang);
+      expect(list.fallback).toBe(false);
+      expect(list.items.length).toBe(en.length);
+      for (const g of en) {
+        const r = glossaryTerm(g.id, lang)!;
+        expect(r, `glossary/${g.id} ${lang}`).not.toBeNull();
+        expect(r.lang, `glossary/${g.id} ${lang} resolves in its own language`).toBe(lang);
+        expect(r.fallback).toBe(false);
+        // Headwords and cross-references are metadata shared by every language; only `meaning` is translated.
+        expect(r.item.term_dev).toBe(g.term_dev);
+        expect(r.item.term_lat).toBe(g.term_lat);
+        expect(r.item.related).toEqual(g.related);
+        expect(r.item.meaning).not.toBe(g.meaning);
+      }
+    }
+    // Rahu Kaal: the daytime-eighth wording of the rules corpus, respectful register, no Hindi verb in Bhojpuri.
+    const rahuHi = glossaryTerm('rahu-kaal', 'hi')!.item.meaning;
+    expect(rahuHi).toContain('दिनमान का आठवाँ भाग');
+    expect(rahuHi).toContain('नई शुरुआत');
+    const rahuBho = glossaryTerm('rahu-kaal', 'bho')!.item.meaning;
+    expect(rahuBho).toContain('दिनमान के आठवाँ हिस्सा');
+    expect(rahuBho).toContain('नया शुरुआत');
+    expect(rahuBho).not.toMatch(/(^|\s)(है|हैं)(\s|।)/);
+    // Degrees and digits stay Latin and keep the English notation.
+    for (const lang of LANGS) {
+      expect(glossaryTerm('tithi', lang)!.item.meaning).toContain('12°');
+      expect(glossaryTerm('krittika', lang)!.item.meaning).toContain("26°40'");
+      expect(glossaryTerm('sarvashtakavarga', lang)!.item.meaning).toContain('337');
+      expect(glossaryTerm('ayanamsa', lang)!.item.meaning).toContain('KP');
+      expect(glossaryTerm('ayanamsa', lang)!.item.meaning).toContain('लाहिरी');
+      expect(glossaryTerm('vakri', lang)!.item.meaning).toMatch(/\bR\b/);
+    }
+    // Festival and month cross-references follow the engine's own hi / bho tables (D10): दीपावली / दियरी, कार्तिक / कातिक.
+    const kartikHi = glossaryTerm('kartik', 'hi')!.item.meaning;
+    expect(kartikHi).toContain('दीपावली');
+    expect(kartikHi).toContain('करवा चौथ');
+    const kartikBho = glossaryTerm('kartik', 'bho')!.item.meaning;
+    expect(kartikBho).toContain('दियरी');
+    expect(kartikBho).toContain('करवा चउथ');
+    expect(glossaryTerm('navratri', 'bho')!.item.meaning).toContain('चइत आ आसिन');
+    expect(glossaryTerm('navratri', 'hi')!.item.meaning).toContain('चैत्र और आश्विन');
+    expect(glossaryTerm('makara', 'bho')!.item.meaning).toContain('खिचड़ी (मकर संक्रांति)');
+    // Karka keeps the English "Karkata, the crab" gloss in Devanagari (the Western sign name is on the forbidden list).
+    for (const lang of LANGS) expect(glossaryTerm('karka', lang)!.item.meaning).toContain('कर्कट, केकड़ा');
+    // Bhojpuri register: respectful plural for planets, UI weekday names, no Hindi pronoun.
+    expect(glossaryTerm('ashwini', 'bho')!.item.meaning).toContain('स्वामी केतु बाड़न');
+    expect(glossaryTerm('ravi-pushya', 'bho')!.item.meaning).toContain('एतवार');
+    expect(glossaryTerm('ravi-pushya', 'hi')!.item.meaning).toContain('रविवार');
+    expect(glossaryTerm('guru-pushya', 'bho')!.item.meaning).toContain('बियफे');
+    expect(glossaryTerm('chhath', 'bho')!.item.meaning).toContain(loadUi('bho')['vrat.chhath.sandhyaArghya']);
+    expect(glossaryTerm('chhath', 'hi')!.item.meaning).toContain('संध्या अर्घ्य');
   });
 
   it('every registered domain has an English master and only hi / bho translations', () => {
