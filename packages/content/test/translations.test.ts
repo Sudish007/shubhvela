@@ -802,7 +802,9 @@ describe('translated corpus files (hi / bho) mirror their English master', () =>
         expect(t).toContain(lang === 'hi' ? 'प्रायः' : 'अक्सर');
         if (/placement tends to show up as/.test(String(master.text))) expect(t, `${row.id} ${lang} keeps the placement frame`).toContain(lang === 'hi' ? 'यह स्थिति प्रायः' : 'ई स्थिति अक्सर');
         else expect(t, `${row.id} ${lang} cites the texts`).toContain(lang === 'hi' ? 'शास्त्रों में' : 'शास्त्र में');
-        expect(t).toContain(lang === 'hi' ? 'के लिए पढ़ा जाता है' : 'खातिर पढ़ल जाला');
+        // "It is read for how …" closes every record except sun-mesha, which ends on "The reflective question is …" (honestyMarkers).
+        if (/It is read for/.test(String(master.text))) expect(t).toContain(lang === 'hi' ? 'के लिए पढ़ा जाता है' : 'खातिर पढ़ल जाला');
+        else expect(t, `${row.id} ${lang} keeps the reflective question`).toContain(lang === 'hi' ? 'चिंतन का प्रश्न यह है कि' : 'सोच-विचार के सवाल ई बा कि');
         // These paragraphs describe the chart, not the reader: no second-person pronoun; bho carries no Hindi है / हैं.
         expect(t).not.toMatch(/राउर|रउआ|आपके|आपका|आपकी/);
         if (lang === 'bho') expect(t, `planet-sign/${row.id} bho`).not.toMatch(/(^|\s)(है|हैं)(\s|।|,|;)/);
@@ -823,6 +825,56 @@ describe('translated corpus files (hi / bho) mirror their English master', () =>
         const r = lookup('planet-sign', id, lang)!;
         expect(r, `${id} ${lang}`).not.toBeNull();
         expect(r.fallback).toBe(r.lang !== lang);
+      }
+    }
+  });
+
+  it('T16: planet-sign is complete in hi and bho; the Rahu records open with the north node and keep the three convention sentences apart, "Rahu amplifies" is one fixed clause, the Sun in Mesha closes on the reflective question, the Sun in Vrishabha names the natural enemy, and the exalted / debilitated / own frames hold for the Moon, Saturn, Sun and Venus', () => {
+    const en = CORPUS['planet-sign'].en!;
+    const enById = new Map(en.map((r) => [r.id, r]));
+    for (const lang of LANGS) {
+      const rows = CORPUS['planet-sign'][lang]!;
+      expect(rows.map((r) => r.id).sort(), `planet-sign/${lang} complete`).toEqual(en.map((r) => r.id).sort());
+      const ui = loadUi(lang);
+      const hi = lang === 'hi';
+      // Rahu: sheet-title opening with the north node as the glossary names it, the English convention sentence variant kept apart (D23), one fixed "Rahu amplifies" clause.
+      const CONVENTION: Array<[RegExp, string]> = hi
+        ? [[/this app assigns no sign dignity/, 'यह ऐप आम परंपरा के अनुसार पातों को कोई राशि बल-स्थिति नहीं देता'], [/no sign dignity is assigned to the nodes here/, 'यहाँ परंपरा के अनुसार पातों को कोई राशि बल-स्थिति नहीं दी जाती'], [/nodes carry no sign dignity in this app/, 'इस ऐप में परंपरा के अनुसार पातों पर कोई राशि बल-स्थिति नहीं लगती']]
+        : [[/this app assigns no sign dignity/, 'ई ऐप आम परंपरा के हिसाब से पात के कवनो राशि बल-स्थिति ना देला'], [/no sign dignity is assigned to the nodes here/, 'इहाँ परंपरा के हिसाब से पात के कवनो राशि बल-स्थिति ना दिहल जाला'], [/nodes carry no sign dignity in this app/, 'ई ऐप में परंपरा के हिसाब से पात पर कवनो राशि बल-स्थिति ना लागे']];
+      for (let i = 0; i < 12; i++) {
+        const id = `rahu-${signNames.en[i].toLowerCase()}`;
+        const master = enById.get(id)!;
+        const got = lookup('planet-sign', id, lang)!;
+        expect(got.lang, `${id} ${lang}`).toBe(lang);
+        expect(got.fallback).toBe(false);
+        expect(got.text.startsWith(hi ? `राहु ${signNames.hi[i]} में हैं, यानी उत्तरी चंद्र-पात` : `राहु ${signNames.bho[i]} में बाड़न, माने उत्तर ओर के चंद्र-पात`), `${id} ${lang} opens with the north node`).toBe(true);
+        const variant = CONVENTION.find(([re]) => re.test(String(master.text)));
+        expect(variant, `${id}: unknown English convention sentence`).toBeDefined();
+        expect(got.text, `${id} ${lang} convention sentence`).toContain(variant![1]);
+        if (/Rahu amplifies,/.test(String(master.text))) expect(got.text, `${id} ${lang} amplifies clause`).toContain(hi ? 'राहु जिसे छूते हैं उसे बढ़ा देते हैं, इसलिए यह स्थिति प्रायः' : 'राहु जेकरा छूवेलन ओकरा बढ़ा देलन, एह से ई स्थिति अक्सर');
+        else expect(got.text, `${id} ${lang} long amplifies clause`).toContain(hi ? 'राहु जिसे भी छूते हैं उसे बढ़ाने और अपरिचित बनाने के रूप में पढ़े जाते हैं' : 'राहु जेकरा भी छूवेलन ओकरा बढ़ावे आ अनजान बनावे के रूप में पढ़ल जालन');
+      }
+      // Sun in Mesha: the exalted frame in its "read by Parashara's dignity table" form, and the reflective question instead of "It is read for".
+      const sunMesha = lookup('planet-sign', 'sun-mesha', lang)!.text;
+      expect(sunMesha).toContain(hi ? 'अपनी उच्च राशि में हैं, जिसे पराशर की बल-स्थिति तालिका में सूर्य का पूरा बल पढ़ा जाता है' : 'आपन उच्च राशि में बाड़न, जेकरा पराशर के बल-स्थिति तालिका में सूर्य के पूरा बल पढ़ल जाला');
+      expect(sunMesha).toContain(hi ? 'चिंतन का प्रश्न यह है कि' : 'सोच-विचार के सवाल ई बा कि');
+      expect(sunMesha).not.toContain(hi ? 'के लिए पढ़ा जाता है' : 'खातिर पढ़ल जाला');
+      // Sun in Vrishabha: "a natural enemy in Parashara's table, so the tag reads enemy sign" (ui dignity.enemy).
+      expect(lookup('planet-sign', 'sun-vrishabha', lang)!.text).toContain(hi ? `जो पराशर की तालिका में नैसर्गिक शत्रु हैं, इसलिए टैग ${ui['dignity.enemy']} दिखाता है` : `जे पराशर के तालिका में नैसर्गिक शत्रु बाड़न, एह से टैग ${ui['dignity.enemy']} देखावेला`);
+      // Sun in Tula: "Classically this is read as …" and the placement frame in one record.
+      const sunTula = lookup('planet-sign', 'sun-tula', lang)!.text;
+      expect(sunTula).toContain(hi ? 'शास्त्रों में इसे इस रूप में पढ़ा जाता है कि' : 'शास्त्र में एकरा एह रूप में पढ़ल जाला कि');
+      expect(sunTula).toContain(hi ? 'यह स्थिति प्रायः' : 'ई स्थिति अक्सर');
+      // Exalted / debilitated frames keep the planet-sheet wording (dignity.exaltedDesc / debilitatedDesc) and name the opposite sign.
+      for (const [id, planet] of [['moon-vrishabha', 'Mo'], ['saturn-tula', 'Sa'], ['venus-meena', 'Ve']] as Array<[string, PlanetId]>) {
+        expect(lookup('planet-sign', id, lang)!.text, `${id} ${lang}`).toContain(hi ? `${ui['dignity.exaltedDesc']} हैं, जो पराशर की बल-स्थिति तालिका में ${planetNames.hi[planet]} का पूरा बल है` : `${ui['dignity.exaltedDesc']} बाड़न, जे पराशर के बल-स्थिति तालिका में ${planetNames.bho[planet]} के पूरा बल बा`);
+      }
+      for (const [id, opposite] of [['moon-vrishchika', 1], ['saturn-mesha', 6], ['sun-tula', 0], ['venus-kanya', 11]] as Array<[string, number]>) {
+        expect(lookup('planet-sign', id, lang)!.text, `${id} ${lang}`).toContain(hi ? `${ui['dignity.debilitatedDesc']} हैं, जो ${signNames.hi[opposite]} में उनकी उच्च राशि के ठीक सामने है` : `${ui['dignity.debilitatedDesc']} बाड़न, जे ${signNames.bho[opposite]} में उनकर उच्च राशि के ठीक सामने बा`);
+      }
+      // Own-sign frame names the sheet tag (dignity.own).
+      for (const id of ['saturn-kumbha', 'saturn-makara', 'sun-simha', 'venus-tula', 'venus-vrishabha']) {
+        expect(lookup('planet-sign', id, lang)!.text, `${id} ${lang}`).toContain(hi ? `अपनी ही राशि में हैं, इसलिए बल-स्थिति का टैग ${ui['dignity.own']} दिखाता है` : `आपन राशि में बाड़न, एह से बल-स्थिति के टैग ${ui['dignity.own']} देखावेला`);
       }
     }
   });
