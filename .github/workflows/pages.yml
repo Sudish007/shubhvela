@@ -1,0 +1,47 @@
+# Web companion -> GitHub Pages (spec D12/F41-F43; plan.md D01). Pages is configured with build_type "workflow" (A01), so
+# every push to main deploys; the monthly cron rolls the panchang/muhurat months forward (design.md 9); dispatch for a
+# manual rebuild. Pattern: Sudish007/ai-batkahi (checkout@v7, setup-node@v7, configure-pages@v6, upload-pages-artifact@v5,
+# deploy-pages@v5). The build runs the whole test suite first: nothing ships from a red tree.
+name: pages
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '23 3 1 * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  build:
+    name: build web/dist
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run web:build
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: web/dist
+  deploy:
+    name: deploy to github-pages
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

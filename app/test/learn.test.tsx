@@ -291,7 +291,7 @@ describe('C03 Learn tab', () => {
   it('Today arriving with ?sheet=panchang opens the panchang sheet once the model is ready and clears the param', async () => {
     (router.setParams as jest.Mock).mockClear();
     await renderWithProviders(<TodayScreen todayOptions={{ now }} sheet="panchang" />);
-    expect(screen.queryByTestId('panchang-header')).toBeNull();
+    // No "sheet still closed" pre-assertion here: the deferred open races renderWithProviders (C-REVIEW-MEDIUM-5).
     await screen.findByTestId('daily-note', {}, { timeout: 20000 });
     await screen.findByTestId('panchang-header', {}, { timeout: 20000 });
     expect(router.setParams).toHaveBeenCalledWith({ sheet: undefined });

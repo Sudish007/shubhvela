@@ -69,8 +69,10 @@ not set — `gh secret list` is empty, so the Hindi corpus is still English), 6 
    process. Placeholder until then: `grievance@shubhvela.in`; the consent notice and Settings →
    Privacy label it "provisional … confirmed before release". When the address is final, set it in
    `app/src/legal.ts` (`GRIEVANCE_EMAIL_PLACEHOLDER`) and flip `GRIEVANCE_EMAIL_CONFIRMED` to `true`
-   so the note disappears. The "Read the privacy policy" link targets `<webBase>/privacy/`, which
-   Phase D (D01) publishes; it is a 404 until then.
+   so the note disappears. The web pages read the same placeholder from `web/src/strings/<lang>.json`
+   (`site.grievanceEmail`, note `site.grievanceProvisional`): replace it in all three files at the same time.
+   The "Read the privacy policy" link targets `<webBase>/privacy/`, published by D01 (2026-10-29) together with
+   `/terms/` and `/data-deletion/`; each redirects to its English page and has hi/bho versions.
 9. **Share-code relay (deferred).** v1 ships QR + a 20-character typed code, fully offline.
    Decide later whether a Pro 8-character relay service is wanted.
 10. **Disk.** Keep at least 8 GB free on C: before build steps (Gradle + emulator). Candidates:

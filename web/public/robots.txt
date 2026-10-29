@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /*/m/
+Sitemap: https://sudish007.github.io/shubhvela/sitemap.xml
