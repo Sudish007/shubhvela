@@ -103,7 +103,7 @@ export function renderFestival(ctx, data, { entry }) {
       <img src="${href(ogImage)}" width="1200" height="630" alt="${esc(t('festival.shareAlt', { name, year }))}" loading="lazy">
       <div class="actions">
         <a class="btn" href="${href(ogImage)}" download="${esc(`shubhvela-${entry.slug}-${year}-${lang}.png`)}">${esc(t('festival.shareDownload'))}</a>
-        ${intentButton(ctx, { path: 'festival', query: `slug=${encodeURIComponent(entry.slug)}&year=${year}`, label: t('festival.openInApp') })}
+        ${intentButton(ctx, { path: `festival/${encodeURIComponent(entry.slug)}/${year}`, label: t('festival.openInApp') })}
         ${playButton(ctx, { primary: false })}
       </div>
       <p class="note">${esc(t('festival.appNote'))}</p>

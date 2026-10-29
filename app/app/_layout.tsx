@@ -88,6 +88,7 @@ function Navigator({ fontsReady }: { fontsReady: boolean }) {
         <Stack.Screen name="charts/ask/download" />
         <Stack.Screen name="charts/ask/chat" />
         {/* F37 deep links (C04): shubhvela://kundli, shubhvela://m, shubhvela://festival/<slug>/<year>, shubhvela://panchang/<city>. */}
+        <Stack.Screen name="open" />
         <Stack.Screen name="kundli" />
         <Stack.Screen name="m" />
         <Stack.Screen name="festival/[slug]/[year]" />

@@ -180,7 +180,8 @@ describe('page content', () => {
       expect(diwali).toContain('id="city-pick"');
       expect(diwali).toContain('id="whath"');
       expect(diwali).toContain(`/shubhvela/og/${lang}/festival/diwali-2026.png`);
-      expect(diwali).toContain('intent://festival?slug=diwali&amp;year=2026');
+      // design.md 3 / app deeplinks.ts: shubhvela://festival/<slug>/<year> (path form, never ?slug=&year=).
+      expect(diwali).toContain('intent://festival/diwali/2026#Intent;scheme=shubhvela;package=com.shubhvela.app;');
       expect(diwali).toContain('class="btn android-only"');
       expect(diwali).toContain('data-bundle="/shubhvela/assets/data-pages.');
       // Both the Purnimanta and the Amanta block are present (Diwali is kept in both systems).
