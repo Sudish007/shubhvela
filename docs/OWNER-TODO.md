@@ -105,3 +105,21 @@ not set — `gh secret list` is empty, so the Hindi corpus is still English), 6 
 - Not verified in Phase B (needs you or a device): live purchases/restore, real ad fill and the native ad card on a phone with Play,
   cross-device share-code scan, anything on a real arm64 device.
 - Phase C must pick up the review leftovers in `docs/verification/carry-over.md` ("Phase B review leftovers").
+
+## Status after Phase C (shipped 2026-10-29, tag `v0.3.0-phase-c`, release candidate)
+
+- Built and signed (local, gitignored): `release/Shubhvela-0.3.0-arm64.apk` (device, 94.6 MB) and
+  `release/Shubhvela-0.3.0-x86_64.apk` (emulator, screenshot mode, 105.0 MB). Phase C review verdict APPROVED (0 blocking, 6 medium, 7 nit);
+  details in `docs/verification/verification-phase-c.md` and `review-phase-c.md`. Release notes: `docs/RELEASE-NOTES.md`.
+- **KNOWN ISSUE DEV-1 (your report from a real phone):** the bottom tab bar can be hidden behind the phone's system navigation bar. The 0.3.0
+  APKs still carry it; the fix lands in the next build (step `c06-device-fixes`). Please report any further device findings the same way —
+  they are appended to `carry-over.md` as DEV-2, DEV-3 … and fixed together.
+- **Item 5 (`GEMINI_API_KEY`) is still not set** — `gh secret list --repo Sudish007/shubhvela` was empty on 2026-10-29. Until the secret exists and
+  the Action runs, the interpretive text (daily note, lesson bodies, Why? sheets, koota rules) is **English under Hindi/Bhojpuri chrome by fallback**
+  (hi → en, bho → hi → en). One dispatch now covers the Phase A + B + C English masters.
+- Still open: items 1 (name/domains), 2 (Instagram), 3 (Play Console products — needed before purchases can be tested), 4 (AdMob ids), 6 (Bhojpuri
+  review), 7 (keystore backup — do this now), 8 (grievance e-mail).
+- Not verified in Phase C (emulator only, see `verification-phase-c.md` §8): Gemma inference and the supported-device "Ask my chart" path, multi-day
+  Doze/WorkManager behaviour of the widgets, a real exact-alarm grant, Hindi/Bhojpuri TTS voices, live purchases, real ads, anything on an arm64 device.
+- Phase D must pick up the review leftovers in `docs/verification/carry-over.md` ("Phase C review leftovers") and the Yoni koota table
+  (B-REVIEW-MEDIUM-1 / C-M6) before any APK is called beta.

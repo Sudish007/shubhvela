@@ -1,0 +1,84 @@
+{
+  "verdict": "APPROVED",
+  "findings": [
+    {
+      "severity": "MEDIUM",
+      "title": "Small widget names span reasons that are not yet active",
+      "detail": "At 03:32 the small widget reads 'Labh · Brahma muhurat · next: Udveg 04:37' while the engine's Brahma muhurta (2/15 -> 1/15 of the 767-min night before 06:13) starts 04:31. WidgetUpdater.currentSegmentName() (app/android/app/src/main/java/com/shubhvela/app/widgets/WidgetUpdater.kt:54-56) joins every span.reasons[].name; filter to reasons with start <= now < end (fall back to the choghadiya covering now). Seen on home-widgets-{en,hi,bho}-*.",
+      "feature": "F9"
+    },
+    {
+      "severity": "MEDIUM",
+      "title": "'Exact widget updates' copy says 2 minutes; Android 12+ gives 10",
+      "detail": "settings.exactAlarmsBody (ui/en|hi|bho.json) says 'Without it the change can be up to 2 minutes late', but the OS stretched the 2-min setWindow to 10 min (verification-c05.md §4.4 window=+10m0s0ms; WidgetScheduler.kt:22 comment). Reword to the real bound ('up to 10 minutes late on Android 12 and newer') in all three languages.",
+      "feature": "F9"
+    },
+    {
+      "severity": "MEDIUM",
+      "title": "TTS failure notice has no link to Android TTS settings",
+      "detail": "app/src/today/DailyNoteCard.tsx:162-166: status 'error' renders tts.failed only; the 'Open TTS settings' TextButton exists only in the noVoice branch. On the emulator (and on phones where Google TTS advertises an uninstalled hi-IN network voice) pickVoice succeeds and synthesis fails, so Hindi/Bhojpuri users see 'नोट सुनाया नहीं जा सका' with no way to install voice data (tts-listen-hi-light-390). Design 11 row 'TTS: notice + link to TTS settings': add the link to the error branch (and consider treating a synthesis failure as noVoice).",
+      "feature": "F10"
+    },
+    {
+      "severity": "MEDIUM",
+      "title": "Deeper Why? text exists only in the koota domain",
+      "detail": "Lesson completion unlocks corpus level 2 (Pro 3), but only corpus/koota carries level-2/3 snippets (8 explanations), so the unlock is visible only on matching results (match-why-varna-level1 vs level2) and lessons 2-21 unlock nothing further for a free reader. Author level-2 English snippets for the daily, planet-sign/house and yoga domains so each lesson block unlocks text on the screens it teaches (D content step; hi/bho follow via the owner's Gemini dispatch).",
+      "feature": "F32"
+    },
+    {
+      "severity": "MEDIUM",
+      "title": "Flaky Jest test in app/test/learn.test.tsx",
+      "detail": "'Today arriving with ?sheet=panchang opens the panchang sheet once the model is ready and clears the param' failed in 1 of 2 full `npm test` runs (passed isolated and in run 2): expect(queryByTestId('panchang-header')).toBeNull() right after renderWithProviders races the deferred sheet open under load. Drop the pre-assertion or use fake timers; ci.yml would otherwise fail intermittently.",
+      "feature": "F32"
+    },
+    {
+      "severity": "MEDIUM",
+      "title": "Matching suite 14/20 exact (Yoni table unsourced) — Phase D release gate",
+      "detail": "Restates B-REVIEW-MEDIUM-1: six koota-yoni@mXX convention keys remain in reference/CONVENTIONS.md because Drik's five-level Yoni table is not sourced. Spec §6 requires exact guna totals before any APK is called beta: source the table or record the owner's acceptance in CONVENTIONS and docs/OWNER-TODO.md before the Phase D gate. Never type a table from memory.",
+      "feature": "F29"
+    },
+    {
+      "severity": "NIT",
+      "title": "Widget picker shows the description twice and a blank preview",
+      "detail": "AndroidManifest receivers use @string/widget_*_description as android:label, so the pin dialog prints the description as the title (truncated) and again below (widget-pin-dialog-medium-en-light); previewLayout=@layout/widget_medium is the live layout with an empty ImageView, so the preview card is blank. Add short labels ('Good hours · medium/small') and a preview layout or previewImage.",
+      "feature": "F9"
+    },
+    {
+      "severity": "NIT",
+      "title": "Journal month dot initials collide (Bright/Busy = 'B')",
+      "detail": "journal-month-en-light-390: 23 Oct Bright and 26 Oct Busy both show 'B'; the full word is only in the accessibility label. Use two letters or a distinct word-derived mark per mood (no emoji).",
+      "feature": "F34"
+    },
+    {
+      "severity": "NIT",
+      "title": "Medium widget Now line prints the hora planet without 'hora'",
+      "detail": "Widget: 'Now 03:32 · Good · Labh · Mercury · next: Udveg 04:37'; app Now line: 'Labh choghadiya · Mercury hora'. Add the word (C01 recorded the deviation) so the two read alike in en/hi/bho.",
+      "feature": "F9"
+    },
+    {
+      "severity": "NIT",
+      "title": "Deep-link /m payload labelled 'Scanned code'",
+      "detail": "deeplink-m-en-light-390: side B reads 'Scanned code · 9J9G-8E2T-9V7J-8PXD-8000' although the payload arrived via shubhvela://m. Use 'From a link' (or a neutral 'Code') when the source is a deep link.",
+      "feature": "F37"
+    },
+    {
+      "severity": "NIT",
+      "title": "Docs name a Gradle task that does not exist",
+      "detail": "plan.md C01/C05, FEAT-C01/C05 and the ship checklist say `:app:testReleaseUnitTest`; this AGP generates only `:app:testDebugUnitTest` (verified here: 'Cannot locate tasks that match'). Update the docs copies so d-ship runs the task that exists.",
+      "feature": "F9"
+    },
+    {
+      "severity": "NIT",
+      "title": "Vargas/Varshaphal/calculation footers changed by 6b76091 not re-shot",
+      "detail": "nodeWord() also changed app/app/charts/vargas.tsx, varshaphal.tsx and settings/calculation.tsx; only Prashna and KP footers were re-shot (prashna-reading-*, kp-footer-*). Re-shoot the Vargas sheet and Varshaphal footers once in the Phase D audit.",
+      "feature": "F12"
+    },
+    {
+      "severity": "NIT",
+      "title": "Phase A/B leftovers still open, re-owned to Phase D",
+      "detail": "A-REVIEW-MEDIUM-3 (hi corpus — owner GEMINI_API_KEY), A-REVIEW-MEDIUM-4 (grievance address — D01/D04), A-REVIEW-NIT-3 (Sheetala Ashtami 2028 — D01), B-REVIEW-NIT-1 (name_hi — D01), B-REVIEW-NIT-4 (native ad pixels — device), B-REVIEW-NIT-5 (verification-b08 doc wording — ship), B-REVIEW-NIT-7 (muhurat location mode — D polish), B-REVIEW-NIT-8 (cross-instance share code — D01 /m/).",
+      "feature": "F1"
+    }
+  ],
+  "reviewDoc": "c:/Users/sudiskmr/Downloads/DomainClassification/shubhvela/.agents/tasks/v1-build/review-phase-c.md"
+}
