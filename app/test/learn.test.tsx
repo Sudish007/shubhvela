@@ -6,7 +6,7 @@
 // numbers and dasha hairlines; the legend says "for reflection, not proof" and "proof" appears nowhere else; banner policy
 // LearnRoot/GlossaryList vs reader/journal; +30 % pseudo-locale snapshots of the lesson list and the journal.
 import { act, fireEvent, screen } from '@testing-library/react-native';
-import { LESSON_PLACEHOLDERS, lessonPlaceholders, loadGlossary, loadLessons, lookup, renderLesson } from '@shubhvela/content';
+import { LESSON_PLACEHOLDERS, glossaryTerm, lessonPlaceholders, loadGlossary, loadLessons, lookup, renderLesson } from '@shubhvela/content';
 import { changesBetween, DAY_MS, localDateOf, sadeSati, TARA_KEYS } from '@shubhvela/engine';
 import { router } from 'expo-router';
 import { PixelRatio, ScrollView } from 'react-native';
@@ -369,9 +369,18 @@ describe('C03 Learn tab', () => {
     for (const l of lessonsUsing) expect(screen.getByTestId(`glossary-lesson-${l.id}`)).toBeTruthy();
     await fireEvent.press(screen.getByTestId(`glossary-lesson-${lessonsUsing[0].id}`));
     expect(router.push).toHaveBeenCalledWith(`/learn/lesson/${lessonsUsing[0].id}`);
-    // Three languages: Hindi/Bhojpuri meanings appear only when their own text exists (no hi/bho glossary yet -> none, honest).
-    expect(otherLanguageMeanings('lagna', 'en')).toEqual([]);
-    expect(screen.queryByTestId('glossary-meaning-hi')).toBeNull();
+    // Three languages: a Hindi/Bhojpuri meaning appears only when its OWN text exists (not the English fallback) and
+    // differs from the shown one; the expectation is derived from the corpus so it holds before and after the hi/bho
+    // glossary files land (corpus-translate run).
+    const expectedOthers = (['hi', 'bho'] as const).filter((l) => {
+      const r = glossaryTerm('lagna', l);
+      return r && !r.fallback && r.item.meaning !== g.meaning;
+    });
+    expect(otherLanguageMeanings('lagna', 'en').map((o) => o.lang)).toEqual(expectedOthers);
+    for (const l of ['hi', 'bho'] as const) {
+      if (expectedOthers.includes(l)) expect(screen.getByTestId(`glossary-meaning-${l}`)).toBeTruthy();
+      else expect(screen.queryByTestId(`glossary-meaning-${l}`)).toBeNull();
+    }
     // Unknown id -> honest message, not a blank page.
     await renderWithProviders(<GlossaryDetail id="no-such-term" />);
     expect(screen.getByTestId('glossary-missing')).toBeTruthy();
