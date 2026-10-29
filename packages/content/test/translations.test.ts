@@ -198,6 +198,45 @@ describe('translated corpus files (hi / bho) mirror their English master', () =>
     }
   });
 
+  it('T05: festivals is complete in hi and bho; every slug resolves in its own language with the engine name, the convention-note templates and the Ekadashi parana wording', () => {
+    const en = FESTIVALS.en!;
+    for (const lang of LANGS) {
+      expect(FESTIVALS[lang]!.map((r) => r.id).sort(), `festivals/${lang} complete`).toEqual(en.map((r) => r.id).sort());
+      for (const f of en) {
+        const r = festivalText(f.slug, lang)!;
+        expect(r, `${f.slug} ${lang}`).not.toBeNull();
+        expect(r.lang, `${f.slug} ${lang} resolves in its own language`).toBe(lang);
+        expect(r.fallback).toBe(false);
+      }
+    }
+    // Makar Sankranti: the Bhojpuri name is the engine's खिचड़ी (मकर संक्रांति); the solar rule has no Purnimanta/Amanta difference.
+    const sankrantiBho = festivalText('makar-sankranti', 'bho')!;
+    expect(sankrantiBho.item.name).toBe('खिचड़ी (मकर संक्रांति)');
+    expect(sankrantiBho.item.what).toContain('निरयण मकर राशि');
+    expect(sankrantiBho.item.conventionNote).toContain('सौर नियम');
+    expect(festivalText('makar-sankranti', 'hi')!.item.conventionNote).toContain('15 जनवरी');
+    // Pongal shares the sankranti moment; the Tamil names stay in Devanagari and the South-region note is kept.
+    expect(festivalText('pongal', 'hi')!.item.what).toContain('पोंगलो पोंगल');
+    expect(festivalText('pongal', 'bho')!.item.conventionNote).toContain('दक्खिन क्षेत्र');
+    // Raksha Bandhan: engine name राखी (रक्षाबंधन) in Bhojpuri, the Bhadra exception named in both languages.
+    const rakhiBho = festivalText('raksha-bandhan', 'bho')!;
+    expect(rakhiBho.item.name).toBe('राखी (रक्षाबंधन)');
+    expect(rakhiBho.item.conventionNote).toContain('भद्रा');
+    expect(rakhiBho.item.what).not.toMatch(/(^|\s)(है|हैं)(\s|।)/);
+    expect(festivalText('raksha-bandhan', 'hi')!.item.conventionNote).toContain('निर्णय सिंधु');
+    // Ekadashi records keep the parana / Hari Vasara wording and the Smarta-Vaishnava convention line in each language.
+    const nirjalaHi = festivalText('nirjala-ekadashi', 'hi')!;
+    expect(nirjalaHi.item.what).toContain('पारण');
+    expect(nirjalaHi.item.conventionNote).toContain('स्मार्त और वैष्णव');
+    const nirjalaBho = festivalText('nirjala-ekadashi', 'bho')!;
+    expect(nirjalaBho.item.what).toContain('पारन');
+    expect(nirjalaBho.item.conventionNote).toContain('हरि वासर');
+    expect(nirjalaBho.item.conventionNote).toContain('स्मार्त आ वैष्णव');
+    // Vat Savitri: the Bhojpuri engine name बरसाइत; the Hindi note cross-references Vat Purnima.
+    expect(festivalText('vat-savitri', 'bho')!.item.name).toBe('बरसाइत (वट सावित्री)');
+    expect(festivalText('vat-savitri', 'hi')!.item.conventionNote).toContain('वट पूर्णिमा');
+  });
+
   it('every registered domain has an English master and only hi / bho translations', () => {
     for (const t of TABLES) {
       expect(t.rows.en, `${t.domain} has no en`).toBeDefined();
