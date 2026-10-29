@@ -8,6 +8,8 @@ import en from '../ui/en.json';
 import hi from '../ui/hi.json';
 import bho from '../ui/bho.json';
 import rulesEn from '../corpus/rules/en.json';
+import rulesHi from '../corpus/rules/hi.json';
+import rulesBho from '../corpus/rules/bho.json';
 import planetSignEn from '../corpus/planet-sign/en.json';
 import planetHouseEn from '../corpus/planet-house/en.json';
 import dignityEn from '../corpus/dignity/en.json';
@@ -38,7 +40,8 @@ export const UI: Record<ContentLanguage, UiStrings> = {
 };
 
 export const CORPUS: Record<string, Partial<Record<ContentLanguage, Snippet[]>>> = {
-  rules: { en: rulesEn as Snippet[] },
+  // rules hi/bho land in two slices (corpus-translate T02: ids 1-159 sorted, T03: the rest); ruleText falls back per id.
+  rules: { en: rulesEn as Snippet[], hi: rulesHi as Snippet[], bho: rulesBho as Snippet[] },
   // A06: ids are `<planet>-<sign>` / `<planet>-<house>` with the lowercase English names of the engine locale tables
   // (sun, moon, mars, mercury, jupiter, venus, saturn, rahu, ketu; mesha ... meena), and the engine DignityTag names.
   'planet-sign': { en: planetSignEn as Snippet[] },

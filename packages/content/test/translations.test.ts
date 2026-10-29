@@ -7,7 +7,7 @@
 import { describe, expect, it } from 'vitest';
 import { LATIN_ALLOWLIST } from '../../content-tools/src/forbidden';
 import { CORPUS, FESTIVALS, GLOSSARY, LESSONS } from '../src/registry';
-import { festivalText, glossaryTerm, lookup, lesson, type ContentLanguage } from '../src/index';
+import { festivalText, glossaryTerm, loadUi, lookup, lesson, ruleText, type ContentLanguage } from '../src/index';
 
 type Row = Record<string, unknown> & { id: string };
 type Lang = Exclude<ContentLanguage, 'en'>;
@@ -79,6 +79,46 @@ describe('translated corpus files (hi / bho) mirror their English master', () =>
     expect(third.text).toContain('{since}');
     expect(third.text).toContain('{until}');
     expect(third.text).not.toMatch(/राउर|रउआ/);
+  });
+
+  it('T02: the rules slice is registered in hi and bho with one id set, ruleText resolves a translated id in its own language and an untranslated id along the chain', () => {
+    const en = CORPUS.rules.en!;
+    const hi = CORPUS.rules.hi!;
+    const bho = CORPUS.rules.bho!;
+    expect(hi.length).toBeGreaterThanOrEqual(159);
+    expect(hi.length).toBeLessThanOrEqual(en.length);
+    expect(bho.map((r) => r.id).sort(), 'rules hi and bho carry the same slice').toEqual(hi.map((r) => r.id).sort());
+    // Festival rule sentences name the festival as the engine's own hi / bho table does (the reader sees both on one card).
+    const diwaliHi = ruleText('festival-diwali', 'hi')!;
+    expect(diwaliHi.lang).toBe('hi');
+    expect(diwaliHi.fallback).toBe(false);
+    expect(diwaliHi.text).toContain('दीपावली');
+    const diwaliBho = ruleText('festival-diwali', 'bho')!;
+    expect(diwaliBho.lang).toBe('bho');
+    expect(diwaliBho.fallback).toBe(false);
+    expect(diwaliBho.text).toContain('दियरी');
+    expect(diwaliBho.text).toContain('कातिक कृष्ण अमावस्या');
+    // The Ask-my-chart label rule quotes the fixed UI line of the same language (completeness.test.ts pins the English one).
+    for (const lang of LANGS) {
+      const label = ruleText('ask-label', lang)!;
+      expect(label.lang).toBe(lang);
+      expect(label.fallback).toBe(false);
+      expect(label.text).toContain(loadUi(lang)['ask.label']);
+    }
+    const bhadra = ruleText('bhadra', 'bho')!;
+    expect(bhadra.lang).toBe('bho');
+    expect(bhadra.text).toContain('विष्टि करण');
+    expect(bhadra.text).toContain('मेष, वृषभ, मिथुन भा वृश्चिक');
+    // Ids outside the integrated slice resolve further down the chain (bho -> hi -> en) and say so.
+    const translated = new Set(hi.map((r) => r.id));
+    const pending = en.map((r) => r.id).filter((id) => !translated.has(id));
+    for (const id of pending.slice(0, 20)) {
+      for (const lang of LANGS) {
+        const r = ruleText(id, lang)!;
+        expect(r, `${id} ${lang}`).not.toBeNull();
+        expect(r.fallback).toBe(r.lang !== lang);
+      }
+    }
   });
 
   it('every registered domain has an English master and only hi / bho translations', () => {
