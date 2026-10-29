@@ -12,8 +12,10 @@ Local build outputs and the release signing material. Only this README is commit
 | `shubhvela-release.keystore` | no | release signing key (PKCS12, alias `shubhvela`, RSA 2048, valid 10000 days) |
 | `KEYSTORE-INFO.txt` | no | one `key : value` line each for keystore path, alias, store password, key password and creation date; read by `scripts/build-apk.ps1` |
 
-`<version>` is `expo.version` from `app/app.json` (0.1.0 for Phase A, 0.2.0 B, 0.3.0 C, 1.0.0 D) and must
-equal `versionName` in `app/android/app/build.gradle`.
+`<version>` is `expo.version` from `app/app.json` (0.1.0 for Phase A, 0.2.0 B, 0.3.0 C, 0.3.1 the DEV-1
+navigation-bar hotfix for the owner's phone, 1.0.0 D) and must equal `versionName` in
+`app/android/app/build.gradle`. The 0.3.0 arm64 APK has the tab bar under the system navigation bar (DEV-1);
+install 0.3.1 or later on devices.
 
 ## Signing flow
 

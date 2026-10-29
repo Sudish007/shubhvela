@@ -3,14 +3,14 @@
     "name": "Shubhvela",
     "slug": "shubhvela",
     "scheme": "shubhvela",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
     "platforms": ["android"],
     "android": {
       "package": "com.shubhvela.app",
-      "versionCode": 3,
+      "versionCode": 4,
       "predictiveBackGestureEnabled": false,
       "adaptiveIcon": {
         "backgroundColor": "#FAF7F2",
