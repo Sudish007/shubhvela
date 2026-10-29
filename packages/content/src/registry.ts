@@ -1,6 +1,8 @@
 // Static registry of every bundled JSON file. Add a line here when a corpus file lands (English masters in
-// A06-A08 / B02 / C02; hi drafts after the owner dispatches the corpus-translate Action — no bho corpus files ever,
-// owner decision 2026-10-25; load.ts resolves bho -> hi -> en). Nothing else in the package knows paths.
+// A06-A08 / B02 / C02; hi + bho files are agent-written translations of the English master, owner decision 2026-10-29,
+// one `hi:` / `bho:` key per table as each domain lands — see .agents/tasks/corpus-translate and
+// docs/CONTENT-TRANSLATION.md; load.ts resolves bho -> hi -> en per id, so a partial file is fine). Nothing else in the
+// package knows paths.
 import type { ContentLanguage, FestivalText, GlossaryEntry, Lesson, NaamkaranNames, Snippet, UiStrings } from './types';
 import en from '../ui/en.json';
 import hi from '../ui/hi.json';
@@ -14,6 +16,8 @@ import nakshatraPadaEn from '../corpus/nakshatra-pada/en.json';
 import dashaPairsEn from '../corpus/dasha-pairs/en.json';
 import transitEn from '../corpus/transit/en.json';
 import dailyEn from '../corpus/daily/en.json';
+import dailyHi from '../corpus/daily/hi.json';
+import dailyBho from '../corpus/daily/bho.json';
 import vratsEn from '../corpus/vrats/en.json';
 import festivalsEn from '../corpus/festivals/en.json';
 import glossaryEn from '../corpus/glossary/en.json';
@@ -23,6 +27,8 @@ import mangalEn from '../corpus/mangal/en.json';
 import muhuratActivitiesEn from '../corpus/muhurat-activities/en.json';
 import naamkaranNamesEn from '../corpus/naamkaran-names/en.json';
 import dailyThirdEn from '../corpus/daily-third/en.json';
+import dailyThirdHi from '../corpus/daily-third/hi.json';
+import dailyThirdBho from '../corpus/daily-third/bho.json';
 import lessonsEn from '../corpus/lessons/en.json';
 
 export const UI: Record<ContentLanguage, UiStrings> = {
@@ -46,7 +52,7 @@ export const CORPUS: Record<string, Partial<Record<ContentLanguage, Snippet[]>>>
   'nakshatra-pada': { en: nakshatraPadaEn as Snippet[] },
   'dasha-pairs': { en: dashaPairsEn as Snippet[] },
   transit: { en: transitEn as Snippet[] },
-  daily: { en: dailyEn as Snippet[] },
+  daily: { en: dailyEn as Snippet[], hi: dailyHi as Snippet[], bho: dailyBho as Snippet[] },
   // A08: vrats = one snippet per engine VratFamily with the engine ruleId as id (vrat-ekadashi ... vrat-satyanarayan);
   // `rule` is the timing sentence (same as corpus/rules), `text` the what-to-do paragraph.
   vrats: { en: vratsEn as Snippet[] },
@@ -62,7 +68,7 @@ export const CORPUS: Record<string, Partial<Record<ContentLanguage, Snippet[]>>>
   // C02 (carry-over B-REVIEW-MEDIUM-2): third-person variants of the 32 `daily` fragments that address the reader
   // ("your birth Moon"), same ids, params = ['name', ...daily params]. Family Today renders
   // lookup('daily-third', id, lang) ?? lookup('daily', id, lang) for profiles that are not the self profile.
-  'daily-third': { en: dailyThirdEn as Snippet[] },
+  'daily-third': { en: dailyThirdEn as Snippet[], hi: dailyThirdHi as Snippet[], bho: dailyThirdBho as Snippet[] },
 };
 
 /** Lessons (schema/lesson.schema.json): lesson-01 .. lesson-21, bodies with {placeholders} from LESSON_PLACEHOLDERS (src/lessons.ts). hi/bho drafts arrive from the corpus-translate Action (batch C, one lesson per request). */

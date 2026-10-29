@@ -177,8 +177,11 @@ describe('daily-third/en.json (Family Today third-person variants)', () => {
       expect(s.text, s.id).toContain('{name}');
       expect(s.text, s.id).not.toMatch(/\b(you|your|yours|yourself)\b/i);
     }
+    // Resolves on the chain bho -> hi -> en; the flag names whether the requested language was the one served
+    // (translations.test.ts asserts lang 'bho' / fallback false once corpus/daily-third/bho.json is registered).
     const r = lookup('daily-third', 'chandra-bala-8', 'bho');
-    expect(r?.text).toContain("{name}'s birth Moon");
-    expect(r?.fallback).toBe(true);
+    expect(r?.text).toContain('{name}');
+    expect(r?.fallback).toBe(r?.lang !== 'bho');
+    if (r?.lang === 'en') expect(r.text).toContain("{name}'s birth Moon");
   });
 });

@@ -55,6 +55,32 @@ function checkString(where: string, en: string, tr: string, bad: string[]): void
 const WHOLE_FILE_DOMAINS = new Set(['glossary', 'lessons']);
 
 describe('translated corpus files (hi / bho) mirror their English master', () => {
+  it('T01: daily and daily-third are complete in hi and bho and resolve in the requested language with fallback false', () => {
+    for (const domain of ['daily', 'daily-third']) {
+      const en = CORPUS[domain].en!;
+      for (const lang of LANGS) {
+        const rows = CORPUS[domain][lang];
+        expect(rows, `${domain}/${lang} registered`).toBeDefined();
+        expect(rows!.map((r) => r.id).sort(), `${domain}/${lang} complete`).toEqual(en.map((r) => r.id).sort());
+      }
+    }
+    const hi = lookup('daily', 'chandra-bala-8', 'hi')!;
+    expect(hi.lang).toBe('hi');
+    expect(hi.fallback).toBe(false);
+    expect(hi.text).toContain('चंद्राष्टम');
+    const bho = lookup('daily', 'chandra-bala-8', 'bho')!;
+    expect(bho.lang).toBe('bho');
+    expect(bho.fallback).toBe(false);
+    expect(bho.text).toContain('राउर जनम-चंद्र');
+    const third = lookup('daily-third', 'sade-sati-phase-2', 'bho')!;
+    expect(third.lang).toBe('bho');
+    expect(third.fallback).toBe(false);
+    expect(third.text).toContain('{name}');
+    expect(third.text).toContain('{since}');
+    expect(third.text).toContain('{until}');
+    expect(third.text).not.toMatch(/राउर|रउआ/);
+  });
+
   it('every registered domain has an English master and only hi / bho translations', () => {
     for (const t of TABLES) {
       expect(t.rows.en, `${t.domain} has no en`).toBeDefined();
