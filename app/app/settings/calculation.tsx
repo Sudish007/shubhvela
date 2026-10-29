@@ -7,7 +7,7 @@ import { Card, RadioRow, Screen, Txt } from '../../src/components';
 import { getSetting, setSetting } from '../../src/db/settings';
 import { recomputeAllCharts } from '../../src/engine-bridge/charts';
 import { useLang } from '../../src/i18n';
-import { AYANAMSA_KEY, NODE_KEY, shortValue } from '../../src/settingsLabels';
+import { AYANAMSA_KEY, NODE_KEY, nodeWord, shortValue } from '../../src/settingsLabels';
 import type { Ayanamsa, NodeMode } from '@shubhvela/engine';
 
 const AYANAMSAS: readonly Ayanamsa[] = ['lahiri', 'kp', 'raman'];
@@ -62,7 +62,7 @@ export default function CalculationScreen() {
               recomputeAllCharts();
               setNode(n);
               // The adjective alone ("mean" / "true", "मध्यम" / "स्पष्ट"): the first word of the node label in every language.
-              const msg = t('charts.recomputedNode', { node: shortValue(t(NODE_KEY[n])).split(' ')[0].toLowerCase() });
+              const msg = t('charts.recomputedNode', { node: nodeWord(t(NODE_KEY[n])) });
               setLastToast(msg);
               showRecomputedToast(msg);
             }}

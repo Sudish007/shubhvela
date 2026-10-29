@@ -14,7 +14,7 @@ import { useFeatureAccess } from '../../src/charts/unlockState';
 import { getSetting } from '../../src/db/settings';
 import { kpFor, rulingPlanetsFor } from '../../src/engine-bridge/charts';
 import { useLang, type Lang } from '../../src/i18n';
-import { NODE_KEY, shortValue } from '../../src/settingsLabels';
+import { NODE_KEY, nodeWord } from '../../src/settingsLabels';
 import { useTokens } from '../../src/theme/ThemeProvider';
 import { fmtDayTime } from '../../src/today/format';
 
@@ -265,7 +265,7 @@ export default function KpScreen({ now, profileId }: KpScreenProps) {
       </Card>
 
       <Txt kind="caption" color="ink3" testID="kp-how">
-        {t('kp.howComputed', { ayanamsa: 'KP', value: `${report.ayanamsaDegrees.toFixed(4)}°`, node: shortValue(t(NODE_KEY[getSetting('node')])).toLowerCase(), tz: report.tz })}
+        {t('kp.howComputed', { ayanamsa: 'KP', value: `${report.ayanamsaDegrees.toFixed(4)}°`, node: nodeWord(t(NODE_KEY[getSetting('node')])), tz: report.tz })}
       </Txt>
     </Screen>
   );

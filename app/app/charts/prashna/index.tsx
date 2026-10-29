@@ -21,7 +21,7 @@ import { getSelfProfile } from '../../../src/db/profiles';
 import { getSetting } from '../../../src/db/settings';
 import { useLang } from '../../../src/i18n';
 import type { DeviceFix } from '../../../src/location/gps';
-import { AYANAMSA_KEY, CHART_STYLE_KEY, NODE_KEY, shortValue } from '../../../src/settingsLabels';
+import { AYANAMSA_KEY, CHART_STYLE_KEY, NODE_KEY, nodeWord, shortValue } from '../../../src/settingsLabels';
 import { fmtDate, fmtTime } from '../../../src/today/format';
 import { RichText } from '../../../src/today/RichText';
 
@@ -112,7 +112,7 @@ export default function PrashnaScreen({ now, profileId, entryId, chartWidth, fix
   const width = chartWidth ?? measured ?? DEFAULT_CHART_WIDTH;
   const reading = shown?.reading ?? null;
   const ayanamsaLabel = reading ? shortValue(t(AYANAMSA_KEY[reading.chart.meta.ayanamsa])) : '';
-  const nodeLabel = reading ? shortValue(t(NODE_KEY[reading.chart.meta.node])) : '';
+  const nodeLabel = reading ? nodeWord(t(NODE_KEY[reading.chart.meta.node])) : '';
 
   return (
     <Screen title={t('prashna.title')} chrome="stack" subtitle={<Txt kind="caption" color="ink2">{t('prashna.rowBody')}</Txt>} testID="prashna-screen">
@@ -163,7 +163,7 @@ export default function PrashnaScreen({ now, profileId, entryId, chartWidth, fix
 
       {reading ? (
         <Txt kind="caption" color="ink3" testID="prashna-how">
-          {t('prashna.howComputed', { time: fmtTime(reading.utcMs, reading.observer.tz), lat: reading.observer.lat.toFixed(2), lon: reading.observer.lon.toFixed(2), tz: reading.observer.tz, ayanamsa: ayanamsaLabel, node: nodeLabel.toLowerCase() })}
+          {t('prashna.howComputed', { time: fmtTime(reading.utcMs, reading.observer.tz), lat: reading.observer.lat.toFixed(2), lon: reading.observer.lon.toFixed(2), tz: reading.observer.tz, ayanamsa: ayanamsaLabel, node: nodeLabel })}
         </Txt>
       ) : null}
 

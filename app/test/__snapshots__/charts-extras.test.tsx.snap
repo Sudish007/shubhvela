@@ -10083,7 +10083,7 @@ exports[`B04 charts extras pseudo-locale +30 % (en): the vargas sheet and the KP
           }
           testID="kp-how"
         >
-          How this was computed: Placidus cusps in the tropical frame reduced by the KP ayanamsa (23.7353°); sign, star, sub and sub-sub lords by Vimshottari proportions; mean node (default) xxxxx node; times in Asia/Kolkata. xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+          How this was computed: Placidus cusps in the tropical frame reduced by the KP ayanamsa (23.7353°); sign, star, sub and sub-sub lords by Vimshottari proportions; mean node; times in Asia/Kolkata. xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
         </Text>
       </View>
     </RCTScrollView>

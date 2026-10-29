@@ -16,7 +16,7 @@ import { useFeatureAccess } from '../../src/charts/unlockState';
 import { getSetting } from '../../src/db/settings';
 import { chartFor } from '../../src/engine-bridge/charts';
 import { useLang } from '../../src/i18n';
-import { AYANAMSA_KEY, CHART_STYLE_KEY, NODE_KEY, shortValue } from '../../src/settingsLabels';
+import { AYANAMSA_KEY, CHART_STYLE_KEY, NODE_KEY, nodeWord, shortValue } from '../../src/settingsLabels';
 import { useTokens } from '../../src/theme/ThemeProvider';
 
 export interface VargasScreenProps {
@@ -131,7 +131,7 @@ export default function VargasScreen({ now, profileId, varga: vargaProp, chartWi
       </Card>
 
       <Txt kind="caption" color="ink3" testID="vargas-how">
-        {t('vargas.howComputed', { id, name: info.name, n: info.divisor, ayanamsa: ayanamsaLabel, node: nodeLabel.toLowerCase() })}
+        {t('vargas.howComputed', { id, name: info.name, n: info.divisor, ayanamsa: ayanamsaLabel, node: nodeWord(nodeLabel) })}
       </Txt>
     </Screen>
   );

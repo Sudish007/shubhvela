@@ -14,3 +14,10 @@ export const NODE_KEY: Record<NodeMode, string> = { mean: 'settings.nodes.mean',
 export function shortValue(label: string): string {
   return label.replace(/\s*\([^)]*\)\s*$/, '');
 }
+/**
+ * "Mean node (default)" -> "mean", "मध्यम राहु (डिफ़ॉल्ट)" -> "मध्यम": the mode word alone, for `{node}` slots whose
+ * sentence already says "node" / "राहु" ("… {node} node, …"). c-fix: the full label there read "mean node node".
+ */
+export function nodeWord(label: string): string {
+  return shortValue(label).split(' ')[0].toLowerCase();
+}

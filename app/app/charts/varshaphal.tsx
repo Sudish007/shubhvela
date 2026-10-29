@@ -19,7 +19,7 @@ import { chartFor, varshaphalFor, vedicYearAt } from '../../src/engine-bridge/ch
 import { useLang } from '../../src/i18n';
 import { getPermissionState, requestPermission, type PermissionState } from '../../src/notifications/permissions';
 import { replanAll } from '../../src/notifications/schedule';
-import { AYANAMSA_KEY, CHART_STYLE_KEY, NODE_KEY, shortValue } from '../../src/settingsLabels';
+import { AYANAMSA_KEY, CHART_STYLE_KEY, NODE_KEY, nodeWord, shortValue } from '../../src/settingsLabels';
 import { useTokens } from '../../src/theme/ThemeProvider';
 import { fmtDate, fmtTime } from '../../src/today/format';
 import { RichText } from '../../src/today/RichText';
@@ -192,7 +192,7 @@ export default function VarshaphalScreen({ now, profileId, year: yearProp, chart
       </Card>
 
       <Txt kind="caption" color="ink3" testID="varshaphal-how">
-        {t('varshaphal.howComputed', { ayanamsa: ayanamsaLabel, place: shortPlace(profile.placeName), node: nodeLabel.toLowerCase() })}
+        {t('varshaphal.howComputed', { ayanamsa: ayanamsaLabel, place: shortPlace(profile.placeName), node: nodeWord(nodeLabel) })}
       </Txt>
     </Screen>
   );
