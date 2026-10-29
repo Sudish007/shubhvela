@@ -258,8 +258,11 @@ Mark everything else as **Not collected**. "Collected" means it leaves the devic
 | App info and performance › Other app performance data | No | — | — | — | — | |
 | **Device or other IDs** | Yes | Yes | No | Optional (free tier only; resettable in Android settings) | Advertising or marketing; Analytics; Fraud prevention, security and compliance | Google Mobile Ads SDK: Android advertising ID, app set ID. |
 
-Also mention in the privacy policy (already on the page): the IP address is visible to every server the phone talks to
-(AdMob, Play, OpenStreetMap, Hugging Face); the model download carries no user data beyond the request itself.
+The privacy page names the four endpoints: Nominatim, AdMob, Play Billing and (since 1.0.0, added by d-ship on
+2026-10-30 after the Phase D review) the Hugging Face model download for Pro users who accept "Ask my chart" — the same
+sentence is in the first-launch notice (`consent.leaves`) and Settings → Privacy (`privacy.networkList`). The page does
+not spell out that an IP address is visible to every server the phone talks to; if a Play reviewer asks, add that sentence
+to `web/src/strings/*.json` `privacy.leaves` (the model download carries no user data beyond the request itself).
 
 ### Security practices
 

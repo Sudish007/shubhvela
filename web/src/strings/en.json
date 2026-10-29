@@ -233,7 +233,7 @@
   "privacy.storedH": "What the app stores",
   "privacy.stored": "The birth details, names, relationships and family dates you enter; ancestor records for shraddha; reminder choices; saved muhurats; journal notes; and settings. Everything is stored only on your phone, in the app's own database. There is no account, no sign-in and no Shubhvela server; nothing is uploaded.",
   "privacy.leavesH": "The one time data leaves the phone",
-  "privacy.leaves": "When you tap “Search online” while entering a place, the typed place name is sent to OpenStreetMap's Nominatim service (identified as Shubhvela) to find its coordinates and time zone. Only the town you then choose is kept. Nothing else is ever sent by the app.",
+  "privacy.leaves": "When you tap “Search online” while entering a place, the typed place name is sent to OpenStreetMap's Nominatim service (identified as Shubhvela) to find its coordinates and time zone. Only the town you then choose is kept. Pro users who accept the “Ask my chart” download fetch the model file from Hugging Face over Wi-Fi; that request carries no personal data. Nothing else is ever sent by the app.",
   "privacy.adsH": "Ads in the free version",
   "privacy.ads": "The free version shows ads through Google AdMob. The AdMob SDK collects device and advertising identifiers under Google's own policy and asks for its own consent where the law requires it (EEA and UK). Pro removes every ad and never starts the ads SDK.",
   "privacy.billingH": "Pro and reports",
