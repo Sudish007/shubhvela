@@ -71,11 +71,11 @@ function segmentsTable(ctx, gh) {
     const when = s.night ? `${timeOrDayTime(engine, s.start, tz, lang, gh.day)}–${hm(engine, s.end, tz)}` : range(engine, s.start, s.end, tz);
     return `<tr><th scope="row">${esc(segmentLabel(t, s))}${notes.length ? `<span class="s">${esc(notes.join(' · '))}</span>` : ''}</th><td class="num">${esc(when)}</td><td><span class="tag tag-${s.verdict}">${esc(t(`verdict.${s.verdict}_tag`))}</span></td></tr>`;
   });
-  return `<table class="segments">
+  return `<div class="tscroll"><table class="segments">
       <caption>${esc(t('today.daySegments', { count: segs.length }))}</caption>
       <thead><tr><th scope="col">${esc(t('today.segment'))}</th><th scope="col">${esc(t('today.timeRange'))}</th><th scope="col">${esc(t('panchang.col.verdict'))}</th></tr></thead>
       <tbody>${rows.join('\n')}</tbody>
-    </table>`;
+    </table></div>`;
 }
 
 function todayCard(ctx, city, today) {

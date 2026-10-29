@@ -9,16 +9,19 @@
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "build": "node build.mjs",
-    "audit": "node -e \"console.error('web audit: the Playwright audit arrives in D03'); process.exit(1)\""
+    "audit": "node audit/shoot-audit.mjs",
+    "audit:lighthouse": "node audit/lighthouse.mjs",
+    "audit:live": "node audit/live-check.mjs"
   },
   "devDependencies": {
     "@resvg/resvg-js": "^2.6.2",
     "@types/node": "^24.0.0",
     "esbuild": "^0.28.2",
+    "lighthouse": "^13.6.0",
     "playwright-core": "^1.64.0",
     "sharp": "^0.35.5",
-    "tz-lookup": "^6.1.25",
     "typescript": "~6.0.3",
+    "tz-lookup": "^6.1.25",
     "vitest": "^5.0.0"
   }
 }

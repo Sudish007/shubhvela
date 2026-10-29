@@ -65,7 +65,7 @@ export function footer(ctx, { rest, keepQuery }) {
   const link = (path, label) => (site.has(path) ? `<a href="${href(path)}">${esc(label)}</a>` : null);
   const col1 = join(
     [
-      `<h4>${esc(t('site.name'))}</h4>`,
+      `<h2 class="fh">${esc(t('site.name'))}</h2>`,
       link(`/${lang}/download/`, t('footer.download')),
       link(`/${lang}/privacy/`, t('footer.privacy')),
       link(`/${lang}/terms/`, t('footer.terms')),
@@ -82,14 +82,14 @@ export function footer(ctx, { rest, keepQuery }) {
     link(firstExisting(site, lang, ['vrat/']) ?? '/none', t('nav.vrat')),
     link(firstExisting(site, lang, ['glossary/']) ?? '/none', t('nav.glossary')),
   ].filter(Boolean);
-  const col2 = join([`<h4>${esc(t('footer.explore'))}</h4>`, ...explore], '<br>');
+  const col2 = join([`<h2 class="fh">${esc(t('footer.explore'))}</h2>`, ...explore], '<br>');
   const langLinks = LANGS.map((l) => {
     const target = `/${l}/${rest ?? ''}`;
     const p = site.has(target) ? target : `/${l}/`;
     return `<a href="${href(p)}" lang="${l}"${keepQuery ? ' data-keep-query' : ''}>${esc(t(`settings.lang.${l}`))}</a>`;
   });
-  const col3 = join([`<h4>${esc(t('footer.languages'))}</h4>`, ...langLinks], '<br>');
-  const col4 = `<h4>${esc(t('footer.computedH'))}</h4><p>${esc(t('footer.computed'))}</p>`;
+  const col3 = join([`<h2 class="fh">${esc(t('footer.languages'))}</h2>`, ...langLinks], '<br>');
+  const col4 = `<h2 class="fh">${esc(t('footer.computedH'))}</h2><p>${esc(t('footer.computed'))}</p>`;
   return `<footer class="wrap">
   <div class="cols">
     <div>${col1}</div>

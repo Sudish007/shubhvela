@@ -34,7 +34,7 @@ button{font:inherit}
 .brand .mark .acc{fill:var(--accent)}
 .brand .dev{font-size:1.1em}
 .links{display:flex;gap:2px;flex-wrap:wrap;margin-left:auto}
-.links a{min-height:44px;display:inline-flex;align-items:center;padding:0 12px;border-radius:8px;color:var(--ink);text-decoration:none;font-weight:600;font-size:.9em;white-space:nowrap}
+.links a{min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center;padding:0 12px;border-radius:8px;color:var(--ink);text-decoration:none;font-weight:600;font-size:.9em;white-space:nowrap}
 .links a[aria-current="page"]{color:var(--accent);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px}
 .tools{display:flex;gap:8px;align-items:center}
 .langs{display:inline-flex;border:1px solid var(--hair-2);border-radius:8px;overflow:hidden;background:var(--surface)}
@@ -116,7 +116,7 @@ a.card:hover h3{text-decoration:underline}
 /* City list (all 331) */
 .citylist{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:0 var(--gap);margin:var(--gap) 0 0;padding:0;list-style:none}
 .citylist li{min-width:0}
-.citylist a,.citylist span{display:inline-flex;align-items:center;min-height:44px;color:var(--ink);text-decoration:none;font-size:.95em}
+.citylist a,.citylist span{display:inline-flex;align-items:center;min-height:44px;min-width:44px;color:var(--ink);text-decoration:none;font-size:.95em}
 .citylist a:hover{text-decoration:underline}
 details.more>summary{list-style:none;cursor:pointer}
 details.more>summary::-webkit-details-marker{display:none}
@@ -134,8 +134,8 @@ footer .cols{display:grid;gap:var(--gap);grid-template-columns:minmax(0,1fr)}
 @media (min-width:2500px){footer .cols{grid-template-columns:repeat(4,minmax(0,1fr))}}
 footer a{display:inline-flex;min-height:44px;min-width:44px;align-items:center;color:var(--ink);text-decoration:none;font-weight:600;padding-right:12px}
 footer a:hover{text-decoration:underline}
-footer h4{margin:0 0 .2em;color:var(--ink-3);font-size:max(12px,.8em);text-transform:uppercase;letter-spacing:.06em;font-family:var(--font-body);font-weight:600}
-html[lang="hi"] footer h4,html[lang="bho"] footer h4{font-family:var(--font-deva);text-transform:none}
+footer .fh{margin:0 0 .2em;color:var(--ink-3);font-size:max(12px,.8em);text-transform:uppercase;letter-spacing:.06em;font-family:var(--font-body);font-weight:600}
+html[lang="hi"] footer h4,html[lang="bho"] footer .fh{font-family:var(--font-deva);text-transform:none}
 footer p{max-width:75ch}
 footer .fine{margin-top:var(--gap);font-size:max(12px,.85em);color:var(--ink-3);max-width:80ch}
 /* ---- Kundli page (design.md 9: head with fact rail; form rail + result at >=1024; form + chart + table at >=1900) ---- */
@@ -239,11 +239,11 @@ html[lang="hi"] .why-panel dt,html[lang="bho"] .why-panel dt{text-transform:none
 .results li:first-child a{border-top:0}
 .results li a:hover{text-decoration:underline}
 .linklist{display:flex;flex-wrap:wrap;gap:8px 16px;padding:0;margin:var(--gap) 0 0;list-style:none}
-.linklist a{display:inline-flex;min-height:44px;align-items:center;font-weight:600}
+.linklist a{display:inline-flex;min-height:44px;min-width:44px;align-items:center;font-weight:600}
 /* ---- Data pages (D02): breadcrumbs, key/value rows, tables, band, pickers ---- */
 .crumbs ol{list-style:none;display:flex;flex-wrap:wrap;gap:4px 0;padding:0;margin:0 0 var(--gap);font-size:.9em;color:var(--ink-3)}
 .crumbs li+li::before{content:"›";padding:0 8px;color:var(--ink-3)}
-.crumbs a{display:inline-flex;align-items:center;min-height:44px;color:var(--ink-2);text-decoration:none;font-weight:600}
+.crumbs a{display:inline-flex;align-items:center;min-height:44px;min-width:44px;color:var(--ink-2);text-decoration:none;font-weight:600}
 .crumbs a:hover{text-decoration:underline}
 .crumbs span{display:inline-flex;align-items:center;min-height:44px}
 .page .lede{font-size:1.1em;color:var(--ink-2);max-width:70ch;margin:0 0 .6em}
@@ -330,18 +330,23 @@ table .s,table.festivals .s{display:block;color:var(--ink-3);font-size:max(12px,
 .letters a{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;border:1px solid var(--hair-2);border-radius:8px;text-decoration:none;color:var(--ink);font-weight:600}
 .terms{list-style:none;padding:0;margin:0 0 var(--gap);display:grid;gap:0 var(--gap);grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
 .terms li{border-top:1px solid var(--hair);padding:8px 0;min-width:0}
-.terms a{display:inline-flex;align-items:center;min-height:44px;gap:8px;text-decoration:none;color:var(--ink);font-weight:600}
+.terms a{display:inline-flex;align-items:center;min-height:44px;min-width:44px;gap:8px;text-decoration:none;color:var(--ink);font-weight:600}
 .terms .s{color:var(--ink-3);font-size:max(12px,.85em);display:block}
 .lessons{padding-left:0;list-style:none;color:var(--ink-2)}
 .lessons li{padding:6px 0;border-top:1px solid var(--hair)}
 .card .months{display:flex;flex-wrap:wrap;gap:2px 8px;margin-top:6px}
-.card .months a{display:inline-flex;align-items:center;min-height:44px;font-size:max(12px,.85em);text-decoration:none;color:var(--ink-2);font-weight:600}
+.card .months a{display:inline-flex;align-items:center;min-height:44px;min-width:44px;font-size:max(12px,.85em);text-decoration:none;color:var(--ink-2);font-weight:600}
 .card .months a:hover{text-decoration:underline}
 .verified{font-size:.9em;color:var(--ink-3);margin:var(--gap) 0 0}
 .verified.ok{color:var(--ink-2)}
 .years{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:var(--gap) 0 0}
 .share-img img{display:block;width:100%;max-width:600px;height:auto;border:1px solid var(--hair);border-radius:12px;margin:0 0 12px}
 table.festivals th[scope="row"]{text-transform:none;letter-spacing:0;font-size:inherit;color:var(--ink);padding:9px 8px 9px 0;border-top:1px solid var(--hair);vertical-align:top}
+table.festivals th[scope="row"] a,table.festivals td a{display:inline-flex;align-items:center;min-height:44px;min-width:44px;color:var(--ink);text-decoration:none;font-weight:600}
+table.festivals th[scope="row"] a:hover,table.festivals td a:hover{text-decoration:underline}
+table.festivals th[scope="row"],table.festivals td{padding-top:0;padding-bottom:0;vertical-align:middle}
+.card h3 a{display:inline-flex;align-items:center;min-height:44px;min-width:44px;color:var(--ink);text-decoration:none}
+.card h3 a:hover{text-decoration:underline}
 .page .actions{margin:0 0 var(--gap)}
 .page .actions .btn[aria-current="page"]{border-color:var(--accent);color:var(--accent);background:var(--accent-tint)}
 td.empty{color:var(--ink-2)}

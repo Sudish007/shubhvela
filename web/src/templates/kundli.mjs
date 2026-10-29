@@ -138,7 +138,7 @@ export function renderKundli(ctx, data, opts) {
       <div id="chart-wrap"></div>
       <div class="rows" id="rows"></div>
       <div class="share" id="share" hidden>
-        <div class="url num" id="share-url" aria-label="${esc(t('result.shareLabel'))}"></div>
+        <div class="url num" id="share-url" role="group" aria-label="${esc(t('result.shareLabel'))}"></div>
         <button class="btn" type="button" id="copy">${esc(t('result.copy'))}</button>
       </div>
       <div class="actions" id="result-actions" hidden>
