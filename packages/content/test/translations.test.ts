@@ -237,6 +237,84 @@ describe('translated corpus files (hi / bho) mirror their English master', () =>
     expect(festivalText('vat-savitri', 'hi')!.item.conventionNote).toContain('वट पूर्णिमा');
   });
 
+  it('T06: vrats, muhurat-activities, koota and mangal are complete in hi and bho; every id resolves in its own language with the screen names of the vrat, muhurat and match screens', () => {
+    for (const domain of ['vrats', 'muhurat-activities', 'koota', 'mangal']) {
+      const en = CORPUS[domain].en!;
+      for (const lang of LANGS) {
+        const rows = CORPUS[domain][lang];
+        expect(rows, `${domain}/${lang} registered`).toBeDefined();
+        expect(rows!.map((r) => r.id).sort(), `${domain}/${lang} complete`).toEqual(en.map((r) => r.id).sort());
+        for (const r of en) {
+          const got = lookup(domain, r.id, lang)!;
+          expect(got, `${domain}/${r.id} ${lang}`).not.toBeNull();
+          expect(got.lang, `${domain}/${r.id} ${lang} resolves in its own language`).toBe(lang);
+          expect(got.fallback).toBe(false);
+          // `rule` is engine metadata (an id or the English rule sentence) and stays byte-identical.
+          expect(got.snippet.rule).toBe(r.rule);
+        }
+      }
+    }
+    // Vrats: the what-to-do paragraph keeps the vrat screen's step and parana names in each language.
+    const chhathBho = lookup('vrats', 'vrat-chhath', 'bho')!;
+    expect(chhathBho.text).toContain('नहाय खाय');
+    expect(chhathBho.text).toContain('खरना');
+    expect(chhathBho.text).toContain(loadUi('bho')['vrat.chhath.sandhyaArghya']);
+    expect(chhathBho.text).toContain(loadUi('bho')['vrat.chhath.ushaArghya']);
+    expect(chhathBho.text).not.toMatch(/(^|\s)(है|हैं)(\s|।)/);
+    expect(lookup('vrats', 'vrat-chhath', 'hi')!.text).toContain('संध्या अर्घ्य');
+    const ekadashiHi = lookup('vrats', 'vrat-ekadashi', 'hi')!;
+    expect(ekadashiHi.text).toContain('पारण');
+    expect(ekadashiHi.text).toContain('हरि वासर');
+    expect(ekadashiHi.text).toContain('स्मार्त');
+    const ekadashiBho = lookup('vrats', 'vrat-ekadashi', 'bho')!;
+    expect(ekadashiBho.text).toContain('पारन');
+    expect(ekadashiBho.text).toContain('वैष्णव');
+    expect(lookup('vrats', 'vrat-navratri', 'hi')!.text).toContain('घटस्थापना');
+    expect(lookup('vrats', 'vrat-navratri', 'bho')!.text).toContain(loadUi('bho')['vrat.family.navratri']);
+    // Muhurat activities: the engine's own activity names, the tithi digits and the finder's UI titles.
+    const grihaHi = lookup('muhurat-activities', 'muhurat-griha-pravesh', 'hi')!;
+    expect(grihaHi.text).toContain('गृह प्रवेश');
+    expect(grihaHi.text).toContain('2, 3, 5, 7, 10, 11, 12 और 13');
+    expect(lookup('muhurat-activities', 'muhurat-vehicle-purchase', 'bho')!.text).toContain('गाड़ी खरीद');
+    expect(lookup('muhurat-activities', 'muhurat-vehicle-purchase', 'hi')!.text).toContain('वाहन खरीद');
+    for (const lang of LANGS) {
+      expect(lookup('muhurat-activities', 'muhurat-ranking', lang)!.text).toContain(loadUi(lang)['muhurat.partialTitle']);
+      expect(lookup('muhurat-activities', 'muhurat-rule-panchak', lang)!.text).toContain(loadUi(lang)['travel.title']);
+      const tara = lookup('muhurat-activities', 'muhurat-rule-tara-bala', lang)!.text;
+      for (const n of ['(2)', '(4)', '(6)', '(8)', '(9)']) expect(tara).toContain(n);
+    }
+    // Koota: point totals, the match screen's koota / nadi / animal names, and the Drik Panchang spelling.
+    for (const lang of LANGS) {
+      const bhakoot = lookup('koota', 'koota-bhakoot-1', lang)!.text;
+      expect(bhakoot).toContain('भकूट (7 अंक)');
+      expect(bhakoot).toContain('2/12, 5/9');
+      const nadi = lookup('koota', 'koota-nadi-3', lang)!.text;
+      expect(nadi).toContain('36 में से 8 अंक');
+      expect(nadi).toContain('नाड़ी दोष');
+      expect(nadi).toContain('दृक् पंचांग');
+      for (const k of ['match.nadi.adi', 'match.nadi.madhya', 'match.nadi.antya']) expect(nadi).toContain(loadUi(lang)[k]);
+      const yoni = lookup('koota', 'koota-yoni-3', lang)!.text;
+      for (const k of ['match.yoni.horse', 'match.yoni.elephant', 'match.yoni.mongoose', 'match.yoni.lion']) expect(yoni).toContain(loadUi(lang)[k]);
+      const gana = lookup('koota', 'koota-gana-2', lang)!.text;
+      for (const k of ['match.gana.deva', 'match.gana.manushya', 'match.gana.rakshasa']) expect(gana).toContain(loadUi(lang)[k]);
+    }
+    expect(lookup('koota', 'koota-tara-3', 'bho')!.text).toContain('“काहे?” शीट');
+    expect(lookup('koota', 'koota-tara-3', 'hi')!.text).toContain('“क्यों?” शीट');
+    // Mangal: the match screen's dosha vocabulary (मौजूद / प्रभावी / निरस्ति-नियम / लागू नहीं) and the respectful plural for Mars.
+    const mangalHi = lookup('mangal', 'mangal-dosha', 'hi')!.text;
+    expect(mangalHi).toContain('मंगल दोष मौजूद है');
+    expect(mangalHi).toContain('निरस्ति-नियम');
+    expect(mangalHi).toContain('“क्यों?” के इनपुट');
+    const mangalBho = lookup('mangal', 'mangal-dosha', 'bho')!.text;
+    expect(mangalBho).toContain('मंगल दोष मौजूद बा');
+    expect(mangalBho).toContain('“काहे?” के इनपुट');
+    expect(mangalBho).toContain('बाड़न');
+    expect(mangalBho).not.toMatch(/(^|\s)(है|हैं)(\s|।)/);
+    expect(lookup('mangal', 'mangal-cancel-both-manglik', 'hi')!.text).toContain(`“${loadUi('hi')['match.notApplied_tag']}”`);
+    expect(lookup('mangal', 'mangal-cancel-both-manglik', 'bho')!.text).toContain(`“${loadUi('bho')['match.notApplied_tag']}”`);
+    expect(lookup('mangal', 'mangal-cancel-sign-house', 'bho')!.text).toContain('राशि-भाव जोड़ी');
+  });
+
   it('every registered domain has an English master and only hi / bho translations', () => {
     for (const t of TABLES) {
       expect(t.rows.en, `${t.domain} has no en`).toBeDefined();

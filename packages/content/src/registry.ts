@@ -21,14 +21,22 @@ import dailyEn from '../corpus/daily/en.json';
 import dailyHi from '../corpus/daily/hi.json';
 import dailyBho from '../corpus/daily/bho.json';
 import vratsEn from '../corpus/vrats/en.json';
+import vratsHi from '../corpus/vrats/hi.json';
+import vratsBho from '../corpus/vrats/bho.json';
 import festivalsEn from '../corpus/festivals/en.json';
 import festivalsHi from '../corpus/festivals/hi.json';
 import festivalsBho from '../corpus/festivals/bho.json';
 import glossaryEn from '../corpus/glossary/en.json';
 import yogasEn from '../corpus/yogas/en.json';
 import kootaEn from '../corpus/koota/en.json';
+import kootaHi from '../corpus/koota/hi.json';
+import kootaBho from '../corpus/koota/bho.json';
 import mangalEn from '../corpus/mangal/en.json';
+import mangalHi from '../corpus/mangal/hi.json';
+import mangalBho from '../corpus/mangal/bho.json';
 import muhuratActivitiesEn from '../corpus/muhurat-activities/en.json';
+import muhuratActivitiesHi from '../corpus/muhurat-activities/hi.json';
+import muhuratActivitiesBho from '../corpus/muhurat-activities/bho.json';
 import naamkaranNamesEn from '../corpus/naamkaran-names/en.json';
 import dailyThirdEn from '../corpus/daily-third/en.json';
 import dailyThirdHi from '../corpus/daily-third/hi.json';
@@ -59,17 +67,17 @@ export const CORPUS: Record<string, Partial<Record<ContentLanguage, Snippet[]>>>
   transit: { en: transitEn as Snippet[] },
   daily: { en: dailyEn as Snippet[], hi: dailyHi as Snippet[], bho: dailyBho as Snippet[] },
   // A08: vrats = one snippet per engine VratFamily with the engine ruleId as id (vrat-ekadashi ... vrat-satyanarayan);
-  // `rule` is the timing sentence (same as corpus/rules), `text` the what-to-do paragraph.
-  vrats: { en: vratsEn as Snippet[] },
+  // `rule` is the timing sentence (same as corpus/rules), `text` the what-to-do paragraph. hi/bho complete (corpus-translate T06).
+  vrats: { en: vratsEn as Snippet[], hi: vratsHi as Snippet[], bho: vratsBho as Snippet[] },
   // B02: yogas = one snippet per engine yoga rule id (`yoga-<id>`, the 7 bhanga ids, plus `yoga-kala-amrita` for the
   // reversed Kala Sarpa direction and `yoga-none` for the empty card); koota = `koota-<id>-<level 1|2|3>` for the 8
   // kootas + the 4 KOOTA_EXCEPTION_IDS (level 3); mangal = `mangal-dosha`, `mangal-dosha-none` and the 6
   // `mangal-cancel-*` ids; muhurat-activities = the 14 `muhurat-<activity>` tables, the 10 `muhurat-rule-<rule>` chips
-  // and `muhurat-ranking` (N18). hi/bho drafts arrive from the corpus-translate Action (batch B).
+  // and `muhurat-ranking` (N18). koota, mangal and muhurat-activities hi/bho are complete (corpus-translate T06); yogas lands in T11.
   yogas: { en: yogasEn as Snippet[] },
-  koota: { en: kootaEn as Snippet[] },
-  mangal: { en: mangalEn as Snippet[] },
-  'muhurat-activities': { en: muhuratActivitiesEn as Snippet[] },
+  koota: { en: kootaEn as Snippet[], hi: kootaHi as Snippet[], bho: kootaBho as Snippet[] },
+  mangal: { en: mangalEn as Snippet[], hi: mangalHi as Snippet[], bho: mangalBho as Snippet[] },
+  'muhurat-activities': { en: muhuratActivitiesEn as Snippet[], hi: muhuratActivitiesHi as Snippet[], bho: muhuratActivitiesBho as Snippet[] },
   // C02 (carry-over B-REVIEW-MEDIUM-2): third-person variants of the 32 `daily` fragments that address the reader
   // ("your birth Moon"), same ids, params = ['name', ...daily params]. Family Today renders
   // lookup('daily-third', id, lang) ?? lookup('daily', id, lang) for profiles that are not the self profile.
