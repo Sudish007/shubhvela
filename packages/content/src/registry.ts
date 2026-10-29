@@ -19,6 +19,8 @@ import lagnaEn from '../corpus/lagna/en.json';
 import lagnaHi from '../corpus/lagna/hi.json';
 import lagnaBho from '../corpus/lagna/bho.json';
 import nakshatraPadaEn from '../corpus/nakshatra-pada/en.json';
+import nakshatraPadaHi from '../corpus/nakshatra-pada/hi.json';
+import nakshatraPadaBho from '../corpus/nakshatra-pada/bho.json';
 import dashaPairsEn from '../corpus/dasha-pairs/en.json';
 import transitEn from '../corpus/transit/en.json';
 import transitHi from '../corpus/transit/hi.json';
@@ -74,9 +76,10 @@ export const CORPUS: Record<string, Partial<Record<ContentLanguage, Snippet[]>>>
   // own daily-note keys dasha-<Maha>-<Antar> (ids Su Mo Ma Me Ju Ve Sa Ra Ke); transit-<saturn|jupiter|rahu>-<1..12> +
   // sade-sati-phase-<1..3>; daily = one fragment per engine DAILY_FRAGMENT_KEYS entry (chandra-bala-<h>, tara-bala-<t>,
   // tithi-<t>, nakshatra-<n>, vara-<v>, the special-yoga / bhadra / panchak keys, sade-sati states, day-strength-*).
-  // lagna hi/bho are complete (corpus-translate T11), transit hi/bho too (T12); nakshatra-pada / dasha-pairs land in T13-T14, T19-T20.
+  // lagna hi/bho are complete (corpus-translate T11), transit hi/bho too (T12); nakshatra-pada hi/bho land in two slices
+  // (T13: ids 1-54 sorted, T14: the rest; lookup falls back per id); dasha-pairs land in T19-T20.
   lagna: { en: lagnaEn as Snippet[], hi: lagnaHi as Snippet[], bho: lagnaBho as Snippet[] },
-  'nakshatra-pada': { en: nakshatraPadaEn as Snippet[] },
+  'nakshatra-pada': { en: nakshatraPadaEn as Snippet[], hi: nakshatraPadaHi as Snippet[], bho: nakshatraPadaBho as Snippet[] },
   'dasha-pairs': { en: dashaPairsEn as Snippet[] },
   transit: { en: transitEn as Snippet[], hi: transitHi as Snippet[], bho: transitBho as Snippet[] },
   daily: { en: dailyEn as Snippet[], hi: dailyHi as Snippet[], bho: dailyBho as Snippet[] },

@@ -6,6 +6,8 @@
 // resolvers return it in its own language with fallback: false.
 import { describe, expect, it } from 'vitest';
 import { LATIN_ALLOWLIST } from '../../content-tools/src/forbidden';
+import { nakshatraNames, planetNames, signNames } from '../../engine/src/locale/index';
+import { NAKSHATRA_LORDS } from '../../engine/src/panchang/panchang';
 import { CORPUS, FESTIVALS, GLOSSARY, LESSONS } from '../src/registry';
 import { festivalText, glossaryTerm, loadGlossary, loadLessons, loadUi, lookup, lesson, lessonPlaceholders, ruleText, type ContentLanguage } from '../src/index';
 
@@ -649,6 +651,56 @@ describe('translated corpus files (hi / bho) mirror their English master', () =>
     }
     expect(lookup('transit', 'sade-sati-phase-2', 'hi')!.text).toContain('शास्त्रों में सबसे ज़्यादा माँग');
     expect(lookup('transit', 'sade-sati-phase-2', 'bho')!.text).toContain('शास्त्र में सबले बेसी माँग');
+  });
+
+  it('T13: the nakshatra-pada slice is registered in hi and bho with one id set; every translated id resolves in its own language with the English rule, the engine nakshatra / lord / navamsa names and the pada ordinal, and an untranslated id along the chain', () => {
+    const en = CORPUS['nakshatra-pada'].en!;
+    const hi = CORPUS['nakshatra-pada'].hi!;
+    const bho = CORPUS['nakshatra-pada'].bho!;
+    expect(hi.length).toBeGreaterThanOrEqual(54);
+    expect(hi.length).toBeLessThanOrEqual(en.length);
+    expect(bho.map((r) => r.id).sort(), 'nakshatra-pada hi and bho carry the same slice').toEqual(hi.map((r) => r.id).sort());
+    const enById = new Map(en.map((r) => [r.id, r]));
+    // Masculine ordinals (पद is masculine): hi पहला … चौथा, bho पहिला … चउथा (UI charts.houseOrdinal).
+    const PADA_HI = ['पहला', 'दूसरा', 'तीसरा', 'चौथा'];
+    const PADA_BHO = ['पहिला', 'दूसरा', 'तीसरा', 'चउथा'];
+    for (const lang of LANGS) {
+      const names = nakshatraNames[lang];
+      const signs = signNames[lang];
+      const planets = planetNames[lang];
+      for (const row of CORPUS['nakshatra-pada'][lang]!) {
+        const master = enById.get(row.id)!;
+        const got = lookup('nakshatra-pada', row.id, lang)!;
+        expect(got, `nakshatra-pada/${row.id} ${lang}`).not.toBeNull();
+        expect(got.lang, `nakshatra-pada/${row.id} ${lang} resolves in its own language`).toBe(lang);
+        expect(got.fallback).toBe(false);
+        // `rule` is the English rule sentence and `params` the engine inputs: metadata, byte-identical (D3).
+        expect(got.snippet.rule).toBe(master.rule);
+        expect(got.snippet.params).toEqual(master.params);
+        const [, n, p] = row.id.match(/^nakshatra-(\d+)-(\d+)$/)!.map(Number);
+        const lord = planets[NAKSHATRA_LORDS[n - 1]];
+        const navamsa = signs[((n - 1) * 4 + (p - 1)) % 12];
+        const t = got.text;
+        // Opening frame: "<Nakshatra> नक्षत्र में चंद्र, जिसके स्वामी <lord> हैं" / "… जेकर स्वामी <lord> बाड़न" (Hasta: स्वयं चंद्र / चंद्र खुदे), the Moon in the respectful plural.
+        if (lang === 'hi') expect(t, `${row.id} hi opens with the nakshatra and its lord`).toMatch(new RegExp(`^${names[n - 1]} नक्षत्र में चंद्र, जिसके स्वामी (स्वयं )?${lord} हैं`));
+        else expect(t, `${row.id} bho opens with the nakshatra and its lord`).toMatch(new RegExp(`^${names[n - 1]} नक्षत्र में चंद्र, जेकर स्वामी ${lord}( खुदे)? बाड़न`));
+        // The pada sentence names the ordinal pada and the engine navamsa sign.
+        expect(t, `${row.id} ${lang} names the pada and its navamsa`).toContain(lang === 'hi' ? `${PADA_HI[p - 1]} पद ${navamsa} नवांश में पड़ता है` : `${PADA_BHO[p - 1]} पद ${navamsa} नवांश में पड़ेला`);
+        // These paragraphs describe the chart, not the reader: no second-person pronoun; bho carries no Hindi है / हैं.
+        expect(t).not.toMatch(/राउर|रउआ|आपके|आपका|आपकी/);
+        if (lang === 'bho') expect(t, `nakshatra-pada/${row.id} bho`).not.toMatch(/(^|\s)(है|हैं)(\s|।|,|;)/);
+      }
+    }
+    // Ids outside the integrated slice resolve further down the chain (bho -> hi -> en) and say so.
+    const translated = new Set(hi.map((r) => r.id));
+    const pending = en.map((r) => r.id).filter((id) => !translated.has(id));
+    for (const id of pending.slice(0, 20)) {
+      for (const lang of LANGS) {
+        const r = lookup('nakshatra-pada', id, lang)!;
+        expect(r, `${id} ${lang}`).not.toBeNull();
+        expect(r.fallback).toBe(r.lang !== lang);
+      }
+    }
   });
 
   it('every registered domain has an English master and only hi / bho translations', () => {
