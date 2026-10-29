@@ -6,12 +6,14 @@ interface Pending {
   side: MatchSideKey;
   /** 20-character normalised code (the payload re-encoded, so a scanned URL and a scanned code arrive the same way). */
   code: string;
+  /** 'link' when a shubhvela://m deep link delivered it (the picker then says "From a link", not "Scanned code"). */
+  via?: 'link';
 }
 
 let pending: Pending | null = null;
 
-export function setScanResult(side: MatchSideKey, code: string): void {
-  pending = { side, code };
+export function setScanResult(side: MatchSideKey, code: string, via?: 'link'): void {
+  pending = via ? { side, code, via } : { side, code };
 }
 
 /** Returns and clears the pending result. */

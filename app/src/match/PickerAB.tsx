@@ -60,7 +60,7 @@ export function PickerAB({ side, profiles, draft, onChange, onScan, defaults, no
       {draft?.mode === 'scan' ? (
         draft.code ? (
           <View style={styles.scanned} testID={`${testID}-scanned`}>
-            <Txt kind="caption" color="ink2">{`${t('match.useScanned')} · ${formatShareCode(draft.code)}`}</Txt>
+            <Txt kind="caption" color="ink2">{`${t(draft.via === 'link' ? 'match.useLink' : 'match.useScanned')} · ${formatShareCode(draft.code)}`}</Txt>
             <Txt kind="caption" color="ink3">
               {t('share.decoded')}
             </Txt>

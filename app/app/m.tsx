@@ -16,7 +16,7 @@ export default function MatchLinkRoute() {
   const target = useMemo(() => parseDeepLink(`shubhvela://m?${query}`), [key]); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (target.kind !== 'm') return;
-    setScanResult('b', target.code);
+    setScanResult('b', target.code, 'link');
     router.replace(routeForTarget(target) ?? '/');
   }, [target, router]);
   if (target.kind === 'invalid') return <InvalidLinkScreen target={target} webPath={`m/?${query}`} />;

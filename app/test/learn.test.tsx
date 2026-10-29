@@ -419,7 +419,8 @@ describe('C03 Learn tab', () => {
     expect(getJournalEntry(today)).toEqual({ day: today, mood: 'bright', note: null });
     expect(textOf(screen.getByTestId('journal-saved-mood'))).toBe('Bright');
     expect(screen.getByTestId(`journal-dot-${today}`)).toBeTruthy();
-    expect(textOf(screen.getByTestId(`journal-dot-${today}`))).toBe('B');
+    // C-REVIEW-NIT-2: a two-letter mark per mood, so Bright ("Br") and Busy ("Bu") never read the same.
+    expect(textOf(screen.getByTestId(`journal-dot-${today}`))).toBe('Br');
     // Edit adds a note; Remove clears the day.
     await fireEvent.press(screen.getByTestId('journal-edit'));
     await fireEvent.changeText(screen.getByTestId('journal-note'), '  a quiet evening  ');
@@ -504,7 +505,7 @@ describe('C03 Learn tab', () => {
       if (c.dashaChanges.length) expect(screen.getByTestId(`journal-dasha-${c.day}`)).toBeTruthy();
       else expect(screen.queryByTestId(`journal-dasha-${c.day}`)).toBeNull();
     }
-    expect(textOf(screen.getByTestId('journal-dot-2026-10-03'))).toBe('L');
+    expect(textOf(screen.getByTestId('journal-dot-2026-10-03'))).toBe('Lo');
     const cell = screen.getByTestId('journal-cell-2026-10-03');
     expect(cell.props.accessibilityLabel).toContain('Mood Low');
     expect(cell.props.accessibilityLabel).toContain(`${m.cells[2].moonHouse}`);

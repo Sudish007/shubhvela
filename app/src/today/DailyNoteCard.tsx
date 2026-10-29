@@ -162,6 +162,9 @@ export function DailyNoteCard({ rows, name, day, tz, speech, testID }: DailyNote
       {listen.status === 'error' ? (
         <View style={styles.notice} testID="note-tts-error">
           <InlineNotice tone="error">{t('tts.failed')}</InlineNotice>
+          {/* C-REVIEW-MEDIUM-3: a synthesis failure (e.g. an advertised but uninstalled hi-IN voice) needs the same path to the
+              voice-data settings as the no-voice case (design.md 11 "TTS: notice + link"). */}
+          <TextButton label={t('tts.openSettings')} onPress={() => void listen.openTtsSettings()} style={styles.noticeAction} testID="note-tts-error-settings" />
         </View>
       ) : null}
       <View style={styles.rows}>

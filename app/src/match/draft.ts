@@ -13,7 +13,8 @@ export type SideDraft =
   | { mode: 'profile'; id: number }
   | { mode: 'enter'; form: BirthFormValue; errors: FormErrors }
   | { mode: 'type'; text: string; touched: boolean }
-  | { mode: 'scan'; code: string | null };
+  /** `via: 'link'` when the code arrived through a shubhvela://m deep link rather than the camera (C-REVIEW-NIT-4 wording). */
+  | { mode: 'scan'; code: string | null; via?: 'link' };
 
 export type DraftMode = SideDraft['mode'];
 

@@ -37,7 +37,7 @@ export default function MatchPickScreen({ now, initial }: MatchPickScreenProps) 
       const r = takeScanResult();
       if (!r) return;
       const set = r.side === 'a' ? setA : setB;
-      set({ mode: 'scan', code: r.code });
+      set(r.via ? { mode: 'scan', code: r.code, via: r.via } : { mode: 'scan', code: r.code });
       setProblem(null);
     }, []),
   );

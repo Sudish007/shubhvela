@@ -93,7 +93,9 @@ export function JournalMonth({ model, onPrev, onNext, testID }: JournalMonthProp
                   <View style={[styles.dot, c.mood ? { borderColor: colors.accent, backgroundColor: colors.accentTint } : styles.dotEmpty]} testID={c.mood ? `journal-dot-${c.day}` : undefined}>
                     {c.mood ? (
                       <Txt kind="micro" weight={600} color="accent">
-                        {t(`journal.mood.${c.mood}`).slice(0, 1)}
+                        {/* C-REVIEW-NIT-2: a per-mood short mark (ui journal.moodShort.*), distinct for every mood in every language,
+                            instead of the word's first code point (Bright/Busy both gave "B"; Devanagari lost its matras). */}
+                        {t(`journal.moodShort.${c.mood}`)}
                       </Txt>
                     ) : null}
                   </View>
@@ -147,7 +149,7 @@ const styles = StyleSheet.create({
   cell: { flex: 1, minWidth: 0, alignItems: 'center' },
   dayCell: { borderRadius: 6, paddingTop: 6, paddingBottom: 4, gap: 2, overflow: 'hidden', minHeight: 64 },
   dashaLine: { position: 'absolute', top: 0, left: 0, right: 0, height: 2 },
-  dot: { width: 20, height: 20, borderRadius: 10, borderWidth: 1, alignItems: 'center', justifyContent: 'center' },
+  dot: { minWidth: 20, height: 20, paddingHorizontal: 4, borderRadius: 10, borderWidth: 1, alignItems: 'center', justifyContent: 'center' },
   dotEmpty: { borderColor: 'transparent' },
   center: { textAlign: 'center' },
   legend: { gap: 2, paddingTop: 8, borderTopWidth: StyleSheet.hairlineWidth, marginTop: 4 },

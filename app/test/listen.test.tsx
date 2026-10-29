@@ -139,7 +139,7 @@ describe('<DailyNoteCard> Listen / Stop', () => {
     expect(screen.getByTestId('note-listen').props.accessibilityLabel).toBe('सुनीं');
   });
 
-  it('an engine error shows the failure notice and the button returns to Listen', async () => {
+  it('an engine error shows the failure notice with a TTS-settings link and the button returns to Listen', async () => {
     const speech = fakeSpeech(VOICES, { fail: true });
     await renderWithProviders(<DailyNoteCard rows={rows} name="Priya" day={DAY} tz="Asia/Kolkata" speech={speech} />);
     await fireEvent.press(await screen.findByTestId('note-listen', {}, FIND));
@@ -147,5 +147,9 @@ describe('<DailyNoteCard> Listen / Stop', () => {
     expect(screen.getByText("Couldn't read the note aloud")).toBeTruthy();
     expect(speech.calls[0].language).toBe('en');
     expect(speech.calls[0].voice).toBe('en-in-x-b');
+    // C-REVIEW-MEDIUM-3: the failure branch offers the voice-data settings like the no-voice branch does.
+    await fireEvent.press(screen.getByTestId('note-tts-error-settings'));
+    expect(speech.opened).toBe(1);
+    expect(screen.getByTestId('note-listen').props.accessibilityLabel).toBe('Listen');
   });
 });

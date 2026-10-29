@@ -1592,7 +1592,8 @@ exports[`C03 Learn tab pseudo-locale +30 % (en): the lesson list and the journal
                           "borderWidth": 1,
                           "height": 20,
                           "justifyContent": "center",
-                          "width": 20,
+                          "minWidth": 20,
+                          "paddingHorizontal": 4,
                         },
                         {
                           "borderColor": "transparent",
@@ -1681,7 +1682,8 @@ exports[`C03 Learn tab pseudo-locale +30 % (en): the lesson list and the journal
                           "borderWidth": 1,
                           "height": 20,
                           "justifyContent": "center",
-                          "width": 20,
+                          "minWidth": 20,
+                          "paddingHorizontal": 4,
                         },
                         {
                           "borderColor": "transparent",
@@ -1770,7 +1772,8 @@ exports[`C03 Learn tab pseudo-locale +30 % (en): the lesson list and the journal
                           "borderWidth": 1,
                           "height": 20,
                           "justifyContent": "center",
-                          "width": 20,
+                          "minWidth": 20,
+                          "paddingHorizontal": 4,
                         },
                         {
                           "borderColor": "transparent",
@@ -1868,7 +1871,8 @@ exports[`C03 Learn tab pseudo-locale +30 % (en): the lesson list and the journal
                           "borderWidth": 1,
                           "height": 20,
                           "justifyContent": "center",
-                          "width": 20,
+                          "minWidth": 20,
+                          "paddingHorizontal": 4,
                         },
                         {
                           "borderColor": "transparent",
@@ -1957,7 +1961,8 @@ exports[`C03 Learn tab pseudo-locale +30 % (en): the lesson list and the journal
                           "borderWidth": 1,
                           "height": 20,
                           "justifyContent": "center",
-                          "width": 20,
+                          "minWidth": 20,
+                          "paddingHorizontal": 4,
                         },
                         {
                           "borderColor": "transparent",
@@ -2046,7 +2051,8 @@ exports[`C03 Learn tab pseudo-locale +30 % (en): the lesson list and the journal
                           "borderWidth": 1,
                           "height": 20,
                           "justifyContent": "center",
-                          "width": 20,
+                          "minWidth": 20,
+                          "paddingHorizontal": 4,
                         },
                         {
                           "borderColor": "transparent",
@@ -2135,7 +2141,8 @@ exports[`C03 Learn tab pseudo-locale +30 % (en): the lesson list and the journal
                           "borderWidth": 1,
                           "height": 20,
                           "justifyContent": "center",
-                          "width": 20,
+                          "minWidth": 20,
+                          "paddingHorizontal": 4,
                         },
                         {
                           "borderColor": "transparent",
@@ -2224,7 +2231,8 @@ exports[`C03 Learn tab pseudo-locale +30 % (en): the lesson list and the journal
                           "borderWidth": 1,
                           "height": 20,
                           "justifyContent": "center",
-                          "width": 20,
+                          "minWidth": 20,
+                          "paddingHorizontal": 4,
                         },
                         {
                           "borderColor": "transparent",
@@ -2313,7 +2321,8 @@ exports[`C03 Learn tab pseudo-locale +30 % (en): the lesson list and the journal
                           "borderWidth": 1,
                           "height": 20,
                           "justifyContent": "center",
-                          "width": 20,
+                          "minWidth": 20,
+                          "paddingHorizontal": 4,
                         },
                         {
                           "borderColor": "transparent",
@@ -2402,7 +2411,8 @@ exports[`C03 Learn tab pseudo-locale +30 % (en): the lesson list and the journal
                           "borderWidth": 1,
                           "height": 20,
                           "justifyContent": "center",
-                          "width": 20,
+                          "minWidth": 20,
+                          "paddingHorizontal": 4,
                         },
                         {
                           "borderColor": "transparent",
@@ -2500,7 +2510,8 @@ exports[`C03 Learn tab pseudo-locale +30 % (en): the lesson list and the journal
                           "borderWidth": 1,
                           "height": 20,
                           "justifyContent": "center",
-                          "width": 20,
+                          "minWidth": 20,
+                          "paddingHorizontal": 4,
                         },
                         {
                           "borderColor": "transparent",
@@ -2589,7 +2600,8 @@ exports[`C03 Learn tab pseudo-locale +30 % (en): the lesson list and the journal
                           "borderWidth": 1,
                           "height": 20,
                           "justifyContent": "center",
-                          "width": 20,
+                          "minWidth": 20,
+                          "paddingHorizontal": 4,
                         },
                         {
                           "borderColor": "transparent",
@@ -2678,7 +2690,8 @@ exports[`C03 Learn tab pseudo-locale +30 % (en): the lesson list and the journal
                           "borderWidth": 1,
                           "height": 20,
                           "justifyContent": "center",
-                          "width": 20,
+                          "minWidth": 20,
+                          "paddingHorizontal": 4,
                         },
                         {
                           "borderColor": "transparent",
@@ -2767,7 +2780,8 @@ exports[`C03 Learn tab pseudo-locale +30 % (en): the lesson list and the journal
                           "borderWidth": 1,
                           "height": 20,
                           "justifyContent": "center",
-                          "width": 20,
+                          "minWidth": 20,
+                          "paddingHorizontal": 4,
                         },
                         {
                           "borderColor": "transparent",
@@ -2856,7 +2870,8 @@ exports[`C03 Learn tab pseudo-locale +30 % (en): the lesson list and the journal
                           "borderWidth": 1,
                           "height": 20,
                           "justifyContent": "center",
-                          "width": 20,
+                          "minWidth": 20,
+                          "paddingHorizontal": 4,
                         },
                         {
                           "borderColor": "transparent",
@@ -2945,7 +2960,8 @@ exports[`C03 Learn tab pseudo-locale +30 % (en): the lesson list and the journal
                           "borderWidth": 1,
                           "height": 20,
                           "justifyContent": "center",
-                          "width": 20,
+                          "minWidth": 20,
+                          "paddingHorizontal": 4,
                         },
                         {
                           "borderColor": "transparent",
@@ -3034,7 +3050,8 @@ exports[`C03 Learn tab pseudo-locale +30 % (en): the lesson list and the journal
                           "borderWidth": 1,
                           "height": 20,
                           "justifyContent": "center",
-                          "width": 20,
+                          "minWidth": 20,
+                          "paddingHorizontal": 4,
                         },
                         {
                           "borderColor": "transparent",
@@ -3132,7 +3149,8 @@ exports[`C03 Learn tab pseudo-locale +30 % (en): the lesson list and the journal
                           "borderWidth": 1,
                           "height": 20,
                           "justifyContent": "center",
-                          "width": 20,
+                          "minWidth": 20,
+                          "paddingHorizontal": 4,
                         },
                         {
                           "borderColor": "transparent",
@@ -3221,7 +3239,8 @@ exports[`C03 Learn tab pseudo-locale +30 % (en): the lesson list and the journal
                           "borderWidth": 1,
                           "height": 20,
                           "justifyContent": "center",
-                          "width": 20,
+                          "minWidth": 20,
+                          "paddingHorizontal": 4,
                         },
                         {
                           "borderColor": "transparent",
@@ -3310,7 +3329,8 @@ exports[`C03 Learn tab pseudo-locale +30 % (en): the lesson list and the journal
                           "borderWidth": 1,
                           "height": 20,
                           "justifyContent": "center",
-                          "width": 20,
+                          "minWidth": 20,
+                          "paddingHorizontal": 4,
                         },
                         {
                           "borderColor": "transparent",
@@ -3399,7 +3419,8 @@ exports[`C03 Learn tab pseudo-locale +30 % (en): the lesson list and the journal
                           "borderWidth": 1,
                           "height": 20,
                           "justifyContent": "center",
-                          "width": 20,
+                          "minWidth": 20,
+                          "paddingHorizontal": 4,
                         },
                         {
                           "borderColor": "transparent",
@@ -3488,7 +3509,8 @@ exports[`C03 Learn tab pseudo-locale +30 % (en): the lesson list and the journal
                           "borderWidth": 1,
                           "height": 20,
                           "justifyContent": "center",
-                          "width": 20,
+                          "minWidth": 20,
+                          "paddingHorizontal": 4,
                         },
                         {
                           "borderColor": "transparent",
@@ -3577,7 +3599,8 @@ exports[`C03 Learn tab pseudo-locale +30 % (en): the lesson list and the journal
                           "borderWidth": 1,
                           "height": 20,
                           "justifyContent": "center",
-                          "width": 20,
+                          "minWidth": 20,
+                          "paddingHorizontal": 4,
                         },
                         {
                           "borderColor": "transparent",
@@ -3666,7 +3689,8 @@ exports[`C03 Learn tab pseudo-locale +30 % (en): the lesson list and the journal
                           "borderWidth": 1,
                           "height": 20,
                           "justifyContent": "center",
-                          "width": 20,
+                          "minWidth": 20,
+                          "paddingHorizontal": 4,
                         },
                         {
                           "borderColor": "transparent",
@@ -3764,7 +3788,8 @@ exports[`C03 Learn tab pseudo-locale +30 % (en): the lesson list and the journal
                           "borderWidth": 1,
                           "height": 20,
                           "justifyContent": "center",
-                          "width": 20,
+                          "minWidth": 20,
+                          "paddingHorizontal": 4,
                         },
                         {
                           "borderColor": "transparent",
@@ -3853,7 +3878,8 @@ exports[`C03 Learn tab pseudo-locale +30 % (en): the lesson list and the journal
                           "borderWidth": 1,
                           "height": 20,
                           "justifyContent": "center",
-                          "width": 20,
+                          "minWidth": 20,
+                          "paddingHorizontal": 4,
                         },
                         {
                           "borderColor": "transparent",
@@ -3942,7 +3968,8 @@ exports[`C03 Learn tab pseudo-locale +30 % (en): the lesson list and the journal
                           "borderWidth": 1,
                           "height": 20,
                           "justifyContent": "center",
-                          "width": 20,
+                          "minWidth": 20,
+                          "paddingHorizontal": 4,
                         },
                         {
                           "borderColor": "transparent",
@@ -4031,7 +4058,8 @@ exports[`C03 Learn tab pseudo-locale +30 % (en): the lesson list and the journal
                           "borderWidth": 1,
                           "height": 20,
                           "justifyContent": "center",
-                          "width": 20,
+                          "minWidth": 20,
+                          "paddingHorizontal": 4,
                         },
                         {
                           "borderColor": "transparent",
@@ -4120,7 +4148,8 @@ exports[`C03 Learn tab pseudo-locale +30 % (en): the lesson list and the journal
                           "borderWidth": 1,
                           "height": 20,
                           "justifyContent": "center",
-                          "width": 20,
+                          "minWidth": 20,
+                          "paddingHorizontal": 4,
                         },
                         {
                           "borderColor": "transparent",
@@ -4209,7 +4238,8 @@ exports[`C03 Learn tab pseudo-locale +30 % (en): the lesson list and the journal
                           "borderWidth": 1,
                           "height": 20,
                           "justifyContent": "center",
-                          "width": 20,
+                          "minWidth": 20,
+                          "paddingHorizontal": 4,
                         },
                         {
                           "borderColor": "transparent",
@@ -4298,7 +4328,8 @@ exports[`C03 Learn tab pseudo-locale +30 % (en): the lesson list and the journal
                           "borderWidth": 1,
                           "height": 20,
                           "justifyContent": "center",
-                          "width": 20,
+                          "minWidth": 20,
+                          "paddingHorizontal": 4,
                         },
                         {
                           "borderColor": "transparent",
