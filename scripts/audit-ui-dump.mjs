@@ -99,11 +99,15 @@ function markWebContent(nodes) {
 
 // c06 (DEV-1): clickable nodes whose box overlaps the navigation-bar rectangle by more than 2 px in both axes. Zero-size
 // nodes are skipped; the ad creative's own DOM (inside the banner strip) is the SDK's, not an app control, and is skipped.
+// A clickable node that spans the whole window (the Sheet's scrim, "Close") is a backdrop, not a control the bar can hide.
 function navCoveredIn(nodes, nav, inAd) {
   if (!nav) return [];
   const [nx1, ny1, nx2, ny2] = nav;
+  const winW = Math.max(...nodes.map((n) => n.x2), 0);
+  const winH = Math.max(...nodes.map((n) => n.y2), 0);
+  const fullWindow = (n) => n.x1 <= 2 && n.y1 <= 2 && n.x2 >= winW - 2 && n.y2 >= winH - 2;
   return nodes
-    .filter((n) => n.clickable && n.x2 > n.x1 && n.y2 > n.y1 && !inAd(n))
+    .filter((n) => n.clickable && n.x2 > n.x1 && n.y2 > n.y1 && !inAd(n) && !fullWindow(n))
     .filter((n) => Math.min(n.x2, nx2) - Math.max(n.x1, nx1) > 2 && Math.min(n.y2, ny2) - Math.max(n.y1, ny1) > 2)
     .map((n) => ({ label: label(n), bounds: [n.x1, n.y1, n.x2, n.y2], overlapPx: Math.min(n.y2, ny2) - Math.max(n.y1, ny1) }));
 }
