@@ -50,9 +50,14 @@ object WidgetUpdater {
     return PendingIntent.getActivity(context, requestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
   }
 
-  /** The current segment's name: the deciding reasons of the span, else the choghadiya covering now. */
+  /**
+   * The current segment's name: the span's deciding reasons that are ACTIVE at `nowMs` (a merged span can carry reasons
+   * that start later - C-REVIEW-MEDIUM-1: at 03:32 the night span listed "Shubh · Brahma muhurat" while Brahma began at
+   * 04:45), else the choghadiya covering now.
+   */
   fun currentSegmentName(day: WidgetDay, span: WidgetSpan, nowMs: Long): String {
-    if (span.reasons.isNotEmpty()) return span.reasons.joinToString(" \u00b7 ") { it.name }
+    val active = span.reasons.filter { nowMs >= it.start && nowMs < it.end }
+    if (active.isNotEmpty()) return active.joinToString(" \u00b7 ") { it.name }
     return day.choghadiyaAt(nowMs)?.name ?: ""
   }
 
@@ -65,7 +70,7 @@ object WidgetUpdater {
     return state.strings.nextLine(name, day.formatTime(next.start))
   }
 
-  /** "Now 10:58 · Neutral · Chal · Mercury · next: Abhijit 11:42" (the app's Now line without the hora word, which the file does not carry per language). */
+  /** "Now 10:58 · Neutral · Chal choghadiya · Mercury hora · next: Abhijit 11:42" (the app's Now line; the file carries every name localised, incl. the hora word). */
   fun nowLine(state: WidgetState, day: WidgetDay, span: WidgetSpan, nowMs: Long): String {
     val parts = ArrayList<String>()
     parts.add("${state.strings.now} ${day.formatTime(nowMs)}")

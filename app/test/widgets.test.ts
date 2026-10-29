@@ -77,7 +77,7 @@ describe('buildWidgetState (pure)', () => {
     // Segments and hora carry display names in the UI language; every string is non-empty.
     expect(d0.segments.find((s) => s.id === 'rahu')?.name).toBe('Rahu Kaal');
     expect(d0.hora.length).toBe(24);
-    expect(d0.hora.find((h) => h.start <= NOW && NOW < h.end)?.name).toBe('Mercury');
+    expect(d0.hora.find((h) => h.start <= NOW && NOW < h.end)?.name).toBe('Mercury hora');
     expect(Object.values(file.strings).every((s) => s.length > 0)).toBe(true);
     expect(file.strings.stale).toBe('Open Shubhvela to refresh');
     expect(file.strings.next).toBe('next: {segment} {time}');

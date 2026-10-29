@@ -154,7 +154,8 @@ export function widgetDay(gh: GoodHours, lang: Lang, t: TFn): WidgetDay | null {
     moonrise: ticks.moonrise,
     spans,
     segments,
-    hora: gh.hora.map((h) => ({ name: planetName(lang, h.lord), start: h.start, end: h.end })),
+    // C-REVIEW-NIT-3: "<planet> hora", the same words the app's Now line uses (the Kotlin side prints the name as is).
+    hora: gh.hora.map((h) => ({ name: t('band.hora', { planet: planetName(lang, h.lord) }), start: h.start, end: h.end })),
   };
 }
 

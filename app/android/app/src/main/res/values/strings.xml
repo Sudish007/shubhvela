@@ -6,6 +6,8 @@
   <!-- Hand-added (C01, F9): widget picker texts (system locale; values-hi / values-b+bho carry Hindi / Bhojpuri) and the
        one text the widget shows before the app has ever written files/widget_state.json. Everything else the widgets
        display comes localised from that file in the app's own UI language. -->
+  <string name="widget_small_label">Good hours · small</string>
+  <string name="widget_medium_label">Good hours · medium</string>
   <string name="widget_small_description">Today\'s good hours: the current verdict and the next segment</string>
   <string name="widget_medium_description">Good-hours band for today with the Now line and the next family date</string>
   <string name="widget_band_description">Good-hours band</string>

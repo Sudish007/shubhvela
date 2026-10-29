@@ -53,13 +53,13 @@
       </intent-filter>
     </activity>
     <!-- Hand-maintained (C01, F9): home-screen widgets, Kotlin under java/com/shubhvela/app/widgets (design.md 10.2, plan P4). -->
-    <receiver android:name=".widgets.SmallWidgetProvider" android:exported="true" android:label="@string/widget_small_description">
+    <receiver android:name=".widgets.SmallWidgetProvider" android:exported="true" android:label="@string/widget_small_label">
       <intent-filter>
         <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
       </intent-filter>
       <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_small_info"/>
     </receiver>
-    <receiver android:name=".widgets.MediumWidgetProvider" android:exported="true" android:label="@string/widget_medium_description">
+    <receiver android:name=".widgets.MediumWidgetProvider" android:exported="true" android:label="@string/widget_medium_label">
       <intent-filter>
         <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
       </intent-filter>

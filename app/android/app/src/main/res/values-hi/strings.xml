@@ -1,5 +1,7 @@
 <resources>
   <!-- Hand-added (C01, F9): Hindi widget picker texts (respectful register, Devanagari). -->
+  <string name="widget_small_label">शुभ समय · छोटा</string>
+  <string name="widget_medium_label">शुभ समय · मध्यम</string>
   <string name="widget_small_description">आज के शुभ समय: वर्तमान निर्णय और अगला खंड</string>
   <string name="widget_medium_description">आज की शुभ-समय पट्टी, “अभी” पंक्ति और अगली पारिवारिक तिथि</string>
   <string name="widget_band_description">शुभ-समय पट्टी</string>

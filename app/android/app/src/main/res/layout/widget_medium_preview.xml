@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Picker preview of the 4x2 widget (C-REVIEW-NIT-1; API 31+ previewLayout). Text only: the short label and what the
+     widget shows - no sample band, verdict or time, because every value on the real widget is engine output (D8). -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    android:background="@drawable/widget_background"
+    android:paddingStart="12dp"
+    android:paddingEnd="12dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/widget_medium_label"
+        android:textSize="@dimen/widget_text_label"
+        android:textStyle="bold"
+        android:textColor="@color/widget_ink"
+        android:maxLines="1"
+        android:ellipsize="end"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/widget_medium_description"
+        android:textSize="@dimen/widget_text_caption"
+        android:textColor="@color/widget_ink_2"
+        android:maxLines="3"
+        android:ellipsize="end"/>
+</LinearLayout>

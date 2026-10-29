@@ -95,13 +95,33 @@ class BandRendererTest {
     assertEquals("Chal choghadiya", WidgetUpdater.currentSegmentName(r.day, r.span!!, now))
     assertEquals("next: Abhijit 11:42", WidgetUpdater.nextLine(state, r.day, r.span!!))
     val line = WidgetUpdater.nowLine(state, r.day, r.span!!, now)
-    assertTrue(line, line.startsWith("Now 10:58 \u00b7 Neutral \u00b7 Chal choghadiya \u00b7 Mercury \u00b7 next: Abhijit 11:42"))
+    // C-REVIEW-NIT-3: the file carries "<planet> hora" (state.ts, band.hora) so the widget reads like the app's Now line.
+    assertTrue(line, line.startsWith("Now 10:58 \u00b7 Neutral \u00b7 Chal choghadiya \u00b7 Mercury hora \u00b7 next: Abhijit 11:42"))
     assertEquals(r.span!!.end, state.nextBoundaryAfter(now))
     assertEquals("11:42", r.day.formatTime(state.nextBoundaryAfter(now)!!))
-    // 13:30 Rahu Kaal: the reason names are the current segment; the following span is Shubh choghadiya at 16:19.
+    // 13:30-16:19 avoid span = Rahu Kaal (13:30-14:55) then Kaal choghadiya (14:55-16:19): at 14:00 only Rahu Kaal is
+    // running (C-REVIEW-MEDIUM-1), at 15:00 only Kaal; the following span is Shubh choghadiya at 16:19.
     val rahu = state.resolve(ist(14, 0))!!
-    assertEquals("Rahu Kaal \u00b7 Kaal choghadiya", WidgetUpdater.currentSegmentName(rahu.day, rahu.span!!, ist(14, 0)))
+    assertEquals("Rahu Kaal", WidgetUpdater.currentSegmentName(rahu.day, rahu.span!!, ist(14, 0)))
+    assertEquals("Kaal choghadiya", WidgetUpdater.currentSegmentName(rahu.day, rahu.span!!, ist(15, 0)))
     assertEquals("next: Shubh choghadiya 16:19", WidgetUpdater.nextLine(state, rahu.day, rahu.span!!))
+  }
+
+  @Test
+  fun `C-REVIEW-MEDIUM-1 - the small widget names only the reasons active now, not the whole merged span`() {
+    // 2026-10-23 03:32 IST: the night good span 03:16-06:26 merges Shubh (03:16-04:51), Brahma muhurat (04:45-05:36)
+    // and Amrit (04:51-06:26). Only Shubh is running at 03:32.
+    val now = ist(3, 32, 1)
+    val r = state.resolve(now)!!
+    assertEquals("good", r.span!!.verdict)
+    assertEquals(listOf("Shubh", "Brahma muhurat", "Amrit"), r.span!!.reasons.map { it.name })
+    assertEquals("Shubh", WidgetUpdater.currentSegmentName(r.day, r.span!!, now))
+    // 04:48: Shubh and Brahma muhurat overlap -> both; 05:00: Brahma muhurat and Amrit.
+    assertEquals("Shubh \u00b7 Brahma muhurat", WidgetUpdater.currentSegmentName(r.day, r.span!!, ist(4, 48, 1)))
+    assertEquals("Brahma muhurat \u00b7 Amrit", WidgetUpdater.currentSegmentName(r.day, r.span!!, ist(5, 0, 1)))
+    // A span whose reasons are all elsewhere falls back to the choghadiya covering now (never an empty headline).
+    val bare = r.span!!.copy(reasons = r.span!!.reasons.filter { it.name == "Amrit" })
+    assertEquals("Shubh", WidgetUpdater.currentSegmentName(r.day, bare, now))
   }
 
   @Test
