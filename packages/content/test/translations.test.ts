@@ -703,6 +703,56 @@ describe('translated corpus files (hi / bho) mirror their English master', () =>
     }
   });
 
+  it('T14: nakshatra-pada is complete in hi and bho; each nakshatra repeats one opening sentence across its four padas, the Moon-ruled nakshatras say so, and the own-sign / exaltation / last-sign navamsa notes use the engine and UI names', () => {
+    const en = CORPUS['nakshatra-pada'].en!;
+    for (const lang of LANGS) {
+      const rows = CORPUS['nakshatra-pada'][lang]!;
+      expect(rows.map((r) => r.id).sort(), `nakshatra-pada/${lang} complete`).toEqual(en.map((r) => r.id).sort());
+      // D21: the first sentence of a nakshatra is written once and repeated byte-for-byte in its four padas, so one fix corrects all four.
+      const firstByNakshatra = new Map<number, Set<string>>();
+      for (const row of rows) {
+        const n = Number(row.id.match(/^nakshatra-(\d+)-\d$/)![1]);
+        const first = lookup('nakshatra-pada', row.id, lang)!.text.split('। ')[0];
+        if (!firstByNakshatra.has(n)) firstByNakshatra.set(n, new Set());
+        firstByNakshatra.get(n)!.add(first);
+      }
+      expect(firstByNakshatra.size).toBe(27);
+      for (const [n, firsts] of firstByNakshatra) expect(firsts.size, `nakshatra ${n} ${lang} opening sentence differs between padas`).toBe(1);
+    }
+    // Rohini (4) and Shravana (22) are ruled by the Moon itself; Rohini's English adds "its own nakshatra".
+    const rohiniHi = lookup('nakshatra-pada', 'nakshatra-4-1', 'hi')!;
+    expect(rohiniHi.fallback).toBe(false);
+    expect(rohiniHi.text).toContain('जिसके स्वामी स्वयं चंद्र हैं, यानी यह उनका अपना नक्षत्र है');
+    expect(rohiniHi.text).toContain('बैलगाड़ी');
+    const rohiniBho = lookup('nakshatra-pada', 'nakshatra-4-1', 'bho')!;
+    expect(rohiniBho.fallback).toBe(false);
+    expect(rohiniBho.text).toContain('जेकर स्वामी चंद्र खुदे बाड़न, माने ई उनकर आपन नक्षत्र बा');
+    expect(lookup('nakshatra-pada', 'nakshatra-22-1', 'hi')!.text).toContain('जिसके स्वामी स्वयं चंद्र हैं और जिसका प्रतीक कान है');
+    expect(lookup('nakshatra-pada', 'nakshatra-22-1', 'bho')!.text).toContain('जेकर स्वामी चंद्र खुदे बाड़न आ जेकर प्रतीक कान बा');
+    // "<X>'s own sign" navamsa notes: the Moon (22-4), Rohini (4-2), Shatabhisha (24-3, bho engine name सतभिखा).
+    expect(lookup('nakshatra-pada', 'nakshatra-22-4', 'hi')!.text).toContain('कर्क नवांश में पड़ता है, जो चंद्र की अपनी राशि है');
+    expect(lookup('nakshatra-pada', 'nakshatra-22-4', 'bho')!.text).toContain('कर्क नवांश में पड़ेला, जे चंद्र के आपन राशि बा');
+    expect(lookup('nakshatra-pada', 'nakshatra-4-2', 'hi')!.text).toContain('वृषभ नवांश में पड़ता है, जो रोहिणी की अपनी राशि है');
+    expect(lookup('nakshatra-pada', 'nakshatra-4-2', 'bho')!.text).toContain('वृषभ नवांश में पड़ेला, जे रोहिणी के आपन राशि बा');
+    expect(nakshatraNames.bho[23]).toBe('सतभिखा');
+    expect(lookup('nakshatra-pada', 'nakshatra-24-3', 'hi')!.text).toContain(`कुंभ नवांश में पड़ता है, जो ${nakshatraNames.hi[23]} की अपनी राशि है`);
+    expect(lookup('nakshatra-pada', 'nakshatra-24-3', 'bho')!.text).toContain(`कुंभ नवांश में पड़ेला, जे ${nakshatraNames.bho[23]} के आपन राशि बा`);
+    // "Jupiter's exaltation sign" uses the dignity sheet's tag (ui dignity.exalted = उच्च in both languages); "the last of the zodiac" = राशिचक्र की / के अंतिम राशि.
+    for (const lang of LANGS) {
+      expect(loadUi(lang)['dignity.exalted']).toBe('उच्च');
+      const punarvasu = lookup('nakshatra-pada', 'nakshatra-7-4', lang)!;
+      expect(punarvasu.lang).toBe(lang);
+      expect(punarvasu.text).toContain(lang === 'hi' ? 'जो गुरु की उच्च राशि है' : 'जे गुरु के उच्च राशि बा');
+      expect(lookup('nakshatra-pada', 'nakshatra-27-4', lang)!.text).toContain(lang === 'hi' ? 'जो राशिचक्र की अंतिम राशि है' : 'जे राशिचक्र के अंतिम राशि बा');
+    }
+    // The Bhadrapada "cot" legs are चारपाई / खाट, kept distinct from the Phalguni "bed" legs पलंग / खटिया (T13).
+    expect(lookup('nakshatra-pada', 'nakshatra-25-1', 'hi')!.text).toContain('चारपाई के अगले पाए');
+    expect(lookup('nakshatra-pada', 'nakshatra-26-1', 'hi')!.text).toContain('चारपाई के पिछले पाए');
+    expect(lookup('nakshatra-pada', 'nakshatra-25-1', 'bho')!.text).toContain('खाट के अगिला पाया');
+    expect(lookup('nakshatra-pada', 'nakshatra-26-1', 'bho')!.text).toContain('खाट के पिछिला पाया');
+    expect(lookup('nakshatra-pada', 'nakshatra-11-1', 'hi')!.text).toContain('पलंग के अगले पाए');
+    expect(lookup('nakshatra-pada', 'nakshatra-11-1', 'bho')!.text).toContain('खटिया के अगिला पाया');
+  });
   it('every registered domain has an English master and only hi / bho translations', () => {
     for (const t of TABLES) {
       expect(t.rows.en, `${t.domain} has no en`).toBeDefined();
