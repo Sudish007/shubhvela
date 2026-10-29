@@ -93,10 +93,11 @@ paste are in `app/playstore-assets/store-listing.md`.
 11. **Post-1.0 fixes** carried from the Phase D review (appended by the reviewer below). Already known before the review:
     - Re-shoot the 21 stand-in Play screenshots raw (d-ship; `scripts/shots.ps1 -KeepRaw`, pro=1 seed, light, en/hi/bho).
     - Translate the four remaining corpus domains (item 5).
-    - C-REVIEW items still open at D04: C-M1 small-widget reason filter, C-M2 `settings.exactAlarmsBody` "10 minutes"
-      wording, C-M3 TTS error "Open TTS settings" link, C-M4 level-2 "Why?" snippets, C-N1 widget picker labels, C-N2
-      journal mood marks, C-N3 widget hora word, C-N4 "From a link" label; B-N1 Devanagari place names (`name_hi`);
-      B-N7 muhurat finder location mode; A-N3 Sheetala Ashtami 2028 rule. Full list: `docs/verification/carry-over.md`.
+    - C-REVIEW items closed by d-fix (2026-10-30, commits `0d3f94c`, `e0f4c0b`, `9501b8b`): C-M1 small-widget reason
+      filter, C-M2 `settings.exactAlarmsBody` "10 minutes" wording, C-M3 TTS error "Open TTS settings" link, C-N1 widget
+      picker labels + previews, C-N2 journal mood marks, C-N3 widget hora word, C-N4 "From a link" label. Still open:
+      C-M4 level-2 "Why?" snippets (content authoring); B-N1 Devanagari place names (`name_hi`); B-N7 muhurat finder
+      location mode; A-N3 Sheetala Ashtami 2028 rule. Full list: `docs/verification/carry-over.md`.
     - Notification icon source in `app/app.json` points at the adaptive monochrome layer; harmless while `android/` is
       committed, but add a dedicated 96×96 source under `app/assets/` before anyone runs a prebuild (brand review note).
 
