@@ -589,6 +589,68 @@ describe('translated corpus files (hi / bho) mirror their English master', () =>
     expect(lookup('lagna', 'lagna-mesha', 'bho')!.text).toContain('आठवाँ घर');
   });
 
+  it('T12: transit is complete in hi and bho; every id resolves in its own language with the English rule and params, the sign-from-Moon ordinals, the Sade Sati / Dhaiya names and the honesty markers', () => {
+    const en = CORPUS.transit.en!;
+    for (const lang of LANGS) {
+      const rows = CORPUS.transit[lang];
+      expect(rows, `transit/${lang} registered`).toBeDefined();
+      expect(rows!.map((r) => r.id).sort(), `transit/${lang} complete`).toEqual(en.map((r) => r.id).sort());
+      for (const r of en) {
+        const got = lookup('transit', r.id, lang)!;
+        expect(got, `transit/${r.id} ${lang}`).not.toBeNull();
+        expect(got.lang, `transit/${r.id} ${lang} resolves in its own language`).toBe(lang);
+        expect(got.fallback).toBe(false);
+        // `rule` is the English gochara rule sentence and `params` the engine's inputs: metadata, byte-identical.
+        expect(got.snippet.rule).toBe(r.rule);
+        expect(got.snippet.params).toEqual(r.params);
+      }
+      // Bhojpuri register: no Hindi है / हैं anywhere in the domain.
+      if (lang === 'bho') for (const r of rows!) expect(r.text, `transit/${r.id} bho`).not.toMatch(/(^|\s)(है|हैं)(\s|।|,|;)/);
+    }
+    // transit-<planet>-<h> address the reader and open with the planet and the ordinal sign from the birth Moon (hi feminine, bho invariable, as the daily Chandra bala fragments).
+    const ORD_HI = ['पहली', 'दूसरी', 'तीसरी', 'चौथी', 'पाँचवीं', 'छठी', 'सातवीं', 'आठवीं', 'नौवीं', 'दसवीं', 'ग्यारहवीं', 'बारहवीं'];
+    const ORD_BHO = ['पहिला', 'दूसरा', 'तीसरा', 'चउथा', 'पाँचवाँ', 'छठा', 'सातवाँ', 'आठवाँ', 'नउवाँ', 'दसवाँ', 'एगारहवाँ', 'बारहवाँ'];
+    const PLANETS: [string, string][] = [['saturn', 'शनि'], ['jupiter', 'गुरु'], ['rahu', 'राहु']];
+    for (const [key, name] of PLANETS) {
+      for (let h = 1; h <= 12; h++) {
+        const hi = lookup('transit', `transit-${key}-${h}`, 'hi')!.text;
+        expect(hi.startsWith(`${name} आपके जन्म-चंद्र से ${ORD_HI[h - 1]} राशि में गोचर कर रहे हैं`), `transit-${key}-${h} hi opens with the planet and the ordinal`).toBe(true);
+        expect(hi).toContain('के लिए पढ़ा जाता है');
+        const bho = lookup('transit', `transit-${key}-${h}`, 'bho')!.text;
+        expect(bho.startsWith(`${name} राउर जनम-चंद्र से ${ORD_BHO[h - 1]} राशि में गोचर करत बाड़न`), `transit-${key}-${h} bho opens with the planet and the ordinal`).toBe(true);
+        expect(bho).toContain('खातिर पढ़ल जाला');
+      }
+    }
+    // Saturn: the Sade Sati phases and the two Dhaiyas carry the names the daily fragments and the Sade Sati card use.
+    expect(lookup('transit', 'transit-saturn-1', 'hi')!.text).toContain('साढ़े साती का मध्य चरण');
+    expect(lookup('transit', 'transit-saturn-1', 'bho')!.text).toContain('साढ़े साती के बीच के चरन');
+    expect(lookup('transit', 'transit-saturn-2', 'hi')!.text).toContain('साढ़े साती का अंतिम चरण');
+    expect(lookup('transit', 'transit-saturn-2', 'bho')!.text).toContain('साढ़े साती के अंतिम चरन');
+    expect(lookup('transit', 'transit-saturn-12', 'hi')!.text).toContain('साढ़े साती का आरंभिक चरण');
+    expect(lookup('transit', 'transit-saturn-12', 'bho')!.text).toContain('साढ़े साती के शुरुआती चरन');
+    expect(lookup('transit', 'transit-saturn-4', 'hi')!.text).toContain('कंटक ढैया');
+    expect(lookup('transit', 'transit-saturn-4', 'bho')!.text).toContain('कंटक ढइया');
+    expect(lookup('transit', 'transit-saturn-8', 'hi')!.text).toContain('अष्टम ढैया');
+    expect(lookup('transit', 'transit-saturn-8', 'bho')!.text).toContain('अष्टम ढइया');
+    for (const lang of LANGS) {
+      for (const h of [4, 8]) expect(lookup('transit', `transit-saturn-${h}`, lang)!.text).toContain('लगभग ढाई साल');
+      // "classically favourable" = the termbank honesty marker (शास्त्रों में / शास्त्र में); Rahu's favourable houses are a convention, so those say परंपरा के चलन से.
+      for (const id of ['transit-saturn-6', 'transit-saturn-11', 'transit-jupiter-2', 'transit-jupiter-5', 'transit-jupiter-7', 'transit-jupiter-9', 'transit-jupiter-11']) {
+        expect(lookup('transit', id, lang)!.text, `${id} ${lang}`).toContain(lang === 'hi' ? 'शास्त्रों में अनुकूल' : 'शास्त्र में अनुकूल');
+      }
+      for (const h of [3, 6, 11]) expect(lookup('transit', `transit-rahu-${h}`, lang)!.text, `transit-rahu-${h} ${lang}`).toContain('परंपरा के चलन से अनुकूल');
+      // The three Sade Sati phases keep the rules-corpus opening and, like the English, name the natal Moon without a second-person pronoun.
+      for (let p = 1; p <= 3; p++) {
+        const t = lookup('transit', `sade-sati-phase-${p}`, lang)!.text;
+        expect(t.startsWith(lang === 'hi' ? `साढ़े साती का चरण ${p}: शनि जन्म-चंद्र` : `साढ़े साती के चरन ${p}: शनि जनम-चंद्र`), `sade-sati-phase-${p} ${lang}`).toBe(true);
+        expect(t).not.toMatch(/राउर|रउआ|आपके|आपका/);
+        expect(t).toContain('ढाई साल');
+      }
+    }
+    expect(lookup('transit', 'sade-sati-phase-2', 'hi')!.text).toContain('शास्त्रों में सबसे ज़्यादा माँग');
+    expect(lookup('transit', 'sade-sati-phase-2', 'bho')!.text).toContain('शास्त्र में सबले बेसी माँग');
+  });
+
   it('every registered domain has an English master and only hi / bho translations', () => {
     for (const t of TABLES) {
       expect(t.rows.en, `${t.domain} has no en`).toBeDefined();

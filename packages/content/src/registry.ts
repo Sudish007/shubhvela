@@ -21,6 +21,8 @@ import lagnaBho from '../corpus/lagna/bho.json';
 import nakshatraPadaEn from '../corpus/nakshatra-pada/en.json';
 import dashaPairsEn from '../corpus/dasha-pairs/en.json';
 import transitEn from '../corpus/transit/en.json';
+import transitHi from '../corpus/transit/hi.json';
+import transitBho from '../corpus/transit/bho.json';
 import dailyEn from '../corpus/daily/en.json';
 import dailyHi from '../corpus/daily/hi.json';
 import dailyBho from '../corpus/daily/bho.json';
@@ -72,11 +74,11 @@ export const CORPUS: Record<string, Partial<Record<ContentLanguage, Snippet[]>>>
   // own daily-note keys dasha-<Maha>-<Antar> (ids Su Mo Ma Me Ju Ve Sa Ra Ke); transit-<saturn|jupiter|rahu>-<1..12> +
   // sade-sati-phase-<1..3>; daily = one fragment per engine DAILY_FRAGMENT_KEYS entry (chandra-bala-<h>, tara-bala-<t>,
   // tithi-<t>, nakshatra-<n>, vara-<v>, the special-yoga / bhadra / panchak keys, sade-sati states, day-strength-*).
-  // lagna hi/bho are complete (corpus-translate T11); nakshatra-pada / dasha-pairs / transit land in T12-T14, T19-T20.
+  // lagna hi/bho are complete (corpus-translate T11), transit hi/bho too (T12); nakshatra-pada / dasha-pairs land in T13-T14, T19-T20.
   lagna: { en: lagnaEn as Snippet[], hi: lagnaHi as Snippet[], bho: lagnaBho as Snippet[] },
   'nakshatra-pada': { en: nakshatraPadaEn as Snippet[] },
   'dasha-pairs': { en: dashaPairsEn as Snippet[] },
-  transit: { en: transitEn as Snippet[] },
+  transit: { en: transitEn as Snippet[], hi: transitHi as Snippet[], bho: transitBho as Snippet[] },
   daily: { en: dailyEn as Snippet[], hi: dailyHi as Snippet[], bho: dailyBho as Snippet[] },
   // A08: vrats = one snippet per engine VratFamily with the engine ruleId as id (vrat-ekadashi ... vrat-satyanarayan);
   // `rule` is the timing sentence (same as corpus/rules), `text` the what-to-do paragraph. hi/bho complete (corpus-translate T06).
