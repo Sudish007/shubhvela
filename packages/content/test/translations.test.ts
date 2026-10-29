@@ -878,6 +878,80 @@ describe('translated corpus files (hi / bho) mirror their English master', () =>
       }
     }
   });
+
+  it('T17: the planet-house slice is registered in hi and bho with one id set; every translated id opens with the engine planet name and the house ordinal the planet sheet shows, keeps the "is read for" / placement frames, names the south node only in the Ketu records, keeps the English rule / params, and an untranslated id resolves along the chain', () => {
+    const en = CORPUS['planet-house'].en!;
+    const hi = CORPUS['planet-house'].hi!;
+    const bho = CORPUS['planet-house'].bho!;
+    expect(hi.length).toBeGreaterThanOrEqual(54);
+    expect(hi.length).toBeLessThanOrEqual(en.length);
+    expect(bho.map((r) => r.id).sort(), 'planet-house hi and bho carry the same slice').toEqual(hi.map((r) => r.id).sort());
+    const enById = new Map(en.map((r) => [r.id, r]));
+    // Ids are `<planet>-<house 1..12>` with the lowercase English engine planet names (corpus-interpretive.test.ts).
+    const PLANET_BY_KEY = new Map<string, PlanetId>((Object.keys(planetNames.en) as PlanetId[]).map((p) => [planetNames.en[p].toLowerCase(), p]));
+    // The paragraph sits under charts.planetInHouse "{planet} {house} में": Hindi declines the UI ordinal (पहला भाव -> पहले भाव में), Bhojpuri ordinals are invariable (पहिला घर में).
+    const HI_OBLIQUE: Record<number, string> = { 1: 'पहले', 2: 'दूसरे', 3: 'तीसरे', 4: 'चौथे', 5: 'पाँचवें', 6: 'छठे', 7: 'सातवें', 8: 'आठवें', 9: 'नौवें', 10: 'दसवें', 11: 'ग्यारहवें', 12: 'बारहवें' };
+    for (const lang of LANGS) {
+      const ui = loadUi(lang);
+      const isHi = lang === 'hi';
+      for (const row of CORPUS['planet-house'][lang]!) {
+        const master = enById.get(row.id)!;
+        const got = lookup('planet-house', row.id, lang)!;
+        expect(got, `planet-house/${row.id} ${lang}`).not.toBeNull();
+        expect(got.lang, `planet-house/${row.id} ${lang} resolves in its own language`).toBe(lang);
+        expect(got.fallback).toBe(false);
+        // `rule` is the English rule caption, `source` and `params` engine metadata: byte-identical (D3).
+        expect(got.snippet.rule).toBe(master.rule);
+        expect(got.snippet.source).toBe(master.source);
+        expect(got.snippet.params).toEqual(master.params);
+        const [, planetKey, houseStr] = row.id.match(/^([a-z]+)-(\d{1,2})$/)!;
+        const planet = PLANET_BY_KEY.get(planetKey)!;
+        const house = Number(houseStr);
+        const t = got.text;
+        // Opening frame: the sheet title order "<planet> <house> में" with the engine planet name, the planet in the respectful plural.
+        const opening = isHi ? `${planetNames.hi[planet]} ${HI_OBLIQUE[house]} भाव में हैं` : `${planetNames.bho[planet]} ${ui[`charts.houseOrdinal.${house}`]} में बाड़न`;
+        expect(t.startsWith(opening), `${row.id} ${lang} opens "${opening}"`).toBe(true);
+        // Honesty markers: "is read for" (opening theme list and the closing "It is read for how") and "The placement tends to show up as".
+        expect(t).toContain(isHi ? 'के लिए पढ़ा जाता है' : 'खातिर पढ़ल जाला');
+        expect(t, `${row.id} ${lang} keeps the placement frame`).toContain(isHi ? 'यह स्थिति प्रायः' : 'ई स्थिति अक्सर');
+        expect(t, `${row.id} ${lang} keeps the closing frame`).toContain(isHi ? 'इसे इस बात के लिए पढ़ा जाता है कि' : 'एकरा एह बात खातिर पढ़ल जाला कि');
+        // Ketu: "which the south node detaches from" / "where the south node is classically at ease" (glossary wording for the node); no other planet names the node.
+        if (planet === 'Ke') {
+          expect(t, `${row.id} ${lang} names the south node`).toContain('चंद्र-पात');
+          if (/classically at ease/.test(String(master.text))) expect(t, `${row.id} ${lang} classically at ease`).toContain(isHi ? 'शास्त्रों में सहज माने जाते हैं' : 'शास्त्र में सहज मानल जालन');
+          else expect(t, `${row.id} ${lang} detaches`).toContain(isHi ? 'विरक्ति देते हैं' : 'अलगाव देलन');
+        } else {
+          expect(t).not.toContain('चंद्र-पात');
+        }
+        // These paragraphs describe the chart, not the reader: no second-person pronoun; bho carries no Hindi है / हैं.
+        expect(t).not.toMatch(/राउर|रउआ|आपके|आपका|आपकी/);
+        if (lang === 'bho') expect(t, `planet-house/${row.id} bho`).not.toMatch(/(^|\s)(है|हैं)(\s|।|,|;)/);
+      }
+    }
+    // "its natural domain" (Jupiter in the 9th, Mercury in the 3rd) and "the house of effort and courage" (Mars in the 3rd) keep their aside.
+    expect(lookup('planet-house', 'jupiter-9', 'hi')!.text).toContain('जो उनका स्वाभाविक क्षेत्र है');
+    expect(lookup('planet-house', 'jupiter-9', 'bho')!.text).toContain('जे उनकर आपन सहज क्षेत्र बा');
+    expect(lookup('planet-house', 'mercury-3', 'hi')!.text).toContain('जो संवाद का उनका स्वाभाविक क्षेत्र है');
+    expect(lookup('planet-house', 'mercury-3', 'bho')!.text).toContain('जे बातचीत के उनकर आपन सहज क्षेत्र बा');
+    expect(lookup('planet-house', 'mars-3', 'hi')!.text).toContain('जो परिश्रम और साहस का भाव है');
+    expect(lookup('planet-house', 'mars-3', 'bho')!.text).toContain('जे मेहनत आ साहस के घर बा');
+    // The 4th-house theme word keeps "home" apart from bhava in Bhojpuri: घर-परिवार / घर-दुआर, while bare घर is the house (चउथा घर में).
+    for (const id of ['jupiter-4', 'ketu-4', 'mars-4', 'mercury-4']) {
+      const t = lookup('planet-house', id, 'bho')!.text;
+      expect(t, `${id} bho`).toContain('घर-परिवार');
+      expect(t.replace(/घर-(परिवार|दुआर)/g, '').replace(/चउथा घर में/g, ''), `${id} bho: bare घर only as the bhava`).not.toMatch(/(^|\s)घर(\s|,|।)/);
+    }
+    // Ids outside the integrated slice resolve further down the chain (bho -> hi -> en) and say so.
+    const translated = new Set(hi.map((r) => r.id));
+    const pending = en.map((r) => r.id).filter((id) => !translated.has(id));
+    for (const id of pending.slice(0, 20)) {
+      for (const lang of LANGS) {
+        const r = lookup('planet-house', id, lang)!;
+        expect(r, `${id} ${lang}`).not.toBeNull();
+        expect(r.fallback).toBe(r.lang !== lang);
+      }
+    }
+  });
   it('every registered domain has an English master and only hi / bho translations', () => {
     for (const t of TABLES) {
       expect(t.rows.en, `${t.domain} has no en`).toBeDefined();

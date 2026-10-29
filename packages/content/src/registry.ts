@@ -14,6 +14,8 @@ import planetSignEn from '../corpus/planet-sign/en.json';
 import planetSignHi from '../corpus/planet-sign/hi.json';
 import planetSignBho from '../corpus/planet-sign/bho.json';
 import planetHouseEn from '../corpus/planet-house/en.json';
+import planetHouseHi from '../corpus/planet-house/hi.json';
+import planetHouseBho from '../corpus/planet-house/bho.json';
 import dignityEn from '../corpus/dignity/en.json';
 import dignityHi from '../corpus/dignity/hi.json';
 import dignityBho from '../corpus/dignity/bho.json';
@@ -70,10 +72,11 @@ export const CORPUS: Record<string, Partial<Record<ContentLanguage, Snippet[]>>>
   rules: { en: rulesEn as Snippet[], hi: rulesHi as Snippet[], bho: rulesBho as Snippet[] },
   // A06: ids are `<planet>-<sign>` / `<planet>-<house>` with the lowercase English names of the engine locale tables
   // (sun, moon, mars, mercury, jupiter, venus, saturn, rahu, ketu; mesha ... meena), and the engine DignityTag names.
-  // dignity hi/bho are complete (corpus-translate T11); planet-sign hi/bho land in two slices (T15: ids 1-54 sorted,
-  // T16: the rest; lookup falls back per id); planet-house lands in T17-T18.
+  // dignity hi/bho are complete (corpus-translate T11), planet-sign hi/bho too (T15 + T16); planet-house hi/bho land in
+  // two slices (T17: ids 1-54 sorted = jupiter, ketu, mars, mercury + moon-1/-10/-11/-12/-2/-3; T18: the rest; lookup
+  // falls back per id).
   'planet-sign': { en: planetSignEn as Snippet[], hi: planetSignHi as Snippet[], bho: planetSignBho as Snippet[] },
-  'planet-house': { en: planetHouseEn as Snippet[] },
+  'planet-house': { en: planetHouseEn as Snippet[], hi: planetHouseHi as Snippet[], bho: planetHouseBho as Snippet[] },
   dignity: { en: dignityEn as Snippet[], hi: dignityHi as Snippet[], bho: dignityBho as Snippet[] },
   // A07: lagna-<sign> (lowercase engine sign name); nakshatra-<1..27>-<pada 1..4>; dasha-maha-<PlanetId> and the engine's
   // own daily-note keys dasha-<Maha>-<Antar> (ids Su Mo Ma Me Ju Ve Sa Ra Ke); transit-<saturn|jupiter|rahu>-<1..12> +
