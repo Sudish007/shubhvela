@@ -240,3 +240,108 @@ html[lang="hi"] .why-panel dt,html[lang="bho"] .why-panel dt{text-transform:none
 .results li a:hover{text-decoration:underline}
 .linklist{display:flex;flex-wrap:wrap;gap:8px 16px;padding:0;margin:var(--gap) 0 0;list-style:none}
 .linklist a{display:inline-flex;min-height:44px;align-items:center;font-weight:600}
+/* ---- Data pages (D02): breadcrumbs, key/value rows, tables, band, pickers ---- */
+.crumbs ol{list-style:none;display:flex;flex-wrap:wrap;gap:4px 0;padding:0;margin:0 0 var(--gap);font-size:.9em;color:var(--ink-3)}
+.crumbs li+li::before{content:"›";padding:0 8px;color:var(--ink-3)}
+.crumbs a{display:inline-flex;align-items:center;min-height:44px;color:var(--ink-2);text-decoration:none;font-weight:600}
+.crumbs a:hover{text-decoration:underline}
+.crumbs span{display:inline-flex;align-items:center;min-height:44px}
+.page .lede{font-size:1.1em;color:var(--ink-2);max-width:70ch;margin:0 0 .6em}
+.page h1.display{font-size:clamp(1.9rem,1.2rem + 1.6vw,3.2rem);line-height:1.15;margin:0 0 .3em;max-width:30ch}
+.page h1 .lat,.terms .lat{color:var(--ink-2);font-weight:400}
+.section-sub{padding-top:var(--gap);margin-top:var(--gap);border-top:1px solid var(--hair)}
+.section-sub h2,.page .panel h2{font-size:clamp(1.25rem,1rem + .7vw,1.9rem);margin:0 0 .5em}
+.page .section-head{margin-bottom:12px}
+.page .section-head p{color:var(--ink-3);font-size:.9em}
+.kvs .kv{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-top:1px solid var(--hair);font-size:.95em}
+.kvs .kv:first-child{border-top:0}
+.kvs .kv span:last-child{color:var(--ink-2);text-align:right}
+.page .panel{margin:var(--gap) 0}
+.today-grid{display:grid;gap:var(--gap);grid-template-columns:minmax(0,1fr);align-items:start}
+@media (min-width:1024px){.today-grid{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}}
+.bandcol h3{font-size:1.05em;margin:0 0 8px}
+.band-fig{margin:0 0 8px}
+.band{display:block;width:100%;height:auto;overflow:visible}
+.band .sp-good{fill:var(--good)}
+.band .sp-avoid{fill:var(--avoid)}
+.band .sp-neutral{fill:var(--neutral)}
+.band .sp-night{fill:var(--night)}
+.band .pd{fill:var(--good-ink)}
+.band .pdn{fill:var(--night-ink);fill-opacity:.85}
+.band .ph{stroke:var(--avoid-hatch);fill:none}
+.band .phn{stroke:var(--night-ink);stroke-opacity:.85;fill:none}
+.band .dv{stroke:var(--hair-2)}
+.band .dv-night{stroke:var(--night-ink);stroke-opacity:.35}
+.band .moon{fill:var(--indigo)}
+.band .frame{stroke:var(--hair-2)}
+.band .tk{stroke:var(--hair-2)}
+.band text{font-family:var(--font-body);font-variant-numeric:tabular-nums}
+html[lang="hi"] .band text,html[lang="bho"] .band text{font-family:var(--font-deva)}
+.band .lbl{fill:var(--ink)}
+.band .lbl-good{fill:var(--good-ink)}
+.band .lbl-night{fill:var(--night-ink)}
+.band .tkt{fill:var(--ink-3)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:max(12px,.8em);color:var(--ink-2);margin-top:4px}
+.lg{display:inline-flex;align-items:center;gap:6px}
+.sw{display:inline-block;width:14px;height:14px;border-radius:3px;border:1px solid var(--hair-2)}
+.sw-good{background:var(--good) var(--dots)}
+.sw-neutral{background:var(--neutral)}
+.sw-avoid{background:var(--avoid) var(--hatch)}
+.sw-night{background:var(--night) var(--dots-night)}
+.flags{color:var(--ink-2);font-size:.95em;margin:0 0 12px}
+table.month th[scope="row"],table.moon th[scope="row"],table.windows th[scope="row"],table.occurrences th[scope="row"]{text-transform:none;letter-spacing:0;font-size:inherit;color:var(--ink);padding:9px 8px 9px 0;border-top:1px solid var(--hair);vertical-align:top;white-space:nowrap}
+table.num th,table.num td,table.windows td:first-child,table.windows strong,table.occurrences th[scope="row"],table.occurrences td:nth-child(3),table.occurrences .s,table.segments td:nth-child(2){font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+.legend-list.compact li{margin:.2em 0}
+table.month td,table.moon td,table.windows td,table.occurrences td,table.segments td,table.festivals td{white-space:nowrap}
+table.month td:nth-child(2),table.month td:nth-child(3),table.windows td:nth-child(2),table.windows td:last-child,table.occurrences td:nth-child(2),table.occurrences td:last-child{white-space:normal;min-width:11em}
+table.windows tr.day th{background:var(--neutral);text-align:left;padding:8px;border-top:1px solid var(--hair-2);font-weight:600}
+table.windows tr.day.is-today th{background:var(--accent-tint)}
+table caption{text-align:left;color:var(--ink-3);font-size:max(12px,.8em);padding:0 0 8px}
+tr.is-today th,tr.is-today td{background:var(--accent-tint)}
+.today-tag{display:inline-block;margin-left:6px;font-size:max(12px,.72em);padding:1px 6px;border-radius:4px;border:1px solid var(--accent);color:var(--accent);vertical-align:middle;font-weight:600}
+.tscroll-narrow{max-width:32em}
+table.segments th[scope="row"]{text-transform:none;letter-spacing:0;font-size:inherit;color:var(--ink);padding:9px 8px 9px 0;border-top:1px solid var(--hair);vertical-align:top}
+table .s,table.festivals .s{display:block;color:var(--ink-3);font-size:max(12px,.82em);font-weight:400;white-space:normal}
+.tag-good{border-color:var(--good);color:var(--good-ink);background:var(--good)}
+.tag-avoid{border-color:var(--avoid-hatch);color:var(--ink);background:var(--avoid) var(--hatch)}
+.tag-neutral{color:var(--ink-2)}
+.count{color:var(--ink-3);font-size:.7em;font-family:var(--font-body);vertical-align:middle}
+.twocol-eq{display:grid;gap:var(--gap);align-items:stretch;grid-template-columns:minmax(0,1fr)}
+@media (min-width:1024px){.twocol-eq{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.tradition .big{font-size:clamp(1.4rem,1rem + 1vw,2rem);font-weight:600;margin:0 0 .2em}
+.tradition .through,.tradition .s{color:var(--ink-2);margin:0 0 .4em;font-size:.95em}
+.tradition .kvs{margin-top:8px}
+.picker label{margin-bottom:6px}
+.picker .field{max-width:28em}
+.pick .s{color:var(--ink-2);margin:0 0 10px}
+.chips{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px;max-width:24em;white-space:normal}
+.chip{font-size:max(12px,.72em);line-height:1.3;padding:1px 6px;border-radius:4px;border:1px solid var(--hair-2);color:var(--ink-3);white-space:nowrap}
+.chip.met{border-color:var(--good);color:var(--ink);background:var(--accent-tint)}
+.chip.unmet{text-decoration:line-through;text-decoration-color:var(--ink-3)}
+.chip.personal.unmet{border-style:dashed}
+.legend-list{padding-left:1.3em;margin:0 0 var(--gap)}
+.legend-list li{margin:.5em 0;color:var(--ink-2)}
+.legend-list li strong{color:var(--ink)}
+.legend-list .s,.prose .s{display:block;color:var(--ink-3);font-size:.9em}
+.allowed{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 12px;margin:0 0 .8em;font-size:.95em}
+.allowed dt{color:var(--ink-3);font-size:max(12px,.85em)}
+.allowed dd{margin:0;color:var(--ink-2)}
+.letters{display:flex;flex-wrap:wrap;gap:4px;margin:0 0 var(--gap)}
+.letters a{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;border:1px solid var(--hair-2);border-radius:8px;text-decoration:none;color:var(--ink);font-weight:600}
+.terms{list-style:none;padding:0;margin:0 0 var(--gap);display:grid;gap:0 var(--gap);grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+.terms li{border-top:1px solid var(--hair);padding:8px 0;min-width:0}
+.terms a{display:inline-flex;align-items:center;min-height:44px;gap:8px;text-decoration:none;color:var(--ink);font-weight:600}
+.terms .s{color:var(--ink-3);font-size:max(12px,.85em);display:block}
+.lessons{padding-left:0;list-style:none;color:var(--ink-2)}
+.lessons li{padding:6px 0;border-top:1px solid var(--hair)}
+.card .months{display:flex;flex-wrap:wrap;gap:2px 8px;margin-top:6px}
+.card .months a{display:inline-flex;align-items:center;min-height:44px;font-size:max(12px,.85em);text-decoration:none;color:var(--ink-2);font-weight:600}
+.card .months a:hover{text-decoration:underline}
+.verified{font-size:.9em;color:var(--ink-3);margin:var(--gap) 0 0}
+.verified.ok{color:var(--ink-2)}
+.years{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:var(--gap) 0 0}
+.share-img img{display:block;width:100%;max-width:600px;height:auto;border:1px solid var(--hair);border-radius:12px;margin:0 0 12px}
+table.festivals th[scope="row"]{text-transform:none;letter-spacing:0;font-size:inherit;color:var(--ink);padding:9px 8px 9px 0;border-top:1px solid var(--hair);vertical-align:top}
+.page .actions{margin:0 0 var(--gap)}
+.page .actions .btn[aria-current="page"]{border-color:var(--accent);color:var(--accent);background:var(--accent-tint)}
+td.empty{color:var(--ink-2)}

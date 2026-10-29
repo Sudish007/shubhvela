@@ -28,8 +28,12 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
-      - run: npm test
+      # The web inventory test (web/test/pages.test.mjs) walks the dist/ this build just wrote instead of building a
+      # second copy into a temp dir (WEB_DIST); every other suite runs unchanged. Nothing ships from a red tree.
       - run: npm run web:build
+      - run: npm test
+        env:
+          WEB_DIST: ${{ github.workspace }}/web/dist
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:

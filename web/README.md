@@ -31,6 +31,20 @@ npm run typecheck -w web
    `app/assets/fonts/`, OG images are rendered (`src/og/`, @resvg/resvg-js + sharp; composited over
    `public/brand/og-base.png` when it exists), sitemaps are written per language under `sitemap.xml`.
 
+7. Data pages (D02, the default; `--core-only` skips them): `src/data/*.mjs` compute everything once per build with the
+   engine — `panchang.mjs` (331 cities × current + next month on worker threads, `panchang-worker.mjs`; "current month"
+   = the build instant in Asia/Kolkata, so the monthly cron rolls forward), `festivals.mjs` (2026–2028, extended to
+   buildYear + 2; Purnimanta at New Delhi + Amanta at Chennai), `muhurat.mjs` (14 activities × 12 rolling months at New
+   Delhi, no profile → Chandra/Tara bala never met, max 8/10), `vrats.mjs` (12 families, next 12 occurrences),
+   `glossary.mjs` (corpus/glossary, ≥ 150 asserted). Templates `src/templates/{panchang-city,panchang-month,festival,
+   muhurat-month,glossary,vrat}.mjs`; `src/band-svg.mjs` draws the good-hours band with the app's tokens, patterns and
+   engine `labelFor` (N3) labels; `src/rows.mjs` renders table rows shared with the browser bundle
+   `src/client/data-pages.ts`, which the city picker (`client/picker.js`, `?city=<slug>`) loads lazily to recompute a
+   block with the same engine. `client/today-mark.js` marks today's row / card only when the visitor's date in the
+   city's zone matches. OG images per festival-year, city (with the build day's band), activity, vrat + one glossary
+   image per language. Budgets asserted: `dist/` ≤ 150 MB, `dist/og` ≤ 60 MB. `web/.cache/build-summary.json` records
+   counts, sizes and timings; `web/test/pages.test.mjs` walks the full inventory (set `WEB_DIST` to reuse a fresh build).
+
 ## Conventions
 
 - Base path `/shubhvela/` everywhere (`src/config.mjs`); absolute URLs from `BASE_URL`.

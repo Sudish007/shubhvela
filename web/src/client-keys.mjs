@@ -19,3 +19,20 @@ export const CLIENT_KEYS = [
   'why.rule', 'why.source', 'why.inputs', 'why.loading', 'why.unavailable', 'why.close', 'why.convention',
   'm.invalid',
 ];
+
+/** Keys the data-pages bundle (city picker recompute) needs per page kind; the template embeds exactly these as #i18n. */
+export const DATA_CLIENT_KEYS = {
+  festival: ['data.pickedCity', 'panchang.sunriseSunset', 'panchang.moonriseMoonset', 'mini.none', 'today.noSun'],
+  muhurat: [
+    'muhurat.rulesMet', 'muhurat.notMet', 'muhurat.allPanchangMet', 'muhurat.night_tag', 'muhurat.clipped', 'muhurat.noneThisMonth', 'muhurat.windowsH',
+    ...['tithi', 'nakshatra', 'vara', 'chandra-bala', 'tara-bala', 'rahu-kaal', 'bhadra', 'panchak', 'abhijit', 'choghadiya'].map((r) => `muhurat.rule.${r}`),
+    ...['amrit', 'chal', 'kaal', 'labh', 'rog', 'shubh', 'udveg'].map((c) => `band.chog.${c}`),
+  ],
+  vrat: [
+    'common.till', 'events.tithiDate', 'panchang.krishna', 'panchang.shukla',
+    'vrat.nextH', 'vrat.howComputed', 'vrat.vaishnavaLabel', 'vrat.hariVasaraLabel', 'vrat.chhath.nahayKhay', 'vrat.chhath.kharna', 'vrat.chhath.ushaArghya', 'vrat.angaraki',
+    ...['ghatasthapana', 'ghatasthapana-abhijit', 'madhyahna', 'moonrise', 'nishita', 'parana', 'pradosh', 'sandhya', 'sunrise', 'sunset-to-sunrise'].map((k) => `vrat.time.${k}`),
+    ...['amavasya', 'chhath', 'ekadashi-aja', 'ekadashi-amalaki', 'ekadashi-apara', 'ekadashi-devshayani', 'ekadashi-devutthana', 'ekadashi-indira', 'ekadashi-jaya', 'ekadashi-kamada', 'ekadashi-kamika', 'ekadashi-mohini', 'ekadashi-mokshada', 'ekadashi-nirjala', 'ekadashi-padmini', 'ekadashi-papankusha', 'ekadashi-papmochani', 'ekadashi-parama', 'ekadashi-parivartini', 'ekadashi-pausha-putrada', 'ekadashi-rama', 'ekadashi-saphala', 'ekadashi-shattila', 'ekadashi-shravana-putrada', 'ekadashi-utpanna', 'ekadashi-varuthini', 'ekadashi-vijaya', 'ekadashi-yogini', 'karwa-chauth', 'masik-shivaratri', 'navratri-chaitra', 'navratri-sharad', 'pradosh-bhauma', 'pradosh-bhrigu', 'pradosh-guru', 'pradosh-ravi', 'pradosh-saumya', 'pradosh-shani', 'pradosh-soma', 'purnima', 'sankashti', 'sankashti-angaraki', 'satyanarayan', 'teej-hariyali', 'teej-hartalika', 'teej-kajari', 'vinayaka-chaturthi'].map((n) => `vrat.name.${n}`),
+  ],
+};
+export const ALL_DATA_CLIENT_KEYS = [...new Set([...DATA_CLIENT_KEYS.festival, ...DATA_CLIENT_KEYS.muhurat, ...DATA_CLIENT_KEYS.vrat])];

@@ -1,13 +1,16 @@
 #!/usr/bin/env node
-// Shubhvela web companion — static site generator (spec F41-F43; plan.md D01; design.md 9, 10.10).
+// Shubhvela web companion — static site generator (spec F41-F43; plan.md D01/D02; design.md 9, 10.10).
 // Node 24, no template engine, no tsx: the engine and the content package are pre-bundled with esbuild into web/.cache/
-// and imported from there; the kundli client bundle is built for the browser; every number on every page is engine output
-// computed here, at build time. Output: web/dist/ (GitHub Pages, base path /shubhvela/).
+// and imported from there; the kundli and data-pages client bundles are built for the browser; every number on every
+// page is engine output computed here, at build time. Output: web/dist/ (GitHub Pages, base path /shubhvela/).
 //
 //   node build.mjs [--out <dir>] [--core-only] [--quiet]
 //
-// --core-only renders the core pages only (home, kundli, /m/, download, privacy, terms, data-deletion, 404 per language);
-// D02 adds the data pages (panchang, festival, muhurat, glossary, vrat) behind the flag's default.
+// --core-only renders the core pages only (home, kundli, /m/, download, privacy, terms, data-deletion, 404 per language).
+// The default adds the data pages (D02): panchang for 331 cities (current + next month, rolled forward from the build
+// date in Asia/Kolkata), festivals 2026-2028 (+ buildYear + 2) with Event JSON-LD, muhurat 14 activities × 12 rolling
+// months, glossary, vrats; per-entity OG images; per-language sitemaps split at 50,000 URLs; budgets dist <= 150 MB and
+// og <= 60 MB asserted.
 import { existsSync } from 'node:fs';
 import { cp, mkdir, readFile, readdir, rm, stat, writeFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
@@ -20,7 +23,7 @@ import {
   SOURCE_URL, WEB_DIR, href,
 } from './src/config.mjs';
 import { tr, webStrings } from './src/i18n.mjs';
-import { civilDateLong } from './src/format.mjs';
+import { civilDateLong, tithiLabel } from './src/format.mjs';
 import { languageSitemaps, sitemapIndexXml } from './src/seo.mjs';
 import { renderHome } from './src/templates/home.mjs';
 import { renderKundli } from './src/templates/kundli.mjs';
@@ -30,10 +33,28 @@ import { renderTerms } from './src/templates/terms.mjs';
 import { renderDataDeletion } from './src/templates/data-deletion.mjs';
 import { renderNotFound } from './src/templates/notfound.mjs';
 import { renderRedirect } from './src/templates/redirect.mjs';
+import { renderPanchangCity, renderPanchangIndex } from './src/templates/panchang-city.mjs';
+import { renderPanchangMonth } from './src/templates/panchang-month.mjs';
+import { renderFestival, renderFestivalsIndex, renderFestivalsYear } from './src/templates/festival.mjs';
+import { renderMuhuratIndex, renderMuhuratMonth } from './src/templates/muhurat-month.mjs';
+import { renderGlossaryIndex, renderGlossaryTerm } from './src/templates/glossary.mjs';
+import { renderVrat, renderVratIndex } from './src/templates/vrat.mjs';
 import { renderOg } from './src/og/render.mjs';
+import { OG_BAND } from './src/og/templates.mjs';
+import { bandSvg, bandTickTexts } from './src/band-svg.mjs';
+import { cityList, cityName, cityPickerJson } from './src/data/cities.mjs';
+import { buildCalendar, monthLabel, panchangData } from './src/data/panchang.mjs';
+import { dayTimes, festivalCopy, festivalData } from './src/data/festivals.mjs';
+import { muhuratCopy, muhuratData } from './src/data/muhurat.mjs';
+import { glossaryData } from './src/data/glossary.mjs';
+import { vratCopy, vratData } from './src/data/vrats.mjs';
 
 /** Date the legal pages were last changed (not the build date, which moves monthly). */
 export const LEGAL_UPDATED = '2026-10-30';
+
+/** Size budgets (design.md 9 M11; plan P6), asserted by the build. */
+export const DIST_BUDGET_BYTES = 150 * 1024 * 1024;
+export const OG_BUDGET_BYTES = 60 * 1024 * 1024;
 
 /** Rule ids whose text the kundli client can show behind "Why?" (chart honesty markers, yogas, dasha). */
 export const CLIENT_RULE_IDS = [
@@ -57,16 +78,22 @@ function hash8(content) {
   return createHash('sha256').update(content).digest('hex').slice(0, 8);
 }
 
+/** Drops template indentation (leading whitespace after a newline) — the inline scripts are already minified to one line. */
+export function compactHtml(html) {
+  return html.replace(/\n[ \t]+/g, '\n').replace(/\n{2,}/g, '\n');
+}
+
 async function writeOut(outDir, sitePath, content) {
   const file = sitePath.endsWith('/') ? pjoin(outDir, sitePath, 'index.html') : pjoin(outDir, sitePath);
   await mkdir(dirname(file), { recursive: true });
-  await writeFile(file, content);
+  await writeFile(file, sitePath.endsWith('/') || sitePath.endsWith('.html') ? compactHtml(content) : content);
   return file;
 }
 
 async function dirSize(dir) {
   let total = 0;
   let files = 0;
+  if (!existsSync(dir)) return { total, files };
   for (const entry of await readdir(dir, { withFileTypes: true })) {
     const p = pjoin(dir, entry.name);
     if (entry.isDirectory()) {
@@ -81,6 +108,23 @@ async function dirSize(dir) {
   return { total, files };
 }
 
+const mb = (bytes) => (bytes / 1024 / 1024).toFixed(1);
+
+/** Runs async tasks with bounded concurrency (OG rendering: sharp/libvips is thread-pooled already). */
+async function mapLimit(items, limit, fn) {
+  const out = new Array(items.length);
+  let i = 0;
+  const workers = Array.from({ length: Math.min(limit, items.length) }, async () => {
+    for (;;) {
+      const idx = i++;
+      if (idx >= items.length) return;
+      out[idx] = await fn(items[idx], idx);
+    }
+  });
+  await Promise.all(workers);
+  return out;
+}
+
 // ---------------------------------------------------------------- step 1: pre-bundles
 
 async function prebundle(log) {
@@ -92,12 +136,12 @@ async function prebundle(log) {
   const engine = await import(pathToFileURL(resolve(CACHE_DIR, 'engine.mjs')).href + bust);
   const content = await import(pathToFileURL(resolve(CACHE_DIR, 'content.mjs')).href + bust);
   log('pre-bundled engine + content');
-  return { engine, content };
+  return { engine, content, enginePath: resolve(CACHE_DIR, 'engine.mjs') };
 }
 
-async function clientBundle(outDir) {
+async function clientBundle(outDir, entry) {
   const result = await esbuild.build({
-    entryPoints: [resolve(WEB_DIR, 'src', 'client', 'kundli.ts')],
+    entryPoints: [resolve(WEB_DIR, 'src', 'client', entry)],
     bundle: true,
     platform: 'browser',
     format: 'esm',
@@ -126,6 +170,8 @@ async function inlineAssets() {
     chartScale: await minJs('client/chart-scale.js'),
     toggle: await minJs('client/toggle.js'),
     todayLabel: await minJs('client/today-label.js'),
+    todayMark: await minJs('client/today-mark.js'),
+    picker: await minJs('client/picker.js'),
     loader: await minJs('client/loader.js'),
     notfoundSearch: await minJs('client/notfound-search.js'),
   };
@@ -224,6 +270,136 @@ export function rulesSubset(content, lang) {
   return out;
 }
 
+// ---------------------------------------------------------------- step 3: data pages (D02)
+
+/** Everything the data templates need, computed once (engine calls) and shared by the three languages. */
+export async function dataPagesData(engine, content, { enginePath, log }) {
+  const calendar = buildCalendar(engine);
+  const cities = cityList(engine);
+  const t0 = performance.now();
+  const panchang = await panchangData(engine, cities, calendar, { enginePath, log });
+  const tPanchang = (performance.now() - t0) / 1000;
+  const festivals = festivalData(engine, calendar.year);
+  // Sunrise/moonrise at the default city for every festival date (static part of the city picker), cached by city|date.
+  const festivalTimes = new Map();
+  for (const year of festivals.years) {
+    for (const e of festivals.byYear.get(year).values()) {
+      for (const [side, pl] of [['north', festivals.north], ['south', festivals.south]]) {
+        const o = e[side][0];
+        if (!o) continue;
+        const key = `${pl.city.slug}|${o.date}`;
+        if (!festivalTimes.has(key)) festivalTimes.set(key, dayTimes(engine, o.date, pl));
+      }
+    }
+  }
+  const muhurat = muhuratData(engine, calendar, { log });
+  const vrats = vratData(engine, calendar, { log });
+  const glossary = {};
+  const festivalCopyByLang = {};
+  const muhuratCopyByLang = {};
+  const vratCopyByLang = {};
+  for (const l of LANGS) {
+    glossary[l] = glossaryData(content, l);
+    festivalCopyByLang[l] = new Map();
+    for (const year of festivals.years) for (const slug of festivals.byYear.get(year).keys()) if (!festivalCopyByLang[l].has(slug)) festivalCopyByLang[l].set(slug, festivalCopy(content, slug, l));
+    muhuratCopyByLang[l] = new Map(muhurat.activities.map((a) => [a.id, muhuratCopy(content, a.id, muhurat.ruleOrder, l)]));
+    vratCopyByLang[l] = new Map(vrats.families.map((f) => [f, vratCopy(content, f, l)]));
+  }
+  log(`festivals ${festivals.years.join('/')}: ${festivals.years.map((y) => festivals.byYear.get(y).size).join('/')} slug-years; glossary ${glossary.en.count} terms`);
+  return { calendar, cities, panchang, festivals, festivalTimes, muhurat, vrats, glossary, festivalCopy: festivalCopyByLang, muhuratCopy: muhuratCopyByLang, vratCopy: vratCopyByLang, timing: { panchangSeconds: Number(tPanchang.toFixed(1)) } };
+}
+
+/** Appends the data pages to the plan (counts per type returned for the summary). */
+function planDataPages(add, data) {
+  const counts = { panchangCity: 0, panchangMonth: 0, panchangIndex: 0, festival: 0, festivalsIndex: 0, muhurat: 0, muhuratIndex: 0, glossaryTerm: 0, glossaryIndex: 0, vrat: 0, vratIndex: 0 };
+  for (const l of LANGS) {
+    const t = tr(l);
+    add({ path: `/${l}/panchang/`, lang: l, sitemap: true, type: 'panchangIndex', search: { t: t('panchang.indexH1'), k: 'panchang cities' }, render: (ctx) => renderPanchangIndex(ctx, data) });
+    counts.panchangIndex++;
+    for (const city of data.cities) {
+      add({ path: `/${l}/panchang/${city.slug}/`, lang: l, sitemap: true, type: 'panchangCity', search: { t: `${cityName(city, l)} · ${t('nav.panchang')}`, k: `${city.nameAscii} ${city.name} panchang` }, render: (ctx) => renderPanchangCity(ctx, data, { city, ym: data.calendar.currentMonth, isCurrent: true }) });
+      add({ path: `/${l}/panchang/${city.slug}/${data.calendar.nextMonth}/`, lang: l, sitemap: true, type: 'panchangMonth', render: (ctx) => renderPanchangMonth(ctx, data, { city, ym: data.calendar.nextMonth }) });
+      counts.panchangCity++;
+      counts.panchangMonth++;
+    }
+    add({ path: `/${l}/festivals/`, lang: l, sitemap: true, type: 'festivalsIndex', search: { t: t('festival.indexH1'), k: 'festivals' }, render: (ctx) => renderFestivalsIndex(ctx, data) });
+    counts.festivalsIndex++;
+    for (const year of data.festivals.years) {
+      add({ path: `/${l}/festivals/${year}/`, lang: l, sitemap: true, type: 'festivalsIndex', search: { t: t('festival.yearH1', { year }), k: `festivals ${year}` }, render: (ctx) => renderFestivalsYear(ctx, data, { year }) });
+      counts.festivalsIndex++;
+      for (const entry of data.festivals.byYear.get(year).values()) {
+        add({ path: `/${l}/festival/${entry.slug}/${year}/`, lang: l, sitemap: true, type: 'festival', search: { t: `${entry.names[l] ?? entry.names.en} ${year}`, k: `${entry.slug} ${entry.names.en} festival` }, render: (ctx) => renderFestival(ctx, data, { entry }) });
+        counts.festival++;
+      }
+    }
+    add({ path: `/${l}/muhurat/`, lang: l, sitemap: true, type: 'muhuratIndex', search: { t: t('muhurat.indexH1'), k: 'muhurat' }, render: (ctx) => renderMuhuratIndex(ctx, data) });
+    counts.muhuratIndex++;
+    for (const activity of data.muhurat.activities) {
+      for (const ym of data.muhurat.months) {
+        add({ path: `/${l}/muhurat/${activity.id}/${ym}/`, lang: l, sitemap: true, type: 'muhurat', search: ym === data.muhurat.months[0] ? { t: `${activity.names[l] ?? activity.names.en} · ${t('nav.muhurat')}`, k: `${activity.id} muhurat` } : undefined, render: (ctx) => renderMuhuratMonth(ctx, data, { activity, ym }) });
+        counts.muhurat++;
+      }
+    }
+    add({ path: `/${l}/glossary/`, lang: l, sitemap: true, type: 'glossaryIndex', search: { t: t('glossary.indexH1'), k: 'glossary' }, render: (ctx) => renderGlossaryIndex(ctx, data) });
+    counts.glossaryIndex++;
+    for (const e of data.glossary[l].items) {
+      add({ path: `/${l}/glossary/${e.id}/`, lang: l, sitemap: true, type: 'glossaryTerm', search: { t: `${e.term_dev} · ${e.term_lat}`, k: `${e.id} glossary` }, render: (ctx) => renderGlossaryTerm(ctx, data, { id: e.id }) });
+      counts.glossaryTerm++;
+    }
+    add({ path: `/${l}/vrat/`, lang: l, sitemap: true, type: 'vratIndex', search: { t: t('vrat.indexH1'), k: 'vrat' }, render: (ctx) => renderVratIndex(ctx, data) });
+    counts.vratIndex++;
+    for (const family of data.vrats.families) {
+      const f = data.vrats.byFamily.get(family);
+      add({ path: `/${l}/vrat/${f.slug}/`, lang: l, sitemap: true, type: 'vrat', search: { t: t(`vrat.family.${family}`), k: `${f.slug} vrat` }, render: (ctx) => renderVrat(ctx, data, { family }) });
+      counts.vrat++;
+    }
+  }
+  return counts;
+}
+
+/** OG jobs for the data pages (P6): per festival-year, per city (with the build day's band), per activity, per vrat, one glossary image per language. */
+function ogJobs(engine, data, outDir) {
+  const jobs = [];
+  const base = 'sudish007.github.io/shubhvela';
+  for (const l of LANGS) {
+    const t = tr(l);
+    for (const year of data.festivals.years) {
+      for (const e of data.festivals.byYear.get(year).values()) {
+        const name = e.names[l] ?? e.names.en;
+        const parts = [
+          e.north[0] ? t('festival.dateLine', { system: t('panchang.purnimanta'), date: civilDateLong(engine, e.north[0].date, l) }) : null,
+          e.south[0] ? t('festival.dateLine', { system: t('panchang.amanta'), date: civilDateLong(engine, e.south[0].date, l) }) : null,
+        ].filter(Boolean);
+        jobs.push({ lang: l, title: `${name} ${year}`, subtitle: parts.join(' · '), url: `${base}/${l}/festival/${e.slug}/${year}/`, out: resolve(outDir, 'og', l, 'festival', `${e.slug}-${year}.png`), type: 'festival' });
+      }
+    }
+    for (const city of data.cities) {
+      const cd = data.panchang.get(city.slug);
+      const p = cd.today.panchang;
+      const gh = cd.today.gh;
+      const date = civilDateLong(engine, cd.today.date, l);
+      const sub = p.noSun || !p.tithi ? date : `${date} · ${tithiLabel(engine, p.tithi, l)} · ${engine.locale.nakshatraNames[l][p.nakshatra.index]}`;
+      const band = gh.ticks
+        ? { svg: bandSvg(engine, gh, { mode: 'standalone', width: OG_BAND.width, stripHeight: OG_BAND.height, ticksRow: false, id: 'og' }), ticks: bandTickTexts(engine, gh) }
+        : null;
+      jobs.push({ lang: l, title: t('panchang.ogTitle', { city: cityName(city, l) }), subtitle: sub, url: `${base}/${l}/panchang/${city.slug}/`, out: resolve(outDir, 'og', l, 'panchang', `${city.slug}.png`), band, type: 'city' });
+    }
+    const from = monthLabel(engine, data.muhurat.months[0], l);
+    const to = monthLabel(engine, data.muhurat.months[data.muhurat.months.length - 1], l);
+    for (const a of data.muhurat.activities) {
+      jobs.push({ lang: l, title: t('muhurat.ogTitle', { activity: a.names[l] ?? a.names.en }), subtitle: t('muhurat.ogSubtitle', { from, to, city: cityName(data.muhurat.city, l) }), url: `${base}/${l}/muhurat/${a.id}/${data.muhurat.months[0]}/`, out: resolve(outDir, 'og', l, 'muhurat', `${a.id}.png`), type: 'activity' });
+    }
+    for (const family of data.vrats.families) {
+      const f = data.vrats.byFamily.get(family);
+      const o = f.occurrences[0];
+      const sub = o ? t('vrat.ogSubtitle', { name: t(`vrat.name.${o.name}`), date: civilDateLong(engine, o.date, l), city: cityName(data.vrats.city, l) }) : '';
+      jobs.push({ lang: l, title: t('vrat.pageTitle', { family: t(`vrat.family.${family}`) }), subtitle: sub, url: `${base}/${l}/vrat/${f.slug}/`, out: resolve(outDir, 'og', l, 'vrat', `${f.slug}.png`), type: 'vrat' });
+    }
+    jobs.push({ lang: l, title: t('glossary.indexH1'), subtitle: t('glossary.ogSubtitle', { count: data.glossary[l].count }), url: `${base}/${l}/glossary/`, out: resolve(outDir, 'og', l, 'glossary.png'), type: 'glossary' });
+  }
+  return jobs;
+}
+
 // ---------------------------------------------------------------- main
 
 export async function build(options = {}) {
@@ -231,18 +407,27 @@ export async function build(options = {}) {
   const outDir = options.out ?? resolve(WEB_DIR, 'dist');
   const coreOnly = Boolean(options.coreOnly);
   const log = options.quiet ? () => {} : (m) => console.log(`[web] ${m}`);
+  const timing = {};
+  const lap = (key, since) => {
+    timing[key] = Number(((performance.now() - since) / 1000).toFixed(1));
+    return performance.now();
+  };
   await rm(outDir, { recursive: true, force: true });
   await mkdir(outDir, { recursive: true });
 
-  const { engine, content } = await prebundle(log);
-  const bundle = await clientBundle(outDir);
+  let mark = performance.now();
+  const { engine, content, enginePath } = await prebundle(log);
+  const bundle = await clientBundle(outDir, 'kundli.ts');
   log(`client bundle assets/${bundle.file} (${(bundle.bytes / 1024).toFixed(0)} KB)`);
+  const dataBundle = coreOnly ? null : await clientBundle(outDir, 'data-pages.ts');
+  if (dataBundle) log(`data bundle assets/${dataBundle.file} (${(dataBundle.bytes / 1024).toFixed(0)} KB)`);
   const { css, scripts } = await inlineAssets();
   const cssFile = `site.${hash8(css)}.css`;
   await mkdir(resolve(outDir, 'assets'), { recursive: true });
   await writeFile(resolve(outDir, 'assets', cssFile), css);
   const brand = await brandAssets();
   const en = webStrings('en');
+  mark = lap('bundles', mark);
 
   // Engine data (every number on the site is computed here).
   const data = homeData(engine);
@@ -254,13 +439,21 @@ export async function build(options = {}) {
   const precision = await precisionFigure(engine);
   const buildDate = Object.fromEntries(LANGS.map((l) => [l, civilDateLong(engine, LEGAL_UPDATED, l)]));
   log(`today ${data.today.date} at ${data.today.city.name}; precision ${precision.raw}° -> within ${precision.deg}° (${precision.arcmin}′) over ${precision.cases} births`);
+  const dataPages = coreOnly ? null : await dataPagesData(engine, content, { enginePath, log });
+  mark = lap('engineData', mark);
 
-  // Per-language JSON assets for the client (rules behind "Why?") and the 404 search.
+  // Per-language JSON assets for the client (rules behind "Why?") and the 404 search; the city list for the pickers.
   const rulesAsset = {};
   for (const l of LANGS) {
     const json = JSON.stringify(rulesSubset(content, l));
     rulesAsset[l] = `rules-${l}.${hash8(json)}.json`;
     await writeFile(resolve(outDir, 'assets', rulesAsset[l]), json);
+  }
+  let citiesAsset = null;
+  if (dataPages) {
+    const json = cityPickerJson(dataPages.cities);
+    citiesAsset = `cities.${hash8(json)}.json`;
+    await writeFile(resolve(outDir, 'assets', citiesAsset), json);
   }
 
   // Page plan: path -> renderer. The inventory is complete before any page renders, so templates can ask site.has(path)
@@ -269,27 +462,28 @@ export async function build(options = {}) {
   const add = (p) => plan.push(p);
   for (const l of LANGS) {
     const t = tr(l);
-    add({ path: `/${l}/`, lang: l, sitemap: true, search: { t: t('home.h1'), k: t('site.name') }, render: (ctx) => renderHome(ctx, { ...data, counts }) });
-    add({ path: `/${l}/kundli/`, lang: l, sitemap: true, search: { t: t('kundli.h1'), k: `kundli ${t('nav.kundli')}` }, render: (ctx) => renderKundli(ctx, pageData, { kind: 'kundli' }) });
-    add({ path: `/${l}/m/`, lang: l, sitemap: false, render: (ctx) => renderKundli(ctx, pageData, { kind: 'm' }) });
-    add({ path: `/${l}/download/`, lang: l, sitemap: true, search: { t: t('download.h1'), k: 'android app play' }, render: (ctx) => renderDownload(ctx) });
-    add({ path: `/${l}/privacy/`, lang: l, sitemap: true, search: { t: t('privacy.h1'), k: 'privacy dpdp grievance' }, render: (ctx) => renderPrivacy(ctx, pageData) });
-    add({ path: `/${l}/terms/`, lang: l, sitemap: true, search: { t: t('terms.h1'), k: 'terms' }, render: (ctx) => renderTerms(ctx, pageData) });
-    add({ path: `/${l}/data-deletion/`, lang: l, sitemap: true, search: { t: t('deletion.h1'), k: 'delete data deletion' }, render: (ctx) => renderDataDeletion(ctx) });
-    add({ path: `/${l}/404/`, lang: l, sitemap: false, render: (ctx) => renderNotFound(ctx, pageData) });
+    add({ path: `/${l}/`, lang: l, sitemap: true, type: 'core', search: { t: t('home.h1'), k: t('site.name') }, render: (ctx) => renderHome(ctx, { ...data, counts }) });
+    add({ path: `/${l}/kundli/`, lang: l, sitemap: true, type: 'core', search: { t: t('kundli.h1'), k: `kundli ${t('nav.kundli')}` }, render: (ctx) => renderKundli(ctx, pageData, { kind: 'kundli' }) });
+    add({ path: `/${l}/m/`, lang: l, sitemap: false, type: 'core', render: (ctx) => renderKundli(ctx, pageData, { kind: 'm' }) });
+    add({ path: `/${l}/download/`, lang: l, sitemap: true, type: 'core', search: { t: t('download.h1'), k: 'android app play' }, render: (ctx) => renderDownload(ctx) });
+    add({ path: `/${l}/privacy/`, lang: l, sitemap: true, type: 'core', search: { t: t('privacy.h1'), k: 'privacy dpdp grievance' }, render: (ctx) => renderPrivacy(ctx, pageData) });
+    add({ path: `/${l}/terms/`, lang: l, sitemap: true, type: 'core', search: { t: t('terms.h1'), k: 'terms' }, render: (ctx) => renderTerms(ctx, pageData) });
+    add({ path: `/${l}/data-deletion/`, lang: l, sitemap: true, type: 'core', search: { t: t('deletion.h1'), k: 'delete data deletion' }, render: (ctx) => renderDataDeletion(ctx) });
+    add({ path: `/${l}/404/`, lang: l, sitemap: false, type: 'core', render: (ctx) => renderNotFound(ctx, pageData) });
   }
   // Root entry points: English copies for the language-less share URLs, redirects for the paths the app links to.
-  add({ path: '/m/', lang: 'en', sitemap: false, render: (ctx) => renderKundli(ctx, pageData, { kind: 'm', path: '/m/' }) });
-  add({ path: '/kundli/', lang: 'en', sitemap: false, raw: (site) => renderRedirect(site, 'kundli/', { keepQuery: true }) });
+  add({ path: '/m/', lang: 'en', sitemap: false, type: 'root', render: (ctx) => renderKundli(ctx, pageData, { kind: 'm', path: '/m/' }) });
+  add({ path: '/kundli/', lang: 'en', sitemap: false, type: 'root', raw: (site) => renderRedirect(site, 'kundli/', { keepQuery: true }) });
   for (const rest of ['', 'privacy/', 'terms/', 'data-deletion/', 'download/']) {
-    add({ path: `/${rest}`, lang: 'en', sitemap: false, raw: (site) => renderRedirect(site, rest) });
+    add({ path: `/${rest}`, lang: 'en', sitemap: false, type: 'root', raw: (site) => renderRedirect(site, rest) });
   }
-  add({ path: '/404.html', lang: 'en', sitemap: false, render: (ctx) => renderNotFound(ctx, pageData, { root: true }) });
-  if (!coreOnly) {
-    // D02: data pages (panchang city + month, festival, muhurat, glossary, vrat) are added to `plan` here.
-  }
+  add({ path: '/404.html', lang: 'en', sitemap: false, type: 'root', render: (ctx) => renderNotFound(ctx, pageData, { root: true }) });
+  const pageCounts = dataPages ? planDataPages(add, dataPages) : {};
+  pageCounts.core = plan.filter((p) => p.type === 'core').length;
+  pageCounts.root = plan.filter((p) => p.type === 'root').length;
 
   const paths = new Set(plan.map((p) => p.path));
+  if (paths.size !== plan.length) throw new Error('duplicate paths in the page plan');
   const searchAsset = {};
   for (const l of LANGS) {
     const items = plan.filter((p) => p.lang === l && p.search).map((p) => ({ t: p.search.t, p: href(p.path), k: p.search.k ?? '' }));
@@ -312,35 +506,45 @@ export async function build(options = {}) {
     appPackage: APP_PACKAGE,
     appScheme: APP_SCHEME,
     baseUrl: BASE_URL,
+    citiesAsset,
+    dataBundleFile: dataBundle?.file ?? null,
   };
   const pageData = { ...data, precision, buildDate, bundleFile: bundle.file, rulesAsset, searchAsset };
 
   // Render + write.
   const written = [];
+  const ctxCache = Object.fromEntries(LANGS.map((l) => [l, { lang: l, t: tr(l), site, engine, content }]));
   for (const p of plan) {
-    const html = p.raw ? p.raw(site) : p.render({ lang: p.lang, t: tr(p.lang), site, engine, content });
+    const html = p.raw ? p.raw(site) : p.render(ctxCache[p.lang]);
     await writeOut(outDir, p.path, html);
     written.push(p.path);
   }
-  log(`rendered ${written.length} pages`);
+  mark = lap('render', mark);
+  log(`rendered ${written.length} pages in ${timing.render} s`);
 
   // Static files: web/public (robots.txt, .nojekyll, brand/ when present) and the fonts copied from the app bundle.
   await cp(resolve(WEB_DIR, 'public'), outDir, { recursive: true });
   await mkdir(resolve(outDir, 'fonts'), { recursive: true });
   for (const f of Object.values(FONT_FILES)) await cp(resolve(FONT_SRC_DIR, f), resolve(outDir, 'fonts', f));
 
-  // OG images (P6): site + kundli per language.
-  const og = [];
+  // OG images (P6): site + kundli per language, then per entity (festival-year, city with today's band, activity, vrat, glossary).
+  const ogPlan = [];
   for (const l of LANGS) {
     const t = tr(l);
     const siteUrl = `sudish007.github.io/shubhvela/${l}/`;
-    og.push(await renderOg({ lang: l, title: t('home.ogTitle'), subtitle: t('home.ogDescription'), url: siteUrl, out: resolve(outDir, 'og', l, 'site.png') }));
-    og.push(await renderOg({ lang: l, title: t('kundli.ogTitle'), subtitle: t('kundli.ogDescription'), url: `${siteUrl}kundli/`, out: resolve(outDir, 'og', l, 'kundli.png') }));
+    ogPlan.push({ lang: l, title: t('home.ogTitle'), subtitle: t('home.ogDescription'), url: siteUrl, out: resolve(outDir, 'og', l, 'site.png'), type: 'site' });
+    ogPlan.push({ lang: l, title: t('kundli.ogTitle'), subtitle: t('kundli.ogDescription'), url: `${siteUrl}kundli/`, out: resolve(outDir, 'og', l, 'kundli.png'), type: 'site' });
   }
-  const ogBytes = og.reduce((a, b) => a + b.bytes, 0);
-  log(`og images ${og.length} (${(ogBytes / 1024).toFixed(0)} KB, brand mark ${og[0].mark ? 'embedded' : 'absent'})`);
+  if (dataPages) ogPlan.push(...ogJobs(engine, dataPages, outDir));
+  const ogResults = await mapLimit(ogPlan, 4, (job) => renderOg(job));
+  const ogBytes = ogResults.reduce((a, b) => a + b.bytes, 0);
+  const ogCounts = {};
+  for (const j of ogPlan) ogCounts[j.type] = (ogCounts[j.type] ?? 0) + 1;
+  mark = lap('og', mark);
+  log(`og images ${ogPlan.length} (${mb(ogBytes)} MB, brand mark ${ogResults[0].mark ? 'embedded' : 'absent'}) in ${timing.og} s`);
+  if (ogBytes > OG_BUDGET_BYTES) throw new Error(`og/ is ${mb(ogBytes)} MB, over the ${mb(OG_BUDGET_BYTES)} MB budget`);
 
-  // Sitemaps: one per language under an index; /m/, 404 and redirects excluded.
+  // Sitemaps: one per language under an index (<= 50,000 URLs per file); /m/, 404 and redirects excluded.
   const lastmod = new Date().toISOString().slice(0, 10);
   const files = [];
   for (const l of LANGS) {
@@ -353,22 +557,34 @@ export async function build(options = {}) {
   await writeFile(resolve(outDir, 'sitemap.xml'), sitemapIndexXml(files, lastmod));
 
   const size = await dirSize(outDir);
+  if (size.total > DIST_BUDGET_BYTES) throw new Error(`dist/ is ${mb(size.total)} MB, over the ${mb(DIST_BUDGET_BYTES)} MB budget`);
   const elapsed = (performance.now() - t0) / 1000;
   const summary = {
     pages: written.length,
     paths: written,
+    pageCounts,
     sitemapUrls: plan.filter((p) => p.sitemap).length,
+    sitemapFiles: files,
     distBytes: size.total,
     files: size.files,
     ogBytes,
+    ogCount: ogPlan.length,
+    ogCounts,
     bundle,
+    dataBundle,
     elapsedSeconds: Number(elapsed.toFixed(1)),
+    timing: { ...timing, panchangSeconds: dataPages?.timing.panchangSeconds ?? 0 },
     today: data.today.date,
+    calendar: dataPages?.calendar ?? null,
+    festivalYears: dataPages?.festivals.years ?? [],
     precision,
     counts,
     brand: brand.present,
+    budgets: { distBytes: DIST_BUDGET_BYTES, ogBytes: OG_BUDGET_BYTES },
   };
-  log(`${summary.pages} pages, ${summary.sitemapUrls} sitemap URLs, dist ${(size.total / 1024 / 1024).toFixed(1)} MB in ${size.files} files, ${elapsed.toFixed(1)} s`);
+  await mkdir(CACHE_DIR, { recursive: true });
+  await writeFile(resolve(CACHE_DIR, 'build-summary.json'), JSON.stringify(summary, null, 2));
+  log(`${summary.pages} pages (${Object.entries(pageCounts).map(([k, v]) => `${k} ${v}`).join(', ')}), ${summary.sitemapUrls} sitemap URLs in ${files.length} files, dist ${mb(size.total)} MB in ${size.files} files, og ${ogPlan.length} / ${mb(ogBytes)} MB, ${elapsed.toFixed(1)} s`);
   return summary;
 }
 

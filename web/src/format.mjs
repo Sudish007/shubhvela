@@ -76,3 +76,37 @@ export function ayanamsaLabel(t, id) {
 export function nodeLabel(t, node) {
   return t(`settings.nodes.${node}`).replace(/\s*\(.*\)$/, '');
 }
+
+/** HH:mm when the instant falls on `day` (civil date in tz), else "Sun 25 Oct 19:21" (app fmtTimeOrDayTime). */
+export function timeOrDayTime(engine, utcMs, tz, lang, day) {
+  if (utcMs === null || utcMs === undefined) return null;
+  return engine.formatInZone(utcMs, tz, 'yyyy-MM-dd') === day ? hm(engine, utcMs, tz) : engine.formatInZone(utcMs, tz, 'EEE d MMM HH:mm', lang);
+}
+
+/** "06:27–07:51" with an en dash and no spaces (the app's fmtRange; U+2060 glue is not needed in HTML tables). */
+export function range(engine, start, end, tz) {
+  return `${hm(engine, start, tz)}–${hm(engine, end, tz)}`;
+}
+
+/** "Kartik Krishna Chaturthi" from a lunar month index, adhik flag, paksha and 1-15 tithi (app tithiText). */
+export function tithiText(engine, t, lang, month, adhik, paksha, tithi) {
+  const name = engine.locale.lunarMonthNames[lang][month];
+  return t('events.tithiDate', {
+    month: adhik ? `${engine.locale.adhikLabel[lang]} ${name}` : name,
+    paksha: t(paksha === 'krishna' ? 'panchang.krishna' : 'panchang.shukla'),
+    tithi: engine.locale.tithiNames[lang][tithi - 1 + (paksha === 'krishna' ? 15 : 0)],
+  });
+}
+
+/** The computed time that matters for a vrat occurrence (app vratKeyTimeText). */
+export function vratKeyTimeText(engine, t, keyTime, tz) {
+  const k = keyTime.kind;
+  if (k === 'moonrise' || k === 'sandhya' || k === 'sunrise') return t(`vrat.time.${k}`, { time: hm(engine, keyTime.start, tz) });
+  if (keyTime.end === undefined || keyTime.end === null) return hm(engine, keyTime.start, tz);
+  return t(`vrat.time.${k}`, { from: hm(engine, keyTime.start, tz), to: hm(engine, keyTime.end, tz) });
+}
+
+/** Weekday name for 0-6 (Sunday = 0). */
+export function weekdayName(engine, vara, lang) {
+  return engine.locale.weekdayNames[lang][vara];
+}
