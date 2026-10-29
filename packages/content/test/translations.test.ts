@@ -21,8 +21,8 @@ const TEXT_FIELDS: Record<string, string[]> = {
 };
 const textFields = (domain: string): string[] => TEXT_FIELDS[domain] ?? ['text'];
 
-/** Latin tokens a Devanagari text may contain: product / technical names (content-tools allow-list) plus proper nouns settled in the termbank. */
-const LATIN_OK = new Set<string>([...LATIN_ALLOWLIST, 'Readers', 'UTC', 'GMT', 'A', 'B']);
+/** Latin tokens a Devanagari text may contain: product / technical names (content-tools allow-list) plus proper nouns settled in the termbank (A/B = match profiles, A–D = KP significator grades, as the UI shows them). */
+const LATIN_OK = new Set<string>([...LATIN_ALLOWLIST, 'Readers', 'UTC', 'GMT', 'A', 'B', 'C', 'D']);
 const PARAM_RE = /\{([a-zA-Z0-9_]+)\}/g;
 const params = (s: string): string => Array.from(s.matchAll(PARAM_RE), (m) => m[1]).sort().join(',');
 const latinWords = (s: string): string[] =>
@@ -119,6 +119,40 @@ describe('translated corpus files (hi / bho) mirror their English master', () =>
         expect(r.fallback).toBe(r.lang !== lang);
       }
     }
+  });
+
+  it('T03: rules is complete in hi and bho; yoga, koota, muhurat and Sade Sati rules resolve in their own language with the UI names', () => {
+    const en = CORPUS.rules.en!;
+    for (const lang of LANGS) expect(CORPUS.rules[lang]!.map((r) => r.id).sort(), `rules/${lang} complete`).toEqual(en.map((r) => r.id).sort());
+    // Yoga rules name the yoga as the Yogas card does (yogas.name.* in the UI).
+    const gajaHi = ruleText('yoga-gaja-kesari', 'hi')!;
+    expect(gajaHi.lang).toBe('hi');
+    expect(gajaHi.fallback).toBe(false);
+    expect(gajaHi.text).toContain('गजकेसरी योग');
+    const kalaSarpaBho = ruleText('yoga-kala-sarpa', 'bho')!;
+    expect(kalaSarpaBho.lang).toBe('bho');
+    expect(kalaSarpaBho.fallback).toBe(false);
+    expect(kalaSarpaBho.text).toContain(loadUi('bho')['yogas.name.kala-sarpa']);
+    // Koota rules keep the point totals and the koota name of the match screen.
+    const nadiBho = ruleText('koota-nadi', 'bho')!;
+    expect(nadiBho.lang).toBe('bho');
+    expect(nadiBho.text).toContain('नाड़ी कूट (8 अंक)');
+    expect(nadiBho.text).toContain('नाड़ी दोष');
+    // Muhurat activity rules name the activity as the engine's own hi / bho table does and keep the tithi digits.
+    const grihaHi = ruleText('muhurat-griha-pravesh', 'hi')!;
+    expect(grihaHi.lang).toBe('hi');
+    expect(grihaHi.text).toContain('गृह प्रवेश');
+    expect(grihaHi.text).toContain('2, 3, 5, 7, 10, 11, 12, 13');
+    // Sade Sati phases keep the respectful second person of each language.
+    const phaseBho = ruleText('sade-sati-phase-1', 'bho')!;
+    expect(phaseBho.lang).toBe('bho');
+    expect(phaseBho.fallback).toBe(false);
+    expect(phaseBho.text).toContain('राउर जनम-चंद्र');
+    expect(ruleText('sade-sati-phase-1', 'hi')!.text).toContain('आपके जन्म-चंद्र');
+    // The KP significator grades keep the Latin letters the KP screen shows.
+    const kpHi = ruleText('kp-significators', 'hi')!;
+    expect(kpHi.lang).toBe('hi');
+    for (const grade of ['A', 'B', 'C', 'D']) expect(kpHi.text).toContain(`${grade},`);
   });
 
   it('every registered domain has an English master and only hi / bho translations', () => {
