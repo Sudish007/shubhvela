@@ -96,6 +96,22 @@ describe('BottomInsetProvider', () => {
     const style = StyleSheet.flatten(probe.props.style);
     expect(style.position).toBe('absolute');
     expect(style.opacity).toBe(0);
+    // Fabric ignores pointerEvents on the native SafeAreaView ViewGroup: only a 0-wide box is guaranteed untouchable.
+    expect(style.width).toBe(0);
+    expect(style.top).toBe(0);
+    expect(style.bottom).toBe(0);
+  });
+
+  it('renders the probe BEFORE the children so it sits behind the navigator in z-order', async () => {
+    await renderWithProviders(
+      <BottomInsetProvider edgeToEdge>
+        <Readout />
+      </BottomInsetProvider>,
+    );
+    const probe = byTestId('bottom-inset-probe');
+    const readout = screen.getByTestId('inset');
+    const order = screen.root?.queryAll((n) => n === probe || n === readout) ?? [];
+    expect(order[0]).toBe(probe);
   });
 });
 

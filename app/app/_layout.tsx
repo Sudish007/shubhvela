@@ -113,7 +113,7 @@ export default function RootLayout() {
         <LangProvider>
           <AdsRoot />
           <WidgetStateSync />
-          {/* DEV-1: one bottom inset for every bottom-anchored element, with the edge-to-edge fallback probe (last child). */}
+          {/* DEV-1: one bottom inset for every bottom-anchored element, with the edge-to-edge fallback probe (0-wide, behind the navigator). */}
           <BottomInsetProvider>
             <Navigator fontsReady={fontsLoaded || !!fontError} />
           </BottomInsetProvider>

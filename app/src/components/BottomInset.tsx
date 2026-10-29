@@ -2,7 +2,7 @@
 // bar - the tab bar ((tabs)/_layout), BannerStrip, the sticky CTA and the padding formula (Screen), and the Sheet.
 // Primary source: react-native-safe-area-context (`useSafeAreaInsets().bottom`). Fallback: when it reports 0 while the
 // window is drawn edge-to-edge (RN `edgeToEdgeEnabled`, enforced on Android 15+), the value comes from an invisible
-// probe that React Native's own SafeAreaView pads natively through onApplyWindowInsets - an independent path from the
+// zero-width probe that React Native's own SafeAreaView pads natively through onApplyWindowInsets - an independent path from the
 // context library's rootWindowInsets polling - so a device that never delivers the inset still clears the bar.
 // `resolveBottomInset` is the pure rule (unit-tested); the provider only wires the sources.
 import { createContext, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
@@ -80,10 +80,13 @@ export function BottomInsetProvider({ children, edgeToEdge }: BottomInsetProvide
       console.log('dev/insets', line);
     }
   }, [value, insets.top]);
+  // The probe is rendered FIRST (behind the navigator) and with zero width: ReactSafeAreaView is a plain ViewGroup, so
+  // Fabric's hit test ignores `pointerEvents="none"` on it and a full-window probe swallowed every touch on the
+  // 2026-10-29 emulator audit (sheet never opened, Pro never scrolled). A 0-wide box can never contain a touch point.
   return (
     <BottomInsetContext.Provider value={value}>
-      {children}
       {e2e ? <InsetProbe onMeasure={setProbe} /> : null}
+      {children}
     </BottomInsetContext.Provider>
   );
 }
@@ -105,8 +108,10 @@ interface InsetProbeProps {
 }
 
 /**
- * Full-window RN SafeAreaView (native padding = system bars + cutout) with one filling child: child.y is the top inset,
- * outer height - child.y - child.height the bottom inset. Touch-transparent, hidden from accessibility, no pixels.
+ * Full-height, ZERO-width RN SafeAreaView at the left edge (native padding = system bars + cutout) with one filling
+ * child: child.y is the top inset, outer height - child.y - child.height the bottom inset. Window insets are dispatched
+ * to every attached view whatever its size, so the measurement does not depend on the width. No pixels, no touches
+ * (0 wide), hidden from accessibility.
  */
 function InsetProbe({ onMeasure }: InsetProbeProps) {
   const [outer, setOuter] = useState<number | null>(null);
@@ -123,6 +128,6 @@ function InsetProbe({ onMeasure }: InsetProbeProps) {
 }
 
 const styles = StyleSheet.create({
-  probe: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0 },
+  probe: { position: 'absolute', top: 0, left: 0, bottom: 0, width: 0, opacity: 0 },
   fill: { flex: 1 },
 });
