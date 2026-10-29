@@ -6,7 +6,8 @@
 // resolvers return it in its own language with fallback: false.
 import { describe, expect, it } from 'vitest';
 import { LATIN_ALLOWLIST } from '../../content-tools/src/forbidden';
-import { nakshatraNames, planetNames, signNames } from '../../engine/src/locale/index';
+import { nakshatraNames, planetNames, signNames, type PlanetId } from '../../engine/src/locale/index';
+import { signDignity } from '../../engine/src/kundli/index';
 import { NAKSHATRA_LORDS } from '../../engine/src/panchang/panchang';
 import { CORPUS, FESTIVALS, GLOSSARY, LESSONS } from '../src/registry';
 import { festivalText, glossaryTerm, loadGlossary, loadLessons, loadUi, lookup, lesson, lessonPlaceholders, ruleText, type ContentLanguage } from '../src/index';
@@ -752,6 +753,78 @@ describe('translated corpus files (hi / bho) mirror their English master', () =>
     expect(lookup('nakshatra-pada', 'nakshatra-26-1', 'bho')!.text).toContain('खाट के पिछिला पाया');
     expect(lookup('nakshatra-pada', 'nakshatra-11-1', 'hi')!.text).toContain('पलंग के अगले पाए');
     expect(lookup('nakshatra-pada', 'nakshatra-11-1', 'bho')!.text).toContain('खटिया के अगिला पाया');
+  });
+
+  it('T15: the planet-sign slice is registered in hi and bho with one id set; every translated id opens with the engine planet and sign names, names the dignity tag the planet sheet shows (or the no-dignity convention for the nodes), keeps the English rule / params, and an untranslated id resolves along the chain', () => {
+    const en = CORPUS['planet-sign'].en!;
+    const hi = CORPUS['planet-sign'].hi!;
+    const bho = CORPUS['planet-sign'].bho!;
+    expect(hi.length).toBeGreaterThanOrEqual(54);
+    expect(hi.length).toBeLessThanOrEqual(en.length);
+    expect(bho.map((r) => r.id).sort(), 'planet-sign hi and bho carry the same slice').toEqual(hi.map((r) => r.id).sort());
+    const enById = new Map(en.map((r) => [r.id, r]));
+    // Ids are `<planet>-<sign>` with the lowercase English engine names (corpus-interpretive.test.ts).
+    const PLANET_BY_KEY = new Map<string, PlanetId>((Object.keys(planetNames.en) as PlanetId[]).map((p) => [planetNames.en[p].toLowerCase(), p]));
+    const SIGN_BY_KEY = new Map(signNames.en.map((s, i) => [s.toLowerCase(), i]));
+    for (const lang of LANGS) {
+      const ui = loadUi(lang);
+      // The paragraph sits under the planet sheet's dignity tag, so it names the tag as the sheet prints it (dignity.*, D11).
+      const TAG_WORD: Record<string, string> = { exalted: 'उच्च राशि', debilitated: 'नीच राशि', own: ui['dignity.own'], friend: ui['dignity.friend'], enemy: ui['dignity.enemy'], neutral: ui['dignity.neutral'] };
+      for (const row of CORPUS['planet-sign'][lang]!) {
+        const master = enById.get(row.id)!;
+        const got = lookup('planet-sign', row.id, lang)!;
+        expect(got, `planet-sign/${row.id} ${lang}`).not.toBeNull();
+        expect(got.lang, `planet-sign/${row.id} ${lang} resolves in its own language`).toBe(lang);
+        expect(got.fallback).toBe(false);
+        // `rule` is the English rule caption, `source` and `params` engine metadata: byte-identical (D3).
+        expect(got.snippet.rule).toBe(master.rule);
+        expect(got.snippet.source).toBe(master.source);
+        expect(got.snippet.params).toEqual(master.params);
+        const [, planetKey, signKey] = row.id.match(/^([a-z]+)-([a-z]+)$/)!;
+        const planet = PLANET_BY_KEY.get(planetKey)!;
+        const signIndex = SIGN_BY_KEY.get(signKey)!;
+        const t = got.text;
+        // Opening frame: the sheet title order "<planet> <sign> में" (charts.planetInSign) with the engine names, the planet in the respectful plural.
+        expect(t.startsWith(`${planetNames[lang][planet]} ${signNames[lang][signIndex]} में`), `${row.id} ${lang} opens with the planet and the sign`).toBe(true);
+        const dignity = signDignity(planet, signIndex + 1);
+        if (dignity) {
+          expect(t, `${row.id} ${lang} names the ${dignity} tag`).toContain(TAG_WORD[dignity]);
+          // Friend / enemy / neutral / exalted cite Parashara's table as the English does; own and debilitated do not.
+          if (dignity !== 'own' && dignity !== 'debilitated') expect(t, `${row.id} ${lang} cites Parashara`).toContain('पराशर');
+        } else {
+          // Rahu / Ketu: no sign dignity, by convention; the node is named as the glossary names it (चंद्र-पात).
+          expect(t, `${row.id} ${lang} states the no-dignity convention`).toContain('बल-स्थिति');
+          expect(t).toContain('परंपरा');
+          expect(t).toContain('चंद्र-पात');
+        }
+        // Honesty markers: "tends to" (प्रायः / अक्सर) and "is read for" in every record; the full "The placement tends to show up as"
+        // frame wherever the English uses it (the debilitated records say "so effort / growth / thinking tends to …" instead).
+        expect(t).toContain(lang === 'hi' ? 'प्रायः' : 'अक्सर');
+        if (/placement tends to show up as/.test(String(master.text))) expect(t, `${row.id} ${lang} keeps the placement frame`).toContain(lang === 'hi' ? 'यह स्थिति प्रायः' : 'ई स्थिति अक्सर');
+        else expect(t, `${row.id} ${lang} cites the texts`).toContain(lang === 'hi' ? 'शास्त्रों में' : 'शास्त्र में');
+        expect(t).toContain(lang === 'hi' ? 'के लिए पढ़ा जाता है' : 'खातिर पढ़ल जाला');
+        // These paragraphs describe the chart, not the reader: no second-person pronoun; bho carries no Hindi है / हैं.
+        expect(t).not.toMatch(/राउर|रउआ|आपके|आपका|आपकी/);
+        if (lang === 'bho') expect(t, `planet-sign/${row.id} bho`).not.toMatch(/(^|\s)(है|हैं)(\s|।|,|;)/);
+      }
+    }
+    // Exaltation / debilitation records keep the planet-sheet wording of the dignity.*Desc rows (अपनी / आपन उच्च राशि में).
+    expect(lookup('planet-sign', 'jupiter-karka', 'hi')!.text).toContain('अपनी उच्च राशि में');
+    expect(lookup('planet-sign', 'jupiter-karka', 'bho')!.text).toContain('आपन उच्च राशि में');
+    expect(lookup('planet-sign', 'mars-karka', 'hi')!.text).toContain('मकर में उनकी उच्च राशि के ठीक सामने');
+    expect(lookup('planet-sign', 'mars-karka', 'bho')!.text).toContain('मकर में उनकर उच्च राशि के ठीक सामने');
+    expect(lookup('planet-sign', 'mercury-kanya', 'hi')!.text).toContain('उच्च का टैग उस पर वरीयता पाता है');
+    expect(lookup('planet-sign', 'mercury-kanya', 'bho')!.text).toContain('उच्च के टैग ओह पर वरीयता पावेला');
+    // Ids outside the integrated slice resolve further down the chain (bho -> hi -> en) and say so.
+    const translated = new Set(hi.map((r) => r.id));
+    const pending = en.map((r) => r.id).filter((id) => !translated.has(id));
+    for (const id of pending.slice(0, 20)) {
+      for (const lang of LANGS) {
+        const r = lookup('planet-sign', id, lang)!;
+        expect(r, `${id} ${lang}`).not.toBeNull();
+        expect(r.fallback).toBe(r.lang !== lang);
+      }
+    }
   });
   it('every registered domain has an English master and only hi / bho translations', () => {
     for (const t of TABLES) {
