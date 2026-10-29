@@ -6,7 +6,7 @@
   scripts/shots.ps1 -Phase <a|b|c|d> -Screens <spec,spec,...> [-Langs en,hi,bho] [-Themes light,dark]
                     [-Density 443] [-FontScale 1.0] [-Scrolled] [-Variant <suffix>] [-Extra 'session=4&pro=1']
 
-  A screen spec is  <label>=<route>[;style=<north|south|east>][;tap=<resource-id>[,<resource-id>...]]
+  A screen spec is  <label>=<route>[;style=<north|south|east>][;type=<resource-id>:<ascii text>][;tap=<resource-id>[,<resource-id>...]]
   e.g.  today=/(tabs)/today            charts-south=/(tabs)/charts;style=south
         today-panchang-sheet=/(tabs)/today;tap=panchang-pill
   (the comma inside tap= is only allowed when the spec list is passed as a PowerShell array, one spec per element).
@@ -124,10 +124,13 @@ foreach ($spec in $Screens) {
   $head = $parts[0]
   if ($head -notmatch '^([A-Za-z0-9_-]+)=(.+)$') { Write-Error "Bad screen spec '$spec' (want label=route[;style=..][;tap=..])"; exit 3 }
   $label = $Matches[1]; $route = $Matches[2]
-  $style = ''; $taps = @(); $hscroll = ''; $scrollTo = ''
+  $style = ''; $taps = @(); $hscroll = ''; $scrollTo = ''; $typeId = ''; $typeText = ''
   foreach ($p in $parts[1..($parts.Count - 1)]) {
     if ($p -match '^style=(north|south|east)$') { $style = $Matches[1] }
     elseif ($p -match '^tap=(.+)$') { $taps = $Matches[1] -split ',' }
+    # type=<resource-id>:<text>: focus that text field and type the text (spaces allowed) before the taps run (c-fix:
+    # the Prashna reading state needs a question in the field before `tap=prashna-cast`).
+    elseif ($p -match '^type=([^:]+):(.+)$') { $typeId = $Matches[1]; $typeText = $Matches[2] }
     # scrollto=<resource-id>: scroll until that node is on screen (fully above the fixed chrome) but do NOT tap it (C05:
     # frame the "More from this chart" card without opening a row).
     elseif ($p -match '^scrollto=(.+)$') { $scrollTo = $Matches[1] }
@@ -163,6 +166,19 @@ foreach ($spec in $Screens) {
           Start-Sleep -Seconds 2
           $xml = Get-UiDump
         } else { Write-Host "  hscroll row '$hscroll' not found" }
+      }
+      if ($typeId) {
+        $xml = Wait-ForId $xml $typeId 20
+        if (Tap-Node $xml $typeId) {
+          Start-Sleep -Seconds 1
+          # `input text` takes no literal spaces: Android's shell expands %s to a space (ASCII text only).
+          Adb-Quiet @('shell', 'input', 'text', ($typeText -replace ' ', '%s')) | Out-Null
+          Start-Sleep -Seconds 1
+          # Hide the soft keyboard so the taps below and the screenshot see the whole screen.
+          Adb-Quiet @('shell', 'input', 'keyevent', 'KEYCODE_BACK') | Out-Null
+          Start-Sleep -Seconds 1
+          $xml = Get-UiDump
+        }
       }
       $targets = @($taps)
       if ($scrollTo) { $targets = @($scrollTo) + $targets }

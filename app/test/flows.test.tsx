@@ -10,7 +10,10 @@ import { needsOnboarding } from '../src/gate';
 import { consentAt } from '../src/db/appState';
 import { getProfile, getSelfProfile, insertProfile, listProfiles } from '../src/db/profiles';
 import { parseDevParams, withForwardedQuery } from '../src/dev/params';
-import { SAMPLE_AMMA, SAMPLE_PRIYA, seedSampleState } from '../src/dev/seed';
+import { countJournalEntries, listJournalMonth } from '../src/db/journal';
+import { listLessonsDone } from '../src/db/lessonsDone';
+import { countPrashna, listPrashna } from '../src/db/prashna';
+import { SAMPLE_AMMA, SAMPLE_PRASHNA_QUESTION, SAMPLE_PRIYA, seedSampleState } from '../src/dev/seed';
 import { chartFor, moonLine } from '../src/engine-bridge/charts';
 import { formToProfile } from '../src/profiles/mapping';
 import { EMPTY_FORM, validateForm } from '../src/profiles/validate';
@@ -108,5 +111,20 @@ describe('flows', () => {
     expect(parseDevParams({ pdf_dump: '1' }).pdfDump).toBe(true);
     expect(parseDevParams({ screen: '/(tabs)/charts', style: 'south' }).style).toBe('south');
     expect(parseDevParams({ style: 'round' }).style).toBeUndefined();
+  });
+
+  it('dev route history=1 seeds one Prashna question, three journal days and lesson 1 done (C05 shots)', () => {
+    const now = new Date('2026-10-29T03:00:00Z');
+    seedSampleState({ lang: 'hi', theme: 'light', now, history: true });
+    expect(countPrashna()).toBe(1);
+    expect(listPrashna()[0].question).toBe(SAMPLE_PRASHNA_QUESTION.hi);
+    expect(countJournalEntries()).toBe(3);
+    expect(listJournalMonth('2026-10').map((e) => `${e.day}:${e.mood}`)).toEqual(['2026-10-23:bright', '2026-10-26:busy', '2026-10-28:calm']);
+    expect(listLessonsDone().map((l) => l.lessonId)).toEqual(['lesson-01']);
+    // Idempotent: a later plain seed clears the history again.
+    seedSampleState({ lang: 'en', theme: 'light', now });
+    expect(countPrashna()).toBe(0);
+    expect(countJournalEntries()).toBe(0);
+    expect(listLessonsDone()).toEqual([]);
   });
 });
