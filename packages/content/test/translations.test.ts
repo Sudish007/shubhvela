@@ -503,6 +503,92 @@ describe('translated corpus files (hi / bho) mirror their English master', () =>
     for (const l of LESSONS.hi!) expect(l.body[5], `${l.id} hi try-it`).toMatch(/(खोलें|जाएँ|चुनें|ढूँढ़ें|पढ़ें|फैलाएँ|गिनें)/);
   });
 
+  it('T11: yogas, dignity and lagna are complete in hi and bho; every id resolves in its own language with the Yogas-card names, the dignity tag names and the engine sign names', () => {
+    for (const domain of ['yogas', 'dignity', 'lagna']) {
+      const en = CORPUS[domain].en!;
+      for (const lang of LANGS) {
+        const rows = CORPUS[domain][lang];
+        expect(rows, `${domain}/${lang} registered`).toBeDefined();
+        expect(rows!.map((r) => r.id).sort(), `${domain}/${lang} complete`).toEqual(en.map((r) => r.id).sort());
+        for (const r of en) {
+          const got = lookup(domain, r.id, lang)!;
+          expect(got, `${domain}/${r.id} ${lang}`).not.toBeNull();
+          expect(got.lang, `${domain}/${r.id} ${lang} resolves in its own language`).toBe(lang);
+          expect(got.fallback).toBe(false);
+          // `rule` is the English rule sentence (yogas, dignity) or the English caption (lagna): metadata, byte-identical.
+          expect(got.snippet.rule).toBe(r.rule);
+        }
+      }
+      // Bhojpuri register: no Hindi है / हैं anywhere in the three domains.
+      for (const r of CORPUS[domain].bho!) expect(r.text, `${domain}/${r.id} bho`).not.toMatch(/(^|\s)(है|हैं)(\s|।|,|;)/);
+    }
+    // Yogas: the paragraph names the yoga as the Yogas card does (yogas.name.*) and keeps the rules-corpus vocabulary.
+    const gajaHi = lookup('yogas', 'yoga-gaja-kesari', 'hi')!.text;
+    expect(gajaHi).toContain(`${loadUi('hi')['yogas.name.gaja-kesari']} योग`);
+    expect(gajaHi).toContain('चंद्र से गिनने पर केंद्र');
+    const gajaBho = lookup('yogas', 'yoga-gaja-kesari', 'bho')!.text;
+    expect(gajaBho).toContain(`${loadUi('bho')['yogas.name.gaja-kesari']} योग`);
+    expect(gajaBho).toContain('चंद्र से गिनला पर केंद्र');
+    expect(lookup('yogas', 'yoga-kala-sarpa', 'bho')!.text).toContain(loadUi('bho')['yogas.name.kala-sarpa']);
+    expect(lookup('yogas', 'yoga-kala-sarpa', 'hi')!.text).toContain('राहु–केतु अक्ष');
+    for (const lang of LANGS) {
+      const ui = loadUi(lang);
+      for (const k of ['ruchaka', 'bhadra', 'hamsa', 'malavya', 'sasa', 'harsha', 'sarala', 'vimala', 'neecha-bhanga-raja', 'dharma-karmadhipati']) {
+        expect(lookup('yogas', `yoga-${k}`, lang)!.text, `yoga-${k} ${lang} names the yoga as the card does`).toContain(`${ui[`yogas.name.${k}`]} योग`);
+      }
+      const parivartana = lookup('yogas', 'yoga-parivartana', lang)!.text;
+      for (const kind of ['महा', 'खल', 'दैन्य']) expect(parivartana).toContain(kind);
+      expect(lookup('yogas', 'yoga-harsha', lang)!.text).toContain('विपरीत राज योग');
+      expect(lookup('yogas', 'yoga-none', lang)!.text).toContain(`“${ui['common.why']}” के इनपुट`);
+    }
+    // Set aside (a combust forming planet) stays distinct from cancelled (भंग), as in the rules corpus.
+    expect(lookup('yogas', 'mahapurusha-bhanga-combust', 'hi')!.text).toContain('अलग रख दिया गया');
+    expect(lookup('yogas', 'mahapurusha-bhanga-combust', 'bho')!.text).toContain('अलगा राख दिहल गइल');
+    expect(lookup('yogas', 'kemadruma-bhanga-moon-conjunction', 'hi')!.text).toContain('भंग');
+    expect(lookup('yogas', 'shakata-bhanga-jupiter-kendra', 'bho')!.text).toContain('भंग');
+    // Dignity: the tag names of the planet sheet (dignity.*), the degree orbs and the D1 / D9 notation.
+    for (const lang of LANGS) {
+      const ui = loadUi(lang);
+      const combust = lookup('dignity', 'combust', lang)!.text;
+      for (const orb of ['12°', '17°', '14°', '11°', '10°', '15°']) expect(combust).toContain(orb);
+      expect(combust).toContain('अस्त-सीमा');
+      expect(lookup('dignity', 'own', lang)!.text).toContain(ui['dignity.own']);
+      expect(lookup('dignity', 'own', lang)!.text).toContain('मूलत्रिकोण');
+      expect(lookup('dignity', 'exalted', lang)!.text).toContain('सूर्य मेष में');
+      expect(lookup('dignity', 'debilitated', lang)!.text).toContain('सूर्य तुला में');
+      expect(lookup('dignity', 'friend', lang)!.text).toContain('नैसर्गिक मित्र');
+      expect(lookup('dignity', 'enemy', lang)!.text).toContain('नैसर्गिक शत्रु');
+      expect(lookup('dignity', 'retro', lang)!.text).toContain('वक्री');
+      const varg = lookup('dignity', 'vargottama', lang)!.text;
+      expect(varg).toContain("3°20'");
+      expect(varg).toContain('D1');
+      expect(varg).toContain('D9');
+      const approx = lookup('dignity', 'approx-lagna', lang)!.text;
+      expect(approx).toContain(`“${ui['common.approx']}”`);
+      expect(approx).toContain('1°');
+      expect(approx).toContain('15, 30');
+      expect(lookup('dignity', 'house-lord', lang)!.text).toContain(ui['charts.houseSystem.whole-sign']);
+    }
+    expect(lookup('dignity', 'moon-chart-mode', 'hi')!.text).toContain('भाव 1');
+    expect(lookup('dignity', 'moon-chart-mode', 'bho')!.text).toContain('घर 1');
+    expect(lookup('dignity', 'moon-chart-mode', 'bho')!.text).toContain(loadUi('bho')['charts.moonChartTitle']);
+    // Lagna: every record opens with the engine sign name, names the 1st-house lord and ends on a reflective question or reading.
+    const SIGNS: [string, string][] = [['mesha', 'मेष'], ['vrishabha', 'वृषभ'], ['mithuna', 'मिथुन'], ['karka', 'कर्क'], ['simha', 'सिंह'], ['kanya', 'कन्या'], ['tula', 'तुला'], ['vrishchika', 'वृश्चिक'], ['dhanu', 'धनु'], ['makara', 'मकर'], ['kumbha', 'कुंभ'], ['meena', 'मीन']];
+    for (const [key, name] of SIGNS) {
+      const hi = lookup('lagna', `lagna-${key}`, 'hi')!.text;
+      expect(hi.startsWith(`${name} लग्न होने पर`), `lagna-${key} hi opens with the sign`).toBe(true);
+      expect(hi).toContain('पहले भाव के स्वामी');
+      const bho = lookup('lagna', `lagna-${key}`, 'bho')!.text;
+      expect(bho.startsWith(`${name} लग्न होखला पर`), `lagna-${key} bho opens with the sign`).toBe(true);
+      expect(bho).toContain('पहिला घर के स्वामी');
+      expect(bho).not.toMatch(/राउर|रउआ|आपके|आपका/);
+    }
+    expect(lookup('lagna', 'lagna-mesha', 'hi')!.text).toContain('चिंतन का प्रश्न');
+    expect(lookup('lagna', 'lagna-mesha', 'bho')!.text).toContain('सोच-विचार के सवाल');
+    expect(lookup('lagna', 'lagna-mesha', 'hi')!.text).toContain('आठवें भाव');
+    expect(lookup('lagna', 'lagna-mesha', 'bho')!.text).toContain('आठवाँ घर');
+  });
+
   it('every registered domain has an English master and only hi / bho translations', () => {
     for (const t of TABLES) {
       expect(t.rows.en, `${t.domain} has no en`).toBeDefined();

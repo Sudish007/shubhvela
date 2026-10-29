@@ -13,7 +13,11 @@ import rulesBho from '../corpus/rules/bho.json';
 import planetSignEn from '../corpus/planet-sign/en.json';
 import planetHouseEn from '../corpus/planet-house/en.json';
 import dignityEn from '../corpus/dignity/en.json';
+import dignityHi from '../corpus/dignity/hi.json';
+import dignityBho from '../corpus/dignity/bho.json';
 import lagnaEn from '../corpus/lagna/en.json';
+import lagnaHi from '../corpus/lagna/hi.json';
+import lagnaBho from '../corpus/lagna/bho.json';
 import nakshatraPadaEn from '../corpus/nakshatra-pada/en.json';
 import dashaPairsEn from '../corpus/dasha-pairs/en.json';
 import transitEn from '../corpus/transit/en.json';
@@ -30,6 +34,8 @@ import glossaryEn from '../corpus/glossary/en.json';
 import glossaryHi from '../corpus/glossary/hi.json';
 import glossaryBho from '../corpus/glossary/bho.json';
 import yogasEn from '../corpus/yogas/en.json';
+import yogasHi from '../corpus/yogas/hi.json';
+import yogasBho from '../corpus/yogas/bho.json';
 import kootaEn from '../corpus/koota/en.json';
 import kootaHi from '../corpus/koota/hi.json';
 import kootaBho from '../corpus/koota/bho.json';
@@ -58,14 +64,16 @@ export const CORPUS: Record<string, Partial<Record<ContentLanguage, Snippet[]>>>
   rules: { en: rulesEn as Snippet[], hi: rulesHi as Snippet[], bho: rulesBho as Snippet[] },
   // A06: ids are `<planet>-<sign>` / `<planet>-<house>` with the lowercase English names of the engine locale tables
   // (sun, moon, mars, mercury, jupiter, venus, saturn, rahu, ketu; mesha ... meena), and the engine DignityTag names.
+  // dignity hi/bho are complete (corpus-translate T11); planet-sign / planet-house land in T15-T18.
   'planet-sign': { en: planetSignEn as Snippet[] },
   'planet-house': { en: planetHouseEn as Snippet[] },
-  dignity: { en: dignityEn as Snippet[] },
+  dignity: { en: dignityEn as Snippet[], hi: dignityHi as Snippet[], bho: dignityBho as Snippet[] },
   // A07: lagna-<sign> (lowercase engine sign name); nakshatra-<1..27>-<pada 1..4>; dasha-maha-<PlanetId> and the engine's
   // own daily-note keys dasha-<Maha>-<Antar> (ids Su Mo Ma Me Ju Ve Sa Ra Ke); transit-<saturn|jupiter|rahu>-<1..12> +
   // sade-sati-phase-<1..3>; daily = one fragment per engine DAILY_FRAGMENT_KEYS entry (chandra-bala-<h>, tara-bala-<t>,
   // tithi-<t>, nakshatra-<n>, vara-<v>, the special-yoga / bhadra / panchak keys, sade-sati states, day-strength-*).
-  lagna: { en: lagnaEn as Snippet[] },
+  // lagna hi/bho are complete (corpus-translate T11); nakshatra-pada / dasha-pairs / transit land in T12-T14, T19-T20.
+  lagna: { en: lagnaEn as Snippet[], hi: lagnaHi as Snippet[], bho: lagnaBho as Snippet[] },
   'nakshatra-pada': { en: nakshatraPadaEn as Snippet[] },
   'dasha-pairs': { en: dashaPairsEn as Snippet[] },
   transit: { en: transitEn as Snippet[] },
@@ -77,8 +85,8 @@ export const CORPUS: Record<string, Partial<Record<ContentLanguage, Snippet[]>>>
   // reversed Kala Sarpa direction and `yoga-none` for the empty card); koota = `koota-<id>-<level 1|2|3>` for the 8
   // kootas + the 4 KOOTA_EXCEPTION_IDS (level 3); mangal = `mangal-dosha`, `mangal-dosha-none` and the 6
   // `mangal-cancel-*` ids; muhurat-activities = the 14 `muhurat-<activity>` tables, the 10 `muhurat-rule-<rule>` chips
-  // and `muhurat-ranking` (N18). koota, mangal and muhurat-activities hi/bho are complete (corpus-translate T06); yogas lands in T11.
-  yogas: { en: yogasEn as Snippet[] },
+  // and `muhurat-ranking` (N18). koota, mangal and muhurat-activities hi/bho are complete (corpus-translate T06), yogas hi/bho too (T11).
+  yogas: { en: yogasEn as Snippet[], hi: yogasHi as Snippet[], bho: yogasBho as Snippet[] },
   koota: { en: kootaEn as Snippet[], hi: kootaHi as Snippet[], bho: kootaBho as Snippet[] },
   mangal: { en: mangalEn as Snippet[], hi: mangalHi as Snippet[], bho: mangalBho as Snippet[] },
   'muhurat-activities': { en: muhuratActivitiesEn as Snippet[], hi: muhuratActivitiesHi as Snippet[], bho: muhuratActivitiesBho as Snippet[] },
