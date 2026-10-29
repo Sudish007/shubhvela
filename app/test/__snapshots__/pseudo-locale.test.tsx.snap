@@ -3885,6 +3885,7 @@ exports[`pseudo-locale +30 % birth screen (en) shows every padded label whole 1`
           },
         ]
       }
+      testID="screen-cta-box"
     >
       <View
         onLayout={[Function]}

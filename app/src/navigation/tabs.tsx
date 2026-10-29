@@ -2,7 +2,7 @@
 // active = 3 px top indicator + accent, accessibilityRole tab + state.selected. Used by app/app/(tabs)/_layout.tsx.
 import type { TabTriggerSlotProps } from 'expo-router/ui';
 import type { ComponentRef, ComponentType, Ref } from 'react';
-import { Pressable, StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet, View, type ViewStyle } from 'react-native';
 import { ChartsIcon, FamilyIcon, LearnIcon, TodayIcon, type IconProps } from '../components/icons';
 import { Txt } from '../components/Txt';
 import { useTokens } from '../theme/ThemeProvider';
@@ -23,6 +23,22 @@ export const TABS: readonly TabDef[] = [
   { name: 'charts', href: '/(tabs)/charts', labelKey: 'tabs.charts', Icon: ChartsIcon },
   { name: 'learn', href: '/(tabs)/learn', labelKey: 'tabs.learn', Icon: LearnIcon },
 ];
+
+/**
+ * The tab bar's style as ONE flat object (DEV-1): `TabList asChild` merges styles with an object spread, so an array
+ * would be dropped. 72 dp + the bottom inset, the inset as bottom padding (design.md 2.3, N15).
+ */
+export function tabBarStyle(args: { insetBottom: number; surface: string; hair: string }): ViewStyle {
+  return {
+    flexDirection: 'row',
+    alignItems: 'stretch',
+    borderTopWidth: StyleSheet.hairlineWidth,
+    backgroundColor: args.surface,
+    borderTopColor: args.hair,
+    height: size.tabBar + args.insetBottom,
+    paddingBottom: args.insetBottom,
+  };
+}
 
 export type TabButtonProps = TabTriggerSlotProps & { label: string; Icon: ComponentType<IconProps> };
 

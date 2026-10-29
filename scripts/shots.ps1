@@ -5,6 +5,7 @@
 .DESCRIPTION
   scripts/shots.ps1 -Phase <a|b|c|d> -Screens <spec,spec,...> [-Langs en,hi,bho] [-Themes light,dark]
                     [-Density 443] [-FontScale 1.0] [-Scrolled] [-Variant <suffix>] [-Extra 'session=4&pro=1'] [-KeepRaw]
+                    [-NavMode <gesture|3button>] [-SubDir navbar]
 
   A screen spec is  <label>=<route>[;style=<north|south|east>][;type=<resource-id>:<ascii text>][;tap=<resource-id>[,<resource-id>...]]
   e.g.  today=/(tabs)/today            charts-south=/(tabs)/charts;style=south
@@ -22,6 +23,11 @@
   Output: .agents/tasks/v1-build/shots/phase-<Phase>/<label>-<lang>-<theme>[-<variant>].png (+ .ui.xml)
 
   -Density 443 = 390 dp wide on pixel_6; 480 = 360 dp; omit for the default 411 dp (variant suffix -412).
+  -NavMode (c06, DEV-1) switches the system navigation (cmd overlay enable-exclusive --category ...navbar.gestural |
+  ...navbar.threebutton), waits for settings secure navigation_mode (2 | 0) and adds the suffix -gest | -3btn. Every shot
+  also writes <name>.meta.json with the navigation-bar rectangle from dumpsys window (InsetsSource type=navigationBars
+  frame) so scripts/audit-ui-dump.mjs can check that no tappable control lies under the bar. -SubDir writes under
+  shots/phase-<Phase>/<SubDir>/.
   Exit codes: 0 ok, 1 failure, 3 bad arguments.
 #>
 param(
@@ -39,13 +45,18 @@ param(
   # Number of swipes for -Scrolled (1 = one screen; Today's last card needs ~4).
   [int]$ScrollCount = 1,
   # c-ship: keep the unshrunk 1080x2400 screencap under <OutDir>/raw/ (Play listing source, D04) before shrinking.
-  [switch]$KeepRaw
+  [switch]$KeepRaw,
+  # c06 (DEV-1): system navigation mode for this batch; '' leaves the emulator as it is (no suffix, meta still written).
+  [ValidateSet('', 'gesture', '3button')][string]$NavMode = '',
+  # c06: sub-folder under shots/phase-<Phase>/ (e.g. navbar).
+  [string]$SubDir = ''
 )
 
 $ErrorActionPreference = 'Stop'
 $Root = 'c:/Users/sudiskmr/Downloads/DomainClassification/shubhvela'
 $Adb = Join-Path $env:LOCALAPPDATA 'Android/Sdk/platform-tools/adb.exe'
 $OutDir = Join-Path $Root (".agents/tasks/v1-build/shots/phase-" + $Phase)
+if ($SubDir) { $OutDir = Join-Path $OutDir $SubDir }
 $Package = 'com.shubhvela.app'
 New-Item -ItemType Directory -Force -Path $OutDir | Out-Null
 
@@ -114,10 +125,35 @@ if ($Density -gt 0) { Adb-Quiet @('shell', 'wm', 'density', "$Density") | Out-Nu
 Adb-Quiet @('shell', 'settings', 'put', 'system', 'font_scale', $FontScale) | Out-Null
 Start-Sleep -Seconds 2
 
+# c06 (DEV-1): navigation mode. `enable-exclusive --category` is what Settings uses; enabling one overlay and disabling
+# the other separately left navigation_mode unchanged on the API 34 image (observed 2026-10-29).
+if ($NavMode) {
+  $overlay = if ($NavMode -eq '3button') { 'com.android.internal.systemui.navbar.threebutton' } else { 'com.android.internal.systemui.navbar.gestural' }
+  $wantMode = if ($NavMode -eq '3button') { '0' } else { '2' }
+  Adb-Quiet @('shell', 'cmd', 'overlay', 'enable-exclusive', '--category', $overlay) | Out-Null
+  $deadline = (Get-Date).AddSeconds(20)
+  do { Start-Sleep -Seconds 2; $mode = (Adb-Quiet @('shell', 'settings', 'get', 'secure', 'navigation_mode')).Trim() } while ($mode -ne $wantMode -and (Get-Date) -lt $deadline)
+  if ($mode -ne $wantMode) { Write-Error "navigation_mode is '$mode', wanted '$wantMode' ($NavMode)"; exit 1 }
+  Write-Host "Navigation mode: $NavMode (navigation_mode=$mode)"
+}
+
+# Navigation-bar rectangle in px from the window manager (frame of the navigationBars inset source) + the real density.
+function Get-NavBarMeta {
+  $dump = Adb-Quiet @('shell', 'dumpsys', 'window')
+  $m = [regex]::Match($dump, 'type=navigationBars frame=\[(\d+),(\d+)\]\[(\d+),(\d+)\]')
+  $rect = if ($m.Success) { @([int]$m.Groups[1].Value, [int]$m.Groups[2].Value, [int]$m.Groups[3].Value, [int]$m.Groups[4].Value) } else { $null }
+  $mode = (Adb-Quiet @('shell', 'settings', 'get', 'secure', 'navigation_mode')).Trim()
+  $dens = Adb-Quiet @('shell', 'wm', 'density')
+  $dm = [regex]::Match($dens, 'Override density: (\d+)')
+  if (-not $dm.Success) { $dm = [regex]::Match($dens, 'Physical density: (\d+)') }
+  return @{ navBar = $rect; navigationMode = $mode; navMode = $(if ($mode -eq '0') { '3button' } elseif ($mode -eq '2') { 'gesture' } else { "mode$mode" }); density = $(if ($dm.Success) { [int]$dm.Groups[1].Value } else { 0 }); fontScale = $FontScale }
+}
+
 $suffix = ''
 if ($Density -eq 443) { $suffix += '-390' } elseif ($Density -eq 480) { $suffix += '-360' } elseif ($Density -gt 0) { $suffix += "-d$Density" }
 if ($FontScale -ne '1.0') { $suffix += ('-f' + ($FontScale -replace '\.', '')) }
 if ($Scrolled) { $suffix += '-scrolled' }
+if ($NavMode -eq '3button') { $suffix += '-3btn' } elseif ($NavMode -eq 'gesture') { $suffix += '-gest' }
 if ($Variant) { $suffix += "-$Variant" }
 
 $count = 0
@@ -228,6 +264,8 @@ foreach ($spec in $Screens) {
         Adb-Quiet @('pull', '/sdcard/s.png', $png) | Out-Null
         $xml = Get-UiDump
         [IO.File]::WriteAllText((Join-Path $OutDir "$name.ui.xml"), $xml)
+        # c06: the navigation-bar rectangle for the audit's "covered by the navigation bar" check.
+        [IO.File]::WriteAllText((Join-Path $OutDir "$name.meta.json"), ((Get-NavBarMeta) | ConvertTo-Json -Compress))
         if ($KeepRaw) {
           $rawDir = Join-Path $OutDir 'raw'
           New-Item -ItemType Directory -Force -Path $rawDir | Out-Null
@@ -238,7 +276,9 @@ foreach ($spec in $Screens) {
       }
       # Full-scroll dump for the "covered" check (design.md 13: >= 16 dp clearance above the CTA / banner strip at full
       # scroll, M6). Swipe until the hierarchy stops changing (a 3-page PDF preview is ~15 screens long; cap 40).
-      if ($xml -match 'resource-id="(screen-cta|banner-strip)"') {
+      # c06: with -NavMode every screen gets the full-scroll dump, so the audit can check that the last rows of a plain
+      # stack screen (Screen padding 16 + inset) end above the navigation bar too.
+      if ($NavMode -or $xml -match 'resource-id="(screen-cta|banner-strip)"') {
         # Rounds of five fast flings, one dump per round (a dump costs ~5 s; the 42-window muhurat list is ~16 screens).
         $prev = ''; $cur = Scroll-Signature $xml
         for ($s = 0; $s -lt 12 -and $cur -ne $prev; $s++) {

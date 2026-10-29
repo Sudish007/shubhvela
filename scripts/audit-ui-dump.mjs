@@ -3,6 +3,10 @@
 //   - clickable nodes smaller than 44 dp in either dimension
 //   - element boxes that intersect (overlap without containment) inside the same window
 //   - content left under the fixed bottom chrome (sticky CTA / banner strip) at FULL scroll
+//   - c06 (DEV-1): tappable controls under the system navigation bar (`navCovered`): the bar's rectangle comes from a
+//     sibling <name>.meta.json written by scripts/shots.ps1 ({ navBar: [x1,y1,x2,y2], navMode, density }); every
+//     clickable node of the initial AND the full-scroll dump must stay clear of it (> 2 px overlap fails). Without a
+//     meta file the check is reported as not made (`navChecked: false`).
 // Usage:
 //   node scripts/audit-ui-dump.mjs <file.ui.xml | folder> [--density 420] [--tabbar 72] [--strip 0] [--out audit.json]
 //   node scripts/audit-ui-dump.mjs --summary <audit.json>
@@ -31,11 +35,19 @@ if (args.includes('--summary')) {
   const file = opt('summary', null);
   const data = JSON.parse(readFileSync(file, 'utf8'));
   const totals = data.reduce(
-    (t, r) => ({ shots: t.shots + 1, smallControls: t.smallControls + r.smallControls.length, intersections: t.intersections + r.intersections.length, covered: t.covered + r.covered.length, failing: t.failing + (r.pass ? 0 : 1) }),
-    { shots: 0, smallControls: 0, intersections: 0, covered: 0, failing: 0 },
+    (t, r) => ({
+      shots: t.shots + 1,
+      smallControls: t.smallControls + r.smallControls.length,
+      intersections: t.intersections + r.intersections.length,
+      covered: t.covered + r.covered.length,
+      navCovered: t.navCovered + (r.navCovered ?? []).length,
+      navChecked: t.navChecked + (r.navChecked ? 1 : 0),
+      failing: t.failing + (r.pass ? 0 : 1),
+    }),
+    { shots: 0, smallControls: 0, intersections: 0, covered: 0, navCovered: 0, navChecked: 0, failing: 0 },
   );
   console.log(JSON.stringify(totals));
-  for (const r of data.filter((r) => !r.pass)) console.log(`FAIL ${r.file} small=${r.smallControls.length} intersect=${r.intersections.length} covered=${r.covered.length}`);
+  for (const r of data.filter((r) => !r.pass)) console.log(`FAIL ${r.file} small=${r.smallControls.length} intersect=${r.intersections.length} covered=${r.covered.length} nav=${(r.navCovered ?? []).length}`);
   process.exit(totals.failing === 0 ? 0 : 1);
 }
 
@@ -44,10 +56,10 @@ if (!target) {
   console.error('usage: node scripts/audit-ui-dump.mjs <file.ui.xml | folder> [--density 420] [--tabbar 72] [--strip 0] [--out audit.json]');
   process.exit(3);
 }
-const density = Number(opt('density', '420'));
+// --density wins; else the density recorded in <name>.meta.json (c06); else 420 (the pixel_6 default).
+const densityArg = opt('density', null);
 const tabBarDp = Number(opt('tabbar', '72'));
 const stripDp = Number(opt('strip', '0'));
-const dpPerPx = 160 / density;
 const MIN_DP = 44;
 const CLEARANCE_DP = 16; // design.md 13: >= 16 dp of content clearance above the CTA/banner at full scroll
 
@@ -85,7 +97,20 @@ function markWebContent(nodes) {
   nodes.forEach((n, i) => { n.inWeb = webs.some((w) => w !== n && nodes.indexOf(w) < i && inside(n, w)); });
 }
 
-function auditXml(xml, file, bottomXml) {
+// c06 (DEV-1): clickable nodes whose box overlaps the navigation-bar rectangle by more than 2 px in both axes. Zero-size
+// nodes are skipped; the ad creative's own DOM (inside the banner strip) is the SDK's, not an app control, and is skipped.
+function navCoveredIn(nodes, nav, inAd) {
+  if (!nav) return [];
+  const [nx1, ny1, nx2, ny2] = nav;
+  return nodes
+    .filter((n) => n.clickable && n.x2 > n.x1 && n.y2 > n.y1 && !inAd(n))
+    .filter((n) => Math.min(n.x2, nx2) - Math.max(n.x1, nx1) > 2 && Math.min(n.y2, ny2) - Math.max(n.y1, ny1) > 2)
+    .map((n) => ({ label: label(n), bounds: [n.x1, n.y1, n.x2, n.y2], overlapPx: Math.min(n.y2, ny2) - Math.max(n.y1, ny1) }));
+}
+
+function auditXml(xml, file, bottomXml, meta) {
+  const density = Number(densityArg ?? (meta && Number(meta.density) > 0 ? meta.density : 420));
+  const dpPerPx = 160 / density;
   const nodes = parseNodes(xml);
   const screenH = Math.max(...nodes.map((n) => n.y2), 0);
   const screenW = Math.max(...nodes.map((n) => n.x2), 0);
@@ -167,6 +192,22 @@ function auditXml(xml, file, bottomXml) {
     coveredChecked = true; // no fixed bottom chrome over the scroll view: nothing can be covered
   }
 
+  // Navigation bar (c06): the rectangle from <name>.meta.json; checked on the initial dump and on the full-scroll dump.
+  // Initial dump: fixed chrome only (tab bar, CTA, strip, sheet rows) - scroll content legitimately passes behind the
+  // bar on an edge-to-edge window until the full-scroll position, where the Screen padding (16 + inset) must clear it;
+  // that position is checked on the bottom dump with every node.
+  const nav = meta && Array.isArray(meta.navBar) && meta.navBar.length === 4 ? meta.navBar : null;
+  const navChecked = !!nav;
+  const navCovered = navCoveredIn(nodes.filter((n) => n.inCta || !scroll || !inside(n, scroll)), nav, inAd);
+  if (nav && bottomXml) {
+    const bn = parseNodes(bottomXml);
+    const bctaIndex = bn.findIndex((n) => n.id === 'screen-cta' || n.id === 'banner-strip');
+    const bcta = bctaIndex >= 0 ? bn[bctaIndex] : null;
+    const inAdBottom = (n) => !!bcta && bcta.id === 'banner-strip' && bn.indexOf(n) > bctaIndex && inside(n, bcta);
+    for (const c of navCoveredIn(bn, nav, inAdBottom)) if (!navCovered.some((x) => x.label === c.label && x.bounds.join() === c.bounds.join())) navCovered.push({ ...c, atFullScroll: true });
+  }
+  const navBarDp = nav ? +((nav[3] - nav[1]) * dpPerPx).toFixed(1) : null;
+
   return {
     file: basename(file),
     density,
@@ -176,10 +217,15 @@ function auditXml(xml, file, bottomXml) {
     chrome: cta ? (cta.id === 'banner-strip' ? 'banner' : 'cta') : scroll ? 'scroll-edge' : 'none',
     strip,
     coveredChecked,
+    navMode: meta?.navMode ?? null,
+    navBar: nav,
+    navBarDp,
+    navChecked,
     smallControls,
     intersections,
     covered,
-    pass: smallControls.length === 0 && intersections.length === 0 && covered.length === 0,
+    navCovered,
+    pass: smallControls.length === 0 && intersections.length === 0 && covered.length === 0 && navCovered.length === 0,
   };
 }
 
@@ -189,10 +235,15 @@ const files = statSync(target).isDirectory()
   : [target];
 for (const f of files) {
   const bottom = f.replace(/\.ui\.xml$/, '.bottom.ui.xml');
-  const r = auditXml(readFileSync(f, 'utf8'), f, existsSync(bottom) ? readFileSync(bottom, 'utf8') : null);
+  const metaPath = f.replace(/\.ui\.xml$/, '.meta.json');
+  let meta = null;
+  if (existsSync(metaPath)) {
+    try { meta = JSON.parse(readFileSync(metaPath, 'utf8')); } catch { meta = null; }
+  }
+  const r = auditXml(readFileSync(f, 'utf8'), f, existsSync(bottom) ? readFileSync(bottom, 'utf8') : null, meta);
   results.push(r);
   const status = r.pass ? 'PASS' : 'FAIL';
-  console.log(`${status} ${r.file}  small=${r.smallControls.length} intersect=${r.intersections.length} covered=${r.covered.length}${r.coveredChecked ? '' : ' (covered not checked: no bottom dump)'}`);
+  console.log(`${status} ${r.file}  small=${r.smallControls.length} intersect=${r.intersections.length} covered=${r.covered.length}${r.coveredChecked ? '' : ' (covered not checked: no bottom dump)'} nav=${r.navCovered.length}${r.navChecked ? ` (bar ${r.navBarDp} dp, ${r.navMode})` : ' (nav not checked: no meta)'}`);
 }
 const outPath = opt('out', statSync(target).isDirectory() ? join(target, 'audit.json') : null);
 if (outPath) {

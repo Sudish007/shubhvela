@@ -14,6 +14,7 @@ import { useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { AdsRoot } from '../src/ads/AdsRoot';
+import { BottomInsetProvider } from '../src/components/BottomInset';
 import { initAppDb } from '../src/db/open';
 import { LangProvider } from '../src/i18n';
 import { replanAll } from '../src/notifications/schedule';
@@ -92,6 +93,7 @@ function Navigator({ fontsReady }: { fontsReady: boolean }) {
         <Stack.Screen name="festival/[slug]/[year]" />
         <Stack.Screen name="panchang/[city]" />
         <Stack.Screen name="dev/state" />
+        <Stack.Screen name="dev/insets" />
       </Stack>
     </>
   );
@@ -111,7 +113,10 @@ export default function RootLayout() {
         <LangProvider>
           <AdsRoot />
           <WidgetStateSync />
-          <Navigator fontsReady={fontsLoaded || !!fontError} />
+          {/* DEV-1: one bottom inset for every bottom-anchored element, with the edge-to-edge fallback probe (last child). */}
+          <BottomInsetProvider>
+            <Navigator fontsReady={fontsLoaded || !!fontError} />
+          </BottomInsetProvider>
         </LangProvider>
       </ThemeProvider>
     </SafeAreaProvider>

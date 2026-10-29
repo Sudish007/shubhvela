@@ -8,6 +8,8 @@
 // `intent=` sets the self profile's intent (M4), `pdf_lang=` the profiles' PDF language. C01/C05: `widget_state=stale|exhausted`
 // rewrites files/widget_state.json with a clock moved 40 h / 9 days back so the home-screen widgets show their footer state.
 // C04/C05: `backup_roundtrip=1` runs the encrypted backup export -> import (Merge) through react-native-quick-crypto and logs it.
+// c06 (DEV-1): `screen=/dev/insets` opens the safe-area readout (app/dev/insets.tsx); every screenshot build also logs
+// `dev/insets {...}` (BottomInsetProvider) whenever the reported / probe / effective bottom inset changes.
 import { Redirect, useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect } from 'react';
 import { View } from 'react-native';

@@ -2,10 +2,10 @@
 // Close control. The only animation in the app is the slide; AccessibilityInfo reduced motion turns it off.
 import { useEffect, useState, type ReactNode } from 'react';
 import { AccessibilityInfo, Modal, Pressable, ScrollView, StyleSheet, View } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useLang } from '../i18n';
 import { useTokens } from '../theme/ThemeProvider';
 import { radius } from '../theme/tokens';
+import { useBottomInset } from './BottomInset';
 import { Pressable44 } from './Pressable44';
 import { Txt } from './Txt';
 
@@ -37,13 +37,15 @@ export function useReducedMotion(): boolean {
 export function Sheet({ visible, onClose, title, children, footer }: SheetProps) {
   const { colors } = useTokens();
   const { t } = useLang();
-  const insets = useSafeAreaInsets();
+  // DEV-1: the Modal window is edge-to-edge too (RN forces navigationBarTranslucent under edgeToEdgeEnabled), so the
+  // bottom row sits above the navigation bar by the same inset the tab bar and CTAs use.
+  const insetBottom = useBottomInset();
   const reduced = useReducedMotion();
   return (
-    <Modal visible={visible} transparent animationType={reduced ? 'none' : 'slide'} onRequestClose={onClose} statusBarTranslucent>
+    <Modal visible={visible} transparent animationType={reduced ? 'none' : 'slide'} onRequestClose={onClose} statusBarTranslucent navigationBarTranslucent>
       <View style={styles.root}>
         <Pressable accessibilityLabel={t('common.close')} accessibilityRole="button" onPress={onClose} style={[styles.scrim, { backgroundColor: colors.scrim }]} />
-        <View style={[styles.sheet, { backgroundColor: colors.surface, borderColor: colors.hair, paddingBottom: insets.bottom + 16 }]} accessibilityViewIsModal>
+        <View testID="sheet-panel" style={[styles.sheet, { backgroundColor: colors.surface, borderColor: colors.hair, paddingBottom: insetBottom + 16 }]} accessibilityViewIsModal>
           <View style={[styles.handle, { backgroundColor: colors.hair2 }]} />
           <View style={styles.head}>
             <Txt kind="sheetTitle" style={styles.title} accessibilityRole="header">

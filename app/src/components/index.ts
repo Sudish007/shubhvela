@@ -1,5 +1,6 @@
 // Honesty and layout components (design.md 11 single owners). Screens import from here.
 export { Screen, screenBottomPadding, type ScreenProps, type ScreenChrome } from './Screen';
+export { BottomInsetProvider, resolveBottomInset, useBottomInset, useBottomInsetState, isEdgeToEdgeWindow, type BottomInsetSources, type BottomInsetState } from './BottomInset';
 export { Row, type RowProps } from './Row';
 export { WhyButton, WhySheet, glossaryIdsFor, type WhyProps, type WhyInputValue } from './WhySheet';
 export { Tag, ApproxTag, type TagVariant } from './Tag';
