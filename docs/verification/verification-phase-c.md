@@ -147,4 +147,9 @@ but not installed by this step (the owner's phone test that found DEV-1 used an 
 
 ## 9. Push result
 
-(filled in after the push)
+- `1f39f17 chore(scripts): shots.ps1 -KeepRaw …` and `92cba89 docs(phase-c): verification and release notes` (docs/OWNER-TODO.md, docs/RELEASE-NOTES.md,
+  docs/verification/carry-over.md, review-phase-c.md/.json, verification-c01…c05.md, verification-c-fix.md, verification-phase-c.md).
+  `git pull --rebase` → up to date; pushed `2c41368..92cba89 main -> main`, tag `v0.3.0-phase-c` → `92cba89` (`git ls-remote --tags origin` confirms).
+- A final `docs(phase-c): sync verification-phase-c.md` commit copies this completed file to `docs/verification/`; the tag stays on `92cba89`.
+- `git status --porcelain` empty after each push; no APK, keystore or KEYSTORE-INFO.txt staged at any point; `app/android/app/build` and `.cxx` absent;
+  no Gradle daemon or emulator process running. Tree left clean for `c06-device-fixes`.
