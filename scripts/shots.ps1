@@ -4,7 +4,7 @@
 
 .DESCRIPTION
   scripts/shots.ps1 -Phase <a|b|c|d> -Screens <spec,spec,...> [-Langs en,hi,bho] [-Themes light,dark]
-                    [-Density 443] [-FontScale 1.0] [-Scrolled] [-Variant <suffix>] [-Extra 'session=4&pro=1']
+                    [-Density 443] [-FontScale 1.0] [-Scrolled] [-Variant <suffix>] [-Extra 'session=4&pro=1'] [-KeepRaw]
 
   A screen spec is  <label>=<route>[;style=<north|south|east>][;type=<resource-id>:<ascii text>][;tap=<resource-id>[,<resource-id>...]]
   e.g.  today=/(tabs)/today            charts-south=/(tabs)/charts;style=south
@@ -37,7 +37,9 @@ param(
   # Extra dev/state query parameters appended to every link, e.g. 'session=4' (ads shown) or 'pro=1' (B08 Pro variants).
   [string]$Extra = '',
   # Number of swipes for -Scrolled (1 = one screen; Today's last card needs ~4).
-  [int]$ScrollCount = 1
+  [int]$ScrollCount = 1,
+  # c-ship: keep the unshrunk 1080x2400 screencap under <OutDir>/raw/ (Play listing source, D04) before shrinking.
+  [switch]$KeepRaw
 )
 
 $ErrorActionPreference = 'Stop'
@@ -226,6 +228,11 @@ foreach ($spec in $Screens) {
         Adb-Quiet @('pull', '/sdcard/s.png', $png) | Out-Null
         $xml = Get-UiDump
         [IO.File]::WriteAllText((Join-Path $OutDir "$name.ui.xml"), $xml)
+        if ($KeepRaw) {
+          $rawDir = Join-Path $OutDir 'raw'
+          New-Item -ItemType Directory -Force -Path $rawDir | Out-Null
+          Copy-Item -Force $png (Join-Path $rawDir "$name.png")
+        }
         node (Join-Path $Root 'scripts/shrink-png.mjs') $png | Out-Null
         Write-Host "shot: $name.png"
       }
