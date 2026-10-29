@@ -7,7 +7,7 @@
 import { describe, expect, it } from 'vitest';
 import { LATIN_ALLOWLIST } from '../../content-tools/src/forbidden';
 import { CORPUS, FESTIVALS, GLOSSARY, LESSONS } from '../src/registry';
-import { festivalText, glossaryTerm, loadGlossary, loadUi, lookup, lesson, ruleText, type ContentLanguage } from '../src/index';
+import { festivalText, glossaryTerm, loadGlossary, loadLessons, loadUi, lookup, lesson, lessonPlaceholders, ruleText, type ContentLanguage } from '../src/index';
 
 type Row = Record<string, unknown> & { id: string };
 type Lang = Exclude<ContentLanguage, 'en'>;
@@ -374,6 +374,133 @@ describe('translated corpus files (hi / bho) mirror their English master', () =>
     expect(glossaryTerm('guru-pushya', 'bho')!.item.meaning).toContain('बियफे');
     expect(glossaryTerm('chhath', 'bho')!.item.meaning).toContain(loadUi('bho')['vrat.chhath.sandhyaArghya']);
     expect(glossaryTerm('chhath', 'hi')!.item.meaning).toContain('संध्या अर्घ्य');
+  });
+
+  it('T10: lessons are complete in hi and bho (whole-file domain), loadLessons returns the requested language without fallback, every lesson resolves in its own language with the English placeholders and the UI screen names', () => {
+    const en = LESSONS.en!;
+    for (const lang of LANGS) {
+      const rows = LESSONS[lang];
+      expect(rows, `lessons/${lang} registered`).toBeDefined();
+      expect(rows!.map((r) => r.id).sort(), `lessons/${lang} complete`).toEqual(en.map((r) => r.id).sort());
+      // The Learn tab renders one whole file, so loadLessons must return the requested language without fallback, ordered by n.
+      const list = loadLessons(lang);
+      expect(list.lang).toBe(lang);
+      expect(list.fallback).toBe(false);
+      expect(list.items.length).toBe(21);
+      expect(list.items.map((l) => l.n)).toEqual(en.map((l) => l.n).sort((a, b) => a - b));
+      for (const l of en) {
+        const r = lesson(l.id, lang)!;
+        expect(r, `lessons/${l.id} ${lang}`).not.toBeNull();
+        expect(r.lang, `lessons/${l.id} ${lang} resolves in its own language`).toBe(lang);
+        expect(r.fallback).toBe(false);
+        // Metadata the app routes on is shared by every language; title and body are translated paragraph for paragraph.
+        expect(r.item.n).toBe(l.n);
+        expect(r.item.tryIt).toEqual(l.tryIt);
+        expect(r.item.terms).toEqual(l.terms);
+        expect(r.item.unlocksLevel).toBe(l.unlocksLevel);
+        expect(r.item.body.length).toBe(l.body.length);
+        expect(r.item.title).not.toBe(l.title);
+        // The resolver fills the same placeholder set in every language (LESSON_PLACEHOLDERS is the app's contract).
+        expect(lessonPlaceholders(r.item).sort(), `lessons/${l.id} ${lang} placeholders`).toEqual(lessonPlaceholders(l).sort());
+      }
+    }
+    // lesson-01 keeps every placeholder in Bhojpuri; lesson-13 in Hindi (the per-paragraph multiset is checked below for every row).
+    expect(lesson('lesson-01', 'bho')!.item.body.join(' ')).toContain('{name}');
+    expect(lesson('lesson-01', 'bho')!.item.body.join(' ')).toContain('{moonSign}');
+    expect(lesson('lesson-13', 'hi')!.item.body.join(' ')).toContain('{saturnHouseFromMoon}');
+    expect(lesson('lesson-13', 'hi')!.item.body.join(' ')).toContain('{saturnHouse}');
+    // Lesson 15: the D9 paragraph keeps all four chart placeholders and the UI varga names.
+    for (const lang of LANGS) {
+      const d9 = lesson('lesson-15', lang)!.item;
+      expect(d9.title).toContain('D9');
+      for (const p of ['{moonDegree}', '{moonSign}', '{moonNavamsaSign}', '{lagnaNavamsaSign}']) expect(d9.body[1]).toContain(p);
+      expect(d9.body[3]).toContain('द्रेष्काण');
+      expect(d9.body[3]).toContain('षष्ट्यंश');
+      expect(d9.body[2]).toContain('वर्गोत्तम');
+    }
+    // Lesson 16: SAV placeholders and the Ashtakavarga screen's strength words (सबल / मध्यम / निर्बल) and the 337 total as words.
+    for (const lang of LANGS) {
+      const av = lesson('lesson-16', lang)!.item;
+      expect(av.body[2]).toContain('{savLagna}');
+      expect(av.body[2]).toContain('{savTenth}');
+      for (const w of ['सबल', 'मध्यम', 'निर्बल']) expect(av.body[2]).toContain(w);
+      expect(av.body[1]).toContain('BAV');
+      expect(av.body[1]).toContain('SAV');
+    }
+    // Lesson 17: KP screen names (भाव-संधि, उप-स्वामी, सत्तारूढ़ ग्रह, प्लेसिडस) and the Latin grade letters A to D.
+    for (const lang of LANGS) {
+      const kp = lesson('lesson-17', lang)!.item;
+      expect(kp.body[1]).toContain('{kpLagnaSubLord}');
+      expect(kp.body.join(' ')).toContain(loadUi(lang)['kp.subLord_col']);
+      expect(kp.body.join(' ')).toContain('भाव-संधि');
+      expect(kp.body[3]).toContain('सत्तारूढ़ ग्रह');
+      expect(kp.body[0]).toContain('प्लेसिडस');
+      expect(kp.body[2]).toMatch(/\bA\b/);
+      expect(kp.body[2]).toMatch(/\bD\b/);
+    }
+    // Lesson 18: the match screen's koota names and the "beyond" section title, respectful honorific for the reader's Mars.
+    for (const lang of LANGS) {
+      const m = lesson('lesson-18', lang)!.item;
+      for (const k of ['varna', 'vashya', 'tara', 'yoni', 'grahaMaitri', 'gana', 'bhakoot', 'nadi']) expect(m.body[0]).toContain(loadUi(lang)[`match.koota.${k}`]);
+      expect(m.body[5]).toContain(loadUi(lang)['match.beyondTitle']);
+      expect(m.body[5]).toContain(loadUi(lang)['match.title']);
+      expect(m.body[2]).toContain('{marsHouse}');
+      expect(m.body[3]).toContain('{seventhLord}');
+    }
+    expect(lesson('lesson-18', 'bho')!.item.body[2]).toContain('राउर मंगल');
+    expect(lesson('lesson-18', 'bho')!.item.body[2]).toContain('बाड़न');
+    expect(lesson('lesson-18', 'hi')!.item.body[2]).toContain('आपके मंगल');
+    // Lesson 19: the ten muhurat rule names as the finder's chips print them; the finder's own title.
+    for (const lang of LANGS) {
+      const mu = lesson('lesson-19', lang)!.item;
+      expect(mu.body[0]).toContain(loadUi(lang)['muhurat.title']);
+      for (const k of ['tithi', 'nakshatra', 'vara', 'chandra-bala', 'tara-bala', 'bhadra', 'panchak', 'choghadiya']) {
+        const name = loadUi(lang)[`muhurat.rule.${k}`].replace(/ (नहीं|ना)$/, '');
+        expect(mu.body[2], `lesson-19 ${lang} rule ${k}`).toContain(name);
+      }
+      // The English names the rule plainly ("Abhijit", "Rahu Kaal"); the chips add "bonus" / "avoided".
+      expect(mu.body[2]).toContain('अभिजित');
+      expect(mu.body[2]).toContain('राहु काल');
+      expect(mu.body[5]).toContain(loadUi(lang)['muhurat.partialTitle']);
+      expect(mu.body[3]).toContain('{moonSign}');
+      expect(mu.body[3]).toContain('{nakshatra}');
+    }
+    // Lesson 20: the honesty markers are quoted as the UI prints them (Why?, approx., How this was computed, for reflection, the Ask-my-chart label).
+    for (const lang of LANGS) {
+      const w = lesson('lesson-20', lang)!.item;
+      const ui = loadUi(lang);
+      expect(w.title).toContain(`“${ui['common.why']}”`);
+      expect(w.body[0]).toContain(`“${ui['common.why']}”`);
+      expect(w.body[1]).toContain(`“${ui['common.approx']}”`);
+      expect(w.body[2]).toContain(`“${ui['common.howComputed']}”`);
+      expect(w.body[2]).toContain('{ayanamsa}');
+      expect(w.body[2]).toContain('{nodeMode}');
+      expect(w.body[3]).toContain(`“${ui['common.forReflection']}”`);
+      expect(w.body[4]).toContain(ui['ask.label']);
+      expect(w.body[4]).toContain(`“${ui['ask.rowTitle']}”`);
+      expect(w.body[5]).toContain(`“${ui['today.title']}”`);
+    }
+    // Lesson 21: the calculation settings names (सेटिंग / गणना), the four settings placeholders, UTC and the dasha-year constant.
+    for (const lang of LANGS) {
+      const c = lesson('lesson-21', lang)!.item;
+      const ui = loadUi(lang);
+      expect(c.body[0]).toContain('{ephemeris}');
+      expect(c.body[1]).toContain('{ayanamsa}');
+      expect(c.body[1]).toContain('{ayanamsaDegrees}');
+      expect(c.body[2]).toContain('{nodeMode}');
+      expect(c.body[3]).toContain('{birthTz}');
+      expect(c.body[3]).toContain('UTC');
+      expect(c.body[4]).toContain('365.2425');
+      expect(c.body[4]).toContain(`“${ui['settings.calculation']}”`);
+      expect(c.body[5]).toContain(ui['settings.title']);
+      expect(c.body[2]).toContain(ui['settings.nodes.true'].replace(/ \(.*\)$/, ''));
+    }
+    // Bhojpuri register: no Hindi है / हैं in any lesson body, respectful imperatives in the try-it paragraph.
+    for (const l of LESSONS.bho!) {
+      expect(l.body.join(' '), `${l.id} bho`).not.toMatch(/(^|\s)(है|हैं|करें|देखें|खोलें)(\s|।|,|;)/);
+      expect(l.body[5], `${l.id} bho try-it`).toMatch(/(खोलीं|जाईं|चुनीं|खोजीं|पढ़ीं)/);
+    }
+    for (const l of LESSONS.hi!) expect(l.body[5], `${l.id} hi try-it`).toMatch(/(खोलें|जाएँ|चुनें|ढूँढ़ें|पढ़ें|फैलाएँ|गिनें)/);
   });
 
   it('every registered domain has an English master and only hi / bho translations', () => {

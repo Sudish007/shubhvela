@@ -44,6 +44,8 @@ import dailyThirdEn from '../corpus/daily-third/en.json';
 import dailyThirdHi from '../corpus/daily-third/hi.json';
 import dailyThirdBho from '../corpus/daily-third/bho.json';
 import lessonsEn from '../corpus/lessons/en.json';
+import lessonsHi from '../corpus/lessons/hi.json';
+import lessonsBho from '../corpus/lessons/bho.json';
 
 export const UI: Record<ContentLanguage, UiStrings> = {
   en: en as UiStrings,
@@ -86,9 +88,11 @@ export const CORPUS: Record<string, Partial<Record<ContentLanguage, Snippet[]>>>
   'daily-third': { en: dailyThirdEn as Snippet[], hi: dailyThirdHi as Snippet[], bho: dailyThirdBho as Snippet[] },
 };
 
-/** Lessons (schema/lesson.schema.json): lesson-01 .. lesson-21, bodies with {placeholders} from LESSON_PLACEHOLDERS (src/lessons.ts). hi/bho drafts arrive from the corpus-translate Action (batch C, one lesson per request). */
+/** Lessons (schema/lesson.schema.json): lesson-01 .. lesson-21, bodies with {placeholders} from LESSON_PLACEHOLDERS (src/lessons.ts). hi/bho are complete (corpus-translate T08–T10): the Learn tab renders one whole file, so a lessons translation is registered only when it covers every English id. */
 export const LESSONS: Partial<Record<ContentLanguage, Lesson[]>> = {
   en: lessonsEn as Lesson[],
+  hi: lessonsHi as Lesson[],
+  bho: lessonsBho as Lesson[],
 };
 
 /** Naamkaran name lists (schema/naamkaran-names.schema.json): 108 entries `nakshatra-<n>-<pada>`; English only (names are not translated). */
