@@ -137,3 +137,40 @@ paste are in `app/playstore-assets/store-listing.md`.
   the Play screenshots, run the emulator audit in both navigation modes, tag `v1.0.0`.
 - Open for you, in order of urgency: 7 (keystore backup), 8 (grievance e-mail), 3 (Play Console), 4 (AdMob), 1 (name/domains or
   the N17 user-pages repo), 6 (Bhojpuri review), 2 (Instagram).
+
+## Post-1.0 fixes (from the Phase D review)
+
+Appended by the Phase D reviewer (2026-10-30, verdict APPROVED — 0 blocking, 5 medium, 2 nit; full record in
+`docs/verification/review-phase-d.md` once d-ship refreshes the copies, source `.agents/tasks/v1-build/review-phase-d.md`).
+Items marked **before upload** must be done before the AAB goes to Play; the rest ship in 1.0.x.
+
+MEDIUM
+- **Before upload — privacy disclosure of the model download.** The privacy page (`web/src/strings/{en,hi,bho}.json`
+  privacy section → `/<lang>/privacy/`), the first-launch notice (`packages/content/ui/*.json` `consent.leaves`) and
+  Settings → Privacy (`privacy.networkList`) say nothing else is ever sent, but Pro's "Ask my chart" downloads the Gemma
+  model from huggingface.co after your consent (`app/src/ai/model.ts`). Add one sentence in all three places (en/hi/bho):
+  "Pro users who accept the Ask-my-chart download fetch the model file from Hugging Face over Wi-Fi; the request carries
+  no personal data." Correct the note in `app/playstore-assets/store-listing.md` (Data safety) that claims the page already
+  says so. The Data-safety data types themselves need no change.
+- **Before upload — six `koota-yoni@mXX` matching conventions** (item 6 above): accept the convention in
+  `packages/engine/reference/CONVENTIONS.md` or supply Drik's five-level Yoni table; the matching suite is 14/20 exact
+  against Drik until then (spec §6 asked for exact totals).
+- **Before upload — re-shoot the 21 stand-in Play screenshots** (d-ship: `scripts/shots.ps1 -KeepRaw`, pro seed, light,
+  status bar in demo mode; the Family slot scrolled to tithi birthdays/shraddha), then `node scripts/gen-brand-assets.mjs`
+  and `--check`; no `pending: true` may remain in `app/playstore-assets/screenshots/sources.json`. The current stand-ins
+  show emulator status icons, an old "म्ध्यम" spelling and English lesson titles.
+- **Before publish — grievance address** (item 8 above): `app/src/legal.ts`, web strings, store-listing, BREACH-PROCESS,
+  Play Console contact.
+- Level-2 "Why?" explanations exist only for the eight kootas; author level-2 English snippets for the daily,
+  planet-sign/house and yoga domains so lessons 2–21 unlock text on the screens they teach, then translate (1.0.x).
+
+NIT
+- Festival pages print the raw convention id ("pradosh", "udaya", …) in the Convention row in every language
+  (`web/src/templates/festival.mjs` line 35); use the existing `calendar.timing.<id>` labels (1.0.x; the monthly
+  Pages rebuild publishes it).
+- Carried from earlier phases: Devanagari place names in the app (`name_hi`), muhurat finder following Today's
+  location mode, cross-instance share-code check (two phones), native ad card pixels on a phone with Play, Sheetala
+  Ashtami 2028 rule, Vargas/Varshaphal footer re-shoot in the d-ship emulator audit, the run-artifact `plan.md` still
+  naming `:app:testReleaseUnitTest`, a dedicated 96×96 notification-icon source.
+- Your confirmation that the 0.3.1/1.0.0 build clears the system navigation bar on your phone (DEV-1) is still the open
+  acceptance for that fix.
