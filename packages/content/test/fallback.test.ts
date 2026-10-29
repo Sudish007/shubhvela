@@ -39,10 +39,15 @@ describe('every id resolves in every language with the language used recorded', 
   });
 
   it('loadCorpus(): a whole domain in bho or hi is never empty and reports the file language', () => {
+    // A snippet-domain translation file may be a slice of the English ids while the corpus-translate PRD is in progress
+    // (agent-written hi/bho, owner decision 2026-10-29): the whole-file loader then returns that slice in its own
+    // language, never more than English has and never nothing. lookup() stays per id (checked above).
     for (const domain of corpusDomains()) {
       for (const lang of ['hi', 'bho'] as const) {
         const r = loadCorpus(domain, lang);
-        expect(r.snippets.length, `${domain} ${lang}`).toBe(loadCorpus(domain, 'en').snippets.length);
+        expect(r.snippets.length, `${domain} ${lang}`).toBeGreaterThan(0);
+        expect(r.snippets.length, `${domain} ${lang}`).toBeLessThanOrEqual(loadCorpus(domain, 'en').snippets.length);
+        if (r.lang === 'en') expect(r.snippets.length).toBe(loadCorpus(domain, 'en').snippets.length);
         expect(FALLBACK_CHAIN[lang]).toContain(r.lang);
         expect(r.fallback).toBe(r.lang !== lang);
       }
@@ -51,8 +56,11 @@ describe('every id resolves in every language with the language used recorded', 
 
   it('festivals and glossary follow the same chain', () => {
     for (const lang of ['hi', 'bho'] as const) {
+      // Festivals are read per slug (festivalText), so a translation slice may be integrated before the domain is complete;
+      // the glossary is shown as a whole list, so its file is integrated only complete (test/translations.test.ts).
       const fs = loadFestivals(lang);
-      expect(fs.items.length).toBe(loadFestivals('en').items.length);
+      expect(fs.items.length).toBeGreaterThan(0);
+      expect(fs.items.length).toBeLessThanOrEqual(loadFestivals('en').items.length);
       expect(FALLBACK_CHAIN[lang]).toContain(fs.lang);
       for (const f of loadFestivals('en').items) {
         const r = festivalText(f.slug, lang);

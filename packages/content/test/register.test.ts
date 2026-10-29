@@ -8,6 +8,9 @@ import { loadUi } from '../src/index';
 const ROOT = resolve(__dirname, '..');
 type Lang = 'en' | 'hi' | 'bho';
 
+/** Domains whose `rule` field is translated prose. In snippet domains `rule` is metadata (an engine rule id or the English rule sentence) copied byte-for-byte into hi/bho files, so it is scanned only in English. */
+const RULE_IS_PROSE = new Set(['festivals']);
+
 function corpusTexts(lang: Lang): { file: string; id: string; text: string }[] {
   const out: { file: string; id: string; text: string }[] = [];
   const corpusDir = resolve(ROOT, 'corpus');
@@ -16,7 +19,10 @@ function corpusTexts(lang: Lang): { file: string; id: string; text: string }[] {
     try {
       const rows = JSON.parse(readFileSync(p, 'utf8')) as Record<string, unknown>[];
       for (const r of rows) {
-        for (const field of ['text', 'what', 'rule', 'meaning', 'conventionNote']) if (typeof r[field] === 'string') out.push({ file: `${domain}/${lang}.json`, id: `${r.id}.${field}`, text: r[field] as string });
+        for (const field of ['text', 'what', 'rule', 'meaning', 'conventionNote']) {
+          if (field === 'rule' && lang !== 'en' && !RULE_IS_PROSE.has(domain)) continue;
+          if (typeof r[field] === 'string') out.push({ file: `${domain}/${lang}.json`, id: `${r.id}.${field}`, text: r[field] as string });
+        }
         if (Array.isArray(r.body)) (r.body as string[]).forEach((para, i) => out.push({ file: `${domain}/${lang}.json`, id: `${r.id}.body[${i}]`, text: para }));
       }
     } catch (e) {

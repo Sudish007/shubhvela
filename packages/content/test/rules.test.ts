@@ -29,14 +29,18 @@ describe('rules corpus covers the engine', () => {
     }
   });
 
-  it('loaders fall back to English with a flag', () => {
+  it('loaders report the language actually used and flag a fallback', () => {
+    // Translation-agnostic: before the agent-written rules/hi.json lands this resolves to English with fallback true;
+    // afterwards to Hindi / Bhojpuri with fallback false (test/translations.test.ts checks the translated records).
     const hi = loadCorpus('rules', 'hi');
-    expect(hi.fallback).toBe(true);
-    expect(hi.lang).toBe('en');
-    expect(hi.snippets.length).toBe(rules.snippets.length);
+    expect(['hi', 'en']).toContain(hi.lang);
+    expect(hi.fallback).toBe(hi.lang !== 'hi');
+    expect(hi.snippets.length).toBeGreaterThan(0);
+    if (hi.lang === 'en') expect(hi.snippets.length).toBe(rules.snippets.length);
     const r = ruleText('rahu-kaal', 'bho');
-    expect(r?.fallback).toBe(true);
-    expect(r?.text).toMatch(/Rahu Kaal/);
+    expect(r).not.toBeNull();
+    expect(r!.fallback).toBe(r!.lang !== 'bho');
+    expect(r!.text).toMatch(r!.lang === 'en' ? /Rahu Kaal/ : /राहु काल/);
     expect(lookup('rules', 'no-such-rule', 'en')).toBeNull();
     expect(loadCorpus('no-such-domain', 'en').snippets).toEqual([]);
   });

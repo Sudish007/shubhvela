@@ -34,7 +34,10 @@ describe('schemas', () => {
     expect(files).toBeGreaterThan(0);
   });
 
-  it('snippet ids are unique inside a file and identical across the languages of a domain', () => {
+  it('snippet ids are unique inside a file, and every hi/bho id exists in the en.json master (no extra ids)', () => {
+    // hi/bho files are agent-written per PRD slice (owner decision 2026-10-29), so a translation file may hold a SUBSET of
+    // the English ids while a large domain is in progress; the resolver falls back per id. Extra or duplicate ids never.
+    // test/translations.test.ts checks field parity per record; the completeness report (T99) asserts equality.
     const corpusDir = resolve(ROOT, 'corpus');
     for (const domain of readdirSync(corpusDir)) {
       const sets: Record<string, string[]> = {};
@@ -45,7 +48,12 @@ describe('schemas', () => {
       }
       const en = sets['en.json'];
       expect(en, `${domain} has no en.json master`).toBeDefined();
-      for (const [f, ids] of Object.entries(sets)) if (f !== 'en.json') expect(ids, `${domain}/${f} id set differs from en.json`).toEqual(en);
+      const enSet = new Set(en);
+      for (const [f, ids] of Object.entries(sets)) {
+        if (f === 'en.json') continue;
+        expect(ids.length, `${domain}/${f} is empty`).toBeGreaterThan(0);
+        expect(ids.filter((id) => !enSet.has(id)), `${domain}/${f} has ids missing from en.json`).toEqual([]);
+      }
     }
   });
 
