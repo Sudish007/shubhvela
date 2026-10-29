@@ -97,6 +97,8 @@ function auditInPage() {
   const visible = (el) => {
     const cs = getComputedStyle(el);
     if (cs.display === 'none' || cs.visibility === 'hidden') return false;
+    // Closed <details> content keeps layout boxes under content-visibility:hidden; checkVisibility() sees through that.
+    if (typeof el.checkVisibility === 'function' && !el.checkVisibility({ visibilityProperty: true, contentVisibilityAuto: true })) return false;
     const r = el.getBoundingClientRect();
     return r.width > 0 && r.height > 0;
   };
@@ -150,6 +152,27 @@ function auditInPage() {
     if (r.width < 43.5 || r.height < 43.5) {
       small.push(`${c.tagName.toLowerCase()}${c.className && typeof c.className === 'string' ? '.' + c.className.split(' ').slice(0, 2).join('.') : ''} ${Math.round(r.width)}x${Math.round(r.height)} '${(c.textContent || c.getAttribute('aria-label') || '').trim().slice(0, 30)}'`);
     }
+  });
+  // Intersecting controls (spec 8 "no two boxes intersect") and nowrap text clipped by its own box: two visible
+  // controls whose rects overlap by > 1 px in both axes, or an element whose text is wider than its box.
+  const ctrlEls = Array.from(document.querySelectorAll('a[href], button, input, select, summary')).filter(visible);
+  const ctrlRects = ctrlEls.map((c) => c.getBoundingClientRect());
+  const intersections = [];
+  for (let i = 0; i < ctrlEls.length && intersections.length < 10; i++) {
+    for (let j = i + 1; j < ctrlEls.length; j++) {
+      if (ctrlEls[i].contains(ctrlEls[j]) || ctrlEls[j].contains(ctrlEls[i])) continue;
+      const a = ctrlRects[i]; const b = ctrlRects[j];
+      const ox = Math.min(a.right, b.right) - Math.max(a.left, b.left);
+      const oy = Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top);
+      if (ox > 1 && oy > 1) intersections.push(`'${(ctrlEls[i].textContent || '').trim().slice(0, 16)}' x '${(ctrlEls[j].textContent || '').trim().slice(0, 16)}' ${Math.round(ox)}x${Math.round(oy)}`);
+    }
+  }
+  const clipped = [];
+  document.body.querySelectorAll('a, button, span, th, td, h1, h2, h3, li, p').forEach((el) => {
+    if (clipped.length >= 10 || !visible(el)) return;
+    const cs = getComputedStyle(el);
+    if (cs.whiteSpace !== 'nowrap' || cs.overflow !== 'visible') return;
+    if (el.scrollWidth > el.clientWidth + 1 && el.clientWidth > 0) clipped.push(`${el.tagName.toLowerCase()}.${(typeof el.className === 'string' ? el.className.split(' ')[0] : '')} '${(el.textContent || '').trim().slice(0, 20)}' ${el.scrollWidth}>${el.clientWidth}`);
   });
   // Content box: the first .wrap inside <main> (inner width without gutters) over the viewport.
   const wrap = document.querySelector('main .wrap') || document.querySelector('.wrap');
@@ -206,6 +229,8 @@ function auditInPage() {
     controls,
     smallCount: small.length,
     small: small.slice(0, 15),
+    intersections,
+    clipped,
     contentRatio,
     gutter,
     bodyFont: parseFloat(getComputedStyle(document.body).fontSize),
@@ -254,6 +279,8 @@ function judge(pg, vp, theme, a, status, hydrated) {
   if (a.overflow > 0) fails.push(`overflow ${a.overflow}px (${a.overflowEls.slice(0, 4).join(' | ')})`);
   if (a.minFont < 11.99) fails.push(`minFont ${a.minFont} (${a.minFontEl})`);
   if (a.smallCount) fails.push(`${a.smallCount} controls under 44px: ${a.small.slice(0, 4).join(' | ')}`);
+  if (a.intersections.length) fails.push(`${a.intersections.length} intersecting controls: ${a.intersections.slice(0, 3).join(' | ')}`);
+  if (a.clipped.length) fails.push(`${a.clipped.length} nowrap texts wider than their box: ${a.clipped.slice(0, 3).join(' | ')}`);
   if (vp.w >= 1920 && (a.contentRatio === null || a.contentRatio < 0.88)) fails.push(`contentRatio ${a.contentRatio}`);
   const expectedHref = pg.noindex ? [] : ['en', 'hi', 'x-default'];
   if (JSON.stringify(a.hreflang) !== JSON.stringify(expectedHref)) fails.push(`hreflang [${a.hreflang}] != [${expectedHref}]`);
@@ -342,6 +369,8 @@ function judge(pg, vp, theme, a, status, hydrated) {
     minSvgFont: Math.min(...results.filter((r) => r.minSvgFont !== null).map((r) => r.minSvgFont)),
     smallControls: results.reduce((s, r) => s + r.smallCount, 0),
     controlsMeasured: results.reduce((s, r) => s + r.controls, 0),
+    intersectingControls: results.reduce((s, r) => s + r.intersections.length, 0),
+    clippedTexts: results.reduce((s, r) => s + r.clipped.length, 0),
     textNodesMeasured: results.reduce((s, r) => s + r.textNodes, 0),
     minContentRatioAt1920Plus: Math.min(...results.filter((r) => r.width >= 1920).map((r) => r.contentRatio ?? 0)),
     contentRatioByWidth: Object.fromEntries(VIEWPORTS.map((v) => [v.w, (() => { const rs = results.filter((r) => r.width === v.w && r.contentRatio !== null).map((r) => r.contentRatio); return rs.length ? { min: Math.min(...rs), max: Math.max(...rs) } : null; })()])),

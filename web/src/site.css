@@ -34,7 +34,7 @@ button{font:inherit}
 .brand .mark .acc{fill:var(--accent)}
 .brand .dev{font-size:1.1em}
 .links{display:flex;gap:2px;flex-wrap:wrap;margin-left:auto}
-.links a{min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center;padding:0 12px;border-radius:8px;color:var(--ink);text-decoration:none;font-weight:600;font-size:.9em;white-space:nowrap}
+.links a{min-height:44px;min-width:44px;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;padding:0 12px;border-radius:8px;color:var(--ink);text-decoration:none;font-weight:600;font-size:.9em;white-space:nowrap}
 .links a[aria-current="page"]{color:var(--accent);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px}
 .tools{display:flex;gap:8px;align-items:center}
 .langs{display:inline-flex;border:1px solid var(--hair-2);border-radius:8px;overflow:hidden;background:var(--surface)}
@@ -116,7 +116,7 @@ a.card:hover h3{text-decoration:underline}
 /* City list (all 331) */
 .citylist{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:0 var(--gap);margin:var(--gap) 0 0;padding:0;list-style:none}
 .citylist li{min-width:0}
-.citylist a,.citylist span{display:inline-flex;align-items:center;min-height:44px;min-width:44px;color:var(--ink);text-decoration:none;font-size:.95em}
+.citylist a,.citylist span{display:flex;align-items:center;min-height:44px;min-width:44px;max-width:100%;overflow-wrap:anywhere;color:var(--ink);text-decoration:none;font-size:.95em}
 .citylist a:hover{text-decoration:underline}
 details.more>summary{list-style:none;cursor:pointer}
 details.more>summary::-webkit-details-marker{display:none}
