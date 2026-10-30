@@ -100,7 +100,9 @@ export function Chart({ style, chart, width, fontScale: fontScaleProp, centreLin
             fontSize={l.size}
             textAnchor={l.anchor}
             fill={l.kind === 'centre' ? colors.ink2 : colors.ink3}
-            fontFamily={l.kind === 'signName' ? fontFamilyFor('body', lang, 400) : fonts.numeral}
+            // Sign names and the centre lines carry Devanagari words in hi/bho ("मध्यम राहु"): the language's body face,
+            // never the Latin numeral face (react-native-svg shapes Devanagari in a Latin font as "म्ध्यम" — d-ship 2026-10-30).
+            fontFamily={l.kind === 'signName' || l.kind === 'centre' ? fontFamilyFor('body', lang, 400) : fonts.numeral}
             testID={l.kind === 'centre' ? 'chart-centre' : `chart-label-${l.house}`}
           >
             {l.text}

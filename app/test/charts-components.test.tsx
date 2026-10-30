@@ -11,6 +11,7 @@ import { COLUMN_WIDTHS, PlanetTable, padaCellText, tagLabels } from '../src/char
 import { episodeToShow, sadeSatiRuleId } from '../src/charts/SadeSatiCard';
 import { dashaFor, sadeSatiFor } from '../src/engine-bridge/charts';
 import { makeT } from '../src/i18n';
+import { fontFamilyFor } from '../src/theme/typography';
 import { renderWithProviders, textOf } from './helpers/render';
 
 const PRIYA = computeChart({ date: '1998-03-14', time: '06:42', tz: 'Asia/Kolkata', lat: 26.85, lon: 80.95 }, { ayanamsa: 'lahiri', node: 'mean' });
@@ -94,6 +95,8 @@ describe('Chart geometry (engine layout -> SVG)', () => {
     expect(lay.glyphSize * lay.scale).toBeCloseTo(14.5, 6);
     expect(glyph.props.font?.fontSize ?? glyph.props.fontSize).toBeCloseTo(lay.glyphs.find((g) => g.planetId === 'Mo')!.size, 6);
     expect(screen.getAllByTestId('chart-centre').length).toBe(2);
+    // d-ship 2026-10-30: centre lines in the Devanagari body face (the Latin numeral face mis-shaped "मध्यम" as "म्ध्यम").
+    for (const c of screen.getAllByTestId('chart-centre')) expect(c.props.font?.fontFamily ?? c.props.fontFamily).toBe(fontFamilyFor('body', 'hi', 400));
   });
 });
 
