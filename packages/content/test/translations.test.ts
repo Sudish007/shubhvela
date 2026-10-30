@@ -7,7 +7,7 @@
 import { describe, expect, it } from 'vitest';
 import { LATIN_ALLOWLIST } from '../../content-tools/src/forbidden';
 import { nakshatraNames, planetNames, signNames, type PlanetId } from '../../engine/src/locale/index';
-import { signDignity } from '../../engine/src/kundli/index';
+import { naturalRelation, signDignity } from '../../engine/src/kundli/index';
 import { NAKSHATRA_LORDS } from '../../engine/src/panchang/panchang';
 import { CORPUS, FESTIVALS, GLOSSARY, LESSONS } from '../src/registry';
 import { festivalText, glossaryTerm, loadGlossary, loadLessons, loadUi, lookup, lesson, lessonPlaceholders, ruleText, type ContentLanguage } from '../src/index';
@@ -998,6 +998,84 @@ describe('translated corpus files (hi / bho) mirror their English master', () =>
       const t = lookup('planet-house', id, 'bho')!.text;
       expect(t, `${id} bho`).toContain('घर-परिवार');
       expect(t.replace(/घर-(परिवार|दुआर)/g, '').replace(/चउथा घर में/g, ''), `${id} bho: bare घर only as the bhava`).not.toMatch(/(^|\s)घर(\s|,|।)/);
+    }
+  });
+
+  it('T19: the dasha-pairs slice (the 9 mahadasha records + the Sun, Moon, Mars and Mercury antardashas) is registered in hi and bho with one id set; every maha record opens with the engine planet name + की / के महादशा, names विंशोत्तरी and closes on the reflective question; every antar record opens with the maha lord, the antar lord and the English month count, states the Parashara relation the engine computes, keeps the English rule / source / params, and an untranslated id resolves along the chain', () => {
+    const en = CORPUS['dasha-pairs'].en!;
+    const hi = CORPUS['dasha-pairs'].hi!;
+    const bho = CORPUS['dasha-pairs'].bho!;
+    expect(hi.length).toBeGreaterThanOrEqual(45);
+    expect(hi.length).toBeLessThanOrEqual(en.length);
+    expect(bho.map((r) => r.id).sort(), 'dasha-pairs hi and bho carry the same slice').toEqual(hi.map((r) => r.id).sort());
+    const enById = new Map(en.map((r) => [r.id, r]));
+    // The antar sentence "<A> is <relation> <M> by Parashara's natural friendships" per engine naturalRelation(antar, maha); the nodes read as Saturn / Mars there,
+    // so "the same planet by nature" also covers Ketu–Mars and Rahu–Saturn (एक ही ग्रह / एके ग्रह, the T01 वही ग्रह sense).
+    const REL: Record<Lang, Record<ReturnType<typeof naturalRelation>, (a: string, m: string) => string>> = {
+      hi: {
+        self: (a, m) => `पराशर की नैसर्गिक मैत्री के अनुसार ${a} और ${m} स्वभाव से एक ही ग्रह हैं।`,
+        friend: (a, m) => `पराशर की नैसर्गिक मैत्री के अनुसार ${a} ${m} के नैसर्गिक मित्र हैं।`,
+        neutral: (a, m) => `पराशर की नैसर्गिक मैत्री के अनुसार ${a} ${m} के लिए सम हैं।`,
+        enemy: (a, m) => `पराशर की नैसर्गिक मैत्री के अनुसार ${a} ${m} के नैसर्गिक शत्रु हैं।`,
+      },
+      bho: {
+        self: (a, m) => `पराशर के नैसर्गिक मैत्री के हिसाब से ${a} आ ${m} सुभाव से एके ग्रह बाड़न।`,
+        friend: (a, m) => `पराशर के नैसर्गिक मैत्री के हिसाब से ${a} ${m} के नैसर्गिक मित्र बाड़न।`,
+        neutral: (a, m) => `पराशर के नैसर्गिक मैत्री के हिसाब से ${a} ${m} खातिर सम बाड़न।`,
+        enemy: (a, m) => `पराशर के नैसर्गिक मैत्री के हिसाब से ${a} ${m} के नैसर्गिक शत्रु बाड़न।`,
+      },
+    };
+    for (const lang of LANGS) {
+      const isHi = lang === 'hi';
+      for (const row of CORPUS['dasha-pairs'][lang]!) {
+        const master = enById.get(row.id)!;
+        const got = lookup('dasha-pairs', row.id, lang)!;
+        expect(got, `dasha-pairs/${row.id} ${lang}`).not.toBeNull();
+        expect(got.lang, `dasha-pairs/${row.id} ${lang} resolves in its own language`).toBe(lang);
+        expect(got.fallback).toBe(false);
+        // `rule` is the English rule caption, `source` and `params` engine metadata: byte-identical (D3).
+        expect(got.snippet.rule).toBe(master.rule);
+        expect(got.snippet.source).toBe(master.source);
+        expect(got.snippet.params).toEqual(master.params);
+        const t = got.text;
+        const maha = row.id.match(/^dasha-maha-([A-Z][a-z])$/);
+        if (maha) {
+          const p = maha[1] as PlanetId;
+          // "The <Planet> mahadasha runs N years of the (120-year) Vimshottari cycle" -> "<ग्रह> की / के महादशा … विंशोत्तरी चक्र …".
+          expect(t.startsWith(isHi ? `${planetNames.hi[p]} की महादशा` : `${planetNames.bho[p]} के महादशा`), `${row.id} ${lang} opens with the planet's mahadasha`).toBe(true);
+          expect(t).toContain('विंशोत्तरी');
+          expect(t).toContain(isHi ? 'के लिए पढ़ा जाता है' : 'खातिर पढ़ल जाला');
+          // "The reflective question of a <Planet> period is …" = the T11 honesty marker inside "<ग्रह> की / के दशा में …" (lesson 12: a Saturn period = शनि की दशा).
+          expect(t).toContain(isHi ? `${planetNames.hi[p]} की दशा में चिंतन का प्रश्न यह है कि` : `${planetNames.bho[p]} के दशा में सोच-विचार के सवाल ई बा कि`);
+          // Only the Sun record addresses the reader ("where responsibility is being asked of you"); the daily note already speaks to the reader as आप / रउआ.
+          if (p === 'Su') expect(t).toContain(isHi ? 'आपसे' : 'रउआ से');
+          else expect(t).not.toMatch(/राउर|रउआ|आपके|आपका|आपकी|आपसे/);
+        } else {
+          const [, m, a] = row.id.match(/^dasha-([A-Z][a-z])-([A-Z][a-z])$/)! as unknown as [string, PlanetId, PlanetId];
+          const months = String(master.text).match(/runs about (\d+) months/)![1];
+          // "The <A> antardasha inside the <M> mahadasha runs about N months; <relation sentence>."
+          const opening = isHi
+            ? `${planetNames.hi[m]} की महादशा के भीतर ${planetNames.hi[a]} की अंतर्दशा लगभग ${months} महीने चलती है; `
+            : `${planetNames.bho[m]} के महादशा के भीतर ${planetNames.bho[a]} के अंतर्दशा लगभग ${months} महीना चलेला; `;
+          expect(t.startsWith(opening), `${row.id} ${lang} opens "${opening}"`).toBe(true);
+          expect(t, `${row.id} ${lang} relation`).toContain(REL[lang][naturalRelation(a, m)](planetNames[lang][a], planetNames[lang][m]));
+          expect(t).toContain(isHi ? 'के लिए पढ़ा जाता है' : 'खातिर पढ़ल जाला');
+          // "<Planet>'s own sub-period" (the four self pairs of this slice) = the glossary's उप-अवधि.
+          if (/own sub-period/.test(String(master.text))) expect(t).toContain(isHi ? `${planetNames.hi[a]} की अपनी उप-अवधि` : `${planetNames.bho[a]} के आपन उप-अवधि`);
+          expect(t).not.toMatch(/राउर|रउआ|आपके|आपका|आपकी|आपसे/);
+        }
+        if (lang === 'bho') expect(t, `dasha-pairs/${row.id} bho`).not.toMatch(/(^|\s)(है|हैं)(\s|।|,|;)/);
+      }
+    }
+    // Ids outside the integrated slice resolve further down the chain (bho -> hi -> en) and say so.
+    const translated = new Set(hi.map((r) => r.id));
+    const pending = en.map((r) => r.id).filter((id) => !translated.has(id));
+    for (const id of pending.slice(0, 20)) {
+      for (const lang of LANGS) {
+        const r = lookup('dasha-pairs', id, lang)!;
+        expect(r, `${id} ${lang}`).not.toBeNull();
+        expect(r.fallback).toBe(r.lang !== lang);
+      }
     }
   });
   it('every registered domain has an English master and only hi / bho translations', () => {

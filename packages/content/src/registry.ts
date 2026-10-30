@@ -26,6 +26,8 @@ import nakshatraPadaEn from '../corpus/nakshatra-pada/en.json';
 import nakshatraPadaHi from '../corpus/nakshatra-pada/hi.json';
 import nakshatraPadaBho from '../corpus/nakshatra-pada/bho.json';
 import dashaPairsEn from '../corpus/dasha-pairs/en.json';
+import dashaPairsHi from '../corpus/dasha-pairs/hi.json';
+import dashaPairsBho from '../corpus/dasha-pairs/bho.json';
 import transitEn from '../corpus/transit/en.json';
 import transitHi from '../corpus/transit/hi.json';
 import transitBho from '../corpus/transit/bho.json';
@@ -83,10 +85,11 @@ export const CORPUS: Record<string, Partial<Record<ContentLanguage, Snippet[]>>>
   // sade-sati-phase-<1..3>; daily = one fragment per engine DAILY_FRAGMENT_KEYS entry (chandra-bala-<h>, tara-bala-<t>,
   // tithi-<t>, nakshatra-<n>, vara-<v>, the special-yoga / bhadra / panchak keys, sade-sati states, day-strength-*).
   // lagna hi/bho are complete (corpus-translate T11), transit hi/bho too (T12); nakshatra-pada hi/bho land in two slices
-  // (T13: ids 1-54 sorted, T14: the rest; lookup falls back per id); dasha-pairs land in T19-T20.
+  // (T13: ids 1-54 sorted, T14: the rest; lookup falls back per id); dasha-pairs hi/bho land in two slices in file order
+  // (T19: the 9 dasha-maha-* + the Su/Mo/Ma/Me antardashas, T20: the rest; lookup falls back per id).
   lagna: { en: lagnaEn as Snippet[], hi: lagnaHi as Snippet[], bho: lagnaBho as Snippet[] },
   'nakshatra-pada': { en: nakshatraPadaEn as Snippet[], hi: nakshatraPadaHi as Snippet[], bho: nakshatraPadaBho as Snippet[] },
-  'dasha-pairs': { en: dashaPairsEn as Snippet[] },
+  'dasha-pairs': { en: dashaPairsEn as Snippet[], hi: dashaPairsHi as Snippet[], bho: dashaPairsBho as Snippet[] },
   transit: { en: transitEn as Snippet[], hi: transitHi as Snippet[], bho: transitBho as Snippet[] },
   daily: { en: dailyEn as Snippet[], hi: dailyHi as Snippet[], bho: dailyBho as Snippet[] },
   // A08: vrats = one snippet per engine VratFamily with the engine ruleId as id (vrat-ekadashi ... vrat-satyanarayan);
