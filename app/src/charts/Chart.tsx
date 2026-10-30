@@ -7,7 +7,7 @@
 // resolved by engine hitTest - a planet when unambiguous, otherwise the house. No invisible 44 dp rects.
 import { hitTest, layout, type ChartData, type ChartLayout, type ChartStyle, type PlanetId } from '@shubhvela/engine';
 import { useMemo } from 'react';
-import { PixelRatio, Pressable, StyleSheet, type GestureResponderEvent } from 'react-native';
+import { PixelRatio, Pressable, StyleSheet, Text, type GestureResponderEvent } from 'react-native';
 import Svg, { Line, Rect, Text as SvgText } from 'react-native-svg';
 import { useLang, type Lang } from '../i18n';
 import { useTokens } from '../theme/ThemeProvider';
@@ -92,22 +92,22 @@ export function Chart({ style, chart, width, fontScale: fontScaleProp, centreLin
           <Line key={`g${i}`} x1={g.x1} y1={g.y1} x2={g.x2} y2={g.y2} stroke={colors.ink} strokeWidth={1} />
         ))}
         {lay.lagnaMark ? <Line x1={lay.lagnaMark.x1} y1={lay.lagnaMark.y1} x2={lay.lagnaMark.x2} y2={lay.lagnaMark.y2} stroke={colors.accent} strokeWidth={2} testID="chart-lagna-mark" /> : null}
-        {lay.labels.map((l, i) => (
-          <SvgText
-            key={`l${i}`}
-            x={l.anchorX}
-            y={l.baseline}
-            fontSize={l.size}
-            textAnchor={l.anchor}
-            fill={l.kind === 'centre' ? colors.ink2 : colors.ink3}
-            // Sign names and the centre lines carry Devanagari words in hi/bho ("मध्यम राहु"): the language's body face,
-            // never the Latin numeral face (react-native-svg shapes Devanagari in a Latin font as "म्ध्यम" — d-ship 2026-10-30).
-            fontFamily={l.kind === 'signName' || l.kind === 'centre' ? fontFamilyFor('body', lang, 400) : fonts.numeral}
-            testID={l.kind === 'centre' ? 'chart-centre' : `chart-label-${l.house}`}
-          >
-            {l.text}
-          </SvgText>
-        ))}
+        {lay.labels
+          .filter((l) => l.kind !== 'centre')
+          .map((l, i) => (
+            <SvgText
+              key={`l${i}`}
+              x={l.anchorX}
+              y={l.baseline}
+              fontSize={l.size}
+              textAnchor={l.anchor}
+              fill={colors.ink3}
+              fontFamily={l.kind === 'signName' ? fontFamilyFor('body', lang, 400) : fonts.numeral}
+              testID={`chart-label-${l.house}`}
+            >
+              {l.text}
+            </SvgText>
+          ))}
         {lay.glyphs.map((g) => (
           <SvgText
             key={`p${g.planetId}`}
@@ -128,6 +128,36 @@ export function Chart({ style, chart, width, fontScale: fontScaleProp, centreLin
           </SvgText>
         ))}
       </Svg>
+      {/* Centre lines (South/East) as native Text over the SVG: react-native-svg's Text on Android does not shape
+          Devanagari conjuncts ("मध्यम राहु" came out as "म्ध्यम राहु" in every face — d-ship 2026-10-30). Same position
+          and size as the layout's centre labels (viewBox units x scale); pointerEvents none keeps hit-testing on the SVG. */}
+      {lay.labels
+        .filter((l) => l.kind === 'centre')
+        .map((l, i) => {
+          const size = l.size * lay.scale;
+          const lineHeight = Math.round(size * 1.3);
+          return (
+            <Text
+              key={`c${i}`}
+              pointerEvents="none"
+              numberOfLines={1}
+              testID="chart-centre"
+              style={{
+                position: 'absolute',
+                left: 0,
+                width,
+                top: l.y * lay.scale - lineHeight / 2,
+                textAlign: 'center',
+                fontSize: size,
+                lineHeight,
+                color: colors.ink2,
+                fontFamily: fontFamilyFor('body', lang, 400),
+              }}
+            >
+              {l.text}
+            </Text>
+          );
+        })}
     </Pressable>
   );
 }

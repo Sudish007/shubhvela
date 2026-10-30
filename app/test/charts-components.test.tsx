@@ -3,6 +3,7 @@
 // empty space to the house and an ambiguous pair to the house; PlanetTable column widths sum to 100 % and a planet with
 // combust + friend + vargottama shows every tag; DashaCard hides labels in cells < 28 dp; duration/position helpers.
 import { fireEvent, screen } from '@testing-library/react-native';
+import { StyleSheet } from 'react-native';
 import { computeChart, layout, pointInPolygon, type ChartData, type ChartPlanet } from '@shubhvela/engine';
 import { Chart, resolveLongPress, resolvePress } from '../src/charts/Chart';
 import { DashaCard, stripA11y } from '../src/charts/DashaCard';
@@ -90,13 +91,22 @@ describe('Chart geometry (engine layout -> SVG)', () => {
     await renderWithProviders(<Chart style="south" chart={PRIYA} width={326} fontScale={1} styleName="दक्षिण" centreLines={['Priya', 'Lahiri · mean']} testID="c" />, { lang: 'hi' });
     const glyph = screen.getByTestId('chart-glyph-Mo');
     expect(glyph.props.font?.fontFamily ?? glyph.props.fontFamily).toBe('TiroDevanagariHindi');
-    const lay = layout('south', PRIYA, 1, 326, { lang: 'hi' });
+    const lay = layout('south', PRIYA, 1, 326, { lang: 'hi', centreLines: ['Priya', 'Lahiri · mean'] });
     expect(lay.glyphs.find((g) => g.planetId === 'Mo')!.text).toBe('चं');
     expect(lay.glyphSize * lay.scale).toBeCloseTo(14.5, 6);
     expect(glyph.props.font?.fontSize ?? glyph.props.fontSize).toBeCloseTo(lay.glyphs.find((g) => g.planetId === 'Mo')!.size, 6);
     expect(screen.getAllByTestId('chart-centre').length).toBe(2);
-    // d-ship 2026-10-30: centre lines in the Devanagari body face (the Latin numeral face mis-shaped "मध्यम" as "म्ध्यम").
-    for (const c of screen.getAllByTestId('chart-centre')) expect(c.props.font?.fontFamily ?? c.props.fontFamily).toBe(fontFamilyFor('body', 'hi', 400));
+    // d-ship 2026-10-30: centre lines are native Text (react-native-svg Text cannot shape Devanagari conjuncts on
+    // Android: "मध्यम" rendered as "म्ध्यम") in the language's body face, at the layout's size and vertical position.
+    const centreLabels = lay.labels.filter((l) => l.kind === 'centre');
+    screen.getAllByTestId('chart-centre').forEach((c, i) => {
+      const st = StyleSheet.flatten(c.props.style);
+      expect(st.fontFamily).toBe(fontFamilyFor('body', 'hi', 400));
+      expect(st.fontSize).toBeCloseTo(centreLabels[i].size * lay.scale, 6);
+      expect(st.top).toBeCloseTo(centreLabels[i].y * lay.scale - st.lineHeight / 2, 6);
+      expect(c.props.pointerEvents).toBe('none');
+    });
+    expect(screen.getByText('Lahiri · mean')).toBeTruthy();
   });
 });
 
