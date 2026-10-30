@@ -82,6 +82,7 @@ html[data-ua="android"] .android-only{display:inline-flex}
 .chart .lagna-mark{stroke:var(--accent);stroke-width:2}
 .chart text{font-size:calc(var(--fs,12px) * var(--chart-k,1))}
 .chart .sign{fill:var(--ink-3);font-family:var(--font-body)}
+.chart .sign.lagna{fill:var(--accent)}
 .chart .signname{fill:var(--ink-3);font-family:var(--font-body)}
 html[lang="hi"] .chart .signname,html[lang="bho"] .chart .signname{font-family:var(--font-deva)}
 .chart .centre{fill:var(--ink-2);font-family:var(--font-body)}

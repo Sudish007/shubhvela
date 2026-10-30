@@ -260,6 +260,9 @@ export function LegendSheet({ visible, onClose }: { visible: boolean; onClose: (
           </Txt>
         </View>
       ))}
+      <Txt kind="caption" color="ink2" testID="legend-lagna-mark">
+        {t('charts.legendLagnaMark')}
+      </Txt>
       <Txt kind="caption" color="ink3">
         {t('charts.legendFooter')}
       </Txt>

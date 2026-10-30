@@ -8,14 +8,27 @@ Play-facing notes (≤ 500 chars, en/hi/bho): `app/playstore-assets/release-note
 
 - Web companion live at https://sudish007.github.io/shubhvela/ (kundli, panchang for 331 cities, festivals, muhurat months, glossary,
   vrats; privacy, terms and data-deletion pages) in English, Hindi and Bhojpuri.
-- Hindi and Bhojpuri corpus for 14 of 19 domains (1,020 of 1,542 snippets) from the parallel translation run; `dasha-pairs`,
-  `nakshatra-pada`, `planet-house`, `planet-sign` still resolve to English.
+- Hindi and Bhojpuri corpus complete: all 18 in-scope domains, 1,434 records per language (translation run finished 2026-10-30 07:00 IST,
+  last commit `ed75e64`; `docs/CONTENT-TRANSLATION.md`). No corpus domain falls back to English any more; `naamkaran-names` (name lists,
+  already Devanagari + Latin) stays English by decision. Every translated record is `review: "draft"` until the owner's Bhojpuri review.
 - Brand: launcher icon, adaptive layers, splash, Play icon and feature graphic from `app/brand/`.
 - Play listing kit, breach process, third-party notices, owner runbook.
+- d-ship fixes on the release tree (2026-10-30): privacy page / consent notice / Settings → Privacy disclose the Pro "Ask my chart" model
+  download from Hugging Face (`a12e8f3`); the Yogas card and sheet print the translated rule sentence in Hindi/Bhojpuri (`518a9f3`);
+  the chart's centre lines use the Devanagari body face so "मध्यम राहु" no longer renders as "म्ध्यम राहु" (`303e3c9`).
+- East Indian chart follows the Bengali/Odia convention: fixed signs (Mesha always top-centre, anticlockwise), houses counted
+  from the Lagna, Lagna cell marked (accent numeral + underline). Earlier builds drew it house-fixed (orchestrator finding
+  D-SHIP-1, fixed by d-ship). North and South styles unchanged. The web kundli page shares the layout and is redeployed.
+- Fixed by d-fix before the review: small-widget reason filter, exact-alarm copy (10 minutes on Android 12+), TTS error settings link,
+  widget picker labels/previews, journal mood marks, "From a link" label.
 
-Known issues carried into 1.0.0 (fixes after the Phase D review): small widget may name a not-yet-active reason; exact-alarm copy says
-2 minutes where Android 12+ gives 10; TTS error notice lacks the settings link; six Yoni koota pairs differ from Drik by one point
-under the documented convention; 21 Play screenshots are stand-ins until d-ship re-shoots them.
+**Device support.** `release/Shubhvela-1.0.0.aab` carries all four ABIs (armeabi-v7a, arm64-v8a, x86, x86_64); Play serves the
+matching split per device, including x86_64 Chromebooks and emulators. The emulator APK (`Shubhvela-1.0.0-x86_64.apk`) is a
+separate screenshot-mode build and is not uploaded.
+
+Known issues carried into 1.0.0: six Yoni koota pairs differ from Drik by one point under the documented convention
+(`reference/CONVENTIONS.md` §3, owner item 6); level-2 "Why?" text exists only for the koota domain; grievance address provisional;
+festival web pages print the convention id in Latin (post-1.0 web fix).
 
 ## 0.3.1 (versionCode 4, superseded by 1.0.0 before any upload) — DEV-1 hotfix — 2026-10-29
 

@@ -90,17 +90,57 @@ describe('chart-layout geometry (design 4)', () => {
     expect(hi.labels.find((l) => l.house === meena.n)!.text).toBe('मीन');
   });
 
-  it('East: 3x3 with split corners; corner glyphs are start/end anchored toward the outer corner', () => {
-    const lay = layout('east', withPlanetsInHouse(2, 3), 1, 390);
+  it('East: SIGN-FIXED 3x3 with split corners — Mesha always top-centre, signs anticlockwise; corner glyphs anchored toward the outer corner', () => {
+    // D-SHIP-1 (2026-10-30): the East Indian (Bengali/Odia/Maithili) chart fixes the signs like the South style.
+    // A Mesha-Lagna chart puts house 1 at the top centre; the sign cells themselves never move.
+    const mesha = { ...withPlanetsInHouse(2, 3), firstHouseSign: 1 };
+    const lay = layout('east', mesha, 1, 390);
     expect(lay.houses[0].polygon).toEqual([[107, 1], [213, 1], [213, 107], [107, 107]]);
     expect(lay.houses[1].polygon).toHaveLength(3);
     const g = lay.glyphs.filter((x) => x.house === 2);
     expect(g).toHaveLength(3);
     for (const x of g) expect(x.anchor).toBe('end');
-    const g12 = layout('east', withPlanetsInHouse(12, 2), 1, 390).glyphs.filter((x) => x.house === 12);
+    const g12 = layout('east', { ...withPlanetsInHouse(12, 2), firstHouseSign: 1 }, 1, 390).glyphs.filter((x) => x.house === 12);
     for (const x of g12) expect(x.anchor).toBe('start');
     const diag = lay.grid.filter((l) => l.x1 !== l.x2 && l.y1 !== l.y2);
     expect(diag).toHaveLength(4);
+  });
+
+  it('East with a non-Mesha Lagna: cells stay with their signs, houses count anticlockwise from the Lagna cell, Lagna marked', () => {
+    // SAMPLE (Priya, Lucknow 1998-03-14 06:42): Lagna Meena (12).
+    expect(SAMPLE.firstHouseSign).toBe(12);
+    const lay = layout('east', SAMPLE, 1, 390);
+    const topCentre = [[107, 1], [213, 1], [213, 107], [107, 107]];
+    const topRightInner = [[213, 1], [319, 1], [213, 107]];
+    // Mesha (sign 1) is still the top-centre rectangle = house 2 for a Meena Lagna.
+    const h2 = lay.houses.find((h) => h.n === 2)!;
+    expect(h2.sign).toBe(1);
+    expect(h2.polygon).toEqual(topCentre);
+    // House 1 (Meena) is the top-right inner triangle and holds the Lagna's planets.
+    const h1 = lay.houses.find((h) => h.n === 1)!;
+    expect(h1.sign).toBe(12);
+    expect(h1.polygon).toEqual(topRightInner);
+    expect(h1.planets).toEqual(SAMPLE.planets.filter((p) => p.house === 1).map((p) => p.id));
+    for (const g of lay.glyphs.filter((x) => x.house === 1)) expect(pointInPolygon(g.x, g.y, topRightInner as [number, number][])).toBe(true);
+    // Every sign's numeral sits in its fixed cell regardless of the Lagna.
+    const meshaLay = layout('east', { ...SAMPLE, firstHouseSign: 1 }, 1, 390);
+    for (let s = 1; s <= 12; s++) {
+      const a = lay.labels.find((l) => l.kind === 'numeral' && l.text === String(s))!;
+      const b = meshaLay.labels.find((l) => l.kind === 'numeral' && l.text === String(s))!;
+      expect([a.x, a.y]).toEqual([b.x, b.y]);
+    }
+    // Lagna marker: the numeral "12" in accent plus a 2 px accent underline just below its baseline.
+    const lagnaLabel = lay.labels.find((l) => l.kind === 'numeral' && l.house === 1)!;
+    expect(lagnaLabel.text).toBe('12');
+    expect(lagnaLabel.accent).toBe(true);
+    expect(lay.labels.filter((l) => l.accent)).toHaveLength(1);
+    expect(lay.lagnaMark).toBeDefined();
+    expect(lay.lagnaMark!.y1).toBeCloseTo(lagnaLabel.baseline + 3, 6);
+    expect(lay.lagnaMark!.x1).toBeLessThan(lagnaLabel.x);
+    expect(lay.lagnaMark!.x2).toBeGreaterThan(lagnaLabel.x);
+    // Hit-testing resolves the Meena triangle to house 1 and the Mesha rectangle to house 2.
+    expect(hitTest(lay, 280, 20)!.house).toBe(1);
+    expect(hitTest(lay, 160, 60)!.house).toBe(2);
   });
 
   it('text sizes follow size x fontScale / (width / 320); labelSize >= 12 at 296 and 1.0', () => {

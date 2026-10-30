@@ -92,6 +92,8 @@ export interface LayoutLabel {
   size: number;
   width: number;
   height: number;
+  /** East style: the Lagna sign's numeral is drawn in the accent colour (with the accent underline `lagnaMark`). */
+  accent?: boolean;
 }
 
 export interface ChartLayout {
@@ -108,7 +110,7 @@ export interface ChartLayout {
   glyphSize: number;
   frame: { x: number; y: number; width: number; height: number };
   grid: LayoutLine[];
-  /** South style only: 2 px accent diagonal in the first-house cell. */
+  /** South: 2 px accent diagonal in the first-house cell. East: 2 px accent underline beneath the Lagna sign's numeral. */
   lagnaMark?: LayoutLine;
   houses: LayoutHouse[];
   glyphs: LayoutGlyph[];
@@ -399,25 +401,37 @@ const EAST_G = (F1 - F0) / 3; // 106
 const EX1 = F0 + EAST_G; // 107
 const EX2 = F0 + 2 * EAST_G; // 213
 
-function eastRegions(labelSize: number): HouseRegion[] {
+/**
+ * East Indian (Bengali / Odia / Maithili) chart: SIGN-FIXED like the South style (d-ship 2026-10-30, finding D-SHIP-1;
+ * earlier builds drew it house-fixed, which is not the convention). Mesha (1) is always the top-centre rectangle and
+ * the signs run anticlockwise: 2 = top-left inner triangle, 3 = top-left outer triangle, 4 = left-centre, 5 / 6 =
+ * bottom-left corner, 7 = bottom-centre, 8 / 9 = bottom-right corner, 10 = right-centre, 11 = top-right outer
+ * triangle, 12 = top-right inner triangle. Houses are counted anticlockwise from the Lagna's cell; the Lagna cell is
+ * marked by its numeral in the accent colour plus a 2 px accent underline (`lagnaMark`).
+ */
+function eastRegions(firstHouseSign: number, labelSize: number): HouseRegion[] {
   const inset = labelSize / 2 + 5;
   type Corner = { R: Point; hDir: 1 | -1; vDir: 1 | -1 };
   const rect = (x1: number, y1: number, x2: number, y2: number): Point[] => [[x1, y1], [x2, y1], [x2, y2], [x1, y2]];
+  // Index = sign - 1 (Mesha first), anticlockwise.
   const defs: { polygon: Point[]; label: Point; corner?: Corner }[] = [
-    { polygon: rect(EX1, F0, EX2, EX1), label: [C, EX1 - inset] }, // H1 top centre (numeral at the inner edge, as in the mock)
-    { polygon: [[F0, F0], [EX1, F0], [EX1, EX1]], label: [EX1 - inset, F0 + inset], corner: { R: [EX1, F0], hDir: -1, vDir: 1 } }, // H2
-    { polygon: [[F0, F0], [F0, EX1], [EX1, EX1]], label: [F0 + inset, EX1 - inset], corner: { R: [F0, EX1], hDir: 1, vDir: -1 } }, // H3
-    { polygon: rect(F0, EX1, EX1, EX2), label: [F0 + inset, EX2 - inset] }, // H4 left centre
-    { polygon: [[F0, EX2], [EX1, EX2], [F0, F1]], label: [F0 + inset, EX2 + inset], corner: { R: [F0, EX2], hDir: 1, vDir: 1 } }, // H5
-    { polygon: [[EX1, EX2], [EX1, F1], [F0, F1]], label: [EX1 - inset, F1 - inset], corner: { R: [EX1, F1], hDir: -1, vDir: -1 } }, // H6
-    { polygon: rect(EX1, EX2, EX2, F1), label: [C, F1 - inset] }, // H7 bottom centre
-    { polygon: [[EX2, EX2], [EX2, F1], [F1, F1]], label: [EX2 + inset, F1 - inset], corner: { R: [EX2, F1], hDir: 1, vDir: -1 } }, // H8
-    { polygon: [[EX2, EX2], [F1, EX2], [F1, F1]], label: [F1 - inset, EX2 + inset], corner: { R: [F1, EX2], hDir: -1, vDir: 1 } }, // H9
-    { polygon: rect(EX2, EX1, F1, EX2), label: [F1 - inset, EX2 - inset] }, // H10 right centre
-    { polygon: [[F1, F0], [F1, EX1], [EX2, EX1]], label: [F1 - inset, EX1 - inset], corner: { R: [F1, EX1], hDir: -1, vDir: -1 } }, // H11
-    { polygon: [[EX2, F0], [F1, F0], [EX2, EX1]], label: [EX2 + inset, F0 + inset], corner: { R: [EX2, F0], hDir: 1, vDir: 1 } }, // H12
+    { polygon: rect(EX1, F0, EX2, EX1), label: [C, EX1 - inset] }, // 1 Mesha, top centre (numeral at the inner edge)
+    { polygon: [[F0, F0], [EX1, F0], [EX1, EX1]], label: [EX1 - inset, F0 + inset], corner: { R: [EX1, F0], hDir: -1, vDir: 1 } }, // 2 Vrishabha
+    { polygon: [[F0, F0], [F0, EX1], [EX1, EX1]], label: [F0 + inset, EX1 - inset], corner: { R: [F0, EX1], hDir: 1, vDir: -1 } }, // 3 Mithuna
+    { polygon: rect(F0, EX1, EX1, EX2), label: [F0 + inset, EX2 - inset] }, // 4 Karka, left centre
+    { polygon: [[F0, EX2], [EX1, EX2], [F0, F1]], label: [F0 + inset, EX2 + inset], corner: { R: [F0, EX2], hDir: 1, vDir: 1 } }, // 5 Simha
+    { polygon: [[EX1, EX2], [EX1, F1], [F0, F1]], label: [EX1 - inset, F1 - inset], corner: { R: [EX1, F1], hDir: -1, vDir: -1 } }, // 6 Kanya
+    { polygon: rect(EX1, EX2, EX2, F1), label: [C, F1 - inset] }, // 7 Tula, bottom centre
+    { polygon: [[EX2, EX2], [EX2, F1], [F1, F1]], label: [EX2 + inset, F1 - inset], corner: { R: [EX2, F1], hDir: 1, vDir: -1 } }, // 8 Vrishchika
+    { polygon: [[EX2, EX2], [F1, EX2], [F1, F1]], label: [F1 - inset, EX2 + inset], corner: { R: [F1, EX2], hDir: -1, vDir: 1 } }, // 9 Dhanu
+    { polygon: rect(EX2, EX1, F1, EX2), label: [F1 - inset, EX2 - inset] }, // 10 Makara, right centre
+    { polygon: [[F1, F0], [F1, EX1], [EX2, EX1]], label: [F1 - inset, EX1 - inset], corner: { R: [F1, EX1], hDir: -1, vDir: -1 } }, // 11 Kumbha
+    { polygon: [[EX2, F0], [F1, F0], [EX2, EX1]], label: [EX2 + inset, F0 + inset], corner: { R: [EX2, F0], hDir: 1, vDir: 1 } }, // 12 Meena
   ];
-  return defs.map((d, i) => {
+  const regions: HouseRegion[] = [];
+  for (let n = 1; n <= 12; n++) {
+    const sign = ((firstHouseSign - 1 + n - 1) % 12) + 1;
+    const d = defs[sign - 1];
     const centroid = polygonCentroid(d.polygon);
     let placement: HouseRegion['placement'];
     if (d.corner) {
@@ -434,8 +448,9 @@ function eastRegions(labelSize: number): HouseRegion[] {
     } else {
       placement = { kind: 'centroid', cx: centroid[0], cy: centroid[1] };
     }
-    return { n: i + 1, polygon: d.polygon, centroid, labelPos: d.label, labelAnchor: 'middle', placement };
-  });
+    regions.push({ n, polygon: d.polygon, centroid, labelPos: d.label, labelAnchor: 'middle', placement });
+  }
+  return regions;
 }
 
 // ---- glyph block planning ----
@@ -580,7 +595,7 @@ export function layout(style: ChartStyle, chart: ChartData, fontScale: number, r
   const floorSize = 12 / scale; // 12 sp absolute floor (spec 8)
   const glyphText = (id: PlanetId): string => planetGlyphs[script][id];
 
-  const regions = style === 'north' ? northRegions() : style === 'south' ? southRegions(chart.firstHouseSign, labelSize) : eastRegions(labelSize);
+  const regions = style === 'north' ? northRegions() : style === 'south' ? southRegions(chart.firstHouseSign, labelSize) : eastRegions(chart.firstHouseSign, labelSize);
   const labels: LayoutLabel[] = [];
   const houses: LayoutHouse[] = [];
   const glyphs: LayoutGlyph[] = [];
@@ -589,6 +604,7 @@ export function layout(style: ChartStyle, chart: ChartData, fontScale: number, r
   const rank: Record<DensityMode, number> = { '2x2': 0, '3x2': 1, badge: 2 };
 
   // South: Lagna (first house) mark, a short diagonal in the top-left corner of the first-house cell.
+  // East: set in pass 1 (accent underline under the Lagna sign's numeral).
   let lagnaMark: LayoutLine | undefined;
   if (style === 'south') {
     const [x1, y1] = regions[0].polygon[0];
@@ -618,19 +634,25 @@ export function layout(style: ChartStyle, chart: ChartData, fontScale: number, r
     const labelAnchorX = region.labelPos[0];
     const labelBox = textBox(region.labelAnchor, labelAnchorX, region.labelPos[1], labelWidth, labelHeight);
     labelBoxes.push(labelBox);
+    const baseline = region.labelPos[1] + 0.35 * labelSize;
     labels.push({
       kind,
       house: n,
       text,
       x: boxCentreX(labelBox),
       y: region.labelPos[1],
-      baseline: region.labelPos[1] + 0.35 * labelSize,
+      baseline,
       anchor: region.labelAnchor,
       anchorX: labelAnchorX,
       size: labelSize,
       width: labelWidth,
       height: labelHeight,
+      ...(style === 'east' && n === 1 ? { accent: true } : {}),
     });
+    // East: the Lagna cell is marked by its sign numeral in accent plus a 2 px accent underline beneath it.
+    if (style === 'east' && n === 1) {
+      lagnaMark = { x1: labelBox.x1, y1: baseline + 3, x2: labelBox.x2, y2: baseline + 3 };
+    }
     ctxs.push({
       script,
       glyphText,

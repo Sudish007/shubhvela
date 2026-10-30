@@ -69,9 +69,10 @@ export function chartSvgFromLayout(lay, opts = {}) {
   };
 
   for (const l of lay.labels) {
-    const cls = l.kind === 'centre' ? 'centre' : l.kind === 'signName' ? 'signname' : 'sign';
+    // East style: the Lagna sign's numeral is drawn in accent (`l.accent`, with the accent underline above).
+    const cls = l.kind === 'centre' ? 'centre' : l.kind === 'signName' ? 'signname' : l.accent ? 'sign lagna' : 'sign';
     const family = l.kind === 'signName' && !latin ? fonts.deva : fonts.sans;
-    parts.push(text(cls, l.anchorX, l.baseline, l.size, l.anchor, l.text, { fill: l.kind === 'centre' ? c.ink2 : c.ink3, family }));
+    parts.push(text(cls, l.anchorX, l.baseline, l.size, l.anchor, l.text, { fill: l.kind === 'centre' ? c.ink2 : l.accent ? c.accent : c.ink3, family }));
   }
   for (const g of lay.glyphs) {
     parts.push(

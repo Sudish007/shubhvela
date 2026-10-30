@@ -415,6 +415,7 @@
   "charts.chartA11y": "{style} chart, Lagna {lagna}. {summary}",
   "charts.chartA11yHouse": "House {n}, {sign}: {planets}.",
   "charts.chartA11yEmpty": "House {n}, {sign}: empty.",
+  "charts.legendLagnaMark": "Lagna mark: in the South and East Indian styles the signs stay in fixed cells (Mesha top-left in South, top-centre in East) and houses are counted from the Lagna. South marks the Lagna cell with a short diagonal in its corner; East with the sign numeral in the accent colour, underlined.",
   "charts.legendFooter": "Every term links to the glossary. Dignities use Parashara's natural friendships; combustion orbs per planet are listed under “How this was computed”.",
   "charts.approxFooter": "approx. = birth time given as approximate, or a position within 1° of a sign boundary. Dignities follow Parashara's natural friendships; vargottama = same sign in D1 and D9. House lords: open “Houses”.",
   "charts.howComputed": "How this was computed: {ayanamsa} ayanamsa, {node} node, {ephemeris}, time zone {tz}, {houseSystem} houses. Combustion orbs (degrees from the Sun): {orbs}.",

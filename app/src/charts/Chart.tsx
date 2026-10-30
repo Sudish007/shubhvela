@@ -101,7 +101,7 @@ export function Chart({ style, chart, width, fontScale: fontScaleProp, centreLin
               y={l.baseline}
               fontSize={l.size}
               textAnchor={l.anchor}
-              fill={colors.ink3}
+              fill={l.accent ? colors.accent : colors.ink3}
               fontFamily={l.kind === 'signName' ? fontFamilyFor('body', lang, 400) : fonts.numeral}
               testID={`chart-label-${l.house}`}
             >
