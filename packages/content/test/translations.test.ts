@@ -1078,6 +1078,90 @@ describe('translated corpus files (hi / bho) mirror their English master', () =>
       }
     }
   });
+
+  it('T20: dasha-pairs is complete in hi and bho; the Jupiter, Venus, Saturn, Rahu and Ketu antardashas keep the D27 frames — the eight "same planet" pairs incl. the node readings (Rahu as Saturn, Ketu as Mars), the five own sub-periods, the two node-facing records, the lords\' agreement clauses, the benefics, the engine marriage word and the theme words चाह / विरक्ति / अलगाव', () => {
+    const en = CORPUS['dasha-pairs'].en!;
+    for (const lang of LANGS) {
+      expect(CORPUS['dasha-pairs'][lang]!.map((r) => r.id).sort(), `dasha-pairs/${lang} must be complete`).toEqual(en.map((r) => r.id).sort());
+    }
+    const text = (id: string, lang: Lang): string => {
+      const r = lookup('dasha-pairs', id, lang)!;
+      expect(r.lang, `${id} ${lang}`).toBe(lang);
+      expect(r.fallback).toBe(false);
+      return r.text;
+    };
+    // Parashara's table reads Rahu as Saturn and Ketu as Mars, so these eight pairs take the "same planet by nature" sentence (engine naturalRelation).
+    const SELF: Array<[string, PlanetId, PlanetId]> = [
+      ['dasha-Ju-Ju', 'Ju', 'Ju'], ['dasha-Ve-Ve', 'Ve', 'Ve'], ['dasha-Sa-Sa', 'Sa', 'Sa'], ['dasha-Sa-Ra', 'Sa', 'Ra'],
+      ['dasha-Ra-Sa', 'Ra', 'Sa'], ['dasha-Ra-Ra', 'Ra', 'Ra'], ['dasha-Ke-Ma', 'Ke', 'Ma'], ['dasha-Ke-Ke', 'Ke', 'Ke'],
+    ];
+    for (const [id, m, a] of SELF) {
+      expect(naturalRelation(a, m), id).toBe('self');
+      expect(text(id, 'hi')).toContain(`${planetNames.hi[a]} और ${planetNames.hi[m]} स्वभाव से एक ही ग्रह हैं।`);
+      expect(text(id, 'bho')).toContain(`${planetNames.bho[a]} आ ${planetNames.bho[m]} सुभाव से एके ग्रह बाड़न।`);
+    }
+    // "<Planet>'s own sub-period is …" = the glossary's उप-अवधि; the English heads of those five sentences.
+    const OWN: Array<[string, PlanetId, string, string]> = [
+      ['dasha-Ju-Ju', 'Ju', 'विस्तार है', 'फइलाव बा'],
+      ['dasha-Ve-Ve', 'Ve', 'सुख-सुविधा और संग-साथ है', 'सुख-सुविधा आ संग-साथ बा'],
+      ['dasha-Sa-Sa', 'Sa', 'लंबी दौड़ है', 'लमहर दौड़ बा'],
+      ['dasha-Ra-Ra', 'Ra', 'बिना मिलावट की चाह है', 'बिना मिलावट के चाह बा'],
+      ['dasha-Ke-Ke', 'Ke', 'बिना मिलावट की विरक्ति है', 'बिना मिलावट के अलगाव बा'],
+    ];
+    for (const [id, p, hiHead, bhoHead] of OWN) {
+      expect(text(id, 'hi')).toContain(`${planetNames.hi[p]} की अपनी उप-अवधि ${hiHead}`);
+      expect(text(id, 'bho')).toContain(`${planetNames.bho[p]} के आपन उप-अवधि ${bhoHead}`);
+    }
+    // "The two nodes face each other" only in the Rahu–Ketu pairs; no other record names the nodes.
+    for (const row of en) {
+      const nodes = row.id === 'dasha-Ra-Ke' || row.id === 'dasha-Ke-Ra';
+      expect(/two nodes/.test(String(row.text)), row.id).toBe(nodes);
+      expect(text(row.id, 'hi').includes('दोनों चंद्र-पात आमने-सामने हैं'), `${row.id} hi nodes`).toBe(nodes);
+      expect(text(row.id, 'bho').includes('दुनो चंद्र-पात आमने-सामने बाड़न'), `${row.id} bho nodes`).toBe(nodes);
+      if (!nodes) {
+        expect(text(row.id, 'hi')).not.toContain('चंद्र-पात');
+        expect(text(row.id, 'bho')).not.toContain('चंद्र-पात');
+      }
+    }
+    // The lords' agreement clauses, kept apart: friends (Ve-Sa), cooperate (Sa-Ve), at odds (Sa-Su), two hard lords (Sa-Ma; the T19 Ma-Sa says taskmasters).
+    expect(text('dasha-Ve-Sa', 'hi')).toContain('और ये दो स्वामी मित्र हैं;');
+    expect(text('dasha-Ve-Sa', 'bho')).toContain('आ ई दू स्वामी मित्र बाड़न;');
+    expect(text('dasha-Sa-Ve', 'hi')).toContain('और यहाँ दोनों स्वामी साथ देते हैं;');
+    expect(text('dasha-Sa-Ve', 'bho')).toContain('आ इहाँ दुनो स्वामी एक दूसरा के साथ देलन;');
+    expect(text('dasha-Sa-Su', 'hi')).toContain('और दो स्वामियों की आपस में नहीं बनती;');
+    expect(text('dasha-Sa-Su', 'bho')).toContain('आ दू स्वामी के आपस में ना बनेला;');
+    expect(text('dasha-Sa-Ma', 'hi')).toContain('दो कड़े स्वामी: इसे');
+    expect(text('dasha-Sa-Ma', 'bho')).toContain('दू कड़ा स्वामी: एकरा');
+    expect(text('dasha-Ma-Sa', 'hi')).toContain('दो कड़े काम लेने वाले स्वामी:');
+    // The two benefics (Jupiter and Venus) = शुभ ग्रह (termbank 'natural benefic'); marriage = the engine's onboarding chip word in each language (bho बियाह).
+    expect(text('dasha-Ju-Ve', 'hi')).toContain('दोनों शुभ ग्रहों की रुचि अलग है;');
+    expect(text('dasha-Ju-Ve', 'bho')).toContain('दुनो शुभ ग्रह के रुचि अलग बा;');
+    expect(text('dasha-Ve-Ju', 'hi')).toContain('दो शुभ ग्रह,');
+    expect(text('dasha-Ve-Ju', 'bho')).toContain('दू शुभ ग्रह,');
+    expect(text('dasha-Ve-Ju', 'hi')).toContain('धन, विवाह और संतान');
+    expect(loadUi('bho')['onboarding.marriage_chip']).toBe('बियाह');
+    expect(text('dasha-Ve-Ju', 'bho')).toContain('धन, बियाह आ संतान');
+    // Theme words: appetite (Rahu) = चाह in every Rahu-mahadasha record and in the two Rahu antardashas of this slice; detachment (Ketu) = विरक्ति / अलगाव (T15) in every Ketu record.
+    for (const row of en.filter((r) => /^dasha-Ra-/.test(r.id))) {
+      expect(text(row.id, 'hi'), `${row.id} hi appetite`).toContain('चाह');
+      expect(text(row.id, 'bho'), `${row.id} bho appetite`).toContain('चाह');
+    }
+    for (const id of ['dasha-Ju-Ra', 'dasha-Sa-Ra']) {
+      expect(text(id, 'hi')).toContain('चाह से मिलता है;');
+      expect(text(id, 'bho')).toContain('चाह से मिलेला;');
+    }
+    for (const row of en.filter((r) => /^dasha-Ke-/.test(r.id) && r.id !== 'dasha-Ke-Ra')) {
+      expect(text(row.id, 'hi'), `${row.id} hi detachment`).toContain('विरक्ति');
+      expect(text(row.id, 'bho'), `${row.id} bho detachment`).toContain('अलगाव');
+      expect(text(row.id, 'bho'), `${row.id} bho detachment`).not.toContain('विरक्ति');
+    }
+    // 'persuasion' (Ju-Ra, Ra-Ju) = बहकावे / बहकावा, kept apart from the daily nakshatra-20 sense (समझाने-बुझाने = persuading as a skill).
+    expect(text('dasha-Ju-Ra', 'hi')).toContain('विवेक को बहकावे से अलग पहचाना जाए');
+    expect(text('dasha-Ju-Ra', 'bho')).toContain('विवेक के बहकावा से अलगा पहचानल जाए');
+    expect(text('dasha-Ra-Ju', 'hi')).toContain('बहकावे से परखे जाने वाले विवेक');
+    expect(text('dasha-Ra-Ju', 'bho')).toContain('बहकावा से परखल जाए वाला विवेक');
+  });
+
   it('every registered domain has an English master and only hi / bho translations', () => {
     for (const t of TABLES) {
       expect(t.rows.en, `${t.domain} has no en`).toBeDefined();
