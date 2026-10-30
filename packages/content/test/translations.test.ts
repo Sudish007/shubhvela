@@ -879,7 +879,7 @@ describe('translated corpus files (hi / bho) mirror their English master', () =>
     }
   });
 
-  it('T17: the planet-house slice is registered in hi and bho with one id set; every translated id opens with the engine planet name and the house ordinal the planet sheet shows, keeps the "is read for" / placement frames, names the south node only in the Ketu records, keeps the English rule / params, and an untranslated id resolves along the chain', () => {
+  it('T17: the planet-house slice is registered in hi and bho with one id set; every translated id opens with the engine planet name and the house ordinal the planet sheet shows, keeps the "is read for" / placement frames, names a node only in the Ketu and Rahu records, keeps the English rule / params, and an untranslated id resolves along the chain', () => {
     const en = CORPUS['planet-house'].en!;
     const hi = CORPUS['planet-house'].hi!;
     const bho = CORPUS['planet-house'].bho!;
@@ -912,14 +912,21 @@ describe('translated corpus files (hi / bho) mirror their English master', () =>
         const opening = isHi ? `${planetNames.hi[planet]} ${HI_OBLIQUE[house]} भाव में हैं` : `${planetNames.bho[planet]} ${ui[`charts.houseOrdinal.${house}`]} में बाड़न`;
         expect(t.startsWith(opening), `${row.id} ${lang} opens "${opening}"`).toBe(true);
         // Honesty markers: "is read for" (opening theme list and the closing "It is read for how") and "The placement tends to show up as".
+        // sun-1 is the one record whose English ends on "The reflective question is" instead (as sun-mesha in planet-sign, T16).
         expect(t).toContain(isHi ? 'के लिए पढ़ा जाता है' : 'खातिर पढ़ल जाला');
         expect(t, `${row.id} ${lang} keeps the placement frame`).toContain(isHi ? 'यह स्थिति प्रायः' : 'ई स्थिति अक्सर');
-        expect(t, `${row.id} ${lang} keeps the closing frame`).toContain(isHi ? 'इसे इस बात के लिए पढ़ा जाता है कि' : 'एकरा एह बात खातिर पढ़ल जाला कि');
-        // Ketu: "which the south node detaches from" / "where the south node is classically at ease" (glossary wording for the node); no other planet names the node.
+        if (/It is read for how/.test(String(master.text))) expect(t, `${row.id} ${lang} keeps the closing frame`).toContain(isHi ? 'इसे इस बात के लिए पढ़ा जाता है कि' : 'एकरा एह बात खातिर पढ़ल जाला कि');
+        else expect(t, `${row.id} ${lang} closes on the reflective question`).toContain(isHi ? 'चिंतन का प्रश्न यह है कि' : 'सोच-विचार के सवाल ई बा कि');
+        // Ketu: "which the south node detaches from" / "where the south node is classically at ease"; Rahu: "amplified by the north node" with the T16 verb
+        // (glossary wording for both nodes); no other planet names a node.
         if (planet === 'Ke') {
-          expect(t, `${row.id} ${lang} names the south node`).toContain('चंद्र-पात');
+          expect(t, `${row.id} ${lang} names the south node`).toContain(isHi ? 'दक्षिणी चंद्र-पात' : 'दक्खिन ओर के चंद्र-पात');
           if (/classically at ease/.test(String(master.text))) expect(t, `${row.id} ${lang} classically at ease`).toContain(isHi ? 'शास्त्रों में सहज माने जाते हैं' : 'शास्त्र में सहज मानल जालन');
           else expect(t, `${row.id} ${lang} detaches`).toContain(isHi ? 'विरक्ति देते हैं' : 'अलगाव देलन');
+        } else if (planet === 'Ra') {
+          expect(t, `${row.id} ${lang} names the north node`).toContain(isHi ? 'उत्तरी चंद्र-पात बढ़ा देते हैं' : 'उत्तर ओर के चंद्र-पात बढ़ा देलन');
+          if (/ma(?:kes|de) unconventional/.test(String(master.text))) expect(t, `${row.id} ${lang} makes unconventional`).toContain(isHi ? 'और अपरंपरागत बनाते हैं' : 'आ चलन से अलगा बनावेलन');
+          else expect(t).not.toContain(isHi ? 'अपरंपरागत बनाते हैं' : 'चलन से अलगा बनावेलन');
         } else {
           expect(t).not.toContain('चंद्र-पात');
         }
@@ -950,6 +957,47 @@ describe('translated corpus files (hi / bho) mirror their English master', () =>
         expect(r, `${id} ${lang}`).not.toBeNull();
         expect(r.fallback).toBe(r.lang !== lang);
       }
+    }
+  });
+
+  it('T18: planet-house is complete in hi and bho; the Rahu records mirror the Ketu clause with the north node, the asides for the Moon in the 4th, Saturn in the 10th, the Sun in the 1st and Venus in the 7th are kept, the Sun in the 1st closes on the reflective question, every 4th-house bho record keeps "home" apart from the bhava, and recognition is मान्यता / कदर', () => {
+    const en = CORPUS['planet-house'].en!;
+    for (const lang of LANGS) {
+      const rows = CORPUS['planet-house'][lang]!;
+      expect(rows.map((r) => r.id).sort(), `planet-house/${lang} complete`).toEqual(en.map((r) => r.id).sort());
+      const hi = lang === 'hi';
+      const text = (id: string) => {
+        const got = lookup('planet-house', id, lang)!;
+        expect(got.lang, `${id} ${lang}`).toBe(lang);
+        expect(got.fallback).toBe(false);
+        return got.text;
+      };
+      // Rahu: the T17 Ketu pattern with the north node and the T16 "amplifies" verb; "made unconventional" only where the English says so (1st, 2nd, 7th).
+      for (let h = 1; h <= 12; h++) {
+        const t = text(`rahu-${h}`);
+        expect(t, `rahu-${h} ${lang}`).toContain(hi ? 'जिन्हें उत्तरी चंद्र-पात बढ़ा देते हैं' : 'जेकरा उत्तर ओर के चंद्र-पात बढ़ा देलन');
+        expect(t.includes(hi ? 'और अपरंपरागत बनाते हैं' : 'आ चलन से अलगा बनावेलन'), `rahu-${h} ${lang} unconventional`).toBe([1, 2, 7].includes(h));
+        expect(t).not.toContain('दक्षिणी');
+        expect(t).not.toContain('दक्खिन');
+      }
+      // Asides kept as parentheticals (D25): "the Moon's own domain", "where it is classically strong", "the whole sign rising at birth", "its natural domain".
+      expect(text('moon-4')).toContain(hi ? 'जो चंद्र का अपना क्षेत्र है' : 'जे चंद्र के आपन क्षेत्र बा');
+      expect(text('saturn-10')).toContain(hi ? 'शनि दसवें भाव में हैं, जहाँ वे शास्त्रों में बली माने जाते हैं, और इसे' : 'शनि दसवाँ घर में बाड़न, जहाँ ऊ शास्त्र में बली मानल जालन, आ एकरा');
+      expect(text('venus-7')).toContain(hi ? 'शुक्र सातवें भाव में हैं, जो उनका स्वाभाविक क्षेत्र है, और इसे' : 'शुक्र सातवाँ घर में बाड़न, जे उनकर आपन सहज क्षेत्र बा, आ एकरा');
+      const sun1 = text('sun-1');
+      expect(sun1).toContain(hi ? 'सूर्य पहले भाव में हैं, जो जन्म के समय उदय हो रही पूरी राशि है, और इसे' : 'सूर्य पहिला घर में बाड़न, जे जनम के समय उदय होखत पूरा राशि बा, आ एकरा');
+      expect(sun1).toContain(hi ? 'चिंतन का प्रश्न यह है कि' : 'सोच-विचार के सवाल ई बा कि');
+      expect(sun1).not.toContain(hi ? 'इसे इस बात के लिए पढ़ा जाता है कि' : 'एकरा एह बात खातिर पढ़ल जाला कि');
+      // Recognition = मान्यता / कदर, kept apart from पहचान (identity) and प्रशंसा / तारीफ (praise) as in T16.
+      for (const id of ['saturn-10', 'sun-11', 'sun-12', 'sun-8']) expect(text(id), `${id} ${lang} recognition`).toContain(hi ? 'मान्यता' : 'कदर');
+      // The Sun's 'the self' stays स्वयं / खुद; 'the house of the Sun' never gets a second-person pronoun (the T17 loop already asserts that for every record).
+      expect(text('sun-10')).toContain(hi ? 'काम स्वयं के बड़े हिस्से को परिभाषित करता है' : 'काम खुद के बड़ हिस्सा के तय करेला');
+    }
+    // Every 4th-house Bhojpuri record keeps "home" apart from the bhava: घर-परिवार / घर-दुआर, bare घर only in "चउथा घर में".
+    for (const id of en.map((r) => r.id).filter((id) => /-4$/.test(id))) {
+      const t = lookup('planet-house', id, 'bho')!.text;
+      expect(t, `${id} bho`).toContain('घर-परिवार');
+      expect(t.replace(/घर-(परिवार|दुआर)/g, '').replace(/चउथा घर में/g, ''), `${id} bho: bare घर only as the bhava`).not.toMatch(/(^|\s)घर(\s|,|।)/);
     }
   });
   it('every registered domain has an English master and only hi / bho translations', () => {
