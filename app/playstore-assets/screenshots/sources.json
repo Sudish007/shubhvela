@@ -1,198 +1,198 @@
 {
-  "generated": "2026-10-29",
+  "generated": "2026-10-30",
   "note": "kind=raw: 1080x2400 emulator capture; kind=shrunk: 864x1920 stand-in, PENDING a re-shoot with scripts/shots.ps1 -KeepRaw (pro=1 seed, light theme). adCropY: row of the source where the AdMob test banner was cropped away and the paper background extended (null = no ad in the capture).",
   "slots": {
     "en/01-today": {
-      "source": ".agents/tasks/v1-build/shots/phase-a/today-segments-en-light-390.png",
-      "kind": "shrunk",
-      "sourceSize": "864x1920",
-      "adCropY": null,
-      "caption": "Good hours today, in one band",
-      "pending": true
-    },
-    "en/02-charts": {
-      "source": ".agents/tasks/v1-build/shots/phase-b/charts-en-light-390.png",
-      "kind": "shrunk",
-      "sourceSize": "864x1920",
-      "adCropY": 1441,
-      "caption": "Your kundli, three Indian styles",
-      "pending": true
-    },
-    "en/03-family": {
-      "source": ".agents/tasks/v1-build/shots/phase-b/family-en-light-390.png",
-      "kind": "shrunk",
-      "sourceSize": "864x1920",
-      "adCropY": 1441,
-      "caption": "Tithi birthdays and shraddha",
-      "pending": true
-    },
-    "en/04-muhurat": {
-      "source": ".agents/tasks/v1-build/shots/phase-b/muhurat-en-light-390.png",
-      "kind": "shrunk",
-      "sourceSize": "864x1920",
-      "adCropY": 1547,
-      "caption": "Muhurat finder, rules shown",
-      "pending": true
-    },
-    "en/05-matching": {
-      "source": ".agents/tasks/v1-build/shots/phase-b/match-result-en-light-390.png",
-      "kind": "shrunk",
-      "sourceSize": "864x1920",
-      "adCropY": 1547,
-      "caption": "36-guna matching, explained",
-      "pending": true
-    },
-    "en/06-learn": {
-      "source": ".agents/tasks/v1-build/shots/phase-c/raw/learn-en-light-390.png",
+      "source": ".agents/tasks/v1-build/shots/phase-d/play/raw/today-segments-en-light-390-gest-pro.png",
       "kind": "raw",
       "sourceSize": "1080x2400",
-      "adCropY": 1814,
+      "adCropY": null,
+      "caption": "Good hours today, in one band",
+      "pending": false
+    },
+    "en/02-charts": {
+      "source": ".agents/tasks/v1-build/shots/phase-d/play/raw/charts-en-light-390-gest-pro.png",
+      "kind": "raw",
+      "sourceSize": "1080x2400",
+      "adCropY": null,
+      "caption": "Your kundli, three Indian styles",
+      "pending": false
+    },
+    "en/03-family": {
+      "source": ".agents/tasks/v1-build/shots/phase-d/play/raw/family-en-light-390-gest-pro.png",
+      "kind": "raw",
+      "sourceSize": "1080x2400",
+      "adCropY": null,
+      "caption": "Tithi birthdays and shraddha",
+      "pending": false
+    },
+    "en/04-muhurat": {
+      "source": ".agents/tasks/v1-build/shots/phase-d/play/raw/muhurat-en-light-390-gest-pro.png",
+      "kind": "raw",
+      "sourceSize": "1080x2400",
+      "adCropY": null,
+      "caption": "Muhurat finder, rules shown",
+      "pending": false
+    },
+    "en/05-matching": {
+      "source": ".agents/tasks/v1-build/shots/phase-d/play/raw/match-result-en-light-390-gest-pro.png",
+      "kind": "raw",
+      "sourceSize": "1080x2400",
+      "adCropY": null,
+      "caption": "36-guna matching, explained",
+      "pending": false
+    },
+    "en/06-learn": {
+      "source": ".agents/tasks/v1-build/shots/phase-d/play/raw/learn-en-light-390-gest-pro.png",
+      "kind": "raw",
+      "sourceSize": "1080x2400",
+      "adCropY": null,
       "caption": "21 lessons, on your own chart",
       "pending": false
     },
     "en/07-janam-patri": {
-      "source": ".agents/tasks/v1-build/shots/phase-b/pdf-preview-en-light-390.png",
-      "kind": "shrunk",
-      "sourceSize": "864x1920",
-      "adCropY": null,
-      "caption": "Janam Patri PDF, included in Pro",
-      "pending": true
-    },
-    "en/08-panchang": {
-      "source": ".agents/tasks/v1-build/shots/phase-a/today-panchang-sheet-en-light-390.png",
-      "kind": "shrunk",
-      "sourceSize": "864x1920",
-      "adCropY": null,
-      "caption": "Full panchang for your place",
-      "pending": true
-    },
-    "hi/01-today": {
-      "source": ".agents/tasks/v1-build/shots/phase-a/today-segments-hi-light-390.png",
-      "kind": "shrunk",
-      "sourceSize": "864x1920",
-      "adCropY": null,
-      "caption": "आज के शुभ समय, एक पट्टी में",
-      "pending": true
-    },
-    "hi/02-charts": {
-      "source": ".agents/tasks/v1-build/shots/phase-b/charts-hi-light-390.png",
-      "kind": "shrunk",
-      "sourceSize": "864x1920",
-      "adCropY": 1441,
-      "caption": "आपकी कुंडली, तीन भारतीय शैलियाँ",
-      "pending": true
-    },
-    "hi/03-family": {
-      "source": ".agents/tasks/v1-build/shots/phase-b/family-hi-light-390.png",
-      "kind": "shrunk",
-      "sourceSize": "864x1920",
-      "adCropY": 1392,
-      "caption": "जन्म-तिथि और श्राद्ध, हर साल",
-      "pending": true
-    },
-    "hi/04-muhurat": {
-      "source": ".agents/tasks/v1-build/shots/phase-b/muhurat-hi-light-390.png",
-      "kind": "shrunk",
-      "sourceSize": "864x1920",
-      "adCropY": 1547,
-      "caption": "मुहूर्त खोज, नियम साथ में",
-      "pending": true
-    },
-    "hi/05-matching": {
-      "source": ".agents/tasks/v1-build/shots/phase-b/match-result-hi-light-390.png",
-      "kind": "shrunk",
-      "sourceSize": "864x1920",
-      "adCropY": 1539,
-      "caption": "36 गुण मिलान, कारण सहित",
-      "pending": true
-    },
-    "hi/06-learn": {
-      "source": ".agents/tasks/v1-build/shots/phase-c/raw/learn-hi-light-390.png",
+      "source": ".agents/tasks/v1-build/shots/phase-d/play/raw/pdf-preview-en-light-390-gest-pro.png",
       "kind": "raw",
       "sourceSize": "1080x2400",
-      "adCropY": 1814,
+      "adCropY": null,
+      "caption": "Janam Patri PDF, included in Pro",
+      "pending": false
+    },
+    "en/08-panchang": {
+      "source": ".agents/tasks/v1-build/shots/phase-d/play/raw/today-panchang-sheet-en-light-390-gest-pro.png",
+      "kind": "raw",
+      "sourceSize": "1080x2400",
+      "adCropY": null,
+      "caption": "Full panchang for your place",
+      "pending": false
+    },
+    "hi/01-today": {
+      "source": ".agents/tasks/v1-build/shots/phase-d/play/raw/today-segments-hi-light-390-gest-pro.png",
+      "kind": "raw",
+      "sourceSize": "1080x2400",
+      "adCropY": null,
+      "caption": "आज के शुभ समय, एक पट्टी में",
+      "pending": false
+    },
+    "hi/02-charts": {
+      "source": ".agents/tasks/v1-build/shots/phase-d/play/raw/charts-hi-light-390-gest-pro.png",
+      "kind": "raw",
+      "sourceSize": "1080x2400",
+      "adCropY": null,
+      "caption": "आपकी कुंडली, तीन भारतीय शैलियाँ",
+      "pending": false
+    },
+    "hi/03-family": {
+      "source": ".agents/tasks/v1-build/shots/phase-d/play/raw/family-hi-light-390-gest-pro.png",
+      "kind": "raw",
+      "sourceSize": "1080x2400",
+      "adCropY": null,
+      "caption": "जन्म-तिथि और श्राद्ध, हर साल",
+      "pending": false
+    },
+    "hi/04-muhurat": {
+      "source": ".agents/tasks/v1-build/shots/phase-d/play/raw/muhurat-hi-light-390-gest-pro.png",
+      "kind": "raw",
+      "sourceSize": "1080x2400",
+      "adCropY": null,
+      "caption": "मुहूर्त खोज, नियम साथ में",
+      "pending": false
+    },
+    "hi/05-matching": {
+      "source": ".agents/tasks/v1-build/shots/phase-d/play/raw/match-result-hi-light-390-gest-pro.png",
+      "kind": "raw",
+      "sourceSize": "1080x2400",
+      "adCropY": null,
+      "caption": "36 गुण मिलान, कारण सहित",
+      "pending": false
+    },
+    "hi/06-learn": {
+      "source": ".agents/tasks/v1-build/shots/phase-d/play/raw/learn-hi-light-390-gest-pro.png",
+      "kind": "raw",
+      "sourceSize": "1080x2400",
+      "adCropY": null,
       "caption": "इक्कीस पाठ, आपकी अपनी कुंडली पर",
       "pending": false
     },
     "hi/07-janam-patri": {
-      "source": ".agents/tasks/v1-build/shots/phase-b/pdf-preview-hi-light-390.png",
-      "kind": "shrunk",
-      "sourceSize": "864x1920",
-      "adCropY": null,
-      "caption": "जन्म पत्री PDF, Pro में शामिल",
-      "pending": true
-    },
-    "hi/08-panchang": {
-      "source": ".agents/tasks/v1-build/shots/phase-a/today-panchang-sheet-hi-light-390.png",
-      "kind": "shrunk",
-      "sourceSize": "864x1920",
-      "adCropY": null,
-      "caption": "पूरा पंचांग, आपके स्थान के लिए",
-      "pending": true
-    },
-    "bho/01-today": {
-      "source": ".agents/tasks/v1-build/shots/phase-a/today-segments-bho-light-390.png",
-      "kind": "shrunk",
-      "sourceSize": "864x1920",
-      "adCropY": null,
-      "caption": "आज के शुभ बेला, एक पट्टी में",
-      "pending": true
-    },
-    "bho/02-charts": {
-      "source": ".agents/tasks/v1-build/shots/phase-b/charts-bho-light-390.png",
-      "kind": "shrunk",
-      "sourceSize": "864x1920",
-      "adCropY": 1441,
-      "caption": "राउर कुंडली, तीन भारतीय शैली",
-      "pending": true
-    },
-    "bho/03-family": {
-      "source": ".agents/tasks/v1-build/shots/phase-b/family-bho-light-390.png",
-      "kind": "shrunk",
-      "sourceSize": "864x1920",
-      "adCropY": 1392,
-      "caption": "जनम-तिथि आ श्राद्ध, हर साल",
-      "pending": true
-    },
-    "bho/04-muhurat": {
-      "source": ".agents/tasks/v1-build/shots/phase-b/muhurat-bho-light-390.png",
-      "kind": "shrunk",
-      "sourceSize": "864x1920",
-      "adCropY": 1547,
-      "caption": "मुहूर्त खोज, नियम साथे",
-      "pending": true
-    },
-    "bho/05-matching": {
-      "source": ".agents/tasks/v1-build/shots/phase-b/match-result-bho-light-390.png",
-      "kind": "shrunk",
-      "sourceSize": "864x1920",
-      "adCropY": 1539,
-      "caption": "36 गुण मिलान, कारन के साथे",
-      "pending": true
-    },
-    "bho/06-learn": {
-      "source": ".agents/tasks/v1-build/shots/phase-c/raw/learn-bho-light-390.png",
+      "source": ".agents/tasks/v1-build/shots/phase-d/play/raw/pdf-preview-hi-light-390-gest-pro.png",
       "kind": "raw",
       "sourceSize": "1080x2400",
-      "adCropY": 1814,
+      "adCropY": null,
+      "caption": "जन्म पत्री PDF, Pro में शामिल",
+      "pending": false
+    },
+    "hi/08-panchang": {
+      "source": ".agents/tasks/v1-build/shots/phase-d/play/raw/today-panchang-sheet-hi-light-390-gest-pro.png",
+      "kind": "raw",
+      "sourceSize": "1080x2400",
+      "adCropY": null,
+      "caption": "पूरा पंचांग, आपके स्थान के लिए",
+      "pending": false
+    },
+    "bho/01-today": {
+      "source": ".agents/tasks/v1-build/shots/phase-d/play/raw/today-segments-bho-light-390-gest-pro.png",
+      "kind": "raw",
+      "sourceSize": "1080x2400",
+      "adCropY": null,
+      "caption": "आज के शुभ बेला, एक पट्टी में",
+      "pending": false
+    },
+    "bho/02-charts": {
+      "source": ".agents/tasks/v1-build/shots/phase-d/play/raw/charts-bho-light-390-gest-pro.png",
+      "kind": "raw",
+      "sourceSize": "1080x2400",
+      "adCropY": null,
+      "caption": "राउर कुंडली, तीन भारतीय शैली",
+      "pending": false
+    },
+    "bho/03-family": {
+      "source": ".agents/tasks/v1-build/shots/phase-d/play/raw/family-bho-light-390-gest-pro.png",
+      "kind": "raw",
+      "sourceSize": "1080x2400",
+      "adCropY": null,
+      "caption": "जनम-तिथि आ श्राद्ध, हर साल",
+      "pending": false
+    },
+    "bho/04-muhurat": {
+      "source": ".agents/tasks/v1-build/shots/phase-d/play/raw/muhurat-bho-light-390-gest-pro.png",
+      "kind": "raw",
+      "sourceSize": "1080x2400",
+      "adCropY": null,
+      "caption": "मुहूर्त खोज, नियम साथे",
+      "pending": false
+    },
+    "bho/05-matching": {
+      "source": ".agents/tasks/v1-build/shots/phase-d/play/raw/match-result-bho-light-390-gest-pro.png",
+      "kind": "raw",
+      "sourceSize": "1080x2400",
+      "adCropY": null,
+      "caption": "36 गुण मिलान, कारन के साथे",
+      "pending": false
+    },
+    "bho/06-learn": {
+      "source": ".agents/tasks/v1-build/shots/phase-d/play/raw/learn-bho-light-390-gest-pro.png",
+      "kind": "raw",
+      "sourceSize": "1080x2400",
+      "adCropY": null,
       "caption": "एकइस पाठ, राउर आपन कुंडली पर",
       "pending": false
     },
     "bho/07-janam-patri": {
-      "source": ".agents/tasks/v1-build/shots/phase-b/pdf-preview-bho-light-390.png",
-      "kind": "shrunk",
-      "sourceSize": "864x1920",
+      "source": ".agents/tasks/v1-build/shots/phase-d/play/raw/pdf-preview-bho-light-390-gest-pro.png",
+      "kind": "raw",
+      "sourceSize": "1080x2400",
       "adCropY": null,
       "caption": "जनम पत्री PDF, Pro में शामिल",
-      "pending": true
+      "pending": false
     },
     "bho/08-panchang": {
-      "source": ".agents/tasks/v1-build/shots/phase-a/today-panchang-sheet-bho-light-390.png",
-      "kind": "shrunk",
-      "sourceSize": "864x1920",
+      "source": ".agents/tasks/v1-build/shots/phase-d/play/raw/today-panchang-sheet-bho-light-390-gest-pro.png",
+      "kind": "raw",
+      "sourceSize": "1080x2400",
       "adCropY": null,
       "caption": "पूरा पंचांग, राउर जगह खातिर",
-      "pending": true
+      "pending": false
     }
   }
 }

@@ -156,9 +156,12 @@ const SLOTS = [
 
 /** Finds the capture for a slot: raw Pro-seed capture, raw capture, else the shrunk one (pending). */
 function findCapture(slot, lang) {
-  const raw = join(SHOTS, 'phase-c', 'raw');
-  for (const n of [`${slot.screen}-${lang}-light-pro-390.png`, `${slot.screen}-${lang}-light-390-pro.png`, `${slot.screen}-${lang}-light-390.png`]) {
-    if (existsSync(join(raw, n))) return { path: join(raw, n), kind: 'raw' };
+  // d-ship (1.0.0): the Play re-shoot lives under phase-d/play/raw (pro seed, light, gesture nav, demo status bar);
+  // phase-c/raw is the older fallback.
+  for (const raw of [join(SHOTS, 'phase-d', 'play', 'raw'), join(SHOTS, 'phase-c', 'raw')]) {
+    for (const n of [`${slot.screen}-${lang}-light-390-gest-pro.png`, `${slot.screen}-${lang}-light-pro-390.png`, `${slot.screen}-${lang}-light-390-pro.png`, `${slot.screen}-${lang}-light-390.png`]) {
+      if (existsSync(join(raw, n))) return { path: join(raw, n), kind: 'raw' };
+    }
   }
   if (slot.shrunk) {
     const n = join(SHOTS, slot.shrunk, `${slot.screen}-${lang}-light-390.png`);
