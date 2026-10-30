@@ -191,6 +191,7 @@ All three URLs returned HTTP 200 on 2026-10-30 (`Invoke-WebRequest`, see verific
 | Countries | India first; the rest of the world may be added at once (prices in USD below). |
 | Pricing | Free app |
 | Distribution: Wear OS / TV / Auto / Chromebook / Tablet | Phones only is fine; the layouts work on tablets but no tablet screenshots were shot — leave the 7"/10" screenshot slots empty rather than upload phone shots there. |
+| Device support (native code) | `release/Shubhvela-1.0.0.aab` carries armeabi-v7a, arm64-v8a, x86 and x86_64; Play serves one split per device, so 32-bit ARM phones and x86_64 Chromebooks are covered. |
 | Managed Google Play / Family Library | No |
 | Designed for Families programme | **No** (18+ audience below) |
 

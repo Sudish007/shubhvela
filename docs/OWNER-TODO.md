@@ -145,7 +145,7 @@ Appended by the Phase D reviewer (2026-10-30, verdict APPROVED — 0 blocking, 5
 Items marked **before upload** must be done before the AAB goes to Play; the rest ship in 1.0.x.
 
 MEDIUM
-- **Before upload — privacy disclosure of the model download.** The privacy page (`web/src/strings/{en,hi,bho}.json`
+- **Before upload — privacy disclosure of the model download.** *Done by d-ship 2026-10-30 (`a12e8f3`).* The privacy page (`web/src/strings/{en,hi,bho}.json`
   privacy section → `/<lang>/privacy/`), the first-launch notice (`packages/content/ui/*.json` `consent.leaves`) and
   Settings → Privacy (`privacy.networkList`) say nothing else is ever sent, but Pro's "Ask my chart" downloads the Gemma
   model from huggingface.co after your consent (`app/src/ai/model.ts`). Add one sentence in all three places (en/hi/bho):
