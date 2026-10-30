@@ -1,16 +1,16 @@
 // Parity of the agent-written Hindi / Bhojpuri corpus files with their English masters (owner decision 2026-10-29,
-// PRD .agents/tasks/corpus-translate/prd.json). Data-driven over the registry: every hi/bho table that is registered is
-// checked record by record; a domain without a translation file contributes nothing here (fallback.test.ts covers the
-// chain). Contract per translated record: same id, every non-text field byte-identical to en.json, the same {placeholders}
-// and paragraph breaks, Latin digits only, no Latin-script words apart from the allow-listed product names, and the
-// resolvers return it in its own language with fallback: false.
+// docs/CONTENT-TRANSLATION.md). Data-driven over the registry: every hi/bho table that is registered is checked record by
+// record, and the T99 it requires every registered domain to be complete in both languages (the corpus was finished in
+// items T01–T20; fallback.test.ts covers the chain itself). Contract per translated record: same id, every non-text field
+// byte-identical to en.json, the same {placeholders} and paragraph breaks, Latin digits only, no Latin-script words apart
+// from the allow-listed product names, and the resolvers return it in its own language with fallback: false.
 import { describe, expect, it } from 'vitest';
 import { LATIN_ALLOWLIST } from '../../content-tools/src/forbidden';
 import { nakshatraNames, planetNames, signNames, type PlanetId } from '../../engine/src/locale/index';
 import { naturalRelation, signDignity } from '../../engine/src/kundli/index';
 import { NAKSHATRA_LORDS } from '../../engine/src/panchang/panchang';
-import { CORPUS, FESTIVALS, GLOSSARY, LESSONS } from '../src/registry';
-import { festivalText, glossaryTerm, loadGlossary, loadLessons, loadUi, lookup, lesson, lessonPlaceholders, ruleText, type ContentLanguage } from '../src/index';
+import { CORPUS, FESTIVALS, GLOSSARY, LESSONS, NAAMKARAN_NAMES } from '../src/registry';
+import { corpusDomains, festivalText, glossaryTerm, loadCorpus, loadFestivals, loadGlossary, loadLessons, loadNaamkaranNames, loadUi, lookup, lesson, lessonPlaceholders, ruleText, type ContentLanguage } from '../src/index';
 
 type Row = Record<string, unknown> & { id: string };
 type Lang = Exclude<ContentLanguage, 'en'>;
@@ -1160,6 +1160,62 @@ describe('translated corpus files (hi / bho) mirror their English master', () =>
     expect(text('dasha-Ju-Ra', 'bho')).toContain('विवेक के बहकावा से अलगा पहचानल जाए');
     expect(text('dasha-Ra-Ju', 'hi')).toContain('बहकावे से परखे जाने वाले विवेक');
     expect(text('dasha-Ra-Ju', 'bho')).toContain('बहकावा से परखल जाए वाला विवेक');
+  });
+
+  it('T99: the whole corpus is translated — every registered domain (18 snippet / festival / glossary / lesson tables) carries the full English id set in hi and bho, every whole-file loader and every per-id resolver returns the requested language with fallback false, and only naamkaran-names (English-only by owner decision) still falls back', () => {
+    // Completeness per domain per language vs en.json: the owner's decision of 2026-10-29 covers every corpus domain except
+    // naamkaran-names, so a new English-only domain registered in CORPUS / FESTIVALS / GLOSSARY / LESSONS fails here until
+    // its hi.json + bho.json land (docs/CONTENT-TRANSLATION.md).
+    const idsOf = (rows: Row[] | undefined): string[] => (rows ?? []).map((r) => r.id).sort();
+    for (const t of TABLES) {
+      const en = idsOf(t.rows.en);
+      expect(en.length, `${t.domain} en.json empty`).toBeGreaterThan(0);
+      for (const lang of LANGS) {
+        expect(t.rows[lang], `${t.domain}/${lang} not registered`).toBeDefined();
+        expect(idsOf(t.rows[lang]), `${t.domain}/${lang} id set differs from en.json`).toEqual(en);
+        // Per id: the resolver returns the translation itself (the data-driven its below check every translated row; this
+        // loop starts from the English master, so a missing translation shows up as fallback true).
+        for (const id of en) {
+          const r = t.resolve(id, lang);
+          expect(r, `${t.domain}/${id} ${lang}`).not.toBeNull();
+          expect(r!.lang, `${t.domain}/${id} ${lang} resolved language`).toBe(lang);
+          expect(r!.fallback, `${t.domain}/${id} ${lang} fallback`).toBe(false);
+        }
+      }
+    }
+    expect(TABLES.map((t) => t.domain).sort()).toEqual([...corpusDomains(), 'festivals', 'glossary', 'lessons'].sort());
+    // Whole-file loaders: the requested language, its own file, as many records as English.
+    for (const lang of LANGS) {
+      for (const domain of corpusDomains()) {
+        const c = loadCorpus(domain, lang);
+        expect(c.lang, `loadCorpus(${domain}, ${lang})`).toBe(lang);
+        expect(c.fallback).toBe(false);
+        expect(c.snippets.length, `loadCorpus(${domain}, ${lang}) count`).toBe(CORPUS[domain].en!.length);
+      }
+      const f = loadFestivals(lang);
+      expect(f.lang).toBe(lang);
+      expect(f.fallback).toBe(false);
+      expect(f.items.length).toBe(FESTIVALS.en!.length);
+      const g = loadGlossary(lang);
+      expect(g.lang).toBe(lang);
+      expect(g.fallback).toBe(false);
+      expect(g.items.length).toBe(GLOSSARY.en!.length);
+      const l = loadLessons(lang);
+      expect(l.lang).toBe(lang);
+      expect(l.fallback).toBe(false);
+      expect(l.items.length).toBe(LESSONS.en!.length);
+      // naamkaran-names stays English-only (names are Devanagari + Latin in every language): the loader says so with the flag.
+      expect(Object.keys(NAAMKARAN_NAMES)).toEqual(['en']);
+      const n = loadNaamkaranNames(lang);
+      expect(n.lang).toBe('en');
+      expect(n.fallback).toBe(true);
+      expect(n.items.length).toBe(108);
+    }
+    // Corpus-wide totals per language equal the English master (1,434 records at the time of writing; derived, not pinned).
+    const total = (lang: ContentLanguage): number => TABLES.reduce((n, t) => n + (t.rows[lang]?.length ?? 0), 0);
+    expect(total('hi')).toBe(total('en'));
+    expect(total('bho')).toBe(total('en'));
+    expect(total('en')).toBeGreaterThanOrEqual(1434);
   });
 
   it('every registered domain has an English master and only hi / bho translations', () => {
