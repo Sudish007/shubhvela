@@ -1,11 +1,14 @@
 // Loaders: static JSON imports (Metro and vitest both bundle them; no fs, no runtime schema validation).
-// New corpus domains register themselves in ./registry.ts when their English master lands (A06-A08, B02, C02);
-// Hindi files written by the corpus-translate Action are added there too once they exist.
+// New corpus domains register themselves in ./registry.ts when their English master lands (A06-A08, B02, C02),
+// together with their hi.json / bho.json (owner decision 2026-10-29: Hindi and Bhojpuri are authored by the same
+// agents that wrote the English master, no translation API; all 18 in-scope domains are complete in both languages
+// as of 2026-10-30, enforced by test/translations.test.ts; `naamkaran-names` stays English by decision —
+// docs/CONTENT-TRANSLATION.md).
 //
-// Fallback chain (owner decision 2026-10-25, "leave bhojpuri translation"): the corpus is never machine-translated
-// into Bhojpuri. Every resolver walks FALLBACK_CHAIN[lang] and returns the FIRST language that has the id:
-// bho -> hi -> en, hi -> en, en. The result records which language was actually used (`lang`) so the UI keeps its
-// chrome in the requested language and shows the snippet in the resolved one; no empty strings, no badge.
+// Fallback chain (kept from the 2026-10-25 decision): every resolver walks FALLBACK_CHAIN[lang] and returns the
+// FIRST language that has the id: bho -> hi -> en, hi -> en, en. The result records which language was actually
+// used (`lang`) so the UI keeps its chrome in the requested language and shows the snippet in the resolved one;
+// no empty strings, no badge. It still protects any future English-only record.
 import type { ContentLanguage, CorpusLookup, FestivalText, GlossaryEntry, NaamkaranNames, Snippet, UiStrings } from './types';
 import { CORPUS, FESTIVALS, GLOSSARY, NAAMKARAN_NAMES, UI } from './registry';
 

@@ -13,7 +13,7 @@ paste are in `app/playstore-assets/store-listing.md`.
 | 2 | Instagram handle | launch marketing | **open** |
 | 3 | Play Console listing + products + licence testers + AAB upload | to publish | **open** — everything to paste is ready |
 | 4 | AdMob app + unit ids (+ app-ads.txt) | before the public release; test units until then | **open** |
-| 5 | `GEMINI_API_KEY` secret | no longer needed for the corpus | **superseded** — a separate translation run wrote hi/bho for 14 of 19 domains without the Action; `gh secret list` was still empty on 2026-10-30 |
+| 5 | `GEMINI_API_KEY` secret | no longer needed for the corpus | **superseded** — a separate translation run wrote hi/bho for all 18 in-scope domains (1,434 records per language) without the Action; `gh secret list` was still empty on 2026-10-30 |
 | 6 | Bhojpuri review (UI strings, corpus, festival names) | before calling the Bhojpuri listing "reviewed" | **open** |
 | 7 | Keystore off-machine backup | **now** | **open** — do this today |
 | 8 | Grievance e-mail | before publishing (Play requires a working address) | **open** — placeholder `grievance@shubhvela.in` in 5 places |
@@ -60,11 +60,11 @@ paste are in `app/playstore-assets/store-listing.md`.
    *Meanwhile:* every build uses Google's test IDs (`app/src/ads/config.ts` falls back whenever `live` is false or any
    id is missing); Pro never initialises the SDK (`app/test/ads-root.test.tsx`).
 5. **Gemini key — superseded.** The corpus-translate Action was never run (`gh secret list --repo Sudish007/shubhvela`
-   empty on 2026-10-30). A separate translation run committed `packages/content/corpus/<domain>/hi.json` and `bho.json`
-   for 14 of 19 domains (1,020 of 1,542 snippets; `naamkaran-names` needs none). Still English by fallback:
-   `dasha-pairs`, `nakshatra-pada`, `planet-house`, `planet-sign`. Nothing for you to do unless you want the Action
-   as a second path: `gh secret set GEMINI_API_KEY --repo Sudish007/shubhvela`, then
-   `gh workflow run corpus-translate.yml --repo Sudish007/shubhvela -f lang=hi` (and the run's own rules for `bho`).
+   empty on 2026-10-30). A separate translation run (finished 2026-10-30 07:00 IST, last commit `ed75e64`) committed
+   `packages/content/corpus/<domain>/hi.json` and `bho.json` for all 18 in-scope domains: 1,434 records per language,
+   0 gaps, enforced by `packages/content/test/translations.test.ts`; `naamkaran-names` stays English by decision
+   (details and register rules in `docs/CONTENT-TRANSLATION.md`). Every record is `review: "draft"` until item 6.
+   Nothing left for you to do here; the Action remains only as an optional second path.
 6. **Bhojpuri review.** `packages/content/ui/bho.json` (UI strings written by the build, including बचीं for "Avoid", the
    possessive राउर and the respectful रउआ / होला / करीं / बानी / नइखे register; tests enforce Devanagari, no Hindi
    आप/है and no Maithili forms, but naturalness needs a native reader), the Bhojpuri festival names in
@@ -92,7 +92,7 @@ paste are in `app/playstore-assets/store-listing.md`.
     `~/.gradle/caches` (~4 GB, rebuilds itself) and `%LOCALAPPDATA%\ms-playwright` (~1.4 GB, needed by the web audits).
 11. **Post-1.0 fixes** carried from the Phase D review (appended by the reviewer below). Already known before the review:
     - Re-shoot the 21 stand-in Play screenshots raw (d-ship; `scripts/shots.ps1 -KeepRaw`, pro=1 seed, light, en/hi/bho).
-    - Translate the four remaining corpus domains (item 5).
+    - ~~Translate the four remaining corpus domains~~ — done 2026-10-30 (item 5: 18/18 domains).
     - C-REVIEW items closed by d-fix (2026-10-30, commits `0d3f94c`, `e0f4c0b`, `9501b8b`): C-M1 small-widget reason
       filter, C-M2 `settings.exactAlarmsBody` "10 minutes" wording, C-M3 TTS error "Open TTS settings" link, C-N1 widget
       picker labels + previews, C-N2 journal mood marks, C-N3 widget hora word, C-N4 "From a link" label. Still open:

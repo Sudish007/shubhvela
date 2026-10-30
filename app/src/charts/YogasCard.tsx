@@ -28,9 +28,16 @@ export function yogaName(id: string, t: TFn): string {
   return t(`yogas.name.${id}`);
 }
 
-/** The one-line rule of a yoga or bhanga id from the yogas corpus (resolved bho -> hi -> en), else the rules corpus. */
+/**
+ * The rule caption of a yoga or bhanga id. English: the one-line `rule` of the yogas corpus. Hindi / Bhojpuri: the
+ * translated sentence of the rules corpus (the yogas corpus copies `rule` verbatim from English in every language,
+ * so it would print English under Devanagari chrome — d-ship 2026-10-30), else that English line.
+ */
 export function yogaRule(ruleId: string, lang: Lang): string | null {
-  return lookup('yogas', ruleId, lang)?.snippet.rule ?? ruleText(ruleId, lang)?.text ?? null;
+  const line = lookup('yogas', ruleId, lang)?.snippet.rule ?? null;
+  if (lang === 'en') return line ?? ruleText(ruleId, lang)?.text ?? null;
+  const localized = ruleText(ruleId, lang);
+  return (localized && !localized.fallback ? localized.text : null) ?? line ?? localized?.text ?? null;
 }
 
 /** Rows the card lists: every yoga whose forming condition holds (formed or cancelled), engine order. */
@@ -43,7 +50,6 @@ function YogaSheet({ yoga, onClose }: { yoga: YogaResult; onClose: () => void })
   const { colors } = useTokens();
   const snippet = lookup('yogas', yoga.ruleId, lang);
   const rule = ruleText(yoga.ruleId, lang);
-  const bhanga = yoga.cancelledBy ? lookup('yogas', yoga.cancelledBy, lang) : null;
   const terms = glossaryIdsFor(yoga.ruleId, ['yoga', ...(yoga.cancelledBy ? [yoga.cancelledBy] : [])])
     .map((id) => glossaryTerm(id, lang)?.item)
     .filter((g): g is GlossaryEntry => !!g);
@@ -73,10 +79,10 @@ function YogaSheet({ yoga, onClose }: { yoga: YogaResult; onClose: () => void })
         <Txt kind="micro" weight={600} color="ink3">
           {t('common.rule')}
         </Txt>
-        <Txt kind="caption">{snippet?.snippet.rule ?? rule?.text ?? yoga.ruleId}</Txt>
-        {bhanga ? (
+        <Txt kind="caption">{yogaRule(yoga.ruleId, lang) ?? yoga.ruleId}</Txt>
+        {yoga.cancelledBy ? (
           <Txt kind="caption" color="ink2">
-            {t('yogas.cancelledBy', { rule: bhanga.snippet.rule })}
+            {t('yogas.cancelledBy', { rule: yogaRule(yoga.cancelledBy, lang) ?? yoga.cancelledBy })}
           </Txt>
         ) : null}
       </View>

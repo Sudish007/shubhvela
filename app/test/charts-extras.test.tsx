@@ -9,6 +9,7 @@
 import { act, fireEvent, screen } from '@testing-library/react-native';
 import { router } from 'expo-router';
 import { PixelRatio } from 'react-native';
+import { ruleText } from '@shubhvela/content';
 import { DAY_MS, LOCKED_VARGA_IDS } from '@shubhvela/engine';
 import ChartsScreen from '../app/(tabs)/charts';
 import AshtakavargaScreen from '../app/charts/ashtakavarga';
@@ -21,7 +22,7 @@ import { TimingDocumentsCard } from '../src/charts/TimingDocumentsCard';
 import { VargaSheet } from '../src/charts/VargaSheet';
 import { chipTillText, featureAccess, isTomorrow, rowStateText, unlockedTillText } from '../src/charts/unlockState';
 import { varshaphalPromoted } from '../src/charts/varshaphalModel';
-import { yogaRows } from '../src/charts/YogasCard';
+import { yogaRows, yogaRule } from '../src/charts/YogasCard';
 import { getProfile, insertProfile } from '../src/db/profiles';
 import { getDashaAlertsEnabled, getYearBeginsEnabled, setDashaAlertsEnabled, setYearBeginsEnabled } from '../src/db/reminderSettings';
 import { listScheduledDetailed } from '../src/db/scheduled';
@@ -241,6 +242,19 @@ describe('B04 charts extras', () => {
     expect(textOf(screen.getByTestId('yoga-sheet-text')).length).toBeGreaterThan(80);
     expect(screen.getByText('Phaladeepika')).toBeTruthy(); // the corpus source of yoga-kemadruma
     expect(screen.getAllByText(/^cancelled: Kemadruma cancelled: a planet other than the Moon/).length).toBeGreaterThanOrEqual(1);
+  });
+
+  it('yogaRule keeps the English one-liner in en and uses the translated rules sentence in hi / bho (d-ship 2026-10-30)', () => {
+    const en = yogaRule('yoga-ruchaka', 'en');
+    expect(en).toMatch(/^Ruchaka: Mars in a kendra/);
+    for (const lang of ['hi', 'bho'] as const) {
+      const text = yogaRule('yoga-ruchaka', lang);
+      expect(text).toBe(ruleText('yoga-ruchaka', lang)?.text);
+      expect(text).toMatch(/[\u0900-\u097F]/); // Devanagari, not the copied English `rule`
+      expect(text).not.toMatch(/Mars in a kendra/);
+      // Cancelling rules are localised the same way.
+      expect(yogaRule('mahapurusha-bhanga-combust', lang)).toMatch(/[\u0900-\u097F]/);
+    }
   });
 
   // ---- F17: Varshaphal ----
