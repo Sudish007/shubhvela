@@ -87,4 +87,7 @@ Home-screen widget shots: not re-taken — the fresh AVD page carried no pinned 
 
 ## 9. Tag, push, live check
 
-Filled in below after the ship commit.
+- Ship commit `4a9bf82` `docs(release): 1.0.0 verification` (includes the OWNER-TODO 'Status after Phase D' block); `git tag v1.0.0`; `git push origin main --tags` → `6f3099a..4a9bf82 main -> main`, `[new tag] v1.0.0`.
+- Pages run 41162199003 for `4a9bf82`: success (`gh run watch --exit-status`).
+- `node web/audit/live-check.mjs` after the deploy: `{"pass":true,"checks":28,"passed":28,"base":"https://sudish007.github.io/shubhvela/"}`; live `/en/privacy/` contains the Hugging Face sentence.
+- `git --no-pager status --porcelain`: clean apart from the untracked-by-policy `reference/results*.json` timestamp drift.
