@@ -138,6 +138,20 @@ paste are in `app/playstore-assets/store-listing.md`.
 - Open for you, in order of urgency: 7 (keystore backup), 8 (grievance e-mail), 3 (Play Console), 4 (AdMob), 1 (name/domains or
   the N17 user-pages repo), 6 (Bhojpuri review), 2 (Instagram).
 
+## Status after Phase D (shipped 2026-10-31, tag `v1.0.0`, release 1.0.0 / versionCode 4)
+
+- Built and signed (local, gitignored): **`release/Shubhvela-1.0.0.aab` (179.0 MB, four ABIs armeabi-v7a/arm64-v8a/x86/x86_64 — upload
+  this to the internal testing track)**, `release/Shubhvela-1.0.0-arm64.apk` (95.9 MB, install this on your phone to confirm DEV-1),
+  `release/Shubhvela-1.0.0-x86_64.apk` (106.3 MB, emulator/screenshot build). jarsigner `jar verified` on the AAB; apksigner v2 on the APKs.
+- Play kit ready: 24 store screenshots re-shot from the 1.0.0 build (0 pending), icon + feature graphic, `store-listing.md`, release
+  notes en/hi/bho; `node scripts/gen-store-assets.mjs --check` exit 0. Hindi + Bhojpuri corpus complete (18/18 domains).
+- Tests: content 199 · content-tools 16 · engine 1058 · app 340 · web 64 = 1,677 pass. Emulator audit 186 shots (gesture + 3-button),
+  0 findings. Details `docs/verification/verification-phase-d.md`.
+- The emulator AVD `shubhvela_test` was deleted to free 7.8 GB (recreate with `scripts/emulator.ps1 -Install`).
+- Open for you, in order: 7 (keystore backup — today), 8 (grievance e-mail), 3 (Play Console listing + products + AAB upload), 4 (AdMob),
+  1 (name/domains or the N17 user-pages repo), 6 (Bhojpuri review + Yoni convention acceptance), 2 (Instagram). Your DEV-1 confirmation
+  on a phone with the 1.0.0 arm64 APK is still the open acceptance.
+
 ## Post-1.0 fixes (from the Phase D review)
 
 Appended by the Phase D reviewer (2026-10-30, verdict APPROVED — 0 blocking, 5 medium, 2 nit; full record in
@@ -155,7 +169,7 @@ MEDIUM
 - **Before upload — six `koota-yoni@mXX` matching conventions** (item 6 above): accept the convention in
   `packages/engine/reference/CONVENTIONS.md` or supply Drik's five-level Yoni table; the matching suite is 14/20 exact
   against Drik until then (spec §6 asked for exact totals).
-- **Before upload — re-shoot the 21 stand-in Play screenshots** (d-ship: `scripts/shots.ps1 -KeepRaw`, pro seed, light,
+- **Before upload — re-shoot the 21 stand-in Play screenshots** *— done by d-ship 2026-10-30/31 (`fc38fb6`, `6f3099a`; 24/24 raw, 0 pending).* (d-ship: `scripts/shots.ps1 -KeepRaw`, pro seed, light,
   status bar in demo mode; the Family slot scrolled to tithi birthdays/shraddha), then `node scripts/gen-brand-assets.mjs`
   and `--check`; no `pending: true` may remain in `app/playstore-assets/screenshots/sources.json`. The current stand-ins
   show emulator status icons, an old "म्ध्यम" spelling and English lesson titles.

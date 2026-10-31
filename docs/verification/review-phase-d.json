@@ -1,0 +1,48 @@
+{
+  "verdict": "APPROVED",
+  "findings": [
+    {
+      "severity": "MEDIUM",
+      "title": "Privacy page and in-app notice omit the Pro model download (Hugging Face); store-listing says it is already disclosed",
+      "detail": "Live /en/privacy/ says 'Nothing else is ever sent by the app' and packages/content/ui/en.json consent.leaves / privacy.networkList name only Nominatim, AdMob and Play Billing, while app/src/ai/model.ts MODEL_URL downloads the Gemma model from huggingface.co after the Pro user's consent; app/playstore-assets/store-listing.md section Data safety lists that endpoint and claims the privacy policy 'already' mentions Hugging Face. Fix before the Play upload: add one sentence to the privacy page strings (en/hi/bho), consent.leaves and privacy.networkList, and correct the store-listing note. Data-safety data types need no change.",
+      "feature": "F35"
+    },
+    {
+      "severity": "MEDIUM",
+      "title": "Matching suite 14/20 exact — six koota-yoni conventions still need the owner's acceptance or Drik's Yoni table",
+      "detail": "Carries C-M6/B-M1. packages/engine/reference/CONVENTIONS.md section 3 documents the six one-point Yoni differences (five-level Drik table unsourced). Recorded in docs/OWNER-TODO.md item 6 for the owner's decision; spec section 6 wants exact totals before a build is called beta.",
+      "feature": "F29"
+    },
+    {
+      "severity": "MEDIUM",
+      "title": "Level-2/3 Why? text exists only for the koota domain",
+      "detail": "Carries C-M4. Lessons 2-21 unlock nothing further for a free reader; author level-2 English snippets for daily, planet-sign/house and yoga domains, then translate (hi/bho).",
+      "feature": "F32"
+    },
+    {
+      "severity": "MEDIUM",
+      "title": "21 of 24 Play listing screenshots are upscaled stand-ins with emulator status icons and outdated text",
+      "detail": "app/playstore-assets/screenshots/sources.json marks 21 slots pending: true. Opened en/01-today (shield + avatar status icons), hi/02-charts (old 'म्ध्यम राहु' spelling, current strings say मध्यम), bho/06-learn (English lesson titles, translated since c69aeae). d-ship must re-shoot raw (scripts/shots.ps1 -KeepRaw, pro seed, light theme, demo status bar), regenerate with scripts/gen-brand-assets.mjs and run --check before any upload; the Family slot must show tithi birthdays/shraddha as captioned.",
+      "feature": "F41"
+    },
+    {
+      "severity": "MEDIUM",
+      "title": "Grievance contact still provisional in app, web, store listing and breach process",
+      "detail": "Carries A-REVIEW-MEDIUM-4. app/src/legal.ts GRIEVANCE_EMAIL_CONFIRMED = false, web strings site.grievanceEmail, store-listing.md contact row and docs/BREACH-PROCESS.md all use grievance@shubhvela.in with a 'provisional' label. Play rejects a non-working contact address; owner item 8 must precede the publish step.",
+      "feature": "F1"
+    },
+    {
+      "severity": "NIT",
+      "title": "Festival pages print the raw convention id ('pradosh') as the Convention value in all languages",
+      "detail": "web/src/templates/festival.mjs:35 renders o.convention directly (seen on festival-hi-390-light as 'परंपरा pradosh' and live on /en/festival/diwali/2026/). The app has translated labels calendar.timing.udaya|madhyahna|pradosh|nishita|moonrise in packages/content/ui/*.json; render t('calendar.timing.' + o.convention) and drop the num class.",
+      "feature": "F42"
+    },
+    {
+      "severity": "NIT",
+      "title": "Carried NITs re-owned to post-1.0",
+      "detail": "B-N1 Devanagari place names in the app (name_hi; web side done), B-N7 muhurat finder location mode, B-N8 cross-instance share-code acceptance (emulator leg), B-N4 native ad card pixels on a device with Play, A-N3 Sheetala Ashtami 2028 rule, C-N6 re-shoot of the Vargas/Varshaphal footers in the d-ship emulator audit, C-N5 run-artifact plan.md still names :app:testReleaseUnitTest (docs copy corrected), brand NITs (dedicated 96x96 notification-icon source, mdpi notification icon).",
+      "feature": "F23"
+    }
+  ],
+  "reviewDoc": "c:/Users/sudiskmr/Downloads/DomainClassification/shubhvela/.agents/tasks/v1-build/review-phase-d.md"
+}
